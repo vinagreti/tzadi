@@ -1,0 +1,45 @@
+body {
+  padding-top: 50px;
+  padding-bottom: 40px;
+}
+.globalAlert {
+  position: fixed;
+  top: 50px;
+}
+.sidebar-nav {
+  padding: 9px 0;
+}
+@media (max-width: 980px) {
+  /* Enable use of floated navbar text */
+  .navbar-text.pull-right {
+    float: none;
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+}
+.loading
+{
+  display:none;
+  position: fixed;
+  z-index: 9999;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: rgba( 255, 255, 255, .8 ) 
+    url("<?=base_url()?>assets/img/loading.gif")
+    50% 50% 
+    no-repeat;
+}
+th.header { 
+    cursor: pointer; 
+}
+
+/* Arrumando o datetimepiker para aparecer sobre os modais. */
+.bootstrap-datetimepicker-widget { z-index: 9998;}
+
+/* Main marketing message and sign up button */
+.centered-text {
+  margin: 0 0 80px 0;
+  text-align: center;
+}
