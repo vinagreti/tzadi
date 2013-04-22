@@ -1,3 +1,7 @@
+jQuery.fn.reset = function () {
+  $(this).each (function() { this.reset(); });
+}
+
 function globalAlert(kind, message, alertDiv){
 
 	$('.globalModalAlert').empty();
@@ -83,3 +87,49 @@ $( "#translate_pt-BR" ).live("click", function() {
 	  location.reload();
 	});
 });
+
+// method that get objects from server
+var tzdGetObj = function(method){
+  $(".loading").show();
+  $.ajax({
+    url: base_url+method,
+    success: function( e ) {
+      list = e.institutions;
+    },
+    dataType: 'json',
+    async: false
+  });
+  $(".loading").hide();
+  return list;
+}
+
+// work around to fix ie7 and 8 onkeyup event
+if (!Array.prototype.filter)
+{
+  Array.prototype.filter = function(fun /*, thisp */)
+  {
+    "use strict";
+
+    if (this === void 0 || this === null)
+      throw new TypeError();
+
+    var t = Object(this);
+    var len = t.length >>> 0;
+    if (typeof fun !== "function")
+      throw new TypeError();
+
+    var res = [];
+    var thisp = arguments[1];
+    for (var i = 0; i < len; i++)
+    {
+      if (i in t)
+      {
+        var val = t[i]; // in case fun mutates this
+        if (fun.call(thisp, val, i, t))
+          res.push(val);
+      }
+    }
+
+    return res;
+  };
+}

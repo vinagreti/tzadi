@@ -10,7 +10,7 @@ class Contact_Model extends CI_Model {
   }
   
   function save($data) {
-    $this->db->insert('tzadiContact', $data);
+    $this->db->insert('contact', $data);
     $query = $this->db->insert_id();
     return $query;
   }

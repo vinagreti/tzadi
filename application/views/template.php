@@ -32,6 +32,12 @@
   <link rel="shortcut icon" href="<?=base_url()?>assets/img/32x32.png">
 </head>
 <body>
+  <!-- Dialogs -->
+  <div class="modal hide fade" id="tzadiDialogs" tabindex="-1"></div>
+  <div class="modal hide fade" id="tzadiAttachForm" tabindex="-1"></div>
+  <div class="loading"></div>
+
+  <!-- Navbar -->
   <div class="navbar <?php if (ENVIRONMENT == "production") echo "navbar-inverse"; ?> navbar-fixed-top">
     <div class="navbar-inner">
       <div class="container">
@@ -66,11 +72,11 @@
           </ul>
           <ul class="nav">
             <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" rel="tooltip" title="Sobre a tzadi"><i class="icon-comments icon-large"></i> <?=lang('tmpt_the_tzadi')?></a>
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" rel="tooltip" title="<?=lang('tmpt_The_tzadi')?>"><i class="icon-comments icon-large"></i> <?=lang('tmpt_The_tzadi')?></a>
               <ul class="dropdown-menu">
                 <li><a href="<?=base_url()?>">Home</a></li>
-                <li><a href="<?=base_url()?>about"><?=lang('tmpt_about_us')?></a></li>
-                <li><a href="<?=base_url()?>contact"><?=lang('tmpt_contact_us')?></a></li>
+                <li><a href="<?=base_url()?>about"><?=lang('tmpt_About_us')?></a></li>
+                <li><a href="<?=base_url()?>contact"><?=lang('tmpt_Contact_us')?></a></li>
               </ul>
             </li>
 
@@ -81,20 +87,30 @@
                 <li><a id="translate_pt-BR" href="#" rel="tooltip" title="Traduzir para Português">Português</a></li>
               </ul>
             </li>
+
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" rel="tooltip" title="<?=lang('tmpt_Agency')?>"><i class="icon-plane icon-large"></i> <?=lang('tmpt_Agency')?></a>
+              <ul class="dropdown-menu">
+                <li><a href="<?=base_url()?>institution" rel="tooltip" title="<?=lang('tmpt_Institutions')?>"><?=lang('tmpt_Institutions')?></a></li>
+              </ul>
+            </li>
+
         </div><!--/.nav-collapse -->
-      </div><!-- container-fluid -->
+      </div><!-- container -->
     </div><!-- navbar-inner -->
   </div><!-- navbar -->
   
-  <div class="container">
+  <div class="container well well-small">
     <div class="row">
       <div class="span12">
-        <div class="globalAlert"></div>
-      </div>
-    </div>
-    <div class="row-fluid">
-      <div class="span12">
-        {content}
+        <div class="row tzdContent">
+          <div class="span12">
+            <div class="globalAlert"></div>
+          </div>
+          <div class="span12">
+            {content}
+          </div>
+        </div>
       </div>
     </div>
     <hr>
@@ -122,8 +138,7 @@
   <script type="text/javascript">var base_url = "<?=base_url()?>";</script>
   <!-- Cusom JS -->
   <script src="<?=base_url()?>assets/js/global.js"></script>
-  <!-- Dialogs -->
-  <div class="modal hide fade" id="tzadiDialogs" tabindex="-1"></div>
-  <div class="loading"></div>
+  <!-- used by page library to load the dynamic page js -->
+  <script type="text/javascript" src="<?=base_url()?>assets/js/{class}.js"></script>
 </body>
 </html>

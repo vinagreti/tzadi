@@ -6,10 +6,11 @@ $lang['tmpt_Settings'] = 'Settings';
 $lang['tmpt_Logout'] = 'Logout';
 $lang['tmpt_Login'] = 'Login';
 $lang['tmpt_Message'] = 'Message';
-$lang['tmpt_the_tzadi'] = 'The tzadi';
-$lang['tmpt_about_us'] = 'About us';
+$lang['tmpt_The_tzadi'] = 'The tzadi';
+$lang['tmpt_About_us'] = 'About us';
 $lang['tmpt_what_we_believe'] = 'What we believe';
-$lang['tmpt_contact_us'] = 'Contact us';
+$lang['tmpt_contact_us'] = 'contact us';
+$lang['tmpt_Contact_us'] = 'Contact us';
 $lang['tmpt_Products'] = 'Products';
 $lang['tmpt_Language'] = 'Language';
 $lang['tmpt_Powered_by'] = 'Powered by';
@@ -23,3 +24,6 @@ $lang['tmpt_need_js'] = 'You have to enable javascript support on your browser t
 $lang['tmpt_insert_valid_mail'] = 'Please, enter a valid e-mail address ';
 $lang['tmpt_insert_subject'] = 'Please, enter the subject before submit';
 $lang['tmpt_insert_message'] = 'Please, enter the message before submit';
+
+// Error views
+$lang['tmpt_permission_denied'] = 'You do not have the right level to see this page. Please, log in to access this content or';

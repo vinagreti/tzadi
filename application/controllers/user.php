@@ -8,10 +8,10 @@ class User extends CI_Controller {
     $app_language = $this->session->userdata('app_language');
   	if(isset($app_language)) {
   		$this->lang->load('template', $app_language);
-  		$this->lang->load('user/login', $app_language);
+  		$this->lang->load('login', $app_language);
   	} else {
   		$this->lang->load('template', LANGUAGE);
-  		$this->lang->load('user/login', LANGUAGE);
+  		$this->lang->load('login', LANGUAGE);
   	}
   }
 

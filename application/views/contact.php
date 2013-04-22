@@ -1,13 +1,12 @@
-<div class="row-fluid">
-  <h1><?=lang('ct_page_p1')?></h1>
-  <p class="lead"><?=lang('ct_page_p2')?></br><?=lang('ct_page_p3')?></p>
-  <?=form_open()?>
-  <p><input type="text" class="input-block-level" placeholder="<?=lang('ct_email')?>" id="email" name="email"></p>
-  <p><input type="text" class="input-block-level" placeholder="<?=lang('ct_subject')?>" id="subject" name="subject"></p>
-  <p><textarea rows="7" type="text" class="input-block-level" placeholder="<?=lang('ct_message')?>" id="message" name="message"></textarea></p>
-  <?=form_close()?>
-  <p><a src="#" class="btn btn-large btn-primary" id="submitLogin"><?=lang('ct_Send')?></a></p>
-</div> <!-- /container -->
+<h1><?=lang('ct_page_p1')?></h1>
+<p class="lead"><?=lang('ct_page_p2')?></br><?=lang('ct_page_p3')?></p>
+<?=form_open()?>
+<p><input type="text" class="input-block-level" placeholder="<?=lang('ct_email')?>" id="email" name="email"></p>
+<p><input type="text" class="input-block-level" placeholder="<?=lang('ct_subject')?>" id="subject" name="subject"></p>
+<p><textarea rows="7" type="text" class="input-block-level" placeholder="<?=lang('ct_message')?>" id="message" name="message"></textarea></p>
+<?=form_close()?>
+<p><a src="#" class="btn btn-large btn-primary" id="submitLogin"><?=lang('ct_Send')?></a></p>
+
 
 <script type="text/javascript">
   window.onload=function(){

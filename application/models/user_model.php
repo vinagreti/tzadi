@@ -13,32 +13,39 @@ class User_Model extends CI_Model {
 
         $password = md5($password);
 
-        $user = $this->db->where('userEmail', $email);
-        $user = $this->db->where('userPassword', $password);
-        $user = $this->db->join('tzadiTaskProject p', 'p.projectID = u.userProject', 'left');
-        $user = $this->db->get('tzadiUser u')->result();
+        $this->db->where('userEmail', $email)
+            ->where('userPassword', $password)
+            ->join('agencyUser au', 'au.userID = u.userID', 'left')
+            ->join('agency a', 'a.agencyID = au.agencyID', 'left');
+        $user = $this->db->get('user u')->result();
 
         if(isset($user[0]))
         {
-            $projects = $this->db->select(array(
-                "projectTitle",
-                "projectID"
-                ));
-            $projects = $this->db->order_by('projectTitle');
-            $projects = $this->db->where('tzadiUser', $user[0]->userID);
-            $projects = $this->db->join('tzadiTaskProject tp', 'tp.projectID = tup.tzadiProject', 'left');
-            $projects = $this->db->get('tzadiUserProject tup')->result();
-
+            $agencyOwner = false;
+            if($user[0]->agencyOwner == $user[0]->userID) $agencyOwner = true;
+            
             $this->session->set_userdata('userID', $user[0]->userID);
             $this->session->set_userdata('userName', $user[0]->userName);
             $this->session->set_userdata('userEmail', $user[0]->userEmail);
-            $this->session->set_userdata('userLevel', $user[0]->userLevel);
-            $this->session->set_userdata('userProject', $user[0]->userProject);
-            $this->session->set_userdata('userProjectName', $user[0]->projectTitle);
-            $this->session->set_userdata('userProjects', $projects);
+            $this->session->set_userdata('agencyID', $user[0]->agencyID);
+            $this->session->set_userdata('agencyOwner', $agencyOwner);
+            $this->session->set_userdata('institutionMethods', $this->levelToMethods($user[0]->institutionLevel));
+
             return true;
         }
         
         else return false;
     }
+
+  private function levelToMethods( $num ) {
+
+    $permited = str_split( strrev( decbin( $num ) ) );
+    $i = 1;
+    $classMethods = array();
+    foreach ($permited as $key => $value) {
+      if( $value == 1) array_push($classMethods, $i);
+      $i = $i+$i;
+    }
+    return $classMethods;
+  }
 }
