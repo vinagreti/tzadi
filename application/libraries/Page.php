@@ -7,6 +7,7 @@ class Page {
 
   public function load( $data ) {
     
+    // Check the language and load the template language file
     $app_language = $this->CI->session->userdata('app_language');
     if(isset($app_language)) {
       $this->CI->lang->load('template', $app_language);
@@ -14,13 +15,10 @@ class Page {
       $this->CI->lang->load('template', LANGUAGE);
     }
 
-    $content = $this->CI->load->view($data->view, "", true);
-    $data = array(
-      'class' => $data->class,
-      'page_title' => $data->title,
-      'content' => $content
-      );
-    $this->CI->parser->parse('template', $data);
+    // load the view within the template
+    $data->content = $this->CI->load->view($data->view, "", true);
+    if(defined('COMPANYNICK')) $this->CI->parser->parse('templates/companyTemplate', $data);
+    else  $this->CI->parser->parse('templates/tzadiTemplate', $data);
   }
 }
 /* End of file Permission.php */

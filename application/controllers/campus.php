@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Campus extends CI_Controller {
+class Campus extends My_Controller {
 
   var $campusID; // campus unique ID
   var $institutionID; // institution unique ID

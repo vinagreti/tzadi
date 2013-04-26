@@ -38,7 +38,9 @@
 |
 */
 
-$route['default_controller'] = "index";
+
+if(defined('COMPANYNICK')) $route['default_controller'] = "vitrine";
+else $route['default_controller'] = "index";
 $route['404_override'] = '';
 
 

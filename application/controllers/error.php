@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Error extends CI_Controller {
+class Error extends My_Controller {
 
   public function __construct() {
     // define os tipos de usuarios que podem acessar a classe Task
@@ -32,7 +32,17 @@ class Error extends CI_Controller {
       'page_title' => 'ops',
       'content' => $content
       );
-    $this->parser->parse('template', $data);
+    $this->parser->parse('templates/tzadiTemplate', $data);
+  }
+
+  public function companyNotFound()
+  {
+    $content = $this->load->view('error/companyNotFound', "", true);
+    $data = array(
+      'page_title' => 'ops',
+      'content' => $content
+      );
+    $this->parser->parse('templates/tzadiTemplate', $data);
   }
 }
 

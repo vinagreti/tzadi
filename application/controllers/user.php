@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class User extends CI_Controller {
+class User extends My_Controller {
 
   public function __construct() {
     // define os tipos de usuarios que podem acessar a classe Task
@@ -21,12 +21,17 @@ class User extends CI_Controller {
 	}
 
 	public function login(){
-		$content = $this->load->view('user/login', "", true);
-		$data = array(
-			'page_title' => lang('lgn_Sign_In'),
-			'content' => $content
-			);
-		$this->parser->parse('template', $data);
+
+      if(!defined('COMPANYNICK')) {
+        $data->content = $this->load->view('user/login', "", true);
+        $data->page_title = lang('lgn_Sign_In');
+        $this->parser->parse('templates/tzadiTemplate', $data); 
+      }
+      else {
+        $data->content = $this->load->view('user/login', "", true);
+        $data->page_title = lang('lgn_Sign_In');
+        $this->parser->parse('templates/companyTemplate', $data);
+      }
 	}
 
 	public function submitLogin()

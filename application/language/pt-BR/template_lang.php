@@ -6,13 +6,14 @@ $lang['tmpt_Profile'] = 'Perfil';
 $lang['tmpt_Settings'] = 'Configurações';
 $lang['tmpt_Logout'] = 'Sair';
 $lang['tmpt_Login'] = 'Login';
+$lang['tmpt_Register'] = 'Cadastrar';
 $lang['tmpt_Save'] = 'Salvar';
 $lang['tmpt_Cancel'] = 'Cancelar';
 $lang['tmpt_Close'] = 'Fechar';
 $lang['tmpt_Edit'] = 'Editar';
 $lang['tmpt_Remove'] = 'Remover';
 $lang['tmpt_Message'] = 'Mensagem';
-$lang['tmpt_The_tzadi'] = 'A tzadi';
+$lang['tmpt_Institutional'] = 'Institucional';
 $lang['tmpt_About_us'] = 'Sobre nós';
 $lang['tmpt_what_we_believe'] = 'No que acreditamos';
 $lang['tmpt_contact_us'] = 'entre em contato';
@@ -42,3 +43,4 @@ $lang['tmpt_insert_message'] = 'Favor escrever sua mensagem antes de enviar';
 
 // Error views
 $lang['tmpt_permission_denied'] = 'Você não tem permissão para ver esta página. Por favor, faça login para acessar este conteúdo ou';
+$lang['tmpt_companyNotFound'] = 'Esta empresa não possui cadastro na tzadi. Deseja cadastrá-la?';

@@ -1,9 +1,9 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class About extends CI_Controller {
+class About extends My_Controller {
 
   public function __construct() {
-    // define os tipos de usuarios que podem acessar a classe Task
+    // carrega os arquivos de idioma
     parent::__construct();
     $app_language = $this->session->userdata('app_language');
   	if(isset($app_language)) {
@@ -17,12 +17,19 @@ class About extends CI_Controller {
 
 	public function index()
 	{
-		$content = $this->load->view('about', "", true);
-		$data = array(
-			'page_title' => lang('abt_page_title'),
-			'content' => $content
-			);
-		$this->parser->parse('template', $data);
+    if(!defined('COMPANYNICK')){
+      $data->content = $this->load->view('tzadi/about', "", true);
+      $data->page_title = lang('tmpt_About_us');
+      $this->parser->parse('templates/tzadiTemplate', $data);      
+    }
+    else{
+      $company = $this->MYcheckCompany();
+      if($company->companyAboutContent == "extern") redirect($company->companyAboutLink);
+      $data->content = $this->load->view('company/about', $company, true);
+      $data->page_title = lang('tmpt_About_us');
+      $this->parser->parse('templates/companyTemplate', $data);
+
+    }
 	}
 }
 

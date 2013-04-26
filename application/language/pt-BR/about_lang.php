@@ -1,5 +1,5 @@
 <?php
-$lang['abt_page_title'] = 'Sobre a tzadi';
+$lang['abt_page_title'] = 'Sobre nós';
 $lang['abt_text1'] = 'A tzadi é formada por ex-intercambistas que viram nas dificuldades
   burocráticas dos processos de intercâmbio uma oportunidade de contribuir para
   este ecossistema, fornecendo ferramentas simples que resolvem grandes problemas.';

@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Contact extends CI_Controller {
+class Contact extends My_Controller {
 
   public function __construct() {
     // define os tipos de usuarios que podem acessar a classe Task
@@ -19,12 +19,19 @@ class Contact extends CI_Controller {
 	{
 		$data = $this->input->post();
 		if(!$data){
-			$content = $this->load->view('contact', "", true);
-			$data = array(
-				'page_title' => lang('ct_page_title'),
-				'content' => $content
-				);
-			$this->parser->parse('template', $data);			
+
+      if(!defined('COMPANYNICK')) {
+        $data->content = $this->load->view('tzadi/contact', "", true);
+        $data->page_title = lang('ct_page_title');
+        $this->parser->parse('templates/tzadiTemplate', $data);  
+      }
+      else {
+        $company = $this->MYcheckCompany();
+        if($company->companyContactFormPlace == "extern") redirect($company->companyContactLink);
+        $data->content = $this->load->view('tzadi/contact', "", true);
+        $data->page_title = lang('ct_page_title');
+        $this->parser->parse('templates/companyTemplate', $data);  
+      }
 		} 
 		else {
 			if($data["email"] && $data["subject"] && $data["message"]){

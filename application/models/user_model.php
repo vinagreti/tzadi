@@ -28,6 +28,7 @@ class User_Model extends CI_Model {
             $this->session->set_userdata('userName', $user[0]->userName);
             $this->session->set_userdata('userEmail', $user[0]->userEmail);
             $this->session->set_userdata('agencyID', $user[0]->agencyID);
+            $this->session->set_userdata('companyNick', $user[0]->companyNick);
             $this->session->set_userdata('agencyOwner', $agencyOwner);
             $this->session->set_userdata('institutionMethods', $this->levelToMethods($user[0]->institutionLevel));
 

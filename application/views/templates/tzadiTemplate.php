@@ -72,7 +72,7 @@
           </ul>
           <ul class="nav">
             <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" rel="tooltip" title="<?=lang('tmpt_The_tzadi')?>"><i class="icon-comments icon-large"></i> <?=lang('tmpt_The_tzadi')?></a>
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" rel="tooltip" title="<?=lang('tmpt_Institutional')?>"><i class="icon-comments icon-large"></i> <?=lang('tmpt_Institutional')?></a>
               <ul class="dropdown-menu">
                 <li><a href="<?=base_url()?>">Home</a></li>
                 <li><a href="<?=base_url()?>about"><?=lang('tmpt_About_us')?></a></li>
@@ -87,14 +87,7 @@
                 <li><a id="translate_pt-BR" href="#" rel="tooltip" title="Traduzir para Português">Português</a></li>
               </ul>
             </li>
-
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" rel="tooltip" title="<?=lang('tmpt_Agency')?>"><i class="icon-plane icon-large"></i> <?=lang('tmpt_Agency')?></a>
-              <ul class="dropdown-menu">
-                <li><a href="<?=base_url()?>institution" rel="tooltip" title="<?=lang('tmpt_Institutions')?>"><?=lang('tmpt_Institutions')?></a></li>
-              </ul>
-            </li>
-
+          </ul>
         </div><!--/.nav-collapse -->
       </div><!-- container -->
     </div><!-- navbar-inner -->
@@ -115,7 +108,7 @@
     </div>
     <hr>
     <footer>
-      <p class="pull-right"><?=lang('tmpt_Powered_by')?>: &copy; <a target="_blank" href="<?=TZADI_PATH?>">Tzadi.com</a> 2013</p>
+      <p class="pull-right"><?=lang('tmpt_Powered_by')?>: &copy; <a target="_blank" href="<?='http://'.ENVIRONMENT?>">Tzadi.com</a> 2013</p>
     </footer>
   </div><!--/.fluid-container-->
 

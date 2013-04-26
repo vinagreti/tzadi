@@ -38,43 +38,6 @@ define('FOPEN_READ_WRITE_CREATE_STRICT',		'x+b');
 
 /*
 |--------------------------------------------------------------------------
-| TZADI Products - dynamic paths
-|--------------------------------------------------------------------------
-|
-| define the path to the aplication relative to the environment
-|
-*/
-
-switch (ENVIRONMENT) {
-
-  case 'production':
-
-    define('TZADI_PATH', 'http://tzadi.com/'); // define o local da aplicação tzadi
-    define('TASK_PATH', 'http://task.tzadi.com/'); // define o ocal da aplicação task
-    define('AGENCY_PATH', 'http://agency.tzadi.com/'); // define o local da aplicação agency
-
-  break;
-
-  case 'staging':
-
-    define('TZADI_PATH', 'http://staging.tzadi.com/'); // define o local da aplicação tzadi
-    define('TASK_PATH', 'http://taskstaging.tzadi.com/'); // define o ocal da aplicação task
-    define('AGENCY_PATH', 'http://agencystaging.tzadi.com/'); // define o local da aplicação agency
-
-  break;
-
-  default:
-    $host = "http://".$_SERVER["HTTP_HOST"];
-    define('TZADI_PATH', "$host/tzadi"); // define o local da aplicação tzadi
-    define('TASK_PATH', "$host/task"); // define o ocal da aplicação task
-    define('AGENCY_PATH', "$host/agency"); // define o local da aplicação agency
-
-  break;
-
-}
-
-/*
-|--------------------------------------------------------------------------
 | TZADI LANGUAGE - dynamic languege
 |--------------------------------------------------------------------------
 |

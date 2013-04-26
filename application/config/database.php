@@ -47,7 +47,7 @@
 
 switch (ENVIRONMENT) {
 
-	case 'production':
+	case 'tzadi.com':
 
 		$dyn_database = 'production';
 		$dyn_username = 'tzadiproduser';
@@ -55,7 +55,7 @@ switch (ENVIRONMENT) {
 
 	break;
 
-	case 'staging':
+	case 'staging.tzadi.com':
 
 		$dyn_database = 'staging';
 		$dyn_username = 'tzadistaguser';

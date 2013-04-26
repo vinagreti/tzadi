@@ -18,33 +18,16 @@
  * NOTE: If you change these, also change the error_reporting() code below
  *
  */
-switch ($_SERVER["HTTP_HOST"]) {
 
-	case 'tzadi.com':
+$staging = strpos($_SERVER["HTTP_HOST"], "staging.tzadi");
+if($staging !== false) $domainPos = $staging; 
+else $domainPos = strpos($_SERVER["HTTP_HOST"], "tzadi");
+$tzdIndexCompanyNick = substr($_SERVER["HTTP_HOST"], 0, ($domainPos-1));
+$tzdIndexAppAddress = substr($_SERVER["HTTP_HOST"], $domainPos);
 
-	define('ENVIRONMENT', 'production');
+if($domainPos != 0) define('COMPANYNICK', $tzdIndexCompanyNick);
+define('ENVIRONMENT', $tzdIndexAppAddress);
 
-	break;
-
-	case 'www.tzadi.com':
-
-	define('ENVIRONMENT', 'production');
-
-	break;
-
-	case 'staging.tzadi.com':
-
-	define('ENVIRONMENT', 'staging');
-
-	break;
-
-	default:
-
-	define('ENVIRONMENT', 'development');
-
-	break;
-
-}
 /*
  *---------------------------------------------------------------
  * ERROR REPORTING
@@ -58,15 +41,15 @@ if (defined('ENVIRONMENT'))
 {
 	switch (ENVIRONMENT)
 	{
-		case 'development':
+		case 'tzadi.local':
 			error_reporting(E_ALL);
 		break;
 	
-		case 'staging':
+		case 'staging.tzadi.com':
 			error_reporting(E_ALL);
 		break;
 		
-		case 'production':
+		case 'tzadi.com':
 			error_reporting(0);
 		break;
 
