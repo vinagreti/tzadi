@@ -1,13 +1,12 @@
 <h2><?=lang('inst_InstitutionList')?></h2>
 
 <ul class="nav nav-pills"> 
-  <li class="navTab institutionKind kindSchool active"><a id="navTabHeadquarters" rel='tooltip' title="<?=lang('inst_Headquarters')?>">Escolas</a></li>
-  <li class="navTab institutionKind kindOther active"><a id="navTabHeadquarters" rel='tooltip' title="<?=lang('inst_Headquarters')?>">Outros</a></li>
+  <li class="navTab institutionFilter active" id="showKindSchool"><a rel='tooltip' title="<?=lang('inst_schools')?>"><?=lang('inst_schools')?></a></li>
+  <li class="navTab institutionFilter active" id="showKindOther"><a rel='tooltip' title="<?=lang('inst_others')?>"><?=lang('inst_others')?></a></li>
 </ul>
 
 <div> <!-- inicio do formulário de filto e inserção -->
 <?=form_open("", array("class" => "form-search"))?>
-  <input type="hidden" id="inst_PleaseInsertName" value="<?=lang('inst_PleaseInsertName')?>">
   <div class="control-group">
     <div class="controls">
       <div class="row">
@@ -33,8 +32,8 @@
       <div class="span4">
         <span class="text-warning"><?=lang('inst_thereIs')?> <span class="totalRows"></span> <?=lang('inst_institutions')?></span>
         <span class="text-warning"><?=lang('inst_withStatus')?></span>
-        <span class="label statusFilter statusFilterActive label-info"><?=lang('inst_active')?></span>
-        <span class="label statusFilter statusFilterInactive label-info"><?=lang('inst_inactive')?></span>
+        <span class="label institutionFilter label-info" id="showActives"><?=lang('inst_active')?></span>
+        <span class="label institutionFilter label-info" id="showInactives"><?=lang('inst_inactive')?></span>
       </div>
       <div class="span8 text-warning">
         <span class="pull-right">
@@ -100,16 +99,19 @@ Inicio da tabela de institutionTable
           </div>
         </div> <!-- fim do resumo sobre a linha : tzdTableBrief -->
  
-
         <div class="span12 tzdTableCampusName hide">
           <div class="pull-right">
-            <a class="tableCancelButton"><i class="icon-remove icon-2x tzd-font-green"></i></a>
+            <a class="tableDetailDropButton"><i class="icon-remove icon-2x tzd-font-green"></i></a>
           </div>
-          <input type="text" class="span11" name="institutionName" id="institutionName" rel="tooltip" title="<?=lang('inst_institution')?>" />
+          <input type="text" class="span9" name="institutionName" id="institutionName" rel="tooltip" title="<?=lang('inst_institution')?>" />
+          <select class="span2" name="institutionKind" id="institutionKind" rel="tooltip" title="<?=lang('inst_institutionKind')?>" >
+            <option value="1"><?=lang('inst_school')?></option>
+            <option value="2"><?=lang('inst_other')?></option>
+          </select>
         </div>
 
         <div class="span12 tzdTableCampusNav hide"> <!-- inicio do navegador de detalhe da linha da tabela da tzadi -->
-          <ul class="nav nav-tabs"> 
+          <ul class="nav nav-tabs">
             <li class="navTab navTabItem hide"><a><span class="navTabName"></span> <i class="icon-remove removeCampus"></i></a></li>
             <li class="navTab active"><a id="navTabHeadquarters" rel='tooltip' title="<?=lang('inst_Headquarters')?>"><span class="navTabName"></span></a></li>
             <li class="newNavTab"><a rel='tooltip' title="<?=lang('inst_clickToAddNewCampus')?>"><i class="icon-plus"></i></a></li>
@@ -122,13 +124,14 @@ Inicio da tabela de institutionTable
             <div class="span4">
               <input type="hidden" name="campusID" id="campusID" />
               <input type="hidden" name="institutionName" id="institutionNameField" />
+              <input type="hidden" name="institutionKind" id="institutionKindField" />
               <input type="hidden" name="institutionID" id="institutionIdField" />
               <label><?=lang('inst_campus')?></label>
               <input type="text" class="input-block-level" name="campusName" id="campusName" rel="tooltip" title="<?=lang('inst_campus')?>" />
+              <label><?=lang('inst_address')?></label>
+              <input type="text" class="input-block-level geocomplete" name="campusAddress" id="campusAddress" rel="tooltip" title="<?=lang('inst_address')?>" />
               <label><?=lang('inst_cep')?></label>
               <input type="text" class="input-block-level" name="campusCep" id="campusCep" rel="tooltip" title="<?=lang('inst_cep')?>" />
-              <label><?=lang('inst_address')?></label>
-              <input type="text" class="input-block-level" name="campusAddress" id="campusAddress" rel="tooltip" title="<?=lang('inst_address')?>" />
               <label><?=lang('inst_city')?></label>
               <input type="text" class="input-block-level" name="campusCity" id="campusCity" rel="tooltip" title="<?=lang('inst_city')?>" />
               <label><?=lang('inst_state')?></label>
@@ -154,11 +157,10 @@ Inicio da tabela de institutionTable
               <label><?=lang('inst_contactMobile')?></label>
               <input type="text" class="input-block-level" name="campusContactMobile" id="campusContactMobile" rel="tooltip" title="<?=lang('inst_contactMobile')?>" />
               <label><?=lang('inst_details')?></label>
-              <textarea rows="12" class="input-block-level" name="campusDetails" id="campusDetails" rel="tooltip" title="<?=lang('inst_details')?>"></textarea>
+              <textarea rows="11" class="input-block-level" name="campusDetails" id="campusDetails" rel="tooltip" title="<?=lang('inst_details')?>"></textarea>
               <a class="tzdTableRowAttachButton btn btn-primary" rel="tooltip" title="<?=lang('tmpt_Attachments')?>"><i class="icon-paste tzd-font-green"></i></a>
               <div class="pull-right">
                 <a class="tableDetailSaveButton btn btn-success"><?=lang('tmpt_Save')?></a>
-                <a class="tableDetailDropButton btn btn-danger"><?=lang('tmpt_Remove')?></a>
                 <a class="tableCancelButton"><?=lang('tmpt_Cancel')?></a>
               </div>
             </div>
@@ -180,3 +182,9 @@ Inicio da tabela de institutionTable
   </div> <!-- fim do corpo de tabela : tzdTableBody -->
 </div> <!-- fim da tabela : institutionTable -->
 
+<!-- lang to be used in js sys -->
+<div class="excludeInstitution hide"><?=lang('inst_excludeIstitution')?></div>
+<div class="excludeCampus hide"><?=lang('inst_excludeCampus')?></div>
+<div class="excludeAttach hide"><?=lang('inst_excludeAttach')?></div>
+<div class="saved hide"><?=lang('inst_saved')?></div>
+<div class="inst_PleaseInsertName hide"><?=lang('inst_PleaseInsertName')?></div>

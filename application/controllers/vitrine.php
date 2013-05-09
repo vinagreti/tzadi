@@ -8,10 +8,8 @@ class Vitrine extends My_Controller {
     $app_language = $this->session->userdata('app_language');
     if(isset($app_language)) {
       $this->lang->load('template', $app_language);
-      $this->lang->load('about', $app_language);
     } else {
       $this->lang->load('template', LANGUAGE);
-      $this->lang->load('about', LANGUAGE);
     }
   }
 
@@ -19,7 +17,7 @@ class Vitrine extends My_Controller {
   {
     $company = $this->MYcheckCompany();
     $data->content = $this->load->view('company/vitrine', "", true);
-    $data->page_title = lang('tmpt_About_us');
+    $data->page_title = "Vitrine";
     $this->parser->parse('templates/companyTemplate', $data);
   }
 }

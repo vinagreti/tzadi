@@ -1,5 +1,4 @@
 $(document).ready(function(){
-
   /*
   *
   * Table Class
@@ -110,7 +109,9 @@ $(document).ready(function(){
     // remove the institution row from the table
     dropRow : function( institutionID ) {
       var row = this.html.find("#institution"+institutionID);
+      var row2 = $("#institution"+institutionID);
       row.remove();
+      row2.remove();
       table.recalcRows();
     },
     // update the institution data inside the table
@@ -140,6 +141,7 @@ $(document).ready(function(){
       $("#campusNav"+e.campusID).find("a").find(".navTabName").html(e.campusName);
       campus.find("#institutionName").val(e.institutionName);
       campus.find("#institutionID").val(e.institutionID);
+      campus.find("#institutionKind").val(e.institutionKind);
       campus.find("#campusID").val(e.campusID);
       campus.find("#campusName").val(e.campusName);
       campus.find("#campusDetails").val(e.campusDetails);
@@ -155,6 +157,14 @@ $(document).ready(function(){
       campus.find("#campusContactEmail").val(e.campusContactEmail);
       campus.find("#campusContactPhone").val(e.campusContactPhone);
       campus.find("#campusContactMobile").val(e.campusContactMobile);
+      campus.find("#campusAddress")
+        .geocomplete()
+        .bind("geocode:result", function(event, result){
+          var addressData = tzdGeocodeGetAddressData(result);
+          var campus = $(this).parents(".tzdTableCampus");
+          table.completeAddress(campus, addressData);
+        });
+      campus.find("#campusAddress").attr("placeholder", "");
     },
     // fill the row with the object content that are inside the institutions.all array.
     fillRow : function( row, institution ) {
@@ -163,6 +173,7 @@ $(document).ready(function(){
       row.find("#headSpan2").attr("title", institution.campusContactEmail);
       row.find("#headSpan3").html(institution.campusContactPhone+" / "+institution.campusContactMobile);
       row.find("#institutionName").val(institution.institutionName);
+      row.find("#institutionKind").val(institution.institutionKind);
       row.find("#institutionID").val(institution.institutionID);
       row.find("#campusID").val(institution.campusID);
       row.find("#navTabHeadquarters").parent().attr("id", "campusNav"+institution.campusID);
@@ -189,6 +200,14 @@ $(document).ready(function(){
         row.find(".institutionChangeStatus").find("i").removeClass("icon-check").addClass("icon-check-empty");
         row.find(".institutionChangeStatus").removeClass("btn-success").addClass("btn-danger");
       }
+      row.find("#campusAddress")
+        .geocomplete()
+        .bind("geocode:result", function(event, result){
+          var addressData = tzdGeocodeGetAddressData(result);
+          var campus = $(this).parents(".tzdTableCampus");
+          table.completeAddress(campus, addressData);
+        });
+      row.find("#campusAddress").attr("placeholder", "");
     },
     recalcRows : function(){
       $(".totalRows").html(this.html.children().length);
@@ -210,6 +229,12 @@ $(document).ready(function(){
         )
       fileLink.insertAfter(attachDiv.find("h3").first());
     },
+    completeAddress : function(campus, addressData) {
+      campus.find("#campusCep").val(addressData.postal_code);
+      campus.find("#campusCity").val(addressData.locality);
+      campus.find("#campusState").val(addressData.administrative_area_level_1);
+      campus.find("#campusCountry").val(addressData.country);
+    }
   }
 
   /*
@@ -218,10 +243,21 @@ $(document).ready(function(){
   *
   */
 
+  // callBack to manipulates the ajax call async data only after loaded
+  var institutionsStart = function( e ){
+    // populate the table for the first time
+    institutions.all = e.institutions;
+    institutions.result = e.institutions;
+    var headquarters = institutions.result.filter(function ( institution ) {
+      return institution.campusHeadquarter == 1;
+    });
+    table.insertRow( headquarters );  
+  };
+
   // create the array of institutions objects
   var institutions = {
     // get the Institutions objects from the database
-    all : new tzdGetObj("institution/getAll"),
+    all : new tzdGetObj("institution/getAll", institutionsStart),
     // var that receive the result of the search. Its used to populate the table
     result : [],
     // change the institution active attribute on the database
@@ -302,6 +338,8 @@ $(document).ready(function(){
         data: data,
         success: function( e )  
         {
+          var message = $(".saved").html();
+          globalAlert('alert-success', message);
           for (var i = 0; i < institutions.all.length; i++){
             if(institutions.all[i].institutionID == e.institutionID){
               institutions.all[i].institutionName = e.institutionName;
@@ -326,31 +364,36 @@ $(document).ready(function(){
         },
           dataType: 'json'
       });
+
+
     },
     // drop the institution on the database and remove from the institutions object array
     drop : function( id ){
-      $.ajax({  
-        type: "POST",
-        url: base_url+"institution/drop",  
-        data: {
-          institutionID : id,
-          tzadiToken : $('input[name=tzadiToken]').val()
-        },  
-        success: function( e ) {
-          for (var i = 0; i < institutions.all.length; i++){
-            if(institutions.all[i].institutionID == id){
-              institutions.all.splice(i, 1);
+      var message = $(".excludeInstitution").html();
+      if(globalConfirmAction(message + '?')){
+        $.ajax({  
+          type: "POST",
+          url: base_url+"institution/drop",  
+          data: {
+            institutionID : id,
+            tzadiToken : $('input[name=tzadiToken]').val()
+          },
+          success: function( e ) {
+            for (var i = 0; i < institutions.all.length; i++){
+              if(institutions.all[i].institutionID == id){
+                table.dropRow( id );
+                institutions.all.splice(i, 1);
+              }
             }
-          }
-          for (var i = 0; i < institutions.result.length; i++){
-            if(institutions.result[i].institutionID == id){
-              institutions.result.splice(i, 1);
-              table.dropRow( id );
+            for (var i = 0; i < institutions.result.length; i++){
+              if(institutions.result[i].institutionID == id){
+                institutions.result.splice(i, 1);
+              }
             }
-          }
-        },
-          dataType: 'json'
-      });
+          },
+            dataType: 'json'
+        });        
+      }
     },
     reorder : function( headquarters ){
       switch( table.order ){
@@ -439,15 +482,18 @@ $(document).ready(function(){
       }); 
     },
     dropAttach : function( attachID ){
-      $.ajax({  
-        url: base_url+"institution/dropAttach",
-        type: "POST",  
-        data: {
-          attachID : attachID,
-          tzadiToken : $('input[name=tzadiToken]').val()
-        },
-        dataType: 'json'
-      }); 
+      var message = $(".excludeAttach").html();
+      if(globalConfirmAction(message + '?')){
+        $.ajax({  
+          url: base_url+"institution/dropAttach",
+          type: "POST",  
+          data: {
+            attachID : attachID,
+            tzadiToken : $('input[name=tzadiToken]').val()
+          },
+          dataType: 'json'
+        });
+      }
     },
     addAttach : function( id, files ){
       for(var i = 0; i < files.length; i++){
@@ -480,7 +526,10 @@ $(document).ready(function(){
             formdata.append("tzadiToken", $('input[name=tzadiToken]').val());
 
             $.ajax({  
-              url: base_url+"institution/attach",  
+              url: base_url+"institution/attach",
+              beforeSend : function(){
+                loading.start();
+              },
               type: "POST",  
               data: formdata,  
               processData: false,  
@@ -489,8 +538,9 @@ $(document).ready(function(){
                 if( e.attachID ) appendAttach( e );
                 else globalAlert('alert-error', e.error);
               },
-              dataType: 'json',
-              async: false
+              dataType: 'json'
+            }).done(function( e ){
+              loading.stop();
             });
           };
         }
@@ -513,29 +563,32 @@ $(document).ready(function(){
       });
     },
     dropCampus : function( campusID ) {
-      $.ajax({  
-        type: "POST",
-        url: base_url+"institution/dropCampus",  
-        data: {
-          campusID : campusID,
-          tzadiToken : $('input[name=tzadiToken]').val()
-        },  
-        success: function( ) {
+      var message = $(".excludeCampus").html();
+      if(globalConfirmAction(message + '?')){
+        $.ajax({  
+          type: "POST",
+          url: base_url+"institution/dropCampus",  
+          data: {
+            campusID : campusID,
+            tzadiToken : $('input[name=tzadiToken]').val()
+          },  
+          success: function( ) {
 
-          for (var i = 0; i < institutions.all.length; i++){
-            if(institutions.all[i].campusID == campusID){
-              institutions.all.splice(i, 1);
-              table.dropCampus( campusID );
+            for (var i = 0; i < institutions.all.length; i++){
+              if(institutions.all[i].campusID == campusID){
+                institutions.all.splice(i, 1);
+                table.dropCampus( campusID );
+              }
             }
-          }
-          for (var i = 0; i < institutions.result.length; i++){
-            if(institutions.result[i].campusID == campusID){
-              institutions.result.splice(i, 1);
+            for (var i = 0; i < institutions.result.length; i++){
+              if(institutions.result[i].campusID == campusID){
+                institutions.result.splice(i, 1);
+              }
             }
-          }
-        },
-          dataType: 'json'
-      });      
+          },
+            dataType: 'json'
+        });      
+      }
     }
   }
 
@@ -543,12 +596,6 @@ $(document).ready(function(){
   * Events that manipulates the institutions and table objects
   */
 
-  // populate the table for the first time
-  institutions.result = institutions.all;
-  var headquarters = institutions.result.filter(function ( institution ) {
-    return institution.campusHeadquarter == 1;
-  });
-  table.insertRow( headquarters );
 
   // activate the institution
   $(".institutionChangeStatus").live("click", function(){
@@ -559,13 +606,22 @@ $(document).ready(function(){
   // search institutions array by string and disply in the table
   $('#search-query').live('keyup propertychange', function(){
     var searchString = $(this).val();
-    institutions.search( searchString );
+    institutions.search( searchString );      
+  });
+
+  $('.form-search').submit(function(e) {
+    e.preventDefault();
+    $(".create").click();
   });
 
   // create a new institution
   $(".create").live("click", function(){
     var name = $('#search-query').val();
-    institutions.create( name );
+    if(name != "") institutions.create( name );
+    else {
+      var message = $(".inst_PleaseInsertName").html();
+      globalAlert('alert-error', message);
+    }
   });
 
   // show the details form
@@ -611,13 +667,14 @@ $(document).ready(function(){
     row.find(".tzdTableCampusName").hide();
     row.find(".tableDetail").hide();
     row.find(".tzdTableAttach").hide();
-    table.updateRow( id );
   });
 
   // save the new institution data
   $(".tableDetailSaveButton").live("click", function(){
     var institutionName = $(this).parents(".tzdTableRow").find("#institutionName").val();
     $(this).parents(".campusForm").find("#institutionNameField").val(institutionName);
+    var institutionKind = $(this).parents(".tzdTableRow").find("#institutionKind").val();
+    $(this).parents(".campusForm").find("#institutionKindField").val(institutionKind);
     var id = $(this).parents(".tzdTableRow").attr("id").replace("institution", "");
     $(this).parents(".campusForm").find("#institutionIdField").val(id);
     var data = $(this).parents(".campusForm").serialize();
@@ -636,7 +693,7 @@ $(document).ready(function(){
     var id = row.attr("id").replace("institution", "");
     var attach = row.find(".tzdTableAttach");
     if(attach.find(".totalAttach").html().length == 0) institutions.getAttachs( id, attach );
-    attach.toggle();
+    attach.toggle();    
   });
 
   $(".userfile").live("change propertychange", function(){
@@ -661,6 +718,10 @@ $(document).ready(function(){
 
   // clear the searchString
   $(".clearSearch").live("click", function(){
+    $("#showActives").addClass("label-info");
+    $("#showInactives").addClass("label-info");
+    $("#showKindSchool").addClass("active");
+    $("#showKindOther").addClass("active");
     $('#search-query').val("");
     institutions.result = institutions.all;
     var headquarters = institutions.result.filter(function ( institution ) {
@@ -670,109 +731,40 @@ $(document).ready(function(){
   });
 
   // filter table by status
-  $(".statusFilter").live("click", function(){
-    var statusActive = $(this).parent().find(".statusFilterActive");
-    var statusInactive = $(this).parent().find(".statusFilterInactive");
+  $(".institutionFilter").live("click", function(){
 
-    if($(this).hasClass("label-info")) $(this).removeClass("label-info");
-    else $(this).addClass("label-info");
-    
-    if(statusActive.hasClass("label-info")) var active = true; 
-    else var active = false;
-
-    if(statusInactive.hasClass("label-info"))var inactive = true;
-    else var inactive = false;
-
-    if(active && inactive){
-      var headquarters = institutions.result.filter(function ( institution ) {
-        return institution.campusHeadquarter == 1;
-      });
-      table.insertRow( headquarters );
+    var filter = $(this).attr("id");
+    if (filter == "showKindSchool" || filter == "showKindOther") {
+      if($(this).hasClass("active")) $(this).removeClass("active");
+      else $(this).addClass("active");
+    }
+    if (filter == "showActives" || filter == "showInactives") {
+      if($(this).hasClass("label-info")) $(this).removeClass("label-info");
+      else $(this).addClass("label-info");
     }
 
-    if(!active && !inactive){
-      var headquarters = institutions.result.filter(function ( institution ) {
-        return institution.campusHeadquarter == 1;
-      });
-      statusActive.addClass("label-info");
-      statusInactive.addClass("label-info");
-      table.insertRow( headquarters );
-    }
+    var statusActive = $("#showActives").hasClass("label-info");
+    var statusInactive = $("#showInactives").hasClass("label-info");
+    var kindSchool = $("#showKindSchool").hasClass("active");
+    var kindOther = $("#showKindOther").hasClass("active");
 
-    if(active && !inactive){
-        var actives = institutions.result.filter(function ( institution ) {
-          return institution.institutionStatus == "active";
-        });
-        var headquarters = actives.filter(function ( institution ) {
-        return institution.campusHeadquarter == 1;
-      });
-      table.insertRow( headquarters );
-    }
+    var filtered = institutions.result.filter(function ( institution ) {
+      var match = true;
 
-    if(!active && inactive){
-      var inactives = institutions.result.filter(function ( institution ) {
-        return institution.institutionStatus == "inactive";
-      });
-      var headquarters = inactives.filter(function ( institution ) {
-        return institution.campusHeadquarter == 1;
-      });
-      table.insertRow( headquarters );
-    }
-  });
+      if(statusActive && statusInactive);
+      else if(statusActive) match = match && institution.institutionStatus == "active";
+      else if(statusInactive) match = match && institution.institutionStatus == "inactive";
+      
+      if(kindSchool && kindOther);
+      else if(kindSchool) match = match && institution.institutionKind == 1;
+      else if(kindOther) match = match && institution.institutionKind == 2;
 
-  // clear the searchString
-  $(".institutionKind").live("click", function(){
+      return match;
+    });
+    var headquarters = filtered.filter(function ( institution ) {
+      return institution.campusHeadquarter == 1;
+    });
+    table.insertRow( headquarters );
 
-    var kindSchool = $(this).parent().find(".kindSchool");
-    var kindOther = $(this).parent().find(".kindOther");
-
-    if($(this).hasClass("active")) $(this).removeClass("active");
-    else $(this).addClass("active");
-
-    if(kindSchool.hasClass("active")) var school = true; 
-    else var school = false;
-
-    if(kindOther.hasClass("active"))var other = true;
-    else var other = false;
-
-    if(school && other){
-      var headquarters = institutions.result.filter(function ( institution ) {
-        return institution.campusHeadquarter == 1;
-      });
-      table.insertRow( headquarters );
-    }
-
-    if(!school && !other){
-      var headquarters = institutions.result.filter(function ( institution ) {
-        return institution.campusHeadquarter == 1;
-      });
-      kindSchool.addClass("active");
-      kindOther.addClass("active");
-      table.insertRow( headquarters );
-    }
-
-    if(school && !other){
-        var schools = institutions.result.filter(function ( institution ) {
-          return institution.institutionKind == 1;
-        });
-
-        var headquarters = schools.filter(function ( institution ) {
-        return institution.campusHeadquarter == 1;
-      });
-
-      table.insertRow( headquarters );
-    }
-
-    if(!school && other){
-      var others = institutions.result.filter(function ( institution ) {
-        return institution.institutionKind == 2;
-      });
-
-      var headquarters = others.filter(function ( institution ) {
-        return institution.campusHeadquarter == 1;
-      });
-
-      table.insertRow( headquarters );
-    }
   });
 });

@@ -32,13 +32,15 @@
   <link rel="shortcut icon" href="<?=base_url()?>assets/img/32x32.png">
 </head>
 <body>
+  <!-- Map API -->
+  <div class="map_canvas"></div>
   <!-- Dialogs -->
   <div class="modal hide fade" id="tzadiDialogs" tabindex="-1"></div>
   <div class="modal hide fade" id="tzadiAttachForm" tabindex="-1"></div>
   <div class="loading"></div>
 
   <!-- Navbar -->
-  <div class="navbar <?php if (ENVIRONMENT == "production") echo "navbar-inverse"; ?> navbar-fixed-top">
+  <div class="navbar navbar-inverse navbar-fixed-top">
     <div class="navbar-inner">
       <div class="container">
         <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
@@ -103,9 +105,9 @@
     </div><!-- navbar-inner -->
   </div><!-- navbar -->
   
-  <div class="container well well-small">
+  <div class="container">
     <div class="row">
-      <div class="span12">
+      <div class="span12 well well-small">
         <div class="row tzdContent">
           <div class="span12">
             <div class="globalAlert"></div>
@@ -124,6 +126,9 @@
 
   <!-- Loading the JQuery -->
   <script src="<?=base_url()?>assets/third_party/JQuery/jquery.js"></script>
+  <script src="http://maps.googleapis.com/maps/api/js?sensor=false&amp;libraries=places"></script>
+  <script src="<?=base_url()?>assets/third_party/JQuery/jquery.geocomplete.js"></script>
+
   <!-- Loading the bootstrap js scripts -->
   <script type="text/javascript" src="<?=base_url()?>assets/third_party/bootstrap/js/bootstrap-transition.js"></script>
   <script type="text/javascript" src="<?=base_url()?>assets/third_party/bootstrap/js/bootstrap-alert.js"></script>

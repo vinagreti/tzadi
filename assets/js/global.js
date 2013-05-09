@@ -88,19 +88,31 @@ $( "#translate_pt-BR" ).live("click", function() {
 	});
 });
 
+var loading = {
+  start : function(){
+    $(".loading").show();
+  },
+  stop : function(){
+    $(".loading").hide();
+  }
+};
+
 // method that get objects from server
-var tzdGetObj = function(method){
-  $(".loading").show();
+var tzdGetObj = function(method, callBack){
+  var list;
   $.ajax({
     url: base_url+method,
+    beforeSend : function(){
+      loading.start();
+    },
     success: function( e ) {
       list = e.institutions;
     },
-    dataType: 'json',
-    async: false
+    dataType: 'json'
+  }).done(function( e ){
+    callBack(e);
+    loading.stop();
   });
-  $(".loading").hide();
-  return list;
 }
 
 // work around to fix ie7 and 8 onkeyup event
@@ -132,4 +144,36 @@ if (!Array.prototype.filter)
 
     return res;
   };
+
+// gets the data from the geocode data object returned from google api
+function tzdGeocodeGetAddressData( result ){
+    var address = {};
+    address.formatted_address = result.formatted_address;
+
+    $.each(result.address_components, function (i, address_component) {
+      switch(address_component.types[0]){
+        case "sublocality":
+        address.sublocality = address_component.long_name;
+        break;
+        case "locality":
+        address.locality = address_component.long_name;
+        break;
+        case "administrative_area_level_2":
+        address.administrative_area_level_2 = address_component.long_name;
+        break;
+        case "administrative_area_level_1":
+        address.administrative_area_level_1 = address_component.long_name;
+        break;
+        case "country":
+        address.country = address_component.long_name;
+        break;
+        case "postal_code":
+        address.postal_code = address_component.long_name;
+        break;
+      }      
+    });
+
+    return address;
+  }
+
 }

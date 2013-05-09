@@ -16,7 +16,7 @@ class Institution extends My_Controller {
     $this->permission->check(1);
     $data->class = 'institution';
     $data->view = 'institution/index';
-    $data->title = lang('inst_listTitle');
+    $data->page_title = lang('inst_listTitle');
     $this->page->load($data);
   }
 

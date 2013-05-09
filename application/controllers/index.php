@@ -19,7 +19,7 @@ class Index extends My_Controller {
 	{
 		$content = $this->load->view('tzadi/index', "", true);
 		$data = array(
-			'page_title' => lang('idx_page_title'),
+			'page_title' => 'Home',
 			'content' => $content
 			);
 		$this->parser->parse('templates/tzadiTemplate', $data);

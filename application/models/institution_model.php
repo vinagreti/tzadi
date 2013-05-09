@@ -7,6 +7,7 @@ class Institution_Model extends CI_Model {
       ->where('i.institutionAgencyID', $this->session->userdata('agencyID'))
       ->where("i.institutionStatus !=", "dropped")
       ->join("campus c", "c.institutionID = i.institutionID")
+      ->join("institutionKind ik", "ik.institutionKindID = i.institutionKind")  //bring kind
       ->where("c.campusStatus !=", "dropped");
     $query = $this->db->get()->result();
     return $query;
@@ -56,10 +57,12 @@ class Institution_Model extends CI_Model {
   function campusUpdate($data) {
     $institutionData["institutionID"] = $data["institutionID"];
     $institutionData["institutionName"] = $data["institutionName"];
+    $institutionData["institutionKind"] = $data["institutionKind"];
     $this->update($institutionData);
 
     unset($data["institutionID"]);
     unset($data["institutionName"]);
+    unset($data["institutionKind"]);
     $this->db->where('campusID', $data["campusID"]);
     $query = $this->db->update('campus', $data);  
 

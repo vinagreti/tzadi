@@ -1,5 +1,4 @@
 <?php
-$lang['tmpt_Task'] = 'Tarefas';
 $lang['tmpt_Agency'] = 'Agência';
 $lang['tmpt_Institutions'] = 'Fornecedores';
 $lang['tmpt_Profile'] = 'Perfil';
@@ -15,15 +14,12 @@ $lang['tmpt_Remove'] = 'Remover';
 $lang['tmpt_Message'] = 'Mensagem';
 $lang['tmpt_Institutional'] = 'Institucional';
 $lang['tmpt_About_us'] = 'Sobre nós';
-$lang['tmpt_what_we_believe'] = 'No que acreditamos';
 $lang['tmpt_contact_us'] = 'entre em contato';
 $lang['tmpt_Contact_us'] = 'Entre em contato';
 $lang['tmpt_Products'] = 'Produtos';
 $lang['tmpt_Language'] = 'Idioma';
 $lang['tmpt_Powered_by'] = 'Desenvolvido por';
 $lang['tmpt_Products_desc'] = 'Selecione a ferramenta desejada';
-$lang['tmpt_Task_desc'] = 'Sistema de gerenciamento de tarefas';
-$lang['tmpt_Agency_desc'] = 'Sistema de suporte à Agências de Intercâmbio';
 $lang['tmpt_select_lang'] = 'Selecione o idioma de exibição da página.';
 $lang['tmpt_need_js'] = 'Você precisa habilitar o javascript no seu navegador para visualizar esta página corretamente.';
 $lang['tmpt_Attachment'] = 'Anexo';
@@ -43,4 +39,4 @@ $lang['tmpt_insert_message'] = 'Favor escrever sua mensagem antes de enviar';
 
 // Error views
 $lang['tmpt_permission_denied'] = 'Você não tem permissão para ver esta página. Por favor, faça login para acessar este conteúdo ou';
-$lang['tmpt_companyNotFound'] = 'Esta empresa não possui cadastro na tzadi. Deseja cadastrá-la?';
+$lang['tmpt_companyNotFound'] = 'Esta empresa ainda não possui cadastro na tzadi. Deseja cadastrá-la?';
