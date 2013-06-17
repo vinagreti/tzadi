@@ -1,11 +1,22 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 class Institution_Model extends CI_Model {
-  
+
   function getAll() {
     $this->db->from('institution i')
-      ->where('i.institutionAgencyID', $this->session->userdata('agencyID'))
+      ->where('i.institutionCompanyID', $this->session->userdata('companyID'))
       ->where("i.institutionStatus !=", "dropped")
+      ->join("campus c", "c.institutionID = i.institutionID")
+      ->join("institutionKind ik", "ik.institutionKindID = i.institutionKind")  //bring kind
+      ->where("c.campusStatus !=", "dropped");
+    $query = $this->db->get()->result();
+    return $query;
+  }
+
+  function getAllActive() {
+    $this->db->from('institution i')
+      ->where('i.institutionCompanyID', $this->session->userdata('companyID'))
+      ->where("i.institutionStatus", "active")
       ->join("campus c", "c.institutionID = i.institutionID")
       ->join("institutionKind ik", "ik.institutionKindID = i.institutionKind")  //bring kind
       ->where("c.campusStatus !=", "dropped");
@@ -16,7 +27,7 @@ class Institution_Model extends CI_Model {
   function getByInstitutionID($institutionID) {
 
     $this->db->from('institution i')
-      ->where('i.institutionAgencyID', $this->session->userdata('agencyID'))
+      ->where('i.institutionCompanyID', $this->session->userdata('companyID'))
       ->where("i.institutionID", $institutionID)
       ->join("campus c", "c.institutionID = i.institutionID");
     return $this->db->get()->result();
@@ -25,14 +36,14 @@ class Institution_Model extends CI_Model {
   function getByCampusID($campusID) {
 
     $this->db->from('institution i')
-      ->where('i.institutionAgencyID', $this->session->userdata('agencyID'))
+      ->where('i.institutionCompanyID', $this->session->userdata('companyID'))
       ->where("campusID", $campusID)
       ->join("campus c", "c.institutionID = i.institutionID");
     return $this->db->get()->result();
   }
 
   function insert($data) {
-    $data['institutionAgencyID'] = $this->session->userdata('agencyID');
+    $data['institutionCompanyID'] = $this->session->userdata('companyID');
     $this->db->insert('institution', $data);
     $institutionID = $this->db->insert_id();
 
@@ -47,7 +58,7 @@ class Institution_Model extends CI_Model {
   }
 
   function update($data) {
-    $this->db->where('institutionAgencyID', $this->session->userdata('agencyID'))
+    $this->db->where('institutionCompanyID', $this->session->userdata('companyID'))
       ->where('institutionID', $data["institutionID"]);
     $query = $this->db->update('institution', $data);  
 
@@ -72,7 +83,7 @@ class Institution_Model extends CI_Model {
   function drop($data) {
     $data['institutionStatus'] = "dropped";
     $this->db->where('institutionID', $data['institutionID'])
-      ->where('institutionAgencyID', $this->session->userdata('agencyID'));
+      ->where('institutionCompanyID', $this->session->userdata('companyID'));
     $query = $this->db->update('institution', $data);
     
     return $this->getByInstitutionID($data['institutionID']);

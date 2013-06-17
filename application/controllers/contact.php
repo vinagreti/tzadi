@@ -30,6 +30,7 @@ class Contact extends My_Controller {
         if($company->companyContactFormPlace == "extern") redirect($company->companyContactLink);
         $data->content = $this->load->view('tzadi/contact', "", true);
         $data->page_title = lang('ct_page_title');
+        $data->companyName = $this->session->userdata("companyName");
         $this->parser->parse('templates/companyTemplate', $data);  
       }
 		} 

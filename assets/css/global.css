@@ -12,21 +12,21 @@ body {
   padding: 9px 0;
 }
 @media (max-width: 980px) {
-  .tableHeader{
-    display: none;
-  }
-
   /* Enable use of floated navbar text */
   .navbar-text.pull-right {
     float: none;
     padding-left: 5px;
     padding-right: 5px;
   }
+  .tzdContent{
+    padding-top: 0px;
+  }
 }
 
 @media (min-width: 980px) {
   .tzdContent{
     min-height: 480px;
+    padding-top: 25px;
   }
 
   .dropdown-menu .sub-menu {
@@ -41,7 +41,7 @@ body {
       visibility: visible;
   }
 
-  .dropdown:hover .dropdown-menu {
+  .autoOpen .dropdown:hover .dropdown-menu {
       display: block;
   }
 
@@ -92,10 +92,6 @@ body {
   text-align: center;
 }
 
-.tzdContent{
-  padding-top: 40px;
-}
-
 a {
   cursor: pointer;
 }
@@ -106,10 +102,6 @@ a {
   padding: 2px 0px;
 }
 
-.tzdTableHeader {
-  padding: 10px 0px;
-}
-
 .tzdTableBriefContent :hover {
   cursor: pointer;
   color: red;
@@ -117,4 +109,14 @@ a {
 
 .institutionFilter {
   cursor: pointer;
+}
+
+.cursorPointer{
+  cursor: pointer;
+}
+
+.tzdTableDetailContent{
+  background-color: #CCCCCC;
+  border-radius: 5px;
+  padding: 3px;
 }

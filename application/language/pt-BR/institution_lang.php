@@ -2,7 +2,7 @@
 $lang['inst_InstitutionList'] = 'Fornecedores de produtos e serviços';
 $lang['inst_listTitle'] = 'Fornecedores';
 $lang['inst_searchBy'] = 'busque por ';
-$lang['inst_searchSample'] = 'ex fornecedor, telefone...';
+$lang['inst_searchSample'] = 'ex. fornecedor, telefone...';
 $lang['inst_didNotFind'] = 'não encontrou?';
 $lang['inst_Add'] = 'adicione';
 $lang['inst_institution'] = 'fornecedor';

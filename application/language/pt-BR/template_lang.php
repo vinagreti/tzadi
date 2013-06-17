@@ -1,5 +1,6 @@
 <?php
 $lang['tmpt_Agency'] = 'Agência';
+$lang['tmpt_Products'] = 'Productos';
 $lang['tmpt_Institutions'] = 'Fornecedores';
 $lang['tmpt_Profile'] = 'Perfil';
 $lang['tmpt_Settings'] = 'Configurações';
@@ -29,7 +30,7 @@ $lang['tmpt_none'] = 'nada';
 $lang['tmpt_Supported_files'] = 'Tipos de arquivo suportados: ';
 $lang['tmpt_Max_upload_size'] = 'Tamanho máximo do arquivo: ';
 $lang['tmpt_Unsupported_file'] = 'Este tipo de arquivo não é suportado!';
-$lang['tmtp_ThereIs'] = "Existem";
+$lang['tmtp_ThereIs'] = "Foram encontrados";
 $lang['tmtp_untitled'] = "sem nome";
 
 // JS alert system
@@ -40,3 +41,19 @@ $lang['tmpt_insert_message'] = 'Favor escrever sua mensagem antes de enviar';
 // Error views
 $lang['tmpt_permission_denied'] = 'Você não tem permissão para ver esta página. Por favor, faça login para acessar este conteúdo ou';
 $lang['tmpt_companyNotFound'] = 'Esta empresa ainda não possui cadastro na tzadi. Deseja cadastrá-la?';
+
+$lang["tmpt_searchBy"] = "buscar por";
+$lang["tmpt_didNotFind"] = "não encontrou?";
+$lang["tmpt_Add"] = "adicione";
+$lang["tmpt_thereIs"] = "foram encontrados";
+$lang["tmpt_products"] = "produtos";
+$lang["tmpt_withStatus"] = "com status";
+$lang["tmpt_active"] = "ativo";
+$lang["tmpt_inactive"] = "inativo";
+$lang["tmpt_ordering_by"] = "ordenados por";
+$lang["tmpt_orderByDateLast"] = "Mais recentes";
+$lang["tmpt_orderByDateFirst"] = "Mais antigos";
+$lang["tmpt_orderByNameAsc"] = "Por nome - de A a Z";
+$lang["tmpt_orderByNameDesc"] = "Por nome - de Z a A";
+$lang["tmpt_orderByCountryAsc"] = "Por país - de A a Z";
+$lang["tmpt_orderByCountryDesc"] = "Por país - de Z a A";

@@ -17,7 +17,10 @@ class Page {
 
     // load the view within the template
     $data->content = $this->CI->load->view($data->view, "", true);
-    if(defined('COMPANYNICK')) $this->CI->parser->parse('templates/companyTemplate', $data);
+    if(defined('COMPANYNICK')){
+      $data->companyName = $this->CI->session->userdata("companyName");
+      $this->CI->parser->parse('templates/companyTemplate', $data);
+    }
     else  $this->CI->parser->parse('templates/tzadiTemplate', $data);
   }
 }

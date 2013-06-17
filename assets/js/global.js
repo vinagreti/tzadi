@@ -1,3 +1,5 @@
+var tzadiToken = $('input[name=tzadiToken]').val();
+
 jQuery.fn.reset = function () {
   $(this).each (function() { this.reset(); });
 }
@@ -115,6 +117,77 @@ var tzdGetObj = function(method, callBack){
   });
 }
 
+// classe responsável pelas chamadas ajax d aaplicação
+var tzdAjaxCall = function(){
+  this.post = function(url, data, callback){
+    $.ajax({
+      url : url,
+      beforeSend : function(){
+        loading.start();
+      },
+      type: "POST",
+      data : data,
+      dataType: 'json'
+    }).done(function( e ){
+      callback( e );
+      loading.stop();
+    });
+  };
+  this.upload = function( url, data, callback ){
+    $.each(data.files, function( index, file ){
+      var name = file.name.replace(/C:\\fakepath\\/i, '');
+      formdata = new FormData(); 
+      formdata.append("file", file);
+      formdata.append("_id", data._id);
+      formdata.append("tzadiToken", data.tzadiToken);
+      $.ajax({
+        url : url,
+        beforeSend : function(){
+          loading.start();
+        },
+        type: "POST",
+        data: formdata,  
+        processData: false,
+        contentType: false,
+        dataType: 'json'
+      }).done(function( e ){
+        callback( e );
+        loading.stop();
+      });
+    });
+  };
+}
+
+var tzdDate = function (date){
+  var d = new Date(date*1000);
+  this.day = d.getDate();
+  this.month = d.getMonth();
+  this.year = d.getFullYear();
+  this.shortYear = this.year.toString().substr(2,2);
+  this.hour = d.getHours();
+  this.millisecond = d.getMilliseconds();
+  this.minute = d.getMinutes();
+  this.second = d.getSeconds();
+  this.date = this.day+"/"+this.month+"/"+this.year;
+  this.shortDate = this.day+"/"+this.month+"/"+this.shortYear;
+  this.time = this.hour+":"+this.minute+":"+this.second+":"+this.millisecond;
+  this.shortTime = this.hour+":"+this.minute;
+  this.dateTime = this.date+" "+this.time;
+  this.shortDateTime = this.shortDate+" "+this.shortTime;
+}
+
+// sort list by attribute
+var tzdOrderBy = function(attribute, list){
+  var reorder = function compare(a,b) {
+    if (a[attribute].toLowerCase() > b[attribute].toLowerCase())
+       return -1;
+    if (a[attribute].toLowerCase() < b[attribute].toLowerCase())
+      return 1;
+    return 0;
+  }
+  return list.sort(reorder).reverse();
+};
+
 // work around to fix ie7 and 8 onkeyup event
 if (!Array.prototype.filter)
 {
@@ -175,5 +248,4 @@ function tzdGeocodeGetAddressData( result ){
 
     return address;
   }
-
 }

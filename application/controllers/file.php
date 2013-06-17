@@ -2,18 +2,24 @@
 
 class File extends My_Controller {
 
-  public function index()
-  {
-    echo "Bem vindo ao gerenciador de arquivos.";
+  public function download($_id){
+    $this->load->model("file_model");
+    $file = $this->file_model->get((int) $_id);
+    $this->load->helper('file');
+    $this->output
+      ->set_content_type($file[0]["type"])
+      ->set_output($file[0]["binary"]->bin);
+    $this->load->helper('download');
+    force_download($file[0]["name"], $file[0]["binary"]->bin);
   }
 
-  public function download($attachHash){
-    $this->load->model("attach_model");
-    $attach = $this->attach_model->getName($attachHash);
-    $fileExtension = end(explode(".", $attach->attachName));
-    $data = file_get_contents('../uploads/'.$attachHash.".".$fileExtension); // Read the file's contents
-    $this->load->helper('download');
-    force_download($attach->attachName, $data);
+  public function open($_id){
+    $this->load->model("file_model");
+    $file = $this->file_model->get((int) $_id);
+    $this->load->helper('file');
+    $this->output
+      ->set_content_type($file[0]["type"])
+      ->set_output($file[0]["binary"]->bin);
   }
 }
 

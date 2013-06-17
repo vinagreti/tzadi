@@ -18,6 +18,7 @@ class Vitrine extends My_Controller {
     $company = $this->MYcheckCompany();
     $data->content = $this->load->view('company/vitrine', "", true);
     $data->page_title = "Vitrine";
+    $data->companyName = $this->session->userdata("companyName");
     $this->parser->parse('templates/companyTemplate', $data);
   }
 }

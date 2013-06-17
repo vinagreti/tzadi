@@ -1,6 +1,6 @@
 <div class="span4 offset4 well">
   <?=form_open("", array('class' => 'form-horizontal form-signin'))?>
-    <h4 class="form-signin-heading"><?=lang("lgn_Sign_In")?></h4>
+    <h4 class="form-signin-heading">Tzadi <?=lang("lgn_sign_In")?></h4>
     <p><input type="text" class="input-block-level" placeholder="<?=lang("lgn_enter_mail")?>" id="email" name="email"></p>
     <p><input type="password" class="input-block-level" placeholder="<?=lang("lgn_enter_passwd")?>" id="password" name="password"></p>
     <p><a src="#" class="btn btn-large btn-primary btn-block" id="submitLogin"><?=lang("lgn_Sign_In")?></a></p>

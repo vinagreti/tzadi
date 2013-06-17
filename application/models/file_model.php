@@ -2,35 +2,33 @@
 
 class File_Model extends CI_Model {
 
-  function getAllByClass( $attachObjClass, $attachObjID ) {
-    $this->db->from('attach')
-      ->where('attachObjClass', $attachObjClass)
-      ->where('attachObjID', $attachObjID);
-    $attach = $this->db->get()->result();
-    return $attach;
-  }
-
-  function insert($data)
+  function __construct()
   {
-    $this->db->insert('attach', $data);
-    $id = $this->db->insert_id();
-
-    $data->hash = md5($id);
-    $this->db->where('attachID', $id);
-    $this->db->update('attach', $data);
-    
-    return $id;
+    $this->load->library("mongo_db");
   }
 
-  function getName($hash) {
-    $this->db->from('attach')
-      ->where('hash', $hash)
-      ->select("attachName");
-    $attach = $this->db->get()->result();
-    return $attach[0];
+  function save($_id)
+  {
+    $this->load->model("mongo_model");
+    $newImgId = $this->mongo_model->newID();
+    $_FILES["file"]["_id"] = $newImgId;
+    $_FILES["file"]["object_id"] = $_id;
+    $_FILES["file"]["binary"] = new MongoBinData(file_get_contents($_FILES["file"]["tmp_name"]), 2);
+    unset($_FILES["file"]["tmp_name"]);
+    $this->mongo_db->insert('file',$_FILES["file"]);
+    return $newImgId;
   }
 
-  function drop($attachID) {
-    $this->db->delete('attach', array('attachID' => $attachID)); 
+  function get($_id)
+  {
+    return $this->mongo_db
+      ->where('_id', $_id)
+      ->get('file');
+  }
+
+  function drop($_id){
+    $deleted = $this->mongo_db
+      ->where('_id', $_id)
+      ->delete('file');
   }
 }

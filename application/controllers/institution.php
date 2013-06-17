@@ -89,7 +89,7 @@ class Institution extends My_Controller {
     $id = $this->input->post("id");
     $class = $this->router->class;
     $this->load->library("attach");
-    $return = $this->attach->insert($class, $id);
+    $return = $this->attach->insert($class, $id, "userfile");
     echo json_encode($return);
   }
 
@@ -98,7 +98,7 @@ class Institution extends My_Controller {
     $this->permission->check(64);
     $attachID = $this->input->post("attachID");
     $this->load->library("attach");
-    $return = $this->attach->dropAttach($attachID);
+    $return = $this->attach->drop($attachID);
     echo json_encode($return);
   }
 
@@ -122,5 +122,5 @@ class Institution extends My_Controller {
     echo json_encode( $campus );
   }
 }
-/* End of file welcome.php */
-/* Location: ./application/controllers/welcome.php */
+/* End of file institution.php */
+/* Location: ./application/controllers/institution.php */

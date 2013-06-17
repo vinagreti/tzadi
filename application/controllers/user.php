@@ -23,13 +23,14 @@ class User extends My_Controller {
 	public function login(){
 
       if(!defined('COMPANYNICK')) {
-        $data->content = $this->load->view('user/login', "", true);
+        $data->content = $this->load->view('user/tzadiLogin', "", true);
         $data->page_title = lang('lgn_Sign_In');
         $this->parser->parse('templates/tzadiTemplate', $data); 
       }
       else {
-        $data->content = $this->load->view('user/login', "", true);
+        $data->content = $this->load->view('user/companyLogin', "", true);
         $data->page_title = lang('lgn_Sign_In');
+        $data->companyName = $this->session->userdata("companyName");
         $this->parser->parse('templates/companyTemplate', $data);
       }
 	}
@@ -50,12 +51,7 @@ class User extends My_Controller {
 
 	public function logout()
 	{
-
-		$this->session->unset_userdata('userID');
-		$this->session->unset_userdata('userName');
-		$this->session->unset_userdata('userEmail');
-		$this->session->set_userdata('userLevel', 'public');
-
+		$this->session->sess_destroy();
 		redirect(base_url() . 'user', 'refresh');
 	}
 

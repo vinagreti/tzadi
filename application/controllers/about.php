@@ -27,6 +27,7 @@ class About extends My_Controller {
       if($company->companyAboutContent == "extern") redirect($company->companyAboutLink);
       $data->content = $this->load->view('company/about', $company, true);
       $data->page_title = lang('tmpt_About_us');
+      $data->companyName = $this->session->userdata("companyName");
       $this->parser->parse('templates/companyTemplate', $data);
 
     }

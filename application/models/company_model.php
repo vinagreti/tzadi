@@ -3,7 +3,7 @@
 class Company_Model extends CI_Model {
 
   function getByNick($companyNick) {
-    $this->db->from('agency')
+    $this->db->from('company')
       ->where('companyNick', $companyNick);
     $company = $this->db->get(0)->result();
     if($company){

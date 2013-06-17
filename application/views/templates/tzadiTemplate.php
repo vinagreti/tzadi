@@ -38,7 +38,7 @@
   <div class="loading"></div>
 
   <!-- Navbar -->
-  <div class="navbar navbar-inverse navbar-fixed-top">
+  <div class="navbar navbar-inverse navbar-fixed-top autoOpen">
     <div class="navbar-inner">
       <div class="container">
         <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
@@ -54,7 +54,7 @@
         <div class="nav-collapse collapse">
           <ul class="nav pull-right">
             <?php if($this->session->userdata('userID')) { ?>
-            <li class="dropdown pull-right">
+            <li class="dropdown autoOpen pull-right">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-user icon-large"></i> <?=$this->session->userdata('userName')?></a>
               <ul class="dropdown-menu">
                 <li><a tabindex="-1"  href="#profile"><?=lang('tmpt_Profile')?></a></li>
@@ -127,7 +127,7 @@
   <script type="text/javascript" src="<?=base_url()?>assets/third_party/bootstrap/js/bootstrap-collapse.js"></script>
   <script type="text/javascript" src="<?=base_url()?>assets/third_party/bootstrap/js/bootstrap-carousel.js"></script>
   <script type="text/javascript" src="<?=base_url()?>assets/third_party/bootstrap/js/bootstrap-typeahead.js"></script>
-  <!-- setting base_url to use within js scripts -->
+  <?=form_open("",array("class" => "tzadiToken"))?><?=form_close()?>
   <script type="text/javascript">var base_url = "<?=base_url()?>";</script>
   <!-- Cusom JS -->
   <script src="<?=base_url()?>assets/js/global.js"></script>

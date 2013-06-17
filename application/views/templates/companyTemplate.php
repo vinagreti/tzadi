@@ -10,6 +10,7 @@
   <link rel="stylesheet" href="<?=base_url()?>assets/third_party/bootstrap/css/bootstrap.css">
   <link rel="stylesheet" href="<?=base_url()?>assets/third_party/bootstrap/css/bootstrap-datetimepicker.min.css">
   <link rel="stylesheet" href="<?=base_url()?>assets/third_party/bootstrap/css/font-awesome.min.css">
+  <link rel="stylesheet" href="<?=base_url()?>assets/third_party/select2/select2.css"/>
   <!-- tzadi global styles -->
   <link rel="stylesheet" href="<?=base_url()?>assets/css/global.css">
   <link rel="stylesheet" href="<?=base_url()?>assets/third_party/bootstrap/css/bootstrap-responsive.css">
@@ -40,7 +41,7 @@
   <div class="loading"></div>
 
   <!-- Navbar -->
-  <div class="navbar navbar-inverse navbar-fixed-top">
+  <div class="navbar navbar-inverse navbar-fixed-top autoOpen">
     <div class="navbar-inner">
       <div class="container">
         <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
@@ -50,7 +51,7 @@
         </button>
 
         <span class="brand">
-          <a href="<?=base_url()?>" rel="tooltip" title="Home"><?=COMPANYNICK?></a>
+          <a href="<?=base_url()?>" rel="tooltip" title="Home">{companyName}</a>
         </span>
 
         <div class="nav-collapse collapse">
@@ -95,6 +96,7 @@
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" rel="tooltip" title="<?=lang('tmpt_Agency')?>"><i class="icon-plane icon-large"></i> <?=lang('tmpt_Agency')?></a>
               <ul class="dropdown-menu">
                 <li><a href="<?=base_url()?>institution" rel="tooltip" title="<?=lang('tmpt_Institutions')?>"><?=lang('tmpt_Institutions')?></a></li>
+                <li><a href="<?=base_url()?>product" rel="tooltip" title="<?=lang('tmpt_Products')?>"><?=lang('tmpt_Products')?></a></li>
               </ul>
             </li>
             <?php }?>
@@ -107,7 +109,7 @@
   
   <div class="container">
     <div class="row">
-      <div class="span12 well well-small">
+      <div class="span12">
         <div class="row tzdContent">
           <div class="span12">
             <div class="globalAlert"></div>
@@ -126,9 +128,6 @@
 
   <!-- Loading the JQuery -->
   <script src="<?=base_url()?>assets/third_party/JQuery/jquery.js"></script>
-  <script src="http://maps.googleapis.com/maps/api/js?sensor=false&amp;libraries=places"></script>
-  <script src="<?=base_url()?>assets/third_party/JQuery/jquery.geocomplete.js"></script>
-
   <!-- Loading the bootstrap js scripts -->
   <script type="text/javascript" src="<?=base_url()?>assets/third_party/bootstrap/js/bootstrap-transition.js"></script>
   <script type="text/javascript" src="<?=base_url()?>assets/third_party/bootstrap/js/bootstrap-alert.js"></script>
@@ -142,7 +141,8 @@
   <script type="text/javascript" src="<?=base_url()?>assets/third_party/bootstrap/js/bootstrap-collapse.js"></script>
   <script type="text/javascript" src="<?=base_url()?>assets/third_party/bootstrap/js/bootstrap-carousel.js"></script>
   <script type="text/javascript" src="<?=base_url()?>assets/third_party/bootstrap/js/bootstrap-typeahead.js"></script>
-  <!-- setting base_url to use within js scripts -->
+  <script type="text/javascript" src="<?=base_url()?>assets/third_party/select2/select2.js"></script>
+  <?=form_open("",array("class" => "tzadiToken"))?><?=form_close()?>
   <script type="text/javascript">var base_url = "<?=base_url()?>";</script>
   <!-- Cusom JS -->
   <script src="<?=base_url()?>assets/js/global.js"></script>

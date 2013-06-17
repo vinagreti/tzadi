@@ -218,7 +218,7 @@ $(document).ready(function(){
       var fileLink = $("<p></p>")
         .append($("<a></a>")
           .html(attach.attachName)
-          .attr("href", base_url+"file/download/"+attach.attachHash)
+          .attr("href", base_url+"file/download/"+attach.attachFile)
           .attr("target", "blank")
         )
         .append($("<a></a>")
@@ -471,7 +471,7 @@ $(document).ready(function(){
             var data = {};
             data.attachID = attachs[i].attachID;
             data.attachName = attachs[i].attachName;
-            data.attachHash = attachs[i].attachHash;
+            data.attachFile = attachs[i].attachFile;
             data.institutionID = institutionID;
             table.addAttach( data );
           }
@@ -535,7 +535,7 @@ $(document).ready(function(){
               processData: false,  
               contentType: false,  
               success: function ( e ) {
-                if( e.attachID ) appendAttach( e );
+                if( e ) appendAttach( e );
                 else globalAlert('alert-error', e.error);
               },
               dataType: 'json'

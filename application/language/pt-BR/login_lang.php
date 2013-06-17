@@ -1,5 +1,6 @@
 <?php
 $lang['lgn_Sign_In'] = 'Login';
+$lang['lgn_sign_In'] = 'login';
 $lang['lgn_enter_mail'] = 'Informe um e-mail válido';
 $lang['lgn_enter_passwd'] = 'Informe a senha';
 $lang['lgn_validate_mail'] = 'Por favor, informe um endereço de e-mail válido';

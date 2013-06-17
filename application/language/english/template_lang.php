@@ -1,5 +1,6 @@
 <?php
 $lang['tmpt_Agency'] = 'Agency';
+$lang['tmpt_Products'] = 'Products';
 $lang['tmpt_Institutions'] = 'Suppliers';
 $lang['tmpt_Profile'] = 'Profile';
 $lang['tmpt_Settings'] = 'Settings';

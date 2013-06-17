@@ -15,26 +15,21 @@ class User_Model extends CI_Model {
 
         $this->db->where('userEmail', $email)
             ->where('userPassword', $password)
-            ->join('agencyUser au', 'au.userID = u.userID', 'left')
-            ->join('agency a', 'a.agencyID = au.agencyID', 'left');
+            ->join('companyUser cu', 'cu.userID = u.userID', 'left')
+            ->join('company c', 'c.companyID = cu.companyID', 'left');
         $user = $this->db->get('user u')->result();
 
         if(isset($user[0]))
         {
-            $agencyOwner = false;
-            if($user[0]->agencyOwner == $user[0]->userID) $agencyOwner = true;
-            
             $this->session->set_userdata('userID', $user[0]->userID);
             $this->session->set_userdata('userName', $user[0]->userName);
             $this->session->set_userdata('userEmail', $user[0]->userEmail);
-            $this->session->set_userdata('agencyID', $user[0]->agencyID);
+            $this->session->set_userdata('companyID', $user[0]->companyID);
             $this->session->set_userdata('companyNick', $user[0]->companyNick);
-            $this->session->set_userdata('agencyOwner', $agencyOwner);
+            $this->session->set_userdata('companyName', $user[0]->companyName);
             $this->session->set_userdata('institutionMethods', $this->levelToMethods($user[0]->institutionLevel));
-
             return true;
         }
-        
         else return false;
     }
 

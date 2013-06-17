@@ -5,13 +5,7 @@ class Attach_Model extends CI_Model {
   function insert($data)
   {
     $this->db->insert('attach', $data);
-    $id = $this->db->insert_id();
-
-    $data->attachHash = md5($id);
-    $this->db->where('attachID', $id);
-    $this->db->update('attach', $data);
-    
-    return $id;
+    return $this->db->insert_id();
   }
 
   function getName($attachHash) {
