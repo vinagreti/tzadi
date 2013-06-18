@@ -7,6 +7,21 @@ class Supplier extends My_Controller {
     $this->lang->load('supplier', $this->session->userdata('app_language'));
   }
 
+  public function index()
+  {
+    $data->class = 'supplier';
+    $data->view = 'supplier/index';
+    $data->page_title = lang('splr_listTitle');
+    $this->page->load($data);
+  }
+
+  public function getAll()
+  {
+    $this->load->model('supplier_model');
+    $data = $this->supplier_model->getAll();
+    echo json_encode($data);
+  }
+
   public function getAllActive()
   {
     $this->load->model('supplier_model');
@@ -27,7 +42,15 @@ class Supplier extends My_Controller {
     echo json_encode($newSupplier[0]);
   }
 
-  public function addCampi(){
+  public function drop()
+  {
+    $_id = (int) $this->input->post('_id');
+    $this->load->model("supplier_model");
+    $res = $this->supplier_model->drop($_id);
+    echo json_encode($res);
+  }
+
+  public function addCampus(){
     if($this->input->post("name")){
       $data->name = $this->input->post("name");
     }
@@ -36,8 +59,56 @@ class Supplier extends My_Controller {
     }
     $data->supplier = (int) $this->input->post("supplier");
     $this->load->model("supplier_model");
-    $newCampi = $this->supplier_model->addCampi($data);
-    echo json_encode($newCampi);
+    $newCampus = $this->supplier_model->addCampus($data);
+    echo json_encode($newCampus);
+  }
+
+  public function update()
+  {
+    $data = $this->input->post();
+    $this->load->model("supplier_model");
+    $res = $this->supplier_model->update($data);
+    echo json_encode($res);
+  }
+
+  public function changeImg()
+  {
+    $_id = (int) $this->input->post('_id');
+    $this->load->model("supplier_model");
+    $res = $this->supplier_model->changeImg($_id);
+    echo json_encode($res);
+  }
+
+  public function attach()
+  {
+    $_id = (int) $this->input->post('_id');
+    $this->load->model("supplier_model");
+    $res = $this->supplier_model->attach($_id);
+    echo json_encode($res);
+  }
+
+  public function dropAttachment()
+  {
+    $data = $this->input->post();
+    $this->load->model("supplier_model");
+    $res = $this->supplier_model->dropAttachment($data);
+    echo json_encode($res);
+  }
+
+  public function activate()
+  {
+    $data = $this->input->post();
+    $this->load->model("supplier_model");
+    $res = $this->supplier_model->activate($data);
+    echo json_encode($res);
+  }
+
+  public function dropCampus()
+  {
+    $data = $this->input->post();
+    $this->load->model("supplier_model");
+    $res = $this->supplier_model->dropCampus($data);
+    echo json_encode($res);
   }
 }
 /* End of file partner.php */

@@ -95,7 +95,7 @@
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" rel="tooltip" title="<?=lang('tmpt_Agency')?>"><i class="icon-plane icon-large"></i> <?=lang('tmpt_Agency')?></a>
               <ul class="dropdown-menu">
-                <li><a href="<?=base_url()?>institution" rel="tooltip" title="<?=lang('tmpt_Institutions')?>"><?=lang('tmpt_Institutions')?></a></li>
+                <li><a href="<?=base_url()?>supplier" rel="tooltip" title="<?=lang('tmpt_Institutions')?>"><?=lang('tmpt_Institutions')?></a></li>
                 <li><a href="<?=base_url()?>product" rel="tooltip" title="<?=lang('tmpt_Products')?>"><?=lang('tmpt_Products')?></a></li>
               </ul>
             </li>
@@ -146,7 +146,6 @@
   <script type="text/javascript">var base_url = "<?=base_url()?>";</script>
   <!-- Cusom JS -->
   <script src="<?=base_url()?>assets/js/global.js"></script>
-  <!-- used by page library to load the dynamic page js -->
-  <script type="text/javascript" src="<?=base_url()?>assets/js/{class}.js"></script>
+  <script src="<?=base_url()?>assets/js/{class}.js"></script>
 </body>
 </html>

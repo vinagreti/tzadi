@@ -26,8 +26,8 @@ $(document).ready(function(){
     this.createBrief = function( id ){
       var objProduct = products.all[id];
       var brief = this.brief.clone();
-      if(objProduct.status == "active") brief.find(".productStatus").addClass("btn-success").removeClass("btn-danger").html($(".pdt_activate").html());
-      else brief.find(".productStatus").addClass("btn-danger").removeClass("btn-success").html($(".pdt_inactivate").html());
+      if(objProduct.status == "active") brief.find(".productStatus").addClass("btn-success").removeClass("btn-danger").html($(".pdt_inactivate").html());
+      else brief.find(".productStatus").addClass("btn-danger").removeClass("btn-success").html($(".pdt_activate").html());
       brief.find(".name").html(objProduct.name);
 
       brief.find(".productKind").html($("#"+objProduct.kind).html());
@@ -43,7 +43,7 @@ $(document).ready(function(){
       var line = this.body.find("#"+id);
       line.find(".openDetail").remove();
     };
-    this.addLine = function( id, position ){
+    this.addLine = function( id, position, open ){
       var objProduct = products.all[id];
       if(this.status == "all" || objProduct.status == this.status){
         var brief = this.createBrief( id );
@@ -53,6 +53,7 @@ $(document).ready(function(){
         if(position && position == "before") this.body.children().prepend(line);
         else this.body.children().append(line);
       }
+      if(open && open == true) this.openDetails( id );
     };
     this.openDetails = function( id ){
       var line = this.body.find("#"+id);
@@ -73,8 +74,8 @@ $(document).ready(function(){
       line.find('.supplier').select2("val", objProduct.supplier);
       this.showCampi( id );
       line.find('.supplier_campus').select2("val", objProduct.supplier_campus);
-      if(objProduct.status == "active") line.find(".productStatus").addClass("btn-success").removeClass("btn-danger").html($(".pdt_activate").html());
-      else line.find(".productStatus").addClass("btn-danger").removeClass("btn-success").html($(".pdt_inactivate").html());
+      if(objProduct.status == "active") line.find(".productStatus").addClass("btn-success").removeClass("btn-danger").html($(".pdt_inactivate").html());
+      else line.find(".productStatus").addClass("btn-danger").removeClass("btn-success").html($(".pdt_activate").html());
       if(objProduct.img) line.find(".changeImg").attr("src", base_url+"file/open/"+objProduct.img);
       line.find(".name").val(objProduct.name);
       this.showKindForm( id );
@@ -152,8 +153,8 @@ $(document).ready(function(){
     this.active = function( id ){
       var line = this.body.find("#"+id);
       var objProduct = products.all[id];
-      if(objProduct.status == "active") line.find(".productStatus").addClass("btn-success").removeClass("btn-danger").html($(".pdt_activate").html());
-      else line.find(".productStatus").addClass("btn-danger").removeClass("btn-success").html($(".pdt_inactivate").html());
+      if(objProduct.status == "active") line.find(".productStatus").addClass("btn-success").removeClass("btn-danger").html($(".pdt_inactivate").html());
+      else line.find(".productStatus").addClass("btn-danger").removeClass("btn-success").html($(".pdt_activate").html());
     };
     this.changePhoto = function( id ){
       var line = this.body.find("#"+id);
@@ -179,7 +180,7 @@ $(document).ready(function(){
       products.table.body.find("#"+id).find('.supplier').select2("close");
       this.showCampi( id );
     };
-    this.addCampi = function( newCampus, id ){
+    this.addCampus = function( newCampus, id ){
       var campiSelects = products.table.body.find("#"+id).find(".supplier_campus");
       campiSelects.append(
         $("<option></option>")
@@ -226,7 +227,7 @@ $(document).ready(function(){
         });
         campiSelect.select2({
           formatNoMatches: function( term ){
-            var link = "<a class='btn btn-success btn-mini addCampi' onclick='products.addCampi("+'"'+term+'"'+", "+'"'+productIndex+'"'+", "+'"'+supplierIndex+'"'+")'>"+$(".add").html()+"</a> "+term;
+            var link = "<a class='btn btn-success btn-mini addCampus' onclick='products.addCampus("+'"'+term+'"'+", "+'"'+productIndex+'"'+", "+'"'+supplierIndex+'"'+")'>"+$(".add").html()+"</a> "+term;
             return link;
           }
         });
@@ -293,7 +294,7 @@ $(document).ready(function(){
       var callback = function( e ){
         var id = products.all.length;
         products.all[id] = e;
-        products.table.addLine( id, 'before' );
+        products.table.addLine( id, 'before', true );
         products.table.reCalc();
       };
       var ajax = new tzdAjaxCall();
@@ -350,7 +351,7 @@ $(document).ready(function(){
       };
       var callback = function( e ){
         products.all = e;
-        products.all = tzdOrderBy(products.table.order, products.all);
+        products.all = tzdList.orderBy(products.table.order, products.all);
         products.search( $('#search-query').val() );
       };
       var ajax = new tzdAjaxCall();
@@ -382,21 +383,20 @@ $(document).ready(function(){
       var ajax = new tzdAjaxCall();
       ajax.post(url, data, callback)
     },
-    addCampi : function( term, id, supplier_id ){
-      var url = base_url+'supplier/addCampi';
+    addCampus : function( term, id, supplier_id ){
+      var url = base_url+'supplier/addCampus';
       var data = {
         tzadiToken : tzadiToken
         ,name : term
         ,supplier : supplier_id
       };
-      var callback = function( campus_id ){
+      var callback = function( e ){
         var supplier = products.suppliers.filter(function ( supplier ) {
           return supplier._id == supplier_id;
         });
         var supplierIndex = products.suppliers.indexOf(supplier[0]);
-        var newCampus = {_id : campus_id, name : term};
-        products.suppliers[supplierIndex].campi.push(newCampus);
-        products.table.addCampi( newCampus, id );
+        products.suppliers[supplierIndex].campi.push(e);
+        products.table.addCampus( e, id );
       };
       var ajax = new tzdAjaxCall();
       ajax.post(url, data, callback)
@@ -457,7 +457,7 @@ $(document).ready(function(){
       }
     },
     order : function(){
-      products.all = tzdOrderBy(products.table.order, products.all);
+      products.all = tzdList.orderBy(products.table.order, products.all);
     }
   };
 

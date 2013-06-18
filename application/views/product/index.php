@@ -8,11 +8,11 @@
     </span>
     &nbsp;
     <span class="dropdown">
-      <a class="btn btn-success dropdown-toggle" data-toggle="dropdown" data-target="#" rel="tooltip" title="<?=lang('pdt_addBtnTitle')?>"><span class="add"><?=lang('pdt_add')?></span> <b class="caret"></b></a>
+      <a class="btn btn-success dropdown-toggle" data-toggle="dropdown" data-target="#" rel="tooltip" title="<?=lang('pdt_addBtnTitle')?>"><i class="icon-plus"></i> <span class="add"><?=lang('pdt_add')?></span></a>
       <ul class="dropdown-menu">
         <li><a class="productAdd" id="regularProduct" tabindex="-1" href="#newregularProduct"><?=lang('pdt_regularProduct')?></a></li>  
         <li><a class="productAdd" id="accommodation" tabindex="-1" href="#newaccommodation"><?=lang('pdt_accommodation')?></a></li>
-        <li><a class="productAdd" id="tourism" tabindex="-1" href="#newtourism">atividade <?=lang('pdt_tourism')?></a></li>
+        <li><a class="productAdd" id="tourism" tabindex="-1" href="#newtourism"><?=lang('pdt_tourism')?></a></li>
         <li><a class="productAdd" id="course" tabindex="-1" href="#newcourse"><?=lang('pdt_course')?></a></li>
         <li><a class="productAdd" id="pass" tabindex="-1" href="#newpass"><?=lang('pdt_pass')?></a></li>
         <li><a class="productAdd" id="work" tabindex="-1" href="#newwork"><?=lang('pdt_work')?></a></li>
@@ -31,9 +31,9 @@
   <div class="span12">
     <span class="text-warning"><span class="totalRows"></span> <?=lang('tmpt_products')?></span>
     <span class="text-warning"><?=lang('tmpt_withStatus')?></span>
-    <span class="label label-success statusDivOpen cursorPointer"><?=lang('tmpt_active')?></span>
+    <span class="label label-success statusDivOpen cursorPointer" rel="tooltip" title="<?=lang('statusDivOpenTitle')?>"><?=lang('tmpt_active')?></span>
     <span class="text-warning"><?=lang('pdt_groupedBy')?></span>
-    <span class="label label-success orderDivOpen cursorPointer"><?=lang('pdt_name')?> <i class="icon-chevron-down"></i></span>
+    <span class="label label-success orderDivOpen cursorPointer"  rel="tooltip" title="<?=lang('orderDivOpenTitle')?>"><?=lang('pdt_name')?> <i class="icon-chevron-down"></i></span>
   </div>
 </div>
 <div class="row statusDiv hide">
@@ -70,7 +70,6 @@
             </div>
           </div>
         </div>
-        <div class="tzdTableGroupHeader"></div>
         <div class="row tzdTableDetail">
           <div class="span12 tzdTableDetailContent">
             <div class="row">

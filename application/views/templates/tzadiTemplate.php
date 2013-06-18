@@ -131,7 +131,6 @@
   <script type="text/javascript">var base_url = "<?=base_url()?>";</script>
   <!-- Cusom JS -->
   <script src="<?=base_url()?>assets/js/global.js"></script>
-  <!-- used by page library to load the dynamic page js -->
-  <script type="text/javascript" src="<?=base_url()?>assets/js/{class}.js"></script>
+  <script src="<?=base_url()?>assets/js/{class}.js"></script>
 </body>
 </html>

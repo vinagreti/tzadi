@@ -158,6 +158,7 @@ var tzdAjaxCall = function(){
   };
 }
 
+// manipula datas
 var tzdDate = function (date){
   var d = new Date(date*1000);
   this.day = d.getDate();
@@ -176,16 +177,27 @@ var tzdDate = function (date){
   this.shortDateTime = this.shortDate+" "+this.shortTime;
 }
 
-// sort list by attribute
-var tzdOrderBy = function(attribute, list){
-  var reorder = function compare(a,b) {
-    if (a[attribute].toLowerCase() > b[attribute].toLowerCase())
-       return -1;
-    if (a[attribute].toLowerCase() < b[attribute].toLowerCase())
-      return 1;
-    return 0;
+
+// manipula listas
+var tzdList = {
+  // sort list by attribute
+  orderBy : function(attribute, list){
+    var reorder = function compare(a,b) {
+      if (a[attribute].toLowerCase() > b[attribute].toLowerCase())
+         return -1;
+      if (a[attribute].toLowerCase() < b[attribute].toLowerCase())
+        return 1;
+      return 0;
+    }
+    return list.sort(reorder).reverse();
   }
-  return list.sort(reorder).reverse();
+  // get match list
+  ,getBy : function( list, attribute, value ){
+    var found = list.filter(function ( item ) {
+      return item[attribute] == value;
+    });
+    return found;
+  }
 };
 
 // work around to fix ie7 and 8 onkeyup event
