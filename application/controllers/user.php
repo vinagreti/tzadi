@@ -9,9 +9,11 @@ class User extends My_Controller {
   	if(isset($app_language)) {
   		$this->lang->load('template', $app_language);
   		$this->lang->load('login', $app_language);
+      $this->lang->load('user', $app_language);
   	} else {
   		$this->lang->load('template', LANGUAGE);
   		$this->lang->load('login', LANGUAGE);
+      $this->lang->load('user', LANGUAGE);
   	}
   }
 
@@ -42,7 +44,7 @@ class User extends My_Controller {
 		$password = $this->input->post('password');
 
 		$this->load->model('user_model');
-		$permission = $this->user_model->checkCredential($email, $password);
+		$permission = $this->user_model->authenticate($email, $password);
 
 		if ( $permission ) echo json_encode(true);
 		else  echo json_encode(false);
@@ -58,6 +60,16 @@ class User extends My_Controller {
 	public function changeLang($language) {
 		$this->session->set_userdata('app_language', $language);
 	}
+
+  public function resetDatabase(){
+    $this->load->model('user_model');
+    $this->user_model->resetDatabase();
+  }
+
+  public function authenticate(){
+    $this->load->model('user_model');
+    $this->user_model->authenticate();
+  }
 
 }
 
