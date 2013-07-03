@@ -13,7 +13,6 @@ class File_Model extends CI_Model {
     $newImgId = $this->mongo_model->newID();
     $_FILES["file"]["_id"] = $newImgId;
     $_FILES["file"]["object_id"] = $_id;
-
     $config['image_library'] = 'gd2';
     $config['source_image'] = $_FILES["file"]["tmp_name"];
     $config['create_thumb'] = TRUE;
@@ -32,7 +31,6 @@ class File_Model extends CI_Model {
 
     unset($_FILES["file"]["tmp_name"]);
     $this->mongo_db->insert('file',$_FILES["file"]);
-    
     return $newImgId;
   }
 

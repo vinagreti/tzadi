@@ -62,13 +62,22 @@
                 <li><a tabindex="-1"  href="<?=base_url()?><?=lang('tmpt_logout')?>"><?=lang('tmpt_Logout')?></a></li>
               </ul>
             </li>
-            <?php } else { ?> 
-              <p class="navbar-text pull-right">
-                <i class="icon-user icon-large"></i>
-                <a class="navbar-link" href="<?=base_url()?><?=lang('tmpt_login')?>"> <?=lang('tmpt_Login')?></a>
-              </p>
-            <?php } ?>
           </ul>
+          <?php } else { ?>
+            <ul class="nav">
+              <p class="navbar-text">
+                <a class="navbar-link" id="signUp" href="<?=base_url()?>signup"><i class="icon-arrow-right"></i> <?=lang('tmpt_signup')?></a>
+              </p>
+            </ul>
+            <ul class="nav">
+              <p class="navbar-text">
+                <i class="icon-user icon-large"></i>
+                <a class="navbar-link" href="<?=base_url()?><?=lang('tmpt_login')?>"> <?=lang('tmpt_login')?></a>
+              </p>
+            </ul>
+          <?php } ?>
+        </ul>
+
           <ul class="nav">
             <li class="dropdown">
               <a class="dropdown-toggle" data-toggle="dropdown" rel="tooltip" title="<?=lang('tmpt_Institutional')?>"><i class="icon-comments icon-large"></i> <?=lang('tmpt_Institutional')?></a>

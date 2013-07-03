@@ -252,6 +252,5 @@ class Supplier_Model extends CI_Model {
         ->set("campi", $supplier[0]["campi"])
         ->update("supplier");
     }
-
   }
 }

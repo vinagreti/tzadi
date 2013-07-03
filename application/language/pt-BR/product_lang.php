@@ -118,3 +118,4 @@ $lang["pdt_addPackageProductTitle"] = "digite o nome de um produto para adicion�
 $lang["pdt_packageItens"] = "produtos do pacote";
 $lang["pdt_packageNeedsAtLeast1Product"] = "o pacote precisa ter pelo menos um produto";
 $lang["pdt_canotAddSamePackage"] = "não é possível adicionar um pacote nele mesmo";
+

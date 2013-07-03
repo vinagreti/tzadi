@@ -68,7 +68,7 @@
             <?php } else { ?>
               <p class="navbar-text pull-right">
                 <i class="icon-user icon-large"></i>
-                <a class="navbar-link" href="<?=base_url()?><?=lang('tmpt_login')?>"> <?=lang('tmpt_Login')?></a>
+                <a class="navbar-link" href="<?=base_url()?><?=lang('tmpt_login')?>"> <?=lang('tmpt_login')?></a>
               </p>
             <?php } ?>
           </ul>

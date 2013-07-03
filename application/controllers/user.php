@@ -32,7 +32,7 @@ class User extends My_Controller {
       }
 	}
 
-	public function submitLogin()
+	public function authenticate()
 	{
 
 		$email = $this->input->post('email');
@@ -43,7 +43,6 @@ class User extends My_Controller {
 
 		if ( $permission ) echo json_encode(true);
 		else  echo json_encode(false);
-
 	}
 
 	public function logout()
@@ -60,12 +59,6 @@ class User extends My_Controller {
     $this->load->model('user_model');
     $this->user_model->resetDatabase();
   }
-
-  public function authenticate(){
-    $this->load->model('user_model');
-    $this->user_model->authenticate();
-  }
-
 }
 
 /* End of file*/

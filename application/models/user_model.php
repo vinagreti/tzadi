@@ -7,10 +7,19 @@ class User_Model extends CI_Model {
     $this->load->library("mongo_db");
   }
 
+  function getByEmail($email)
+  {
+    $res = $this->mongo_db
+      ->where('email', $email)
+      ->get('user');
+
+    if($res) return $res[0];
+    else return false;
+  }
+
   function authenticate( $email, $password ) {
     $data["email"] = $email;
     $data["password"] = md5($password);
-
     $user = $this->mongo_db
       ->where($data)
       ->get('user');
@@ -23,7 +32,6 @@ class User_Model extends CI_Model {
 
         $permission["supplier"] = $this->levelToMethods($user[0]["permission"]["supplier"]);
         $permission["product"] = $this->levelToMethods($user[0]["permission"]["product"]);
-
         $this->session->set_userdata('permission', $permission);
         $this->session->set_userdata('userID', $user[0]["_id"]);
         $this->session->set_userdata('userName', $user[0]["name"]);

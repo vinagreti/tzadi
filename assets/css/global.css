@@ -12,6 +12,10 @@ body {
   padding: 9px 0;
 }
 @media (max-width: 980px) {
+  .tzdTableHeader{
+    display: none;
+  }
+
   /* Enable use of floated navbar text */
   .navbar-text.pull-right {
     float: none;

@@ -16,7 +16,7 @@
       valid = valid && globalValidateLenght(1, 65535, $('#password').val(), "<?=lang('lgn_validate_password')?>");
 
       if ( valid ) {
-        $.post(base_url+"user/submitLogin", {
+        $.post(base_url+"user/authenticate", {
           email : $("#email").val(),
           password : $("#password").val(),
           tzadiToken : $('input[name=tzadiToken]').val()

@@ -36,16 +36,12 @@ $lang['tmpt_Max_upload_size'] = 'Max upload size: ';
 $lang['tmpt_Unsupported_file'] = 'This file is not supported!';
 $lang['tmtp_ThereIs'] = "There are";
 $lang['tmtp_untitled'] = "untitled";
-
 // JS alert system
 $lang['tmpt_insert_valid_mail'] = 'Please, enter a valid e-mail address ';
 $lang['tmpt_insert_subject'] = 'Please, enter the subject before submit';
 $lang['tmpt_insert_message'] = 'Please, enter the message before submit';
-
 // Error views
 $lang['tmpt_permission_denied'] = 'You do not have the right level to see this page. Please, log in to access this content or';
 $lang['tmpt_companyNotFound'] = 'This company is not in our system yet. Would you like to register?';
-
-
 $lang["tmpt_Budget"] = "Budget";
 $lang["tmpt_budgetURL"] = "budget";
