@@ -3,16 +3,9 @@
 class About extends My_Controller {
 
   public function __construct() {
-    // carrega os arquivos de idioma
     parent::__construct();
-    $app_language = $this->session->userdata('app_language');
-  	if(isset($app_language)) {
-  		$this->lang->load('template', $app_language);
-  		$this->lang->load('about', $app_language);
-  	} else {
-  		$this->lang->load('template', LANGUAGE);
-  		$this->lang->load('about', LANGUAGE);
-  	}
+		$this->lang->load('template', $this->session->userdata('app_language'));
+		$this->lang->load('about', $this->session->userdata('app_language'));
   }
 
 	public function index()
@@ -23,8 +16,8 @@ class About extends My_Controller {
       $this->parser->parse('templates/tzadiTemplate', $data);      
     }
     else{
-      $company = $this->MYcheckCompany();
-      if($company->companyAboutContent == "extern") redirect($company->companyAboutLink);
+      $this->load->model("company_model");
+      $company = $this->company_model->getByNick(COMPANYNICK);
       $data->content = $this->load->view('company/about', $company, true);
       $data->page_title = lang('tmpt_About_us');
       $data->companyName = $this->session->userdata("companyName");

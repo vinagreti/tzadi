@@ -3,16 +3,9 @@
 class Contact extends My_Controller {
 
   public function __construct() {
-    // define os tipos de usuarios que podem acessar a classe Task
     parent::__construct();
-    $app_language = $this->session->userdata('app_language');
-  	if(isset($app_language)) {
-  		$this->lang->load('template', $app_language);
-  		$this->lang->load('contact', $app_language);
-  	} else {
-  		$this->lang->load('template', LANGUAGE);
-  		$this->lang->load('contact', LANGUAGE);
-  	}
+		$this->lang->load('template', $this->session->userdata('app_language'));
+		$this->lang->load('contact', $this->session->userdata('app_language'));
   }
 
 	public function index()
@@ -27,7 +20,6 @@ class Contact extends My_Controller {
       }
       else {
         $company = $this->MYcheckCompany();
-        if($company->companyContactFormPlace == "extern") redirect($company->companyContactLink);
         $data->content = $this->load->view('tzadi/contact', "", true);
         $data->page_title = lang('ct_page_title');
         $data->companyName = $this->session->userdata("companyName");

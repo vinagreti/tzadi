@@ -5,19 +5,51 @@ class Product extends My_Controller {
   public function __construct() { 
     parent::__construct();
     $this->lang->load('product', $this->session->userdata('app_language'));
+    $this->lang->load('template', $this->session->userdata('app_language'));
   }
 
   public function index()
   {
-    $data->class = 'product';
-    $data->view = 'product/index';
+    $data->dynJS = "product/vitrine";
+    $data->content = $this->load->view('product/vitrine', "", true);
+    $data->page_title = "Vitrine";
+    $data->companyName = $this->session->userdata("companyName");
+    $this->parser->parse('templates/companyTemplate', $data);
+  }
+
+  public function manage()
+  {
+    $data->dynJS = 'product/manage';
+    $data->view = 'product/manage';
     $data->page_title = lang('pdt_listTitle');
+    $this->page->load($data);
+  }
+
+  public function budget()
+  {
+    $data->dynJS = 'product/budget';
+    $data->view = 'product/budget';
+    $data->page_title = lang('pdt_budgetTitle');
     $this->page->load($data);
   }
 
   public function getAll(){
     $this->load->model("product_model");
     echo json_encode($this->product_model->getAll());
+  }
+
+  public function getActive()
+  {
+    $this->load->model('product_model');
+    $data = $this->product_model->getActive();
+    echo json_encode($data);
+  }
+
+  public function getByID(){
+    $productID = $this->input->post("productID");
+    $this->load->model("product_model");
+    $data = $this->product_model->getByID( $productID );
+    echo json_encode($data);
   }
 
   public function drop()
@@ -49,6 +81,21 @@ class Product extends My_Controller {
     $this->load->model("product_model");
     $res = $this->product_model->changePhoto($_id);
     echo json_encode($res);
+  }
+
+  public function view( $_id ){
+    $this->load->model("product_model");
+    $data->product = $this->product_model->getHumanized( $_id );
+    $data->view = 'product/view';
+    $data->page_title = $data->product["name"];
+    $this->page->load($data);
+  }
+
+  public function like()
+  {
+    $this->load->model('product_model');
+    $likes = $this->product_model->like();
+    echo json_encode($likes);
   }
 }
 /* End of file product.php */

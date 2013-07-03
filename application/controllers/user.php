@@ -5,16 +5,11 @@ class User extends My_Controller {
   public function __construct() {
     // define os tipos de usuarios que podem acessar a classe Task
     parent::__construct();
-    $app_language = $this->session->userdata('app_language');
-  	if(isset($app_language)) {
-  		$this->lang->load('template', $app_language);
-  		$this->lang->load('login', $app_language);
-      $this->lang->load('user', $app_language);
-  	} else {
-  		$this->lang->load('template', LANGUAGE);
-  		$this->lang->load('login', LANGUAGE);
-      $this->lang->load('user', LANGUAGE);
-  	}
+
+  		$this->lang->load('template', $this->session->userdata('app_language'));
+  		$this->lang->load('login', $this->session->userdata('app_language'));
+      $this->lang->load('user', $this->session->userdata('app_language'));
+
   }
 
 	public function index()
@@ -54,7 +49,7 @@ class User extends My_Controller {
 	public function logout()
 	{
 		$this->session->sess_destroy();
-		redirect(base_url() . 'user', 'refresh');
+		redirect(base_url(), 'refresh');
 	}
 
 	public function changeLang($language) {

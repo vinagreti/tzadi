@@ -1,2 +1,2 @@
 <?php
-$lang["usr_userNotFound"] = "falha na autenticação. Verifique se os dados inseridos estão corretos.";
+$lang["usr_userNotFound"] = "e-mail e password não conferem";

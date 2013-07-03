@@ -39,10 +39,32 @@
 */
 
 
-if(defined('COMPANYNICK')) $route['default_controller'] = "vitrine";
+if(defined('COMPANYNICK')) $route['default_controller'] = "product";
 else $route['default_controller'] = "index";
 $route['404_override'] = '';
 
+// custom routes
+
+$route['(:num)'] = 'product/view/$1';
+$route['(:num)/(:any)'] = 'product/view/$1';
+$route['product/(:num)'] = 'product/view/$1';
+$route['produto/(:num)'] = 'product/view/$1';
+
+$route['products'] = 'product/manage';
+$route['produtos'] = 'product/manage';
+
+$route['budget'] = 'product/budget';
+$route['orcamento'] = 'product/budget';
+
+$route['login'] = 'user/login';
+$route['entrar'] = 'user/login';
+
+$route['logout'] = 'user/logout';
+$route['sair'] = 'user/logout';
+
+$route['sobre'] = 'about';
+
+$route['contato'] = 'contact';
 
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */

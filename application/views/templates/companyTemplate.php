@@ -36,8 +36,7 @@
   <!-- Map API -->
   <div class="map_canvas"></div>
   <!-- Dialogs -->
-  <div class="modal hide fade" id="tzadiDialogs" tabindex="-1"></div>
-  <div class="modal hide fade" id="tzadiAttachForm" tabindex="-1"></div>
+  <div class="modal hide" id="tzadiDialogs" tabindex="-1"></div>
   <div class="loading"></div>
 
   <!-- Navbar -->
@@ -58,48 +57,50 @@
           <ul class="nav pull-right">
             <?php if($this->session->userdata('userID')) { ?>
             <li class="dropdown pull-right">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-user icon-large"></i> <?=$this->session->userdata('userName')?></a>
+              <a class="dropdown-toggle" data-toggle="dropdown"><i class="icon-user icon-large"></i> <?=$this->session->userdata('userName')?></a>
               <ul class="dropdown-menu">
                 <li><a tabindex="-1"  href="#profile"><?=lang('tmpt_Profile')?></a></li>
                 <li><a tabindex="-1"  href="#configuracoes"><?=lang('tmpt_Settings')?></a></li>
                 <li class="divider"></li>
-                <li><a tabindex="-1"  href="<?=base_url()?>user/logout"><?=lang('tmpt_Logout')?></a></li>
+                <li><a tabindex="-1"  href="<?=base_url()?><?=lang('tmpt_logout')?>"><?=lang('tmpt_Logout')?></a></li>
               </ul>
             </li>
-            <?php } else { ?> 
+            <?php } else { ?>
               <p class="navbar-text pull-right">
                 <i class="icon-user icon-large"></i>
-                <a class="navbar-link" href="<?=base_url()?>user/login"> <?=lang('tmpt_Login')?></a>
+                <a class="navbar-link" href="<?=base_url()?><?=lang('tmpt_login')?>"> <?=lang('tmpt_Login')?></a>
               </p>
             <?php } ?>
           </ul>
           <ul class="nav">
             <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" rel="tooltip" title="<?=lang('tmpt_The_tzadi')?>"><i class="icon-comments icon-large"></i> <?=lang('tmpt_Institutional')?></a>
+              <a class="dropdown-toggle" data-toggle="dropdown" rel="tooltip" title="<?=lang('tmpt_The_tzadi')?>"><i class="icon-comments icon-large"></i> <?=lang('tmpt_Institutional')?></a>
               <ul class="dropdown-menu">
                 <li><a href="<?=base_url()?>">Home</a></li>
-                <li><a href="<?=base_url()?>about"><?=lang('tmpt_About_us')?></a></li>
-                <li><a href="<?=base_url()?>contact"><?=lang('tmpt_Contact_us')?></a></li>
+                <li><a href="<?=base_url()?><?=lang('tmpt_AboutUsHtml')?>"><?=lang('tmpt_AboutUs')?></a></li>
+                <li><a href="<?=base_url()?><?=lang('tmpt_ContactUsHtml')?>"><?=lang('tmpt_ContactUs')?></a></li>
               </ul>
             </li>
 
             <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" rel="tooltip" title="<?=lang('tmpt_select_lang')?>"><i class="icon-globe icon-large"></i> <?=lang('tmpt_Language')?></a>
+              <a class="dropdown-toggle" data-toggle="dropdown" rel="tooltip" title="<?=lang('tmpt_select_lang')?>"><i class="icon-globe icon-large"></i> <?=lang('tmpt_Language')?></a>
               <ul class="dropdown-menu">
-                <li><a id="translate_en" href="#" rel="tooltip" title="Translate to English">English</a></li>
-                <li><a id="translate_pt-BR" href="#" rel="tooltip" title="Traduzir para Português">Português</a></li>
+                <li><a id="translate_en" rel="tooltip" title="Translate to English">English</a></li>
+                <li><a id="translate_pt-BR" rel="tooltip" title="Traduzir para Português">Português</a></li>
               </ul>
             </li>
 
             <?php if($this->session->userdata("userID")) {?>
             <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" rel="tooltip" title="<?=lang('tmpt_Agency')?>"><i class="icon-plane icon-large"></i> <?=lang('tmpt_Agency')?></a>
+              <a class="dropdown-toggle" data-toggle="dropdown" rel="tooltip" title="<?=lang('tmpt_Agency')?>"><i class="icon-plane icon-large"></i> <?=lang('tmpt_Agency')?></a>
               <ul class="dropdown-menu">
                 <li><a href="<?=base_url()?>supplier" rel="tooltip" title="<?=lang('tmpt_Institutions')?>"><?=lang('tmpt_Institutions')?></a></li>
-                <li><a href="<?=base_url()?>product" rel="tooltip" title="<?=lang('tmpt_Products')?>"><?=lang('tmpt_Products')?></a></li>
+                <li><a href="<?=base_url()?><?=lang('tmpt_products')?>" rel="tooltip" title="<?=lang('tmpt_Products')?>"><?=lang('tmpt_Products')?></a></li>
               </ul>
             </li>
             <?php }?>
+
+            <li><a href="<?=base_url()?><?=lang('tmpt_budgetURL')?>" target="_blank"><i class="icon-flag"></i> <?=lang('tmpt_Budget')?> <span class="label label-warning budgetTotal"></span></a></li>
 
           </ul>
         </div><!--/.nav-collapse -->
@@ -128,6 +129,7 @@
 
   <!-- Loading the JQuery -->
   <script src="<?=base_url()?>assets/third_party/JQuery/jquery.js"></script>
+  <script src="<?=base_url()?>assets/third_party/JQuery/jquery.cookie.js"></script>
   <!-- Loading the bootstrap js scripts -->
   <script type="text/javascript" src="<?=base_url()?>assets/third_party/bootstrap/js/bootstrap-transition.js"></script>
   <script type="text/javascript" src="<?=base_url()?>assets/third_party/bootstrap/js/bootstrap-alert.js"></script>
@@ -145,7 +147,10 @@
   <?=form_open("",array("class" => "tzadiToken"))?><?=form_close()?>
   <script type="text/javascript">var base_url = "<?=base_url()?>";</script>
   <!-- Cusom JS -->
-  <script src="<?=base_url()?>assets/js/global.js"></script>
-  <script src="<?=base_url()?>assets/js/{class}.js"></script>
+  <script src="<?=base_url()?>assets/js/tzadi/tzadi.js"></script>
+  <script src="<?=base_url()?>assets/js/tzadi/tzadi-budget.js"></script>
+  <script src="<?=base_url()?>assets/js/tzadi/tzadi-mail.js"></script>
+  <script src="<?=base_url()?>assets/js/tzadi/tzadi-string.js"></script>
+  <?php if (isset($dynJS)){?><script src="<?=base_url()?>assets/js/{dynJS}.js"></script><?php } ?>
 </body>
 </html>

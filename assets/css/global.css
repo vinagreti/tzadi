@@ -26,7 +26,7 @@ body {
 @media (min-width: 980px) {
   .tzdContent{
     min-height: 480px;
-    padding-top: 25px;
+    padding-top: 50px;
   }
 
   .dropdown-menu .sub-menu {

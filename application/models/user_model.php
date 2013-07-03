@@ -63,12 +63,12 @@ class User_Model extends CI_Model {
     $demo["name"] = "Demo Intercambios";
     $demo["nick"] = "demo";
     $demo["about"] = "Esta é uma agencia de demonstração, não existe realmente. Todo o seu conteúdo é fictício. Por se tratar de um conteudo de testes, não há um controle sobre as informações da agencia. Favor não utilizar conteúdo inapropriado nos testes, como palavras, imagens, arquivos...";
-    $demo["contact"] = "";
+    $demo["contact"] = "Texto dinamico na pagina de contato";
 
     $mango["_id"] = $this->mongo_model->newID();
     $mango["name"] = "Mango Intercambios";
     $mango["nick"] = "mango";
-    $mango["aboutLink"] = "http://mangointercambios.com.br/mangoshop/cms.php?id_cms=4";
+    $mango["about"] = "http://mangointercambios.com.br/mangoshop/cms.php?id_cms=4";
     $mango["contact"] = "http://mangointercambios.com.br/mangoshop/cms.php?id_cms=4";
 
     $bruno["_id"] = $this->mongo_model->newID();

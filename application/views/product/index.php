@@ -31,9 +31,9 @@
   <div class="span12">
     <span class="text-warning"><span class="totalRows"></span> <?=lang('tmpt_products')?></span>
     <span class="text-warning"><?=lang('tmpt_withStatus')?></span>
-    <span class="label label-success statusDivOpen cursorPointer" rel="tooltip" title="<?=lang('statusDivOpenTitle')?>"><?=lang('tmpt_active')?></span>
+    <span class="label label-success statusDivOpen cursorPointer" rel="tooltip" title="<?=lang('pdt_statusDivOpenTitle')?>"><?=lang('tmpt_active')?></span>
     <span class="text-warning"><?=lang('pdt_groupedBy')?></span>
-    <span class="label label-success orderDivOpen cursorPointer"  rel="tooltip" title="<?=lang('orderDivOpenTitle')?>"><?=lang('pdt_name')?> <i class="icon-chevron-down"></i></span>
+    <span class="label label-success orderDivOpen cursorPointer"  rel="tooltip" title="<?=lang('pdt_orderDivOpenTitle')?>"><?=lang('pdt_name')?> <i class="icon-chevron-down"></i></span>
   </div>
 </div>
 <div class="row statusDiv hide">
@@ -77,7 +77,7 @@
                 <p><a class="btn productStatus btn-block" rel="tooltip" title="<?=lang('pdt_productStatusBtnTitle')?>" ></a></p>
                 <p><span class="productKind label label-warning"></span><p>
                 <div class="thumbnail">
-                  <img src="<?=base_url()?>assets/img/160x120.png" class="changeImg" alt="160x120">
+                  <img src="<?=base_url()?>assets/img/no_photo_160x120.png" class="changeImg" alt="160x120">
                   <input type="file" name="img" class="productImg hide" />
                 </div>
               </div>
@@ -101,6 +101,20 @@
                               <option value="GBP">pound (£)</option>
                               <option value="BRL">real (R$)</option>
                             </select>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="span2">
+                            <label><?=lang('pdt_price')?></label>
+                            <input type="text" class="input-block-level price" name="purchase" rel="tooltip" title="preço de compra" value="0" />
+                          </div>
+                          <div class="span1">
+                            <label><?=lang('pdt_gain')?></label>
+                            <input type="text" class="input-block-level gain" name="gain" rel="tooltip" title="preço de compra" value="0" />
+                          </div>
+                          <div class="span1">
+                            <label>%</label>
+                            <input type="text" class="input-block-level percent" name="percent" rel="tooltip" title="preço de compra" value="0" />
                           </div>
                         </div>
                         <label><?=lang('pdt_supplier')?></label>
@@ -305,7 +319,7 @@
 
 <div class="pdt_activate hide"><?=lang("pdt_activate")?></div>
 <div class="pdt_inactivate hide"><?=lang("pdt_inactivate")?></div>
-<div class="ptd_saved hide"><?=lang("ptd_saved")?></div>
-<div class="ptd_noChanges hide"><?=lang("ptd_noChanges")?></div>
+<div class="pdt_saved hide"><?=lang("pdt_saved")?></div>
+<div class="pdt_noChanges hide"><?=lang("pdt_noChanges")?></div>
 <div class="pdt_removeProduct hide"><?=lang("pdt_removeProduct")?></div>
 <div class="pdt_ownProduct hide"><?=lang('pdt_ownProduct')?></div>

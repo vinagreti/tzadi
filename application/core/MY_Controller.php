@@ -24,25 +24,24 @@ class My_Controller extends CI_Controller{
   }
 
   public function MYcheckCompany(){
+    // verifica se os dados da company existem na sessao
+    // verifica se a company acessada é diferente da acessada anteriormente
+    if(!$this->session->userdata("companyNick") || $this->session->userdata("companyNick") != COMPANYNICK) {
+      // busca os dados da nova company no banco
       $this->load->model("company_model");
       $company = $this->company_model->getByNick(COMPANYNICK);
-
       // se a company existe
       if($company){
-        // se a company acessada não a mesma acessada anteriormente
-        if($this->session->userdata("companyNick") != COMPANYNICK){
-          // reccarega as informações da company na session
-          $this->session->set_userdata("companyName", $company->companyName);
-          $this->session->set_userdata("companyNick", $company->companyNick);
-        }
-        return $company;
-      }
-      // se a company nao existe
-      else {
+        // reccarega as informações da company na session
+        $this->session->set_userdata("companyName", $company["name"]);
+        $this->session->set_userdata("companyNick", $company["nick"]);
+        $this->session->set_userdata("companyID", $company["_id"]);
+      } else {
         $this->session->set_flashdata('COMPANYNICK', COMPANYNICK);
         // redireciona para a tela de ecompany not found
         redirect('http://'.ENVIRONMENT.'/error/companyNotFound', 'refresh');
       }
+    }
   }
 }
 ?>

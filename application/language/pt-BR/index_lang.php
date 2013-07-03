@@ -1,5 +1,5 @@
 <?php
-$lang['idx_title'] = 'O mercado de intercâmbio evoluiu!';
+$lang['idx_title'] = 'O mundo do intercâmbio conectado!';
 $lang['idx_explanation'] = 'A tzadi fornece soluções para agilizar as tarefas comuns
    das agências, dos intercambistas e das escolas.';
 $lang['idx_know_more'] = 'Quer saber mais?';

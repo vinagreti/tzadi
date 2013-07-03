@@ -1,5 +1,5 @@
 /* =============================================================
- * bootstrap-typeahead.js v2.2.2
+ * bootstrap-typeahead.js v2.0.0
  * http://twitter.github.com/bootstrap/javascript.html#typeahead
  * =============================================================
  * Copyright 2012 Twitter, Inc.
@@ -15,59 +15,79 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
+ * This is an extension to Bootstrap Typeahead that adds minimal but powerful
+ * extensions.
  * ============================================================ */
 
+!function( $ ){
 
-!function($){
+  "use strict"
 
-  "use strict"; // jshint ;_;
-
-
- /* TYPEAHEAD PUBLIC CLASS DEFINITION
-  * ================================= */
-
-  var Typeahead = function (element, options) {
+  var Typeahead = function ( element, options ) {
     this.$element = $(element)
     this.options = $.extend({}, $.fn.typeahead.defaults, options)
     this.matcher = this.options.matcher || this.matcher
     this.sorter = this.options.sorter || this.sorter
     this.highlighter = this.options.highlighter || this.highlighter
-    this.updater = this.options.updater || this.updater
+    this.$menu = $(this.options.menu).appendTo('body')
     this.source = this.options.source
-    this.$menu = $(this.options.menu)
+    this.onselect = this.options.onselect
+    this.strings = true
     this.shown = false
     this.listen()
   }
+
+  var makeSortString = (function() {
+    var translate_re = /[àáâãäåæçèéêëìíîïñòóôõöœùúûüýÿ]/g;
+    return function(s) {
+      var translate = {
+        'à': 'a', 'á': 'a', 'â': 'a', 'ã': 'a', 'ä': 'a', 'å': 'a',
+        'æ': 'ae',
+        'ç': 'c',
+        'è': 'e', 'é': 'e', 'ê': 'e', 'ë': 'e',
+        'ì': 'i', 'í': 'i', 'î': 'i', 'ï': 'i',
+        'ñ': 'n',
+        'ò': 'o', 'ó': 'o', 'ô': 'o', 'õ': 'o', 'ö': 'o',
+        'œ': 'oe',
+        'ù': 'u', 'ú': 'u', 'û': 'u', 'ü': 'u',
+        'ý': 'y', 'ÿ': 'y',
+      };
+      return ( s.replace(translate_re, function(match) {
+        return translate[match];
+      }) );
+    }
+  })();
 
   Typeahead.prototype = {
 
     constructor: Typeahead
 
   , select: function () {
-      var val = this.$menu.find('.active').attr('data-value')
-      this.$element
-        .val(this.updater(val))
-        .change()
+      var val = JSON.parse(this.$menu.find('.active').attr('data-value'))
+        , text
+
+      if (!this.strings) text = val[this.options.property]
+      else text = val
+
+      this.$element.val(text)
+
+      if (typeof this.onselect == "function")
+          this.onselect(val)
+
       return this.hide()
     }
 
-  , updater: function (item) {
-      return item
-    }
-
   , show: function () {
-      var pos = $.extend({}, this.$element.position(), {
+      var pos = $.extend({}, this.$element.offset(), {
         height: this.$element[0].offsetHeight
       })
 
-      this.$menu
-        .insertAfter(this.$element)
-        .css({
-          top: pos.top + pos.height
-        , left: pos.left
-        })
-        .show()
+      this.$menu.css({
+        top: pos.top + pos.height
+      , left: pos.left
+      })
 
+      this.$menu.show()
       this.shown = true
       return this
     }
@@ -79,24 +99,45 @@
     }
 
   , lookup: function (event) {
-      var items
+      var that = this
+        , items
+        , q
+        , value
 
       this.query = this.$element.val()
 
-      if (!this.query || this.query.length < this.options.minLength) {
+      if (typeof this.source == "function")
+        value = this.source(this, this.query)
+        if (value)
+          this.process(value)
+      else
+        this.process(this.source)
+    }
+
+  , process: function (results) {
+      var that = this
+        , items
+        , q
+
+      if (results.length && typeof results[0] != "string")
+          this.strings = false
+
+      this.query = this.$element.val()
+
+      if (!this.query) {
         return this.shown ? this.hide() : this
       }
 
-      items = $.isFunction(this.source) ? this.source(this.query, $.proxy(this.process, this)) : this.source
-
-      return items ? this.process(items) : this
-    }
-
-  , process: function (items) {
-      var that = this
-
-      items = $.grep(items, function (item) {
-        return that.matcher(item)
+      items = $.grep(results, function (item) {
+        if (!that.strings)
+          if($.inArray(that.options.property, item)) {
+            if(typeof item != 'undefined') {
+              item = item[that.options.property]
+            } else {
+              item = '';
+            }
+          }
+        if (that.matcher(item)) return item
       })
 
       items = this.sorter(items)
@@ -109,7 +150,7 @@
     }
 
   , matcher: function (item) {
-      return ~item.toLowerCase().indexOf(this.query.toLowerCase())
+      return ~makeSortString(item.toLowerCase()).indexOf(makeSortString(this.query.toLowerCase()))
     }
 
   , sorter: function (items) {
@@ -117,10 +158,14 @@
         , caseSensitive = []
         , caseInsensitive = []
         , item
+        , sortby
 
       while (item = items.shift()) {
-        if (!item.toLowerCase().indexOf(this.query.toLowerCase())) beginswith.push(item)
-        else if (~item.indexOf(this.query)) caseSensitive.push(item)
+        if (this.strings) sortby = item
+        else sortby = item[this.options.property]
+
+        if (!sortby.toLowerCase().indexOf(this.query.toLowerCase())) beginswith.push(item)
+        else if (~sortby.indexOf(this.query)) caseSensitive.push(item)
         else caseInsensitive.push(item)
       }
 
@@ -128,17 +173,41 @@
     }
 
   , highlighter: function (item) {
-      var query = this.query.replace(/[\-\[\]{}()*+?.,\\\^$|#\s]/g, '\\$&')
-      return item.replace(new RegExp('(' + query + ')', 'ig'), function ($1, match) {
+      var search_item = makeSortString(item.toLowerCase());
+      var query = makeSortString(this.query.toLowerCase());
+      search_item = search_item.replace(new RegExp('(' + query + ')', 'ig'), function ($1, match) {
         return '<strong>' + match + '</strong>'
-      })
+      });
+
+      item = item.split('');
+      var re = new RegExp('<strong>(' + query + ')<\/strong>', 'ig');
+      var reg_match_count = 0;
+      var mod = 0;
+      var arr_count = 0;
+      var reexec = [];
+      while(reexec = re.exec(search_item)) {
+        var index = re.lastIndex - reexec[0].length - reg_match_count + mod;
+        reg_match_count += reexec[0].length;
+        item.splice(arr_count + index, 0, '<strong>');
+        arr_count += 1;
+        item.splice(arr_count + index + reexec[1].length, 0, '</strong>');
+        arr_count += 1;
+
+        mod += 1;
+      }
+
+      item = item.join('');
+
+      return item;
     }
 
   , render: function (items) {
       var that = this
 
       items = $(items).map(function (i, item) {
-        i = $(that.options.item).attr('data-value', item)
+        i = $(that.options.item).attr('data-value', JSON.stringify(item))
+        if (!that.strings)
+            item = item[that.options.property]
         i.find('a').html(that.highlighter(item))
         return i[0]
       })
@@ -176,8 +245,8 @@
         .on('keypress', $.proxy(this.keypress, this))
         .on('keyup',    $.proxy(this.keyup, this))
 
-      if (this.eventSupported('keydown')) {
-        this.$element.on('keydown', $.proxy(this.keydown, this))
+      if ($.browser.webkit || $.browser.msie) {
+        this.$element.on('keydown', $.proxy(this.keypress, this))
       }
 
       this.$menu
@@ -185,16 +254,33 @@
         .on('mouseenter', 'li', $.proxy(this.mouseenter, this))
     }
 
-  , eventSupported: function(eventName) {
-      var isSupported = eventName in this.$element
-      if (!isSupported) {
-        this.$element.setAttribute(eventName, 'return;')
-        isSupported = typeof this.$element[eventName] === 'function'
-      }
-      return isSupported
-    }
+  , keyup: function (e) {
+      e.stopPropagation()
+      e.preventDefault()
 
-  , move: function (e) {
+      switch(e.keyCode) {
+        case 40: // down arrow
+        case 38: // up arrow
+          break
+
+        case 9: // tab
+        case 13: // enter
+          if (!this.shown) return
+          this.select()
+          break
+
+        case 27: // escape
+          this.hide()
+          break
+
+        default:
+          this.lookup()
+      }
+
+  }
+
+  , keypress: function (e) {
+      e.stopPropagation()
       if (!this.shown) return
 
       switch(e.keyCode) {
@@ -214,50 +300,12 @@
           this.next()
           break
       }
-
-      e.stopPropagation()
     }
-
-  , keydown: function (e) {
-      this.suppressKeyPressRepeat = ~$.inArray(e.keyCode, [40,38,9,13,27])
-      this.move(e)
-    }
-
-  , keypress: function (e) {
-      if (this.suppressKeyPressRepeat) return
-      this.move(e)
-    }
-
-  , keyup: function (e) {
-      switch(e.keyCode) {
-        case 40: // down arrow
-        case 38: // up arrow
-        case 16: // shift
-        case 17: // ctrl
-        case 18: // alt
-          break
-
-        case 9: // tab
-        case 13: // enter
-          if (!this.shown) return
-          this.select()
-          break
-
-        case 27: // escape
-          if (!this.shown) return
-          this.hide()
-          break
-
-        default:
-          this.lookup()
-      }
-
-      e.stopPropagation()
-      e.preventDefault()
-  }
 
   , blur: function (e) {
       var that = this
+      e.stopPropagation()
+      e.preventDefault()
       setTimeout(function () { that.hide() }, 150)
     }
 
@@ -278,9 +326,7 @@
   /* TYPEAHEAD PLUGIN DEFINITION
    * =========================== */
 
-  var old = $.fn.typeahead
-
-  $.fn.typeahead = function (option) {
+  $.fn.typeahead = function ( option ) {
     return this.each(function () {
       var $this = $(this)
         , data = $this.data('typeahead')
@@ -295,29 +341,23 @@
   , items: 8
   , menu: '<ul class="typeahead dropdown-menu"></ul>'
   , item: '<li><a href="#"></a></li>'
-  , minLength: 1
+  , onselect: null
+  , property: 'value'
   }
 
   $.fn.typeahead.Constructor = Typeahead
 
 
- /* TYPEAHEAD NO CONFLICT
-  * =================== */
-
-  $.fn.typeahead.noConflict = function () {
-    $.fn.typeahead = old
-    return this
-  }
-
-
  /* TYPEAHEAD DATA-API
   * ================== */
 
-  $(document).on('focus.typeahead.data-api', '[data-provide="typeahead"]', function (e) {
-    var $this = $(this)
-    if ($this.data('typeahead')) return
-    e.preventDefault()
-    $this.typeahead($this.data())
+  $(function () {
+    $('body').on('focus.typeahead.data-api', '[data-provide="typeahead"]', function (e) {
+      var $this = $(this)
+      if ($this.data('typeahead')) return
+      e.preventDefault()
+      $this.typeahead($this.data())
+    })
   })
 
-}(window.jQuery);
+}( window.jQuery );

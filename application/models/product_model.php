@@ -15,6 +15,25 @@ class Product_Model extends CI_Model {
       ->get('product');
   }
 
+  function getByID( $_id )
+  {
+    $products = $this->mongo_db
+      ->where('company', $this->session->userdata("companyID"))
+      ->where('status', "active")
+      ->where('_id', (int) $_id)
+      ->get('product');
+    return $products[0];
+  }
+
+  function getActive()
+  {
+    return $this->mongo_db
+      ->where('company', $this->session->userdata("companyID"))
+      ->where('status', "active")
+      ->order_by(array('name' => 'asc'))
+      ->get('product');
+  }
+
   // creates a new product obj
   function add($data)
   {
@@ -34,6 +53,9 @@ class Product_Model extends CI_Model {
         ,"supplier_campus" => "0"
         ,"purchase" => "0"
         ,"status" => "active"
+        ,"price" => "0"
+        ,"like" => "0"
+        ,"share" => "0"
       )
     );
     return $this->mongo_db
@@ -94,5 +116,69 @@ class Product_Model extends CI_Model {
       ->get('product');
 
     return $return[0];
+  }
+
+  function like()
+  {
+    $_id = (int) $this->input->post("productID");
+    $product = $this->mongo_db
+      ->where('_id', $_id)
+      ->get('product');
+
+    $likes = (int) $product[0]["like"] + 1;
+
+    $this->mongo_db
+      ->where('_id', $_id)
+      ->set("like", $likes)
+      ->update('product');
+
+    return $likes;
+  }
+
+  function getHumanized( $productID ){
+
+    $product = $this->mongo_db
+      ->where('_id', (int) $productID)
+      ->get('product');
+
+    $product = $product[0];
+
+    if(!isset($product["currency"])) $product["currency"] = "USD";
+
+    if(isset($product["price"])) $product["price"] = $product["currency"] . " " . $product["price"];
+
+    if(isset($product["courseEnrollmentFees"])) $product["courseEnrollmentFees"] = $product["currency"] . " " . $product["courseEnrollmentFees"];
+
+    if(isset($product["courseAdministrativeFees"])) $product["courseAdministrativeFees"] = $product["currency"] . " " . $product["courseAdministrativeFees"];
+
+    if(isset($product["courseBook"])) $product["courseBook"] = $product["currency"] . " " . $product["courseBook"];
+
+    if(!isset($product["courseDurationScale"])) $product["courseDurationScale"] = "days";
+
+    if(isset($product["courseDurationValue"])) $product["courseDuration"] = $product["courseDurationValue"] . " " . lang("pdt_" .$product["courseDurationScale"]);
+
+    if(isset($product["courseKind"])) $product["courseKind"] = lang("pdt_".$product["courseKind"]);
+
+    if(isset($product["coursePeriod"])) $product["coursePeriod"] = lang("pdt_".$product["coursePeriod"] . "Period");
+
+    if(isset($product["courseModality"])) $product["courseModality"] = lang("pdt_".$product["courseModality"]);
+
+    if(!isset($product["ensuranceDurationScale"])) $product["ensuranceDurationScale"] = "days";
+
+    if(isset($product["ensuranceDurationValue"])) $product["ensuranceDuration"] = $product["ensuranceDurationValue"] . " " . lang("pdt_" .$product["ensuranceDurationScale"]);
+
+    if(isset($product["accommodationKind"])) $product["accommodationKind"] = lang("pdt_" . $product["accommodationKind"]);
+
+    if(isset($product["accommodationDurationScale"])) $product["accommodationDurationScale"] = "days";
+
+    if(isset($product["accommodationDurationValue"])) $product["accommodationDuration"] = $product["accommodationDurationValue"]. " " . lang("pdt_" .$product["accommodationDurationScale"]);
+
+    if(isset($product["accommodationFood"])) $product["accommodationFood"] = lang("pdt_" . $product["accommodationFood"]);
+
+    if(isset($product["passTransportKind"])) $product["passTransportKind"] = lang("pdt_" . $product["passTransportKind"]);
+    
+    if(isset($product["workKind"])) $product["workKind"] = lang("pdt_" . $product["workKind"]);
+
+    return $product;
   }
 }

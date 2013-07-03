@@ -11,6 +11,10 @@ $(document).ready(function(){
     this.body.find(".passForm").remove();
     this.workForm = this.body.find(".workForm").clone();
     this.body.find(".workForm").remove();
+    this.packageItem = this.body.find(".packageItem").clone();
+    this.body.find(".packageItem").remove();
+    this.packageForm = this.body.find(".packageForm").clone();
+    this.body.find(".packageForm").remove();
     this.courseForm = this.body.find(".courseForm").clone();
     this.body.find(".courseForm").remove();
     this.ensuranceForm = this.body.find(".ensuranceForm").clone();
@@ -62,6 +66,8 @@ $(document).ready(function(){
       line.children().html(detail);
       line.find(".productKind").html(objProduct.kind);
       line.find(".purchase").val(objProduct.purchase);
+      line.find(".price").val(objProduct.price);
+      this.reCalcValues(id, "price");
       line.find(".detail").val(objProduct.detail);
       line.find(".currency").select2();
       line.find('.currency').select2("val", objProduct.currency);
@@ -80,9 +86,56 @@ $(document).ready(function(){
       line.find(".name").val(objProduct.name);
       this.showKindForm( id );
     };
+    this.reCalcValues = function (id, calcBase){
+      var line = this.body.find("#"+id);
+      var objProduct = products.all[id];
+
+      purchase = Number(line.find(".purchase").val());
+      gain = Number(line.find(".gain").val());
+      percent = Number(line.find(".percent").val());
+      price = Number(line.find(".price").val());
+
+      switch(calcBase){
+        case "gain" :
+          price = purchase + gain;
+          if(price == 0 && purchase == 0) percent = 0;
+          else if(price != 0 && purchase == 0 ) percent = 100;
+          else percent = percent =((price/purchase)*100)-100;
+          line.find(".purchase").val(purchase);
+          line.find(".price").val(price);
+          line.find(".percent").val(percent);
+        break;
+        case "percent" :
+          price = purchase*(1+(percent/100));
+          gain = price - purchase;
+          line.find(".purchase").val(purchase);
+          line.find(".price").val(price);
+          line.find(".gain").val(gain);
+        break;
+        case "price" :
+          gain = price - purchase;
+          if(price == 0 && purchase == 0) percent = 0;
+          else if(price != 0 && purchase == 0 ) percent = 100;
+          else percent = percent =((price/purchase)*100)-100;
+          line.find(".purchase").val(purchase);
+          line.find(".gain").val(gain);
+          line.find(".percent").val(percent);
+        break;
+        case "purchase" :
+          gain = price - purchase;
+          if(price == 0 && purchase == 0) percent = 0;
+          else if(price != 0 && purchase == 0 ) percent = 100;
+          else percent = percent =((price/purchase)*100)-100;
+          line.find(".price").val(price);
+          line.find(".gain").val(gain);
+          line.find(".percent").val(percent);
+        break;
+      };
+    };
     this.showKindForm = function( id ){
       var objProduct = products.all[id];
       var line = this.body.find("#"+id);
+      var self = this;
       line.find(".kindForm").empty();
       switch(objProduct.kind) {
         case "course":
@@ -129,6 +182,33 @@ $(document).ready(function(){
           line.find(".passTransportKind").select2("val", objProduct.passTransportKind);
           line.find(".passFrom").val(objProduct.passFrom);
           line.find(".passTo").val(objProduct.passTo);
+        break;
+        case "package":
+          var packageForm = this.packageForm.clone();
+          line.find(".kindForm").html(packageForm);
+          line.find('.addPackageProduct').typeahead({
+            source: products.all
+            , property: "name"
+            , onselect: function(obj) {
+              if(products.all[id]._id != obj._id) products.addPackageProduct( id, obj._id );
+              else globalAlert("alert-error", $(".pdt_canotAddSamePackage").html());
+              line.find('.addPackageProduct').val("");
+            }
+          })
+          if(objProduct.itens) {
+            $.each(objProduct.itens, function( index, amount ){
+              var packageItem = products.table.packageItem.clone();
+              var product = tzdList.getBy(products.all, "_id", index)[0];
+              packageItem.attr("id", index);
+              packageItem.find(".packageProductPrice").html(product.price);
+              packageItem.find(".packageProductTotalPrice").html(product.price*amount);
+              packageItem.find(".packageProductQtd").val(amount);
+              if(product.detail) packageItem.find(".packageProductDetail").html(product.detail.slice(0, 124));
+              packageItem.find(".packageProductName").html(product.name).attr("href", product._id).attr("target", "_blank");
+              line.find(".packageItens").prepend(packageItem);
+            });
+            products.reCalcPackageTotal(id);
+          }
         break;
         case "work":
           var workForm = this.workForm.clone();
@@ -239,6 +319,7 @@ $(document).ready(function(){
       var line = products.table.body.find("#"+id);
       if(objProduct.name != line.find(".nameInput").val()) formData.name = line.find(".nameInput").val();
       if(objProduct.purchase != line.find(".purchase").val()) formData.purchase = line.find(".purchase").val();
+      if(objProduct.price != line.find(".price").val()) formData.price = line.find(".price").val();
       if(objProduct.currency != line.find(".currency").select2('data').id) formData.currency = line.find(".currency").select2('data').id;
       if(objProduct.supplier != line.find(".supplier").select2('data').id) formData.supplier = line.find(".supplier").select2('data').id;
       if(line.find(".supplier_campus").select2('data').id && objProduct.supplier_campus != line.find(".supplier_campus").select2('data').id) formData.supplier_campus = line.find(".supplier_campus").select2('data').id;
@@ -264,6 +345,7 @@ $(document).ready(function(){
       if(line.find(".passFrom").val() && objProduct.passFrom != line.find(".passFrom").val()) formData.passFrom = line.find(".passFrom").val();
       if(line.find(".passTo").val() && objProduct.passTo != line.find(".passTo").val()) formData.passTo = line.find(".passTo").val();
       if(line.find(".workKind").select2('data').id && objProduct.workKind != line.find(".workKind").select2('data').id) formData.workKind = line.find(".workKind").select2('data').id;
+      formData.itens = objProduct.itens;
       var count = 0;
       var i;
       for (i in formData) {
@@ -278,6 +360,32 @@ $(document).ready(function(){
       var totalRows = products.table.body.find(".tzdTableRow").length;
       $(".totalRows").html(totalRows);
     };
+    this.addPackageProduct = function( productID, item ){
+      var line = this.body.find("#"+productID);
+      var product = tzdList.getBy(products.all, "_id", item)[0];
+      var packageItem = this.packageItem.clone();
+      packageItem.attr("id", item);
+      packageItem.find(".packageProductPrice").html(product.price);
+      packageItem.find(".packageProductTotalPrice").html(product.price);
+      packageItem.find(".packageProductQtd").val(1);
+      packageItem.find(".packageProductName").html(product.name).attr("href", product._id).attr("target", "_blank");
+      if(product.detail) packageItem.find(".packageProductDetail").html(product.detail.slice(0, 124));
+      line.find(".packageItens").prepend(packageItem);
+    };
+    this.setPackageItemQtd = function(productID, item, amount){
+      var line = this.body.find("#"+productID);
+      var product = tzdList.getBy(products.all, "_id", item)[0];
+      line.find("#"+item).find(".packageProductQtd").val(amount);
+      line.find("#"+item).find(".packageProductTotalPrice").html(amount*product.price);
+    };
+    this.setPackageTotal = function(productID, total){
+      var line = this.body.find("#"+productID);
+      line.find(".packageTotal").html(total);
+    };
+    this.removePackageProduct = function( productID, item ){
+      this.body.find("#"+productID).find(".packageItens").find("#"+item).remove();
+    };
+
   };
 
   products = {
@@ -413,7 +521,7 @@ $(document).ready(function(){
           products.all[id].img = e;
           products.table.changePhoto( id );
         }
-        else console.log(e.error);
+        else globalAlert('alert-error', e.error);
       };
       var ajax = new tzdAjaxCall();
       ajax.upload(url, data, callback);
@@ -425,13 +533,13 @@ $(document).ready(function(){
         formData.tzadiToken = tzadiToken;
         formData._id = products.all[id]._id;
         var callback = function( e ){
-          globalAlert('alert-success', $(".ptd_saved").html());
+          globalAlert('alert-success', $(".pdt_saved").html());
           products.all[id] = e;
         };
         var ajax = new tzdAjaxCall();
         ajax.post(url, formData, callback);
       } else {
-        globalAlert('alert-success', $(".ptd_noChanges").html());
+        globalAlert('alert-success', $(".pdt_noChanges").html());
       }
     },
     search : function( searchString ){
@@ -458,6 +566,43 @@ $(document).ready(function(){
     },
     order : function(){
       products.all = tzdList.orderBy(products.table.order, products.all);
+    }
+    , addPackageProduct : function( productID, item ){
+      if(!this.all[productID].itens) this.all[productID].itens = {};
+      if(this.all[productID].itens[item]) {
+        this.all[productID].itens[item]++;
+        this.table.setPackageItemQtd(productID, item, this.all[productID].itens[item]);
+      } else {
+        this.all[productID].itens[item] = 1;
+        this.table.addPackageProduct( productID, item );        
+      }
+      this.reCalcPackageTotal(productID);
+    }
+    , dropPackageItem : function( productID, item ){
+      var self = this;
+      if($.map(self.all[productID].itens, function(n, i) { return i; }).length > 1){
+        delete self.all[productID].itens[item];
+        this.table.removePackageProduct(productID, item);
+        this.reCalcPackageTotal(productID);
+      } else {
+        globalAlert("alert-error", $(".pdt_packageNeedsAtLeast1Product").html());
+        self.table.setPackageItemQtd(productID, item, 1);
+        self.reCalcPackageTotal(productID);
+      }
+    }
+    , setPackageItemQtd : function(productID, item, amount){
+      this.all[productID].itens[item] = amount;
+      this.table.setPackageItemQtd(productID, item, amount);
+      this.reCalcPackageTotal(productID);
+    }
+    , reCalcPackageTotal : function(productID){
+      var total = 0;
+      var self = this;
+      $.each(self.all[productID].itens, function(item, amount){
+        var product = tzdList.getBy(self.all, "_id", item)[0];
+        total += product.price*amount;
+      });
+      this.table.setPackageTotal(productID, total);
     }
   };
 
@@ -555,6 +700,34 @@ $(document).ready(function(){
       products.order();
       products.search( $('#search-query').val() );
     }
-
   });
+  $('.price').live('keyup propertychange', function(){
+    var id = $(this).parents(".tzdTableLine").attr("id");
+    products.table.reCalcValues(id, "price");
+  });
+  $('.gain').live('keyup propertychange', function(){
+    var id = $(this).parents(".tzdTableLine").attr("id");
+    products.table.reCalcValues(id, "gain");
+  });
+  $('.percent').live('keyup propertychange', function(){
+    var id = $(this).parents(".tzdTableLine").attr("id");
+    products.table.reCalcValues(id, "percent");
+  });
+  $('.purchase').live('keyup propertychange', function(){
+    var id = $(this).parents(".tzdTableLine").attr("id");
+    products.table.reCalcValues(id, "purchase");
+  });
+  $('.dropPackageItem').live("click", function() {
+    var productID = $(this).parents(".tzdTableLine").attr("id");
+    var item = $(this).parents(".packageItem").attr("id");
+    products.dropPackageItem( productID, item );
+  });
+  $('.packageProductQtd').live('change propertychange', function(){
+    var productID = $(this).parents(".tzdTableLine").attr("id");
+    var item = $(this).parents(".packageItem").attr("id");
+    var amount = $(this).val();
+    if(amount <= 0 || isNaN(amount)) $(this).parents(".packageItem").find('.dropPackageItem').click();
+    else products.setPackageItemQtd(productID, item, amount);
+  });
+
 });

@@ -1,5 +1,5 @@
 <?php
-$lang['idx_title'] = 'The interchange market has evolved!';
+$lang['idx_title'] = 'The interchange world connected!';
 $lang['idx_explanation'] = 'The Tzadi provides solutions to streamline common tasks of the agencies, the exchange students and the schools.';
 $lang['idx_know_more'] = 'Want to know more?';
 $lang['idx_Agency'] = 'Agency';

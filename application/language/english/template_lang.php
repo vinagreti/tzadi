@@ -1,11 +1,14 @@
 <?php
 $lang['tmpt_Agency'] = 'Agency';
 $lang['tmpt_Products'] = 'Products';
+$lang['tmpt_products'] = 'products';
 $lang['tmpt_Institutions'] = 'Suppliers';
 $lang['tmpt_Profile'] = 'Profile';
 $lang['tmpt_Settings'] = 'Settings';
 $lang['tmpt_Logout'] = 'Logout';
+$lang['tmpt_logout'] = 'logout';
 $lang['tmpt_Login'] = 'Login';
+$lang['tmpt_login'] = 'login';
 $lang['tmpt_Register'] = 'Register';
 $lang['tmpt_Save'] = 'Save';
 $lang['tmpt_Cancel'] = 'Cancel';
@@ -14,10 +17,11 @@ $lang['tmpt_Edit'] = 'Edit';
 $lang['tmpt_Remove'] = 'Remove';
 $lang['tmpt_Message'] = 'Message';
 $lang['tmpt_Institutional'] = 'Institutional';
-$lang['tmpt_About_us'] = 'About us';
+$lang['tmpt_AboutUs'] = 'About us';
+$lang['tmpt_AboutUsHtml'] = 'about';
 $lang['tmpt_contact_us'] = 'contact us';
-$lang['tmpt_Contact_us'] = 'Contact us';
-$lang['tmpt_Products'] = 'Products';
+$lang['tmpt_ContactUs'] = 'Contact us';
+$lang['tmpt_ContactUsHtml'] = 'contact';
 $lang['tmpt_Language'] = 'Language';
 $lang['tmpt_Powered_by'] = 'Powered by';
 $lang['tmpt_Products_desc'] = 'Select the tzadi product to access';
@@ -41,3 +45,7 @@ $lang['tmpt_insert_message'] = 'Please, enter the message before submit';
 // Error views
 $lang['tmpt_permission_denied'] = 'You do not have the right level to see this page. Please, log in to access this content or';
 $lang['tmpt_companyNotFound'] = 'This company is not in our system yet. Would you like to register?';
+
+
+$lang["tmpt_Budget"] = "Budget";
+$lang["tmpt_budgetURL"] = "budget";

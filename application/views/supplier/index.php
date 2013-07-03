@@ -62,7 +62,7 @@
                   <div class="span3">
                     <p>
                       <div class="thumbnail">
-                        <img src="<?=base_url()?>assets/img/160x120.png" class="changeImg" alt="160x120">
+                        <img src="<?=base_url()?>assets/img/no_photo_160x120.png" alt="160x120" class="changeImg" alt="160x120">
                         <input type="file" name="img" class="supplierImg hide" />
                       </div>
                     </p>
