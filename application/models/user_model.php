@@ -65,7 +65,9 @@ class User_Model extends CI_Model {
     $this->mongo_db->delete_all("supplier");
     $this->mongo_db->delete_all("company");
     $this->mongo_db->delete_all("session");
+    $this->mongo_db->delete_all("counter");
     $this->mongo_db->set("id", 0)->update('counter');
+    $this->mongo_db->insert('counter', array("id" => 0));
 
     $demo["_id"] = $this->mongo_model->newID();
     $demo["name"] = "Demo Intercambios";

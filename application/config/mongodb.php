@@ -7,11 +7,26 @@ $config['mongo_host'] = "localhost";
 $config['mongo_port'] = 27017;
 
 // The database you want to work from (required)
-$config['mongo_db'] = "tzadi";
 
-// Leave blank if Mongo is not running in auth mode
-$config['mongo_user'] = "";
-$config['mongo_pass'] = "";
+switch(ENVIRONMENT){
+	case "tzadi.local":
+		$config['mongo_db'] = "tzadi";
+		$config['mongo_user'] = "";
+		$config['mongo_pass'] = "";
+		break;
+
+	case "staging.tzadi.com":
+		$config['mongo_db'] = "tzadistaging";
+		$config['mongo_user'] = "tzadistaguser";
+		$config['mongo_pass'] = "stag2010";
+		break;
+
+	case "tzadi.com":
+		$config['mongo_db'] = "tzadi";
+		$config['mongo_user'] = "tzadiproduser";
+		$config['mongo_pass'] = "prod2010";
+		break;
+}
 
 // Persistant connections
 $config['mongo_persist'] = TRUE;
@@ -26,7 +41,7 @@ $config['mongo_return'] = 'array'; // Set to object
 $config['mongo_query_safety'] = 'safe';
 
 // Supress connection error password display
-$config['mongo_supress_connect_error'] = TRUE;
+$config['mongo_supress_connect_error'] = FALSE;
 
 // If you are having problems connecting try changing this to TRUE
-$config['host_db_flag'] = FALSE;
+$config['host_db_flag'] = TRUE;
