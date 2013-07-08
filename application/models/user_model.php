@@ -9,6 +9,9 @@ class User_Model extends CI_Model {
 
   function getByEmail($email)
   {
+    
+    $email = strtolower($email);
+
     $res = $this->mongo_db
       ->where('email', $email)
       ->get('user');
@@ -18,8 +21,11 @@ class User_Model extends CI_Model {
   }
 
   function authenticate( $email, $password ) {
-    $data["email"] = $email;
+
+    $data["email"] = strtolower($email);
+
     $data["password"] = md5($password);
+    
     $user = $this->mongo_db
       ->where($data)
       ->get('user');
@@ -37,7 +43,7 @@ class User_Model extends CI_Model {
         $this->session->set_userdata('userName', $user[0]["name"]);
         $this->session->set_userdata('userEmail', $user[0]["email"]);
         $this->session->set_userdata('companyID', $user[0]["company"]);
-        $this->session->set_userdata('companyNick', $company[0]["nick"]);
+        $this->session->set_userdata('companySubdomain', $company[0]["subdomain"]);
         $this->session->set_userdata('companyName', $company[0]["name"]);
 
         return false;
@@ -71,13 +77,13 @@ class User_Model extends CI_Model {
 
     $demo["_id"] = $this->mongo_model->newID();
     $demo["name"] = "Demo Intercambios";
-    $demo["nick"] = "demo";
+    $demo["subdomain"] = "demo";
     $demo["about"] = "Esta é uma agencia de demonstração, não existe realmente. Todo o seu conteúdo é fictício. Por se tratar de um conteudo de testes, não há um controle sobre as informações da agencia. Favor não utilizar conteúdo inapropriado nos testes, como palavras, imagens, arquivos...";
     $demo["contact"] = "Texto dinamico na pagina de contato";
 
     $mango["_id"] = $this->mongo_model->newID();
     $mango["name"] = "Mango Intercambios";
-    $mango["nick"] = "mango";
+    $mango["subdomain"] = "mango";
     $mango["about"] = "http://mangointercambios.com.br/mangoshop/cms.php?id_cms=4";
     $mango["contact"] = "http://mangointercambios.com.br/mangoshop/cms.php?id_cms=4";
 

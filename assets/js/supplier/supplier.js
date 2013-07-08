@@ -52,6 +52,7 @@ $(document).ready(function(){
       campus.find(".campusName").val(objCampus.name);
       campus.find(".address").val(objCampus.address);
       campus.find(".cep").val(objCampus.cep);
+      campus.find(".cep").mask('99999-999');
       campus.find(".city").val(objCampus.city);
       campus.find(".state").val(objCampus.state);
       campus.find(".country").val(objCampus.country);
@@ -239,6 +240,19 @@ $(document).ready(function(){
       };
       $tzd.ajax.post(url, data, callback)
     }
+    , clone : function( supplierID ){
+      var url = base_url+'supplier/makeClone';
+      var data = {
+        tzadiToken : tzadiToken
+        ,supplierID : supplierID
+      };
+      var callback = function( e ){
+        var id = suppliers.all.length;
+        suppliers.all[id] = e;
+        suppliers.table.addLine( e._id, "before", true );
+      };
+      $tzd.ajax.post(url, data, callback)
+    }
     , drop : function( supplierID ){
       var url = base_url+'supplier/drop';
       var data = {
@@ -396,6 +410,10 @@ $(document).ready(function(){
   $(".addSupplier").live("click", function(){
     suppliers.add( $('#search-query').val());
   });
+  $(".clone").live("click", function(){
+    var supplierID = $(this).parents(".tzdTableLine").attr("id");
+    suppliers.clone( supplierID );
+  });
   $(".reload").live("click", function(){
     suppliers.reload();
   });
@@ -453,9 +471,18 @@ $(document).ready(function(){
     }
   });
   $('.save').live("click", function() {
-    var supplierID = $(this).parents(".tzdTableLine").attr("id");
-    var campusID = $(this).parents(".tzdTableLine").find(".tzdTableCampus").attr("id");
-    suppliers.update(supplierID, campusID);
+    var line = $(this).parents(".tzdTableLine");
+    var valid = true;
+
+    valid = valid && $tzd.form.checkMask.range(line.find(".name"), 1, 512, $(".splr_invalidName").html());
+    valid = valid && $tzd.form.checkMask.range(line.find(".campusName"), 1, 512, $(".splr_invalidCampusName").html());
+    valid = valid && $tzd.form.checkMask.cep(line.find(".cep"), $(".splr_invalidCep").html());
+
+    if( valid ) {
+      var supplierID = $(this).parents(".tzdTableLine").attr("id");
+      var campusID = $(this).parents(".tzdTableLine").find(".tzdTableCampus").attr("id");
+      suppliers.update(supplierID, campusID);
+    }
   });
   $(".statusDivOpen").live("click", function(){
     $(".statusDiv").toggle();

@@ -128,12 +128,14 @@ $(document).ready(function(){
 
     };
 
+    $('#subdomain').mask('A{1,9}?A{0,9}?A{0,9}?A{0,2}');
     $("#subdomain").blur(function() {
 
       if( $(this).val() != "" ) company.checkSubdomain($(this).val() );
 
     });
 
+    $('#email').mask('Z{1,9}?Z{0,9}?Z{0,9}?Z{0,2}', {translation: {'Z': "[A-Za-Z]?"}});
     $("#email").blur(function() {
 
       if( $(this).val() != "" ) company.checkEmail($(this).val() );
@@ -144,11 +146,11 @@ $(document).ready(function(){
 
       var valid = true;
 
-      valid = valid && $tzd.form.checkMask.range( $('#subdomain'), 1, 65535, $(".su_pleaseFillSubdomain").html() );
+      valid = valid && $tzd.form.checkMask.range( $('#subdomain'), 1, 32, $(".su_pleaseFillSubdomain").html() );
 
       valid = valid && $tzd.form.checkMask.email( $('#email'), $(".su_pleaseFillValidEmail").html() );
 
-      valid = valid && $tzd.form.checkMask.range( $('#password'), 1, 65535, $(".su_pleaseFillPassword").html() );
+      valid = valid && $tzd.form.checkMask.range( $('#password'), 1, 32, $(".su_pleaseFillPassword").html() );
 
       if ( valid ) {
 

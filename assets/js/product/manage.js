@@ -64,9 +64,13 @@ $(document).ready(function(){
       var objProduct = products.all[id];
       var detail = this.detail.clone();
       line.children().html(detail);
-      line.find(".productKind").html(objProduct.kind);
+      line.find(".productKind").html($("#"+objProduct.kind).html());
       line.find(".purchase").val(objProduct.purchase);
+      line.find(".purchase").mask('000000000000000.00', {reverse: true});
       line.find(".price").val(objProduct.price);
+      line.find(".price").mask('000000000000000.00', {reverse: true});
+      line.find(".gain").mask('000000000000000.00', {reverse: true});
+      line.find(".percent").mask('00000', {reverse: true});
       this.reCalcValues(id, "price");
       line.find(".detail").val(objProduct.detail);
       line.find(".currency").select2();
@@ -90,47 +94,56 @@ $(document).ready(function(){
       var line = this.body.find("#"+id);
       var objProduct = products.all[id];
 
-      purchase = Number(line.find(".purchase").val());
-      gain = Number(line.find(".gain").val());
-      percent = Number(line.find(".percent").val());
-      price = Number(line.find(".price").val());
+      var purchase = Number(line.find(".purchase").val());
+      var price = Number(line.find(".price").val());
 
-      switch(calcBase){
-        case "gain" :
-          price = purchase + gain;
-          if(price == 0 && purchase == 0) percent = 0;
-          else if(price != 0 && purchase == 0 ) percent = 100;
-          else percent = percent =((price/purchase)*100)-100;
-          line.find(".purchase").val(purchase);
-          line.find(".price").val(price);
-          line.find(".percent").val(percent);
-        break;
-        case "percent" :
-          price = purchase*(1+(percent/100));
-          gain = price - purchase;
-          line.find(".purchase").val(purchase);
-          line.find(".price").val(price);
-          line.find(".gain").val(gain);
-        break;
-        case "price" :
-          gain = price - purchase;
-          if(price == 0 && purchase == 0) percent = 0;
-          else if(price != 0 && purchase == 0 ) percent = 100;
-          else percent = percent =((price/purchase)*100)-100;
-          line.find(".purchase").val(purchase);
-          line.find(".gain").val(gain);
-          line.find(".percent").val(percent);
-        break;
-        case "purchase" :
-          gain = price - purchase;
-          if(price == 0 && purchase == 0) percent = 0;
-          else if(price != 0 && purchase == 0 ) percent = 100;
-          else percent = percent =((price/purchase)*100)-100;
-          line.find(".price").val(price);
-          line.find(".gain").val(gain);
-          line.find(".percent").val(percent);
-        break;
-      };
+      if(line.find(".purchase").val() != "" || line.find(".price").val() != "") {
+        var gain = Number(line.find(".gain").val());
+        var percent = Number(line.find(".percent").val());
+
+        switch(calcBase){
+          case "gain" :
+            if(gain == 0){
+              percent = 0;
+              price = purchase;
+            } else {
+              price = purchase + gain;
+              percent = gain / ( purchase / 100 );
+            }
+            line.find(".price").val(price.toFixed(2));
+            line.find(".percent").val(percent.toFixed(2));
+          break;
+          case "percent" :
+            if(percent == 0){
+              gain = 0;
+              price = purchase;
+            } else {
+              gain = purchase * (percent/100);
+              price = purchase + gain;
+            }
+            line.find(".price").val(price.toFixed(2));
+            line.find(".gain").val(gain.toFixed(2));
+          break;
+          case "price" :
+            gain = price - purchase;
+            if(price == 0 && purchase == 0 || price == purchase){
+              percent = 0;
+              gain = 0;
+            } else {
+              gain = price - purchase;
+              percent = gain / ( purchase / 100 );
+            }
+            line.find(".gain").val(gain.toFixed(2));
+            line.find(".percent").val(percent.toFixed(2));
+          break;
+          case "purchase" :
+            gain = price - purchase;
+            percent = gain / ( purchase / 100 );
+            line.find(".gain").val(gain.toFixed(2));
+            line.find(".percent").val(percent.toFixed(2));
+          break;
+        };
+      }
     };
     this.showKindForm = function( id ){
       var objProduct = products.all[id];
@@ -142,24 +155,30 @@ $(document).ready(function(){
           var courseForm = this.courseForm.clone();
           line.find(".kindForm").html(courseForm);
           line.find(".courseDurationValue").val(objProduct.courseDurationValue);
+          line.find(".courseDurationValue").mask("000");
           line.find(".courseDurationScale").select2();
           line.find(".courseDurationScale").select2("val", objProduct.courseDurationScale);
           line.find(".courseKind").select2();
           line.find(".courseKind").select2("val", objProduct.courseKind);
           line.find(".courseLanguage").val(objProduct.courseLanguage);
+          line.find(".courseLanguage").mask("S{1,9}S{0,9}S{0,9}S{0,2}");
           line.find(".courseModality").select2();
           line.find(".courseModality").select2("val", objProduct.courseModality);
           line.find(".coursePeriod").select2();
           line.find(".coursePeriod").select2("val", objProduct.coursePeriod);
           line.find(".courseEnrollmentFees").val(objProduct.courseEnrollmentFees);
+          line.find(".courseEnrollmentFees").mask('000000000000000.00', {reverse: true});
           line.find(".courseAdministrativeFees").val(objProduct.courseAdministrativeFees);
+          line.find(".courseAdministrativeFees").mask('000000000000000.00', {reverse: true});
           line.find(".courseBook").val(objProduct.courseBook);
+          line.find(".courseBook").mask('000000000000000.00', {reverse: true});
           line.find(".courseRequirements").val(objProduct.courseRequirements);
         break;
         case "ensurance":
           var ensuranceForm = this.ensuranceForm.clone();
           line.find(".kindForm").html(ensuranceForm);
           line.find(".ensuranceDurationValue").val(objProduct.ensuranceDurationValue);
+          line.find(".ensuranceDurationValue").mask("000");
           line.find(".ensuranceDurationScale").select2();
           line.find(".ensuranceDurationScale").select2("val", objProduct.ensuranceDurationScale);
         break;
@@ -169,7 +188,9 @@ $(document).ready(function(){
           line.find(".accommodationKind").select2();
           line.find(".accommodationKind").select2("val", objProduct.accommodationKind);
           line.find(".accommodationPeopleNumber").val(objProduct.accommodationPeopleNumber);
+          line.find(".accommodationPeopleNumber").mask("000");
           line.find(".accommodationDurationValue").val(objProduct.accommodationDurationValue);
+          line.find(".accommodationDurationValue").mask("000");
           line.find(".accommodationDurationScale").select2();
           line.find(".accommodationDurationScale").select2("val", objProduct.accommodationDurationScale);
           line.find(".accommodationFood").select2();
@@ -407,6 +428,20 @@ $(document).ready(function(){
       };
       $tzd.ajax.post(url, data, callback);
     }
+    ,clone : function( id ){
+      var url = base_url+'product/makeClone';
+      var data = {
+        tzadiToken : tzadiToken
+        ,productID : products.all[id]._id
+      };
+      var callback = function( e ){
+        var id = products.all.length;
+        products.all[id] = e;
+        products.table.addLine( id, 'before', true );
+        products.table.reCalc();
+      };
+      $tzd.ajax.post(url, data, callback);
+    }
     ,active : function( id ){
       var objProduct = this.all[id];
       if(objProduct.status == "active") objProduct.status = "inactive";
@@ -626,6 +661,10 @@ $(document).ready(function(){
     var kind = $(this).attr("id");
     products.add( kind );
   });
+  $(".productClone").live("click", function(){
+    var id = $(this).parents(".tzdTableLine").attr("id");
+    products.clone( id );
+  });
   $(".tzdTableRefresh").live("click", function(){
     $(".orderDiv").find("#"+products.table.order).find("i").removeClass();
     $(".orderDiv").find("#"+products.table.order).find("i").addClass("icon-chevron-down");
@@ -649,12 +688,32 @@ $(document).ready(function(){
     products.table.showCampi( productIndex );
   });
   $('.productSave').live("click", function() {
-    var id = $(this).parents(".tzdTableLine").attr("id");
-    products.set(id);
+    var line = $(this).parents(".tzdTableLine");
+    var valid = true;
+    if(line.find(".nameInput").val()) valid = valid && $tzd.form.checkMask.range(line.find(".nameInput"), 1, 512, $(".pdt_invalidTitle").html());
+    if(line.find(".detail").val()) valid = valid && $tzd.form.checkMask.range(line.find(".detail"), 0, 65535, $(".pdt_invalidDetail").html());
+    if(line.find(".courseRequirements").val()) valid = valid && $tzd.form.checkMask.range(line.find(".courseRequirements"), 0, 1024, $(".pdt_invalidRequirements").html());
+    if(line.find(".passFrom").val()) valid = valid && $tzd.form.checkMask.range(line.find(".passFrom"), 0, 512, $(".pdt_invalidFrom").html());
+    if(line.find(".passTo").val()) valid = valid && $tzd.form.checkMask.range(line.find(".passTo"), 0, 512, $(".pdt_invalidTo").html());
+    if(line.find(".courseLanguage").val()) valid = valid && $tzd.form.checkMask.range(line.find(".courseLanguage"), 0, 32, $(".pdt_invalidCourseLanguage").html());
+    if(line.find(".purchase").val()) valid = valid && $tzd.form.checkMask.float(line.find(".purchase"), $(".pdt_invalidPurchase").html());
+    if(line.find(".price").val()) valid = valid && $tzd.form.checkMask.float(line.find(".price"), $(".pdt_invalidPrice").html());
+    if(line.find(".courseDurationValue").val()) valid = valid && $tzd.form.checkMask.float(line.find(".courseDurationValue"), $(".pdt_invalidCourseDurationValue").html());
+    if(line.find(".courseEnrollmentFees").val()) valid = valid && $tzd.form.checkMask.float(line.find(".courseEnrollmentFees"), $(".pdt_invalidCourseEnrollmentFees").html());
+    if(line.find(".courseAdministrativeFees").val()) valid = valid && $tzd.form.checkMask.float(line.find(".courseAdministrativeFees"), $(".pdt_invalidCourseAdministrativeFees").html());
+    if(line.find(".courseBook").val()) valid = valid && $tzd.form.checkMask.float(line.find(".courseBook"), $(".pdt_invalidCourseBook").html());
+    if(line.find(".ensuranceDurationValue").val()) valid = valid && $tzd.form.checkMask.float(line.find(".ensuranceDurationValue"), $(".pdt_invalidEnsuranceDurationValue").html());
+    if(line.find(".accommodationPeopleNumber").val()) valid = valid && $tzd.form.checkMask.float(line.find(".accommodationPeopleNumber"), $(".pdt_invalidAccommodationPeopleNumber").html());
+    if(line.find(".accommodationDurationValue").val()) valid = valid && $tzd.form.checkMask.float(line.find(".accommodationDurationValue"), $(".pdt_invalidAccommodationDurationValue").html());
+
+    if( valid ){
+      var id = $(this).parents(".tzdTableLine").attr("id");
+      products.set(id);
+    }
   });
   $('#search-query').live('keyup propertychange', function(){
     var searchString = $(this).val();
-    products.search( searchString );      
+    if( products.all != [] ) products.search( searchString );      
   });
   $(".clearSearch").live("click", function(){
     if($('#search-query').val() != "") products.search( "" ); 
@@ -730,5 +789,4 @@ $(document).ready(function(){
     if(amount <= 0 || isNaN(amount)) $(this).parents(".packageItem").find('.dropPackageItem').click();
     else products.setPackageItemQtd(productID, item, amount);
   });
-
 });

@@ -7,10 +7,13 @@ class Company_Model extends CI_Model {
     $this->load->library("mongo_db");
   }
 
-  function getByNick($nick)
+  function getBySubdomain($subdomain)
   {
+
+    $subdomain = strtolower($subdomain);
+
     $res = $this->mongo_db
-      ->where('nick', $nick)
+      ->where('subdomain', $subdomain)
       ->get('company');
 
     if($res) return $res[0];
@@ -30,14 +33,14 @@ class Company_Model extends CI_Model {
       array(
         "_id" => $newUserID
         , "company" => $newCompanyID
-        ,"name" => $data["email"]
-        , "email" => $data["email"]
+        ,"name" => strtolower($data["email"])
+        , "email" => strtolower($data["email"])
         , "password" => md5($data["password"])
         , "permission" => array("supplier" => "1023", "product" => "1023")
       )
     );
 
-    $this->mongo_db->insert('company',array("name" =>  $data["subdomain"], "_id" => $newCompanyID, "plan" => $data["plan"], "nick" => $data["subdomain"], "owner" => $newUserID));
+    $this->mongo_db->insert('company',array("name" =>  $data["subdomain"], "_id" => $newCompanyID, "plan" => $data["plan"], "subdomain" => strtolower($data["subdomain"]), "owner" => $newUserID));
 
     return true;
   }

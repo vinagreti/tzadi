@@ -70,6 +70,14 @@ class Product extends My_Controller {
     $newProduct = $this->product_model->add($data);
     echo json_encode($newProduct[0]);
   }
+
+  public function makeClone()
+  {
+    $this->load->model("product_model");
+    $newProduct = $this->product_model->makeClone($this->input->post("productID"));
+    echo json_encode($newProduct);
+  }
+
   public function set()
   {
     $data = $this->input->post();

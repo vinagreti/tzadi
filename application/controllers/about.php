@@ -10,14 +10,14 @@ class About extends My_Controller {
 
 	public function index()
 	{
-    if(!defined('COMPANYNICK')){
+    if(!defined('COMPANYSUBDOMAIN')){
       $data->content = $this->load->view('tzadi/about', "", true);
       $data->page_title = lang('tmpt_About_us');
       $this->parser->parse('templates/tzadiTemplate', $data);      
     }
     else{
       $this->load->model("company_model");
-      $company = $this->company_model->getByNick(COMPANYNICK);
+      $company = $this->company_model->getBySubdomain(COMPANYSUBDOMAIN);
       $data->content = $this->load->view('company/about', $company, true);
       $data->page_title = lang('tmpt_About_us');
       $data->companyName = $this->session->userdata("companyName");

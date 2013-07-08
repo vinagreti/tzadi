@@ -83,7 +83,9 @@
                     <a class="closeDetail btn btn-block"><?=lang("tmpt_Close")?></a>
                   </div>
                   <div class="span20">
-                    <input type="text" class="input-block-level name nameInput" />
+                    <div class="control-group">
+                      <input type="text" class="input-block-level name nameInput" />
+                    </div>
                   </div>
                 </div>
               </div>
@@ -93,7 +95,9 @@
                     <p><span class="productKind label label-warning"></span><p>
                     <div class="thumbnail">
                       <img src="<?=base_url()?>assets/img/no_photo_160x120.png" class="changeImg" alt="160x120">
-                      <input type="file" class="productImg hide" />
+                      <div class="control-group">
+                        <input type="file" class="productImg hide" />
+                      </div>
                     </div>
                   </div>
                   <div class="span17">
@@ -104,7 +108,9 @@
                             <div class="row">
                               <div class="span4">
                                 <label><?=lang('pdt_purchase')?></label>
-                                <input type="text" class="input-block-level purchase" value="0" />
+                                <div class="control-group">
+                                  <input type="text" class="input-block-level purchase"/>
+                                </div>
                               </div>
                               <div class="span4">
                                 <label><?=lang('pdt_currency')?></label>
@@ -119,15 +125,21 @@
                             <div class="row">
                               <div class="span4">
                                 <label><?=lang('pdt_sellPrice')?></label>
-                                <input type="text" class="input-block-level price" value="0" />
+                                <div class="control-group">
+                                  <input type="text" class="input-block-level price"/>
+                                </div>
                               </div>
                               <div class="span2">
                                 <label><?=lang('pdt_gain')?></label>
-                                <input type="text" class="input-block-level gain" value="0" />
+                                <div class="control-group">
+                                  <input type="text" class="input-block-level gain"/>
+                                </div>
                               </div>
                               <div class="span2">
                                 <label>%</label>
-                                <input type="text" class="input-block-level percent" value="0" />
+                                <div class="control-group">
+                                  <input type="text" class="input-block-level percent"/>
+                                </div>
                               </div>
                             </div>
                             <label><?=lang('pdt_supplier')?></label>
@@ -182,21 +194,29 @@
                                 <div class="row">
                                   <div class="span3">
                                     <label><?=lang('pdt_courseEnrollmentFees')?></label>
-                                    <input type="text" class="input-block-level courseEnrollmentFees" value="0" />
+                                    <div class="control-group">
+                                      <input type="text" class="input-block-level courseEnrollmentFees"/>
+                                    </div>
                                   </div>
                                   <div class="span3">
                                     <label><?=lang('pdt_courseAdministrativeFees')?></label>
-                                    <input type="text" class="input-block-level courseAdministrativeFees" value="0" />
+                                    <div class="control-group">
+                                      <input type="text" class="input-block-level courseAdministrativeFees"/>
+                                    </div>
                                   </div>
                                   <div class="span3">
                                     <label><?=lang('pdt_courseBook')?></label>
-                                    <input type="text" class="input-block-level courseBook" value="0" />
+                                    <div class="control-group">
+                                      <input type="text" class="input-block-level courseBook"/>
+                                    </div>
                                   </div>
                                 </div>
                                 <div class="row">
                                   <div class="span3">
                                     <label><?=lang('pdt_courseDuration')?></label>
-                                    <input type="text" class="input-block-level courseDurationValue" />
+                                    <div class="control-group">
+                                      <input type="text" class="input-block-level courseDurationValue" />
+                                    </div>
                                   </div>
                                   <div class="span3">
                                     <label><?=lang('pdt_in')?></label>
@@ -209,7 +229,9 @@
                                   </div>
                                   <div class="span3">
                                     <label><?=lang('pdt_courseLanguage')?></label>
-                                    <input type="text" class="input-block-level courseLanguage" />
+                                    <div class="control-group">
+                                      <input type="text" class="input-block-level courseLanguage" />
+                                    </div>
                                   </div>
                                 </div>
                                 <label><?=lang('pdt_courseRequirements')?></label>
@@ -219,7 +241,9 @@
                                 <label><?=lang('pdt_duration')?></label>
                                 <div class="row">
                                   <div class="span5">
-                                    <input type="text" class="input-block-level ensuranceDurationValue" />
+                                    <div class="control-group">
+                                      <input type="text" class="input-block-level ensuranceDurationValue" />
+                                    </div>
                                   </div>
                                   <div class="span4">
                                     <select class="input-block-level ensuranceDurationScale">
@@ -244,13 +268,17 @@
                                   </div>
                                   <div class="span4">
                                     <label><?=lang('pdt_accommodationPeopleNumber')?></label>
-                                    <input type="text" class="input-block-level accommodationPeopleNumber"/>
+                                    <div class="control-group">
+                                      <input type="text" class="input-block-level accommodationPeopleNumber"/>
+                                    </div>
                                   </div>
                                 </div>
                                 <label><?=lang('pdt_duration')?></label>
                                 <div class="row">
                                   <div class="span5">
-                                    <input type="text" class="input-block-level accommodationDurationValue"/>
+                                    <div class="control-group">
+                                      <input type="text" class="input-block-level accommodationDurationValue"/>
+                                    </div>
                                   </div>
                                   <div class="span4">
                                     <select class="input-block-level accommodationDurationScale" >
@@ -284,11 +312,15 @@
                                 <div class="row">
                                   <div class="span3">
                                     <label><?=lang('pdt_passFrom')?></label>
-                                    <input type="text" class="input-block-level passFrom"/>
+                                    <div class="control-group">
+                                      <input type="text" class="input-block-level passFrom"/>
+                                    </div>
                                   </div>
                                   <div class="span3">
                                     <label><?=lang('pdt_passTo')?></label>
-                                    <input type="text" class="input-block-level passTo"/>
+                                    <div class="control-group">
+                                      <input type="text" class="input-block-level passTo"/>
+                                    </div>
                                   </div>
                                 </div>
                               </div> <!-- fim passForm -->
@@ -303,13 +335,17 @@
                               </div> <!-- fim workForm -->
                               <div class="packageForm"> <!-- inicio workForm -->
                                 <label><?=lang('pdt_addPackageProductTitle')?></label>
-                                <input class="addPackageProduct input-block-level"/>
+                                <div class="control-group">
+                                  <input class="addPackageProduct input-block-level"/>
+                                </div>
                                 <label><?=lang('pdt_packageItens')?></label>
                                 <div class="packageItem alert alert-block alert-success">
                                   <h4 class="alert-heading"><a class="btn btn-danger dropPackageItem"><i class="icon-remove"></i></a> <a class="packageProductName"></a> (<?=lang("pdt_price")?>: <span class="packageProductPrice"></span>) </h4>
                                   <p class="packageProductDetail"></p>
                                   <p>
-                                    <?=lang("pdt_amount")?>: <input class="packageProductQtd span2" type="number" />
+                                    <div class="control-group">
+                                      <?=lang("pdt_amount")?>: <input class="packageProductQtd span2" type="number" />
+                                    </div>
                                     <?=lang("pdt_total")?>: <span class="packageProductTotalPrice"></span>
                                   </p>
                                 </div>
@@ -327,6 +363,7 @@
                       <div class="span17">
                         <div class="pull-right">
                           <a class="btn btn-primary productSave"><?=lang("tmpt_Save")?></a>
+                          <a class="btn btn-warning productClone" href="#"><?=lang("tmpt_Clone")?></a>
                           <a class="btn btn-danger productDrop" rel="tooltip" title="<?=lang("productDropTitle")?>"><?=lang("tmpt_Remove")?></a>
                           <a class="closeDetail btn"><?=lang("tmpt_Close")?></a>
                         </div>
@@ -350,3 +387,18 @@
 <div class="pdt_ownProduct hide"><?=lang('pdt_ownProduct')?></div>
 <div class="pdt_packageNeedsAtLeast1Product hide"><?=lang('pdt_packageNeedsAtLeast1Product')?></div>
 <div class="pdt_canotAddSamePackage hide"><?=lang('pdt_canotAddSamePackage')?></div>
+<div class="pdt_invalidTitle hide"><?=lang("pdt_invalidTitle")?></div>
+<div class="pdt_invalidDetail hide"><?=lang("pdt_invalidDetail")?></div>
+<div class="pdt_invalidRequirements hide"><?=lang("pdt_invalidRequirements")?></div>
+<div class="pdt_invalidFrom hide"><?=lang("pdt_invalidFrom")?></div>
+<div class="pdt_invalidTo hide"><?=lang("pdt_invalidTo")?></div>
+<div class="pdt_invalidPurchase hide"><?=lang("pdt_invalidPurchase")?></div>
+<div class="pdt_invalidPrice hide"><?=lang("pdt_invalidPrice")?></div>
+<div class="pdt_invalidCourseDurationValue hide"><?=lang("pdt_invalidCourseDurationValue")?></div>
+<div class="pdt_invalidCourseLanguage hide"><?=lang("pdt_invalidCourseLanguage")?></div>
+<div class="pdt_invalidCourseEnrollmentFees hide"><?=lang("pdt_invalidCourseEnrollmentFees")?></div>
+<div class="pdt_invalidCourseAdministrativeFees hide"><?=lang("pdt_invalidCourseAdministrativeFees")?></div>
+<div class="pdt_invalidCourseBook hide"><?=lang("pdt_invalidCourseBook")?></div>
+<div class="pdt_invalidEnsuranceDurationValue hide"><?=lang("pdt_invalidEnsuranceDurationValue")?></div>
+<div class="pdt_invalidAccommodationPeopleNumber hide"><?=lang("pdt_invalidAccommodationPeopleNumber")?></div>
+<div class="pdt_invalidAccommodationDurationValue hide"><?=lang("pdt_invalidAccommodationDurationValue")?></div>

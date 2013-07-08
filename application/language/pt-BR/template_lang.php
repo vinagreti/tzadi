@@ -59,3 +59,4 @@ $lang["tmpt_budgetURL"] = "orcamento";
 $lang["tmpt_signup"] = "criar uma conta";
 $lang["tmpt_open"] = "abrir";
 $lang["tmpt_changesSaved"] = "alterações salvas";
+$lang["tmpt_Clone"] = "copiar";

@@ -42,6 +42,13 @@ class Supplier extends My_Controller {
     echo json_encode($newSupplier[0]);
   }
 
+  public function makeClone()
+  {
+    $this->load->model("supplier_model");
+    $newSupplier = $this->supplier_model->makeClone($this->input->post("supplierID"));
+    echo json_encode($newSupplier);
+  }
+
   public function drop()
   {
     $_id = (int) $this->input->post('_id');

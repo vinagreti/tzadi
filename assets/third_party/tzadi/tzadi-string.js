@@ -77,6 +77,22 @@ TzadiJS.prototype.string = new function(){
 
     }
 
+    this.float = function( string ){
+
+      var maskRE = /[-+]?([0-9]*\.[0-9]+|[0-9]+)/;
+
+      return this.testRe( string, maskRE );
+
+    }
+
+    this.cep = function( string ){
+
+      var maskRE = /^[0-9]{5}-[0-9]{3}$/;
+
+      return this.testRe( string, maskRE );
+
+    }
+
   }
 
 };

@@ -31,9 +31,49 @@ TzadiJS.prototype.form = new function(){
 
     }
 
+    this.float = function( input, message ) {
+
+      if( $tzd.string.checkMask.float( input.val() ) ) {
+
+        input.parent().removeClass("error");
+
+        return true;
+
+      } else {
+
+        $tzd.alert.error( message )
+
+        input.parent().addClass("error");
+
+        return false;
+
+      }
+
+    }
+
     this.range = function( input, min, max, message ) {
 
-      if( $tzd.string.checkMask.range( input.val(), min, max, message) )  {
+      if( $tzd.string.checkMask.range( input.val(), min, max) )  {
+
+        input.parent().removeClass("error");
+
+        return true;
+
+      } else {
+
+        $tzd.alert.error( message )
+
+        input.parent().addClass("error");
+
+        return false;
+
+      }
+
+    }
+
+    this.cep = function( input, message ) {
+
+      if( $tzd.string.checkMask.cep( input.val() ) )  {
 
         input.parent().removeClass("error");
 

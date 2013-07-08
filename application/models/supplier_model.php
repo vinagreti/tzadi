@@ -51,6 +51,23 @@ class Supplier_Model extends CI_Model {
       ->get('supplier');
   }
 
+  function makeClone($_id){
+
+    $res = $this->mongo_db
+      ->where('_id', (int) $_id)
+      ->get('supplier');
+
+    $newSupplier = $res[0];
+    $this->load->model("mongo_model");
+    $newSupplier["_id"] = $this->mongo_model->newID();
+    $newSupplier["name"] = "(clone) - ".$newSupplier["name"];
+
+    $this->mongo_db->insert('supplier', $newSupplier);
+
+    return $newSupplier;
+
+  }
+
   function drop($_id){
 
     $withinProduct = $this->mongo_db

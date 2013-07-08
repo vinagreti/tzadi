@@ -39,7 +39,7 @@
 */
 
 
-if(defined('COMPANYNICK')) $route['default_controller'] = "product";
+if(defined('COMPANYSUBDOMAIN')) $route['default_controller'] = "product";
 else $route['default_controller'] = "index";
 $route['404_override'] = '';
 

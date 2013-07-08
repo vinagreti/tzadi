@@ -35,3 +35,6 @@ $lang["splr_removeSupplier"] = "deseja remover este fornecedor?";
 $lang["splr_removeCampus"] = "deseja remover esta unidade?";
 $lang["splr_removeAttachment"] = "deseja remover este anexo?";
 $lang["splr_noChange"] = "não existem alterações para serem salvas.";
+$lang["splr_invalidName"] = "o nome do fornecedor deve conter entre 1 e 512 caracteres";
+$lang["splr_invalidCampusName"] = "o nome da unidade deve conter entre 1 e 512 caracteres";
+$lang["splr_invalidCep"] = "o cep deve estar no formato XXXXX-XX";

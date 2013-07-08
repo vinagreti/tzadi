@@ -51,9 +51,7 @@ class Product_Model extends CI_Model {
         ,"creator" => $this->session->userdata("userID")
         ,"supplier" => "0"
         ,"supplier_campus" => "0"
-        ,"purchase" => "0"
         ,"status" => "active"
-        ,"price" => "0"
         ,"like" => "0"
         ,"share" => "0"
       )
@@ -61,6 +59,23 @@ class Product_Model extends CI_Model {
     return $this->mongo_db
       ->where('_id', $newID)
       ->get('product');
+  }
+
+  function makeClone($_id){
+
+    $res = $this->mongo_db
+      ->where('_id', (int) $_id)
+      ->get('product');
+
+    $newProduct = $res[0];
+    $this->load->model("mongo_model");
+    $newProduct["_id"] = $this->mongo_model->newID();
+    $newProduct["name"] = "(clone) - ".$newProduct["name"];
+
+    $this->mongo_db->insert('product', $newProduct);
+
+    return $newProduct;
+
   }
 
   function drop($_id){

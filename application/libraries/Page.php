@@ -17,7 +17,7 @@ class Page {
 
     // load the view within the template
     $data->content = $this->CI->load->view($data->view, $data, true);
-    if(defined('COMPANYNICK')){
+    if(defined('COMPANYSUBDOMAIN')){
       $data->companyName = $this->CI->session->userdata("companyName");
       $this->CI->parser->parse('templates/companyTemplate', $data);
     }

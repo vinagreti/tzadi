@@ -21,7 +21,7 @@ class Signup extends My_Controller {
   public function checkSubdomain(){
     $subdomain = $this->input->post("subdomain");
     $this->load->model("company_model");
-    if($this->company_model->getByNick($subdomain)) {
+    if($this->company_model->getBySubdomain($subdomain)) {
       $erro = lang("su_theSubdomain");
       $erro .= " <strong>".$subdomain."</strong> ";
       $erro .= lang("su_isAlreadyInUse");

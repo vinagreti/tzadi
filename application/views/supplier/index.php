@@ -132,6 +132,7 @@
               <div class="span24">
                 <div class="pull-right">
                   <a class="save btn btn-primary"><?=lang('tmpt_Save')?></a>
+                  <a class="clone btn btn-warning" href="#"><?=lang('tmpt_Clone')?></a>
                   <a class="drop btn btn-danger"><?=lang('tmpt_Remove')?></a>
                   <a class="closeDetail btn"><?=lang('tmpt_Close')?></a>
                 </div>
@@ -150,3 +151,6 @@
 <div class="splr_removeAttachment hide"><?=lang("splr_removeAttachment")?></div>
 <div class="splr_noChange hide"><?=lang("splr_noChange")?></div>
 <div class="tmpt_changesSaved hide"><?=lang("tmpt_changesSaved")?></div>
+<div class='splr_invalidName hide'><?=lang("splr_invalidName")?></div>
+<div class='splr_invalidCampusName hide'><?=lang("splr_invalidCampusName")?></div>
+<div class='splr_invalidCep hide'><?=lang("splr_invalidCep")?></div>

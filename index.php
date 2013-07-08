@@ -25,7 +25,7 @@ else $domainPos = strpos($_SERVER["HTTP_HOST"], "tzadi");
 $tzdIndexCompanyNick = substr($_SERVER["HTTP_HOST"], 0, ($domainPos-1));
 $tzdIndexAppAddress = substr($_SERVER["HTTP_HOST"], $domainPos);
 
-if($domainPos != 0 && $tzdIndexCompanyNick != "www" && $tzdIndexCompanyNick != "intranet" ) define('COMPANYNICK', $tzdIndexCompanyNick);
+if($domainPos != 0 && $tzdIndexCompanyNick != "www" && $tzdIndexCompanyNick != "intranet" ) define('COMPANYSUBDOMAIN', $tzdIndexCompanyNick);
 define('ENVIRONMENT', $tzdIndexAppAddress);
 
 /*

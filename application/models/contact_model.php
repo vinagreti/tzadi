@@ -14,7 +14,7 @@ class Contact_Model extends CI_Model {
     $this->load->helper('date');
     $this->mongo_db->insert('contact', $data);
 
-    if(!defined('COMPANYNICK')) {
+    if(!defined('COMPANYSUBDOMAIN')) {
       $message = "<p> Contato enviado por: " . $data["email"] . "</p>";
       $message .= "<p> Assunto: " . $data["subject"] . "</p>";
       $message .= "<p> Mensagem: " . $data["message"] . "</p>";
@@ -25,7 +25,7 @@ class Contact_Model extends CI_Model {
       $this->gmail->send($to, utf8_decode($subject), utf8_decode($message));
     } else {
       $message = "<p> Contato enviado por: " . $data["email"] . "</p>";
-      $message .= "<p> para " . COMPANYNICK . "</p>";
+      $message .= "<p> para " . COMPANYSUBDOMAIN . "</p>";
       $message .= "<p> Assunto: " . $data["subject"] . "</p>";
       $message .= "<p> Mensagem: " . $data["message"] . "</p>";
       $message = '<html><head><meta charset="utf-8"></head><body>'.$message.'</body></html>';

@@ -18,7 +18,7 @@ class User extends My_Controller {
 	}
 
 	public function login(){
-    if(defined('COMPANYNICK')) {
+    if(defined('COMPANYSUBDOMAIN')) {
       $view = 'user/companyLogin';
       $template = 'templates/companyTemplate';
     }

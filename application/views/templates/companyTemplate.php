@@ -126,6 +126,7 @@
   <!-- Loading the JQuery -->
   <script src="<?=base_url()?>assets/third_party/JQuery/jquery.js"></script>
   <script src="<?=base_url()?>assets/third_party/JQuery/jquery.cookie.js"></script>
+  <script src="<?=base_url()?>assets/third_party/JQuery/jquery.mask.min.js"></script>
   <!-- Loading the bootstrap js scripts -->
   <script type="text/javascript" src="<?=base_url()?>assets/third_party/bootstrap/js/bootstrap-transition.js"></script>
   <script type="text/javascript" src="<?=base_url()?>assets/third_party/bootstrap/js/bootstrap-alert.js"></script>
