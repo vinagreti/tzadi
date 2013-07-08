@@ -1,13 +1,18 @@
 body {
-  padding-top: 10px;
+  margin-top : 0;
+  padding-top: 0px;
   padding-bottom: 40px;
 }
+
 .globalAlert {
   position: fixed;
-  top: 43px;
-  left: 1px;
+  top: 1px;
+  width: 99%;
+  margin-left: 0.5%;
+  margin-right: 0.5%;
   z-index: 9999;
 }
+
 .sidebar-nav {
   padding: 9px 0;
 }
@@ -100,19 +105,13 @@ a {
   cursor: pointer;
 }
 
-/* estilo da tzdTable */
 .tzdTableRow {
   border-top: groove 1px #DDDDDD;
   padding: 2px 0px;
 }
 
-.tzdTableBriefContent :hover {
-  cursor: pointer;
-  color: red;
-}
-
-.institutionFilter {
-  cursor: pointer;
+.tzdTableRow :hover{
+  color: green;
 }
 
 .cursorPointer{
@@ -120,7 +119,5 @@ a {
 }
 
 .tzdTableDetailContent{
-  background-color: #CCCCCC;
-  border-radius: 5px;
-  padding: 3px;
+
 }

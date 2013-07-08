@@ -1,13 +1,13 @@
 <h3><?=$product["name"]?></h3>
 
 <div class="row">
-  <div class="span12 well well-mini">
+  <div class="span24 well well-mini">
     <div class="row">
-      <div class="span3">
+      <div class="span6">
         <div class="row">
-          <div class="span3">
+          <div class="span6">
             <ul class="thumbnails">
-              <li class="span3">
+              <li class="span6">
                 <div class="thumbnail">
                   <?php if(isset($product["img"])) {?>
                     <img class="img" alt="160x120" src="<?=base_url()?>file/open/<?=$product['img']?>">
@@ -18,20 +18,20 @@
               </li>
             </ul>
           </div>
-          <div class="span3">
+          <div class="span6">
             <div>
               <div class="pull-left">
                 <a class="addToBudget btn btn-warning" rel="tooltip" title="<?=lang('pdt_addToBudget')?>"><i class="icon-flag"></i></a>
                 <a href="#" class="shareProductByMail btn btn-primary" rel="tooltip" title="<?=lang('pdt_shareProductByMail')?>"><i class="icon-group"></i></a>
               </div>
               <div class="pull-right">
-                <a class="like btn" rel="tooltip" title="<?=lang('pdt_like')?>"><i class="icon-thumbs-up-alt"></i> <span class="likes"></span></a>
+                <a class="like" rel="tooltip" title="<?=lang('pdt_like')?>"><i class="icon-thumbs-up-alt"></i> <span class="likes">7</span></a>
               </div>
             </div>
           </div>
         </div>
       </div>
-      <div class="span9">
+      <div class="span18">
         <dl class="dl-horizontal">
           <?php if(isset($product["price"])) echo "<dt>" . lang("pdt_price") . "</dt><dd>" . $product["price"] . "</dd>"; ?>
           <?php if(isset($product["courseDuration"])) echo "<dt>" . lang("pdt_courseDuration") . "</dt><dd>" . $product["courseDuration"] . "</dd>"; ?>
@@ -56,9 +56,12 @@
       </div>
     </div>
     <div class="row">
-      <div class="span12">
+      <div class="span24">
         <?php if(isset($product["detail"])) echo "<dl><dt>" . lang("pdt_detail") . "</dt><dd>" . $product["detail"] . "</dd></dl>"; ?>
       </div>
     </div>
   </div>
 </div>
+
+
+<div class="productID"><?=$product["_id"]?></div>

@@ -55,9 +55,11 @@ class Product extends My_Controller {
   public function drop()
   {
     $_id = (int) $this->input->post('_id');
-    $this->load->model("product_model");
-    $res = $this->product_model->drop($_id);
-    echo json_encode($res);
+    if(!isset($_id)) echo json_encode(lang("pdt_idNotSent"));
+    else {
+      $this->load->model("product_model");
+      echo json_encode($this->product_model->drop($_id));
+    }
   }
   public function add()
   {
@@ -72,8 +74,7 @@ class Product extends My_Controller {
   {
     $data = $this->input->post();
     $this->load->model("product_model");
-    $res = $this->product_model->set($data);
-    echo json_encode($res);
+    echo json_encode($this->product_model->set($data));
   }
   public function changePhoto()
   {
@@ -84,6 +85,7 @@ class Product extends My_Controller {
   }
 
   public function view( $_id ){
+    $data->dynJS = array('product/view', "product/product");
     $this->load->model("product_model");
     $data->product = $this->product_model->getHumanized( $_id );
     $data->view = 'product/view';

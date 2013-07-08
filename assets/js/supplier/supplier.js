@@ -20,7 +20,7 @@ $(document).ready(function(){
       this.body.find(".tzdTableLine").remove();
     };
     this.addLine = function( id, position, open ){
-      var objSupplier = tzdList.getBy(suppliers.all, "_id", id)[0];
+      var objSupplier = $tzd.list.getBy(suppliers.all, "_id", id)[0];
       if(this.status == "all" || objSupplier.status == this.status){
         var brief = this.createBrief( id );
         var line = this.line.clone();
@@ -33,7 +33,7 @@ $(document).ready(function(){
       if(open && open == true) this.openDetails( id );
     };
     this.createBrief = function( id ){
-      var objSupplier = tzdList.getBy(suppliers.all, "_id", id)[0];
+      var objSupplier = $tzd.list.getBy(suppliers.all, "_id", id)[0];
       var brief = this.brief.clone();
       if(objSupplier.status == "active") brief.find(".supplierStatus").addClass("btn-success").removeClass("btn-danger").html($(".splr_active").html());
       else brief.find(".supplierStatus").addClass("btn-danger").removeClass("btn-success").html($(".splr_inactive").html());
@@ -45,8 +45,8 @@ $(document).ready(function(){
       $(".totalRows").html(totalRows);
     };
     this.createCampus = function( supplierID, campusID ){
-      var objSupplier = tzdList.getBy(suppliers.all, "_id", supplierID)[0];
-      var objCampus = tzdList.getBy(objSupplier.campi, "_id", campusID)[0];
+      var objSupplier = $tzd.list.getBy(suppliers.all, "_id", supplierID)[0];
+      var objCampus = $tzd.list.getBy(objSupplier.campi, "_id", campusID)[0];
       var campus = this.campus.clone();
       campus.attr("id", objCampus._id);
       campus.find(".campusName").val(objCampus.name);
@@ -62,7 +62,7 @@ $(document).ready(function(){
       return campus;
     };
     this.openDetails = function( supplierID ){
-      var objSupplier = tzdList.getBy(suppliers.all, "_id", supplierID)[0];
+      var objSupplier = $tzd.list.getBy(suppliers.all, "_id", supplierID)[0];
       var line = this.body.find("#"+objSupplier._id);
       var detail = this.detail.clone();
       if(objSupplier.status == "active") detail.find(".supplierStatus").addClass("btn-success").removeClass("btn-danger").html($(".splr_active").html());
@@ -111,7 +111,7 @@ $(document).ready(function(){
     };
     this.active = function( supplierID ){
       var line = this.body.find("#"+supplierID);
-      var objSupplier = tzdList.getBy(suppliers.all, "_id", supplierID)[0];
+      var objSupplier = $tzd.list.getBy(suppliers.all, "_id", supplierID)[0];
       if(objSupplier.status == "active") line.find(".supplierStatus").addClass("btn-success").removeClass("btn-danger").html($(".splr_active").html());
       else line.find(".supplierStatus").addClass("btn-danger").removeClass("btn-success").html($(".splr_inactive").html());
     };
@@ -120,13 +120,13 @@ $(document).ready(function(){
       line.find(".tzdTableCampusNav").find("#"+campusID).remove();
       if(line.find(".tzdTableCampus").attr("id") == campusID) {
         var supplierID = line.attr("id");
-        var objSupplier = tzdList.getBy(suppliers.all, "_id", supplierID)[0];
+        var objSupplier = $tzd.list.getBy(suppliers.all, "_id", supplierID)[0];
         this.openCampus( objSupplier.headquarter );
       }
     };
     this.changeImg = function( supplierID ){
       var line = this.body.find("#"+supplierID);
-      var objSupplier = tzdList.getBy(suppliers.all, "_id", supplierID)[0];
+      var objSupplier = $tzd.list.getBy(suppliers.all, "_id", supplierID)[0];
       line.find(".changeImg").attr("src", base_url+"file/open/"+objSupplier.img);
     };
     this.attach = function( supplierID, objAttachment ){
@@ -144,8 +144,8 @@ $(document).ready(function(){
     };
     this.getFormData = function( supplierID, campusID ){
       var formData = {};
-      var objSupplier = tzdList.getBy(suppliers.all, "_id", supplierID)[0];
-      var objCampus = tzdList.getBy(objSupplier.campi, "_id", campusID)[0];
+      var objSupplier = $tzd.list.getBy(suppliers.all, "_id", supplierID)[0];
+      var objCampus = $tzd.list.getBy(objSupplier.campi, "_id", campusID)[0];
       var line = this.body.find("#"+supplierID);
       if(objSupplier.name != line.find(".name").val())
         formData.name = line.find(".name").val();
@@ -196,11 +196,10 @@ $(document).ready(function(){
       };
       var callback = function( e ){
         suppliers.all = e;
-        suppliers.all = tzdList.orderBy(suppliers.table.order, suppliers.all);
+        suppliers.all = $tzd.list.orderBy(suppliers.table.order, suppliers.all);
         suppliers.search( $('#search-query').val() );
       };
-      var ajax = new tzdAjaxCall();
-      ajax.post(url, data, callback);
+      $tzd.ajax.post(url, data, callback);
     }
     , search : function( searchString ){
       if( searchString == "") {
@@ -238,8 +237,7 @@ $(document).ready(function(){
         suppliers.all[id] = e;
         suppliers.table.addLine( e._id, "before", true );
       };
-      var ajax = new tzdAjaxCall();
-      ajax.post(url, data, callback)
+      $tzd.ajax.post(url, data, callback)
     }
     , drop : function( supplierID ){
       var url = base_url+'supplier/drop';
@@ -249,17 +247,16 @@ $(document).ready(function(){
       };
       var callback = function( e ){
         if( e == true ){
-          var objSupplier = tzdList.getBy(suppliers.all, "_id", supplierID)[0];
+          var objSupplier = $tzd.list.getBy(suppliers.all, "_id", supplierID)[0];
           var id = suppliers.all.indexOf(objSupplier);
           suppliers.all.splice(id, 1);
           suppliers.table.drop( supplierID );
-        } else globalAlert('alert-error', e);
+        } else $tzd.alert.error(e);
       };
-      var ajax = new tzdAjaxCall();
-      ajax.post(url, data, callback);
+      $tzd.ajax.post(url, data, callback);
     }
     , active : function( supplierID ){
-      var objSupplier = tzdList.getBy(suppliers.all, "_id", supplierID)[0];
+      var objSupplier = $tzd.list.getBy(suppliers.all, "_id", supplierID)[0];
       if(objSupplier.status == "active") newStatus = "inactive";
       else var newStatus = "active";
       var url = base_url+'supplier/activate';
@@ -273,11 +270,10 @@ $(document).ready(function(){
           var id = suppliers.all.indexOf(objSupplier);
           suppliers.all[id].status = newStatus;
           suppliers.table.active( supplierID );          
-        } else  globalAlert('alert-error', e);
+        } else  $tzd.alert.error(e);
 
       };
-      var ajax = new tzdAjaxCall();
-      ajax.post(url, data, callback);
+      $tzd.ajax.post(url, data, callback);
     }
     , addCampus : function( supplierID ){
       var url = base_url+'supplier/addCampus';
@@ -286,13 +282,12 @@ $(document).ready(function(){
         , supplier : supplierID
       };
       var callback = function( e ){
-        var objSupplier = tzdList.getBy(suppliers.all, "_id", supplierID)[0];
+        var objSupplier = $tzd.list.getBy(suppliers.all, "_id", supplierID)[0];
         objSupplier.campi.push( e );
         suppliers.table.addCampus( supplierID, e );
         suppliers.table.openCampus( e._id );
       };
-      var ajax = new tzdAjaxCall();
-      ajax.post(url, data, callback)
+      $tzd.ajax.post(url, data, callback)
     }
     , dropCampus : function( supplierID, campusID ){
       var url = base_url+'supplier/dropCampus';
@@ -303,16 +298,15 @@ $(document).ready(function(){
       };
       var callback = function( e ){
         if( e == true ){
-          var objSupplier = tzdList.getBy(suppliers.all, "_id", supplierID)[0];
-          var objCampus = tzdList.getBy(objSupplier.campi, "_id", campusID)[0];
+          var objSupplier = $tzd.list.getBy(suppliers.all, "_id", supplierID)[0];
+          var objCampus = $tzd.list.getBy(objSupplier.campi, "_id", campusID)[0];
           var id = objSupplier.campi.indexOf(objCampus);
           objSupplier.campi.splice(id, 1);
           suppliers.table.dropCampus( campusID );
         }
-        else globalAlert('alert-error', e);
+        else $tzd.alert.error(e);
       };
-      var ajax = new tzdAjaxCall();
-      ajax.post(url, data, callback)
+      $tzd.ajax.post(url, data, callback)
     }
     , changeImg : function( supplierID, files ) {
       var url = base_url+'supplier/changeImg';
@@ -323,15 +317,14 @@ $(document).ready(function(){
       };
       var callback = function( e ){
         if(e.imgID){
-          var objSupplier = tzdList.getBy(suppliers.all, "_id", supplierID)[0];
+          var objSupplier = $tzd.list.getBy(suppliers.all, "_id", supplierID)[0];
           var id = suppliers.all.indexOf(objSupplier);
           suppliers.all[id].img = e.imgID;
           suppliers.table.changeImg( supplierID );
         }
-        else globalAlert('alert-error', e.error);
+        else $tzd.alert.error(e.error);
       };
-      var ajax = new tzdAjaxCall();
-      ajax.upload(url, data, callback);
+      $tzd.ajax.upload(url, data, callback);
     }
     , attach : function( supplierID, files ) {
       var url = base_url+'supplier/attach';
@@ -342,15 +335,14 @@ $(document).ready(function(){
       };
       var callback = function( e ){
         if(e.newFile){
-          var objSupplier = tzdList.getBy(suppliers.all, "_id", supplierID)[0];
+          var objSupplier = $tzd.list.getBy(suppliers.all, "_id", supplierID)[0];
           var id = suppliers.all.indexOf(objSupplier);
           suppliers.all[id].attachment.push(e.newFile);
           suppliers.table.attach( supplierID, e.newFile );
         }
-        else globalAlert('alert-error', e.error);
+        else $tzd.alert.error(e.error);
       };
-      var ajax = new tzdAjaxCall();
-      ajax.upload(url, data, callback);
+      $tzd.ajax.upload(url, data, callback);
     }
     , dropAttachment : function( supplierID, attachmentID ) {
       var url = base_url+'supplier/dropAttachment';
@@ -363,10 +355,9 @@ $(document).ready(function(){
         if(e){
           suppliers.table.dropAttachment( supplierID, attachmentID );
         }
-        else globalAlert('alert-error', e.error);
+        else $tzd.alert.error(e.error);
       };
-      var ajax = new tzdAjaxCall();
-      ajax.post(url, data, callback);
+      $tzd.ajax.post(url, data, callback);
     }
     , update : function( supplierID, campusID ){
       var newData = this.table.getFormData(supplierID, campusID);
@@ -380,15 +371,15 @@ $(document).ready(function(){
         };
         var callback = function( e ){
           e._id = supplierID;
-          var objSupplier = tzdList.getBy(suppliers.all, "_id", supplierID)[0];
+          var objSupplier = $tzd.list.getBy(suppliers.all, "_id", supplierID)[0];
           var id = suppliers.all.indexOf(objSupplier);
           suppliers.all[id] = e;
           if(newData.campusName) suppliers.table.changeCampusNavName( campusID, newData.campusName );
+          $tzd.alert.success($(".tmpt_changesSaved").html());
         };
-        var ajax = new tzdAjaxCall();
-        ajax.post(url, data, callback);
+        $tzd.ajax.post(url, data, callback);
       } else {
-        globalAlert('alert-error', $(".splr_noChange").html());
+        $tzd.alert.error($(".splr_noChange").html());
       }
     }
   }
@@ -420,7 +411,7 @@ $(document).ready(function(){
     suppliers.table.openDetails( supplierID );
   });
   $(".drop").live("click", function(){
-    if(globalConfirmAction($(".splr_removeSupplier").html()+"?")){
+    if($tzd.confirm($(".splr_removeSupplier").html())){
       var supplierID = $(this).parents(".tzdTableLine").attr("id");
       suppliers.drop( supplierID );
     }
@@ -434,7 +425,7 @@ $(document).ready(function(){
     suppliers.addCampus( supplierID );
   });
   $(".campusRemove").live("click", function(){
-    if(globalConfirmAction($(".splr_removeCampus").html()+"?")){
+    if($tzd.confirm($(".splr_removeCampus").html())){
       var campusID = $(this).parents(".campusNavTab").attr("id");
       var supplierID = $(this).parents(".tzdTableLine").attr("id");
       suppliers.dropCampus( supplierID, campusID );
@@ -455,7 +446,7 @@ $(document).ready(function(){
     suppliers.attach( supplierID, this.files );
   });
   $('.dropAttachment').live("click", function() {
-    if(globalConfirmAction($(".splr_removeAttachment").html()+"?")){
+    if($tzd.confirm($(".splr_removeAttachment").html())){
       var supplierID = $(this).parents(".tzdTableLine").attr("id");
       var attachmentID = $(this).parents(".attachment").attr("id");
       suppliers.dropAttachment(supplierID, attachmentID);

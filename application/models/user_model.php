@@ -40,9 +40,9 @@ class User_Model extends CI_Model {
         $this->session->set_userdata('companyNick', $company[0]["nick"]);
         $this->session->set_userdata('companyName', $company[0]["name"]);
 
-        return true;
+        return false;
     }
-    else return lang("usr_userNotFound");
+    else return lang("lgn_invalid_credential");
   }
 
   private function levelToMethods( $num ) {

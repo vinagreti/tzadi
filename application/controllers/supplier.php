@@ -9,7 +9,7 @@ class Supplier extends My_Controller {
 
   public function index()
   {
-    $data->dynJS = 'supplier';
+    $data->dynJS = 'supplier/supplier';
     $data->view = 'supplier/index';
     $data->page_title = lang('splr_listTitle');
     $this->page->load($data);

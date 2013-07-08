@@ -3,16 +3,16 @@
 <h3><?=$product["name"]?></h3>
 
 <div class="row">
-  <div class="span12 well well-mini">
+  <div class="span24 well well-mini">
     
     <div class="row">
-      <div class="span12">
+      <div class="span24">
         <a href="<?=base_url()?>product/view/<?=$product['_id']?>"><img class="img" src="<?=$product['img']?>"></a>
       </div>
     </div>
 
     <div class="row">
-      <div class="span12">
+      <div class="span24">
         <?php if(isset($product["price"])) echo "<p>" . lang("pdt_price") . ": " . $product["price"] . "</p>"; ?>
         <?php if(isset($product["detail"])) echo "<p>" . lang("pdt_detail") . ": " . $product["detail"] . "</p>"; ?>
         <?php if(isset($product["courseDuration"])) echo "<p>" . lang("pdt_courseDuration") . ": " . $product["courseDuration"] . "</p>"; ?>

@@ -40,10 +40,16 @@ class Mail_Model extends CI_Model {
 
       $this->gmail->send($to, utf8_decode($subject), utf8_decode($message));
 
+      $error = false;
+
     } else {
 
-      echo json_encode($this->load->view('mail/shareProduct', $product, true));
+      $error = $this->load->view('mail/shareProduct', $product, true);
 
     }
+
+    return $error;
+
   }
+  
 }

@@ -18,31 +18,27 @@ class User extends My_Controller {
 	}
 
 	public function login(){
-
-      if(!defined('COMPANYNICK')) {
-        $data->content = $this->load->view('user/tzadiLogin', "", true);
-        $data->page_title = lang('lgn_Sign_In');
-        $this->parser->parse('templates/tzadiTemplate', $data); 
-      }
-      else {
-        $data->content = $this->load->view('user/companyLogin', "", true);
-        $data->page_title = lang('lgn_Sign_In');
-        $data->companyName = $this->session->userdata("companyName");
-        $this->parser->parse('templates/companyTemplate', $data);
-      }
+    if(defined('COMPANYNICK')) {
+      $view = 'user/companyLogin';
+      $template = 'templates/companyTemplate';
+    }
+    else {
+      $view = 'user/tzadiLogin';
+      $template = 'templates/tzadiTemplate';
+    }
+    $data->dynJS = "tzadi/login";
+    $data->content = $this->load->view($view, "", true);
+    $data->page_title = lang('lgn_Sign_In');
+    $data->companyName = $this->session->userdata("companyName");
+    $this->parser->parse($template, $data);
 	}
 
 	public function authenticate()
 	{
-
 		$email = $this->input->post('email');
 		$password = $this->input->post('password');
-
 		$this->load->model('user_model');
-		$permission = $this->user_model->authenticate($email, $password);
-
-		if ( $permission ) echo json_encode(true);
-		else  echo json_encode(false);
+		echo json_encode($this->user_model->authenticate($email, $password));
 	}
 
 	public function logout()

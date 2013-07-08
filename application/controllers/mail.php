@@ -15,7 +15,7 @@ class Mail extends My_Controller {
 
     $this->load->model("mail_model");
     
-    return $this->mail_model->shareProduct($data);
+    echo json_encode($this->mail_model->shareProduct($data));
 
   }
 }

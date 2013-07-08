@@ -64,21 +64,33 @@ class Product_Model extends CI_Model {
   }
 
   function drop($_id){
-
-    $product = $this->mongo_db
-      ->where('_id', $_id)
-      ->get('product');
-
-    // drop the obj in the database
-    $deleted = $this->mongo_db->where('_id', $_id)->delete('product');
-    if($deleted){
-      if(isset($product[0]["img"])) {
-        $this->load->model("file_model");
-        $this->file_model->drop($product[0]["img"]);
+    $produtos = $product = $this->mongo_db->get('product');
+    $pacotes = array();
+    foreach($produtos as $product){
+      if(isset($product["itens"])){
+        foreach($product["itens"] as $item => $amount){
+          if( (int)$item == (int)$_id ) $pacotes[$product["name"]] = $product["_id"];
+        }
       }
     }
+    if(count($pacotes) > 0) {
+      $error = "este produto não poder ser removido porque esta sendo utilizado nos seguintes pacotes:";
+      foreach($pacotes as $name => $_id) $error .= '<br>- <a href="'.base_url().$_id.'" target="_blank">'.$name.'</a>';
+    } else {
+      $product = $this->mongo_db
+        ->where('_id', $_id)
+        ->get('product');
+      $deleted = $this->mongo_db->where('_id', $_id)->delete('product');
+      if($deleted){
+        if(isset($product[0]["img"])) {
+          $this->load->model("file_model");
+          $this->file_model->drop($product[0]["img"]);
+        }
+      }
 
-    return $deleted;
+      $error = false;
+    }
+    return $error;
   }
 
   function changePhoto($_id)
@@ -106,21 +118,24 @@ class Product_Model extends CI_Model {
   {
     $_id = (int) $data['_id'];
     unset($data['_id']);
-    $this->mongo_db
-      ->where('_id', $_id)
-      ->set($data)
-      ->update('product');
 
-    $return = $this->mongo_db
-      ->where('_id', $_id)
-      ->get('product');
+    if(count($data) > 0 ){
+      $this->mongo_db
+        ->where('_id', $_id)
+        ->set($data)
+        ->update('product');
 
-    return $return[0];
+      $error = false;
+    }
+    else $error = lang("pdt_noChanges");
+
+    return $error;
   }
 
   function like()
   {
-    $_id = (int) $this->input->post("productID");
+    $_id = (int) $this->input->post("_id");
+    
     $product = $this->mongo_db
       ->where('_id', $_id)
       ->get('product');

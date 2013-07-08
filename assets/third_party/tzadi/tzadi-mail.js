@@ -1,7 +1,7 @@
 /*!
  * Tzadi Email Plugin v1.0
  * Extends TzadiJS Plugin v1.0
- * https://github.com/tzadiinc/tzadi-email
+ * https://github.com/tzadiinc/tzadi-mmail
  *
  * Copyright 2013 Bruno da Silva Joao
  * Released under the MIT license
@@ -11,7 +11,9 @@ TzadiJS.prototype.mail = new function(){
   this.modal = false;
 
   this.setModal = function( modal ) {
+
     this.modal = modal;
+    
   }
 
   this.shareProduct = new function() {
@@ -52,9 +54,7 @@ TzadiJS.prototype.mail = new function(){
 
         };
 
-        var ajax = new tzdAjaxCall();
-
-        ajax.post(url, data, callback);
+        $tzd.ajax.post(url, data, callback);
 
     };
 
@@ -84,15 +84,13 @@ TzadiJS.prototype.mail = new function(){
       
       var callback = function( e ){
 
-        var addresses = $('#tzadiDialogs').find(".closeModal").click();
+        if(e) $tzd.alert.error( e );
 
-        globalAlert("alert-success", e);
+        else var addresses = $('#tzadiDialogs').find(".closeModal").click();
 
       };
       
-      var ajax = new tzdAjaxCall();
-      
-      ajax.post(url, data, callback);
+      $tzd.ajax.post(url, data, callback);
 
     };
 

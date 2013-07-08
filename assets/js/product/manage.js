@@ -191,14 +191,14 @@ $(document).ready(function(){
             , property: "name"
             , onselect: function(obj) {
               if(products.all[id]._id != obj._id) products.addPackageProduct( id, obj._id );
-              else globalAlert("alert-error", $(".pdt_canotAddSamePackage").html());
+              else $tzd.alert.error($(".pdt_canotAddSamePackage").html());
               line.find('.addPackageProduct').val("");
             }
           })
           if(objProduct.itens) {
             $.each(objProduct.itens, function( index, amount ){
               var packageItem = products.table.packageItem.clone();
-              var product = tzdList.getBy(products.all, "_id", index)[0];
+              var product = $tzd.list.getBy(products.all, "_id", index)[0];
               packageItem.attr("id", index);
               packageItem.find(".packageProductPrice").html(product.price);
               packageItem.find(".packageProductTotalPrice").html(product.price*amount);
@@ -362,7 +362,7 @@ $(document).ready(function(){
     };
     this.addPackageProduct = function( productID, item ){
       var line = this.body.find("#"+productID);
-      var product = tzdList.getBy(products.all, "_id", item)[0];
+      var product = $tzd.list.getBy(products.all, "_id", item)[0];
       var packageItem = this.packageItem.clone();
       packageItem.attr("id", item);
       packageItem.find(".packageProductPrice").html(product.price);
@@ -374,7 +374,7 @@ $(document).ready(function(){
     };
     this.setPackageItemQtd = function(productID, item, amount){
       var line = this.body.find("#"+productID);
-      var product = tzdList.getBy(products.all, "_id", item)[0];
+      var product = $tzd.list.getBy(products.all, "_id", item)[0];
       line.find("#"+item).find(".packageProductQtd").val(amount);
       line.find("#"+item).find(".packageProductTotalPrice").html(amount*product.price);
     };
@@ -405,8 +405,7 @@ $(document).ready(function(){
         products.table.addLine( id, 'before', true );
         products.table.reCalc();
       };
-      var ajax = new tzdAjaxCall();
-      ajax.post(url, data, callback);
+      $tzd.ajax.post(url, data, callback);
     }
     ,active : function( id ){
       var objProduct = this.all[id];
@@ -422,8 +421,7 @@ $(document).ready(function(){
         products.all[id].status = objProduct.status;
         products.table.active( id );
       };
-      var ajax = new tzdAjaxCall();
-      ajax.post(url, data, callback);
+      $tzd.ajax.post(url, data, callback);
     }
     ,update : function( id, data ){
       this.all[id] = data;
@@ -436,19 +434,22 @@ $(document).ready(function(){
       this.table.closeDetails( id );
     }
     ,drop : function( id ){
-      if(globalConfirmAction($(".pdt_removeProduct").html()+"?")){
+      if($tzd.confirm($(".pdt_removeProduct").html()+"?")){
         var url = base_url+'product/drop';
         var data = {
           tzadiToken : tzadiToken,
           _id : products.all[id]._id
         };
-        var callback = function( e ){
-          products.all[id] = "null";
-          products.table.dropLine( id );
-          products.table.reCalc();
+        var callback = function( error ){
+          if( error ) $tzd.alert.error(error);
+          else {
+            products.all[id] = "null";
+            products.table.dropLine( id );
+            products.table.reCalc();
+          }
+
         };
-        var ajax = new tzdAjaxCall();
-        ajax.post(url, data, callback);
+        $tzd.ajax.post(url, data, callback);
       }
     }
     ,refresh : function( local ) {
@@ -459,11 +460,10 @@ $(document).ready(function(){
       };
       var callback = function( e ){
         products.all = e;
-        products.all = tzdList.orderBy(products.table.order, products.all);
+        products.all = $tzd.list.orderBy(products.table.order, products.all);
         products.search( $('#search-query').val() );
       };
-      var ajax = new tzdAjaxCall();
-      ajax.post(url, data, callback);
+      $tzd.ajax.post(url, data, callback);
     }
     ,refreshSuppliers : function(){
       var url = base_url+'supplier/getAllActive';
@@ -474,8 +474,7 @@ $(document).ready(function(){
         products.suppliers = e;
         products.table.refreshSuppliers();
       };
-      var ajax = new tzdAjaxCall();
-      ajax.post(url, data, callback);
+      $tzd.ajax.post(url, data, callback);
     },
     addSupplier : function( term, id ){
       var url = base_url+'supplier/add';
@@ -488,8 +487,7 @@ $(document).ready(function(){
         products.suppliers[index] = e;
         products.table.addSupplier( e, id, index );
       };
-      var ajax = new tzdAjaxCall();
-      ajax.post(url, data, callback)
+      $tzd.ajax.post(url, data, callback)
     },
     addCampus : function( term, id, supplier_id ){
       var url = base_url+'supplier/addCampus';
@@ -506,8 +504,7 @@ $(document).ready(function(){
         products.suppliers[supplierIndex].campi.push(e);
         products.table.addCampus( e, id );
       };
-      var ajax = new tzdAjaxCall();
-      ajax.post(url, data, callback)
+      $tzd.ajax.post(url, data, callback)
     }
     ,changePhoto : function( id, files ) {
       var url = base_url+'product/changePhoto';
@@ -521,25 +518,29 @@ $(document).ready(function(){
           products.all[id].img = e;
           products.table.changePhoto( id );
         }
-        else globalAlert('alert-error', e.error);
+        else $tzd.alert.error(e.error);
       };
-      var ajax = new tzdAjaxCall();
-      ajax.upload(url, data, callback);
+      $tzd.ajax.upload(url, data, callback);
     }
     ,set : function( id ){
       var url = base_url+'product/set';
-      var formData = this.table.getFormData( id );
-      if(formData){
+      var newData = this.table.getFormData( id );
+      if(newData){
+        formData = newData;
         formData.tzadiToken = tzadiToken;
         formData._id = products.all[id]._id;
-        var callback = function( e ){
-          globalAlert('alert-success', $(".pdt_saved").html());
-          products.all[id] = e;
+        var callback = function( error ){
+          if( error ) $tzd.alert.error(error);
+          else {
+            for (var attrname in newData) { products.all[id][attrname] = newData[attrname]; }
+
+            $tzd.alert.success($(".pdt_saved").html());
+          }
+
         };
-        var ajax = new tzdAjaxCall();
-        ajax.post(url, formData, callback);
+        $tzd.ajax.post(url, formData, callback);
       } else {
-        globalAlert('alert-success', $(".pdt_noChanges").html());
+        $tzd.alert.error($(".pdt_noChanges").html());
       }
     },
     search : function( searchString ){
@@ -565,7 +566,7 @@ $(document).ready(function(){
       }
     },
     order : function(){
-      products.all = tzdList.orderBy(products.table.order, products.all);
+      products.all = $tzd.list.orderBy(products.table.order, products.all);
     }
     , addPackageProduct : function( productID, item ){
       if(!this.all[productID].itens) this.all[productID].itens = {};
@@ -585,7 +586,7 @@ $(document).ready(function(){
         this.table.removePackageProduct(productID, item);
         this.reCalcPackageTotal(productID);
       } else {
-        globalAlert("alert-error", $(".pdt_packageNeedsAtLeast1Product").html());
+        $tzd.alert.error($(".pdt_packageNeedsAtLeast1Product").html());
         self.table.setPackageItemQtd(productID, item, 1);
         self.reCalcPackageTotal(productID);
       }
@@ -599,7 +600,7 @@ $(document).ready(function(){
       var total = 0;
       var self = this;
       $.each(self.all[productID].itens, function(item, amount){
-        var product = tzdList.getBy(self.all, "_id", item)[0];
+        var product = $tzd.list.getBy(self.all, "_id", item)[0];
         total += product.price*amount;
       });
       this.table.setPackageTotal(productID, total);

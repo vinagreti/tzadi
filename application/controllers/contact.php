@@ -12,19 +12,10 @@ class Contact extends My_Controller {
 	{
 		$data = $this->input->post();
 		if(!$data){
-
-      if(!defined('COMPANYNICK')) {
-        $data->content = $this->load->view('tzadi/contact', "", true);
+        $data->dynJS = 'tzadi/contact';
+        $data->view = 'tzadi/contact';
         $data->page_title = lang('ct_page_title');
-        $this->parser->parse('templates/tzadiTemplate', $data);  
-      }
-      else {
-        $company = $this->MYcheckCompany();
-        $data->content = $this->load->view('tzadi/contact', "", true);
-        $data->page_title = lang('ct_page_title');
-        $data->companyName = $this->session->userdata("companyName");
-        $this->parser->parse('templates/companyTemplate', $data);  
-      }
+        $this->page->load($data); 
 		} 
 		else {
 			if($data["email"] && $data["subject"] && $data["message"]){
@@ -48,5 +39,5 @@ class Contact extends My_Controller {
 	}
 }
 
-/* End of file welcome.php */
-/* Location: ./application/controllers/welcome.php */
+/* End of file Contact.php */
+/* Location: ./application/controllers/Contact.php */

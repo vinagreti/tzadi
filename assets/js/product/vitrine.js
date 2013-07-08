@@ -31,13 +31,12 @@ $(document).ready(function(){
         self.products = e;
         self.search($(".seacrh").val());
       };
-      var ajax = new tzdAjaxCall();
-      ajax.post(url, data, callback);
+      $tzd.ajax.post(url, data, callback);
     };
     this.addProduct = function( objProduct ){
       var product = new this.product( objProduct );
       var line = body.find(".line").last();
-      if( line.length == 0 || line.find(".product").length == 6) {
+      if( line.length == 0 || line.find(".product").length == 4) {
         line = lineHtml.clone();
         body.append(line);
       }
@@ -45,31 +44,6 @@ $(document).ready(function(){
     };
     this.clear = function(){
       $(".itensList").empty();
-    };
-    this.like = function( productID ){
-      var url = base_url+'product/like';
-      var data = {
-        tzadiToken : tzadiToken
-        , productID : productID
-      };
-      var callback = function( likes ){
-        $("#"+productID).find(".likes").html(likes);
-      };
-      var ajax = new tzdAjaxCall();
-      ajax.post(url, data, callback);
-    };
-    this.sendByMail = function( productID, adresses ){
-      var url = base_url+'product/sendByMail';
-      var data = {
-        tzadiToken : tzadiToken
-        , productID : productID
-        , adresses : adresses
-      };
-      var callback = function( likes ){
-        $("#"+productID).find(".likes").html(likes);
-      };
-      var ajax = new tzdAjaxCall();
-      ajax.post(url, data, callback);
     };
     this.search = function( searchString ){
       var self = this;
@@ -112,6 +86,7 @@ $(document).ready(function(){
       if( $("#transfer").find(".found").html() > 0 ) $("#transfer").show();
       if( $("#work").find(".found").html() > 0 ) $("#work").show();
       if( $("#regularProduct").find(".found").html() > 0 ) $("#regularProduct").show();
+      if( $("#package").find(".found").html() > 0 ) $("#package").show();
 
     };
   };

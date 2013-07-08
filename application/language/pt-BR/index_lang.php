@@ -2,7 +2,7 @@
 $lang['idx_title'] = 'O mundo do intercâmbio conectado!';
 $lang['idx_explanation'] = 'A tzadi fornece soluções para agilizar as tarefas comuns
    das agências, dos intercambistas e das escolas.';
-$lang['idx_know_more'] = 'Quer saber mais?';
+$lang['idx_register'] = 'CRIE SUA CONTA GRATUITAMENTE';
 $lang['idx_Agency'] = 'Agency';
 $lang['idx_Agency_txt1'] = 'Não perca mais tempo com planilhas, com milhares de e-mails, com geração de orçamentos, 
       com atualização do catálogo de produtos e com dificuldades para expor seus produtos na internet. Não se complique no relacionamento com clientes e escolas.';

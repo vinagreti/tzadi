@@ -7,13 +7,12 @@
   <meta name="description" content="">
   <meta name="author" content="">
   <!-- bootstrap styles -->
-  <link rel="stylesheet" href="<?=base_url()?>assets/third_party/bootstrap/css/bootstrap.css">
+  <link rel="stylesheet" href="<?=base_url()?>assets/third_party/bootstrap/css/theme/orange/bootstrap.min.css">
   <link rel="stylesheet" href="<?=base_url()?>assets/third_party/bootstrap/css/bootstrap-datetimepicker.min.css">
   <link rel="stylesheet" href="<?=base_url()?>assets/third_party/bootstrap/css/font-awesome.min.css">
   <link rel="stylesheet" href="<?=base_url()?>assets/third_party/select2/select2.css"/>
   <!-- tzadi global styles -->
   <link rel="stylesheet" href="<?=base_url()?>assets/css/global.css">
-  <link rel="stylesheet" href="<?=base_url()?>assets/third_party/bootstrap/css/bootstrap-responsive.css">
 
   <noscript>
     <p class='hero-unit'><?=lang("tmpt_need_js")?></p>
@@ -42,7 +41,11 @@
   <!-- Navbar -->
   <div class="navbar navbar-inverse navbar-fixed-top autoOpen">
     <div class="navbar-inner">
+
+      <div class="globalAlert"></div>
+      
       <div class="container">
+
         <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
@@ -109,16 +112,9 @@
   </div><!-- navbar -->
   
   <div class="container">
-    <div class="row">
-      <div class="span12">
-        <div class="row tzdContent">
-          <div class="span12">
-            <div class="globalAlert"></div>
-          </div>
-          <div class="span12">
-            {content}
-          </div>
-        </div>
+    <div class="row tzdContent">
+      <div class="span24">
+        {content}
       </div>
     </div>
     <hr>
@@ -147,10 +143,20 @@
   <?=form_open("",array("class" => "tzadiToken"))?><?=form_close()?>
   <script type="text/javascript">var base_url = "<?=base_url()?>";</script>
   <!-- Cusom JS -->
-  <script src="<?=base_url()?>assets/js/tzadi/tzadi.js"></script>
-  <script src="<?=base_url()?>assets/js/tzadi/tzadi-budget.js"></script>
-  <script src="<?=base_url()?>assets/js/tzadi/tzadi-mail.js"></script>
-  <script src="<?=base_url()?>assets/js/tzadi/tzadi-string.js"></script>
-  <?php if (isset($dynJS)){?><script src="<?=base_url()?>assets/js/{dynJS}.js"></script><?php } ?>
+  <script src="<?=base_url()?>assets/third_party/tzadi/tzadi.js"></script>
+  <script src="<?=base_url()?>assets/third_party/tzadi/tzadi-lang.js"></script>
+  <script src="<?=base_url()?>assets/third_party/tzadi/tzadi-ajax.js"></script>
+  <script src="<?=base_url()?>assets/third_party/tzadi/tzadi-budget.js"></script>
+  <script src="<?=base_url()?>assets/third_party/tzadi/tzadi-mail.js"></script>
+  <script src="<?=base_url()?>assets/third_party/tzadi/tzadi-string.js"></script>
+  <script src="<?=base_url()?>assets/third_party/tzadi/tzadi-alert.js"></script>
+  <script src="<?=base_url()?>assets/third_party/tzadi/tzadi-counter.js"></script>
+  <script src="<?=base_url()?>assets/third_party/tzadi/tzadi-form.js"></script>
+  <script src="<?=base_url()?>assets/third_party/tzadi/tzadi-onkeyup-fix.js"></script>
+  <script src="<?=base_url()?>assets/third_party/tzadi/tzadi-confirm.js"></script>
+  <script src="<?=base_url()?>assets/third_party/tzadi/tzadi-list.js"></script>
+  <script src="<?=base_url()?>assets/third_party/tzadi/tzadi-loading.js"></script>
+  <?php if (isset($dynJS) && is_string($dynJS)){?><script src="<?=base_url()?>assets/js/{dynJS}.js"></script><?php } ?>
+  <?php if (isset($dynJS) && is_array($dynJS)){ foreach($dynJS as $js) { ?><script src="<?=base_url()?>assets/js/<?=$js?>.js"></script><?php } } ?>
 </body>
 </html>

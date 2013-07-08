@@ -25,8 +25,8 @@ $(document).ready(function(){
           totalPrice += amount*product.price;
           $(".totalPrice").html(totalPrice);
         };
-        var ajax = new tzdAjaxCall();
-        ajax.post(url, data, callback);
+
+        $tzd.ajax.post(url, data, callback);
       });
     };
   };
@@ -38,6 +38,13 @@ $(document).ready(function(){
 $(document).ready(function(){
   $(".empty").live("click", function(){
     $tzd.budget.empty();
+    $(".list").empty();
+    $(".totalPrice").html(0);
+  });
+
+  $(".reload").live("click", function(){
+    $(".list").empty();
+    budget.reload();
   });
 
   $(".amount").live("change propertychange", function(){

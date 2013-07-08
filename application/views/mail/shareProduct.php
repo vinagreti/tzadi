@@ -10,7 +10,7 @@
     <div class="globalModalAlert hide" id="modalAlert"><?=lang("mail_fillAllFieldsCorrectly")?></div>
 
     <div class="row-fluid">
-      <div class="span12">
+      <div class="span24">
         <label><?=lang("mail_yourName")?></label>
         <input class="mailYourName input-block-level" type="text" />
         <label><?=lang("mail_adressesToSend")?></label>
@@ -21,10 +21,10 @@
     </div>
 
     <div class="row-fluid">
-      <div class="span4">
+      <div class="span8">
         <img src="<?=$img?>"></img>
       </div>
-      <div class="span8">
+      <div class="span16">
         <h5><?=$name?></h5>
         <p><?=lang("mail_price")?>: <?=$price?> </p>
       </div>
