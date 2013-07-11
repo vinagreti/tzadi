@@ -29,6 +29,18 @@
   <link rel="apple-touch-icon-precomposed" sizes="72x72" href="<?=base_url()?>assets/img/72x72.png">
   <link rel="apple-touch-icon-precomposed" href="<?=base_url()?>assets/img/32x32.png">
   <link rel="shortcut icon" href="<?=base_url()?>assets/img/32x32.png">
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-42381472-1', 'tzadi.com');
+  ga('send', 'pageview');
+
+</script>
+
 </head>
 <body>
   <!-- Dialogs -->
