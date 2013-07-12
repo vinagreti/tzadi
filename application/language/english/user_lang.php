@@ -1,2 +1,2 @@
 <?php
-$lang["usr_userNotFound"] = "e-mail and password doesn't match";
+$lang["usr_userNotFound"] = "e-mail e password não conferem";

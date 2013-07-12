@@ -73,20 +73,20 @@
                 <li><a tabindex="-1"  href="#profile"><?=lang('tmpt_Profile')?></a></li>
                 <li><a tabindex="-1"  href="#configuracoes"><?=lang('tmpt_Settings')?></a></li>
                 <li class="divider"></li>
-                <li><a tabindex="-1"  href="<?=base_url()?><?=lang('tmpt_logout')?>"><?=lang('tmpt_Logout')?></a></li>
+                <li><a tabindex="-1"  href="<?=base_url()?><?=lang('rt_logout')?>"><?=lang('tmpt_Logout')?></a></li>
               </ul>
             </li>
           </ul>
           <?php } else { ?>
             <ul class="nav">
               <p class="navbar-text">
-                <a class="navbar-link" id="signUp" href="<?=base_url()?>signup"><i class="icon-arrow-right"></i> <?=lang('tmpt_signup')?></a>
+                <a class="navbar-link" id="signUp" href="<?=base_url()?><?=lang('rt_signup')?>"><i class="icon-arrow-right"></i> <?=lang('tmpt_signup')?></a>
               </p>
             </ul>
             <ul class="nav">
               <p class="navbar-text">
                 <i class="icon-user icon-large"></i>
-                <a class="navbar-link" href="<?=base_url()?><?=lang('tmpt_login')?>"> <?=lang('tmpt_login')?></a>
+                <a class="navbar-link" href="<?=base_url()?><?=lang('rt_login')?>"> <?=lang('tmpt_login')?></a>
               </p>
             </ul>
           <?php } ?>
@@ -97,8 +97,8 @@
               <a class="dropdown-toggle" data-toggle="dropdown" rel="tooltip" title="<?=lang('tmpt_Institutional')?>"><i class="icon-comments icon-large"></i> <?=lang('tmpt_Institutional')?></a>
               <ul class="dropdown-menu">
                 <li><a href="<?=base_url()?>">Home</a></li>
-                <li><a href="<?=base_url()?><?=lang('tmpt_AboutUsHtml')?>"><?=lang('tmpt_AboutUs')?></a></li>
-                <li><a href="<?=base_url()?><?=lang('tmpt_ContactUsHtml')?>"><?=lang('tmpt_ContactUs')?></a></li>
+                <li><a href="<?=base_url()?><?=lang('rt_about')?>"><?=lang('tmpt_AboutUs')?></a></li>
+                <li><a href="<?=base_url()?><?=lang('rt_contact')?>"><?=lang('tmpt_ContactUs')?></a></li>
               </ul>
             </li>
 

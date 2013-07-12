@@ -5,11 +5,9 @@ class User extends My_Controller {
   public function __construct() {
     // define os tipos de usuarios que podem acessar a classe Task
     parent::__construct();
-
-  		$this->lang->load('template', $this->session->userdata('app_language'));
-  		$this->lang->load('login', $this->session->userdata('app_language'));
-      $this->lang->load('user', $this->session->userdata('app_language'));
-
+		$this->lang->load('template', $this->session->userdata('app_language'));
+		$this->lang->load('login', $this->session->userdata('app_language'));
+    $this->lang->load('user', $this->session->userdata('app_language'));
   }
 
 	public function index()

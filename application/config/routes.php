@@ -66,5 +66,8 @@ $route['sobre'] = 'about';
 
 $route['contato'] = 'contact';
 
+$route['cadastro'] = 'signup';
+
+$route['fornecedor'] = 'supplier';
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */

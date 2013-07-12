@@ -1,8 +1,8 @@
 <?php
-$lang['lgn_Sign_In'] = 'Sign In';
+$lang['lgn_Sign_In'] = 'Login';
 $lang['lgn_sign_In'] = 'login';
-$lang['lgn_enter_mail'] = 'Enter you e-mail address';
-$lang['lgn_enter_passwd'] = 'Enter your password';
-$lang['lgn_validate_mail'] = 'Please, enter a valid e-mail';
-$lang['lgn_validate_password'] = 'Please, enter the password';
-$lang['lgn_invalid_credential'] = 'Login and password do not match.';
+$lang['lgn_enter_mail'] = 'informe o e-mail';
+$lang['lgn_enter_passwd'] = 'informe a senha';
+$lang['lgn_validate_mail'] = 'por favor, informe um endereço de e-mail válido';
+$lang['lgn_validate_password'] = 'por favor, informe a senha';
+$lang['lgn_invalid_credential'] = 'o login e senha não conferem.';

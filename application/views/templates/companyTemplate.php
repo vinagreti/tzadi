@@ -65,13 +65,13 @@
                 <li><a tabindex="-1"  href="#profile"><?=lang('tmpt_Profile')?></a></li>
                 <li><a tabindex="-1"  href="#configuracoes"><?=lang('tmpt_Settings')?></a></li>
                 <li class="divider"></li>
-                <li><a tabindex="-1"  href="<?=base_url()?><?=lang('tmpt_logout')?>"><?=lang('tmpt_Logout')?></a></li>
+                <li><a tabindex="-1"  href="<?=base_url()?><?=lang('rt_logout')?>"><?=lang('tmpt_Logout')?></a></li>
               </ul>
             </li>
             <?php } else { ?>
               <p class="navbar-text pull-right">
                 <i class="icon-user icon-large"></i>
-                <a class="navbar-link" href="<?=base_url()?><?=lang('tmpt_login')?>"> <?=lang('tmpt_login')?></a>
+                <a class="navbar-link" href="<?=base_url()?><?=lang('rt_login')?>"> <?=lang('tmpt_login')?></a>
               </p>
             <?php } ?>
           </ul>
@@ -80,8 +80,8 @@
               <a class="dropdown-toggle" data-toggle="dropdown" rel="tooltip" title="<?=lang('tmpt_The_tzadi')?>"><i class="icon-comments icon-large"></i> <?=lang('tmpt_Institutional')?></a>
               <ul class="dropdown-menu">
                 <li><a href="<?=base_url()?>">Home</a></li>
-                <li><a href="<?=base_url()?><?=lang('tmpt_AboutUsHtml')?>"><?=lang('tmpt_AboutUs')?></a></li>
-                <li><a href="<?=base_url()?><?=lang('tmpt_ContactUsHtml')?>"><?=lang('tmpt_ContactUs')?></a></li>
+                <li><a href="<?=base_url()?><?=lang('rt_about')?>"><?=lang('tmpt_AboutUs')?></a></li>
+                <li><a href="<?=base_url()?><?=lang('rt_contact')?>"><?=lang('tmpt_ContactUs')?></a></li>
               </ul>
             </li>
 
@@ -97,13 +97,13 @@
             <li class="dropdown">
               <a class="dropdown-toggle" data-toggle="dropdown" rel="tooltip" title="<?=lang('tmpt_Agency')?>"><i class="icon-plane icon-large"></i> <?=lang('tmpt_Agency')?></a>
               <ul class="dropdown-menu">
-                <li><a href="<?=base_url()?>supplier" rel="tooltip" title="<?=lang('tmpt_Institutions')?>"><?=lang('tmpt_Institutions')?></a></li>
-                <li><a href="<?=base_url()?><?=lang('tmpt_products')?>" rel="tooltip" title="<?=lang('tmpt_Products')?>"><?=lang('tmpt_Products')?></a></li>
+                <li><a href="<?=base_url()?><?=lang('rt_supplier')?>" rel="tooltip" title="<?=lang('tmpt_Institutions')?>"><?=lang('tmpt_Institutions')?></a></li>
+                <li><a href="<?=base_url()?><?=lang('rt_products')?>" rel="tooltip" title="<?=lang('tmpt_Products')?>"><?=lang('tmpt_Products')?></a></li>
               </ul>
             </li>
             <?php }?>
 
-            <li><a href="<?=base_url()?><?=lang('tmpt_budgetURL')?>" target="_blank"><i class="icon-flag"></i> <?=lang('tmpt_Budget')?> <span class="label label-warning budgetTotal"></span></a></li>
+            <li><a href="<?=base_url()?><?=lang('rt_badge')?>" target="_blank"><i class="icon-flag"></i> <?=lang('tmpt_Budget')?> <span class="label label-warning budgetTotal"></span></a></li>
 
           </ul>
         </div><!--/.nav-collapse -->

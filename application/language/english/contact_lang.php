@@ -1,9 +1,12 @@
 <?php
-$lang['ct_page_title'] = 'Contact us';
-$lang['ct_page_p1'] = 'Be in contact with tzadi';
-$lang['ct_page_p2'] = 'We are here to answer question, share experience, establish a partnership and hear critics and suggestions.';
-$lang['ct_page_p3'] = 'Fill the form below and click Send.';
-$lang['ct_email'] = 'Enter your e-mail address';
-$lang['ct_subject'] = 'Enter the subject';
-$lang['ct_message'] = 'Enter the message';
-$lang['ct_Send'] = 'Send';
+$lang['ct_page_title'] = 'Contato';
+$lang['ct_page_p1'] = 'Entre em contato conosco';
+$lang['ct_page_p2'] = 'Estamos a sua disposição para esclarecer dúvidas, trocar experiências, fazer parcerias e ouvir críticas e sugestões.';
+$lang['ct_page_p3'] = 'Preencha o formulário abaixo e clique em enviar.';
+$lang['ct_email'] = 'informe seu endereço de e-mail';
+$lang['ct_subject'] = 'informe o assunto';
+$lang['ct_message'] = 'informe a mensagem';
+$lang['ct_Send'] = 'enviar';
+$lang['ct_insert_valid_mail'] = 'informe um email válido';
+$lang['ct_insert_subject'] = 'o assunto deve ter entre 1 e 512 caracteres.';
+$lang['ct_insert_message'] = 'escreva sua mensagem antes de enviar';

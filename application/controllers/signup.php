@@ -5,9 +5,7 @@ class Signup extends My_Controller {
   public function __construct() {
     // carrega os arquivos de idioma
     parent::__construct();
-    $app_language = $this->session->userdata('app_language');
-    $this->lang->load('template', LANGUAGE);
-    $this->lang->load('signup', LANGUAGE);
+    $this->lang->load('signup', $this->session->userdata('app_language'));
   }
 
   public function index()

@@ -2,13 +2,6 @@
 
 class Error extends My_Controller {
 
-  public function __construct() {
-
-    parent::__construct();
-    $this->lang->load('template', $this->session->userdata('app_language'));
-
-  }
-
   public function index()
   {
     $content = $this->load->view('error/pageNotFound', "", true);
