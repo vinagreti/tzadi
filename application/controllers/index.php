@@ -8,15 +8,14 @@ class Index extends My_Controller {
 	$this->lang->load('index', $this->session->userdata('app_language'));
   }
 
-	public function index()
-	{
-		$content = $this->load->view('tzadi/index', "", true);
-		$data = array(
-			'page_title' => 'Home',
-			'content' => $content
-			);
-		$this->parser->parse('templates/tzadiTemplate', $data);
-	}
+  public function index()
+  {
+    $data->dynJS = 'tzadi/index';
+    $data->view = 'tzadi/index';
+    $data->page_title = lang('idx_title');
+    $this->page->load($data); 
+  }
+  
 }
 
 /* End of file index.php */

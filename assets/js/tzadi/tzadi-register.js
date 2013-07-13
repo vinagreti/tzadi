@@ -6,7 +6,7 @@
  * Copyright 2013 Bruno da Silva Joao
  * Released under the MIT license
  */
-TzadiJS.prototype.mail = new function(){
+TzadiJS.prototype.register = new function(){
 
   this.modal = false;
 

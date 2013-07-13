@@ -137,4 +137,16 @@ $lang["pdt_invalidCourseBook"] = "courseBook deve conter apenas números";
 $lang["pdt_invalidEnsuranceDurationValue"] = "ensuranceDurationValue deve conter apenas números";
 $lang["pdt_invalidAccommodationPeopleNumber"] = "accommodationPeopleNumber deve conter apenas números";
 $lang["pdt_invalidAccommodationDurationValue"] = "accommodationDurationValue deve conter apenas números";
-
+$lang["pdt_shareThisProduct"] = "compartilhar este produto";
+$lang["pdt_adressesToSend"] = "endereços (separados por vírgula)";
+$lang["pdt_fillAllFieldsCorrectly"] = "Preencha todos os campos corretamente!";
+$lang["pdt_message"] = "mensagem:";
+$lang["pdt_cancel"] = "cancelar";
+$lang["pdt_send"] = "enviar";
+$lang["pdt_price"] = "preço";
+$lang["pdt_yourName"] = "seu nome";
+$lang["pdt_shareIndicated"] = "te indicou";
+$lang["pdt_shareProductContentTop"] = "achou o produto abaixo interessante e resolveu compartilhar com você.";
+$lang["pdt_shareProductContentFooter"] = '<a href="tzadi.com">Tzadi.com</a>';
+$lang["pdt_shareProductContentFooter"] .= 'Esta mensagem não é um spam. Ela foi enviada exclusivamente para você.';
+$lang["pdt_shareBlockReceiver"] = 'Clique <a href="tzadi.com/mail/blockreceiver/">aqui</a> para não receber este tipo de mensagem.';

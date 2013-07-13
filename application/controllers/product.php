@@ -9,11 +9,10 @@ class Product extends My_Controller {
 
   public function index()
   {
-    $data->dynJS = "product/vitrine";
-    $data->content = $this->load->view('product/vitrine', "", true);
+    $data->dynJS = 'product/vitrine';
+    $data->view = 'product/vitrine';
     $data->page_title = "Vitrine";
-    $data->companyName = $this->session->userdata("companyName");
-    $this->parser->parse('templates/companyTemplate', $data);
+    $this->page->load($data);
   }
 
   public function manage()
@@ -105,6 +104,13 @@ class Product extends My_Controller {
     $this->load->model('product_model');
     $likes = $this->product_model->like();
     echo json_encode($likes);
+  }
+
+  public function share()
+  {
+    $data = $this->input->post();
+    $this->load->model("product_model");
+    echo json_encode($this->product_model->share($data));
   }
 }
 /* End of file product.php */

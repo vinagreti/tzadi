@@ -211,4 +211,43 @@ class Product_Model extends CI_Model {
 
     return $product;
   }
+
+  function share($data)
+  {
+
+    $product = $this->getHumanized( $data["productID"] );
+
+    if(isset($product["img"])) $product["img"] = base_url()."file/open/".$product["img"];
+
+    else $product["img"] = base_url()."assets/img/no_photo_160x120.png";
+
+    if(isset($data["addresses"])) {
+
+      $address = $data["addresses"];
+
+      $subject = $data["name"] . " " . lang("pdt_shareIndicated") . ": " . $product["name"];
+
+      $mail->message = $data["message"];
+      
+      $mail->product = $product;
+
+      $message = $this->load->view("product/shareMail", $mail, true);
+
+      $to = $address;
+
+      $this->load->library('gmail');
+
+      $this->gmail->send($to, utf8_decode($subject), utf8_decode($message));
+
+      $error = false;
+
+    } else {
+
+      $error = $this->load->view('product/shareForm', $product, true);
+
+    }
+
+    return $error;
+
+  }
 }

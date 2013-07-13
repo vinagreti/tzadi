@@ -12,7 +12,7 @@ $(document).ready(function(){
   });
 
   $(".shareProductByMail").live("click", function(){
-    $tzd.mail.shareProduct.open( productID );
+    $tzd.product.share.open( productID );
   });
   
 });

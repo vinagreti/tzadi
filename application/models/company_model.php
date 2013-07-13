@@ -44,4 +44,63 @@ class Company_Model extends CI_Model {
 
     return true;
   }
+
+  function beInTouch($data)
+  {
+
+    if(isset($data["email"])) {
+
+      $already = $this->mongo_db
+        ->where('email', $data["email"])
+        ->get('inTouch');
+
+      if(isset($already[0])) {
+
+        $error = lang("cpn_emailAlreadyInTouch");
+
+      } else {
+
+        $subject = $data["name"] . " " . lang("cpn_beInTouchSubject");
+
+        $data["message"];
+        
+        $message = $this->load->view("company/beInTouchMail", $data, true);
+
+        $to =  $data["email"];
+
+        $cc =  "bruno@tzadi.com";
+
+        $cc =  "tzadiinc@tzadi.com";
+
+        $cc =  "lucas@tzadi.com";
+
+        $this->load->library('gmail');
+
+        $this->gmail->send($to, utf8_decode($subject), utf8_decode($message));
+      
+        $this->load->model("mongo_model");
+
+        $this->mongo_db->insert('inTouch',
+          array(
+            "_id" => $this->mongo_model->newID()
+            , "name" => $data["name"]
+            , "email" => $data["email"]
+            , "message" => array($data["message"])
+          )
+        );
+
+        $error = false;
+
+      }
+
+
+    } else {
+
+      $error = $this->load->view('company/beInTouchForm', "", true);
+
+    }
+
+    return $error;
+
+  }
 }

@@ -144,19 +144,18 @@
   <?=form_open("",array("class" => "tzadiToken"))?><?=form_close()?>
   <script type="text/javascript">var base_url = "<?=base_url()?>";</script>
   <!-- Cusom JS -->
-  <script src="<?=base_url()?>assets/third_party/tzadi/tzadi.js"></script>
-  <script src="<?=base_url()?>assets/third_party/tzadi/tzadi-lang.js"></script>
-  <script src="<?=base_url()?>assets/third_party/tzadi/tzadi-ajax.js"></script>
-  <script src="<?=base_url()?>assets/third_party/tzadi/tzadi-budget.js"></script>
-  <script src="<?=base_url()?>assets/third_party/tzadi/tzadi-mail.js"></script>
-  <script src="<?=base_url()?>assets/third_party/tzadi/tzadi-string.js"></script>
-  <script src="<?=base_url()?>assets/third_party/tzadi/tzadi-alert.js"></script>
-  <script src="<?=base_url()?>assets/third_party/tzadi/tzadi-counter.js"></script>
-  <script src="<?=base_url()?>assets/third_party/tzadi/tzadi-form.js"></script>
-  <script src="<?=base_url()?>assets/third_party/tzadi/tzadi-onkeyup-fix.js"></script>
-  <script src="<?=base_url()?>assets/third_party/tzadi/tzadi-confirm.js"></script>
-  <script src="<?=base_url()?>assets/third_party/tzadi/tzadi-list.js"></script>
-  <script src="<?=base_url()?>assets/third_party/tzadi/tzadi-loading.js"></script>
+  <script src="<?=base_url()?>assets/js/tzadi/tzadi.js"></script>
+  <script src="<?=base_url()?>assets/js/tzadi/tzadi-lang.js"></script>
+  <script src="<?=base_url()?>assets/js/tzadi/tzadi-ajax.js"></script>
+  <script src="<?=base_url()?>assets/js/tzadi/tzadi-budget.js"></script>
+  <script src="<?=base_url()?>assets/js/tzadi/tzadi-string.js"></script>
+  <script src="<?=base_url()?>assets/js/tzadi/tzadi-alert.js"></script>
+  <script src="<?=base_url()?>assets/js/tzadi/tzadi-counter.js"></script>
+  <script src="<?=base_url()?>assets/js/tzadi/tzadi-form.js"></script>
+  <script src="<?=base_url()?>assets/js/tzadi/tzadi-onkeyup-fix.js"></script>
+  <script src="<?=base_url()?>assets/js/tzadi/tzadi-confirm.js"></script>
+  <script src="<?=base_url()?>assets/js/tzadi/tzadi-list.js"></script>
+  <script src="<?=base_url()?>assets/js/tzadi/tzadi-loading.js"></script>
   <?php if (isset($dynJS) && is_string($dynJS)){?><script src="<?=base_url()?>assets/js/{dynJS}.js"></script><?php } ?>
   <?php if (isset($dynJS) && is_array($dynJS)){ foreach($dynJS as $js) { ?><script src="<?=base_url()?>assets/js/<?=$js?>.js"></script><?php } } ?>
 </body>
