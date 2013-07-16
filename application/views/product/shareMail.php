@@ -7,7 +7,7 @@
     
     <div class="row">
       <div class="span24">
-        <a href="<?=base_url()?>product/view/<?=$product['_id']?>"><img class="img" src="<?=$product['img']?>"></a>
+        <a href="<?=base_url() . $product['_id']?>"><img class="img" src="<?=$product['img']?>"></a>
       </div>
     </div>
 

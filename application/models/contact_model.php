@@ -18,13 +18,12 @@ class Contact_Model extends CI_Model {
       $message = "<p> Contato enviado por: " . $data["email"] . "</p>";
       $message .= "<p> Assunto: " . $data["subject"] . "</p>";
       $message .= "<p> Mensagem: " . $data["message"] . "</p>";
-      $message = '<html><head><meta charset="utf-8"></head><body>'.$message.'</body></html>';
-      $subject = "Contato recebido - " . $data["email"];
-      $to = "tzadiinc@tzadi.com";
-      $cc =  "bruno@tzadi.com";
-      $cc =  "lucas@tzadi.com";
+      $mail->message = '<html><head><meta charset="utf-8"></head><body>'.$message.'</body></html>';
+      $mail->subject = "Contato recebido - " . $data["email"];
+      $mail->to =  $data["email"];
+      $mail->bcc =  array("bruno@tzadi.com", "tzadiinc@gmail.com", "lucas@tzadi.com");
       $this->load->library('gmail');
-      $this->gmail->send($to, utf8_decode($subject), utf8_decode($message));
+      $this->gmail->send($mail);
     } else {
       $message = "<p> Contato enviado por: " . $data["email"] . "</p>";
       $message .= "<p> para " . COMPANYSUBDOMAIN . "</p>";
@@ -32,9 +31,8 @@ class Contact_Model extends CI_Model {
       $message .= "<p> Mensagem: " . $data["message"] . "</p>";
       $message = '<html><head><meta charset="utf-8"></head><body>'.$message.'</body></html>';
       $subject = "Contato recebido - " . $data["email"];
-      $to = "tzadiinc@tzadi.com";
-      $cc =  "bruno@tzadi.com";
-      $cc =  "lucas@tzadi.com";
+      $mail->to =  $data["email"];
+      $mail->bcc =  array("bruno@tzadi.com", "tzadiinc@gmail.com", "lucas@tzadi.com");
       $this->load->library('gmail');
       $this->gmail->send($to, utf8_decode($subject), utf8_decode($message));
     }

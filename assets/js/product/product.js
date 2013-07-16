@@ -20,7 +20,7 @@ TzadiJS.prototype.product = new function(){
 
     var data = { tzadiToken : tzadiToken, _id : _id };
 
-    var callback = function( likes ){ return likes; };
+    var callback = function( likes ){ $(".likes").html(likes); };
 
     $tzd.ajax.post(url, data, callback);
 

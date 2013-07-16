@@ -5,6 +5,8 @@ $(document).ready(function(){
     this.body.find(".tzdTableBrief").remove();
     this.campus = this.body.find(".campus").clone();
     this.body.find(".campusForm").remove();
+    this.attachment = this.body.find(".attachment").clone();
+    this.body.find(".attachment").remove();
     this.accommodationForm = this.body.find(".accommodationForm").clone();
     this.body.find(".accommodationForm").remove();
     this.passForm = this.body.find(".passForm").clone();
@@ -26,6 +28,7 @@ $(document).ready(function(){
     this.body.find(".tzdTableLine").remove();
     this.status = "active";
     this.order = "name";
+    this.kind = "all";
 
     this.createBrief = function( id ){
       var objProduct = products.all[id];
@@ -49,7 +52,7 @@ $(document).ready(function(){
     };
     this.addLine = function( id, position, open ){
       var objProduct = products.all[id];
-      if(this.status == "all" || objProduct.status == this.status){
+      if(this.status == "all" || objProduct.status == this.status && this.kind == "all" || this.kind == objProduct.kind){
         var brief = this.createBrief( id );
         var line = this.line.clone();
         line.attr("id", id)
@@ -73,8 +76,10 @@ $(document).ready(function(){
       line.find(".percent").mask('00000', {reverse: true});
       this.reCalcValues(id, "price");
       line.find(".detail").val(objProduct.detail);
-      line.find(".currency").select2();
+      line.find(".currency").select2({ minimumResultsForSearch: '-1' });
       line.find('.currency').select2("val", objProduct.currency);
+      line.find(".vitrine").select2({ minimumResultsForSearch: '-1' });
+      line.find('.vitrine').select2("val", objProduct.vitrine);
       line.find(".supplier").select2({
         formatNoMatches: function( term ){
           var link = "<a class='addPartner btn btn-success btn-mini' onclick='products.addSupplier("+'"'+term+'"'+", "+'"'+id+'"'+")'>"+$(".add").html()+"</a> "+term;
@@ -86,7 +91,11 @@ $(document).ready(function(){
       line.find('.supplier_campus').select2("val", objProduct.supplier_campus);
       if(objProduct.status == "active") line.find(".productStatus").addClass("btn-success").removeClass("btn-danger").html($(".pdt_inactivate").html());
       else line.find(".productStatus").addClass("btn-danger").removeClass("btn-success").html($(".pdt_activate").html());
-      if(objProduct.img) line.find(".changeImg").attr("src", base_url+"file/open/"+objProduct.img);
+      if(objProduct.img) {
+        line.find(".img").attr("src", base_url+"file/open/"+objProduct.img[0]).attr("name", 0);
+        line.find(".imgAmount").html(objProduct.img.length);
+        line.find(".imgNumber").html(1);
+      }
       line.find(".name").val(objProduct.name);
       this.showKindForm( id );
     };
@@ -201,14 +210,20 @@ $(document).ready(function(){
           line.find(".kindForm").html(passForm);
           line.find(".passTransportKind").select2();
           line.find(".passTransportKind").select2("val", objProduct.passTransportKind);
+          line.find(".passTransportWays").select2();
+          line.find(".passTransportWays").select2("val", objProduct.passTransportWays);
           line.find(".passFrom").val(objProduct.passFrom);
           line.find(".passTo").val(objProduct.passTo);
         break;
         case "package":
           var packageForm = this.packageForm.clone();
+          var foundProducts = products.all.filter(function ( product ) {
+            var contain = contain || product.status == "active";
+            return contain;
+          });
           line.find(".kindForm").html(packageForm);
           line.find('.addPackageProduct').typeahead({
-            source: products.all
+            source: foundProducts
             , property: "name"
             , onselect: function(obj) {
               if(products.all[id]._id != obj._id) products.addPackageProduct( id, obj._id );
@@ -257,10 +272,15 @@ $(document).ready(function(){
       if(objProduct.status == "active") line.find(".productStatus").addClass("btn-success").removeClass("btn-danger").html($(".pdt_inactivate").html());
       else line.find(".productStatus").addClass("btn-danger").removeClass("btn-success").html($(".pdt_activate").html());
     };
-    this.changePhoto = function( id ){
+    this.attachImg = function( id, img ){
       var line = this.body.find("#"+id);
       var objProduct = products.all[id];
-      line.find(".changeImg").attr("src", base_url+"file/open/"+objProduct.img);
+      var index = objProduct.img.indexOf( img );
+      line.find(".img").attr("src", base_url+"file/open/"+img).attr("name", index);
+      if(index == 0) line.find(".cover").find("i").attr("class", "icon-check");
+      else line.find(".cover").find("i").attr("class", "icon-check-empty");
+      line.find(".imgAmount").html(objProduct.img.length);
+      line.find(".imgNumber").html(index+1);
     };
     this.addSupplier = function( supplier, id, index ){
       var tableSupplierSelect = this.detail.find(".supplier");
@@ -342,6 +362,7 @@ $(document).ready(function(){
       if(objProduct.purchase != line.find(".purchase").val()) formData.purchase = line.find(".purchase").val();
       if(objProduct.price != line.find(".price").val()) formData.price = line.find(".price").val();
       if(objProduct.currency != line.find(".currency").select2('data').id) formData.currency = line.find(".currency").select2('data').id;
+      if(objProduct.vitrine != line.find(".vitrine").select2('data').id) formData.vitrine = line.find(".vitrine").select2('data').id;
       if(objProduct.supplier != line.find(".supplier").select2('data').id) formData.supplier = line.find(".supplier").select2('data').id;
       if(line.find(".supplier_campus").select2('data').id && objProduct.supplier_campus != line.find(".supplier_campus").select2('data').id) formData.supplier_campus = line.find(".supplier_campus").select2('data').id;
       if(objProduct.detail != line.find(".detail").val()) formData.detail = line.find(".detail").val();
@@ -363,6 +384,7 @@ $(document).ready(function(){
       if(line.find(".accommodationDurationScale").select2('data').id && objProduct.accommodationDurationScale != line.find(".accommodationDurationScale").select2('data').id) formData.accommodationDurationScale = line.find(".accommodationDurationScale").select2('data').id;
       if(line.find(".accommodationFood").select2('data').id && objProduct.accommodationFood != line.find(".accommodationFood").select2('data').id) formData.accommodationFood = line.find(".accommodationFood").select2('data').id;
       if(line.find(".passTransportKind").select2('data').id && objProduct.passTransportKind != line.find(".passTransportKind").select2('data').id) formData.passTransportKind = line.find(".passTransportKind").select2('data').id;
+      if(line.find(".passTransportWays").select2('data').id && objProduct.passTransportWays != line.find(".passTransportWays").select2('data').id) formData.passTransportWays = line.find(".passTransportWays").select2('data').id;
       if(line.find(".passFrom").val() && objProduct.passFrom != line.find(".passFrom").val()) formData.passFrom = line.find(".passFrom").val();
       if(line.find(".passTo").val() && objProduct.passTo != line.find(".passTo").val()) formData.passTo = line.find(".passTo").val();
       if(line.find(".workKind").select2('data').id && objProduct.workKind != line.find(".workKind").select2('data').id) formData.workKind = line.find(".workKind").select2('data').id;
@@ -377,7 +399,29 @@ $(document).ready(function(){
       if(count > 0) return formData;
       else return false;
     };
-    this.reCalc = function(){
+    this.reCalc = function( productList ){
+      $(".filterKind").find(".found").html("0");
+      $(".filterKind").hide();
+      $("#all").show();
+
+      $.each(productList, function( id, objProduct ){
+        var total = parseInt($(".filterKind#"+objProduct.kind).find(".found").html()) + 1;
+        $(".filterKind#"+objProduct.kind).find(".found").html(total);
+        var all = parseInt($("#all").find(".found").html()) + 1;
+        $("#all").find(".found").html(all);
+      });
+
+      if( $(".filterKind#accommodation").find(".found").html() > 0 ) $(".filterKind#accommodation").show();
+      if( $(".filterKind#course").find(".found").html() > 0 ) $(".filterKind#course").show();
+      if( $(".filterKind#pass").find(".found").html() > 0 ) $(".filterKind#pass").show();
+      if( $(".filterKind#ensurance").find(".found").html() > 0 ) $(".filterKind#ensurance").show();
+      if( $(".filterKind#tourism").find(".found").html() > 0 ) $(".filterKind#tourism").show();
+      if( $(".filterKind#transfer").find(".found").html() > 0 ) $(".filterKind#transfer").show();
+      if( $(".filterKind#work").find(".found").html() > 0 ) $(".filterKind#work").show();
+      if( $(".filterKind#regularProduct").find(".found").html() > 0 ) $(".filterKind#regularProduct").show();
+      if( $(".filterKind#package").find(".found").html() > 0 ) $(".filterKind#package").show();
+      if( $(".filterKind#service").find(".found").html() > 0 ) $(".filterKind#service").show();
+
       var totalRows = products.table.body.find(".tzdTableRow").length;
       $(".totalRows").html(totalRows);
     };
@@ -406,7 +450,36 @@ $(document).ready(function(){
     this.removePackageProduct = function( productID, item ){
       this.body.find("#"+productID).find(".packageItens").find("#"+item).remove();
     };
-
+    this.dropAttachment = function( supplierID, attachmentID ){
+      var line = this.body.find("#"+supplierID);
+      line.find(".attachments").find("#"+attachmentID).remove();
+    };
+    this.prevImg = function( productID ){
+      var product = products.all[productID];
+      if(product.img && product.img.length > 1){
+        var line = this.body.find("#"+productID);
+        var imgID = Number(line.find("img").attr("name")) - 1;
+        if( imgID < 0 ) imgID = product.img.length - 1;
+        line.find(".img").attr("src", base_url+"file/open/"+product.img[imgID]).attr("name", imgID);
+        if( imgID == 0 ) line.find(".cover").find("i").attr("class", "icon-check");
+        else line.find(".cover").find("i").attr("class", "icon-check-empty");
+        line.find(".imgAmount").html(product.img.length);
+        line.find(".imgNumber").html(imgID+1);
+      }
+    };
+    this.nextImg = function( productID ){
+      var product = products.all[productID];
+      if(product.img && product.img.length > 1){
+        var line = this.body.find("#"+productID);
+        var imgID = Number(line.find("img").attr("name")) + 1;
+        if( imgID >= product.img.length ) imgID = 0;
+        line.find(".img").attr("src", base_url+"file/open/"+product.img[imgID]).attr("name", imgID);
+        if( imgID == 0 ) line.find(".cover").find("i").attr("class", "icon-check");
+        else line.find(".cover").find("i").attr("class", "icon-check-empty");
+        line.find(".imgAmount").html(product.img.length);
+        line.find(".imgNumber").html(imgID+1);
+      }
+    };
   };
 
   products = {
@@ -424,7 +497,7 @@ $(document).ready(function(){
         var id = products.all.length;
         products.all[id] = e;
         products.table.addLine( id, 'before', true );
-        products.table.reCalc();
+        products.table.reCalc( products.all );
       };
       $tzd.ajax.post(url, data, callback);
     }
@@ -438,7 +511,7 @@ $(document).ready(function(){
         var id = products.all.length;
         products.all[id] = e;
         products.table.addLine( id, 'before', true );
-        products.table.reCalc();
+        products.table.reCalc( products.all );
       };
       $tzd.ajax.post(url, data, callback);
     }
@@ -452,9 +525,13 @@ $(document).ready(function(){
         _id : objProduct._id,
         status : objProduct.status
       };
-      var callback = function( e ){
-        products.all[id].status = objProduct.status;
-        products.table.active( id );
+      var callback = function( error ){
+        if( error ){
+          $tzd.alert.error( error );
+        } else {
+          products.all[id].status = objProduct.status;
+          products.table.active( id );
+        }
       };
       $tzd.ajax.post(url, data, callback);
     }
@@ -480,7 +557,7 @@ $(document).ready(function(){
           else {
             products.all[id] = "null";
             products.table.dropLine( id );
-            products.table.reCalc();
+            products.table.reCalc( products.all );
           }
 
         };
@@ -541,8 +618,8 @@ $(document).ready(function(){
       };
       $tzd.ajax.post(url, data, callback)
     }
-    ,changePhoto : function( id, files ) {
-      var url = base_url+'product/changePhoto';
+    ,attachImg : function( id, files ) {
+      var url = base_url+'product/attachImg';
       var data = {
         tzadiToken : tzadiToken,
         files : files,
@@ -550,8 +627,9 @@ $(document).ready(function(){
       };
       var callback = function( e ){
         if(e){
-          products.all[id].img = e;
-          products.table.changePhoto( id );
+          if( products.all[id].img ) products.all[id].img.push( e );
+          else products.all[id].img = [e];
+          products.table.attachImg( id, e );
         }
         else $tzd.alert.error(e.error);
       };
@@ -579,16 +657,17 @@ $(document).ready(function(){
       }
     },
     search : function( searchString ){
+      var foundProducts;
       if( searchString == "") {
         $('#search-query').val("");
         products.table.empty();
         $.each(products.all, function( id, objProduct ){
           if(objProduct != "null") products.table.addLine( id );
         });
-        products.table.reCalc();
+        products.table.reCalc( products.all );
       } else {
-        var foundProducts = products.all.filter(function ( product ) {
-          var contain = contain || product.name.search(new RegExp(searchString, "i")) >= 0;
+        foundProducts = products.all.filter(function ( product ) {
+          var contain = contain || product.name.search(new RegExp(searchString, "i")) >= 0 && products.table.kind == "all" || products.table.kind == product.kind;
           return contain;
         });
         products.table.empty();
@@ -597,7 +676,7 @@ $(document).ready(function(){
             if(product._id == objProduct._id) products.table.addLine( id );
           });
         });
-        products.table.reCalc();
+        products.table.reCalc( foundProducts );
       }
     },
     order : function(){
@@ -640,6 +719,36 @@ $(document).ready(function(){
       });
       this.table.setPackageTotal(productID, total);
     }
+    , removeImg : function( productID, imgID ) {
+      if( this.all[productID].img.length > 1 ) {
+        var index = this.all[productID].img.indexOf( imgID );
+        this.all[productID].img.splice(index, 1);
+        var url = base_url+'product/set';
+        var data = {
+          tzadiToken : tzadiToken
+          , _id : this.all[productID]._id
+          , img : this.all[productID].img
+        };
+        var callback = function(){
+          $("#"+productID).find(".prevImg").click();
+        };
+        $tzd.ajax.post(url, data, callback);
+      } 
+      else $tzd.alert.error($(".pdt_cannotRemoveOnlyImg").html());
+    }
+    , cover : function( productID, imgID ) {
+      var img = this.all[productID].img[imgID];
+      this.all[productID].img[imgID] = this.all[productID].img[0];
+      this.all[productID].img[0] = img;
+      var url = base_url+'product/set';
+      var data = {
+        tzadiToken : tzadiToken
+        , _id : this.all[productID]._id
+        , img : this.all[productID].img
+      };
+      var callback = function(){};
+      $tzd.ajax.post(url, data, callback);
+    }
   };
 
   products.refresh();
@@ -676,12 +785,36 @@ $(document).ready(function(){
     var id = $(this).parents(".tzdTableLine").attr("id");
     products.active( id );
   });
-  $('.changeImg').live("click", function() {
+  $('.attachImg').live("click", function() {
     $(this).parents(".tzdTableLine").find('.productImg').click();
   });
   $(".productImg").live("change propertychange", function(){
     var id = $(this).parents(".tzdTableLine").attr("id");
-    products.changePhoto( id, this.files );
+    products.attachImg( id, this.files );
+  });
+  $('.prevImg').live("click", function() {
+    var id = $(this).parents(".tzdTableLine").attr("id");
+    products.table.prevImg( id );
+  });
+  $('.nextImg').live("click", function() {
+    var id = $(this).parents(".tzdTableLine").attr("id");
+    products.table.nextImg( id );
+  });
+  $('.cover').live("click", function() {
+    var line = $(this).parents(".tzdTableLine");
+    var id = line.attr("id");
+    var imgID = line.find(".img").attr("name");
+    products.cover( id, imgID );
+    $(this).find("i").attr("class", "icon-check");
+    line.find("img").attr("name", 0);
+    line.find(".imgNumber").html(1);
+  });
+  $('.removeImg').live("click", function() {
+    if($tzd.confirm($(".pdt_removeImg").html())){
+      var id = $(this).parents(".tzdTableLine").attr("id");
+      var attachmentID = $(this).parents(".attachment").attr("id");
+      products.removeImg(id, attachmentID);
+    }
   });
   $(".supplier").live("change propertychange", function(){
     var productIndex = $(this).parents(".tzdTableLine").attr("id");
@@ -788,5 +921,11 @@ $(document).ready(function(){
     var amount = $(this).val();
     if(amount <= 0 || isNaN(amount)) $(this).parents(".packageItem").find('.dropPackageItem').click();
     else products.setPackageItemQtd(productID, item, amount);
+  });
+  $(".filterKind").live("click", function(){
+    $(".filterKind").removeClass("active");
+    $(this).addClass("active");
+    products.table.kind = $(this).attr("id");
+    products.search( $('#search-query').val() );
   });
 });

@@ -3,7 +3,7 @@
 <div class="row">
   <div class="span24">
     <span class="input-append">
-      <input type="text" id="search-query" placeholder="<?=lang('pdt_searchSample')?>" rel="tooltip" title="<?=lang('pdt_searchCreateExplain')?>">
+      <input type="text" id="search-query" placeholder="<?=lang('pdt_searchSample')?>" rel="tooltip" title="<?=lang('pdt_searchCreateExplain')?>" />
       <a class="btn clearSearch" rel="tooltip" title="<?=lang('pdt_removeClearSearchQuery')?>"><i class="icon-remove"></i></a>
     </span>
     &nbsp;
@@ -19,13 +19,32 @@
         <li><a class="productAdd" id="transfer" tabindex="-1"><?=lang('pdt_transfer')?></a></li>
         <li><a class="productAdd" id="ensurance" tabindex="-1"><?=lang('pdt_ensurance')?></a></li>
         <li><a class="productAdd" id="package" tabindex="-1"><?=lang('pdt_package')?></a></li>
+        <li><a class="productAdd" id="service" tabindex="-1"><?=lang('pdt_service')?></a></li>
       </ul>
     </span>
     &nbsp;
     <span><a class="btn btn-info tzdTableRefresh" rel="tooltip" title="<?=lang('pdt_tzdTableRefresh')?>"><i class="icon-refresh"></i> <?=lang('pdt_tzdTableRefresh')?></a></span>
   </div>
 </div>
-<br>
+<p>
+  <div class="row">
+    <div class="span24">
+      <ul class="nav nav-pills">
+        <li class="filterKind active" id="all"><a><?=lang('pdt_all')?> (<span class="found">0</span>)</a></li>
+        <li class="filterKind hide" id="accommodation"><a><?=lang('pdt_accommodation')?> (<span class="found">0</span>)</a></li>
+        <li class="filterKind hide" id="course"><a><?=lang('pdt_course')?> (<span class="found">0</span>)</a></li>
+        <li class="filterKind hide" id="package"><a><?=lang('pdt_package')?> (<span class="found">0</span>)</a></li>
+        <li class="filterKind hide" id="pass"><a><?=lang('pdt_pass')?> (<span class="found">0</span>)</a></li>
+        <li class="filterKind hide" id="ensurance"><a><?=lang('pdt_ensurance')?> (<span class="found">0</span>)</a></li>
+        <li class="filterKind hide" id="tourism"><a><?=lang('pdt_tourism')?> (<span class="found">0</span>)</a></li>
+        <li class="filterKind hide" id="transfer"><a><?=lang('pdt_transfer')?> (<span class="found">0</span>)</a></li>
+        <li class="filterKind hide" id="work"><a><?=lang('pdt_work')?> (<span class="found">0</span>)</a></li>
+        <li class="filterKind hide" id="service"><a><?=lang('pdt_service')?> (<span class="found">0</span>)</a></li>
+        <li class="filterKind hide" id="regularProduct"><a><?=lang('pdt_others')?> (<span class="found">0</span>)</a></li>
+      </ul>  
+    </div>
+  </div>
+</p>
 <div class="row">
   <div class="span24">
     <span class="text-warning"><span class="totalRows"></span> <?=lang('tmpt_products')?></span>
@@ -92,12 +111,20 @@
               <div class="span24">
                 <div class="row">
                   <div class="span7">
-                    <p><span class="productKind label label-warning"></span><p>
+                    <p><span class="productKind label label-warning"></span></p>
+                    <input type="file" class="productImg hide" multiple/>
                     <div class="thumbnail">
-                      <img src="<?=base_url()?>assets/img/no_photo_160x120.png" class="changeImg" alt="160x120">
-                      <div class="control-group">
-                        <input type="file" class="productImg hide" />
-                      </div>
+                      <p>
+                        <a class="attachImg" rel="tooltip" title="<?=lang('pdt_attachImgTitle')?>"><i class="icon-plus"></i> <?=lang('pdt_attachImg')?></a>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<a class="cover"  rel="tooltip" title="<?=lang('pdt_coverTitle')?>"><?=lang('pdt_cover')?> <i class="icon-check"></i> </a>
+                        <a class="removeImg pull-right"  rel="tooltip" title="<?=lang('pdt_removeImgTitle')?>"><i class="icon-remove"></i></a>
+                      </p>
+                      <p>
+                        <a class="prevImg btn btn-warning"  rel="tooltip" title="<?=lang('pdt_prevImgTitle')?>"><i class="icon-arrow-left"></i> <?=lang('pdt_prevImg')?></a>
+                        &nbsp;&nbsp;<span class="imgNumber">0</span>/<span class="imgAmount">0</span>
+                        <a class="nextImg pull-right btn btn-warning"  rel="tooltip" title="<?=lang('pdt_nextImgTitle')?>"><?=lang('pdt_nextImg')?> <i class="icon-arrow-right"></i></a>
+                      </p>
+                      <img src="<?=base_url()?>assets/img/no_photo_160x120.png" class="img" alt="160x120" name="default">
                     </div>
                   </div>
                   <div class="span17">
@@ -106,19 +133,26 @@
                         <div class="row">
                           <div class="span8 standardForm">
                             <div class="row">
-                              <div class="span4">
+                              <div class="span3">
                                 <label><?=lang('pdt_purchase')?></label>
                                 <div class="control-group">
                                   <input type="text" class="input-block-level purchase"/>
                                 </div>
                               </div>
-                              <div class="span4">
+                              <div class="span3">
                                 <label><?=lang('pdt_currency')?></label>
                                 <select class="input-block-level currency">
                                   <option value="USD">dollar ($)</option>
                                   <option value="EUR">euro (€)</option>
                                   <option value="GBP">pound (£)</option>
                                   <option value="BRL">real (R$)</option>
+                                </select>
+                              </div>
+                              <div class="span2">
+                                <label><?=lang('pdt_vitrine')?></label>
+                                <select class="input-block-level vitrine">
+                                  <option value="no"><?=lang("pdt_no")?></option>
+                                  <option value="yes"><?=lang("pdt_yes")?></option>
                                 </select>
                               </div>
                             </div>
@@ -168,6 +202,7 @@
                                       <option value="master"><?=lang('pdt_master')?></option>
                                       <option value="doctor"><?=lang('pdt_doctor')?></option>
                                       <option value="posDoc"><?=lang('pdt_posDoc')?></option>
+                                      <option value="vacation"><?=lang('pdt_vacation')?></option>
                                     </select>
                                   </div>
                                   <div class="span3">
@@ -302,27 +337,34 @@
                                 </select>
                               </div> <!-- fim accommodationForm -->
                               <div class="passForm"> <!-- inicio passForm -->
-                                <label><?=lang('pdt_passTransportKind')?></label>
-                                <select class="input-block-level passTransportKind">
-                                  <option value="bus"><?=lang('pdt_busTransportKind')?></option>
-                                  <option value="ship"><?=lang('pdt_shipTransportKind')?></option>
-                                  <option value="flight"><?=lang('pdt_flightTransportKind')?></option>
-                                  <option value="rail"><?=lang('pdt_railTransportKind')?></option>
-                                </select>
                                 <div class="row">
-                                  <div class="span3">
-                                    <label><?=lang('pdt_passFrom')?></label>
-                                    <div class="control-group">
-                                      <input type="text" class="input-block-level passFrom"/>
-                                    </div>
+                                  <div class="span5">
+                                    <label><?=lang('pdt_passTransportKind')?></label>
+                                    <select class="input-block-level passTransportKind">
+                                      <option value="bus"><?=lang('pdt_busTransportKind')?></option>
+                                      <option value="ship"><?=lang('pdt_shipTransportKind')?></option>
+                                      <option value="flight"><?=lang('pdt_flightTransportKind')?></option>
+                                      <option value="rail"><?=lang('pdt_railTransportKind')?></option>
+                                    </select>
                                   </div>
-                                  <div class="span3">
-                                    <label><?=lang('pdt_passTo')?></label>
-                                    <div class="control-group">
-                                      <input type="text" class="input-block-level passTo"/>
-                                    </div>
+                                  <div class="span4">
+                                    <label><?=lang('pdt_passTransportWays')?></label>
+                                    <select class="input-block-level passTransportWays">
+                                      <option value="oneWay"><?=lang('pdt_oneWay')?></option>
+                                      <option value="return"><?=lang('pdt_return')?></option>
+                                    </select>
                                   </div>
                                 </div>
+
+                                <label><?=lang('pdt_passFrom')?></label>
+                                <div class="control-group">
+                                  <input type="text" class="input-block-level passFrom"/>
+                                </div>
+                                <label><?=lang('pdt_passTo')?></label>
+                                <div class="control-group">
+                                  <input type="text" class="input-block-level passTo"/>
+                                </div>
+
                               </div> <!-- fim passForm -->
                               <div class="workForm"> <!-- inicio workForm -->
                                 <label><?=lang('pdt_workKind')?></label>
@@ -379,6 +421,8 @@
     </div>
   </div>
 </div>
+<div class="pdt_removeImg hide"><?=lang("pdt_removeImg")?></div>
+<div class="pdt_cannotRemoveOnlyImg hide"><?=lang("pdt_cannotRemoveOnlyImg")?></div>
 <div class="pdt_activate hide"><?=lang("pdt_activate")?></div>
 <div class="pdt_inactivate hide"><?=lang("pdt_inactivate")?></div>
 <div class="pdt_saved hide"><?=lang("pdt_saved")?></div>

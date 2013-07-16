@@ -17,8 +17,8 @@ class File_Model extends CI_Model {
     $config['source_image'] = $_FILES["file"]["tmp_name"];
     $config['create_thumb'] = TRUE;
     $config['maintain_ratio'] = TRUE;
-    $config['width']   = 320;
-    $config['height'] = 240;
+    $config['width']   = 480;
+    $config['height'] = 360;
 
     $this->load->library('image_lib', $config); 
 

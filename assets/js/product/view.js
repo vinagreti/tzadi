@@ -1,18 +1,15 @@
 $(document).ready(function(){
 
-  var productID = $(".productID").html();
-
   $(".like").live("click", function(){
-    var likes = $tzd.product.like( productID );
-    $(".like").find(".likes").html( 3 );
+    var likes = $tzd.product.like( $(this).attr("id") );
   });
 
   $(".addToBudget").live("click", function(){
-    $tzd.budget.add( productID );
+    $tzd.budget.add( $(this).attr("id") );
   });
 
   $(".shareProductByMail").live("click", function(){
-    $tzd.product.share.open( productID );
+    $tzd.product.share.open( $(this).attr("id") );
   });
   
 });

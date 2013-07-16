@@ -12,7 +12,7 @@
   <div class="span8">
     <h2><?=lang('idx_School')?></h2>
     <p><?=lang('idx_School_txt1')?></br><?=lang('idx_School_txt2')?></br><?=lang('idx_School_txt3')?></p>
-    <a class="btn btn-large btn-success" href="#signup"><?=lang('idx_soon')?></a>
+    <a class="btn btn-large" href="#signup"><?=lang('idx_soon')?></a>
   </div>
   <div class="span8">
     <h2><?=lang('idx_Agency')?></h2>
@@ -22,6 +22,6 @@
   <div class="span8">
     <h2><?=lang('idx_Student')?></h2>
     <p><?=lang('idx_Student_txt1')?></br><?=lang('idx_Student_txt2')?></p>
-    <a class="btn btn-large btn-success" href="#signup"><?=lang('idx_soon')?></a>
+    <a class="btn btn-large" href="#signup"><?=lang('idx_soon')?></a>
   </div>
 </div>

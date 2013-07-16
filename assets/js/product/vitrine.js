@@ -13,7 +13,7 @@ $(document).ready(function(){
     this.product = function( objProduct ) {
       var product = productHtml.clone();
       product.attr("id", objProduct._id);
-      if(objProduct.img) product.find(".img").attr("src", base_url+"file/open/"+objProduct.img);
+      if(objProduct.img) product.find(".img").attr("src", base_url+"file/open/"+objProduct.img[0]);
       product.find(".name").html(objProduct.name);
       product.find(".price").html(objProduct.price);
       product.find(".likes").html(objProduct.like);
@@ -23,7 +23,7 @@ $(document).ready(function(){
     };
     this.reload = function(){
       var self = this;
-      var url = base_url+'product/getActive';
+      var url = base_url+'product/getPublic';
       var data = {
         tzadiToken : tzadiToken
       };
@@ -87,6 +87,7 @@ $(document).ready(function(){
       if( $("#work").find(".found").html() > 0 ) $("#work").show();
       if( $("#regularProduct").find(".found").html() > 0 ) $("#regularProduct").show();
       if( $("#package").find(".found").html() > 0 ) $("#package").show();
+      if( $("#service").find(".found").html() > 0 ) $("#service").show();
 
     };
   };

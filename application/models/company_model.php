@@ -60,23 +60,17 @@ class Company_Model extends CI_Model {
 
       } else {
 
-        $subject = $data["name"] . " " . lang("cpn_beInTouchSubject");
+        $mail->subject = $data["name"] . " " . lang("cpn_beInTouchSubject");
 
-        $data["message"];
-        
-        $message = $this->load->view("company/beInTouchMail", $data, true);
+        $mail->message = $this->load->view("company/beInTouchMail", $data, true);
 
-        $to =  $data["email"];
+        $mail->to =  $data["email"];
 
-        $cc =  "bruno@tzadi.com";
-
-        $cc =  "tzadiinc@tzadi.com";
-
-        $cc =  "lucas@tzadi.com";
+        $mail->bcc =  array("bruno@tzadi.com", "tzadiinc@gmail.com", "lucas@tzadi.com");
 
         $this->load->library('gmail');
 
-        $this->gmail->send($to, utf8_decode($subject), utf8_decode($message));
+        $this->gmail->send($mail);
       
         $this->load->model("mongo_model");
 

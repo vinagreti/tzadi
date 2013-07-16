@@ -22,6 +22,7 @@
         <li class="filterKind hide" id="tourism"><a><?=lang('pdt_tourism')?> (<span class="found">0</span>)</a></li>
         <li class="filterKind hide" id="transfer"><a><?=lang('pdt_transfer')?> (<span class="found">0</span>)</a></li>
         <li class="filterKind hide" id="work"><a><?=lang('pdt_work')?> (<span class="found">0</span>)</a></li>
+        <li class="filterKind hide" id="service"><a><?=lang('pdt_service')?> (<span class="found">0</span>)</a></li>
         <li class="filterKind hide" id="regularProduct"><a><?=lang('pdt_others')?> (<span class="found">0</span>)</a></li>
       </ul>  
     </div>

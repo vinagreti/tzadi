@@ -25,10 +25,11 @@ class Product_Model extends CI_Model {
     return $products[0];
   }
 
-  function getActive()
+  function getPublic()
   {
     return $this->mongo_db
       ->where('company', $this->session->userdata("companyID"))
+      ->where('vitrine', "yes")
       ->where('status', "active")
       ->order_by(array('name' => 'asc'))
       ->get('product');
@@ -54,6 +55,7 @@ class Product_Model extends CI_Model {
         ,"status" => "active"
         ,"like" => "0"
         ,"share" => "0"
+        ,"vitrine" => "no"
       )
     );
     return $this->mongo_db
@@ -108,24 +110,25 @@ class Product_Model extends CI_Model {
     return $error;
   }
 
-  function changePhoto($_id)
+  function attachImg($_id)
   {
     $this->load->model("file_model");
     $newFile = $this->file_model->save($_id);
-
     $product = $this->mongo_db
       ->where('_id', $_id)
       ->get('product');
-
     if(isset($product[0]["img"])) {
-      $this->file_model->drop($product[0]["img"]);
+      array_push($product[0]["img"], $newFile);
+      $this->mongo_db
+        ->where('_id', $_id)
+        ->set("img", $product[0]["img"])
+        ->update("product");
+    } else {
+      $this->mongo_db
+        ->where('_id', $_id)
+        ->set("img", array($newFile))
+        ->update("product");
     }
-
-    $this->mongo_db
-      ->where('_id', $_id)
-      ->set("img", $newFile)
-      ->update("product");
-
     return $newFile;
   }
 
@@ -134,17 +137,40 @@ class Product_Model extends CI_Model {
     $_id = (int) $data['_id'];
     unset($data['_id']);
 
-    if(count($data) > 0 ){
-      $this->mongo_db
-        ->where('_id', $_id)
-        ->set($data)
-        ->update('product');
+    $error = false;
 
-      $error = false;
+    if(isset($data["status"]) && $data["status"] == "inactive") {
+      $products = $this->mongo_db
+        ->where('kind', "package")
+        ->get('product');
+
+      foreach($products as $key => $product) {
+        if(isset($product["itens"])){
+          foreach($product["itens"] as $key2 => $value2){
+            if($key2 == $_id) {
+              if(!$error) $error = lang("pdt_cantDropUsedByPackage");
+              $error .= '<br>- <a href="'.base_url()."product/view/".$product["_id"].'" target="_blank">'.$product["name"].'</a>';
+            }
+          }
+        }
+      }
     }
-    else $error = lang("pdt_noChanges");
+    
+    if( ! $error ){
+      if(count($data) > 0){
+        $this->mongo_db
+          ->where('_id', $_id)
+          ->set($data)
+          ->update('product');
+
+        $error = false;
+      }
+      else $error = lang("pdt_noChanges");
+    }
 
     return $error;
+
+
   }
 
   function like()
@@ -209,6 +235,28 @@ class Product_Model extends CI_Model {
     
     if(isset($product["workKind"])) $product["workKind"] = lang("pdt_" . $product["workKind"]);
 
+    if(isset($product["itens"])) {
+
+      $itens = array();
+
+      foreach($product["itens"] as $product_id => $amount){
+
+        $productItem = $this->mongo_db
+          ->where('_id', (int) $product_id)
+          ->select("name")
+          ->get('product');
+
+        $productItem[0]["amount"] = $amount;
+
+        array_push($itens, $productItem[0]);
+
+      }
+
+
+      $product["itens"] = $itens;
+
+    }
+
     return $product;
   }
 
@@ -217,7 +265,7 @@ class Product_Model extends CI_Model {
 
     $product = $this->getHumanized( $data["productID"] );
 
-    if(isset($product["img"])) $product["img"] = base_url()."file/open/".$product["img"];
+    if(isset($product["img"])) $product["img"] = base_url()."file/open/".$product["img"][0];
 
     else $product["img"] = base_url()."assets/img/no_photo_160x120.png";
 
@@ -225,19 +273,19 @@ class Product_Model extends CI_Model {
 
       $address = $data["addresses"];
 
-      $subject = $data["name"] . " " . lang("pdt_shareIndicated") . ": " . $product["name"];
+      $mailContent->subject = $data["name"] . " " . lang("pdt_shareIndicated") . ": " . $product["name"];
 
       $mail->message = $data["message"];
       
       $mail->product = $product;
 
-      $message = $this->load->view("product/shareMail", $mail, true);
+      $mailContent->message = $this->load->view("product/shareMail", $mail, true);
 
-      $to = $address;
+      $mailContent->to = $address;
 
       $this->load->library('gmail');
 
-      $this->gmail->send($to, utf8_decode($subject), utf8_decode($message));
+      $this->gmail->send($mailContent);
 
       $error = false;
 

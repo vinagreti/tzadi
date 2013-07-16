@@ -98,6 +98,8 @@ body {
 
 /* Main marketing message and sign up button */
 .centered-text {
+  display: inline-block;
+  vertical-align: middle;
   text-align: center;
 }
 

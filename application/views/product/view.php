@@ -3,35 +3,39 @@
 <div class="row">
   <div class="span24 well well-mini">
     <div class="row">
-      <div class="span6">
+      <div class="span10">
         <div class="row">
-          <div class="span6">
-            <ul class="thumbnails">
-              <li class="span6">
-                <div class="thumbnail">
-                  <?php if(isset($product["img"])) {?>
-                    <img class="img" alt="160x120" src="<?=base_url()?>file/open/<?=$product['img']?>">
-                  <?php } else { ?>
-                    <img class="img" alt="160x120" src="<?=base_url()?>assets/img/no_photo_160x120.png">
-                  <?php }?>
-                </div>
-              </li>
-            </ul>
+          <div class="span10">
+            <div id="myCarousel" class="carousel slide">
+              <div class="carousel-inner">
+                <?php if(isset($product["img"])) {
+                  foreach($product["img"] as $key => $img){
+                    if($key == 0) { ?> <div class="active item"><img class="img" alt="160x120" src="<?=base_url()?>file/open/<?=$img?>" style="width:100%;"></div>
+                    <?php } else { ?><div class="item"><img class="img" alt="160x120" src="<?=base_url()?>file/open/<?=$img?>" style="width:100%;"></div> <?php }
+                  }
+                } else { ?>
+                  <div class="active item"><img class="img" alt="160x120" src="<?=base_url()?>assets/img/no_photo_640x480.png"></div>
+                <?php }?>
+              </div>
+              <!-- Carousel nav -->
+              <a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
+              <a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>
+            </div>
           </div>
-          <div class="span6">
+          <div class="span10">
             <div>
               <div class="pull-left">
-                <a class="addToBudget btn btn-warning" rel="tooltip" title="<?=lang('pdt_addToBudget')?>"><i class="icon-flag"></i></a>
-                <a href="#" class="shareProductByMail btn btn-primary" rel="tooltip" title="<?=lang('pdt_shareProductByMail')?>"><i class="icon-group"></i></a>
+                <a class="addToBudget btn btn-warning" id="<?=$product["_id"]?>" rel="tooltip" title="<?=lang('pdt_addToBudget')?>"><i class="icon-flag"></i></a>
+                <a href="#" class="shareProductByMail btn btn-primary" id="<?=$product["_id"]?>" rel="tooltip" title="<?=lang('pdt_shareProductByMail')?>"><i class="icon-group"></i></a>
               </div>
               <div class="pull-right">
-                <a class="like" rel="tooltip" title="<?=lang('pdt_like')?>"><i class="icon-thumbs-up-alt"></i> <span class="likes">7</span></a>
+                <a class="like" id="<?=$product["_id"]?>" rel="tooltip" title="<?=lang('pdt_like')?>"><i class="icon-thumbs-up-alt"></i> <span class="likes"><?=$product["like"]?></span></a>
               </div>
             </div>
           </div>
         </div>
       </div>
-      <div class="span18">
+      <div class="span14">
         <dl class="dl-horizontal">
           <?php if(isset($product["price"])) echo "<dt>" . lang("pdt_price") . "</dt><dd>" . $product["price"] . "</dd>"; ?>
           <?php if(isset($product["courseDuration"])) echo "<dt>" . lang("pdt_courseDuration") . "</dt><dd>" . $product["courseDuration"] . "</dd>"; ?>
@@ -52,16 +56,22 @@
           <?php if(isset($product["passFrom"])) echo "<dt>" . lang("pdt_passFrom") . "</dt><dd>" . $product["passFrom"] . "</dd>"; ?>
           <?php if(isset($product["passTo"])) echo "<dt>" . lang("pdt_passTo") . "</dt><dd>" . $product["passTo"] . "</dd>"; ?>
           <?php if(isset($product["workKind"])) echo "<dt>" . lang("pdt_workKind") . "</dt><dd>" . $product["workKind"] . "</dd>"; ?>
+          <?php if(isset($product["itens"])) {
+            $i = 1;
+            echo "<dt>" . lang("pdt_itens") . "</dt>";
+            foreach($product["itens"] as $key => $productIten) {
+              echo "<dd>" . $productIten["amount"] . " x <a href='" . base_url() . $productIten["_id"] ."' target='_blank'>" .$productIten["name"] . "</a></dd>"; 
+              $i++;
+            }
+          }
+          ?>
         </dl>
       </div>
     </div>
     <div class="row">
       <div class="span24">
-        <?php if(isset($product["detail"])) echo "<dl><dt>" . lang("pdt_detail") . "</dt><dd>" . $product["detail"] . "</dd></dl>"; ?>
+        <?php if(isset($product["detail"])) echo "<dl><dt>" . lang("pdt_detail") . "</dt><dd>" . nl2br($product["detail"]) . "</dd></dl>"; ?>
       </div>
     </div>
   </div>
 </div>
-
-
-<div class="productID"><?=$product["_id"]?></div>

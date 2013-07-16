@@ -36,10 +36,10 @@ class Product extends My_Controller {
     echo json_encode($this->product_model->getAll());
   }
 
-  public function getActive()
+  public function getPublic()
   {
     $this->load->model('product_model');
-    $data = $this->product_model->getActive();
+    $data = $this->product_model->getPublic();
     echo json_encode($data);
   }
 
@@ -82,11 +82,11 @@ class Product extends My_Controller {
     $this->load->model("product_model");
     echo json_encode($this->product_model->set($data));
   }
-  public function changePhoto()
+  public function attachImg()
   {
     $_id = (int) $this->input->post('_id');
     $this->load->model("product_model");
-    $res = $this->product_model->changePhoto($_id);
+    $res = $this->product_model->attachImg($_id);
     echo json_encode($res);
   }
 
