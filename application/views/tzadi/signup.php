@@ -35,8 +35,6 @@
 <label class="text-warning"><?=lang('su_plan')?></label>
 <select class="input-block-level" name="plan" id="plan" rel="tooltip" title="<?=lang('su_plan')?>" >
   <option value="1"><?=lang('su_plan_trial')?></option>
-  <option value="2"><?=lang('su_plan_professional')?></option>
-  <option value="3"><?=lang('su_plan_enterprise')?></option>
 </select>
 
 <p><a src="#" class="btn btn-large btn-primary" id="submitSignup"><?=lang('su_Send')?></a></p>

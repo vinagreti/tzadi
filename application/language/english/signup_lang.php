@@ -1,10 +1,9 @@
 <?php
+$lang['su_page_title'] = 'Criar conta';
 $lang['su_page_p1'] = 'Criar minha conta <span class="text-error">{beta}</span>';
-$lang['su_page_p2'] = 'Cadastre-se e gerencie o seu negócio com o melhor sistema de agências do mundo.';
+$lang['su_page_p2'] = 'Conecte-se ao mundo do intercâmbio.';
 $lang['su_plan'] = 'escolha o plano apropriado para você';
-$lang['su_plan_trial'] = 'Versão grátis - por tempo limitado';
-$lang['su_plan_professional'] = 'Profissional - R$ 100,00/mês';
-$lang['su_plan_enterprise'] = 'Empresarial - R$ 300,00/mês';
+$lang['su_plan_trial'] = 'Versão grátis - válida até janeiro de 2014';
 $lang['su_subdomain'] = 'escolha seu subdomínio';
 $lang['su_subdomainDesc1'] = 'Este subdomínio é utilizado em seu endereço tzadi e serve como o identificador de sua organização dentro do sistema Tzadi.com. É atraves do seu endereço';
 $lang['su_subdomainDesc2'] = 'que seus clientes e funcionários terão acesso aos conteúdos e serviços aqui disponibilizados. O subdomínio deve possuir entre 1 e 32 caracteres';
@@ -15,7 +14,7 @@ $lang['su_theEmail'] = 'o email';
 $lang["su_pleaseFillSubdomain"] = "informe o subdomínio";
 $lang["su_pleaseFillValidEmail"] = "informe um email válido";
 $lang["su_pleaseFillPassword"] = "informe uma senha que possua entre 1 e 32 caracteres";
-$lang["su_pleaseSelectAccountKind"] = "o que trouxe a Tzadi?";
+$lang["su_pleaseSelectAccountKind"] = "o que te trouxe a Tzadi?";
 $lang['su_agency'] = 'Sou um agenciador. Desejo auxiliar os intercambistas na busca por produtos e serviços adequados as suas necessidades.';
 $lang['su_institution'] = 'Sou uma instituição. Desenvolvo algum tipo de produto ou serviço para intercambistas.';
 $lang['su_exchange_student'] = 'Sou um intercambista. Desejo aprender e vivenciar algo em um lugar diferente de onde vivo.';

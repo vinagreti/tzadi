@@ -11,10 +11,10 @@ class Contact extends My_Controller {
 	{
 		$data = $this->input->post();
 		if(!$data){
-        $data->dynJS = 'tzadi/contact';
-        $data->view = 'tzadi/contact';
-        $data->page_title = lang('ct_page_title');
-        $this->page->load($data); 
+	        $data->dynJS = 'tzadi/contact';
+	        $data->view = 'tzadi/contact';
+	        $data->page_title = lang('ct_page_title');
+	        $this->page->load($data); 
 		} 
 		else {
 			if($data["email"] && $data["subject"] && $data["message"]){

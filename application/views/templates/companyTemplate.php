@@ -69,10 +69,9 @@
               </ul>
             </li>
             <?php } else { ?>
-              <p class="navbar-text pull-right">
-                <i class="icon-user icon-large"></i>
-                <a class="navbar-link" href="<?=base_url()?><?=lang('rt_login')?>"> <?=lang('tmpt_login')?></a>
-              </p>
+              <li>
+                <button class="btn btn-info" onclick="location.href='<?=base_url()?><?=lang('rt_login')?>'"><i class="icon-user icon-large"></i> <?=lang('tmpt_login')?></button>
+              </li>
             <?php } ?>
           </ul>
           <ul class="nav">
@@ -111,10 +110,14 @@
     </div><!-- navbar-inner -->
   </div><!-- navbar -->
   
-  <div class="container">
-    <div class="row tzdContent">
+  <div class="container well well-small">
+    <div class="row">
       <div class="span24">
-        {content}
+        <div class="row tzdContent">
+          <div class="span24">
+            {content}
+          </div>
+        </div>
       </div>
     </div>
     <hr>

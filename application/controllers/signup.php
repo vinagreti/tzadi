@@ -12,7 +12,7 @@ class Signup extends My_Controller {
   {
     $data->dynJS = 'tzadi/signup';
     $data->view = 'tzadi/signup';
-    $data->page_title = lang('tmpt_Signup');
+    $data->page_title = lang('su_page_title');
     $this->page->load($data); 
   }
 

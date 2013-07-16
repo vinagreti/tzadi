@@ -10,18 +10,18 @@ class About extends My_Controller {
 	public function index()
 	{
     if(!defined('COMPANYSUBDOMAIN')){
-      $data->content = $this->load->view('tzadi/about', "", true);
-      $data->page_title = lang('tmpt_About_us');
-      $this->parser->parse('templates/tzadiTemplate', $data);      
+      $data->view = 'tzadi/about';
+      $data->page_title = lang('abt_page_title');
+      $this->page->load($data);  
     }
     else{
       $this->load->model("company_model");
       $company = $this->company_model->getBySubdomain(COMPANYSUBDOMAIN);
       $data->content = $this->load->view('company/about', $company, true);
-      $data->page_title = lang('tmpt_About_us');
       $data->companyName = $this->session->userdata("companyName");
-      $this->parser->parse('templates/companyTemplate', $data);
-
+      $data->view = 'company/about';
+      $data->page_title = lang('abt_page_title');
+      $this->page->load($data);  
     }
 	}
 }

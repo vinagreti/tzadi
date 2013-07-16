@@ -1,10 +1,16 @@
 <h1><?=lang('abt_page_title')?></h1>
-<p class="lead"><?=lang('abt_text1')?></p>
-<p class="lead"><?=lang('abt_text2')?></p>
-<li class="lead"><?=lang('abt_text3')?></li>
-<li class="lead"><?=lang('abt_text4')?></li>
-<li class="lead"><?=lang('abt_text5')?></li>
-<p class="lead"><?=lang('abt_text6')?></p>
+
+<h5><?=lang('abt_text7')?></h5>
+<p><?=lang('abt_text8')?></p>
+
+<h5><?=lang('abt_text9')?></h5>
+<p><?=lang('abt_text1')?></p>
+<p><?=lang('abt_text2')?></p>
+
+<h5><?=lang('abt_text3')?></h5>
+<p><?=lang('abt_text4')?></p>
+<p><?=lang('abt_text5')?></p>
+<p><?=lang('abt_text6')?></p>
 
 
 

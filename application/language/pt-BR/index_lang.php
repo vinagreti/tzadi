@@ -2,7 +2,7 @@
 $lang['idx_title'] = 'Tzadi. O mundo do intercâmbio conectado!';
 $lang['idx_phrase'] = 'O mundo do intercâmbio conectado!';
 $lang['idx_explanation'] = 'A Tzadi é uma rede de relacionamento entre instituições, agenciadores e intercambistas, com a missão de conectar, organizar e simplificar este ecossistema.';
-$lang['idx_beInTouch'] = 'fique por dentro das novidades';
+$lang['idx_beInTouch'] = 'acompanhe o desenvolvimento';
 $lang['idx_agencySignup'] = 'cadastre sua agência {beta}';
 $lang['idx_soon'] = 'em breve';
 $lang['idx_Agency'] = 'Agenciadores';

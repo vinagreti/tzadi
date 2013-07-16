@@ -76,19 +76,14 @@
                 <li><a tabindex="-1"  href="<?=base_url()?><?=lang('rt_logout')?>"><?=lang('tmpt_Logout')?></a></li>
               </ul>
             </li>
-          </ul>
           <?php } else { ?>
-            <ul class="nav">
-              <p class="navbar-text">
-                <a class="navbar-link" id="signUp" href="<?=base_url()?><?=lang('rt_signup')?>"><i class="icon-arrow-right"></i> <?=lang('tmpt_signup')?></a>
-              </p>
-            </ul>
-            <ul class="nav">
-              <p class="navbar-text">
-                <i class="icon-user icon-large"></i>
-                <a class="navbar-link" href="<?=base_url()?><?=lang('rt_login')?>"> <?=lang('tmpt_login')?></a>
-              </p>
-            </ul>
+            <li>
+              <button class="btn btn-success" style="color:white;" id="signUp" onclick="location.href='<?=base_url()?><?=lang('rt_signup')?>'"><i class="icon-arrow-right"></i> <?=lang('tmpt_signup')?></button>
+            </li>
+            <li class="divider-vertical"></li>
+            <li>
+              <button class="btn btn-info" style="color:white;" onclick="location.href='<?=base_url()?><?=lang('rt_login')?>'"><i class="icon-user icon-large"></i> <?=lang('tmpt_login')?></button>
+            </li>
           <?php } ?>
         </ul>
 
