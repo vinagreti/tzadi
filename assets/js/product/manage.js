@@ -456,9 +456,10 @@ $(document).ready(function(){
     };
     this.prevImg = function( productID ){
       var product = products.all[productID];
-      if(product.img && product.img.length > 1){
+      if(product.img){
         var line = this.body.find("#"+productID);
         var imgID = Number(line.find("img").attr("name")) - 1;
+        if( product.img.length == 1 ) imgID = 0;
         if( imgID < 0 ) imgID = product.img.length - 1;
         line.find(".img").attr("src", base_url+"file/open/"+product.img[imgID]).attr("name", imgID);
         if( imgID == 0 ) line.find(".cover").find("i").attr("class", "icon-check");

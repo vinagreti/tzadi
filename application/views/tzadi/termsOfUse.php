@@ -1,0 +1,13 @@
+<h1><?=lang('term_page_title')?></h1>
+<h5><?=lang('term_text1')?></h5>
+<p><?=lang('term_text2')?></p>
+<p><?=lang('term_text3')?></p>
+<p>- <?=lang('term_text4')?></p>
+<p>- <?=lang('term_text5')?></p>
+<p>- <?=lang('term_text6')?></p>
+<p>- <?=lang('term_text7')?></p>
+<p>- <?=lang('term_text8')?></p>
+<p>- <?=lang('term_text9')?></p>
+<p>- <?=lang('term_text10')?></p>
+<p>- <?=lang('term_text11')?></p>
+<p><?=lang('term_text12')?></p>

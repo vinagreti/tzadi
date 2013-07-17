@@ -69,5 +69,12 @@ $route['contato'] = 'contact';
 $route['cadastro'] = 'signup';
 
 $route['fornecedor'] = 'supplier';
+
+// tivemos que criar o controller como privacy pois estava dando erro em produção com privacypolicy
+// depois criamos o alias pra rota privacypolicy
+$route['privacypolicy'] = 'privacy';
+$route['politicadeprivacidade'] = 'privacy';
+
+$route['termosdeuso'] = 'termsofuse';
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */

@@ -37,6 +37,12 @@
   <option value="1"><?=lang('su_plan_trial')?></option>
 </select>
 
+<p>
+	<small>* <?=lang('su_agreedByClick')?> <a href="<?=base_url()?><?=lang("rt_termsOfUse")?>" target="_blanck"><?=lang('su_termsOfUse')?></a></small>
+	<br>
+	<small>** <?=lang('su_agreedByClick')?> <a href="<?=base_url()?><?=lang("rt_privacyPolicy")?>" target="_blanck"><?=lang('su_privacyPolicy')?></a></small>
+</p>
+
 <p><a src="#" class="btn btn-large btn-primary" id="submitSignup"><?=lang('su_Send')?></a></p>
 
 <div class="su_pleaseFillSubdomain hide"><?=lang("su_pleaseFillSubdomain")?></div>

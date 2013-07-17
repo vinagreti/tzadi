@@ -11,6 +11,3 @@
 <p><?=lang('abt_text4')?></p>
 <p><?=lang('abt_text5')?></p>
 <p><?=lang('abt_text6')?></p>
-
-
-

@@ -73,6 +73,7 @@ class Product_Model extends CI_Model {
     $this->load->model("mongo_model");
     $newProduct["_id"] = $this->mongo_model->newID();
     $newProduct["name"] = "(clone) - ".$newProduct["name"];
+    unset($newProduct["img"]);
 
     $this->mongo_db->insert('product', $newProduct);
 

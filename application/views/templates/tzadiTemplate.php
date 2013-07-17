@@ -61,7 +61,7 @@
         </button>
 
         <span class="brand">
-          <a href="<?=base_url()?>" rel="tooltip" title="Home">צ Tzadi</a>
+          <a href="<?=base_url()?>" rel="tooltip" title="Home">צ TZADI</a>
         </span>
 
         <div class="nav-collapse collapse">
@@ -94,6 +94,8 @@
                 <li><a href="<?=base_url()?>">Home</a></li>
                 <li><a href="<?=base_url()?><?=lang('rt_about')?>"><?=lang('tmpt_AboutUs')?></a></li>
                 <li><a href="<?=base_url()?><?=lang('rt_contact')?>"><?=lang('tmpt_ContactUs')?></a></li>
+                <li><a href="<?=base_url()?><?=lang('rt_privacyPolicy')?>"><?=lang('tmpt_PrivacyPolicy')?></a></li>
+                <li><a href="<?=base_url()?><?=lang('rt_termsOfUse')?>"><?=lang('tmpt_TermsOfUse')?></a></li>
               </ul>
             </li>
 
