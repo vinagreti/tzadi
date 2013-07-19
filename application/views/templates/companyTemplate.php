@@ -100,6 +100,7 @@
               <ul class="dropdown-menu">
                 <li><a href="<?=base_url()?><?=lang('rt_supplier')?>" rel="tooltip" title="<?=lang('tmpt_Institutions')?>"><?=lang('tmpt_Institutions')?></a></li>
                 <li><a href="<?=base_url()?><?=lang('rt_products')?>" rel="tooltip" title="<?=lang('tmpt_Products')?>"><?=lang('tmpt_Products')?></a></li>
+                <li><a href="<?=base_url()?><?=lang('rt_customer')?>" rel="tooltip" title="<?=lang('tmpt_Customers')?>"><?=lang('tmpt_Customers')?></a></li>
               </ul>
             </li>
             <?php }?>

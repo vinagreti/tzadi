@@ -75,7 +75,7 @@
                     <div class="attachments">
                       <p class="attachment"><a rel="tooltip" target="_blank"></a> <i class="icon-remove dropAttachment"></i></p>
                     </div>
-                    </p>
+                      </p>
                     <p>
                       <a class="attach btn btn-primary btn-block"><i class="icon-plus"></i> <i class="icon-paste"></i></a>
                       <input type="file" name="img" class="selectFile hide" multiple/>

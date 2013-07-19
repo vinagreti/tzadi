@@ -5,6 +5,7 @@ $lang["rt_login"] = "entrar";
 $lang["rt_about"] = "sobre";
 $lang["rt_contact"] = "contato";
 $lang["rt_supplier"] = "fornecedor";
+$lang["rt_customer"] = "cliente";
 $lang["rt_products"] = "produtos";
 $lang["rt_badge"] = "orcamento";
 $lang['rt_privacyPolicy'] = 'politicadeprivacidade';

@@ -70,6 +70,8 @@ $route['cadastro'] = 'signup';
 
 $route['fornecedor'] = 'supplier';
 
+$route['cliente'] = 'customer';
+
 // tivemos que criar o controller como privacy pois estava dando erro em produção com privacypolicy
 // depois criamos o alias pra rota privacypolicy
 $route['privacypolicy'] = 'privacy';
