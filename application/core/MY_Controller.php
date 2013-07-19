@@ -29,9 +29,6 @@ class My_Controller extends CI_Controller{
 
     }
 
-    $this->lang->load('template', $this->session->userdata('app_language'));
-    $this->lang->load('route', $this->session->userdata('app_language'));
-
     // ta logado
     if($this->session->userdata('userID')) {
       $companyBaseUrl = "http://".$this->session->userdata("companySubdomain").".".ENVIRONMENT;

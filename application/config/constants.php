@@ -55,15 +55,13 @@ switch ($language[0]) {
 
   case 'pt':
 
-    $language = 'pt-BR';
-    define('LANGUAGE', "pt-BR"); // DEFINE A VARIAVEL GLOBAL LANGUAGE PARA SER UTILIZADA NO
+    define('LANGUAGE', "pt"); // DEFINE A VARIAVEL GLOBAL LANGUAGE PARA SER UTILIZADA NO
 
     break;
 
   default:
 
-    $language = 'english';
-    define('LANGUAGE', "english"); // DEFINE A VARIAVEL GLOBAL LANGUAGE PARA SER UTILIZADA NO
+    define('LANGUAGE', 'en'); // DEFINE A VARIAVEL GLOBAL LANGUAGE PARA SER UTILIZADA NO
 
     break;
 

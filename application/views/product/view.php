@@ -1,5 +1,3 @@
-<h2><?=$product["name"]?></h2>
-
 <div class="row">
   <div class="span24">
     <div class="row">
@@ -36,7 +34,11 @@
         </div>
       </div>
       <div class="span14">
+
+        
+
         <dl class="dl-horizontal">
+          <dt><?=lang("pdt_name")?></dt><dd><?=$product["name"]?></dd>
           <?php if(isset($product["price"])) echo "<dt>" . lang("pdt_price") . "</dt><dd>" . $product["price"] . "</dd>"; ?>
           <?php if(isset($product["courseDuration"])) echo "<dt>" . lang("pdt_courseDuration") . "</dt><dd>" . $product["courseDuration"] . "</dd>"; ?>
           <?php if(isset($product["courseKind"])) echo "<dt>" . lang("pdt_courseKind") . "</dt><dd>" . $product["courseKind"] . "</dd>"; ?>

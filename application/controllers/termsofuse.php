@@ -8,9 +8,20 @@ class TermsOfUse extends My_Controller {
   }
 
 	public function index() {
-      $data->view = 'tzadi/termsOfUse';
-      $data->page_title = lang('term_page_title');
-      $this->page->load($data);  
+	    if(!defined('COMPANYSUBDOMAIN')){
+	      $data->view = 'tzadi/termsOfUse';
+	      $data->page_title = lang('term_page_title');
+	      $this->page->load($data);  
+	    }
+	    else{
+	      $this->load->model("company_model");
+	      $company = $this->company_model->getBySubdomain(COMPANYSUBDOMAIN);
+	      $data->content = $this->load->view('company/about', $company, true);
+	      $data->companyName = $this->session->userdata("companyName");
+	      $data->view = 'company/termsOfUse';
+	      $data->page_title = lang('term_page_title');
+	      $this->page->load($data);
+	    }
 	}
 }
 

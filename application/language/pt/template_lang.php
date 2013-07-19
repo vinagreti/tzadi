@@ -1,8 +1,13 @@
 <?php
+$lang['tmpt_InstitutionsTitle'] = 'Gerencie seus fornecedores. Os fornecedores desenvolvem algum tipo produtos e/ou serviço para intercambistas. Por exemplo escolas e seguradoras.';
+$lang['tmpt_ProductsTitle'] = 'Gerencie seus produtos e serviços oferecidos e publíque-os em sua vitrine';
+$lang['tmpt_CustomersTitle'] = 'Gerencie sua lista de clientes.';
+$lang['tmpt_VitrineTitle'] = "A vitrine é onde os seus produtos são exibidos para os seus clientes. Ela também é a página principal do seu site " . base_url();
+$lang['tmpt_Vitrine'] = 'Vitrine';
 $lang['tmpt_Agency'] = 'Agência';
-$lang['tmpt_Products'] = 'Produtos';
+$lang['tmpt_Products'] = 'Produtos e serviços';
 $lang['tmpt_Customers'] = 'Clientes';
-$lang['tmpt_products'] = 'produtos';
+$lang['tmpt_products'] = 'produtos e serviços';
 $lang['tmpt_Institutions'] = 'Fornecedores';
 $lang['tmpt_Profile'] = 'Perfil';
 $lang['tmpt_Settings'] = 'Configurações';
@@ -21,8 +26,6 @@ $lang['tmpt_Institutional'] = 'Institucional';
 $lang['tmpt_AboutUs'] = 'Sobre nós';
 $lang['tmpt_contact_us'] = 'entre em contato';
 $lang['tmpt_ContactUs'] = 'Contato';
-$lang['tmpt_Language'] = 'Idioma';
-$lang['tmpt_Powered_by'] = 'Desenvolvido por';
 $lang['tmpt_Products_desc'] = 'Selecione a ferramenta desejada';
 $lang['tmpt_select_lang'] = 'Selecione o idioma de exibição da página.';
 $lang['tmpt_need_js'] = 'Você precisa habilitar o javascript no seu navegador para visualizar esta página corretamente.';

@@ -1,14 +1,14 @@
-$( "#translate_en" ).live("click", function() {
+$( "#en" ).live("click", function() {
   $.ajax({
-    url: base_url + "user/changeLang/english"
+    url: base_url + "user/changeLang/en"
   })
   .done(function() {
     location.reload();
   });
 });
 
-$( "#translate_pt-BR" ).live("click", function() {
-  $.ajax(base_url + "user/changeLang/pt-BR", function( e ) {
+$( "#pt" ).live("click", function() {
+  $.ajax(base_url + "user/changeLang/pt", function( e ) {
     location.reload();
   })
   .done(function() {

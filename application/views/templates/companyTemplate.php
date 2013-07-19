@@ -58,6 +58,15 @@
 
         <div class="nav-collapse collapse">
           <ul class="nav pull-right">
+
+            <li class="dropdown">
+              <a class="dropdown-toggle" data-toggle="dropdown" rel="tooltip" title="<?=lang('tmpt_select_lang')?>"><span class="language"><?=$this->session->userdata('app_language')?></span> <i class="icon-caret-down"></i></a>
+              <ul class="dropdown-menu">
+                <li><a id="en" rel="tooltip" title="Translate to English">en -English</a></li>
+                <li><a id="pt" rel="tooltip" title="Traduzir para Português">pt - Português</a></li>
+              </ul>
+            </li>
+            
             <li><a class="changeCurrency" rel="tooltip" title="<?=lang("tmpt_select_currency")?>"><span class="currencyCode"></span> <i class="icon-caret-down"></i></a></li>
             <?php if($this->session->userdata('userID')) { ?>
             <li class="dropdown pull-right">
@@ -76,32 +85,15 @@
             <?php } ?>
           </ul>
           <ul class="nav">
-            <li class="dropdown">
-              <a class="dropdown-toggle" data-toggle="dropdown" rel="tooltip" title="<?=lang('tmpt_The_tzadi')?>"><i class="icon-comments icon-large"></i> <?=lang('tmpt_Institutional')?></a>
-              <ul class="dropdown-menu">
-                <li><a href="<?=base_url()?>">Home</a></li>
-                <li><a href="<?=base_url()?><?=lang('rt_about')?>"><?=lang('tmpt_AboutUs')?></a></li>
-                <li><a href="<?=base_url()?><?=lang('rt_contact')?>"><?=lang('tmpt_ContactUs')?></a></li>
-                <li><a href="<?=base_url()?><?=lang('rt_privacyPolicy')?>"><?=lang('tmpt_PrivacyPolicy')?></a></li>
-                <li><a href="<?=base_url()?><?=lang('rt_termsOfUse')?>"><?=lang('tmpt_TermsOfUse')?></a></li>
-              </ul>
-            </li>
-
-            <li class="dropdown">
-              <a class="dropdown-toggle" data-toggle="dropdown" rel="tooltip" title="<?=lang('tmpt_select_lang')?>"><i class="icon-globe icon-large"></i> <?=lang('tmpt_Language')?></a>
-              <ul class="dropdown-menu">
-                <li><a id="translate_en" rel="tooltip" title="Translate to English">English</a></li>
-                <li><a id="translate_pt-BR" rel="tooltip" title="Traduzir para Português">Português</a></li>
-              </ul>
-            </li>
 
             <?php if($this->session->userdata("userID")) {?>
             <li class="dropdown">
               <a class="dropdown-toggle" data-toggle="dropdown" rel="tooltip" title="<?=lang('tmpt_Agency')?>"><i class="icon-plane icon-large"></i> <?=lang('tmpt_Agency')?></a>
               <ul class="dropdown-menu">
-                <li><a href="<?=base_url()?><?=lang('rt_supplier')?>" rel="tooltip" title="<?=lang('tmpt_Institutions')?>"><?=lang('tmpt_Institutions')?></a></li>
-                <li><a href="<?=base_url()?><?=lang('rt_products')?>" rel="tooltip" title="<?=lang('tmpt_Products')?>"><?=lang('tmpt_Products')?></a></li>
-                <li><a href="<?=base_url()?><?=lang('rt_customer')?>" rel="tooltip" title="<?=lang('tmpt_Customers')?>"><?=lang('tmpt_Customers')?></a></li>
+                <li><a href="<?=base_url()?><?=lang('rt_supplier')?>" rel="tooltip" title="<?=lang('tmpt_InstitutionsTitle')?>"><?=lang('tmpt_Institutions')?></a></li>
+                <li><a href="<?=base_url()?><?=lang('rt_products')?>" rel="tooltip" title="<?=lang('tmpt_ProductsTitle')?>"><?=lang('tmpt_Products')?></a></li>
+                <li><a href="<?=base_url()?><?=lang('rt_customer')?>" rel="tooltip" title="<?=lang('tmpt_CustomersTitle')?>"><?=lang('tmpt_Customers')?></a></li>
+                <li><a href="<?=base_url()?>" rel="tooltip" title="<?=lang('tmpt_VitrineTitle')?>"><?=lang('tmpt_Vitrine')?></a></li>
               </ul>
             </li>
             <?php }?>
@@ -114,31 +106,39 @@
     </div><!-- navbar-inner -->
   </div><!-- navbar -->
   
-  <div class="container well well-small">
+  <div class="container">
     <div class="row">
       <div class="span24">
         <div class="row tzdContent">
           <div class="span24">
+
             {content}
+
+          </div>
+        </div>
+
+        <hr>
+        
+        <div class="row">
+          <div class="span24 footer">
+            <div class="row">
+              <div class="span20 offset2">
+                <h6>{companyName}</h6>
+                <ul>
+                  <small><li><a href="<?=base_url()?><?=lang('rt_about')?>"><?=lang('tmpt_AboutUs')?></a></li></small>
+                  <small><li><a href="<?=base_url()?><?=lang('rt_contact')?>"><?=lang('tmpt_ContactUs')?></a></li></small>
+                  <small><li><a href="<?=base_url()?><?=lang('rt_privacyPolicy')?>"><?=lang('tmpt_PrivacyPolicy')?></a></li></small>
+                  <small><li><a href="<?=base_url()?><?=lang('rt_termsOfUse')?>"><?=lang('tmpt_TermsOfUse')?></a></li></small>
+                </ul>
+              </div>
+            </div>
+            <footer>
+              <p class="text-center">&copy; <a target="_blank" href="http://<?=ENVIRONMENT?>">Tzadi</a> 2013</p>
+            </footer>
           </div>
         </div>
       </div>
     </div>
-    <hr>
-    <footer>
-      <div class="row">
-        <div class="span24 footer">
-          <div class="row">
-            <div class="span20 offset2">
-              <a href="<?=base_url()?><?=lang('rt_privacyPolicy')?>"><?=lang('tmpt_PrivacyPolicy')?></a>
-              -
-              <a href="<?=base_url()?><?=lang('rt_termsOfUse')?>"><?=lang('tmpt_TermsOfUse')?></a>
-              <span class="pull-right"><?=lang('tmpt_Powered_by')?>: &copy; <a target="_blank" href="<?='http://'.ENVIRONMENT?>">Tzadi.com</a> 2013</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </footer>
   </div><!--/.fluid-container-->
 
   <!-- Loading the JQuery -->

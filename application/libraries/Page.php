@@ -7,13 +7,12 @@ class Page {
 
   public function load( $data ) {
     
-    // Check the language and load the template language file
-    $app_language = $this->CI->session->userdata('app_language');
-    if(isset($app_language)) {
-      $this->CI->lang->load('template', $app_language);
-    } else {
-      $this->CI->lang->load('template', LANGUAGE);
-    }
+    // Loads the language if is not
+    if( ! $this->CI->session->userdata('app_language') )
+      $this->CI->session->set_userdata('app_language', LANGUAGE);
+
+    $this->CI->lang->load('template', $this->CI->session->userdata('app_language'));
+    $this->CI->lang->load('route', $this->CI->session->userdata('app_language'));
 
     // load the view within the template
     $data->content = $this->CI->load->view($data->view, $data, true);
