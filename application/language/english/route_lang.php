@@ -7,6 +7,6 @@ $lang["rt_contact"] = "contact";
 $lang["rt_supplier"] = "supplier";
 $lang["rt_customer"] = "customer";
 $lang["rt_products"] = "products";
-$lang["rt_badge"] = "badge";
+$lang["rt_budget"] = "budget";
 $lang['rt_privacyPolicy'] = 'privacypolicy';
 $lang['rt_termsOfUse'] = 'termsofuse';

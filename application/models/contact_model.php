@@ -18,23 +18,25 @@ class Contact_Model extends CI_Model {
       $message = "<p> Contato enviado por: " . $data["email"] . "</p>";
       $message .= "<p> Assunto: " . $data["subject"] . "</p>";
       $message .= "<p> Mensagem: " . $data["message"] . "</p>";
-      $mail->message = '<html><head><meta charset="utf-8"></head><body>'.$message.'</body></html>';
-      $mail->subject = "Contato recebido - " . $data["email"];
-      $mail->to =  $data["email"];
-      $mail->bcc =  array("bruno@tzadi.com", "tzadiinc@gmail.com", "lucas@tzadi.com");
-      $this->load->library('gmail');
-      $this->gmail->send($mail);
+      $mail["message"] = '<html><head><meta charset="utf-8"></head><body>'.$message.'</body></html>';
+      $mail["subject"] = "Contato recebido - " . $data["email"];
+      $mail["to"] =  $data["email"];
+      $mail["bcc"] =  array("bruno@tzadi.com", "tzadiinc@gmail.com", "lucas@tzadi.com");
+      $mail["kind"] = "contact";
+      $this->load->model('mail_model');
+      $this->mail_model->queue($mail);
     } else {
       $message = "<p> Contato enviado por: " . $data["email"] . "</p>";
       $message .= "<p> para " . COMPANYSUBDOMAIN . "</p>";
       $message .= "<p> Assunto: " . $data["subject"] . "</p>";
       $message .= "<p> Mensagem: " . $data["message"] . "</p>";
-      $message = '<html><head><meta charset="utf-8"></head><body>'.$message.'</body></html>';
-      $subject = "Contato recebido - " . $data["email"];
-      $mail->to =  $data["email"];
-      $mail->bcc =  array("bruno@tzadi.com", "tzadiinc@gmail.com", "lucas@tzadi.com");
-      $this->load->library('gmail');
-      $this->gmail->send($to, utf8_decode($subject), utf8_decode($message));
+      $mail["message"] = '<html><head><meta charset="utf-8"></head><body>'.$message.'</body></html>';
+      $mail["subject"] = "Contato recebido - " . $data["email"];
+      $mail["to"] =  $data["email"];
+      $mail["bcc"] =  array("bruno@tzadi.com", "tzadiinc@gmail.com", "lucas@tzadi.com");
+      $mail["kind"] = "contact";
+      $this->load->model('mail_model');
+      $this->mail_model->queue($mail);
     }
 
     return $data["_id"];

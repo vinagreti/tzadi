@@ -11,7 +11,7 @@ $(document).ready(function(){
 	  $(document).scrollTop( $("#student").offset().top );
 	});
 
-	$( "#goToInstitution" ).live("click", function() {
-	  $(document).scrollTop( $("#institution").offset().top );
+	$( "#goToSchool" ).live("click", function() {
+	  $(document).scrollTop( $("#school").offset().top );
 	});
 });

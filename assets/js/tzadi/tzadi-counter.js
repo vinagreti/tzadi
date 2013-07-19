@@ -27,7 +27,11 @@ TzadiJS.prototype.counter = function(){
 
       var self = this;
 
-      setTimeout(function() { self.program( ); }, 1000 );
+      var amount = 1000;
+
+      if(this.timer < 1) amount = 1000 * this.timer;
+
+      setTimeout(function() { self.program( ); }, amount );
 
     }
 

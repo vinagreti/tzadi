@@ -58,6 +58,7 @@
 
         <div class="nav-collapse collapse">
           <ul class="nav pull-right">
+            <li><a class="changeCurrency" rel="tooltip" title="<?=lang("tmpt_select_currency")?>"><span class="currencyCode"></span> <i class="icon-caret-down"></i></a></li>
             <?php if($this->session->userdata('userID')) { ?>
             <li class="dropdown pull-right">
               <a class="dropdown-toggle" data-toggle="dropdown"><i class="icon-user icon-large"></i> <?=$this->session->userdata('userName')?></a>
@@ -105,7 +106,7 @@
             </li>
             <?php }?>
 
-            <li><a href="<?=base_url()?><?=lang('rt_badge')?>" target="_blank"><i class="icon-flag"></i> <?=lang('tmpt_Budget')?> <span class="label label-warning budgetTotal"></span></a></li>
+            <li><a href="<?=base_url()?><?=lang('rt_budget')?>" target="_blank"><i class="icon-flag"></i> <?=lang('tmpt_Budget')?> <span class="label label-warning budgetTotal"></span></a></li>
 
           </ul>
         </div><!--/.nav-collapse -->
@@ -125,7 +126,18 @@
     </div>
     <hr>
     <footer>
-      <p class="pull-right"><?=lang('tmpt_Powered_by')?>: &copy; <a target="_blank" href="<?='http://'.ENVIRONMENT?>">Tzadi.com</a> 2013</p>
+      <div class="row">
+        <div class="span24 footer">
+          <div class="row">
+            <div class="span20 offset2">
+              <a href="<?=base_url()?><?=lang('rt_privacyPolicy')?>"><?=lang('tmpt_PrivacyPolicy')?></a>
+              -
+              <a href="<?=base_url()?><?=lang('rt_termsOfUse')?>"><?=lang('tmpt_TermsOfUse')?></a>
+              <span class="pull-right"><?=lang('tmpt_Powered_by')?>: &copy; <a target="_blank" href="<?='http://'.ENVIRONMENT?>">Tzadi.com</a> 2013</span>
+            </div>
+          </div>
+        </div>
+      </div>
     </footer>
   </div><!--/.fluid-container-->
 
@@ -153,10 +165,11 @@
   <script src="<?=base_url()?>assets/js/tzadi/tzadi.js"></script>
   <script src="<?=base_url()?>assets/js/tzadi/tzadi-lang.js"></script>
   <script src="<?=base_url()?>assets/js/tzadi/tzadi-ajax.js"></script>
-  <script src="<?=base_url()?>assets/js/tzadi/tzadi-budget.js"></script>
   <script src="<?=base_url()?>assets/js/tzadi/tzadi-string.js"></script>
   <script src="<?=base_url()?>assets/js/tzadi/tzadi-alert.js"></script>
+  <script src="<?=base_url()?>assets/js/tzadi/tzadi-currency.js"></script>
   <script src="<?=base_url()?>assets/js/tzadi/tzadi-counter.js"></script>
+  <script src="<?=base_url()?>assets/js/tzadi/tzadi-budget.js"></script>
   <script src="<?=base_url()?>assets/js/tzadi/tzadi-form.js"></script>
   <script src="<?=base_url()?>assets/js/tzadi/tzadi-onkeyup-fix.js"></script>
   <script src="<?=base_url()?>assets/js/tzadi/tzadi-confirm.js"></script>

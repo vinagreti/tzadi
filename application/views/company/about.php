@@ -1,2 +1,2 @@
-<h1><?=lang('abt_page_title')?></h1>
+<h2><?=lang('abt_page_title')?></h2>
 <p><?php if(isset($about)) echo $about; ?></p>

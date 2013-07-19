@@ -1,4 +1,4 @@
-<h3><?=lang('pdt_listTitle')?></h3>
+<h2><?=lang('pdt_listTitle')?></h2>
 
 <div class="row">
   <div class="span24">
@@ -32,8 +32,8 @@
 <div class="row">
   <div class="span24 itensList">
     <div class="row line">
-      <div class="span6 product hide">
-        <div class="thumbnail well well-mini">
+      <div class="span6 product hide item-vitrine">
+        <div class="thumbnail" >
           <a class="open" href="#" target="_blank">
             <img class="img" alt="160x120" style="width: 100%; height: 160px;" src="<?=base_url()?>assets/img/no_photo_160x120.png">
             <h5><span class="name"></span></h5>

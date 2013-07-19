@@ -5,6 +5,30 @@ class My_Controller extends CI_Controller{
   public function __construct() {
     parent::__construct();
 
+    $this->load->helper('cookie');
+
+    $currency = $this->input->cookie("tzdCurrency");
+
+    if( ! $currency ) {
+
+      $expire = strtotime('tomorrow') - time() + 300;
+
+      $this->load->model("currency_model");
+
+      $currency = $this->currency_model->getToday();
+
+      $currency["base"] = "BRL";
+
+      $cookie = array(
+        'name'   => 'tzdCurrency'
+        , 'value'  => json_encode( $currency )
+        , 'expire' => $expire
+      );
+
+      $this->input->set_cookie($cookie);
+
+    }
+
     $this->lang->load('template', $this->session->userdata('app_language'));
     $this->lang->load('route', $this->session->userdata('app_language'));
 

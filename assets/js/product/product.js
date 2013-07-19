@@ -26,18 +26,6 @@ TzadiJS.prototype.product = new function(){
 
   };
 
-  this.sendByMail = function( productID, adresses ){
-
-    var url = base_url+'product/sendByMail';
-
-    var data = { tzadiToken : tzadiToken, productID : productID, adresses : adresses };
-
-    var callback = function( res ){ return res; };
-
-    $tzd.ajax.post(url, data, callback);
-
-  };
-
   this.share = new function() {
 
     this.modal = false;

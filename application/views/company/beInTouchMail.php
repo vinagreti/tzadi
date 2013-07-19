@@ -1,4 +1,4 @@
-<h3><?=lang("cpn_Hello")?> <?=$name?>,</h3>
+<h2><?=lang("cpn_Hello")?> <?=$name?>,</h2>
 
 <div class="row">
   <div class="span24 well well-mini">

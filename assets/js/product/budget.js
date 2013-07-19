@@ -17,13 +17,14 @@ $(document).ready(function(){
           , productID : productID
         };
         var callback = function( product ){
+          if( ! product.price || isNaN(product.price)) product.price = 0;
           line.find(".amount").val(amount);
           line.find("a").html(product.name).attr("href", base_url+"product/view/"+product._id);
           if(product.img) line.find("img").attr("src", base_url+"file/open/"+product.img);
           line.find(".price").html(product.price);
-          line.find(".total").html(amount*product.price);
+          line.find(".total").html((amount*product.price).toFixed(2));
           totalPrice += amount*product.price;
-          $(".totalPrice").html(totalPrice);
+          $(".totalPrice").html(totalPrice.toFixed(2));
         };
 
         $tzd.ajax.post(url, data, callback);
@@ -33,9 +34,7 @@ $(document).ready(function(){
 
   budget = new Budget();
   budget.reload();
-});
 
-$(document).ready(function(){
   $(".empty").live("click", function(){
     $tzd.budget.empty();
     $(".list").empty();
@@ -48,22 +47,22 @@ $(document).ready(function(){
   });
 
   $(".amount").live("change propertychange", function(){
-    var amount = $(this).val();
+    var amount = parseInt($(this).val());
+
     if(amount < 0) {
       $(this).val("0");
     } else {
       var line = $(this).parents(".item");
       var itemID = line.attr("id");
-      $tzd.budget.setAmount(itemID, parseInt(amount));
+      $tzd.budget.setAmount(itemID, amount);
       var price = parseInt(line.find(".price").html());
       var oldTotal = parseInt(line.find(".total").html());
-
       var total = amount*price;
       if(total < 0) total = 0;
-      line.find(".total").html(total);
+      line.find(".total").html(total.toFixed(2));
       var totalPrice = parseInt($(".totalPrice").html());
       if(totalPrice < 0) totalPrice = 0;
-      $(".totalPrice").html(totalPrice+total-oldTotal);
+      $(".totalPrice").html((totalPrice+total-oldTotal).toFixed(2));
     }
   });
 });

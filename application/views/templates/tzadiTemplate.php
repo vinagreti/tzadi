@@ -123,8 +123,20 @@
       </div>
     </div>
     <hr>
+
     <footer>
-      <p class="pull-right"><?=lang('tmpt_Powered_by')?>: &copy; <a target="_blank" href="<?='http://'.ENVIRONMENT?>">Tzadi.com</a> 2013</p>
+      <div class="row">
+        <div class="span24 footer">
+          <div class="row">
+            <div class="span20 offset2">
+              <a href="<?=base_url()?><?=lang('rt_privacyPolicy')?>"><?=lang('tmpt_PrivacyPolicy')?></a>
+              -
+              <a href="<?=base_url()?><?=lang('rt_termsOfUse')?>"><?=lang('tmpt_TermsOfUse')?></a>
+              <span class="pull-right"><?=lang('tmpt_Powered_by')?>: &copy; <a target="_blank" href="<?='http://'.ENVIRONMENT?>">Tzadi.com</a> 2013</span>
+            </div>
+          </div>
+        </div>
+      </div>
     </footer>
   </div><!--/.fluid-container-->
 

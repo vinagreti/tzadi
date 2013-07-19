@@ -81,12 +81,6 @@ class User_Model extends CI_Model {
     $demo["about"] = "Esta é uma agencia de demonstração, não existe realmente. Todo o seu conteúdo é fictício. Por se tratar de um conteudo de testes, não há um controle sobre as informações da agencia. Favor não utilizar conteúdo inapropriado nos testes, como palavras, imagens, arquivos...";
     $demo["contact"] = "Texto dinamico na pagina de contato";
 
-    $mango["_id"] = $this->mongo_model->newID();
-    $mango["name"] = "Mango Intercambios";
-    $mango["subdomain"] = "mango";
-    $mango["about"] = "http://mangointercambios.com.br/mangoshop/cms.php?id_cms=4";
-    $mango["contact"] = "http://mangointercambios.com.br/mangoshop/cms.php?id_cms=4";
-
     $bruno["_id"] = $this->mongo_model->newID();
     $bruno["permission"]["supplier"] = "1023";
     $bruno["permission"]["product"] = "1023";
@@ -104,19 +98,8 @@ class User_Model extends CI_Model {
     $lucas["name"] = "Lucas Francisco";
     $lucas["email"] = "lucas@tzadi.com";
     $lucas["password"] = md5("lucas");
-    $lucas["company"] = $mango["_id"];
+    $lucas["company"] = $demo["_id"];
     $this->mongo_db->insert('user', $lucas);
-
-    $poliana["_id"] = $this->mongo_model->newID();
-    $poliana["permission"]["supplier"] = "1023";
-    $poliana["permission"]["product"] = "1023";
-    $poliana["name"] = "Poliana G.";
-    $poliana["email"] = "poliana@tzadi.com";
-    $poliana["password"] = md5("poliana");
-    $poliana["company"] = $mango["_id"];
-    $this->mongo_db->insert('user', $poliana);
-    $mango["owner"] = $poliana["_id"];
-    $this->mongo_db->insert('company', $mango);
 
     $demoUser["_id"] = $this->mongo_model->newID();
     $demoUser["permission"]["supplier"] = "1023";

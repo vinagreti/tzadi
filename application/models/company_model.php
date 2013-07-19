@@ -42,6 +42,18 @@ class Company_Model extends CI_Model {
 
     $this->mongo_db->insert('company',array("name" =>  $data["subdomain"], "_id" => $newCompanyID, "plan" => $data["plan"], "subdomain" => strtolower($data["subdomain"]), "owner" => $newUserID));
 
+    $message = "<p> Prezado " . $data["email"] . " </p>";
+    $message .= "<p> Sua conta <a href='http://tzadi.com'>TZADI</a> foi criada com sucesso na</p>";
+    $message .= "<p>Email: " . $data["email"] . "</p>";
+    $message .= "<p>Senha: " . $data["password"] . "</p>";
+    $mail["message"] = '<html><head><meta charset="utf-8"></head><body>'.$message.'</body></html>';
+    $mail["subject"] = "Bem vindo(a) à TZADI - " . $data["email"];
+    $mail["to"] =  strtolower($data["email"]);
+    $mail["bcc"] =  array("bruno@tzadi.com", "tzadiinc@gmail.com", "lucas@tzadi.com");
+    $mail["kind"] = "company/add";
+    $this->load->model('mail_model');
+    $this->mail_model->queue($mail);
+      
     return true;
   }
 

@@ -82,12 +82,25 @@ TzadiJS.prototype.budget = new function(){
 
   this.refreshTotal = function(){
 
+    var seconds = 1.03;
     var total = 0;
+    var self = this;
 
     $.each(this.getCookie(), function(item, amount){ total += amount; });
 
     $(this.totalElement).html(total);
 
+    var oldSize = $(this.totalElement).css("font-size");
+
+    $(this.totalElement).css("font-size", "50px").css("font-weight","bold");
+
+    var callback = function(){
+      $(self.totalElement).css("font-size", oldSize).css("font-weight","normal");
+    }
+
+      var counter = new $tzd.counter();
+
+      counter.program(seconds, callback);
   };
 
   this.empty = function(){

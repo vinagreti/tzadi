@@ -1,7 +1,7 @@
-<h3><?=$product["name"]?></h3>
+<h2><?=$product["name"]?></h2>
 
 <div class="row">
-  <div class="span24 well well-mini">
+  <div class="span24">
     <div class="row">
       <div class="span10">
         <div class="row">

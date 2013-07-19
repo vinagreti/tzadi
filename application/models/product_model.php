@@ -274,19 +274,21 @@ class Product_Model extends CI_Model {
 
       $address = $data["addresses"];
 
-      $mailContent->subject = $data["name"] . " " . lang("pdt_shareIndicated") . ": " . $product["name"];
+      $mailContent['subject'] = $data["name"] . " " . lang("pdt_shareIndicated") . ": " . $product["name"];
 
       $mail->message = $data["message"];
       
       $mail->product = $product;
 
-      $mailContent->message = $this->load->view("product/shareMail", $mail, true);
+      $mailContent["message"] = $this->load->view("product/shareMail", $mail, true);
 
-      $mailContent->to = $address;
+      $mailContent["to"] = $address;
 
-      $this->load->library('gmail');
+      $mailContent["kind"] = "product/share";
 
-      $this->gmail->send($mailContent);
+      $this->load->model('mail_model');
+
+      $this->mail_model->queue($mailContent);
 
       $error = false;
 

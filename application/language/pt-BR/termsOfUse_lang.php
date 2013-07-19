@@ -1,6 +1,6 @@
 <?php
-$lang["term_page_title"] = "Termos de uso";
-$lang["term_text1"] = "Bem vindo à TZADI. Se você continuar a navegar e usar este website, você concorda com os Termos e Condições de Uso, que juntamente com nossa Política de Privacidade, governam a relação da TZADI você em relação a este website. Se você não concorda com qualquer parte destes termos e condições, por favor não use nosso website.";
+$lang["term_page_title"] = "Termos e Condições de uso";
+$lang["term_text1"] = "Bem vindo à TZADI. Se você continuar a navegar e usar este website, você concorda com os Termos e Condições de Uso que, juntamente com nossa Política de Privacidade, governam a relação da TZADI com você em relação a este website. Se você não concorda com qualquer parte destes termos e condições, por favor não use nosso website.";
 $lang["term_text2"] = "O termo TZADI ou “nós” se refere aos donos deste website. O termo “você” se refere ao usuário deste website.";
 $lang["term_text3"] = "A utilização deste site está sujeita aos seguintes Termos de Uso:";
 $lang["term_text4"] = "O conteúdo das páginas deste site são para sua informação e uso somente. Este conteúdo está sujeito a alterações sem prévio aviso.";
