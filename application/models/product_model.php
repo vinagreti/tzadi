@@ -202,7 +202,7 @@ class Product_Model extends CI_Model {
 
     if(!isset($product["currency"])) $product["currency"] = "USD";
 
-    if(isset($product["price"])) $product["price"] = $product["currency"] . " " . $product["price"];
+    if(isset($product["price"])) $product["humanPrice"] = $product["currency"] . " " . $product["price"];
 
     if(isset($product["courseEnrollmentFees"])) $product["courseEnrollmentFees"] = $product["currency"] . " " . $product["courseEnrollmentFees"];
 

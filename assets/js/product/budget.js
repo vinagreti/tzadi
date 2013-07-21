@@ -22,9 +22,11 @@ $(document).ready(function(){
           line.find("a").html(product.name).attr("href", base_url+"product/view/"+product._id);
           if(product.img) line.find("img").attr("src", base_url+"file/open/"+product.img);
           line.find(".price").html(product.price);
-          line.find(".total").html((amount*product.price).toFixed(2));
+          line.find(".total").html( amount*product.price );
           totalPrice += amount*product.price;
-          $(".totalPrice").html(totalPrice.toFixed(2));
+          $(".totalPrice").html(totalPrice);
+          $(".totalPriceConverted").html($tzd.currency.convert(totalPrice, product.currency));
+          $(".productCurrency").html(product.currency);
         };
 
         $tzd.ajax.post(url, data, callback);
@@ -39,6 +41,7 @@ $(document).ready(function(){
     $tzd.budget.empty();
     $(".list").empty();
     $(".totalPrice").html(0);
+    $(".totalPriceConverted").html($tzd.currency.convert(0, $(".productCurrency").html()));
   });
 
   $(".reload").live("click", function(){
@@ -63,6 +66,7 @@ $(document).ready(function(){
       var totalPrice = parseInt($(".totalPrice").html());
       if(totalPrice < 0) totalPrice = 0;
       $(".totalPrice").html((totalPrice+total-oldTotal).toFixed(2));
+      $(".totalPriceConverted").html($tzd.currency.convert(totalPrice+total-oldTotal, $(".productCurrency").html()));
     }
   });
 });

@@ -118,7 +118,7 @@
           <div class="span24 footer">
             <div class="row">
               <div class="span20 offset2">
-                <h6>A Tzadi</h6>
+                <h6>&nbsp; A Tzadi</h6>
                 <ul>
                   <small><li><a href="<?=base_url()?><?=lang('rt_about')?>"><?=lang('tmpt_AboutUs')?></a></li></small>
                   <small><li><a href="<?=base_url()?><?=lang('rt_contact')?>"><?=lang('tmpt_ContactUs')?></a></li></small>

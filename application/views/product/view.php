@@ -35,11 +35,16 @@
       </div>
       <div class="span14">
 
+        <div class="pull-right"><a href="<?=base_url()?>currency"><?=lang("tmpt_todayRates")?></a></div>
+
         
 
         <dl class="dl-horizontal">
           <dt><?=lang("pdt_name")?></dt><dd><?=$product["name"]?></dd>
-          <?php if(isset($product["price"])) echo "<dt>" . lang("pdt_price") . "</dt><dd>" . $product["price"] . "</dd>"; ?>
+          <?php if(isset($product["price"])) {
+            echo "<dt>" . lang("pdt_price") . "</dt><dd><span class='productCurrency'>". $product["currency"]."</span> <span class='price'>" . $product["price"] . "</span></dd>"; 
+            echo "<dt>" . lang("pdt_priceConverted") . "</dt><dd class='priceConverted'></dd>";
+          }?>
           <?php if(isset($product["courseDuration"])) echo "<dt>" . lang("pdt_courseDuration") . "</dt><dd>" . $product["courseDuration"] . "</dd>"; ?>
           <?php if(isset($product["courseKind"])) echo "<dt>" . lang("pdt_courseKind") . "</dt><dd>" . $product["courseKind"] . "</dd>"; ?>
           <?php if(isset($product["coursePeriod"])) echo "<dt>" . lang("pdt_period") . "</dt><dd>" . $product["coursePeriod"] . "</dd>"; ?>

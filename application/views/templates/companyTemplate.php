@@ -57,8 +57,24 @@
         </span>
 
         <div class="nav-collapse collapse">
-          <ul class="nav pull-right">
+          <ul class="nav">
 
+            <?php if($this->session->userdata("userID")) {?>
+            <li class="dropdown">
+              <a class="dropdown-toggle" data-toggle="dropdown" rel="tooltip" title="<?=lang('tmpt_Agency')?>"><i class="icon-plane icon-large"></i> <?=lang('tmpt_Agency')?></a>
+              <ul class="dropdown-menu">
+                <li><a href="<?=base_url()?><?=lang('rt_supplier')?>" rel="tooltip" title="<?=lang('tmpt_InstitutionsTitle')?>"><?=lang('tmpt_Institutions')?></a></li>
+                <li><a href="<?=base_url()?><?=lang('rt_products')?>" rel="tooltip" title="<?=lang('tmpt_ProductsTitle')?>"><?=lang('tmpt_Products')?></a></li>
+                <li><a href="<?=base_url()?><?=lang('rt_customer')?>" rel="tooltip" title="<?=lang('tmpt_CustomersTitle')?>"><?=lang('tmpt_Customers')?></a></li>
+                <li><a href="<?=base_url()?>" rel="tooltip" title="<?=lang('tmpt_VitrineTitle')?>"><?=lang('tmpt_Vitrine')?></a></li>
+              </ul>
+            </li>
+            <?php }?>
+
+            <li><a href="<?=base_url()?><?=lang('rt_budget')?>" target="_blank"><i class="icon-flag"></i> <?=lang('tmpt_Budget')?> <span class="label label-warning budgetTotal"></span></a></li>
+
+          </ul>
+          <ul class="nav pull-right">
             <li class="dropdown">
               <a class="dropdown-toggle" data-toggle="dropdown" rel="tooltip" title="<?=lang('tmpt_select_lang')?>"><span class="language"><?=$this->session->userdata('app_language')?></span> <i class="icon-caret-down"></i></a>
               <ul class="dropdown-menu">
@@ -84,23 +100,6 @@
               </li>
             <?php } ?>
           </ul>
-          <ul class="nav">
-
-            <?php if($this->session->userdata("userID")) {?>
-            <li class="dropdown">
-              <a class="dropdown-toggle" data-toggle="dropdown" rel="tooltip" title="<?=lang('tmpt_Agency')?>"><i class="icon-plane icon-large"></i> <?=lang('tmpt_Agency')?></a>
-              <ul class="dropdown-menu">
-                <li><a href="<?=base_url()?><?=lang('rt_supplier')?>" rel="tooltip" title="<?=lang('tmpt_InstitutionsTitle')?>"><?=lang('tmpt_Institutions')?></a></li>
-                <li><a href="<?=base_url()?><?=lang('rt_products')?>" rel="tooltip" title="<?=lang('tmpt_ProductsTitle')?>"><?=lang('tmpt_Products')?></a></li>
-                <li><a href="<?=base_url()?><?=lang('rt_customer')?>" rel="tooltip" title="<?=lang('tmpt_CustomersTitle')?>"><?=lang('tmpt_Customers')?></a></li>
-                <li><a href="<?=base_url()?>" rel="tooltip" title="<?=lang('tmpt_VitrineTitle')?>"><?=lang('tmpt_Vitrine')?></a></li>
-              </ul>
-            </li>
-            <?php }?>
-
-            <li><a href="<?=base_url()?><?=lang('rt_budget')?>" target="_blank"><i class="icon-flag"></i> <?=lang('tmpt_Budget')?> <span class="label label-warning budgetTotal"></span></a></li>
-
-          </ul>
         </div><!--/.nav-collapse -->
       </div><!-- container -->
     </div><!-- navbar-inner -->
@@ -123,7 +122,7 @@
           <div class="span24 footer">
             <div class="row">
               <div class="span20 offset2">
-                <h6>{companyName}</h6>
+                <h6>&nbsp; {companyName}</h6>
                 <ul>
                   <small><li><a href="<?=base_url()?><?=lang('rt_about')?>"><?=lang('tmpt_AboutUs')?></a></li></small>
                   <small><li><a href="<?=base_url()?><?=lang('rt_contact')?>"><?=lang('tmpt_ContactUs')?></a></li></small>

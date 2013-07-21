@@ -15,7 +15,25 @@ class Currency extends My_Controller {
 
 		$this->load->model("currency_model");
 
-		echo json_encode($this->currency_model->getToday( ));
+		$currency = $this->currency_model->getToday( );
+
+		if($this->input->post()) {
+
+			echo json_encode( $currency );
+
+		} else {
+
+			$this->lang->load('currency', $this->session->userdata('app_language'));
+
+		    $data->view = 'currency/today';
+
+		    $data->page_title = lang('crc_Rates');
+
+		    $data->currency = $currency;
+
+		    $this->page->load($data);
+
+		}
 
 	}
 

@@ -31,7 +31,7 @@
         <a class="btn btn-large btn-warning beInTouch" href="#beInTouch"><?=lang('idx_beInTouch')?></a>
       </div>
       <div class="span6">
-        <img src="<?=base_url()?>assets/img/favicon.ico?v=2"></im>
+        <img src="<?=base_url()?>assets/img/globe.png?v=2" style="width:100%; height:100%;"></im>
       </div>
     </div>
   </div>
@@ -41,7 +41,7 @@
   <div class="span24 home-agency-bg">
     <div class="row">
       <div class="span6">
-        <img src="<?=base_url()?>assets/img/favicon.ico?v=2"></im>
+        <img src="<?=base_url()?>assets/img/globe.png?v=2" style="width:100%; height:100%;"></im>
       </div>
       <div class="span17 centered-text">
         <h2><?=lang('idx_Agency')?></h2>
@@ -63,7 +63,7 @@
         <a class="btn btn-large btn-warning beInTouch" href="#beInTouch"><?=lang('idx_beInTouch')?></a>
       </div>
       <div class="span6">
-        <img src="<?=base_url()?>assets/img/favicon.ico?v=2"></im>
+        <img src="<?=base_url()?>assets/img/globe.png?v=2" style="width:100%; height:100%;"></im>
       </div>
     </div>
   </div>

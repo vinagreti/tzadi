@@ -64,3 +64,4 @@ $lang["tmpt_Clone"] = "copiar";
 $lang["tmpt_PrivacyPolicy"] = "Política de privacidade";
 $lang["tmpt_TermsOfUse"] = "Termos e Condições de Uso";
 $lang["tmpt_select_currency"] = "selecione a moeda em que os preços serão exibidos";
+$lang["tmpt_todayRates"] = "cotações de hoje";

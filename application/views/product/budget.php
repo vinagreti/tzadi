@@ -5,10 +5,19 @@
     <div class="row">
       <div class="span2"><input class="amount input-block-level" type="number" /></div>
       <div class="span12"><a target="_blank"></a></div>
-      <div class="span4"><?=lang("pdt_price")?>: <span class="price"></span></div>
-      <div class="span4"><?=lang("pdt_total")?>: <span class="total"></span></div>
+      <div class="span4"><?=lang("pdt_price")?>: <span class="productCurrency"></span> <span class="price"></span></div>
+      <div class="span4"><?=lang("pdt_total")?>: <span class="productCurrency"></span> <span class="total"></span></div>
     </div>
   </div>
 </div>
 
-<div class="pull-right"><h3><?=lang("pdt_totalValue")?>: <span class="totalPrice">0</span></h3></div>
+<div class="pull-right">
+
+  <dl class="dl-horizontal">
+    <dt><?=lang("pdt_totalValue")?></dt><dd><span class="productCurrency"></span> <span class="totalPrice">0</span></dd>
+    <dt><?=lang("pdt_totalValueConverted")?></dt><dd><span class="totalPriceConverted">0</span></dd>
+  </dl>
+
+  <div class="pull-right"><a href="<?=base_url()?>currency"><?=lang("tmpt_todayRates")?></a></div>
+
+</div>
