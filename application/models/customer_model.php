@@ -10,7 +10,7 @@ class Customer_Model extends CI_Model {
   function getAll()
   {
     return $this->mongo_db
-      ->where('company', $this->session->userdata("companyID"))
+      ->where('agency', $this->session->userdata("agencyID"))
       ->get('customer');
   }
 
@@ -24,7 +24,7 @@ class Customer_Model extends CI_Model {
       'customer',array(
         "_id" => $newID
         ,"name" => $name
-        ,"company" => $this->session->userdata("companyID")
+        ,"agency" => $this->session->userdata("agencyID")
         ,"creation" => now()
         ,"creator" => $this->session->userdata("userID")
         ,"status" => "active"

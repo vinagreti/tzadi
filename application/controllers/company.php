@@ -4,7 +4,7 @@ class Company extends My_Controller {
 
   public function __construct() {
     parent::__construct();
-    $this->lang->load('company', $this->session->userdata('app_language'));
+    $this->lang->load('company', $this->session->userdata('language'));
   }
 
   public function beInTouch()

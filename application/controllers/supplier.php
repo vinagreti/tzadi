@@ -4,13 +4,13 @@ class Supplier extends My_Controller {
 
   public function __construct() { 
     parent::__construct();
-    $this->lang->load('supplier', $this->session->userdata('app_language'));
+    $this->lang->load('supplier', $this->session->userdata('language'));
   }
 
   public function index()
   {
     $data->dynJS = 'supplier/supplier';
-    $data->view = 'supplier/index';
+    $data->view = 'supplier/manage';
     $data->page_title = lang('splr_listTitle');
     $this->page->load($data);
   }

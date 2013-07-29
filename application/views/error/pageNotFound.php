@@ -1,1 +1,1 @@
-A página não foi encontrada.
+<h4><?=lang("error_pageNotFound")?></h4>

@@ -2,34 +2,44 @@
 
 class Error extends My_Controller {
 
+  public function __construct() {
+    parent::__construct();
+    $this->lang->load('error', $this->session->userdata('language'));
+  }
+
   public function index()
   {
-    $content = $this->load->view('error/pageNotFound', "", true);
-    $data = array(
-      'page_title' => 'ops',
-      'content' => $content
-      );
-    $this->parser->parse('template', $data);
+    $data->view = 'error/pageNotFound';
+    $data->page_title = "ops  !";
+    $this->page->load($data);
   }
 
   public function permission()
   {
-    $content = $this->load->view('error/permission', "", true);
-    $data = array(
-      'page_title' => 'ops',
-      'content' => $content
-      );
-    $this->parser->parse('templates/tzadiTemplate', $data);
+    $data->view = 'error/permission';
+    $data->page_title = lang('ops');
+    $this->page->load($data);
   }
 
-  public function companyNotFound()
+  public function agencyNotFound()
   {
-    $content = $this->load->view('error/companyNotFound', "", true);
-    $data = array(
-      'page_title' => 'ops',
-      'content' => $content
-      );
-    $this->parser->parse('templates/tzadiTemplate', $data);
+    $data->view = 'error/agencyNotFound';
+    $data->page_title = lang('ops');
+    $this->page->load($data);
+  }
+
+  public function incompatibleUserAgent()
+  {
+    $data->view = 'error/incompatibleUserAgent';
+    $data->page_title = lang('ops');
+    $this->page->load($data);
+  }
+
+  public function tryingToRefinishSignup()
+  {
+    $data->view = 'error/tryingToRefinishSignup';
+    $data->page_title = lang('ops');
+    $this->page->load($data);
   }
 }
 

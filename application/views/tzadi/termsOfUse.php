@@ -10,4 +10,5 @@
 <p>- <?=lang('term_text9')?></p>
 <p>- <?=lang('term_text10')?></p>
 <p>- <?=lang('term_text11')?></p>
+<p>- <?=lang('term_text13')?></p>
 <p><?=lang('term_text12')?></p>

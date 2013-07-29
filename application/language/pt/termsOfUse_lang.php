@@ -1,6 +1,6 @@
 <?php
 $lang["term_page_title"] = "Termos e Condições de uso";
-$lang["term_text1"] = "Bem vindo à TZADI. Se você continuar a navegar e usar este website, você concorda com os Termos e Condições de Uso que, juntamente com nossa Política de Privacidade, governam a relação da TZADI com você em relação a este website. Se você não concorda com qualquer parte destes termos e condições, por favor não use nosso website.";
+$lang["term_text1"] = "Se você continuar a navegar e usar este website, você concorda com os Termos e Condições de Uso que, juntamente com nossa Política de Privacidade, governam a relação da TZADI com você em relação a este website. Se você não concorda com qualquer parte destes termos e condições, por favor não use nosso website.";
 $lang["term_text2"] = "O termo TZADI ou “nós” se refere aos donos deste website. O termo “você” se refere ao usuário deste website.";
 $lang["term_text3"] = "A utilização deste site está sujeita aos seguintes Termos de Uso:";
 $lang["term_text4"] = "O conteúdo das páginas deste site são para sua informação e uso somente. Este conteúdo está sujeito a alterações sem prévio aviso.";
@@ -12,3 +12,5 @@ $lang["term_text9"] = "Todas as marcas reproduzidas neste website que não são 
 $lang["term_text10"] = "Uso não autorizado deste site pode gerar um processo por perdas e danos e/ou ser considerado uma ofensa criminal.";
 $lang["term_text11"] = "De tempo em tempo este website pode conter links para outros sites. Estes links são oferecidos a você para sua conveniência e maiores informações. Isto não significa que nós aprovamos o conteúdo destes outros sites. Não nos responsabilizamos pelo conteúdo destes outros sites.";
 $lang["term_text12"] = "Este termo é efetivo desde 01 de Julho de 2013.";
+$lang["term_text13"] = "O período de utilização gratuita é até 31/12/2013. Podendo ser extendido conforme decisão da TZADI.";
+$lang["term_notDefined"] = "Ainda não foram definidos os Termos e Condições de Uso";

@@ -12,5 +12,5 @@ $(document).ready(function(){
     $tzd.product.share.open( $(this).attr("id") );
   });
   
-  $(".priceConverted").html($tzd.currency.convert( $(".price").html(), $(".productCurrency").html()) );
+  $(".priceConverted").html($(".currencyCode").html() + " " + $tzd.currency.convert( $(".price").html(), $(".productCurrency").html()).toFixed(2) );
 });

@@ -107,6 +107,7 @@ $lang["pdt_tzdTableRefreshTitle"] = "atualizar a lista de produtos";
 $lang["pdt_statusDivOpenTitle"] = "filtrar por status";
 $lang["pdt_orderDivOpenTitle"] = "agrupar por tipo";
 $lang["pdt_price"] = "preço";
+$lang["pdt_unity"] = "unidade";
 $lang["pdt_priceConverted"] = "preço convertido";
 $lang["pdt_sellPrice"] = "preço de venda";
 $lang["pdt_totalValue"] = "valor total";

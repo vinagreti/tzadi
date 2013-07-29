@@ -29,7 +29,11 @@ class Mail extends My_Controller {
 
 			$mailData .= "<br> <strong>status:</strong> " . $mail["status"];
 
+			if(isset($mail["from"])) $mailData .= "<br> <strong>from:</strong> " . $mail["from"];
+
 			$mailData .= "<br> <strong>to:</strong> " . $mail["to"];
+
+			if(isset($mail["bcc"])) $mailData .= "<br> <strong>bcc:</strong> " . $mail["bcc"];
 
 			$mailData .= "<br> <strong>subject:</strong> " . $mail["subject"];
 

@@ -39,7 +39,7 @@
 */
 
 
-if(defined('COMPANYSUBDOMAIN')) $route['default_controller'] = "product";
+if(defined('SUBDOMAIN')) $route['default_controller'] = "product";
 else $route['default_controller'] = "index";
 $route['404_override'] = '';
 
@@ -66,7 +66,8 @@ $route['sobre'] = 'about';
 
 $route['contato'] = 'contact';
 
-$route['cadastro'] = 'signup';
+$route['signup'] = 'user/signup';
+$route['cadastro'] = 'user/signup';
 
 $route['fornecedor'] = 'supplier';
 

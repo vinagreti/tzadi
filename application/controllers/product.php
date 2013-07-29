@@ -4,7 +4,7 @@ class Product extends My_Controller {
 
   public function __construct() { 
     parent::__construct();
-    $this->lang->load('product', $this->session->userdata('app_language'));
+    $this->lang->load('product', $this->session->userdata('language'));
   }
 
   public function index()

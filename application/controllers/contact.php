@@ -4,7 +4,7 @@ class Contact extends My_Controller {
 
   public function __construct() {
     parent::__construct();
-	$this->lang->load('contact', $this->session->userdata('app_language'));
+	$this->lang->load('contact', $this->session->userdata('language'));
   }
 
 	public function index()

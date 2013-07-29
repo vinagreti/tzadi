@@ -48,7 +48,7 @@ TzadiJS.prototype.currency = new function( ){
 
 		var total = euros * currency[currency["base"]];
 
-		return currency["base"] + " " + total.toFixed(2);
+		return total;
 
 	}
 

@@ -10,7 +10,7 @@ class Supplier_Model extends CI_Model {
   function getAll() {
     return $this->mongo_db
       ->where(array(
-          'company' => $this->session->userdata("companyID")
+          'agency' => $this->session->userdata("agencyID")
         ))
       ->get('supplier');
   }
@@ -18,7 +18,7 @@ class Supplier_Model extends CI_Model {
   function getAllActive() {
     return $this->mongo_db
       ->where(array(
-          'company' => $this->session->userdata("companyID")
+          'agency' => $this->session->userdata("agencyID")
           ,'status' => "active"
         ))
       ->get('supplier');
@@ -37,7 +37,7 @@ class Supplier_Model extends CI_Model {
         "_id" => $supplier_id
         ,"name" => $data->name
         ,"kind" => "other"
-        ,"company" => $this->session->userdata("companyID")
+        ,"agency" => $this->session->userdata("agencyID")
         ,"creation" => now()
         ,"creator" => $this->session->userdata("userID")
         ,"campi" => array(array("_id" => $campus_id,"name" => lang('splr_Headquarter')))

@@ -14,7 +14,7 @@ class Contact_Model extends CI_Model {
     $this->load->helper('date');
     $this->mongo_db->insert('contact', $data);
 
-    if(!defined('COMPANYSUBDOMAIN')) {
+    if(!defined('SUBDOMAIN')) {
       $message = "<p> Contato enviado por: " . $data["email"] . "</p>";
       $message .= "<p> Assunto: " . $data["subject"] . "</p>";
       $message .= "<p> Mensagem: " . $data["message"] . "</p>";
@@ -27,7 +27,7 @@ class Contact_Model extends CI_Model {
       $this->mail_model->queue($mail);
     } else {
       $message = "<p> Contato enviado por: " . $data["email"] . "</p>";
-      $message .= "<p> para " . COMPANYSUBDOMAIN . "</p>";
+      $message .= "<p> para " . SUBDOMAIN . "</p>";
       $message .= "<p> Assunto: " . $data["subject"] . "</p>";
       $message .= "<p> Mensagem: " . $data["message"] . "</p>";
       $mail["message"] = '<html><head><meta charset="utf-8"></head><body>'.$message.'</body></html>';

@@ -6,7 +6,7 @@ class Currency extends My_Controller {
 
 		parent::__construct();
 
-		$this->lang->load('currency', $this->session->userdata('app_language'));
+		$this->lang->load('currency', $this->session->userdata('language'));
 
 	}
 
@@ -23,15 +23,13 @@ class Currency extends My_Controller {
 
 		} else {
 
-			$this->lang->load('currency', $this->session->userdata('app_language'));
+	    $data->view = 'currency/today';
 
-		    $data->view = 'currency/today';
+	    $data->page_title = lang('crc_Rates');
 
-		    $data->page_title = lang('crc_Rates');
+	    $data->currency = $currency;
 
-		    $data->currency = $currency;
-
-		    $this->page->load($data);
+	    $this->page->load($data);
 
 		}
 

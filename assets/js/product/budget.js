@@ -20,12 +20,13 @@ $(document).ready(function(){
           if( ! product.price || isNaN(product.price)) product.price = 0;
           line.find(".amount").val(amount);
           line.find("a").html(product.name).attr("href", base_url+"product/view/"+product._id);
-          if(product.img) line.find("img").attr("src", base_url+"file/open/"+product.img);
           line.find(".price").html(product.price);
-          line.find(".total").html( amount*product.price );
-          totalPrice += amount*product.price;
-          $(".totalPrice").html(totalPrice);
-          $(".totalPriceConverted").html($tzd.currency.convert(totalPrice, product.currency));
+          var total = amount*product.price;
+          line.find(".total").html( total );
+          if(product.img) line.find("img").attr("src", base_url+"file/open/"+product.img[0]);
+          line.find(".totalValueConverted").html( $tzd.currency.convert(total, product.currency).toFixed(2) );
+          totalPrice += $tzd.currency.convert(total, product.currency);
+          $(".totalPrice").html(totalPrice.toFixed(2));
           $(".productCurrency").html(product.currency);
         };
 
@@ -41,7 +42,7 @@ $(document).ready(function(){
     $tzd.budget.empty();
     $(".list").empty();
     $(".totalPrice").html(0);
-    $(".totalPriceConverted").html($tzd.currency.convert(0, $(".productCurrency").html()));
+    $(".productConvertCurrency").html("");
   });
 
   $(".reload").live("click", function(){
@@ -58,15 +59,16 @@ $(document).ready(function(){
       var line = $(this).parents(".item");
       var itemID = line.attr("id");
       $tzd.budget.setAmount(itemID, amount);
+      var oldTotalConverted = parseFloat(line.find(".totalValueConverted").html());
       var price = parseInt(line.find(".price").html());
-      var oldTotal = parseInt(line.find(".total").html());
       var total = amount*price;
+      var totalConverted = $tzd.currency.convert(total, $(".productCurrency").html());
       if(total < 0) total = 0;
       line.find(".total").html(total.toFixed(2));
-      var totalPrice = parseInt($(".totalPrice").html());
-      if(totalPrice < 0) totalPrice = 0;
-      $(".totalPrice").html((totalPrice+total-oldTotal).toFixed(2));
-      $(".totalPriceConverted").html($tzd.currency.convert(totalPrice+total-oldTotal, $(".productCurrency").html()));
+      line.find(".totalValueConverted").html( totalConverted.toFixed(2) );
+      var totalPrice = parseFloat($(".totalPrice").html());
+      totalPrice += totalConverted - oldTotalConverted;
+      $(".totalPrice").html(totalPrice.toFixed(2));
     }
   });
 });

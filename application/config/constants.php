@@ -36,37 +36,5 @@ define('FOPEN_READ_WRITE_CREATE',				'a+b');
 define('FOPEN_WRITE_CREATE_STRICT',				'xb');
 define('FOPEN_READ_WRITE_CREATE_STRICT',		'x+b');
 
-/*
-|--------------------------------------------------------------------------
-| TZADI LANGUAGE - dynamic languege
-|--------------------------------------------------------------------------
-|
-| define the path to the aplication relative to the environment
-|
-*/
-
-$language = explode(';',$_SERVER["HTTP_ACCEPT_LANGUAGE"]);
-
-$language = explode('-', $language[0]);
-
-$language = explode(',', $language[0]);
-
-switch ($language[0]) {
-
-  case 'pt':
-
-    define('LANGUAGE', "pt"); // DEFINE A VARIAVEL GLOBAL LANGUAGE PARA SER UTILIZADA NO
-
-    break;
-
-  default:
-
-    define('LANGUAGE', 'en'); // DEFINE A VARIAVEL GLOBAL LANGUAGE PARA SER UTILIZADA NO
-
-    break;
-
-}
-
-
 /* End of file constants.php */
 /* Location: ./application/config/constants.php */

@@ -1,0 +1,20 @@
+<?php
+$lang["error_pageNotFound"] = "A página não foi encontrada.";
+$lang["error_yourBrowserIsIncompatible"] = "Seu navegador não é compatível com este site.";
+$lang["error_needingHelp"] = "precisando de ajuda?";
+$lang["error_browserDetails"] = "Detalhes do seu navegador";
+$lang["error_Browser"] = "Navegador";
+$lang["error_Version"] = "Versão";
+$lang["error_compatibleUserAgents"] = "Navegadores compatíveis com este site";
+$lang["error_compatibleUserAgents"] = "Navegadores compatíveis com este site";
+$lang["error_chrome"] = "Google Chrome. Testes realizados com a versão";
+$lang["error_firefox"] = "Mozilla Firefox. Testes realizados com a versão";
+$lang["error_opera"] = "Opera. Testes realizados com a versão";
+$lang["error_maxthon"] = "Maxthon. Testes realizados com a versão";
+$lang["error_ie10"] = "Internet Explorer 10+. Testes realizados com a versão";
+$lang["error_download"] = "download";
+$lang["error_testingUserAgents"] = "Navegadores aguardando testes de compatibilidade";
+$lang["error_safari"] = "Safari";
+$lang["error_incompatibleUserAgents"] = "Navegadores incompatíveis";
+$lang["error_ie9"] = "Internet Explorer 9 ou anterior";
+$lang["error_maybeYouCanMaybeNot"] = "talvez você consiga, talvez não...";

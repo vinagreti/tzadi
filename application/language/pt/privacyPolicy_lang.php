@@ -19,3 +19,4 @@ $lang["pvc_text16"] = "Nós estamos comprometidos em garantir que sua informaç�
 $lang["pvc_text17"] = "Entre em Contato";
 $lang["pvc_text18"] = "Se você tem qualquer dúvida em relação ao uso que fazemos de sua informação, ou sobre esta Declaração de Segurança, encaminhe um e-mail para contact@tzadi.com. Nós faremos tudo que for possível para endereçar suas dúvidas e remediar qualquer problema que você nos alertar.";
 $lang["pvc_text19"] = "Este termo é efetivo desde 01 de Julho de 2013.";
+$lang["pvc_notDefined"] = "Ainda não foi definida a Política de Privacidade";

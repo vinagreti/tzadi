@@ -10,7 +10,7 @@ class Customer extends My_Controller {
 
   public function __construct() { 
     parent::__construct();
-    $this->lang->load('customer', $this->session->userdata('app_language'));
+    $this->lang->load('customer', $this->session->userdata('language'));
   }
 
   public function index() 

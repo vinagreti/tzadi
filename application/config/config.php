@@ -70,7 +70,7 @@ $config['url_suffix'] = '';
 |
 */
 
-$config['language'] = LANGUAGE;
+$config['language'] = "en";
 
 /*
 |--------------------------------------------------------------------------
@@ -203,7 +203,7 @@ $config['log_path'] = '';
 | codes to set your own date formatting
 |
 */
-$config['log_date_format'] = 'Y-m-d H:i:s';
+$config['log_date_format'] = 'd-m-Y H:i:s';
 
 /*
 |--------------------------------------------------------------------------

@@ -4,22 +4,22 @@ class Privacy extends My_Controller {
 
   public function __construct() {
     parent::__construct();
-		$this->lang->load('privacyPolicy', $this->session->userdata('app_language'));
+		$this->lang->load('privacyPolicy', $this->session->userdata('language'));
   }
 
 	public function index() {
 
-	    if(!defined('COMPANYSUBDOMAIN')){
+	    if(!defined('SUBDOMAIN')){
 	      $data->view = 'tzadi/privacyPolicy';
 	      $data->page_title = lang('pvc_page_title');
 	      $this->page->load($data);  
 	    }
 	    else{
-	      $this->load->model("company_model");
-	      $company = $this->company_model->getBySubdomain(COMPANYSUBDOMAIN);
-	      $data->content = $this->load->view('company/about', $company, true);
-	      $data->companyName = $this->session->userdata("companyName");
-	      $data->view = 'company/privacyPolicy';
+	      $this->load->model("agency_model");
+	      $agency = $this->agency_model->getBySubdomain(SUBDOMAIN);
+	      $data->content = $this->load->view('agency/about', $agency, true);
+	      $data->agencyName = $this->session->userdata("agencyName");
+	      $data->view = 'agency/privacyPolicy';
 	      $data->page_title = lang('pvc_page_title');
 	      $this->page->load($data);
 	    }

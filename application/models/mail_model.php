@@ -5,13 +5,13 @@ class Mail_Model extends CI_Model {
   public function __construct() {
     $this->load->library("mongo_db");
 
-    if (ENVIRONMENT ==  'production') {
-      $this->smtp_user = 'task@tzadi.com';
-      $this->smtp_pass = 'Task2010ireland';
+    if (ENVIRONMENT ==  'tzadi.com') {
+      $this->smtp_user = 'contact@tzadi.com';
+      $this->smtp_pass = 'Contact2010ireland';
       $this->from = 'contact@tzadi.com';
     } else {
-      $this->smtp_user = 'taskstaging@tzadi.com';
-      $this->smtp_pass = 'TaskS2010ireland';
+      $this->smtp_user = 'contactstaging@tzadi.com';
+      $this->smtp_pass = 'contactstaging';
       $this->from = 'contactstaging@tzadi.com';
     }
 
@@ -26,6 +26,8 @@ class Mail_Model extends CI_Model {
     $data["status"] = "waiting";
 
     $data["queue_date"] = time();
+
+    $data["from"] = $this->from;
 
     $this->mongo_db->insert('mail', $data);
 

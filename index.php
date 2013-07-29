@@ -25,7 +25,7 @@ else $domainPos = strpos($_SERVER["HTTP_HOST"], "tzadi");
 $tzdIndexCompanyNick = substr($_SERVER["HTTP_HOST"], 0, ($domainPos-1));
 $tzdIndexAppAddress = substr($_SERVER["HTTP_HOST"], $domainPos);
 
-if($domainPos != 0 && $tzdIndexCompanyNick != "www" && $tzdIndexCompanyNick != "intranet" ) define('COMPANYSUBDOMAIN', $tzdIndexCompanyNick);
+if($domainPos != 0 && $tzdIndexCompanyNick != "www" && $tzdIndexCompanyNick != "intranet" ) define('SUBDOMAIN', $tzdIndexCompanyNick);
 define('ENVIRONMENT', $tzdIndexAppAddress);
 
 /*
@@ -37,26 +37,24 @@ define('ENVIRONMENT', $tzdIndexAppAddress);
  * By default development will show errors but testing and live will hide them.
  */
 
-if (defined('ENVIRONMENT'))
+switch (ENVIRONMENT)
 {
-	switch (ENVIRONMENT)
-	{
-		case 'tzadi.local':
-			error_reporting(E_ALL);
-		break;
-	
-		case 'staging.tzadi.com':
-			error_reporting(E_ALL);
-		break;
-		
-		case 'tzadi.com':
-			error_reporting(0);
-		break;
+	case 'tzadi.local':
+		error_reporting(E_ALL);
+	break;
 
-		default:
-			exit('The application environment is not set correctly.');
-	}
+	case 'staging.tzadi.com':
+		error_reporting(E_ALL);
+	break;
+	
+	case 'tzadi.com':
+		error_reporting(0);
+	break;
+
+	default:
+		exit('The application environment is not set correctly.');
 }
+
 
 /*
  *---------------------------------------------------------------

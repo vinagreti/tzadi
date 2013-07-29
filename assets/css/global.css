@@ -6,11 +6,7 @@ body {
 
 .globalAlert {
   position: fixed;
-  top: 1px;
-  width: 99%;
-  margin-left: 0.5%;
-  margin-right: 0.5%;
-  z-index: 9999;
+  top:73px;
 }
 
 .sidebar-nav {

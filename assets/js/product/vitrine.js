@@ -15,7 +15,7 @@ $(document).ready(function(){
       product.attr("id", objProduct._id);
       if(objProduct.img) product.find(".img").attr("src", base_url+"file/open/"+objProduct.img[0]);
       product.find(".name").html(objProduct.name);
-      product.find(".price").html($tzd.currency.convert(objProduct.price, objProduct.currency));
+      product.find(".price").html($(".currencyCode").html() + " " + $tzd.currency.convert(objProduct.price, objProduct.currency).toFixed(2) );
       product.find(".likes").html(objProduct.like);
       product.find(".open").attr("href", base_url+objProduct._id+"/"+$tzd.string.makeURL( objProduct.name ));
       if(objProduct.detail) product.find(".detail").html(objProduct.detail.split('', 64));

@@ -2,7 +2,7 @@
 
 class Currency_Model extends CI_Model {
 
-  function getAll() {
+  public function getAll() {
 
     $this->load->model("mongo_model");
 
@@ -10,9 +10,12 @@ class Currency_Model extends CI_Model {
 
   }
 
-  function getToday( ) {
+  public function getToday( ) {
 
-      $xml = simplexml_load_file('http://www.ecb.europa.eu/stats/eurofxref/eurofxref-daily.xml');
+      $xml = @simplexml_load_file('http://www.ecb.europa.eu/stats/eurofxref/eurofxref-daily.xml');
+
+      if( ! $xml )
+        $xml = simplexml_load_file('http://195.128.1.78/stats/eurofxref/eurofxref-daily.xml');
 
       $json = json_encode($xml);
 
@@ -20,11 +23,9 @@ class Currency_Model extends CI_Model {
 
       $currency = $this->getLocal();
 
-      $currencyDay = $currency["day"];
-
       $xmlDay = $array["Cube"]["Cube"]["@attributes"]["time"];
 
-      if( $currencyDay != $xmlDay ) {
+      if( ! $currency || ( $currency && $currency["day"] != $xmlDay ) ) {
 
         $currency["day"] = $array["Cube"]["Cube"]["@attributes"]["time"];
 
@@ -42,24 +43,24 @@ class Currency_Model extends CI_Model {
 
         $this->mongo_db->insert('currency', $currency);
 
-        echo $currencyDay;
-
-        echo $xmlDay;
-
       }
 
       return $currency;
 
   }
 
-  function getLocal() {
+  public function getLocal() {
 
     $this->load->model("mongo_model");
 
     $currency = $this->mongo_db
       ->get('currency');
 
-    return $currency[sizeof($currency) - 1];
+    if( sizeof($currency) > 0 )
+      return $currency[sizeof($currency) - 1];
+
+    else
+      return false;
 
   }
 

@@ -1,0 +1,28 @@
+<div class="navbar navbar-inverse navbar-fixed-top autoOpen">
+  <div class="navbar-inner">
+    <div class="container">
+      <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <span class="brand">
+        <a href="<?=base_url()?>" rel="tooltip" title="Home">צ TZADI</a>
+      </span>
+      <div class="nav-collapse collapse">
+        <ul class="nav pull-right">
+          <li class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown" rel="tooltip" title="<?=lang('tmpt_select_lang')?>"><span class="language"><?=$this->session->userdata('language')?></span> <i class="icon-caret-down"></i></a>
+            <ul class="dropdown-menu">
+              <li><a id="en" rel="tooltip" title="Translate to English">en -English</a></li>
+              <li><a id="pt" rel="tooltip" title="Traduzir para Português">pt - Português</a></li>
+            </ul>
+          </li>
+          <li>
+            <button class="btn btn-success" style="color:white;" id="signUp" onclick="location.href='<?=base_url()?><?=lang('rt_signup')?>'"><i class="icon-arrow-right"></i> <?=lang('tmpt_signup')?></button>
+          </li>
+        </ul>
+      </div><!--/.nav-collapse -->
+    </div><!-- container -->
+  </div><!-- navbar-inner -->
+</div><!-- navbar -->

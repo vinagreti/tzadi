@@ -6,16 +6,7 @@
         <br></br>
         <p class="lead"><?=lang('idx_explanation')?></p>
         <br></br>
-        <div class="row">
-          <div class="span10 centered-text">
-            <p><?=lang('idx_areYouAn')?> <a id="goToAgency"><?=lang('idx_Agency')?></a>?</p>
-            <a class="btn btn-large btn-success" href="<?=base_url()?>signup"><?=lang('idx_agencySignup')?></a>
-          </div>
-          <div class="span10 centered-text">
-            <p><?=lang('idx_areYouAn')?> <a id="goToStudent"><?=lang('idx_Student')?></a> <?=lang('idx_orAn')?> <a id="goToSchool"><?=lang('idx_School')?></a>?</p>
-            <a class="btn btn-large btn-warning beInTouch" href="#beInTouch"><?=lang('idx_beInTouch')?></a>
-          </div>
-        </div>
+        <a class="btn btn-large btn-success" href="<?=base_url()?><?=lang('rt_signup')?>"><?=lang('tmpt_signup')?></a>
       </div>
     </div>
   </div>
@@ -28,7 +19,7 @@
         <h2><?=lang('idx_School')?></h2>
         <h5><?=lang('idx_explainSchool')?></h5>
         <p><?=lang('idx_School_txt1')?></br><?=lang('idx_School_txt2')?></br><?=lang('idx_School_txt3')?></p>
-        <a class="btn btn-large btn-warning beInTouch" href="#beInTouch"><?=lang('idx_beInTouch')?></a>
+        <a class="btn btn-large btn-success beInTouch" href="<?=base_url()?><?=lang('rt_signup')?>"><?=lang('tmpt_signup')?></a>
       </div>
       <div class="span6">
         <img src="<?=base_url()?>assets/img/globe.png?v=2" style="width:100%; height:100%;"></im>
@@ -47,7 +38,7 @@
         <h2><?=lang('idx_Agency')?></h2>
         <h5><?=lang('idx_explainAgency')?></h5>
         <p><?=lang('idx_Agency_txt1')?></br><?=lang('idx_Agency_txt2')?></br><?=lang('idx_Agency_txt3')?></p>
-        <a class="btn btn-large btn-success" href="<?=base_url()?>signup"><?=lang('idx_agencySignup')?></a>
+        <a class="btn btn-large btn-success" href="<?=base_url()?><?=lang('rt_signup')?>"><?=lang('tmpt_signup')?></a>
       </div>
     </div>
   </div>
@@ -60,7 +51,7 @@
         <h2><?=lang('idx_Student')?></h2>
         <h5><?=lang('idx_explainStudent')?></h5>
         <p><?=lang('idx_Student_txt1')?></br><?=lang('idx_Student_txt2')?></p>
-        <a class="btn btn-large btn-warning beInTouch" href="#beInTouch"><?=lang('idx_beInTouch')?></a>
+        <a class="btn btn-large btn-success beInTouch" href="<?=base_url()?><?=lang('rt_signup')?>"><?=lang('tmpt_signup')?></a>
       </div>
       <div class="span6">
         <img src="<?=base_url()?>assets/img/globe.png?v=2" style="width:100%; height:100%;"></im>
