@@ -56,7 +56,10 @@
               <div class="span2">
                 <a class="closeDetail btn btn-block"><?=lang('tmpt_Close')?></a>
               </div>
-              <div class="span20">
+              <div class="span2">
+                <a class="save btn btn-primary btn-block"><?=lang('tmpt_Save')?></a>
+              </div>
+              <div class="span18">
                 <input type="text" class="name input-block-level" />
               </div>
             </div>

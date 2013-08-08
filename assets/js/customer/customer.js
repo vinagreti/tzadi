@@ -9,6 +9,7 @@ $(document).ready(function(){
     this.attachment = this.body.find(".attachment").clone();
     this.body.find(".attachment").remove();
     this.detail = this.body.find(".tzdTableDetail").clone();
+    this.detail.removeClass("hide");
     this.body.find(".tzdTableDetail").remove();
     this.line = this.body.find(".tzdTableLine").clone();
     this.line.show();
@@ -22,6 +23,15 @@ $(document).ready(function(){
       var detail = this.detail.clone();
       detail.find("#name").val(objCustomer.name);
       detail.find("#customerEmail").val(objCustomer.email);
+      detail.find("#phone").val(objCustomer.phone);
+      detail.find("#cellphone").val(objCustomer.cellphone);
+      detail.find("#birth").val(objCustomer.birth);
+      detail.find("#birth").mask('00/00/0000');
+      detail.find("#address").val(objCustomer.address);
+      detail.find("#city").val(objCustomer.city);
+      detail.find("#state").val(objCustomer.state);
+      detail.find("#country").val(objCustomer.country);
+      detail.find("#details").val(objCustomer.details);
       if(objCustomer.status == "active") detail.find(".customerActive").addClass("btn-success").removeClass("btn-danger").html($(".ctm_inactivate").html());
       else detail.find(".customerActive").addClass("btn-danger").removeClass("btn-success").html($(".ctm_activate").html());
       if(objCustomer.img) detail.find(".changeImg").attr("src", base_url+"file/open/"+objCustomer.img);
@@ -37,8 +47,8 @@ $(document).ready(function(){
         line.attr("id", objCustomer._id);
         line.children().html(brief);
         this.body.children().append(line);
-        if(position && position == "before") this.body.children().prepend(line);
-        else this.body.children().append(line);
+        if(position && position == "append") this.body.children().append(line);
+        else this.body.children().prepend(line);
       }
       if(open && open == true) this.openDetails( id );
     };
@@ -116,6 +126,14 @@ $(document).ready(function(){
       var line = customers.table.body.find("#"+id);
       if(objCustomer.name != line.find("#name").val()) formData.name = line.find("#name").val();
       if(objCustomer.email != line.find("#customerEmail").val()) formData.email = line.find("#customerEmail").val();
+      if(objCustomer.phone != line.find("#phone").val()) formData.phone = line.find("#phone").val();
+      if(objCustomer.cellphone != line.find("#cellphone").val()) formData.cellphone = line.find("#cellphone").val();
+      if(objCustomer.birth != line.find("#birth").val()) formData.birth = line.find("#birth").val();
+      if(objCustomer.address != line.find("#address").val()) formData.address = line.find("#address").val();
+      if(objCustomer.city != line.find("#city").val()) formData.city = line.find("#city").val();
+      if(objCustomer.state != line.find("#state").val()) formData.state = line.find("#state").val();
+      if(objCustomer.country != line.find("#country").val()) formData.country = line.find("#country").val();
+      if(objCustomer.details != line.find("#details").val()) formData.details = line.find("#details").val();
       var count = 0;
       var i;
       for (i in formData) {
@@ -145,6 +163,7 @@ $(document).ready(function(){
       var callback = function( e ){
         customers.all.push(e);
         customers.table.addLine( e._id );
+        customers.table.openDetails( e._id );
         customers.table.reCalc();
       };
 
@@ -342,7 +361,15 @@ $(document).ready(function(){
     var valid = true;
 
     valid = valid && $tzd.form.checkMask.range(line.find(".name"), 1, 512, $(".ctm_pleaseFillName").html());
-    //valid = valid && $tzd.form.checkMask.email($('#customerEmail'), $(".ctm_pleaseFillValidEmail").html() );
+    valid = valid && $tzd.form.checkMask.email($('#customerEmail'), $(".ctm_pleaseFillValidEmail").html() );
+    valid = valid && $tzd.form.checkMask.range($('#phone'), 0, 32, $(".ctm_pleaseFillValidPhone").html() );
+    valid = valid && $tzd.form.checkMask.range($('#cellphone'), 0, 32, $(".ctm_pleaseFillValidCellphone").html() );
+    valid = valid && $tzd.form.checkMask.range($('#birth'), 0, 10, $(".ctm_pleaseFillValidBirth").html() );
+    valid = valid && $tzd.form.checkMask.range($('#address'), 0, 255, $(".ctm_pleaseFillValidAddress").html() );
+    valid = valid && $tzd.form.checkMask.range($('#city'), 0, 255, $(".ctm_pleaseFillValidCity").html() );
+    valid = valid && $tzd.form.checkMask.range($('#state'), 0, 128, $(".ctm_pleaseFillValidState").html() );
+    valid = valid && $tzd.form.checkMask.range($('#country'), 0, 128, $(".ctm_pleaseFillValidCountry").html() );
+    valid = valid && $tzd.form.checkMask.range($('#details'), 0, 1024, $(".ctm_pleaseFillValiDetails").html() );
     if ( valid ) 
       customers.set(id);
   });

@@ -8,7 +8,6 @@ $(document).ready(function(){
 
     valid = valid && $tzd.form.checkMask.range($('#password'), 1, 65535, $(".usr_validate_password").html());
 
-
     if ( valid ) {
 
       var url = base_url+'user/signup';

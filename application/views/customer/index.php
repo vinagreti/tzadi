@@ -60,7 +60,7 @@
         </div> <!-- \\\\ é o fim do conteúdo de cada linha da tabela -->
       </div>
     </div> <!-- \\\\ é o fim do conteúdo de cada linha da tabela -->
-    <div class="row-fluid tzdTableDetail"> <!-- detalhe do cliente -->
+    <div class="row-fluid tzdTableDetail hide"> <!-- detalhe do cliente -->
       <div class="row-fluid">
         <div class="span24">
           <div class="row-fluid">
@@ -70,7 +70,10 @@
             <div class="span2">
               <a class="tableCancelButton btn btn-block"><?=lang('tmpt_Close')?></a>
             </div>
-            <div class="span20">
+            <div class="span2">
+              <a class="customerSave btn btn-primary btn-block"><?=lang('tmpt_Save')?></a>
+            </div>
+            <div class="span18">
               <input type="hidden" name="customerID" id="customerID" />
               <div class="control-group">
                 <input type="text" class="input-block-level name" name="name" id="name" rel="tooltip" title="<?=lang('ctm_name')?>" />
@@ -82,29 +85,95 @@
       <div class="row-fluid">
         <div class="span24">
           <div class="row-fluid">
-            <div class="span7">
-              <div class="row-fluid">
-                <p><span class="productKind label label-warning"></span>
-                </p>
+            <div class="span6">
+              <p>
                 <div class="thumbnail">
-                  <img src="<?=base_url()?>assets/img/no_photo_160x120.png" class="changeImg" alt="160x120">
-                  <div class="control-group">
-                    <input type="file" class="customerImg hide" />
+                  <img src="<?=base_url()?>assets/img/no_photo_160x120.png" alt="160x120" class="changeImg" alt="160x120">
+                  <input type="file" name="img" class="customerImg hide" />
+                </div>
+              </p>
+              <div class="attachments">
+                <p class="attachment"><a rel="tooltip" target="_blank"></a> <i class="icon-remove dropAttachment"></i></p>
+              </div>
+                </p>
+              <p>
+                <a class="attach btn btn-primary btn-block"><i class="icon-plus"></i> <i class="icon-paste"></i> <?=lang('tmpt_attach')?></a>
+                <input type="file" name="img" class="selectFile hide" multiple/>
+              </p>
+            </div>
+            <div class="span18">
+              <div class="row-fluid">
+                <div class="span12">
+                  <label><?=lang('ctm_email')?>
+                    <div class="control-group">
+                      <input type="text" class="input-block-level" name="customerEmail" id="customerEmail" rel="tooltip" title="<?=lang('ctm_email')?>" />
+                    </div>
+                  </label>
+                </div>
+                <div class="span12">
+                  <div class="row-fluid">
+                    <div class="span12">
+                      <label><?=lang('ctm_phone')?>
+                        <div class="control-group">
+                          <span class="vaimudar"></span><input type="text" class="input-block-level" id="phone" rel="tooltip" title="<?=lang('ctm_phone')?>" />
+                        </div>
+                      </label>
+                    </div>
+                    <div class="span12">
+                      <label><?=lang('ctm_cellphone')?>
+                        <div class="control-group">
+                          <input type="text" class="input-block-level" id="cellphone" rel="tooltip" title="<?=lang('ctm_cellphone')?>" />
+                        </div>
+                      </label>
+                    </div>
                   </div>
                 </div>
-                <div class="attachments">
-                  <p class="attachment"><a rel="tooltip" target="_blank"></a> <i class="icon-remove dropAttachment"></i></p>
-                </div>
-                <p>
-                  <a class="attach btn btn-primary btn-block"><i class="icon-plus"></i> <i class="icon-paste"></i></a>
-                  <input type="file" name="img" class="selectFile hide" multiple/>
-                </p>
               </div>
-            </div>
-            <div class="span17">
-              <label><?=lang('ctm_email')?></label>
-              <div class="control-group">
-                <input type="text" class="input-block-level" name="customerEmail" id="customerEmail" rel="tooltip" title="<?=lang('ctm_email')?>" />
+              <div class="row-fluid">
+                <div class="span8">
+                  <label><?=lang('ctm_birth')?>
+                    <div class="control-group">
+                      <span class="vaimudar"></span><input type="text" class="input-block-level" id="birth" rel="tooltip" title="<?=lang('ctm_birth')?>" />
+                    </div>
+                  </label>
+                </div>
+                <div class="span16">
+                  <label><?=lang('ctm_address')?>
+                    <div class="control-group">
+                      <span class="vaimudar"></span><input type="text" class="input-block-level" id="address" rel="tooltip" title="<?=lang('ctm_address')?>" />
+                    </div>
+                  </label>
+                </div>
+              </div>
+              <div class="row-fluid">
+                <div class="span8">
+                  <label><?=lang('ctm_city')?>
+                    <div class="control-group">
+                      <input type="text" class="input-block-level" id="city" rel="tooltip" title="<?=lang('ctm_city')?>" />
+                    </div>
+                  </label>
+                </div>
+                <div class="span8">
+                  <label><?=lang('ctm_state')?>
+                    <div class="control-group">
+                      <span class="vaimudar"></span><input type="text" class="input-block-level" id="state" rel="tooltip" title="<?=lang('ctm_state')?>" />
+                    </div>
+                  </label>
+                </div>
+                <div class="span8">
+                  <label><?=lang('ctm_country')?>
+                    <div class="control-group">
+                      <input type="text" class="input-block-level" id="country" rel="tooltip" title="<?=lang('ctm_country')?>" />
+                    </div>
+                  </label>
+                </div>
+              </div>
+              <div class="row-fluid">
+                <label><?=lang('ctm_details')?>
+                  <div class="control-group">
+                    <textarea rows="5" class="input-block-level" id="details" rel="tooltip" title="<?=lang('ctm_details')?>"></textarea>
+                  </div>
+                </label>
               </div>
             </div>
           </div>
@@ -130,4 +199,11 @@
 <div class="ctm_pleaseFillName hide"><?=lang("ctm_pleaseFillName")?></div>
 <div class="ctm_pleaseFillValidEmail hide"><?=lang("ctm_pleaseFillValidEmail")?></div>
 <div class="ctm_removeAttachment hide"><?=lang("ctm_removeAttachment")?></div>
-
+<div class="ctm_pleaseFillValidPhone hide"><?=lang("ctm_pleaseFillValidPhone")?></div>
+<div class="ctm_pleaseFillValidCellphone hide"><?=lang("ctm_pleaseFillValidCellphone")?></div>
+<div class="ctm_pleaseFillValidBirth hide"><?=lang("ctm_pleaseFillValidBirth")?></div>
+<div class="ctm_pleaseFillValidAddress hide"><?=lang("ctm_pleaseFillValidAddress")?></div>
+<div class="ctm_pleaseFillValidCity hide"><?=lang("ctm_pleaseFillValidCity")?></div>
+<div class="ctm_pleaseFillValidState hide"><?=lang("ctm_pleaseFillValidState")?></div>
+<div class="ctm_pleaseFillValidCountry hide"><?=lang("ctm_pleaseFillValidCountry")?></div>
+<div class="ctm_pleaseFillValiDetails hide"><?=lang("ctm_pleaseFillValiDetails")?></div>

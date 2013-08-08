@@ -100,7 +100,10 @@
                   <div class="span2">
                     <a class="closeDetail btn btn-block"><?=lang("tmpt_Close")?></a>
                   </div>
-                  <div class="span20">
+                  <div class="span2">
+                    <a class="productSave btn btn-block btn-primary"><?=lang("tmpt_Save")?></a>
+                  </div>
+                  <div class="span18">
                     <div class="control-group">
                       <input type="text" class="input-block-level name nameInput" />
                     </div>

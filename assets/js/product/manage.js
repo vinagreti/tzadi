@@ -658,27 +658,50 @@ $(document).ready(function(){
       }
     },
     search : function( searchString ){
+
       var foundProducts;
+
       if( searchString == "") {
+
         $('#search-query').val("");
+
         products.table.empty();
+
         $.each(products.all, function( id, objProduct ){
+
           if(objProduct != "null") products.table.addLine( id );
+
         });
+
         products.table.reCalc( products.all );
+
+
       } else {
+
         foundProducts = products.all.filter(function ( product ) {
-          var contain = contain || product.name.search(new RegExp(searchString, "i")) >= 0 && products.table.kind == "all" || products.table.kind == product.kind;
+
+          var contain = contain || product.name.search(new RegExp(searchString, "i")) >= 0 && ( products.table.kind == "all" || products.table.kind == product.kind );
+
           return contain;
+
         });
+
         products.table.empty();
+
         $.each(foundProducts, function( id, objProduct ){
+
           $.each(products.all, function( id, product ){
+
             if(product._id == objProduct._id) products.table.addLine( id );
+
           });
+
         });
+
         products.table.reCalc( foundProducts );
+
       }
+
     },
     order : function(){
       products.all = $tzd.list.orderBy(products.table.order, products.all);
@@ -895,19 +918,19 @@ $(document).ready(function(){
       products.search( $('#search-query').val() );
     }
   });
-  $('.price').live('keyup propertychange', function(){
+  $('.price').live('blur', function(){
     var id = $(this).parents(".tzdTableLine").attr("id");
     products.table.reCalcValues(id, "price");
   });
-  $('.gain').live('keyup propertychange', function(){
+  $('.gain').live('blur', function(){
     var id = $(this).parents(".tzdTableLine").attr("id");
     products.table.reCalcValues(id, "gain");
   });
-  $('.percent').live('keyup propertychange', function(){
+  $('.percent').live('blur', function(){
     var id = $(this).parents(".tzdTableLine").attr("id");
     products.table.reCalcValues(id, "percent");
   });
-  $('.purchase').live('keyup propertychange', function(){
+  $('.purchase').live('blur', function(){
     var id = $(this).parents(".tzdTableLine").attr("id");
     products.table.reCalcValues(id, "purchase");
   });
