@@ -1,0 +1,1 @@
+<h2><?=lang("error_itentityNotFound1")?> <span class="text-success"><?=$this->session->flashdata('IDENTITY')?></span> <?=lang("error_itentityNotFound2")?></h2>

@@ -1,5 +1,5 @@
-<h1><?=lang('ct_page_p1')?></h1>
-<h5><?=lang('ct_page_p2')?></br><?=lang('ct_page_p3')?></h5>
+<h3><?=lang('ct_page_p1')?></h3>
+<h4><?=lang('ct_page_p2')?></br><?=lang('ct_page_p3')?></h4>
 
 <div class="control-group">
 <input type="text" class="input-block-level" placeholder="<?=lang('ct_email')?>" id="email" name="email">

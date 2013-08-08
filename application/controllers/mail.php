@@ -25,6 +25,10 @@ class Mail extends My_Controller {
 
 			$mailData .= "<strong>_id:</strong> " . $mail["_id"];
 
+			$mailData .= "<br> <strong>entrada:</strong> " . date("d-m-Y h:i:s ", $mail["queue_date"]);
+
+			if(isset($mail["sent_date"])) $mailData .= "<br> <strong>saída:</strong> " . date("d-m-Y h:i:s ", $mail["sent_date"]);
+
 			$mailData .= "<br> <strong>kind:</strong> " . $mail["kind"];
 
 			$mailData .= "<br> <strong>status:</strong> " . $mail["status"];
@@ -33,13 +37,26 @@ class Mail extends My_Controller {
 
 			$mailData .= "<br> <strong>to:</strong> " . $mail["to"];
 
-			if(isset($mail["bcc"])) $mailData .= "<br> <strong>bcc:</strong> " . $mail["bcc"];
+			if(isset($mail["bcc"])) {
+
+				if(is_string($mail["bcc"]))
+					$mailData .= "<br> <strong>bcc:</strong> " . $mail["bcc"];
+
+				if(is_array($mail["bcc"])) {
+
+					$mailData .= "<br> <strong>bcc:</strong> ";
+
+					foreach ($mail["bcc"] as $key => $bcc) {
+						
+						$mailData .= $bcc.", ";
+
+					}
+
+				}
+
+			}
 
 			$mailData .= "<br> <strong>subject:</strong> " . $mail["subject"];
-
-			$mailData .= "<br> <strong>Data criação:</strong> " . date("d-m-Y h:i:s ", $mail["queue_date"]);
-
-			if(isset($mail["sent_date"])) $mailData .= "<br> <strong>Data do envio:</strong> " . date("d-m-Y h:i:s ", $mail["sent_date"]);
 
 			$mailData .= "<hr>";
 

@@ -13,7 +13,17 @@ TzadiJS.prototype.form = new function(){
 
     this.email = function( input, message ) {
 
-      if( $tzd.string.checkMask.email( input.val() ) ) {
+      var string = input.val();
+
+      if( input.attr("contentEditable") ){
+
+        string = input.html();
+
+        if( string == "<br>") string = "";
+
+      }
+
+      if( $tzd.string.checkMask.email( string ) ) {
 
         input.parent().removeClass("error");
 
@@ -33,7 +43,17 @@ TzadiJS.prototype.form = new function(){
 
     this.float = function( input, message ) {
 
-      if( $tzd.string.checkMask.float( input.val() ) ) {
+      var string = input.val();
+
+      if( input.attr("contentEditable") ){
+
+        string = input.html();
+
+        if( string == "<br>") string = "";
+
+      }
+
+      if( $tzd.string.checkMask.float( string ) ) {
 
         input.parent().removeClass("error");
 
@@ -53,7 +73,17 @@ TzadiJS.prototype.form = new function(){
 
     this.range = function( input, min, max, message ) {
 
-      if( $tzd.string.checkMask.range( input.val(), min, max) )  {
+      var string = input.val();
+
+      if( input.attr("contentEditable") ){
+
+        string = input.html();
+
+        if( string == "<br>") string = "";
+
+      }
+
+      if( $tzd.string.checkMask.range( string, min, max) )  {
 
         input.parent().removeClass("error");
 
@@ -73,7 +103,47 @@ TzadiJS.prototype.form = new function(){
 
     this.cep = function( input, message ) {
 
-      if( $tzd.string.checkMask.cep( input.val() ) )  {
+      var string = input.val();
+
+      if( input.attr("contentEditable") ){
+
+        string = input.html();
+
+        if( string == "<br>") string = "";
+
+      }
+
+      if( $tzd.string.checkMask.cep( string ) )  {
+
+        input.parent().removeClass("error");
+
+        return true;
+
+      } else {
+
+        $tzd.alert.error( message )
+
+        input.parent().addClass("error");
+
+        return false;
+
+      }
+
+    }
+
+    this.identity = function( input, message ) {
+
+      var string = input.val();
+
+      if( input.attr("contentEditable") ){
+
+        string = input.html();
+
+        if( string == "<br>") string = "";
+
+      }
+
+      if( $tzd.string.checkMask.identity( string ) )  {
 
         input.parent().removeClass("error");
 

@@ -35,6 +35,12 @@ TzadiJS.prototype.string = new function(){
 
   };
 
+  this.getHtmlText = function( html ){
+
+   return html.replace(/<(?:.|\n)*?>/gm, '');;
+
+  };
+
   this.checkMask = new function(){
 
     this.testRe = function( string, maskRE ){
@@ -88,6 +94,14 @@ TzadiJS.prototype.string = new function(){
     this.cep = function( string ){
 
       var maskRE = /^[0-9]{5}-[0-9]{3}$/;
+
+      return this.testRe( string, maskRE );
+
+    }
+
+    this.identity = function( string ){
+
+      var maskRE = /^[a-zA-Z0-9]*$/;
 
       return this.testRe( string, maskRE );
 

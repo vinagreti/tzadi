@@ -21,9 +21,9 @@ class Error extends My_Controller {
     $this->page->load($data);
   }
 
-  public function agencyNotFound()
+  public function identityNotFound()
   {
-    $data->view = 'error/agencyNotFound';
+    $data->view = 'error/identityNotFound';
     $data->page_title = lang('ops');
     $this->page->load($data);
   }

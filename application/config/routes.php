@@ -39,22 +39,24 @@
 */
 
 
-if(defined('SUBDOMAIN')) $route['default_controller'] = "product";
+if(defined('IDENTITY')) $route['default_controller'] = "product";
 else $route['default_controller'] = "index";
 $route['404_override'] = '';
 
 // custom routes
-
 $route['(:num)'] = 'product/view/$1';
 $route['(:num)/(:any)'] = 'product/view/$1';
 $route['product/(:num)'] = 'product/view/$1';
 $route['produto/(:num)'] = 'product/view/$1';
-
+$route['vitrine'] = 'product';
 $route['products'] = 'product/manage';
 $route['produtos'] = 'product/manage';
 
 $route['budget'] = 'product/budget';
 $route['orcamento'] = 'product/budget';
+
+$route['profile'] = 'user/profile';
+$route['perfil'] = 'user/profile';
 
 $route['login'] = 'user/login';
 $route['entrar'] = 'user/login';
@@ -79,5 +81,16 @@ $route['privacypolicy'] = 'privacy';
 $route['politicadeprivacidade'] = 'privacy';
 
 $route['termosdeuso'] = 'termsofuse';
+
+$route['blog/editar/(:any)'] = 'blog/edit/$1';
+$route['blog/edit/(:any)'] = 'blog/edit/$1';
+$route['blog/escrever'] = 'blog/write';
+$route['blog/write'] = 'blog/write';
+$route['blog/artigos'] = 'blog/posts';
+$route['blog/posts'] = 'blog/posts';
+$route['blog/drop'] = 'blog/drop';
+$route['blog/(:any)'] = 'blog/view/$1';
+
+
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */

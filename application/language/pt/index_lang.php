@@ -24,5 +24,5 @@ $lang['idx_Student_txt2'] = 'Tenha acesso aos dados dos produtos e serviços adq
 $lang['idx_welcomeToTzadi'] = 'Bem vindo à TZADI';
 $lang['idx_unfinishedModuleSupplier'] = 'O módulo do fornecedor ainda está em construção.';
 $lang['idx_unfinishedModuleStudent'] = 'O módulo do intercambista ainda está em construção.';
-$lang['idx_unfinishedModuleText1'] = 'A partir de agora você ficara sabendo de todas as novidades no desenvolvimento desta plataforma e será o primeiro a saber a data de lançamento.';
-$lang['idx_unfinishedModuleText2'] = 'Aguarde!';
+$lang['idx_unfinishedModuleText1'] = 'Aproveite para compartilhar suas experiências através do seu blog';
+$lang['idx_unfinishedModuleText2'] = 'A partir de agora você ficara sabendo de todas as novidades no desenvolvimento desta plataforma e será o primeiro a saber a data de lançamento. <br></br> Aguarde!';

@@ -26,8 +26,6 @@ class Company_Model extends CI_Model {
     $newUserID = $this->mongo_model->newID();
     $newCompanyID = $this->mongo_model->newID();
 
-    $this->load->helper('date');
-
     $this->mongo_db->insert('user',
       array(
         "_id" => $newUserID

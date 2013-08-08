@@ -18,11 +18,13 @@ body {
 }
 
 .footer{
-  background:black;
+  background:#171717;
   color:grey;
-  margin-top:20px;
-  padding:20px 0px;
-  border-radius: 10px;
+  width: 100%;
+  position: absolute;
+  left:0px;
+  margin:0px;
+  padding-top:15px;
 }
 
 .home-phrase-bg{
@@ -76,8 +78,8 @@ body {
 
 @media (min-width: 980px) {
   .tzdContent{
-    min-height: 600px;
-    padding-top: 100px;
+    min-height: 400px;
+    padding-top: 80px;
   }
 
   .dropdown-menu .sub-menu {
@@ -154,7 +156,7 @@ a {
   padding: 2px 0px;
 }
 
-.tzdTableRow :hover{
+.tzdTableBrief :hover{
   color: green;
 }
 
@@ -162,6 +164,16 @@ a {
   cursor: pointer;
 }
 
-.tzdTableDetailContent{
+.input-content-editable{
+  border: 1px solid #CCCCCC;
+  border-radius: 3px;
+  margin-bottom: 8px;
+  padding: 0px 3px;
+}
 
+.input-content-editable :focus{
+  border: 1px solid blue;
+  border-color: blue;
+  box-shadow: 0 1px 1px blue inset, 0 0 8px blue;
+  outline: 0 none;
 }

@@ -25,12 +25,12 @@ $(document).ready(function(){
 
       };
 
-      var callback = function( error ) {
+      var callback = function( res ) {
 
-        if( error ) $tzd.alert.error( error );
+        if( res.error ) $tzd.alert.error( res.error );
 
-        else window.location = base_url;
-        
+        if( res.url ) window.location = res.url;
+
       }
 
       $tzd.ajax.post(url, data, callback);
@@ -93,12 +93,12 @@ window.fbAsyncInit = function() {
 
           };
 
-          var callback = function( error ) {
+          var callback = function( res ) {
 
-            if( error ) $tzd.alert.error( error );
+            if( res.error ) $tzd.alert.error( res.error );
 
-            else window.location = base_url;
-            
+            if( res.url ) window.location = res.url;
+
           }
 
           $tzd.ajax.post(url, data, callback);
@@ -159,12 +159,12 @@ function onLinkedInAuth() {
 
     };
 
-    var callback = function( error ) {
+    var callback = function( res ) {
 
-      if( error ) $tzd.alert.error( error );
+      if( res.error ) $tzd.alert.error( res.error );
 
-      else window.location = base_url;
-      
+      if( res.url ) window.location = res.url;
+
     }
 
     $tzd.ajax.post(url, data, callback);
@@ -229,12 +229,12 @@ function handleGoogleLoad(){
 
             };
 
-            var callback = function( error ) {
+            var callback = function( res ) {
 
-              if( error ) $tzd.alert.error( error );
+              if( res.error ) $tzd.alert.error( res.error );
 
-              else window.location = base_url;
-              
+              if( res.url ) window.location = res.url;
+
             }
 
             $tzd.ajax.post(url, data, callback);

@@ -15,67 +15,14 @@ class Page {
 
   public function load( $data ) {
 
-    $userKind = $this->CI->session->userdata("userKind");
+    if( $this->CI->session->userdata("ownProfile") )
+      $data->navbar = $this->CI->load->view($this->CI->session->userdata("profileKind")."/navbar_private", $data, true);
 
-    if( ! defined('SUBDOMAIN') ) {
+    else if( $this->CI->session->userdata("_id") )
+      $data->navbar = $this->CI->load->view($this->CI->session->userdata("profileKind")."/navbar_public_logged", $data, true);
 
-      switch ($userKind) {
-
-        case "new" :
-
-          $data->navbar = $this->CI->load->view("templates/tzadiNavbarLogged", $data, true);
-
-          break;
-
-        case "tzadi" :
-
-          $data->navbar = $this->CI->load->view("templates/tzadiNavbar", $data, true);
-
-          break;
-
-        case "student" :
-
-          $data->navbar = $this->CI->load->view("templates/tzadiNavbarLogged", $data, true);
-
-          break;
-
-        case "supplier" :
-
-          $data->navbar = $this->CI->load->view("templates/tzadiNavbarLogged", $data, true);
-
-          break;
-
-      }
-
-      $data->footer = $this->CI->load->view("templates/tzadiFooter", $data, true);
-
-    } else {
-
-      switch ($userKind) {
-
-        case "agency" :
-
-          $data->navbar = $this->CI->load->view("templates/agencyNavbar", $data, true);
-
-          $data->footer = $this->CI->load->view("templates/agencyFooter", $data, true);
-
-          break;
-
-        default :
-
-          if( $this->CI->session->userdata("userID") )
-            $data->navbar = $this->CI->load->view("templates/agencyPublicNavbarLogged", $data, true);
-
-          else
-            $data->navbar = $this->CI->load->view("templates/agencyPublicNavbar", $data, true);
-
-          $data->footer = $this->CI->load->view("templates/agencyFooter", $data, true);
-
-          break;
-
-      }
-
-    }
+    else
+      $data->navbar = $this->CI->load->view($this->CI->session->userdata("profileKind")."/navbar_public", $data, true);
 
     $data->content = $this->CI->load->view($data->view, $data, true);
 

@@ -10,7 +10,7 @@ class Product_Model extends CI_Model {
   function getAll()
   {
     return $this->mongo_db
-      ->where('agency', $this->session->userdata("agencyID"))
+      ->where('owner', $this->session->userdata("_id"))
       ->order_by(array('name' => 'asc'))
       ->get('product');
   }
@@ -18,7 +18,6 @@ class Product_Model extends CI_Model {
   function getByID( $_id )
   {
     $products = $this->mongo_db
-      ->where('agency', $this->session->userdata("agencyID"))
       ->where('status', "active")
       ->where('_id', (int) $_id)
       ->get('product');
@@ -28,7 +27,6 @@ class Product_Model extends CI_Model {
   function getPublic()
   {
     return $this->mongo_db
-      ->where('agency', $this->session->userdata("agencyID"))
       ->where('vitrine', "yes")
       ->where('status', "active")
       ->order_by(array('name' => 'asc'))
@@ -47,9 +45,9 @@ class Product_Model extends CI_Model {
         "_id" => $newID
         ,"name" => $data->name
         ,"kind" => $data->kind
-        ,"agency" => $this->session->userdata("agencyID")
+        ,"owner" => $this->session->userdata("_id")
         ,"creation" => now()
-        ,"creator" => $this->session->userdata("userID")
+        ,"creator" => $this->session->userdata("_id")
         ,"supplier" => "0"
         ,"supplier_campus" => "0"
         ,"status" => "active"

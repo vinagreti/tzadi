@@ -11,15 +11,13 @@ class My_Controller extends CI_Controller{
 
     $this->detectUnfinishedSignup();
 
-    $this->ensureRigthSubdomain();
-
     $this->detectLanguage();
 
     $this->loadGlobalLanguageFiles();
 
     $this->loadCurrency();
 
-    $this->loadCompanyInfo();
+    $this->loadIdentityInfo();
 
   }
 
@@ -40,7 +38,7 @@ class My_Controller extends CI_Controller{
 
         $url  = str_replace("/index.php", "", $url);
 
-        if(defined('SUBDOMAIN')) $url  = str_replace( SUBDOMAIN.".", "", $url);
+        if(defined('IDENTITY')) $url  = str_replace( IDENTITY.".", "", $url);
 
         redirect($url);
         
@@ -50,7 +48,7 @@ class My_Controller extends CI_Controller{
 
         $url  = str_replace("/index.php", "", $url);
 
-        if(defined('SUBDOMAIN')) $url  = str_replace( SUBDOMAIN.".", "", $url);
+        if(defined('IDENTITY')) $url  = str_replace( IDENTITY.".", "", $url);
 
         redirect($url);
 
@@ -65,9 +63,9 @@ class My_Controller extends CI_Controller{
 
     } 
 
-    if( in_array($this->router->method, $sslMethods) && defined('SUBDOMAIN') ){
+    if( in_array($this->router->method, $sslMethods) && defined('IDENTITY') ){
 
-      $url  = str_replace( SUBDOMAIN.".", "",  current_url());
+      $url  = str_replace( IDENTITY.".", "",  current_url());
 
       $url  = str_replace("/index.php", "", $url);
 
@@ -79,30 +77,24 @@ class My_Controller extends CI_Controller{
 
   private function setUserKind(){
 
-    if( ! $this->session->userdata('userKind') )
-      $this->session->set_userdata("userKind", "tzadi");
+    if( ! $this->session->userdata('kind') )
+      $this->session->set_userdata("kind", "tzadi");
 
   }
 
   private function detectUnfinishedSignup(){
 
-    if( $this->session->userdata('userKind') == "new") {
+    if( $this->session->userdata('kind') == "new") {
 
-      if($this->router->method != "finishSignup" && $this->router->method != "logout" && $this->router->method != "changeLang")
+      $publicMethods = array("finishSignup"
+          , "logout"
+          , "changeLang"
+          , "changeImg"
+          , "open"
+          );
+
+      if( ! in_array(  $this->router->method, $publicMethods ) )
         redirect(base_url()."user/finishSignup");
-
-    }
-
-  }
-
-  private function ensureRigthSubdomain(){
-
-    if($this->session->userdata('userKind') == "agency") {
-
-      $agencySubdomain = "http://".$this->session->userdata("agencySubdomain").".".ENVIRONMENT;
-      
-      if(base_url() != $agencySubdomain."/")
-        redirect($agencySubdomain.$_SERVER["PATH_INFO"]);
 
     }
 
@@ -131,38 +123,6 @@ class My_Controller extends CI_Controller{
       );
 
       $this->input->set_cookie($cookie);
-
-    }
-
-  }
-
-  private function loadCompanyInfo(){
-
-    if(defined('SUBDOMAIN')) {
-
-      if(!$this->session->userdata("agencySubdomain") || $this->session->userdata("agencySubdomain") != SUBDOMAIN) {
-        
-        $this->load->model("agency_model");
-        
-        $agency = $this->agency_model->getBySubdomain(SUBDOMAIN);
-
-        if($agency){
-
-          $this->session->set_userdata("agencyName", $agency["name"]);
-          
-          $this->session->set_userdata("agencySubdomain", $agency["subdomain"]);
-          
-          $this->session->set_userdata("agencyID", $agency["_id"]);
-        
-        } else {
-          
-          $this->session->set_flashdata('SUBDOMAIN', SUBDOMAIN);
-          
-          redirect('http://'.ENVIRONMENT.'/error/agencyNotFound', 'refresh');
-
-        }
-
-      }
 
     }
 
@@ -203,6 +163,58 @@ class My_Controller extends CI_Controller{
     $this->lang->load('template', $this->session->userdata('language'));
 
     $this->lang->load('route', $this->session->userdata('language'));
+
+  }
+
+  private function loadIdentityInfo(){
+
+    $subdomain = rtrim(strstr($_SERVER["HTTP_HOST"], ENVIRONMENT, true), '.');
+
+    if( $subdomain )
+      define('IDENTITY', $subdomain);
+
+    else
+      define('IDENTITY', "tzadi");
+
+    if( ! $this->session->userdata("profileIdentity") || $this->session->userdata("profileIdentity") != IDENTITY ) {
+      
+      $this->load->model("user_model");
+      
+      $user = $this->user_model->getByIdentity(IDENTITY);
+
+      if($user){
+
+        if( $user["_id"] == $this->session->userdata("_id") )
+          $this->session->set_userdata("ownProfile", true);
+
+        else
+          $this->session->set_userdata("ownProfile", false);
+
+        $this->session->set_userdata("profileIdentity", IDENTITY);
+
+        $this->session->set_userdata("profileID", $user["_id"]);
+
+        $this->session->set_userdata("profileName", $user["name"]);
+
+        $this->session->set_userdata("profileImg", $user["img"]);
+
+        if( IDENTITY == "tzadi" )
+          $this->session->set_userdata("profileKind", "tzadi" );
+
+        else
+          $this->session->set_userdata("profileKind", $user["kind"] );
+
+        if( isset( $user["brief"] ) ) $this->session->set_userdata("profileBrief", $user["brief"]);
+        
+      } else if( $this->router->method != "identityNotFound" ) {
+        
+        $this->session->set_flashdata('IDENTITY', IDENTITY);
+        
+        redirect('http://'.ENVIRONMENT.'/error/identityNotFound', 'refresh');
+
+      }
+
+    }
 
   }
 

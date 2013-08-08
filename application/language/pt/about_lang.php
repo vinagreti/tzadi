@@ -1,5 +1,5 @@
 <?php
-$lang['abt_page_title'] = 'Sobre nós';
+$lang['abt_page_title'] = 'Sobre';
 $lang['abt_text1'] = 'A TZADI surgiu para conectar o mundo do intercâmbio.';
 $lang['abt_text2'] = 'Trata-se de uma rede de relacionamento entre instituições, agenciadores e intercambistas, com a missão de conectar, organizar e simplificar este ecossistema.';
 $lang['abt_text3'] = 'Como fazemos?';

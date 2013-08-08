@@ -75,7 +75,7 @@ $(document).ready(function(){
       line.find(".gain").mask('000000000000000.00', {reverse: true});
       line.find(".percent").mask('00000', {reverse: true});
       this.reCalcValues(id, "price");
-      line.find(".detail").val(objProduct.detail);
+      line.find(".detail").html(objProduct.detail);
       line.find(".currency").select2({ minimumResultsForSearch: '-1' });
       line.find('.currency').select2("val", objProduct.currency);
       line.find(".vitrine").select2({ minimumResultsForSearch: '-1' });
@@ -365,7 +365,7 @@ $(document).ready(function(){
       if(objProduct.vitrine != line.find(".vitrine").select2('data').id) formData.vitrine = line.find(".vitrine").select2('data').id;
       if(objProduct.supplier != line.find(".supplier").select2('data').id) formData.supplier = line.find(".supplier").select2('data').id;
       if(line.find(".supplier_campus").select2('data').id && objProduct.supplier_campus != line.find(".supplier_campus").select2('data').id) formData.supplier_campus = line.find(".supplier_campus").select2('data').id;
-      if(objProduct.detail != line.find(".detail").val()) formData.detail = line.find(".detail").val();
+      if(objProduct.detail != line.find(".detail").html()) formData.detail = line.find(".detail").html();
       if(line.find(".courseDurationValue").val() && objProduct.courseDurationValue != line.find(".courseDurationValue").val()) formData.courseDurationValue = line.find(".courseDurationValue").val();
       if(line.find(".courseDurationScale").select2('data').id && objProduct.courseDurationScale != line.find(".courseDurationScale").select2('data').id) formData.courseDurationScale = line.find(".courseDurationScale").select2('data').id;
       if(line.find(".courseKind").select2('data').id && objProduct.courseKind != line.find(".courseKind").select2('data').id) formData.courseKind = line.find(".courseKind").select2('data').id;
@@ -825,7 +825,7 @@ $(document).ready(function(){
     var line = $(this).parents(".tzdTableLine");
     var valid = true;
     if(line.find(".nameInput").val()) valid = valid && $tzd.form.checkMask.range(line.find(".nameInput"), 1, 512, $(".pdt_invalidTitle").html());
-    if(line.find(".detail").val()) valid = valid && $tzd.form.checkMask.range(line.find(".detail"), 0, 65535, $(".pdt_invalidDetail").html());
+    if(line.find(".detail").html()) valid = valid && $tzd.form.checkMask.range(line.find(".detail"), 0, 65535, $(".pdt_invalidDetail").html());
     if(line.find(".courseRequirements").val()) valid = valid && $tzd.form.checkMask.range(line.find(".courseRequirements"), 0, 1024, $(".pdt_invalidRequirements").html());
     if(line.find(".passFrom").val()) valid = valid && $tzd.form.checkMask.range(line.find(".passFrom"), 0, 512, $(".pdt_invalidFrom").html());
     if(line.find(".passTo").val()) valid = valid && $tzd.form.checkMask.range(line.find(".passTo"), 0, 512, $(".pdt_invalidTo").html());

@@ -1,15 +1,15 @@
-<div class="row">
-  <div class="span24">
-    <div class="row">
-      <div class="span10">
-        <div class="row">
-          <div class="span10">
+<div class="row-fluid">
+  <div class="span24 well">
+    <div class="row-fluid">
+      <div class="span7">
+        <div class="row-fluid">
+          <div class="span24">
             <div id="myCarousel" class="carousel slide">
               <div class="carousel-inner">
                 <?php if(isset($product["img"])) {
                   foreach($product["img"] as $key => $img){
-                    if($key == 0) { ?> <div class="active item"><img class="img" alt="160x120" src="<?=base_url()?>file/open/<?=$img?>" style="width:100%;"></div>
-                    <?php } else { ?><div class="item"><img class="img" alt="160x120" src="<?=base_url()?>file/open/<?=$img?>" style="width:100%;"></div> <?php }
+                    if($key == 0) { ?> <div class="active item"><a href="<?=base_url()?>file/open/<?=$img?>"><img class="img" alt="160x120" src="<?=base_url()?>file/open/<?=$img?>" style="width:100%;"></a></div>
+                    <?php } else { ?><div class="item"><a href="<?=base_url()?>file/open/<?=$img?>"><img class="img" alt="160x120" src="<?=base_url()?>file/open/<?=$img?>" style="width:100%;"></a></div> <?php }
                   }
                 } else { ?>
                   <div class="active item"><img class="img" alt="160x120" src="<?=base_url()?>assets/img/no_photo_640x480.png"></div>
@@ -20,7 +20,7 @@
               <a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>
             </div>
           </div>
-          <div class="span10">
+          <div class="span24">
             <div>
               <div class="pull-left">
                 <a class="addToBudget btn btn-warning" id="<?=$product["_id"]?>" rel="tooltip" title="<?=lang('pdt_addToBudget')?>"><i class="icon-flag"></i></a>
@@ -33,6 +33,7 @@
           </div>
         </div>
       </div>
+
       <div class="span14">
 
         <div class="pull-right"><a href="<?=base_url()?>currency"><?=lang("tmpt_todayRates")?></a></div>
@@ -75,10 +76,14 @@
         </dl>
       </div>
     </div>
-    <div class="row">
+
+
+    <div class="row-fluid">
       <div class="span24">
         <?php if(isset($product["detail"])) echo "<dl><dt>" . lang("pdt_detail") . "</dt><dd>" . nl2br($product["detail"]) . "</dd></dl>"; ?>
       </div>
     </div>
+
+
   </div>
 </div>

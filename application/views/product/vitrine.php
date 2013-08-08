@@ -1,6 +1,6 @@
 <h2><?=lang('pdt_listTitle')?></h2>
 
-<div class="row">
+<div class="row-fluid">
   <div class="span24">
     <span class="input-append">
       <input type="text" class="search" placeholder="<?=lang('pdt_searchSample')?>"  rel="tooltip" title="<?=lang('pdt_searchExplain')?>">
@@ -10,7 +10,7 @@
 </div>
 
 <p>
-  <div class="row">
+  <div class="row-fluid">
     <div class="span24">
       <ul class="nav nav-pills">
         <li class="filterKind active" id="all"><a><?=lang('pdt_all')?> (<span class="found">0</span>)</a></li>
@@ -29,9 +29,9 @@
   </div>
 </p>
 
-<div class="row">
+<div class="row-fluid">
   <div class="span24 itensList">
-    <div class="row line">
+    <div class="row-fluid line">
       <div class="span6 product hide item-vitrine">
         <div class="thumbnail" >
           <a class="open" href="#" target="_blank">

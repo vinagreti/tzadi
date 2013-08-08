@@ -59,7 +59,7 @@ $(document).ready(function(){
       campus.find(".email").val(objCampus.email);
       campus.find(".phone").val(objCampus.phone);
       campus.find(".mobile").val(objCampus.mobile);
-      campus.find(".details").val(objCampus.details);
+      campus.find(".details").html(objCampus.details);
       return campus;
     };
     this.openDetails = function( supplierID ){
@@ -95,7 +95,7 @@ $(document).ready(function(){
     this.openCampus = function( campusID ) {
       var line = this.body.find("#"+campusID).parents(".tzdTableLine");
       line.find(".tzdTableCampus").remove();
-      supplierID = line.attr("id");
+      var supplierID = line.attr("id");
       var campus = this.createCampus( supplierID, campusID );
       campus.insertAfter(line.find(".tzdTableCampusNav"));
       line.find(".campusNavTab").removeClass("active");
@@ -168,8 +168,8 @@ $(document).ready(function(){
         formData.phone = line.find(".phone").val();
       if(objCampus.mobile != line.find(".mobile").val())
         formData.mobile = line.find(".mobile").val();
-      if(objCampus.details != line.find(".details").val())
-        formData.details = line.find(".details").val();
+      if(objCampus.details != line.find(".details").html())
+        formData.details = line.find(".details").html();
 
       var count = 0;
       var i;

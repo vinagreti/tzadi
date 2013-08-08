@@ -1,14 +1,8 @@
 $(document).ready(function(){
 
-	$(".accountKind").live("change keyup propertychange", function(){
+  $("#identity").mask("A{0,9}A{0,9}A{0,9}A{1,2}");
 
-		if( $(this).val() == "agency" ) $("#setSubdomain").show();
-
-		else $("#setSubdomain").hide();
-
-	});
-
-	$("#subdomain").live("change keyup propertychange", function(){
+	$("#identity").live("change keyup propertychange", function(){
 
 		if($(this).val() == "")
 			$("#address").html("");
@@ -22,13 +16,11 @@ $(document).ready(function(){
 
     var valid = true;
 
-    if( $(".accountKind:checked").val() == "agency" ) {
+    valid = valid && $tzd.form.checkMask.range($('#name'), 1, 65535, $(".usr_pleaseFillEverithing").html());
 
-	    valid = valid && $tzd.form.checkMask.range($('#name'), 1, 65535, $(".usr_pleaseFillEverithing").html());
+    valid = valid && $tzd.form.checkMask.range($('#identity'), 1, 32, $(".usr_pleaseFillEverithing").html());
 
-	    valid = valid && $tzd.form.checkMask.range($('#subdomain'), 1, 65535, $(".usr_pleaseFillEverithing").html());
-    
-    }
+    valid = valid && $tzd.form.checkMask.identity($('#identity'), $(".usr_pleaseFillEverithing").html());
    
     if ( valid ) {
 
@@ -38,16 +30,16 @@ $(document).ready(function(){
 
         tzadiToken : tzadiToken
         , name : $("#name").val()
-        , subdomain : $("#subdomain").val()
+        , identity : $("#identity").val()
         , kind : $(".accountKind:checked").val()
 
       };
 
-      var callback = function( error ) {
+      var callback = function( res ) {
 
-        if( error ) $tzd.alert.error( error );
+        if( res.error ) $tzd.alert.error( res.error );
 
-        else window.location = base_url;
+        if( res.url ) window.location = res.url;
         
       }
 
@@ -56,5 +48,38 @@ $(document).ready(function(){
     }
 
 	})
+
+
+  $('.changeImg').live("click", function() {
+    $('.userImg').click();
+  });
+
+  $(".userImg").live("change propertychange", function(){
+    
+      var files = this.files;
+
+      var url = base_url+'user/changeImg';
+
+      var data = {
+        tzadiToken : tzadiToken,
+        files : files
+      };
+
+      var callback = function( res ){
+        if( res.error )
+          $tzd.alert.error(e.error);
+
+        else {
+
+          $("img").attr("src", res.img )
+
+          $('a.brand').css("background-image", "url("+res.img+")");
+
+        }
+      };
+
+      $tzd.ajax.upload(url, data, callback);
+
+  });
 
 });

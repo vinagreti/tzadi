@@ -18,3 +18,5 @@ $lang["error_safari"] = "Safari";
 $lang["error_incompatibleUserAgents"] = "Navegadores incompatíveis";
 $lang["error_ie9"] = "Internet Explorer 9 ou anterior";
 $lang["error_maybeYouCanMaybeNot"] = "talvez você consiga, talvez não...";
+$lang["error_itentityNotFound1"] = "A identidade";
+$lang["error_itentityNotFound2"] = "não está sendo utilizada";

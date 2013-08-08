@@ -15,7 +15,7 @@ class User extends My_Controller {
 
 	public function login(){
 
-    if( $this->session->userdata("userID") ) {
+    if( $this->session->userdata("_id") ) {
 
       redirect(base_url());
 
@@ -37,7 +37,7 @@ class User extends My_Controller {
 
         $data->page_title = lang('lgn_Sign_In');
 
-        $data->view = 'user/tzadiLogin';
+        $data->view = 'user/login';
 
         $this->page->load($data);
 
@@ -84,15 +84,31 @@ class User extends My_Controller {
 	}
 
 	public function changeLang($language) {
+
 		$this->session->set_userdata('language', $language);
+
 	}
 
+  public function changeImg( ) {
+
+    $this->load->model('user_model');
+
+    echo json_encode( $this->user_model->changeImg() );
+
+  }
+
   public function resetDatabase(){
+
     if(ENVIRONMENT == "tzadi.com") {
+
       echo "impossível executar esta ação em produção";
+
     } else {
+
       $this->load->model('user_model');
+
       $this->user_model->resetDatabase();
+      
     }
 
   }
@@ -100,7 +116,7 @@ class User extends My_Controller {
   public function signup()
   {
 
-    if( $this->session->userdata("userID") ) {
+    if( $this->session->userdata("_id") ) {
 
       redirect(base_url());
 
@@ -123,7 +139,7 @@ class User extends My_Controller {
   public function finishSignup()
   {
 
-    if($this->session->userdata("userKind") == "new") {
+    if($this->session->userdata("kind") == "new") {
 
       if($this->input->post()) {
         $this->load->model("user_model");
@@ -135,9 +151,37 @@ class User extends My_Controller {
         $this->page->load($data); 
       }
 
-    } else {
+    } else if ( $this->session->userdata("_id") ) {
 
       redirect(site_url('error/tryingToRefinishSignup'));
+
+    } else {
+
+      redirect(base_url());
+
+    }
+
+  }
+
+  public function profile()
+  {
+
+    $this->load->model("user_model");
+
+    if( $this->input->post() )
+      echo json_encode( $this->user_model->set( $this->input->post() ) );
+
+    else {
+
+      $data->dynJS = 'user/profile';
+
+      $data->view = 'user/profile';
+
+      $data->user = $this->user_model->getByIdentity(IDENTITY);
+
+      $data->page_title = lang('usr_profile');
+
+      $this->page->load($data); 
 
     }
 

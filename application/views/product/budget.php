@@ -1,8 +1,8 @@
 <h2><?=lang("pdt_Budget")?> <a class="empty btn btn-danger"><i class="icon-remove"></i> <?=lang("pdt_empty")?></a> <a class="reload btn btn-info"><i class="icon-refresh"></i> <?=lang("pdt_refresh")?></a></h2>
 
-<div class="list row">
+<div class="row-fluid list">
   <div class="item span24 hide">
-    <div class="row well well-mini">
+    <div class="row-fluid well well-mini">
       <div class="span2"><img></img></div>
       <div class="span6"><small><a target="_blank"></a></small></div>
       <div class="span4"><small><?=lang("pdt_price")?>: <span class="productCurrency"></span> <span class="price"></span></small></div>

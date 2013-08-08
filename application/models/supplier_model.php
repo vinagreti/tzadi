@@ -10,7 +10,7 @@ class Supplier_Model extends CI_Model {
   function getAll() {
     return $this->mongo_db
       ->where(array(
-          'agency' => $this->session->userdata("agencyID")
+          'owner' => $this->session->userdata("_id")
         ))
       ->get('supplier');
   }
@@ -18,7 +18,7 @@ class Supplier_Model extends CI_Model {
   function getAllActive() {
     return $this->mongo_db
       ->where(array(
-          'agency' => $this->session->userdata("agencyID")
+          'owner' => $this->session->userdata("_id")
           ,'status' => "active"
         ))
       ->get('supplier');
@@ -37,9 +37,9 @@ class Supplier_Model extends CI_Model {
         "_id" => $supplier_id
         ,"name" => $data->name
         ,"kind" => "other"
-        ,"agency" => $this->session->userdata("agencyID")
+        ,"owner" => $this->session->userdata("_id")
         ,"creation" => now()
-        ,"creator" => $this->session->userdata("userID")
+        ,"creator" => $this->session->userdata("_id")
         ,"campi" => array(array("_id" => $campus_id,"name" => lang('splr_Headquarter')))
         ,"status" => "active"
         ,"headquarter" => $campus_id
@@ -102,7 +102,6 @@ class Supplier_Model extends CI_Model {
   // creates a new product obj
   function addCampus($data)
   {
-    $this->load->helper('date');
     $this->load->model("mongo_model");
     $campus->_id = $this->mongo_model->newID();
     $campus->name = $data->name;

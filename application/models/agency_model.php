@@ -28,14 +28,12 @@ class Agency_Model extends CI_Model {
     
     $agencyID = $this->mongo_model->newID();
 
-    $this->load->helper('date');
-
     $this->mongo_db->insert('agency',
       array(
         "name" =>  $data["name"]
         , "_id" => $agencyID
         , "subdomain" => strtolower($data["subdomain"])
-        , "owner" => $this->session->userdata("userID")
+        , "owner" => $this->session->userdata("_id")
       )
     );
    

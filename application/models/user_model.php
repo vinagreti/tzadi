@@ -33,11 +33,19 @@ class User_Model extends CI_Model {
 
             $this->setUserSession( $user[0] );
 
-            return false;
+
+            if( isset( $user[0]["identity"] ) )
+                $res->url = "http://".$user[0]["identity"].".".ENVIRONMENT;
+
+            else
+                $res->url = "http://".ENVIRONMENT;
 
         }
 
-        else return lang("usr_invalid_credential");
+        else
+            $res->error = lang("usr_invalid_credential");
+
+        return $res;
 
     }
 
@@ -52,7 +60,11 @@ class User_Model extends CI_Model {
 
                 $this->setUserSession( $user );
 
-                return false;
+                if( isset( $user["identity"] ) )
+                    $res->url = "http://".$user["identity"].".".ENVIRONMENT;
+
+                else
+                    $res->url = "http://".ENVIRONMENT;
 
             } else {
 
@@ -67,7 +79,11 @@ class User_Model extends CI_Model {
 
                 $this->setUserSession( $user );
 
-                return false;
+                if( isset( $user["identity"] ) )
+                    $res->url = "http://".$user["identity"].".".ENVIRONMENT;
+
+                else
+                    $res->url = "http://".ENVIRONMENT;
 
             }
 
@@ -86,6 +102,7 @@ class User_Model extends CI_Model {
                 , "facebook_id" => $data["id"]
                 , "password" => md5($passwd)
                 , "kind" => "new"
+                , "img" => "http://".ENVIRONMENT."/assets/img/no_photo_640x480.png"
                 )
               );
 
@@ -99,9 +116,11 @@ class User_Model extends CI_Model {
 
             $this->sendSigupMail( $user, "signupThirdMail" );
 
-            return false;
+            $res->url = "http://".ENVIRONMENT;
 
         }
+
+        return $res;
 
     }
 
@@ -116,7 +135,11 @@ class User_Model extends CI_Model {
 
                 $this->setUserSession( $user );
 
-                return false;
+                if( isset( $user["identity"] ) )
+                    $res->url = "http://".$user["identity"].".".ENVIRONMENT;
+
+                else
+                    $res->url = "http://".ENVIRONMENT;
 
             } else {
 
@@ -131,7 +154,11 @@ class User_Model extends CI_Model {
 
                 $this->setUserSession( $user );
 
-                return false;
+                if( isset( $user["identity"] ) )
+                    $res->url = "http://".$user["identity"].".".ENVIRONMENT;
+
+                else
+                    $res->url = "http://".ENVIRONMENT;
 
             }
 
@@ -150,6 +177,7 @@ class User_Model extends CI_Model {
                 , "linkedin_id" => $data["id"]
                 , "password" => md5($passwd)
                 , "kind" => "new"
+                , "img" => "http://".ENVIRONMENT."/assets/img/no_photo_640x480.png"
                 )
               );
 
@@ -163,9 +191,11 @@ class User_Model extends CI_Model {
 
             $this->sendSigupMail( $user, "signupThirdMail" );
 
-            return false;
+            $res->url = "http://".ENVIRONMENT;
 
         }
+
+        return $res;
 
     }
 
@@ -180,7 +210,12 @@ class User_Model extends CI_Model {
 
                 $this->setUserSession( $user );
 
-                return false;
+                if( isset( $user["identity"] ) )
+                    $res->url = "http://".$user["identity"].".".ENVIRONMENT;
+
+                else
+                    $res->url = "http://".ENVIRONMENT;
+
 
             } else {
 
@@ -195,7 +230,12 @@ class User_Model extends CI_Model {
 
                 $this->setUserSession( $user );
 
-                return false;
+                if( isset( $user["identity"] ) )
+                    $res->url = "http://".$user["identity"].".".ENVIRONMENT;
+
+                else
+                    $res->url = "http://".ENVIRONMENT;
+
 
             }
 
@@ -214,6 +254,7 @@ class User_Model extends CI_Model {
                 , "google_id" => $data["id"]
                 , "password" => md5($passwd)
                 , "kind" => "new"
+                , "img" => "http://".ENVIRONMENT."/assets/img/no_photo_640x480.png"
                 )
               );
 
@@ -227,9 +268,11 @@ class User_Model extends CI_Model {
 
             $this->sendSigupMail( $user, "signupThirdMail" );
 
-            return false;
+            $res->url = "http://".ENVIRONMENT;
 
         }
+
+        return $res;
 
     }
 
@@ -250,6 +293,8 @@ class User_Model extends CI_Model {
                     , "email" => strtolower($data["email"])
                     , "password" => md5($data["password"])
                     , "kind" => "new"
+                    , "img" => "http://".ENVIRONMENT."/assets/img/no_photo_640x480.png"
+                    , "register" => now()
                 )
             );
 
@@ -263,87 +308,95 @@ class User_Model extends CI_Model {
 
             $this->sendSigupMail( $user, "signupMail" );
 
-            return false;
+            $res->url = "http://".ENVIRONMENT;
 
         } else {
 
             if($user["password"] != md5($this->input->post("password"))) {
 
-                $erro = lang("su_theEmail");
-                $erro .= " <strong>".$user["email"]."</strong> ";
-                $erro .= lang("su_isAlreadyInUse")." ";
-                $erro .= lang("su_emailUsedTips");
-
-                return $erro;
+                $res->error = lang("su_theEmail");
+                $res->error .= " <strong>".$user["email"]."</strong> ";
+                $res->error .= lang("su_isAlreadyInUse")." ";
+                $res->error .= lang("su_emailUsedTips");
 
             } else {
 
                 $this->setUserSession( $user );
 
-                return false;
+                if( isset( $user["identity"] ) )
+                    $res->url = "http://".$user["identity"].".".ENVIRONMENT;
+
+                else
+                    $res->url = "http://".ENVIRONMENT;
 
             }
 
         }
+
+        return $res;
 
     }
 
     public function finishSignup( $data ){
 
-        if( ! isset( $data["kind"] ) || ( $data["kind"] == "agency" && ( ! isset( $data["name"] ) || ! isset( $data["subdomain"] ) ) ) ) {
+        if( ! isset( $data["kind"] ) || ! isset( $data["name"] ) || ! isset( $data["identity"] ) ) {
 
-            return "favor informar todos os dados";
+            $res->error = "favor informar todos os dados";
 
         } else {
 
-            if( $data["kind"] == "agency" ) {
+            if( ! preg_match('/^[a-zA-Z0-9]{1,32}$/', $data["identity"]) ) {
 
-                $reservedeSubdomains = array("www"
-                    , "staging"
-                    , "tzadi"
-                    , "intranet"
-                    , "intranetstaging"
-                    , "bruno"
-                    , "brunostaging"
-                    , "lucas"
-                    , "lucasstaging");
-
-                $this->load->model("agency_model");
-
-                if( $this->agency_model->getBySubdomain( $data["subdomain"] ) || in_array( $data["subdomain"], $reservedeSubdomains ) )
-                    return "este subdominio ja está em uso";
-
-                else {
-
-                    $agencyID = $this->agency_model->add( $data );
-
-                    $this->mongo_db
-                        ->where( '_id', $this->session->userdata("userID") )
-                        ->set( array( "kind" => $data["kind"], "agency" => $agencyID ) )
-                        ->update("user");
-
-                    $this->session->set_userdata('agencyID', $agencyID);
-                    $this->session->set_userdata('agencySubdomain', $data["subdomain"]);
-                    $this->session->set_userdata('agencyName', $data["name"]);
-
-                }
+                $res->error = "informe uma identidade válida";
 
             } else {
 
-                $this->mongo_db
-                    ->where( '_id', $this->session->userdata("userID") )
-                    ->set("kind",  $data["kind"])
-                    ->update("user");
+                $reservedIdentities = array("www"
+                    , "staging"
+                    , "intranet"
+                    , "intranetstaging"
+                    , "blog"
+                    , "blogstaging"
+                    , "database"
+                    , "databasestaging"
+                    , "driver"
+                    , "driverstaging"
+                    , "task"
+                    , "taskstaging"
+                    , "developer"
+                    , "developerstaging"
+                    );
+
+                if( $this->getByIdentity( $data["identity"] ) || in_array( $data["identity"], $reservedIdentities ) )
+                    $res->error = "esta identidade ja está em uso";
+
+                else {
+
+                    $this->mongo_db
+                        ->where( '_id', $this->session->userdata("_id") )
+                        ->set(
+                            array(
+                                "kind" => $data["kind"]
+                                , "name" => $data["name"]
+                                , "identity" => $data["identity"]
+                            )
+                        )
+                        ->update("user");
+
+
+                    $this->session->set_userdata('identity', $data["identity"]);
+                    $this->session->set_userdata('name', $data["name"]);
+                    $this->session->set_userdata("kind", $data["kind"]);
+
+                    $res->url = "http://".$data["identity"].".".ENVIRONMENT;
+
+                }
 
             }
 
-
-
-            $this->session->set_userdata("userKind", $data["kind"]);
-
-            return false;
-
         }
+
+        return $res;
 
     }
 
@@ -368,19 +421,29 @@ class User_Model extends CI_Model {
 
     private function setUserSession( $user ){
 
-        if( $user["kind"] == "agency" ) {
-            $agency = $this->mongo_db->where("_id", (int) $user["agency"])->get('agency');
-            $this->session->set_userdata('agencyID', $user["agency"]);
-            $this->session->set_userdata('agencySubdomain', $agency[0]["subdomain"]);
-            $this->session->set_userdata('agencyName', $agency[0]["name"]);
-        }
-
-        $this->session->set_userdata('userID', $user["_id"]);
-        $this->session->set_userdata('userName', $user["name"]);
-        $this->session->set_userdata('userEmail', $user["email"]);
-        $this->session->set_userdata('userKind', $user["kind"]);
+        $this->session->set_userdata('_id', $user["_id"]);
+        $this->session->set_userdata('name', $user["name"]);
+        $this->session->set_userdata('email', $user["email"]);
+        $this->session->set_userdata('kind', $user["kind"]);
+        if( isset( $user["img"] ) ) $this->session->set_userdata('img', $user["img"]);
+        if( isset( $user["identity"] ) ) $this->session->set_userdata('identity', $user["identity"]);
 
     }
+
+      function getByIdentity($identity)
+      {
+
+        $identity = strtolower($identity);
+
+        $res = $this->mongo_db
+          ->where('identity', $identity)
+          ->get('user');
+
+        if($res) return $res[0];
+
+        else return false;
+
+      }
 
     function resetDatabase(){
 
@@ -396,8 +459,89 @@ class User_Model extends CI_Model {
         $this->mongo_db->delete_all("customer");
         $this->mongo_db->delete_all("session");
         $this->mongo_db->delete_all("counter");
+        $this->mongo_db->delete_all("blog");
         $this->mongo_db->set("id", 0)->update('counter');
         $this->mongo_db->insert('counter', array("id" => 0));
+
+        $this->load->helper('date');
+
+        $this->mongo_db->insert('user',
+            array(
+                "_id" => $this->mongo_model->newID()
+                , "name" => strtoupper("TZADI")
+                , "email" => "admin@tzadi.com"
+                , "password" => md5("Dublin2010ireland")
+                , "kind" => "student"
+                , "register" => now()
+                , "identity" => "tzadi"
+                , "img" => "http://".ENVIRONMENT."/assets/img/72x72.png"
+            )
+        );
+
+    }
+
+  function changeImg()
+  {
+
+    $_id = $this->session->userdata("_id");
+
+    $this->load->model("file_model");
+
+    $newFile = "http://".ENVIRONMENT."/file/open/".$this->file_model->save( $_id );
+
+    $this->session->set_userdata('img', $newFile);
+
+    $user = $this->mongo_db
+      ->where('_id', $_id)
+      ->get('user');
+
+    if( isset( $user[0]["img"] ) ) {
+
+        $imgIdPos = strrpos($user[0]["img"], "file/open/");
+
+        $img = substr( $user[0]["img"], $imgIdPos+10,  strlen($user[0]["img"]) );
+
+        if( is_numeric( $img ) )
+            $this->file_model->drop( (int) $img );
+
+    }
+
+    $this->mongo_db
+      ->where('_id', $_id)
+      ->set("img", $newFile)
+      ->update("user");
+
+    $res->img = $newFile;
+
+    return $res;
+  }
+
+    public function set( $data ){
+
+        $edited = $this->mongo_db
+            ->where( '_id', (int) $this->session->userdata("_id") )
+            ->set(
+                array(
+                "name" => $data["name"]
+                , "about" => $data["about"]
+                , "termsOfUse" => $data["termsOfUse"]
+                , "privacyPolicy" => $data["privacyPolicy"]
+                )
+            )
+            ->update("user");
+
+        if( $edited ) {
+
+            $res->success = "Salvo!";
+
+            $this->session->set_userdata('name', $data["name"]);
+
+        }
+
+        else
+            $res->success = "Erro ao salvar!";
+
+        return $res;
 
     }
 

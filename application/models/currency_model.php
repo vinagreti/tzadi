@@ -12,6 +12,13 @@ class Currency_Model extends CI_Model {
 
   public function getToday( ) {
 
+    $currency = $this->getLocal();
+
+    if( $currency && $currency["day"] == date("Y-m-d") )
+      return $currency;
+
+    else {
+
       $xml = @simplexml_load_file('http://www.ecb.europa.eu/stats/eurofxref/eurofxref-daily.xml');
 
       if( ! $xml )
@@ -21,31 +28,29 @@ class Currency_Model extends CI_Model {
 
       $array = json_decode($json,TRUE);
 
-      $currency = $this->getLocal();
-
       $xmlDay = $array["Cube"]["Cube"]["@attributes"]["time"];
 
-      if( ! $currency || ( $currency && $currency["day"] != $xmlDay ) ) {
+      $currency["day"] = $array["Cube"]["Cube"]["@attributes"]["time"];
 
-        $currency["day"] = $array["Cube"]["Cube"]["@attributes"]["time"];
+      foreach( $array["Cube"]["Cube"]["Cube"] as $curr) {
 
-        foreach( $array["Cube"]["Cube"]["Cube"] as $curr) {
-
-          $currency[ $curr["@attributes"]["currency"] ] = $curr["@attributes"]["rate"];
-
-        }
-
-        $this->load->model("mongo_model");
-
-        $currency["_id"] = $this->mongo_model->newID();
-
-        $currency["EUR"] = "1";
-
-        $this->mongo_db->insert('currency', $currency);
+        $currency[ $curr["@attributes"]["currency"] ] = $curr["@attributes"]["rate"];
 
       }
 
+      $this->load->model("mongo_model");
+
+      $currency["_id"] = $this->mongo_model->newID();
+
+      $currency["EUR"] = 1;
+
+      ksort($currency);
+
+      $this->mongo_db->insert('currency', $currency);
+
       return $currency;
+
+    }
 
   }
 
@@ -54,10 +59,11 @@ class Currency_Model extends CI_Model {
     $this->load->model("mongo_model");
 
     $currency = $this->mongo_db
+      ->order_by( array("_id" => "desc") )
       ->get('currency');
 
-    if( sizeof($currency) > 0 )
-      return $currency[sizeof($currency) - 1];
+    if( $currency )
+      return $currency[0];
 
     else
       return false;
