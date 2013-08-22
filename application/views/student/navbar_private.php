@@ -11,6 +11,13 @@
   <div class="nav-collapse collapse">
     <ul class="nav">
       <li><a class="blogLink" href="/blog" rel="tooltip" title="Blog"><i class="icon-coffee icon-large"></i> Blog</a></li>
+      <li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" rel="tooltip" title="<?=lang('tmpt_myExchange')?>"><i class="icon-road icon-large"></i> <?=lang('tmpt_myExchange')?> <i class="icon-caret-down"></i></a>
+        <ul class="dropdown-menu">
+          <li><a href="http://<?=$this->session->userdata("identity")?>.<?=ENVIRONMENT?>/<?=lang("rt_interests")?>" rel="tooltip" title="<?=lang('tmpt_interests')?>"><?=lang('tmpt_interests')?></a></li>
+          <li><a href="http://<?=$this->session->userdata("identity")?>.<?=ENVIRONMENT?>/<?=lang("rt_proposals")?>" rel="tooltip" title="<?=lang('tmpt_proposes')?>"><?=lang('tmpt_proposes')?></a></li>
+        </ul>
+      </li>
     </ul>
     <ul class="nav pull-right">
       <li class="dropdown">

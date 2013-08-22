@@ -190,6 +190,59 @@ class User extends My_Controller {
 
   }
 
+  public function interests()
+  {
+
+    if( IDENTITY != $this->session->userdata("identity") )
+      redirect("http://".$this->session->userdata("identity").".".ENVIRONMENT."/".lang("rt_interests"));
+
+    $this->load->model("user_model");
+
+    if( $this->input->post() )
+      echo json_encode( $this->user_model->set( $this->input->post() ) );
+
+    else {
+
+      $data->dynJS = 'user/interests';
+
+      $data->view = 'user/interests';
+
+      $data->user = $this->user_model->getByIdentity(IDENTITY);
+
+      $data->page_title = lang('usr_interests');
+
+      $this->page->load($data); 
+
+    }
+
+  }
+
+  public function proposals()
+  {
+
+    if( IDENTITY != $this->session->userdata("identity") )
+      redirect("http://".$this->session->userdata("identity").".".ENVIRONMENT."/".lang("rt_proposals"));
+
+    $this->load->model("user_model");
+
+    if( $this->input->post() )
+      echo json_encode( $this->user_model->set( $this->input->post() ) );
+
+    else {
+
+      $data->dynJS = 'user/proposals';
+
+      $data->view = 'user/proposals';
+
+      $data->user = $this->user_model->getByIdentity(IDENTITY);
+
+      $data->page_title = lang('usr_proposals');
+
+      $this->page->load($data); 
+
+    }
+
+  }
 }
 
 /* End of file*/

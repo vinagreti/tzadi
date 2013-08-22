@@ -55,6 +55,11 @@ $route['produtos'] = 'product/manage';
 $route['budget'] = 'product/budget';
 $route['orcamento'] = 'product/budget';
 
+$route['interests'] = 'user/interests';
+$route['interesses'] = 'user/interests';
+$route['proposals'] = 'user/proposals';
+$route['propostas'] = 'user/proposals';
+
 $route['profile'] = 'user/profile';
 $route['perfil'] = 'user/profile';
 

@@ -56,3 +56,5 @@ $lang["usr_Hello"] = "Olá";
 $lang["usr_ThanksForFinish"] = "Você finalizou seu cadastro na TZADI.";
 $lang["usr_YourTzadiAddressIs"] = "Agora que você já tem um endereço TZADI, você pode acessar diretamente seu perfil atraves do endereço";
 $lang["usr_AddressAdvantage"] = "É isso mesmo, a TZADI lhe dá o domínio gratuitamente. Chega de gastar dinheiro para ter um endereço descente na internet.";
+$lang["usr_interests"] = "Interesses";
+$lang["usr_proposals"] = "Propostas";

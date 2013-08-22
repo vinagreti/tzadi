@@ -16,3 +16,5 @@ $lang['rt_edit'] = 'editar';
 $lang['rt_vitrine'] = 'vitrine';
 $lang['rt_profile'] = 'perfil';
 $lang['rt_settings'] = 'configuracoes';
+$lang['rt_interests'] = 'interesses';
+$lang['rt_proposals'] = 'propostas';
