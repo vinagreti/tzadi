@@ -10,7 +10,7 @@
     <div class="thumbnail">
       <img src="<?=$user["img"]?>" class="changeImg" alt="160x120">
       <div class="control-group">
-        <input type="file" class="userImg hide" />
+        <input type="file" class="userPhoto hide" />
       </div>
     </div>
 	</div>

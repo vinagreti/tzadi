@@ -52,10 +52,10 @@ $(document).ready(function(){
 
 
   $('.changeImg').live("click", function() {
-    $('.userImg').click();
+    $('.userPhoto').click();
   });
 
-  $(".userImg").live("change propertychange", function(){
+  $(".userPhoto").live("change propertychange", function(){
     
       var files = this.files;
 
@@ -75,6 +75,8 @@ $(document).ready(function(){
           $("img").attr("src", res.img )
 
           $('a.brand').css("background-image", "url("+res.img+")");
+
+          $('.userImg').css("background-image", "url("+res.img+")");
 
         }
           
