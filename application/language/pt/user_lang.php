@@ -52,3 +52,7 @@ $lang["usr_pleaseFillName"] = "informe seu nome ou se sua empresa";
 $lang["usr_aboutWrongSize"] = "a descrição sobre você e sua empresa deve ter até 65535 caractéres.";
 $lang["usr_termsOfUseWrongSize"] = "os Termos de Uso devem ter até 65535 caractéres.";
 $lang["usr_privacyPolicyWrongSize"] = "a Política de Privacidade deve ter até 65535 caractéres.";
+$lang["usr_Hello"] = "Olá";
+$lang["usr_ThanksForFinish"] = "Você finalizou seu cadastro na TZADI.";
+$lang["usr_YourTzadiAddressIs"] = "Agora que você já tem um endereço TZADI, você pode acessar diretamente seu perfil atraves do endereço";
+$lang["usr_AddressAdvantage"] = "É isso mesmo, a TZADI lhe dá o domínio gratuitamente. Chega de gastar dinheiro para ter um endereço descente na internet.";

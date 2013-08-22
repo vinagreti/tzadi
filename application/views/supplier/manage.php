@@ -93,37 +93,47 @@
                   <div class="span24">
                     <div class="row-fluid">
                       <div class="span8">
-                        <label><?=lang('splr_campus')?></label>
-                        <input type="text" class="campusName input-block-level" />
-                        <label><?=lang('splr_address')?></label>
-                        <input type="text" class="address input-block-level" />
-                        <label><?=lang('splr_cep')?></label>
-                        <input type="text" class="cep input-block-level" />
+                        <label><?=lang('splr_campus')?>
+                          <input type="text" class="campusName input-block-level" />
+                        </label>
+                        <label><?=lang('splr_address')?>
+                          <input type="text" class="address input-block-level" />
+                        </label>
+                        <label><?=lang('splr_cep')?>
+                          <input type="text" class="cep input-block-level" />
+                        </label>
                       </div>
                       <div class="span8">
-                        <label><?=lang('splr_city')?></label>
-                        <input type="text" class="city input-block-level" />
-                        <label><?=lang('splr_state')?></label>
-                        <input type="text" class="state input-block-level" />
-                        <label><?=lang('splr_country')?></label>
-                        <input type="text" class="country input-block-level" />
+                        <label><?=lang('splr_city')?>
+                          <input type="text" class="city input-block-level" />
+                        </label>
+                        <label><?=lang('splr_state')?>
+                          <input type="text" class="state input-block-level" />
+                        </label>
+                        <label><?=lang('splr_country')?>
+                          <input type="text" class="country input-block-level" />
+                        </label>
                       </div>
                       <div class="span8">
-                        <label><?=lang('splr_email')?></label>
-                        <input type="text" class="email input-block-level" />
-                        <label><?=lang('splr_phone')?></label>
-                        <input type="text" class="phone input-block-level" />
-                        <label><?=lang('splr_mobile')?></label>
-                        <input type="text" class="mobile input-block-level" />
+                        <label><?=lang('splr_email')?>
+                          <input type="text" class="email input-block-level" />
+                        </label>
+                        <label><?=lang('splr_phone')?>
+                          <input type="text" class="phone input-block-level" />
+                        </label>
+                        <label><?=lang('splr_mobile')?>
+                          <input type="text" class="mobile input-block-level" />
+                        </label>
                       </div>
                     </div>
                     <div class="row-fluid">
                       <div class="span24">
                         <div class="row-fluid">
-                          <label><?=lang('splr_details')?></label>
-                          <div class="control-group">
-                            <div class="details input-block-level input-content-editable" contentEditable="true"></div>
-                          </div>
+                          <label><?=lang('splr_details')?>
+                            <div class="control-group">
+                              <div class="details input-block-level input-content-editable" contentEditable="true"></div>
+                            </div>
+                          </label>
                         </div>
                       </div>
                     </div>

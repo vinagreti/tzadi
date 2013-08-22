@@ -14,15 +14,17 @@ $(document).ready(function(){
 
     if ( valid ) {
 
+      $(".brand").find("a").html( $("#name").val() );
+
       var url = base_url+'user/profile';
 
       var data = {
 
         tzadiToken : tzadiToken
         , name : $("#name").val()
-        , about : $("#about").html()
-        , termsOfUse : $("#termsOfUse").html()
-        , privacyPolicy : $("#privacyPolicy").html()
+        , about : $("#about").val()
+        , termsOfUse : $("#termsOfUse").val()
+        , privacyPolicy : $("#privacyPolicy").val()
 
       };
 
@@ -82,4 +84,33 @@ $(document).ready(function(){
 
   });
 
+  $('#about').wysihtml5({
+    "font-styles": true, //Font styling, e.g. h1, h2, etc. Default true
+    "emphasis": true, //Italics, bold, etc. Default true
+    "lists": true, //(Un)ordered lists, e.g. Bullets, Numbers. Default true
+    "html": true, //Button which allows you to edit the generated HTML. Default false
+    "link": true, //Button to insert a link. Default true
+    "image": true, //Button to insert an image. Default true,
+    "color": true //Button to change color of font  
+  });
+
+  $('#termsOfUse').wysihtml5({
+    "font-styles": true, //Font styling, e.g. h1, h2, etc. Default true
+    "emphasis": true, //Italics, bold, etc. Default true
+    "lists": true, //(Un)ordered lists, e.g. Bullets, Numbers. Default true
+    "html": true, //Button which allows you to edit the generated HTML. Default false
+    "link": true, //Button to insert a link. Default true
+    "image": true, //Button to insert an image. Default true,
+    "color": true //Button to change color of font  
+  });
+
+  $('#privacyPolicy').wysihtml5({
+    "font-styles": true, //Font styling, e.g. h1, h2, etc. Default true
+    "emphasis": true, //Italics, bold, etc. Default true
+    "lists": true, //(Un)ordered lists, e.g. Bullets, Numbers. Default true
+    "html": true, //Button which allows you to edit the generated HTML. Default false
+    "link": true, //Button to insert a link. Default true
+    "image": true, //Button to insert an image. Default true,
+    "color": true //Button to change color of font  
+  });
 });

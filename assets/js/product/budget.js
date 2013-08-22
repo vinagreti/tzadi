@@ -21,6 +21,7 @@ $(document).ready(function(){
           line.find(".amount").val(amount);
           line.find("a").html(product.name).attr("href", base_url+"product/view/"+product._id);
           line.find(".price").html(product.price);
+          line.find(".code").html(product._id);
           var total = amount*product.price;
           line.find(".total").html( total );
           if(product.img) line.find("img").attr("src", base_url+"file/open/"+product.img[0]);

@@ -24,7 +24,6 @@
 	  </div>
 	</div>
 </div>
-<div id="fb-root"></div>
 <div class="usr_validate_mail hide"><?=lang("usr_validate_mail")?></div>
 <div class="usr_validate_password hide"><?=lang("usr_validate_password")?></div>
 <div id="buttonContent" style="display: none;"></div>

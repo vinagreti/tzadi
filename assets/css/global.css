@@ -18,16 +18,6 @@ body {
   background:white;
 }
 
-.footer{
-  background:#171717;
-  color:grey;
-  width: 100%;
-  position: absolute;
-  left:0px;
-  margin:0px;
-  padding-top:15px;
-}
-
 .home-phrase-bg{
   margin-top:20px;
   padding:100px 0px;
@@ -153,8 +143,14 @@ a {
 }
 
 .tzdTableRow {
-  border-top: groove 1px #DDDDDD;
-  padding: 2px 0px;
+  background-color: #ECF0F1;
+  border-radius: 7px;
+  border: solid 1px #CCCCCC;
+  padding: 3px;
+  margin-bottom: 3px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 .tzdTableBrief :hover{
@@ -170,6 +166,7 @@ a {
   border-radius: 3px;
   margin-bottom: 8px;
   padding: 0px 3px;
+  background-color: white
 }
 
 .input-content-editable :focus{
@@ -177,4 +174,14 @@ a {
   border-color: blue;
   box-shadow: 0 1px 1px blue inset, 0 0 8px blue;
   outline: 0 none;
+}
+
+.footer{
+  background:#171717;
+  color:grey;
+  width: 100%;
+  position: absolute;
+  left:0px;
+  margin:0px;
+  padding-top:15px;
 }

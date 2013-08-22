@@ -20,8 +20,11 @@
           <li><a id="pt" rel="tooltip" title="Traduzir para Português">pt - Português</a></li>
         </ul>
       </li>
+      <li>
+        <a class="userImg" href="http://<?=$this->session->userdata("identity")?>.<?=ENVIRONMENT?>" style="border-radius: 40px; background: url(<?=$this->session->userdata("img")?>) no-repeat left center; background-size: 100%; height:10px; width: 20px; margin-top: 5px;"></a>
+      </li>
       <li class="dropdown autoOpen pull-right">
-        <a class="dropdown-toggle" data-toggle="dropdown"><i class="icon-user icon-large"></i> <span class="loggedMenuName"> <?=$this->session->userdata('name')?></span></a>
+        <a class="dropdown-toggle" data-toggle="dropdown"><span class="loggedMenuName"> <?=$this->session->userdata('name')?></span>  <i class="icon-caret-down"></i></a>
         <ul class="dropdown-menu">
           <li><a tabindex="-1"  href="http://<?=IDENTITY?>.<?=ENVIRONMENT?>/<?=lang("rt_profile")?>"><?=lang('tmpt_Profile')?></a></li>
           <li class="divider"></li>

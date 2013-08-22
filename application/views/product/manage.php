@@ -136,262 +136,291 @@
                       <div class="span12 standardForm">
                         <div class="row-fluid">
                           <div class="span8">
-                            <label><?=lang('pdt_purchase')?></label>
-                            <div class="control-group">
-                              <input type="text" class="input-block-level purchase"/>
-                            </div>
+                            <label><?=lang('pdt_purchase')?>
+                              <div class="control-group">
+                                <input type="text" class="input-block-level purchase"/>
+                              </div>
+                            </label>
                           </div>
                           <div class="span8">
-                            <label><?=lang('pdt_currency')?></label>
-                            <select class="input-block-level currency">
-                              <option value="USD">dollar (US$)</option>
-                              <option value="EUR">euro (€)</option>
-                              <option value="GBP">pound (£)</option>
-                              <option value="BRL">real (R$)</option>
-                            </select>
+                            <label><?=lang('pdt_currency')?>
+                              <select class="input-block-level currency">
+                                <option value="USD">dollar (US$)</option>
+                                <option value="EUR">euro (€)</option>
+                                <option value="GBP">pound (£)</option>
+                                <option value="BRL">real (R$)</option>
+                              </select>
+                            </label>
                           </div>
                           <div class="span8">
-                            <label><?=lang('pdt_vitrine')?></label>
-                            <select class="input-block-level vitrine">
-                              <option value="no"><?=lang("pdt_no")?></option>
-                              <option value="yes"><?=lang("pdt_yes")?></option>
-                            </select>
+                            <label><?=lang('pdt_vitrine')?>
+                              <select class="input-block-level vitrine">
+                                <option value="no"><?=lang("pdt_no")?></option>
+                                <option value="yes"><?=lang("pdt_yes")?></option>
+                              </select>
+                            </label>
                           </div>
                         </div>
                         <div class="row-fluid">
                           <div class="span8">
-                            <label><?=lang('pdt_sellPrice')?></label>
-                            <div class="control-group">
-                              <input type="text" class="input-block-level price"/>
-                            </div>
+                            <label><?=lang('pdt_sellPrice')?>
+                              <div class="control-group">
+                                <input type="text" class="input-block-level price"/>
+                              </div>
+                            </label>
                           </div>
                           <div class="span8">
-                            <label><?=lang('pdt_gain')?></label>
-                            <div class="control-group">
-                              <input type="text" class="input-block-level gain"/>
-                            </div>
+                            <label><?=lang('pdt_gain')?>
+                              <div class="control-group">
+                                <input type="text" class="input-block-level gain"/>
+                              </div>
+                            </label>
                           </div>
                           <div class="span8">
-                            <label>%</label>
-                            <div class="control-group">
-                              <input type="text" class="input-block-level percent"/>
-                            </div>
+                            <label>%
+                              <div class="control-group">
+                                <input type="text" class="input-block-level percent"/>
+                              </div>
+                            </label>
                           </div>
                         </div>
-                        <label><?=lang('pdt_supplier')?></label>
-                        <select class="input-block-level supplier">
-                          <option value="0"><?=lang('pdt_ownProduct')?></option>
-                        </select>
-                        <div class="campus">
-                          <label><?=lang('pdt_campus')?></label>
-                          <select class="input-block-level supplier_campus">
+                        <label><?=lang('pdt_supplier')?>
+                          <select class="input-block-level supplier">
+                            <option value="0"><?=lang('pdt_ownProduct')?></option>
                           </select>
+                        </label>
+                        <div class="campus">
+                          <label><?=lang('pdt_campus')?>
+                            <select class="input-block-level supplier_campus"></select>
+                          </label>
                         </div>
                       </div>
-
                       <div class="span12">
                         <div class="kindForm">
                           <div class="courseForm"> <!-- inicio courseForm -->
                             <div class="row-fluid">
                               <div class="span8">
-                                <label><?=lang('pdt_courseKind')?></label>
-                                <select class="input-block-level courseKind">
-                                  <option value="language"><?=lang('pdt_language')?></option>
-                                  <option value="profissional"><?=lang('pdt_profissional')?></option>
-                                  <option value="highSchool"><?=lang('pdt_highSchool')?></option>
-                                  <option value="3degree"><?=lang('pdt_3degree')?></option>
-                                  <option value="mba"><?=lang('pdt_mba')?></option>
-                                  <option value="pos3degree"><?=lang('pdt_pos3degree')?></option>
-                                  <option value="master"><?=lang('pdt_master')?></option>
-                                  <option value="doctor"><?=lang('pdt_doctor')?></option>
-                                  <option value="posDoc"><?=lang('pdt_posDoc')?></option>
-                                  <option value="vacation"><?=lang('pdt_vacation')?></option>
-                                </select>
+                                <label><?=lang('pdt_courseKind')?>
+                                  <select class="input-block-level courseKind">
+                                    <option value="language"><?=lang('pdt_language')?></option>
+                                    <option value="profissional"><?=lang('pdt_profissional')?></option>
+                                    <option value="highSchool"><?=lang('pdt_highSchool')?></option>
+                                    <option value="3degree"><?=lang('pdt_3degree')?></option>
+                                    <option value="mba"><?=lang('pdt_mba')?></option>
+                                    <option value="pos3degree"><?=lang('pdt_pos3degree')?></option>
+                                    <option value="master"><?=lang('pdt_master')?></option>
+                                    <option value="doctor"><?=lang('pdt_doctor')?></option>
+                                    <option value="posDoc"><?=lang('pdt_posDoc')?></option>
+                                    <option value="vacation"><?=lang('pdt_vacation')?></option>
+                                  </select>
+                                </label>
                               </div>
                               <div class="span8">
-                                <label><?=lang('pdt_modality')?></label>
-                                <select class="input-block-level courseModality">
-                                  <option value="classroom"><?=lang('pdt_classroom')?></option>
-                                  <option value="online"><?=lang('pdt_online')?></option>
-                                  <option value="semiClassroom"><?=lang('pdt_semiClassroom')?></option>
-                                </select>
+                                <label><?=lang('pdt_modality')?>
+                                  <select class="input-block-level courseModality">
+                                    <option value="classroom"><?=lang('pdt_classroom')?></option>
+                                    <option value="online"><?=lang('pdt_online')?></option>
+                                    <option value="semiClassroom"><?=lang('pdt_semiClassroom')?></option>
+                                  </select>
+                                </label>
                               </div>
                               <div class="span8">
-                                <label><?=lang('pdt_period')?></label>
-                                <select class="input-block-level coursePeriod">
-                                  <option value="m"><?=lang('pdt_mPeriod')?></option>
-                                  <option value="a"><?=lang('pdt_aPeriod')?></option>
-                                  <option value="e"><?=lang('pdt_ePeriod')?></option>
-                                  <option value="ma"><?=lang('pdt_maPeriod')?></option>
-                                  <option value="ae"><?=lang('pdt_aePeriod')?></option>
-                                  <option value="me"><?=lang('pdt_mePeriod')?></option>
-                                  <option value="mae"><?=lang('pdt_maePeriod')?></option>
-                                </select>
+                                <label><?=lang('pdt_period')?>
+                                  <select class="input-block-level coursePeriod">
+                                    <option value="m"><?=lang('pdt_mPeriod')?></option>
+                                    <option value="a"><?=lang('pdt_aPeriod')?></option>
+                                    <option value="e"><?=lang('pdt_ePeriod')?></option>
+                                    <option value="ma"><?=lang('pdt_maPeriod')?></option>
+                                    <option value="ae"><?=lang('pdt_aePeriod')?></option>
+                                    <option value="me"><?=lang('pdt_mePeriod')?></option>
+                                    <option value="mae"><?=lang('pdt_maePeriod')?></option>
+                                  </select>
+                                </label>
                               </div>
                             </div>
                             <div class="row-fluid">
                               <div class="span8">
-                                <label><?=lang('pdt_courseEnrollmentFees')?></label>
-                                <div class="control-group">
-                                  <input type="text" class="input-block-level courseEnrollmentFees"/>
-                                </div>
+                                <label><?=lang('pdt_courseEnrollmentFees')?>
+                                  <div class="control-group">
+                                    <input type="text" class="input-block-level courseEnrollmentFees"/>
+                                  </div>
+                                </label>
                               </div>
                               <div class="span8">
-                                <label><?=lang('pdt_courseAdministrativeFees')?></label>
-                                <div class="control-group">
-                                  <input type="text" class="input-block-level courseAdministrativeFees"/>
-                                </div>
+                                <label><?=lang('pdt_courseAdministrativeFees')?>
+                                  <div class="control-group">
+                                    <input type="text" class="input-block-level courseAdministrativeFees"/>
+                                  </div>
+                                </label>
                               </div>
                               <div class="span8">
-                                <label><?=lang('pdt_courseBook')?></label>
-                                <div class="control-group">
-                                  <input type="text" class="input-block-level courseBook"/>
-                                </div>
+                                <label><?=lang('pdt_courseBook')?>
+                                  <div class="control-group">
+                                    <input type="text" class="input-block-level courseBook"/>
+                                  </div>
+                                </label>
                               </div>
                             </div>
                             <div class="row-fluid">
                               <div class="span8">
-                                <label><?=lang('pdt_courseDuration')?></label>
-                                <div class="control-group">
-                                  <input type="text" class="input-block-level courseDurationValue" />
-                                </div>
+                                <label><?=lang('pdt_courseDuration')?>
+                                  <div class="control-group">
+                                    <input type="text" class="input-block-level courseDurationValue" />
+                                  </div>
+                                </label>
                               </div>
                               <div class="span8">
-                                <label><?=lang('pdt_in')?></label>
-                                <select class="input-block-level courseDurationScale"> 
-                                  <option value="days"><?=lang('pdt_days')?></option>
-                                  <option value="weeks"><?=lang('pdt_weeks')?></option>
-                                  <option value="months"><?=lang('pdt_months')?></option>
-                                  <option value="years"><?=lang('pdt_years')?></option>
-                                </select>
+                                <label><?=lang('pdt_in')?>
+                                  <select class="input-block-level courseDurationScale"> 
+                                    <option value="days"><?=lang('pdt_days')?></option>
+                                    <option value="weeks"><?=lang('pdt_weeks')?></option>
+                                    <option value="months"><?=lang('pdt_months')?></option>
+                                    <option value="years"><?=lang('pdt_years')?></option>
+                                  </select>
+                                </label>
                               </div>
                               <div class="span8">
-                                <label><?=lang('pdt_courseLanguage')?></label>
-                                <div class="control-group">
-                                  <input type="text" class="input-block-level courseLanguage" />
-                                </div>
+                                <label><?=lang('pdt_courseLanguage')?>
+                                  <div class="control-group">
+                                    <input type="text" class="input-block-level courseLanguage" />
+                                  </div>
+                                </label>
                               </div>
                             </div>
-                            <label><?=lang('pdt_courseRequirements')?></label>
-                            <textarea rows="2" class="input-block-level courseRequirements"></textarea>
+                            <label><?=lang('pdt_courseRequirements')?>
+                              <textarea rows="2" class="input-block-level courseRequirements"></textarea>
+                            </label>
                           </div><!-- fim courseForm -->
                           <div class="ensuranceForm"> <!-- inicio ensuranceForm -->
-                            <label><?=lang('pdt_duration')?></label>
-                            <div class="row-fluid">
-                              <div class="span12">
-                                <div class="control-group">
-                                  <input type="text" class="input-block-level ensuranceDurationValue" />
+                            <label><?=lang('pdt_duration')?>
+                              <div class="row-fluid">
+                                <div class="span12">
+                                  <div class="control-group">
+                                    <input type="text" class="input-block-level ensuranceDurationValue" />
+                                  </div>
+                                </div>
+                                <div class="span12">
+                                  <select class="input-block-level ensuranceDurationScale">
+                                    <option value="days"><?=lang('pdt_days')?></option>
+                                    <option value="weeks"><?=lang('pdt_weeks')?></option>
+                                    <option value="months"><?=lang('pdt_months')?></option>
+                                    <option value="years"><?=lang('pdt_years')?></option>
+                                  </select>
                                 </div>
                               </div>
-                              <div class="span12">
-                                <select class="input-block-level ensuranceDurationScale">
-                                  <option value="days"><?=lang('pdt_days')?></option>
-                                  <option value="weeks"><?=lang('pdt_weeks')?></option>
-                                  <option value="months"><?=lang('pdt_months')?></option>
-                                  <option value="years"><?=lang('pdt_years')?></option>
-                                </select>
-                              </div>
-                            </div>
+                            </label>
                           </div> <!-- fim ensuranceForm -->
                           <div class="accommodationForm"> <!-- inicio accommodationForm -->
                             <div class="row-fluid">
                               <div class="span12">
-                                <label><?=lang('pdt_accommodationKind')?></label>
-                                <select class="input-block-level accommodationKind">
-                                  <option value="familly"><?=lang('pdt_familly')?></option>
-                                  <option value="hotel"><?=lang('pdt_hotel')?></option>
-                                  <option value="hostel"><?=lang('pdt_hostel')?></option>
-                                  <option value="school"><?=lang('pdt_school')?></option>
-                                </select>
+                                <label><?=lang('pdt_accommodationKind')?>
+                                  <select class="input-block-level accommodationKind">
+                                    <option value="familly"><?=lang('pdt_familly')?></option>
+                                    <option value="hotel"><?=lang('pdt_hotel')?></option>
+                                    <option value="homeswap"><?=lang('pdt_homeswap')?></option>
+                                    <option value="hostel"><?=lang('pdt_hostel')?></option>
+                                    <option value="school"><?=lang('pdt_school')?></option>
+                                  </select>
+                                </label>
                               </div>
                               <div class="span12">
-                                <label><?=lang('pdt_accommodationPeopleNumber')?></label>
-                                <div class="control-group">
-                                  <input type="text" class="input-block-level accommodationPeopleNumber"/>
-                                </div>
+                                <label><?=lang('pdt_accommodationPeopleNumber')?>
+                                  <div class="control-group">
+                                    <input type="text" class="input-block-level accommodationPeopleNumber"/>
+                                  </div>
+                                </label>
                               </div>
                             </div>
-                            <label><?=lang('pdt_duration')?></label>
-                            <div class="row-fluid">
-                              <div class="span12">
-                                <div class="control-group">
-                                  <input type="text" class="input-block-level accommodationDurationValue"/>
+                            <label><?=lang('pdt_duration')?>
+                              <div class="row-fluid">
+                                <div class="span12">
+                                  <div class="control-group">
+                                    <input type="text" class="input-block-level accommodationDurationValue"/>
+                                  </div>
+                                </div>
+                                <div class="span12">
+                                  <select class="input-block-level accommodationDurationScale" >
+                                    <option value="days"><?=lang('pdt_days')?></option>
+                                    <option value="weeks"><?=lang('pdt_weeks')?></option>
+                                    <option value="months"><?=lang('pdt_months')?></option>
+                                    <option value="years"><?=lang('pdt_years')?></option>
+                                  </select>
                                 </div>
                               </div>
-                              <div class="span12">
-                                <select class="input-block-level accommodationDurationScale" >
-                                  <option value="days"><?=lang('pdt_days')?></option>
-                                  <option value="weeks"><?=lang('pdt_weeks')?></option>
-                                  <option value="months"><?=lang('pdt_months')?></option>
-                                  <option value="years"><?=lang('pdt_years')?></option>
-                                </select>
-                              </div>
-                            </div>
-                            <label><?=lang('pdt_accommodationFood')?></label>
-                            <select class="input-block-level accommodationFood">
-                              <option value="none"><?=lang('pdt_noneFood')?></option>
-                              <option value="b"><?=lang('pdt_bFood')?></option>
-                              <option value="l"><?=lang('pdt_lFood')?></option>
-                              <option value="d"><?=lang('pdt_dFood')?></option>
-                              <option value="bl"><?=lang('pdt_blFood')?></option>
-                              <option value="bd"><?=lang('pdt_bdFood')?></option>
-                              <option value="ld"><?=lang('pdt_ldFood')?></option>
-                              <option value="bld"><?=lang('pdt_bldFood')?></option>
-                            </select>
+                            </label>
+                            <label><?=lang('pdt_accommodationFood')?>
+                              <select class="input-block-level accommodationFood">
+                                <option value="none"><?=lang('pdt_noneFood')?></option>
+                                <option value="b"><?=lang('pdt_bFood')?></option>
+                                <option value="l"><?=lang('pdt_lFood')?></option>
+                                <option value="d"><?=lang('pdt_dFood')?></option>
+                                <option value="bl"><?=lang('pdt_blFood')?></option>
+                                <option value="bd"><?=lang('pdt_bdFood')?></option>
+                                <option value="ld"><?=lang('pdt_ldFood')?></option>
+                                <option value="bld"><?=lang('pdt_bldFood')?></option>
+                              </select>
+                            </label>
                           </div> <!-- fim accommodationForm -->
                           <div class="passForm"> <!-- inicio passForm -->
                             <div class="row-fluid">
                               <div class="span12">
-                                <label><?=lang('pdt_passTransportKind')?></label>
-                                <select class="input-block-level passTransportKind">
-                                  <option value="bus"><?=lang('pdt_busTransportKind')?></option>
-                                  <option value="ship"><?=lang('pdt_shipTransportKind')?></option>
-                                  <option value="flight"><?=lang('pdt_flightTransportKind')?></option>
-                                  <option value="rail"><?=lang('pdt_railTransportKind')?></option>
-                                </select>
+                                <label><?=lang('pdt_passTransportKind')?>
+                                  <select class="input-block-level passTransportKind">
+                                    <option value="bus"><?=lang('pdt_busTransportKind')?></option>
+                                    <option value="ship"><?=lang('pdt_shipTransportKind')?></option>
+                                    <option value="flight"><?=lang('pdt_flightTransportKind')?></option>
+                                    <option value="rail"><?=lang('pdt_railTransportKind')?></option>
+                                  </select>
+                                </label>
                               </div>
                               <div class="span12">
-                                <label><?=lang('pdt_passTransportWays')?></label>
-                                <select class="input-block-level passTransportWays">
-                                  <option value="oneWay"><?=lang('pdt_oneWay')?></option>
-                                  <option value="return"><?=lang('pdt_return')?></option>
-                                </select>
+                                <label><?=lang('pdt_passTransportWays')?>
+                                  <select class="input-block-level passTransportWays">
+                                    <option value="oneWay"><?=lang('pdt_oneWay')?></option>
+                                    <option value="return"><?=lang('pdt_return')?></option>
+                                  </select>
+                                </label>
                               </div>
                             </div>
-                            <label><?=lang('pdt_passFrom')?></label>
-                            <div class="control-group">
-                              <input type="text" class="input-block-level passFrom"/>
-                            </div>
-                            <label><?=lang('pdt_passTo')?></label>
-                            <div class="control-group">
-                              <input type="text" class="input-block-level passTo"/>
-                            </div>
+                            <label><?=lang('pdt_passFrom')?>
+                              <div class="control-group">
+                                <input type="text" class="input-block-level passFrom"/>
+                              </div>
+                            </label>
+                            <label><?=lang('pdt_passTo')?>
+                              <div class="control-group">
+                                <input type="text" class="input-block-level passTo"/>
+                              </div>
+                            </label>
                           </div> <!-- fim passForm -->
                           <div class="workForm"> <!-- inicio workForm -->
-                            <label><?=lang('pdt_workKind')?></label>
-                            <select class="input-block-level workKind">
-                              <option value="workFree"><?=lang('pdt_workFreeKind')?></option>
-                              <option value="work"><?=lang('pdt_workKind')?></option>
-                              <option value="traineeFree"><?=lang('pdt_traineeFreeKind')?></option>
-                              <option value="trainee"><?=lang('pdt_traineeKind')?></option>
-                            </select>
+                            <label><?=lang('pdt_workKind')?>
+                              <select class="input-block-level workKind">
+                                <option value="workFree"><?=lang('pdt_workFreeKind')?></option>
+                                <option value="work"><?=lang('pdt_workKind')?></option>
+                                <option value="traineeFree"><?=lang('pdt_traineeFreeKind')?></option>
+                                <option value="trainee"><?=lang('pdt_traineeKind')?></option>
+                              </select>
+                            </label>
                           </div> <!-- fim workForm -->
                           <div class="packageForm"> <!-- inicio workForm -->
-                            <label><?=lang('pdt_addPackageProductTitle')?></label>
-                            <div class="control-group">
-                              <input class="addPackageProduct input-block-level"/>
-                            </div>
-                            <label><?=lang('pdt_packageItens')?></label>
-                            <div class="packageItem alert alert-block alert-success">
-                              <h4 class="alert-heading"><a class="btn btn-danger dropPackageItem"><i class="icon-remove"></i></a> <a class="packageProductName"></a> (<?=lang("pdt_price")?>: <span class="packageProductPrice"></span>) </h4>
-                              <p class="packageProductDetail"></p>
-                              <p>
-                                <div class="control-group">
-                                  <?=lang("pdt_amount")?>: <input class="packageProductQtd span2" type="number" />
-                                </div>
-                                <?=lang("pdt_total")?>: <span class="packageProductTotalPrice"></span>
-                              </p>
-                            </div>
+                            <label><?=lang('pdt_addPackageProductTitle')?>
+                              <div class="control-group">
+                                <input class="addPackageProduct input-block-level"/>
+                              </div>
+                            </label>
+                            <label><?=lang('pdt_packageItens')?>
+                              <div class="packageItem alert alert-block alert-success">
+                                <h4 class="alert-heading"><a class="btn btn-danger dropPackageItem"><i class="icon-remove"></i></a> <a class="packageProductName"></a> (<?=lang("pdt_price")?>: <span class="packageProductPrice"></span>) </h4>
+                                <p class="packageProductDetail"></p>
+                                <p>
+                                  <div class="control-group">
+                                    <?=lang("pdt_amount")?>: <input class="packageProductQtd span2" type="number" />
+                                  </div>
+                                  <?=lang("pdt_total")?>: <span class="packageProductTotalPrice"></span>
+                                </p>
+                              </div>
+                            </label>
                             <div class="packageItens"></div>
                             <div class="pull-right">
                               <span><?=lang("pdt_totalValue")?>:</span> <span class="packageTotal"></span>
@@ -401,10 +430,11 @@
                       </div>
                       <div class="row-fluid">
                         <div class="span24">
-                          <label><?=lang('pdt_detail')?></label>
-                          <div class="control-group">
-                            <div class="detail input-block-level input-content-editable" contentEditable="true"></div>
-                          </div>
+                          <label><?=lang('pdt_detail')?>
+                            <div class="control-group">
+                              <div class="detail input-block-level input-content-editable" contentEditable="true"></div>
+                            </div>
+                          </label>
                         </div>
                       </div>
                     </div><!-- fim row-fluid -->

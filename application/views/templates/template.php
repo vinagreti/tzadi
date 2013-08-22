@@ -11,6 +11,8 @@
     <link rel="stylesheet" href="<?=base_url()?>assets/third_party/bootstrap/css/bootstrap-datetimepicker.min.css">
     <link rel="stylesheet" href="<?=base_url()?>assets/third_party/bootstrap/css/font-awesome.min.css">
     <link rel="stylesheet" href="<?=base_url()?>assets/third_party/select2/select2.css"/>
+    <link rel="stylesheet" type="text/css" href="<?=base_url()?>assets/third_party/bootstrap-wysihtml5-master/src/bootstrap-wysihtml5.css"></link>
+
     <!-- tzadi global styles -->
     <link rel="stylesheet" href="<?=base_url()?>assets/css/global.css">
 
@@ -26,17 +28,17 @@
     <link rel="shortcut icon" href="<?=base_url()?>assets/img/32x32.png">
 
     <script>
-      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-      ga('create', 'UA-42648751-1', 'tzadi.com');
-      ga('send', 'pageview');
-
+        ga('create', 'UA-42648751-1', 'tzadi.com');
+        ga('send', 'pageview');
     </script>
   </head>
   <body>
+    <div id="fb-root"></div>
 
     <div class="navbar navbar-inverse navbar-fixed-top autoOpen">
         <div class="navbar-inner">
@@ -85,6 +87,9 @@
     <script type="text/javascript" src="<?=base_url()?>assets/third_party/bootstrap/js/bootstrap-carousel.js"></script>
     <script type="text/javascript" src="<?=base_url()?>assets/third_party/bootstrap/js/bootstrap-typeahead.js"></script>
     <script type="text/javascript" src="<?=base_url()?>assets/third_party/select2/select2.js"></script>
+    <script src="<?=base_url()?>assets/third_party/bootstrap-wysihtml5-master/lib/js/wysihtml5-0.3.0.js"></script>
+    <script src="<?=base_url()?>assets/third_party/bootstrap-wysihtml5-master/src/bootstrap-wysihtml5.js"></script>
+
     <?=form_open("",array("class" => "tzadiToken"))?><?=form_close()?>
     <script type="text/javascript">var base_url = "<?=base_url()?>";</script>
     <!-- Cusom JS -->
@@ -102,6 +107,7 @@
     <script src="<?=base_url()?>assets/js/tzadi/tzadi-confirm.js"></script>
     <script src="<?=base_url()?>assets/js/tzadi/tzadi-list.js"></script>
     <script src="<?=base_url()?>assets/js/tzadi/tzadi-loading.js"></script>
+    <script src="<?=base_url()?>assets/js/tzadi/tzadi-facebook.js"></script>
     <?php if (isset($dynJS) && is_string($dynJS)){?><script src="<?=base_url()?>assets/js/{dynJS}.js"></script><?php } ?>
     <?php if (isset($dynJS) && is_array($dynJS)){ foreach($dynJS as $js) { ?><script src="<?=base_url()?>assets/js/<?=$js?>.js"></script><?php } } ?>
 

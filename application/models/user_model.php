@@ -337,15 +337,15 @@ class User_Model extends CI_Model {
 
     }
 
-    public function finishSignup( $data ){
+    public function finishSignup( $user ){
 
-        if( ! isset( $data["kind"] ) || ! isset( $data["name"] ) || ! isset( $data["identity"] ) ) {
+        if( ! isset( $user["kind"] ) || ! isset( $user["name"] ) || ! isset( $user["identity"] ) ) {
 
             $res->error = "favor informar todos os dados";
 
         } else {
 
-            if( ! preg_match('/^[a-zA-Z0-9]{1,32}$/', $data["identity"]) ) {
+            if( ! preg_match('/^[a-zA-Z0-9]{1,32}$/', $user["identity"]) ) {
 
                 $res->error = "informe uma identidade válida";
 
@@ -367,7 +367,7 @@ class User_Model extends CI_Model {
                     , "developerstaging"
                     );
 
-                if( $this->getByIdentity( $data["identity"] ) || in_array( $data["identity"], $reservedIdentities ) )
+                if( $this->getByIdentity( $user["identity"] ) || in_array( $user["identity"], $reservedIdentities ) )
                     $res->error = "esta identidade ja está em uso";
 
                 else {
@@ -376,19 +376,21 @@ class User_Model extends CI_Model {
                         ->where( '_id', $this->session->userdata("_id") )
                         ->set(
                             array(
-                                "kind" => $data["kind"]
-                                , "name" => $data["name"]
-                                , "identity" => $data["identity"]
+                                "kind" => $user["kind"]
+                                , "name" => $user["name"]
+                                , "identity" => $user["identity"]
                             )
                         )
                         ->update("user");
 
 
-                    $this->session->set_userdata('identity', $data["identity"]);
-                    $this->session->set_userdata('name', $data["name"]);
-                    $this->session->set_userdata("kind", $data["kind"]);
+                    $this->session->set_userdata('identity', $user["identity"]);
+                    $this->session->set_userdata('name', $user["name"]);
+                    $this->session->set_userdata("kind", $user["kind"]);
 
-                    $res->url = "http://".$data["identity"].".".ENVIRONMENT;
+                    $this->sendSigupMail( $this->getByIdentity( $user["identity"]), "finishSignupMail" );
+
+                    $res->url = "http://".$user["identity"].".".ENVIRONMENT;
 
                 }
 
@@ -535,6 +537,8 @@ class User_Model extends CI_Model {
             $res->success = "Salvo!";
 
             $this->session->set_userdata('name', $data["name"]);
+
+            $this->session->set_userdata('profileName', $data["name"]);
 
         }
 

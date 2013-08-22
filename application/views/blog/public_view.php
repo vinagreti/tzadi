@@ -11,6 +11,8 @@
 <div class="row-fluid">
 	<div class="span22 offset1">
 
+		<div class="fb-like" data-href="<?=base_url().uri_string()?>" data-width="450" data-show-faces="true" data-send="true"></div>
+
 		<p class="pull-right"><small><?=gmdate("d-m-Y H:i", $post["date"])?></small></p>
 		<h4><?=$post["title"]?></h4>
 		<h5><?=$post["subtitle"]?></h5>

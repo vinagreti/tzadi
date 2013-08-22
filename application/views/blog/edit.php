@@ -1,10 +1,18 @@
 <div class="row-fluid">
 	<div class="span22 offset1">
-		<label><?=lang("blg_title")?></label>
-		<div class="control-group"><input id="title" type="text" class="input-block-level" value="<?=$post["title"]?>" /></div>
-		<label><?=lang("blg_subtitle")?></label>
-		<div class="control-group"><input id="subtitle" type="text" class="input-block-level" value="<?=$post["subtitle"]?>" /></div>
-		<div class="control-group"><div id="text" class="input-content-editable" style="min-height: 100px;" contentEditable="true"><?=$post["text"]?></div></div>
+
+		<label><?=lang("blg_title")?>
+			<div class="control-group"><input id="title" type="text" class="input-block-level" value="<?=$post["title"]?>" /></div>
+		</label>
+		
+		<label><?=lang("blg_subtitle")?>
+			<div class="control-group"><input id="subtitle" type="text" class="input-block-level" value="<?=$post["subtitle"]?>" /></div>
+		</label>
+		
+		<label><?=lang("blg_text")?>
+			<textarea id="text" rows="25" class="input-block-level" ><?=$post["text"]?></textarea>
+		</label>
+
 		<div class="pull-right">
 			<a id="<?=$post["url"]?>" class="savePost btn btn-success"><?=lang("blg_savePost")?></a>
 			<a id="<?=$post["url"]?>" class="dropPost btn btn-danger"><?=lang("blg_dropPost")?></a>

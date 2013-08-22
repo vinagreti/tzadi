@@ -22,37 +22,37 @@
 		</div>
 
 		<label class="text-warning">
-			<span><?=lang('usr_tellAboutYou')?></span> <span class="text-success">
-				<strong>
-					<a href="http://<?=IDENTITY.".".ENVIRONMENT."/".lang("rt_about")?>" target="_blank"><?=IDENTITY.".".ENVIRONMENT."/".lang("rt_about")?></a>
-				</strong>
-			</span>
+			<?=lang('usr_tellAboutYou')?></span> <span class="text-success">
+			<strong>
+				<a href="http://<?=IDENTITY.".".ENVIRONMENT."/".lang("rt_about")?>" target="_blank"><?=IDENTITY.".".ENVIRONMENT."/".lang("rt_about")?></a>
+			</strong>
+
+			<div class="control-group">
+				<textarea id="about" rows="15" class="input-block-level"><?if(isset($user["about"])) echo $user["about"];?></textarea>
+			</div>
 		</label>
-		<div class="control-group">
-			<div id="about" class="input-content-editable" style="min-height: 100px;" contentEditable="true"><?if(isset($user["about"])) echo $user["about"];?></div>
-		</div>
 
 		<label class="text-warning">
-			<span><?=lang('usr_insertTermsOfUse')?></span> <span class="text-success">
-				<strong>
-					<a href="http://<?=IDENTITY.".".ENVIRONMENT."/".lang("rt_termsOfUse")?>" target="_blank"><?=IDENTITY.".".ENVIRONMENT."/".lang("rt_termsOfUse")?></a>
-				</strong>
-			</span>
+			<?=lang('usr_insertTermsOfUse')?></span> <span class="text-success">
+			<strong>
+				<a href="http://<?=IDENTITY.".".ENVIRONMENT."/".lang("rt_termsOfUse")?>" target="_blank"><?=IDENTITY.".".ENVIRONMENT."/".lang("rt_termsOfUse")?></a>
+			</strong>
+
+			<div class="control-group">
+				<textarea id="termsOfUse" rows="15" class="input-block-level"><?if(isset($user["termsOfUse"])) echo $user["termsOfUse"];?></textarea>
+			</div>
 		</label>
-		<div class="control-group">
-			<div id="termsOfUse" class="input-content-editable" style="min-height: 100px;" contentEditable="true"><?if(isset($user["termsOfUse"])) echo $user["termsOfUse"];?></div>
-		</div>
 
 		<label class="text-warning">
-			<span><?=lang('usr_insertPrivacyPolicy')?></span> <span class="text-success">
-				<strong>
-					<a href="http://<?=IDENTITY.".".ENVIRONMENT."/".lang("rt_privacyPolicy")?>" target="_blank"><?=IDENTITY.".".ENVIRONMENT."/".lang("rt_privacyPolicy")?></a>
-				</strong>
-			</span>
+			<?=lang('usr_insertPrivacyPolicy')?></span> <span class="text-success">
+			<strong>
+				<a href="http://<?=IDENTITY.".".ENVIRONMENT."/".lang("rt_privacyPolicy")?>" target="_blank"><?=IDENTITY.".".ENVIRONMENT."/".lang("rt_privacyPolicy")?></a>
+			</strong>
+
+			<div class="control-group">
+				<textarea id="privacyPolicy" rows="15" class="input-block-level"><?if(isset($user["privacyPolicy"])) echo $user["privacyPolicy"];?></textarea>
+			</div>
 		</label>
-		<div class="control-group">
-			<div id="privacyPolicy" class="input-content-editable" style="min-height: 100px;" contentEditable="true"><?if(isset($user["privacyPolicy"])) echo $user["privacyPolicy"];?></div>
-		</div>
 
 		<div class="pull-right">
 			<a id="save" class="btn btn-primary"><?=lang('usr_save')?></a>

@@ -283,12 +283,6 @@ $(document).ready(function(){
       line.find(".imgNumber").html(index+1);
     };
     this.addSupplier = function( supplier, id, index ){
-      var tableSupplierSelect = this.detail.find(".supplier");
-      tableSupplierSelect.append(
-        $("<option></option>")
-          .html(supplier.name)
-          .val(supplier._id)
-      );
 
       var supplierSelects = this.body.find(".supplier");
       supplierSelects.append(

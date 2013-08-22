@@ -4,7 +4,12 @@
   <div class="item span24 hide">
     <div class="row-fluid well well-mini">
       <div class="span2"><img></img></div>
-      <div class="span6"><small><a target="_blank"></a></small></div>
+      <div class="span6">
+        <small>
+          <p><a target="_blank"></a></p>
+          <p><?=lang("pdt_code")?>: <span class="code"></span></p>
+        </small>
+      </div>
       <div class="span4"><small><?=lang("pdt_price")?>: <span class="productCurrency"></span> <span class="price"></span></small></div>
       <div class="span2"><small><input class="amount input-block-level" type="number" /></small></div>
       <div class="span4"><small><?=lang("pdt_total")?>: <span class="productCurrency"></span> <span class="total"></span></small></div>
