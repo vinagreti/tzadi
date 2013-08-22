@@ -166,6 +166,9 @@ class User extends My_Controller {
   public function profile()
   {
 
+    if( IDENTITY != $this->session->userdata("identity") )
+      redirect("http://".$this->session->userdata("identity").".".ENVIRONMENT."/".lang("rt_profile"));
+
     $this->load->model("user_model");
 
     if( $this->input->post() )

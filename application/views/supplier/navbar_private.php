@@ -26,7 +26,7 @@
       <li class="dropdown autoOpen pull-right">
         <a class="dropdown-toggle" data-toggle="dropdown"><span class="loggedMenuName"> <?=$this->session->userdata('name')?></span>  <i class="icon-caret-down"></i></a>
         <ul class="dropdown-menu">
-          <li><a tabindex="-1"  href="http://<?=IDENTITY?>.<?=ENVIRONMENT?>/<?=lang("rt_profile")?>"><?=lang('tmpt_Profile')?></a></li>
+          <li><a tabindex="-1"  href="http://<?=$this->session->userdata("identity")?>.<?=ENVIRONMENT?>/<?=lang("rt_profile")?>"><?=lang('tmpt_Profile')?></a></li>
           <li class="divider"></li>
           <li><a tabindex="-1"  href="<?=base_url()?><?=lang('rt_logout')?>"><?=lang('tmpt_Logout')?></a></li>
         </ul>
