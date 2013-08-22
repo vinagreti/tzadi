@@ -1,5 +1,5 @@
 <div class="row-fluid">
-	<div class="span22 offset1">
+	<div class="span24">
 
 		<label><?=lang("blg_title")?>
 			<div class="control-group"><input id="title" type="text" class="input-block-level" value="<?=$post["title"]?>" /></div>

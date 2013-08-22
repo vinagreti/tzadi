@@ -1,12 +1,12 @@
 <div class="row-fluid">
-	<div class="span22 offset1">
+	<div class="span24">
 		<h3><?=lang('usr_Profile')?></h3>
 	</div>
 </div>
 
 <div class="row-fluid">
 
-	<div class="span4 offset1">
+	<div class="span5">
     <div class="thumbnail">
       <img src="<?=$user["img"]?>" class="changeImg" alt="160x120">
       <div class="control-group">
@@ -15,7 +15,7 @@
     </div>
 	</div>
 
-	<div class="span17 offset1">
+	<div class="span18 offset1">
 		<label class="text-warning"><span><?=lang('usr_chooseYourAgencyName')?></span></label>
 		<div class="control-group">
 		  <input id="name" type="text" class="input-block-level" name="name" value="<?=$user["name"]?>">

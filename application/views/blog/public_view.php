@@ -1,5 +1,5 @@
 <div class="row-fluid">
-	<div class="span22 offset1">
+	<div class="span24">
 
 		<ul class="pager">
 	  	<li><a href="<?=base_url()?>blog/<?=lang("rt_posts")?>"><?=lang("blg_posts")?></a></li>
@@ -9,7 +9,7 @@
 </div>
 
 <div class="row-fluid">
-	<div class="span22 offset1">
+	<div class="span24">
 
 		<div class="fb-like" data-href="<?=base_url().uri_string()?>" data-width="450" data-show-faces="true" data-send="true"></div>
 
@@ -22,7 +22,7 @@
 </div>
 
 <div class="row-fluid">
-	<div class="span22 offset1">
+	<div class="span24">
 
 		<ul class="pager">
 	  	<li><a href="<?=base_url()?>blog/<?=lang("rt_posts")?>"><?=lang("blg_posts")?></a></li>

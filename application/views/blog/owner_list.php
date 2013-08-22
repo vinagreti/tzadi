@@ -1,5 +1,5 @@
 <div class="row-fluid">
-	<div class="span22 offset1">
+	<div class="span24">
 		<ul class="pager">
 			<li id="prev" class="previous"><a>&lsaquo;</a></li>
 			<li><a href="http://<?=$this->session->userdata("identity")?>.<?=ENVIRONMENT?>/blog/<?=lang("rt_write")?>"><?=lang("blg_writePost")?></a></li>
@@ -10,7 +10,7 @@
 </div>
 
 <div class="row-fluid">
-	<div id="posts" class="span22 offset1">
+	<div id="posts" class="span24">
 		<div class="post row-fluid hide">
 			<div class="span24">
 				<div class="well">
@@ -27,7 +27,7 @@
 </div>
 
 <div class="row-fluid">
-	<div class="span22 offset1">
+	<div class="span24">
 		<ul class="pager">
 			<li id="prev" class="previous"><a>&lsaquo;</a></li>
 			<li><a href="http://<?=$this->session->userdata("identity")?>.<?=ENVIRONMENT?>/blog/<?=lang("rt_write")?>"><?=lang("blg_writePost")?></a></li>

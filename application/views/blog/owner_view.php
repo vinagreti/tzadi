@@ -1,5 +1,5 @@
 <div class="row-fluid">
-	<div class="span22 offset1">
+	<div class="span24">
 
 		<ul class="pager">
 	  	<li><a href="<?=base_url()?>blog/<?=lang("rt_posts")?>"><?=lang("blg_posts")?></a></li>
@@ -10,7 +10,7 @@
 </div>
 
 <div class="row-fluid">
-	<div class="span22 offset1">
+	<div class="span24">
 
 		<p class="pull-right"><small><?=gmdate("d-m-Y H:i", $post["date"])?></small></p>
 		<h4 id="title"><?=$post["title"]?></h4>
@@ -30,7 +30,7 @@
 </div>
 
 <div class="row-fluid">
-	<div class="span22 offset1">
+	<div class="span24">
 
 		<ul class="pager">
 	  	<li><a href="<?=base_url()?>blog/<?=lang("rt_posts")?>"><?=lang("blg_posts")?></a></li>

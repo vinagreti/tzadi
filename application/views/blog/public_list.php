@@ -1,5 +1,5 @@
 <div class="row-fluid">
-	<div class="span22 offset1">
+	<div class="span24">
 		<ul class="pager">
 			<li id="prev" class="previous"><a>&lsaquo;</a></li>
 			<li id="1" class="page disabled"><a>1</a></li>
@@ -9,7 +9,7 @@
 </div>
 
 <div class="row-fluid">
-	<div id="posts" class="span22 offset1">
+	<div id="posts" class="span24">
 		<div class="post row-fluid hide">
 			<div class="span24">
 				<div class="well">
@@ -24,7 +24,7 @@
 </div>
 
 <div class="row-fluid">
-	<div class="span22 offset1">
+	<div class="span24">
 		<ul class="pager">
 			<li id="prev" class="previous"><a>&lsaquo;</a></li>
 			<li id="1" class="page disabled"><a>1</a></li>
