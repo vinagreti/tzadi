@@ -107,7 +107,6 @@
     <script src="<?=base_url()?>assets/js/tzadi/tzadi-confirm.js"></script>
     <script src="<?=base_url()?>assets/js/tzadi/tzadi-list.js"></script>
     <script src="<?=base_url()?>assets/js/tzadi/tzadi-loading.js"></script>
-    <script src="<?=base_url()?>assets/js/tzadi/tzadi-facebook.js"></script>
     <?php if (isset($dynJS) && is_string($dynJS)){?><script src="<?=base_url()?>assets/js/{dynJS}.js"></script><?php } ?>
     <?php if (isset($dynJS) && is_array($dynJS)){ foreach($dynJS as $js) { ?><script src="<?=base_url()?>assets/js/<?=$js?>.js"></script><?php } } ?>
 

@@ -3,7 +3,8 @@
 <div class="row-fluid">
   <div class="span7 well">
     <div class="row-fluid">
-      <div class="fb-like" data-href="<?=base_url().uri_string()?>" data-width="450" data-show-faces="true" data-send="true"></div>
+    <div class="g-plus" data-action="share" data-annotation="bubble"></div>
+    <div class="fb-like" data-href="<?=base_url().uri_string()?>" data-width="450" data-layout="button_count" data-show-faces="true" data-send="true"></div>
       
       <div class="span24">
         <div id="myCarousel" class="carousel slide">

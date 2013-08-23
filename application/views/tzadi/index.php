@@ -1,4 +1,5 @@
-<div class="fb-like" data-href="http://facebook.com/tzadiinc" data-width="450" data-show-faces="true" data-send="true"></div>
+<div class="g-plus" data-action="share" data-annotation="bubble"></div>
+<div class="fb-like" data-href="http://facebook.com/tzadiinc" data-width="450" data-layout="button_count" data-show-faces="true" data-send="true"></div>
 
 <div class="row-fluid">
   <div class="span24 home-phrase-bg">
@@ -62,6 +63,26 @@
     </div>
   </div>
 </div>
+<br>
+<div class="g-plus" data-action="share" data-annotation="bubble"></div>
+<div class="fb-like" data-href="http://facebook.com/tzadiinc" data-width="450" data-layout="button_count" data-show-faces="true" data-send="true"></div>
 
-<div class="fb-like" data-href="http://facebook.com/tzadiinc" data-width="450" data-show-faces="true" data-send="true"></div>
 
+<script type="text/javascript">
+  // isso deve ser carregado no js de cada pagina. como o index nao tem js dedicado, colocamos aqui manualmente.
+  // Load the FACEBOOK SDK asynchronously - like
+  (function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      js.src = "//connect.facebook.net/en_GB/all.js#xfbml=1&appId=532888376778430";
+      fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));
+      
+  // Load the GOOGLE plusone asynchronously
+  (function() {
+    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+    po.src = 'https://apis.google.com/js/plusone.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+  })();
+</script>

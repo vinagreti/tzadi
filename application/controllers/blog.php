@@ -26,8 +26,13 @@ class Blog extends My_Controller {
 
       }
 
-      else
+      else {
+        
+        $data->dynJS = 'blog/blog';
+
         $data->view = 'blog/public_view';
+
+      }
 
       $data->page_title = lang('blg_Blog');
 

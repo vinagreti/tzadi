@@ -11,7 +11,8 @@
 <div class="row-fluid">
 	<div class="span24">
 
-		<div class="fb-like" data-href="<?=base_url().uri_string()?>" data-width="450" data-show-faces="true" data-send="true"></div>
+		<div class="g-plus" data-action="share" data-annotation="bubble"></div>
+		<div class="fb-like" data-href="<?=base_url().uri_string()?>" data-width="450" data-layout="button_count" data-show-faces="true" data-send="true"></div>
 
 		<p class="pull-right"><small><?=gmdate("d-m-Y H:i", $post["date"])?></small></p>
 		<h4><?=$post["title"]?></h4>
