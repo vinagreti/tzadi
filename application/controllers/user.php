@@ -193,6 +193,8 @@ class User extends My_Controller {
   public function interests()
   {
 
+    $this->lang->load('product', $this->session->userdata('language'));
+
     if( IDENTITY != $this->session->userdata("identity") )
       redirect("http://".$this->session->userdata("identity").".".ENVIRONMENT."/".lang("rt_interests"));
 
