@@ -16,7 +16,6 @@
       <li class="dropdown">
         <a class="dropdown-toggle" data-toggle="dropdown" rel="tooltip" title="<?=lang('tmpt_select_lang')?>"><span class="language"><?=$this->session->userdata('language')?></span> <i class="icon-caret-down"></i></a>
         <ul class="dropdown-menu">
-          <li><a id="en" rel="tooltip" title="Translate to English">en -English</a></li>
           <li><a id="pt" rel="tooltip" title="Traduzir para Português">pt - Português</a></li>
         </ul>
       </li>

@@ -1,9 +1,19 @@
 <h2><?=lang('tmpt_interests')?></h2>
 
-<div class="row-fluid">
 
-  <div class="span24 well well-mini">
-  	<h4><?=lang('pdt_regularProduct')?></h4>
+<ul class="nav nav-tabs" id="myTab">
+	<li><a href="#regularProduct"><?=lang('pdt_regularProduct')?></a></li>
+	<li><a href="#course"><?=lang('pdt_course')?></a></li>
+	<li><a href="#ensurance"><?=lang('pdt_ensurance')?></a></li>
+	<li><a href="#accommodation"><?=lang('pdt_accommodation')?></a></li>
+	<li><a href="#pass"><?=lang('pdt_pass')?></a></li>
+	<li><a href="#work"><?=lang('pdt_work')?></a></li>
+	<li><a href="#tourism"><?=lang('pdt_tourism')?></a></li>
+	<li><a href="#transfer"><?=lang('pdt_transfer')?></a></li>
+</ul>
+ 
+<div class="tab-content">
+  <div class="tab-pane" id="regularProduct">
 		<div class="row-fluid">
 
 		  <div class="span8">
@@ -61,10 +71,30 @@
 		    </label>
 		  </div>
 		</div>
-	</div>
+  </div>
+  <div class="tab-pane" id="course">
 
+  </div>
+  <div class="tab-pane" id="ensurance">
+
+  </div>
+  <div class="tab-pane" id="accommodation">
+
+  </div>
+  <div class="tab-pane" id="pass">
+
+  </div>
+  <div class="tab-pane" id="work">
+
+  </div>
+  <div class="tab-pane" id="tourism">
+
+  </div>
+  <div class="tab-pane" id="transfer">
+
+  </div>
 </div>
-
+ 
 <div class="row-fluid">
   <div class="span24 well well-mini">
   	<h4><?=lang('pdt_course')?></h4>
