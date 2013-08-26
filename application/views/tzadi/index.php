@@ -63,10 +63,6 @@
     </div>
   </div>
 </div>
-<br>
-<div class="g-plus" data-action="share" data-annotation="bubble"></div>
-<div class="fb-like" data-href="http://facebook.com/tzadiinc" data-width="450" data-layout="button_count" data-show-faces="true" data-send="true"></div>
-
 
 <script type="text/javascript">
   // isso deve ser carregado no js de cada pagina. como o index nao tem js dedicado, colocamos aqui manualmente.
