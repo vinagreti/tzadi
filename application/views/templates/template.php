@@ -7,7 +7,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <!-- bootstrap styles -->
-    <link rel="stylesheet" href="<?=base_url()?>assets/third_party/bootstrap/css/theme/orange/bootstrap.min.css">
+    <link rel="stylesheet" href="<?=base_url()?>assets/third_party/bootstrap/css/theme/green/bootstrap.min.css">
     <link rel="stylesheet" href="<?=base_url()?>assets/third_party/bootstrap/css/bootstrap-datetimepicker.min.css">
     <link rel="stylesheet" href="<?=base_url()?>assets/third_party/bootstrap/css/font-awesome.min.css">
     <link rel="stylesheet" href="<?=base_url()?>assets/third_party/select2/select2.css"/>
@@ -40,7 +40,7 @@
   <body>
     <div id="fb-root"></div>
 
-    <div class="navbar navbar-inverse navbar-fixed-top autoOpen">
+    <div class="navbar navbar-fixed-top autoOpen">
         <div class="navbar-inner">
           {navbar}
         </div>
@@ -51,7 +51,7 @@
     <div class="loading"></div>
 
 
-    <div class="container-fluid container-height tzdContent">
+    <div class="container-fluid container-height tzdContent navbar">
         <div class="globalAlert"></div>
         {content}
     </div>
@@ -73,6 +73,9 @@
     <script src="<?=base_url()?>assets/third_party/JQuery/jquery.js"></script>
     <script src="<?=base_url()?>assets/third_party/JQuery/jquery.cookie.js"></script>
     <script src="<?=base_url()?>assets/third_party/JQuery/jquery.mask.min.js"></script>
+    <script src="http://maps.google.com/maps/api/js?libraries=places&region=uk&language=en&sensor=false"></script>
+    <script src="<?=base_url()?>assets/third_party/JQuery/jquery.geocomplete.min.js"></script>
+
     <!-- Loading the bootstrap js scripts -->
     <script type="text/javascript" src="<?=base_url()?>assets/third_party/bootstrap/js/bootstrap-transition.js"></script>
     <script type="text/javascript" src="<?=base_url()?>assets/third_party/bootstrap/js/bootstrap-alert.js"></script>
@@ -107,6 +110,7 @@
     <script src="<?=base_url()?>assets/js/tzadi/tzadi-confirm.js"></script>
     <script src="<?=base_url()?>assets/js/tzadi/tzadi-list.js"></script>
     <script src="<?=base_url()?>assets/js/tzadi/tzadi-loading.js"></script>
+    <script src="<?=base_url()?>assets/js/tzadi/tzadi-geocomplete.js"></script>
     <?php if (isset($dynJS) && is_string($dynJS)){?><script src="<?=base_url()?>assets/js/{dynJS}.js"></script><?php } ?>
     <?php if (isset($dynJS) && is_array($dynJS)){ foreach($dynJS as $js) { ?><script src="<?=base_url()?>assets/js/<?=$js?>.js"></script><?php } } ?>
 
