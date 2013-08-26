@@ -180,9 +180,7 @@ a {
 }
 
 .footer{
-  border-top: 1px ridge #D4D4D4;
-  
-  background:#F2F2F2;
+  background:#171717;
   color:grey;
   width: 100%;
   position: absolute;

@@ -51,7 +51,7 @@
     <div class="loading"></div>
 
 
-    <div class="container-fluid container-height tzdContent navbar">
+    <div class="container-fluid container-height tzdContent">
         <div class="globalAlert"></div>
         {content}
     </div>
