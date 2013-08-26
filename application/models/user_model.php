@@ -392,7 +392,22 @@ class User_Model extends CI_Model {
 
                     $this->sendSigupMail( $this->getByIdentity( $user["identity"]), "finishSignupMail" );
 
-                    $res->url = "http://".$user["identity"].".".ENVIRONMENT;
+                    switch ($user["kind"]) {
+                        case 'student':
+                            $res->url = "http://".$user["identity"].".".ENVIRONMENT."/".lang("rt_interests");
+                            break;
+                        case 'agency ':
+                            $res->url = "http://".$user["identity"].".".ENVIRONMENT."/".lang("rt_products");
+                            break;
+                        case 'supplier':
+                            $res->url = "http://".$user["identity"].".".ENVIRONMENT."/".lang("rt_products");
+                            break;
+                        default:
+                            $res->url = "http://".$user["identity"].".".ENVIRONMENT;
+                            break;
+                    }
+
+                    
 
                 }
 

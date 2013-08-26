@@ -91,6 +91,7 @@ class My_Controller extends CI_Controller{
           , "changeLang"
           , "changeImg"
           , "open"
+          , "resetDatabase"
           );
 
       if( ! in_array(  $this->router->method, $publicMethods ) )

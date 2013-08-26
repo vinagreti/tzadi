@@ -8,10 +8,9 @@
 	<li><a href="#accommodation"><?=lang('pdt_accommodation')?></a></li>
 	<li><a href="#pass"><?=lang('pdt_pass')?></a></li>
 	<li><a href="#work"><?=lang('pdt_work')?></a></li>
-	<li><a href="#tourism"><?=lang('pdt_tourism')?></a></li>
+	<li><a href="#tourismTab"><?=lang('pdt_tourism')?></a></li>
 	<li><a href="#transfer"><?=lang('pdt_transfer')?></a></li>
 </ul>
- 
 <div class="tab-content">
 
   <div class="tab-pane active" id="regularProduct">
@@ -21,20 +20,20 @@
 				  <div class="span8">
 				    <label><?=lang('pdt_minPrice')?>
 				      <div class="control-group">
-				        <input type="text" class="input-block-level miniPrice"/>
+				        <input id="minPrice" type="text" class="input-block-level"/>
 				      </div>
 				    </label>
 				  </div>
 				  <div class="span8">
 				    <label><?=lang('pdt_maxPrice')?>
 				      <div class="control-group">
-				        <input type="text" class="input-block-level maxPrice"/>
+				        <input id="maxPrice" type="text" class="input-block-level"/>
 				      </div>
 				    </label>
 				  </div>
 				  <div class="span8">
 				    <label><?=lang('pdt_currency')?>
-				      <select class="input-block-level currency">
+				      <select id="currency" class="input-block-level">
 				        <option value="USD">dollar (US$)</option>
 				        <option value="EUR">euro (€)</option>
 				        <option value="GBP">pound (£)</option>
@@ -47,7 +46,7 @@
 				  <div class="span24">
 				    <label><?=lang('pdt_interestPlaces')?>
 				      <div class="control-group">
-				        <input id="campusAddress" class="input-block-level" type="text" size="50">
+				        <input id="interestPlaces" class="input-block-level" type="text" size="50">
 				      </div>
 				    </label>
 					</div>
@@ -56,7 +55,7 @@
 				  <div class="span24">
 				  	<label>informações complementares
 					    <div class="control-group">
-					      <textarea class="detail input-block-level" rows="5"></textarea>
+					      <textarea id="detail" class="input-block-level" rows="5"></textarea>
 					    </div>
 					  </label>
 					</div>
@@ -75,11 +74,11 @@
 				    	<div class="row-fluid">
 				    		<div class="span12">
 						      <div class="control-group">
-						        <input type="text" class="input-block-level courseDurationValue" />
+						        <input id="courseDurationValue" type="text" class="input-block-level" />
 						      </div>
 						    </div>
 							  <div class="span12">
-							    <select class="input-block-level courseDurationScale"> 
+							    <select id="courseDurationScale" class="input-block-level"> 
 							      <option value="days"><?=lang('pdt_days')?></option>
 							      <option value="weeks"><?=lang('pdt_weeks')?></option>
 							      <option value="months"><?=lang('pdt_months')?></option>
@@ -92,7 +91,7 @@
 				  <div class="span16">
 				    <label><?=lang('pdt_courseLanguage')?>
 				      <div class="control-group">
-				        <input type="text" class="input-block-level courseLanguage" />
+				        <input id="courseLanguage" type="text" class="input-block-level" />
 				      </div>
 				    </label>
 				  </div>
@@ -101,72 +100,72 @@
 				  <div class="span8">
 				    <p><label><?=lang('pdt_courseKind')?></p>
 							<label class="checkbox">
-							    <input type="checkbox" value="option2" id="inlineCheckbox2"> <?=lang('pdt_language')?>
+							    <input id="language" type="checkbox" value="language"> <?=lang('pdt_language')?>
 							</label>
 							<label class="checkbox">
-							    <input type="checkbox" value="option2" id="inlineCheckbox2"> <?=lang('pdt_profissional')?>
+							    <input id="profissional" type="checkbox" value="profissional"> <?=lang('pdt_profissional')?>
 							</label>
 							<label class="checkbox">
-							    <input type="checkbox" value="option2" id="inlineCheckbox2"> <?=lang('pdt_highSchool')?>
+							    <input id="highSchool" type="checkbox" value="highSchool"> <?=lang('pdt_highSchool')?>
 							</label>
 							<label class="checkbox">
-							    <input type="checkbox" value="option2" id="inlineCheckbox2"> <?=lang('pdt_3degree')?>
+							    <input id="3degree" type="checkbox" value="3degree"> <?=lang('pdt_3degree')?>
 							</label>
 							<label class="checkbox">
-							    <input type="checkbox" value="option2" id="inlineCheckbox2"> <?=lang('pdt_mba')?>
+							    <input id="mba" type="checkbox" value="mba"> <?=lang('pdt_mba')?>
 							</label>
 							<label class="checkbox">
-							    <input type="checkbox" value="option2" id="inlineCheckbox2"> <?=lang('pdt_pos3degree')?>
+							    <input id="pos3degree" type="checkbox" value="pos3degree"> <?=lang('pdt_pos3degree')?>
 							</label>
 							<label class="checkbox">
-							    <input type="checkbox" value="option2" id="inlineCheckbox2"> <?=lang('pdt_master')?>
+							    <input id="master" type="checkbox" value="master"> <?=lang('pdt_master')?>
 							</label>
 							<label class="checkbox">
-							    <input type="checkbox" value="option2" id="inlineCheckbox2"> <?=lang('pdt_doctor')?>
+							    <input id="doctor" type="checkbox" value="doctor"> <?=lang('pdt_doctor')?>
 							</label>
 							<label class="checkbox">
-							    <input type="checkbox" value="option2" id="inlineCheckbox2"> <?=lang('pdt_posDoc')?>
+							    <input id="posDoc" type="checkbox" value="posDoc"> <?=lang('pdt_posDoc')?>
 							</label>
 							<label class="checkbox">
-							    <input type="checkbox" value="option2" id="inlineCheckbox2"> <?=lang('pdt_vacation')?>
+							    <input id="vacation" type="checkbox" value="vacation"> <?=lang('pdt_vacation')?>
 							</label>
 				    </label>
 				  </div>
 				  <div class="span8">
 				    <p><label><?=lang('pdt_modality')?></p>
 							<label class="checkbox">
-							    <input type="checkbox" value="option2" id="inlineCheckbox2"> <?=lang('pdt_classroom')?>
+							    <input id="classroom" type="checkbox" value="classroom"> <?=lang('pdt_classroom')?>
 							</label>
 							<label class="checkbox">
-							    <input type="checkbox" value="option2" id="inlineCheckbox2"> <?=lang('pdt_online')?>
+							    <input id="online" type="checkbox" value="online"> <?=lang('pdt_online')?>
 							</label>
 							<label class="checkbox">
-							    <input type="checkbox" value="option2" id="inlineCheckbox2"> <?=lang('pdt_semiClassroom')?>
+							    <input id="semiClassroom" type="checkbox" value="semiClassroom"> <?=lang('pdt_semiClassroom')?>
 							</label>
 				    </label>
 				  </div>
 				  <div class="span8">
 				    <p><label><?=lang('pdt_period')?></p>
 							<label class="checkbox">
-							    <input type="checkbox" value="option2" id="inlineCheckbox2"> <?=lang('pdt_mPeriod')?>
+							    <input id="mPeriod" type="checkbox" value="mPeriod"> <?=lang('pdt_mPeriod')?>
 							</label>
 							<label class="checkbox">
-							    <input type="checkbox" value="option2" id="inlineCheckbox2"> <?=lang('pdt_aPeriod')?>
+							    <input id="aPeriod" type="checkbox" value="aPeriod"> <?=lang('pdt_aPeriod')?>
 							</label>
 							<label class="checkbox">
-							    <input type="checkbox" value="option2" id="inlineCheckbox2"> <?=lang('pdt_ePeriod')?>
+							    <input id="ePeriod" type="checkbox" value="ePeriod"> <?=lang('pdt_ePeriod')?>
 							</label>
 							<label class="checkbox">
-							    <input type="checkbox" value="option2" id="inlineCheckbox2"> <?=lang('pdt_maPeriod')?>
+							    <input id="maPeriod" type="checkbox" value="maPeriod"> <?=lang('pdt_maPeriod')?>
 							</label>
 							<label class="checkbox">
-							    <input type="checkbox" value="option2" id="inlineCheckbox2"> <?=lang('pdt_aePeriod')?>
+							    <input id="aePeriod" type="checkbox" value="aePeriod"> <?=lang('pdt_aePeriod')?>
 							</label>
 							<label class="checkbox">
-							    <input type="checkbox" value="option2" id="inlineCheckbox2"> <?=lang('pdt_mePeriod')?>
+							    <input id="mePeriod" type="checkbox" value="mePeriod"> <?=lang('pdt_mePeriod')?>
 							</label>
 							<label class="checkbox">
-							    <input type="checkbox" value="option2" id="inlineCheckbox2"> <?=lang('pdt_maePeriod')?>
+							    <input id="maePeriod" type="checkbox" value="maePeriod"> <?=lang('pdt_maePeriod')?>
 							</label>
 				    </label>
 				  </div>
@@ -185,11 +184,11 @@
 					    <div class="row-fluid">
 					      <div class="span12">
 				        	<div class="control-group">
-				          	<input type="text" class="input-block-level ensuranceDurationValue" />
+				          	<input id="ensuranceDurationValue" type="text" class="input-block-level" />
 				        	</div>
 					      </div>
 					      <div class="span12">
-					        <select class="input-block-level ensuranceDurationScale">
+					        <select id="ensuranceDurationScale" class="input-block-level">
 					          <option value="days"><?=lang('pdt_days')?></option>
 					          <option value="weeks"><?=lang('pdt_weeks')?></option>
 					          <option value="months"><?=lang('pdt_months')?></option>
@@ -212,28 +211,28 @@
 				  <div class="span5">
 				  	<p><label><?=lang('pdt_accommodationKind')?></p>
 						<label class="checkbox">
-						    <input type="checkbox" value="option2" id="inlineCheckbox2"> <?=lang('pdt_familly')?>
+						    <input id="familly" type="checkbox" value="familly"> <?=lang('pdt_familly')?>
 						</label>
 						<label class="checkbox">
-						    <input type="checkbox" value="option2" id="inlineCheckbox2"> <?=lang('pdt_hotel')?>
+						    <input id="hotel" type="checkbox" value="hotel"> <?=lang('pdt_hotel')?>
 						</label>
 						<label class="checkbox">
-						    <input type="checkbox" value="option2" id="inlineCheckbox2"> <?=lang('pdt_hostel')?>
+						    <input id="hostel" type="checkbox" value="hostel"> <?=lang('pdt_hostel')?>
 						</label>
 						<label class="checkbox">
-						    <input type="checkbox" value="option2" id="inlineCheckbox2"> <?=lang('pdt_school')?>
+						    <input id="school" type="checkbox" value="school"> <?=lang('pdt_school')?>
 						</label>
 				  </div>
 				  <div class="span4">
 				  	<p><label><?=lang('pdt_accommodationFood')?></p>
 						<label class="checkbox">
-						    <input type="checkbox" value="option2" id="inlineCheckbox2"> <?=lang('pdt_bFood')?>
+						    <input id="bFood" type="checkbox" value="bFood"> <?=lang('pdt_bFood')?>
 						</label>
 						<label class="checkbox">
-						    <input type="checkbox" value="option2" id="inlineCheckbox2"> <?=lang('pdt_lFood')?>
+						    <input id="lFood" type="checkbox" value="lFood"> <?=lang('pdt_lFood')?>
 						</label>
 						<label class="checkbox">
-						    <input type="checkbox" value="option2" id="inlineCheckbox2"> <?=lang('pdt_dFood')?>
+						    <input id="dFood" type="checkbox" value="dFood"> <?=lang('pdt_dFood')?>
 						</label>
 				  </div>
 				  <div class="span8">
@@ -241,11 +240,11 @@
 				      <div class="row-fluid">
 				        <div class="span12">
 				          <div class="control-group">
-				            <input type="text" class="input-block-level accommodationDurationValue"/>
+				            <input id="accommodationDurationValue" type="text" class="input-block-level"/>
 				          </div>
 				        </div>
 				        <div class="span12">
-				          <select class="input-block-level accommodationDurationScale" >
+				          <select id="accommodationDurationScale" class="input-block-level" >
 				            <option value="days"><?=lang('pdt_days')?></option>
 				            <option value="weeks"><?=lang('pdt_weeks')?></option>
 				            <option value="months"><?=lang('pdt_months')?></option>
@@ -259,7 +258,7 @@
 				  <div class="span6">
 				    <label><?=lang('pdt_accommodationPeopleNumber')?>
 				      <div class="control-group">
-				        <input type="text" class="input-block-level accommodationPeopleNumber"/>
+				        <input id="accommodationPeopleNumber" type="text" class="input-block-level"/>
 				      </div>
 				    </label>
 				  </div>
@@ -274,16 +273,16 @@
 		  	<h4><?=lang('pdt_pass')?></h4>
 				<div class="row-fluid">
 					<label class="checkbox">
-					    <input type="checkbox" value="option2" id="inlineCheckbox2"> <?=lang('pdt_busTransportKind')?>
+					    <input id="busTransportKind" type="checkbox" value="busTransportKind"> <?=lang('pdt_busTransportKind')?>
 					</label>
 					<label class="checkbox">
-					    <input type="checkbox" value="option2" id="inlineCheckbox2"> <?=lang('pdt_shipTransportKind')?>
+					    <input id="shipTransportKind" type="checkbox" value="shipTransportKind"> <?=lang('pdt_shipTransportKind')?>
 					</label>
 					<label class="checkbox">
-					    <input type="checkbox" value="option2" id="inlineCheckbox2"> <?=lang('pdt_flightTransportKind')?>
+					    <input id="flightTransportKind" type="checkbox" value="flightTransportKind"> <?=lang('pdt_flightTransportKind')?>
 					</label>
 					<label class="checkbox">
-					    <input type="checkbox" value="option2" id="inlineCheckbox2"> <?=lang('pdt_railTransportKind')?>
+					    <input id="railTransportKind" type="checkbox" value="railTransportKind"> <?=lang('pdt_railTransportKind')?>
 					</label>
 				</div>
 			</div>
@@ -296,29 +295,29 @@
 		  	<h4><?=lang('pdt_work')?></h4>
 				<div class="row-fluid">
 					<label class="checkbox">
-					    <input type="checkbox" value="option2" id="inlineCheckbox2"> <?=lang('pdt_workFreeKind')?>
+					    <input id="workFreeKind" type="checkbox" value="workFreeKind"> <?=lang('pdt_workFreeKind')?>
 					</label>
 					<label class="checkbox">
-					    <input type="checkbox" value="option2" id="inlineCheckbox2"> <?=lang('pdt_workKind')?>
+					    <input id="workKind" type="checkbox" value="workKind"> <?=lang('pdt_workKind')?>
 					</label>
 					<label class="checkbox">
-					    <input type="checkbox" value="option2" id="inlineCheckbox2"> <?=lang('pdt_traineeFreeKind')?>
+					    <input id="traineeFreeKind" type="checkbox" value="traineeFreeKind"> <?=lang('pdt_traineeFreeKind')?>
 					</label>
 					<label class="checkbox">
-					    <input type="checkbox" value="option2" id="inlineCheckbox2"> <?=lang('pdt_traineeKind')?>
+					    <input id="traineeKind" type="checkbox" value="traineeKind"> <?=lang('pdt_traineeKind')?>
 					</label>
 				</div>
 			</div>
 		</div>
   </div>
 
-  <div class="tab-pane" id="tourism">
+  <div class="tab-pane" id="tourismTab">
 		<div class="row-fluid">
 		  <div class="span24 well well-mini">
 		  	<h4><?=lang('pdt_tourism')?></h4>
 				<div class="row-fluid">
 					<label class="checkbox">
-					    <input type="checkbox" value="option2" id="inlineCheckbox2"> atividades turísticas como visitar museus, cidades, fazer trilhas, escaladas
+					    <input id="tourism" type="checkbox" value="tourism" > atividades turísticas como visitar museus, cidades, fazer trilhas, escaladas
 					</label>
 					atividades de interesse
 					<input type="text" class="input-block-level" />

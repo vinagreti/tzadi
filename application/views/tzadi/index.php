@@ -26,7 +26,7 @@
         <a class="btn btn-large btn-success" href="<?=base_url()?><?=lang('rt_signup')?>"><?=lang('tmpt_signup')?></a>
       </div>
       <div class="span6">
-        <img src="<?=base_url()?>assets/img/globe.png?v=2" style="width:100%; height:100%;"></im>
+        <img src="<?=base_url()?>assets/img/globe_green_565.jpg?v=2" style="width:100%; height:100%;"></im>
       </div>
     </div>
   </div>
@@ -36,7 +36,7 @@
   <div class="span24 home-agency-bg">
     <div class="row-fluid">
       <div class="span6">
-        <img src="<?=base_url()?>assets/img/globe.png?v=2" style="width:100%; height:100%;"></im>
+        <img src="<?=base_url()?>assets/img/globe_green_565.jpg?v=2" style="width:100%; height:100%;"></im>
       </div>
       <div class="span17 centered-text">
         <h2><?=lang('idx_Agency')?></h2>
@@ -58,7 +58,7 @@
         <a class="btn btn-large btn-success" href="<?=base_url()?><?=lang('rt_signup')?>"><?=lang('tmpt_signup')?></a>
       </div>
       <div class="span6">
-        <img src="<?=base_url()?>assets/img/globe.png?v=2" style="width:100%; height:100%;"></im>
+        <img src="<?=base_url()?>assets/img/globe_green_565.jpg?v=2" style="width:100%; height:100%;"></im>
       </div>
     </div>
   </div>
