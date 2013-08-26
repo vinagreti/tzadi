@@ -286,10 +286,12 @@ class User_Model extends CI_Model {
 
             $this->load->helper('date');
 
+            $name = substr($data["email"], 0, strpos($data["email"], "@"));
+
             $this->mongo_db->insert('user',
                 array(
                     "_id" => $this->mongo_model->newID()
-                    , "name" => strtolower($data["email"])
+                    , "name" => strtolower($name)
                     , "email" => strtolower($data["email"])
                     , "password" => md5($data["password"])
                     , "kind" => "new"
