@@ -6,7 +6,7 @@ class Landing extends My_Controller {
     // define os tipos de usuarios que podem acessar a classe Task
     parent::__construct();
     
-    $this->lang->load('index', $this->session->userdata('language'));
+    $this->lang->load('landing', $this->session->userdata('language'));
 
   }
 
