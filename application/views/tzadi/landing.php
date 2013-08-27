@@ -9,11 +9,12 @@
         <br></br>
         <div class="row-fluid">
           <div class="span12 pull-right">
-            <h2 class="lead"><?=lang('idx_explanation')?></h2>
+            <h2 class="lead text-center"><?=lang('idx_explanation')?></h2>
             <ul>
-              <li>gerencia seus fornecedores, produtos e clientes</li>
-              <li>exibe seus produtos em sua vitrine virtual</li>
-              <li>cria sua identidade na internet</li>
+              <li>cria sua identidade na internet traduzida para três idiomas. Português, Inglês e Espanhol.</li>
+              <li>gerencia seus fornecedores, produtos e clientes.</li>
+              <li>exibe seus produtos em sua vitrine virtual.</li>
+              <li>faz conversões de moedas em um só clique. Você e seus clientes nunca mais terão que ficar perdendo tempo convertendo o preço de seus produtos.</li>
             </ul>
           </div>
           <div class="span12 text-center pull-left">
@@ -29,7 +30,9 @@
                 <a src="#" class="btn btn-large btn-success btn-block" id="submitLogin"> <?=lang("tmpt_signup")?></a>
               </div>
             </div>
-            <p class="text-center"><?=lang("usr_orUse")?><p>
+            <br>
+            <p class="text-center"><?=lang("usr_orUse")?></p>
+
             <a id="facebook" class="btn  btn-primary" href="#"><i class="icon-facebook icon-large"></i> facebook</a>
             <a id="google" class="btn  btn-danger" href="#"><i class="icon-google-plus icon-large"></i> google</a>
             <a id="linkedin" class="btn  btn-info" href="#"><i class="icon-linkedin icon-large"></i> linkedin</a>

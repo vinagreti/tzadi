@@ -25,7 +25,7 @@ class My_Controller extends CI_Controller{
 
     $sslMethods = array("signup"
       , "login"
-      , "landing"
+      , "index"
       , "facebookAuthenticate"
       , "linkedinAuthenticate"
       , "googleAuthenticate"
