@@ -1,7 +1,7 @@
 <?php
 $lang['idx_title'] = 'TZADI. O mundo do intercâmbio conectado!';
-$lang['idx_phrase'] = 'O mundo do intercâmbio conectado!';
-$lang['idx_explanation'] = 'A TZADI é uma plataforma de relacionamento entre intercambistas, agenciadores e fornecedores, com a missão de conectar, organizar e simplificar este ecossistema.';
+$lang['idx_phrase'] = 'O melhor sistema para gerênciar agências de intercâmbio!';
+$lang['idx_explanation'] = 'Com a TZADI, você tem em suas mãos uma ferramenta especialmente desenvolvida para:';
 $lang['idx_areYouAn'] = "Você é um";
 $lang['idx_orAn'] = "ou uma";
 $lang['idx_areYouStudentOrInstitution'] = "Você é um intercambista ou desenvolve algum produto ou serviço para intercambistas?";

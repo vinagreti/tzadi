@@ -23,6 +23,8 @@
 		  <input id="identity" type="text" class="input-block-level" name="identity">
 		  <h4><?=lang("usr_addressLabel")?>: <span id="address" class="text-success"><span ></span></h4>
 		</div>
+		<p><button id="finishSignup" class="btn btn-primary"><?=lang('usr_finishSignupButton')?></button><p>
+		<div class="usr_pleaseFillEverithing hide"><?=lang("usr_pleaseFillEverithingCorrectly")?></div>
 	</div>
 </div>
 
@@ -45,6 +47,3 @@
 		</p>
 	</div>
 </div> -->
-
-<p><button id="finishSignup" class="btn btn-primary"><?=lang('usr_finishSignupButton')?></button><p>
-<div class="usr_pleaseFillEverithing hide"><?=lang("usr_pleaseFillEverithingCorrectly")?></div>
