@@ -14,6 +14,7 @@
               <li>cria sua identidade na internet traduzida para três idiomas. Português, Inglês e Espanhol.</li>
               <li>gerencia seus fornecedores, produtos e clientes.</li>
               <li>exibe seus produtos em sua vitrine virtual.</li>
+              <li>possibilita que seus clientes criem seus próprios pacotes e orçamentos.</li>
               <li>faz conversões de moedas em um só clique. Você e seus clientes nunca mais terão que ficar perdendo tempo convertendo o preço de seus produtos.</li>
             </ul>
           </div>
