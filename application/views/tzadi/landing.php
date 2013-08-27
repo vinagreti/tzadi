@@ -17,12 +17,13 @@
               <li>possibilita que seus clientes criem seus próprios pacotes e orçamentos.</li>
               <li>faz conversões de moedas em um só clique. Você e seus clientes nunca mais terão que ficar perdendo tempo convertendo o preço de seus produtos.</li>
               <li>cria seu blog. Sabia que gerar conteúdo para seus clientes faz com que eles confiem em você?</li>
+              <li>se conecta às mídias sociais sem precisar configurar nada.</li>
             </ul>
-            <p class='text-center'>Não perca mais tempo crie sua conta agora mesmo.</p>
+            <p class='text-center'>Tudo de forma muito simples e intuitiva.</p>
           </div>
           <div class="span12 text-center pull-left">
-            <br></br>
-            <p>Tudo isso com apenas alguns cliques</p>
+            <br></br><br>
+            <p>O que está esperando?</p>
             <div class="control-group">
               <input type="text" class="span20" placeholder="<?=lang("usr_enter_mail")?>" id="email" name="email">
             </div>
