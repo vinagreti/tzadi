@@ -30,7 +30,7 @@ class My_Controller extends CI_Controller{
       , "googleAuthenticate"
       );
 
-    if( ENVIRONMENT == "tzadi.local" ) {
+    if( ENVIRONMENT == "tzadi.com" ) {
 
       if( ( in_array($this->router->method, $sslMethods) || $this->router->class == "landing" ) && strpos(current_url(),'https') === false ){
 
