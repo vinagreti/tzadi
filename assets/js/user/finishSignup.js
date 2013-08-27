@@ -31,7 +31,7 @@ $(document).ready(function(){
         tzadiToken : tzadiToken
         , name : $("#name").val()
         , identity : $("#identity").val()
-        , kind : $(".accountKind:checked").val()
+        //, kind : $(".accountKind:checked").val()
 
       };
 

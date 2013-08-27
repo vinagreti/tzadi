@@ -8,7 +8,7 @@
  */
 TzadiJS.prototype.geocomplete = function( element, callback ){
 
-	$("#campusAddress")
+	$(element)
 	  .geocomplete()
 	  .bind("geocode:result", function(event, result){
 	    var addressData = tzdGeocodeGetAddressData(result);

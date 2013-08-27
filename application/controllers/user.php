@@ -201,7 +201,7 @@ class User extends My_Controller {
     $this->load->model("user_model");
 
     if( $this->input->post() )
-      echo json_encode( $this->user_model->set( $this->input->post() ) );
+      echo json_encode( $this->user_model->setInterests( $this->input->post() ) );
 
     else {
 

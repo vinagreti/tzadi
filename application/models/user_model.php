@@ -341,6 +341,8 @@ class User_Model extends CI_Model {
 
     public function finishSignup( $user ){
 
+        $user["kind"] = "agency";
+
         if( ! isset( $user["kind"] ) || ! isset( $user["name"] ) || ! isset( $user["identity"] ) ) {
 
             $res->error = "favor informar todos os dados";
@@ -537,25 +539,27 @@ class User_Model extends CI_Model {
 
     public function set( $data ){
 
+        if( isset( $data["name"] ) )
+        $userData["name"] = $data["name"];
+        if( isset( $data["about"] ) )        
+        $userData["about"] = $data["about"];
+        if( isset( $data["termsOfUse"] ) )        
+        $userData["termsOfUse"] = $data["termsOfUse"];
+        if( isset( $data["privacyPolicy"] ) )        
+        $userData["privacyPolicy"] = $data["privacyPolicy"];
+
         $edited = $this->mongo_db
             ->where( '_id', (int) $this->session->userdata("_id") )
-            ->set(
-                array(
-                "name" => $data["name"]
-                , "about" => $data["about"]
-                , "termsOfUse" => $data["termsOfUse"]
-                , "privacyPolicy" => $data["privacyPolicy"]
-                )
-            )
+            ->set($userData)
             ->update("user");
 
-        if( $edited ) {
+        if( $userData["name"] ) {
 
             $res->success = "Salvo!";
 
-            $this->session->set_userdata('name', $data["name"]);
+            $this->session->set_userdata('name', $userData["name"]);
 
-            $this->session->set_userdata('profileName', $data["name"]);
+            $this->session->set_userdata('profileName', $userData["name"]);
 
         }
 
@@ -563,6 +567,12 @@ class User_Model extends CI_Model {
             $res->success = "Erro ao salvar!";
 
         return $res;
+
+    }
+
+    public function setInterests( $data ){
+
+        return $data[0];
 
     }
 

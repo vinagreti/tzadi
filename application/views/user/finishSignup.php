@@ -26,7 +26,7 @@
 	</div>
 </div>
 
-<div class="row-fluid">
+<!-- <div class="row-fluid">
 	<div class="span22 offset1">
 		<p>
 			<label class="text-warning"><?=lang('usr_whatBringYouHere')?></label>
@@ -43,7 +43,8 @@
 			  	<?=lang("usr_supplier")?>
 			</label>
 		</p>
-		<p><button id="finishSignup" class="btn btn-primary"><?=lang('usr_finishSignupButton')?></button><p>
-		<div class="usr_pleaseFillEverithing hide"><?=lang("usr_pleaseFillEverithingCorrectly")?></div>
 	</div>
-</div>
+</div> -->
+
+<p><button id="finishSignup" class="btn btn-primary"><?=lang('usr_finishSignupButton')?></button><p>
+<div class="usr_pleaseFillEverithing hide"><?=lang("usr_pleaseFillEverithingCorrectly")?></div>
