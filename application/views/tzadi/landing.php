@@ -50,7 +50,7 @@
     </div>
   </div>
 </div>
-
+<!-- 
 <div class="row-fluid" id="school">
   <div class="span24 home-school-bg">
     <div class="row-fluid">
@@ -97,7 +97,7 @@
       </div>
     </div>
   </div>
-</div>
+</div> -->
 
 <div class="usr_validate_mail hide"><?=lang("usr_validate_mail")?></div>
 <div class="usr_validate_password hide"><?=lang("usr_validate_password")?></div>
