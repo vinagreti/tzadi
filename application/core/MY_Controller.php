@@ -25,15 +25,14 @@ class My_Controller extends CI_Controller{
 
     $sslMethods = array("signup"
       , "login"
-      , "index"
       , "facebookAuthenticate"
       , "linkedinAuthenticate"
       , "googleAuthenticate"
       );
 
-    if( ENVIRONMENT == "tzadi.com" ) {
+    if( ENVIRONMENT == "tzadi.local" ) {
 
-      if( in_array($this->router->method, $sslMethods) && strpos(current_url(),'https') === false ){
+      if( ( in_array($this->router->method, $sslMethods) || $this->router->class == "landing" ) && strpos(current_url(),'https') === false ){
 
         $url  = str_replace("http", "https", current_url());
 
@@ -43,7 +42,7 @@ class My_Controller extends CI_Controller{
 
         redirect($url);
         
-      } else if( ! in_array($this->router->method, $sslMethods) && strpos(current_url(),'https') !== false ){
+      } else if( ! ( in_array($this->router->method, $sslMethods) || $this->router->class == "landing" ) && strpos(current_url(),'https') !== false ){
 
         $url  = str_replace("https", "http", current_url());
 
