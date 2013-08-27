@@ -11,7 +11,7 @@
             <br>
             <h2 class="lead text-center"><?=lang('idx_explanation')?></h2>
             <ul>
-              <li>cria sua identidade na internet traduzida para três idiomas. Português, Inglês e Espanhol.</li>
+              <li>cria sua identidade na internet traduzida para dois idiomas. Português e Inglês.</li>
               <li>gerencia seus fornecedores, produtos e clientes.</li>
               <li>exibe seus produtos em sua vitrine virtual.</li>
               <li>possibilita que seus clientes criem seus próprios pacotes e orçamentos.</li>
