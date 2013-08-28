@@ -72,7 +72,7 @@
     <script src="<?=base_url()?>assets/third_party/JQuery/jquery.js"></script>
     <script src="<?=base_url()?>assets/third_party/JQuery/jquery.cookie.js"></script>
     <script src="<?=base_url()?>assets/third_party/JQuery/jquery.mask.min.js"></script>
-    <script src="http://maps.google.com/maps/api/js?libraries=places&region=uk&language=en&sensor=false"></script>
+    <script src="https://maps.google.com/maps/api/js?libraries=places&region=uk&language=en&sensor=false"></script>
     <script src="<?=base_url()?>assets/third_party/JQuery/jquery.geocomplete.min.js"></script>
 
     <!-- Loading the bootstrap js scripts -->

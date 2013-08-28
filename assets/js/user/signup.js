@@ -83,6 +83,8 @@ window.fbAsyncInit = function() {
   // Additional initialization code such as adding Event Listeners goes here
   $("#facebook").live("click", function(){
 
+    console.log("jdjdjd");
+
     FB.login( function(response) {
 
       if(response.status === "connected") {

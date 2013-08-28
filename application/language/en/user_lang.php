@@ -58,3 +58,5 @@ $lang["usr_YourTzadiAddressIs"] = "Agora você pode acessar diretamente seu perf
 $lang["usr_AddressAdvantage"] = "É isso mesmo, a TZADI lhe dá o domínio gratuitamente. Chega de gastar dinheiro para ter um endereço descente na internet.";
 $lang["usr_interests"] = "Interesses";
 $lang["usr_proposals"] = "Propostas";
+$lang["su_theEmail"] = "O e-mail";
+$lang["su_isAlreadyInUse"] = "já está sendo utilizado";

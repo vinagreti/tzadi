@@ -38,12 +38,14 @@
             <br>
             <p class="text-center"><?=lang("usr_orUse")?></p>
 
-            <a id="facebook" class="btn  btn-primary" href="#"><i class="icon-facebook icon-large"></i> facebook</a>
-            <a id="google" class="btn  btn-danger" href="#"><i class="icon-google-plus icon-large"></i> google</a>
-            <a id="linkedin" class="btn  btn-info" href="#"><i class="icon-linkedin icon-large"></i> linkedin</a>
+            <a id="facebook" class="btn  btn-primary"><i class="icon-facebook icon-large"></i> facebook</a>
+            <a id="google" class="btn  btn-danger"><i class="icon-google-plus icon-large"></i> google</a>
+            <a id="linkedin" class="btn  btn-info"><i class="icon-linkedin icon-large"></i> linkedin</a>
+
             <div class="usr_validate_mail hide"><?=lang("usr_validate_mail")?></div>
             <div class="usr_validate_password hide"><?=lang("usr_validate_password")?></div>
             <div id="buttonContent" style="display: none;"></div>
+            
           </div>
         </div>
       </div>
