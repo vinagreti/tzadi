@@ -9,11 +9,7 @@ class Privacy extends My_Controller {
 
 	public function index() {
 
-    $this->load->model("user_model");
-
-    $data->user = $this->user_model->getByIdentity(IDENTITY);
-
-    $data->view = 'user/privacyPolicy';
+    $data->view = 'tzadi/privacyPolicy';
 
     $data->page_title = lang('pvc_page_title');
 

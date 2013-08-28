@@ -9,9 +9,7 @@ class About extends My_Controller {
 
 	public function index()
 	{
-    $data->view = 'user/about';
-    $this->load->model("user_model");
-    $data->user = $this->user_model->getByIdentity(IDENTITY);
+    $data->view = 'tzadi/about';
     $data->page_title = lang('abt_page_title');
     $this->page->load($data);
   }

@@ -9,11 +9,7 @@ class TermsOfUse extends My_Controller {
 
 	public function index() {
 
-    $this->load->model("user_model");
-
-    $data->user = $this->user_model->getByIdentity(IDENTITY);
-
-    $data->view = 'user/termsOfUse';
+    $data->view = 'tzadi/termsOfUse';
 
     $data->page_title = lang('term_page_title');
 

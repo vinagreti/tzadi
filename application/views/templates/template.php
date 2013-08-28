@@ -59,7 +59,6 @@
     <hr>
 
     <div class="footer">
-        <h6>&nbsp; <?=$this->session->userdata("profileName")?></h6>
         <ul>
           <small><li><a href="<?=base_url()?><?=lang('rt_about')?>"><?=lang('tmpt_AboutUs')?></a></li></small>
           <small><li><a href="<?=base_url()?><?=lang('rt_contact')?>"><?=lang('tmpt_ContactUs')?></a></li></small>

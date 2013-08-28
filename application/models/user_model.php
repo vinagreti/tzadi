@@ -484,21 +484,6 @@ class User_Model extends CI_Model {
         $this->mongo_db->set("id", 0)->update('counter');
         $this->mongo_db->insert('counter', array("id" => 0));
 
-        $this->load->helper('date');
-
-        $this->mongo_db->insert('user',
-            array(
-                "_id" => $this->mongo_model->newID()
-                , "name" => strtoupper("TZADI")
-                , "email" => "admin@tzadi.com"
-                , "password" => md5("Dublin2010ireland")
-                , "kind" => "student"
-                , "register" => now()
-                , "identity" => "tzadi"
-                , "img" => "http://".ENVIRONMENT."/assets/img/72x72.png"
-            )
-        );
-
     }
 
   function changeImg()
@@ -541,12 +526,6 @@ class User_Model extends CI_Model {
 
         if( isset( $data["name"] ) )
         $userData["name"] = $data["name"];
-        if( isset( $data["about"] ) )        
-        $userData["about"] = $data["about"];
-        if( isset( $data["termsOfUse"] ) )        
-        $userData["termsOfUse"] = $data["termsOfUse"];
-        if( isset( $data["privacyPolicy"] ) )        
-        $userData["privacyPolicy"] = $data["privacyPolicy"];
 
         $edited = $this->mongo_db
             ->where( '_id', (int) $this->session->userdata("_id") )
