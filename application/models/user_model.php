@@ -319,7 +319,6 @@ class User_Model extends CI_Model {
                 $res->error = lang("su_theEmail");
                 $res->error .= " <strong>".$user["email"]."</strong> ";
                 $res->error .= lang("su_isAlreadyInUse")." ";
-                $res->error .= lang("su_emailUsedTips");
 
             } else {
 

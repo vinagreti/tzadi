@@ -101,21 +101,7 @@
   </div>
 </div> -->
 
-<div class="usr_validate_mail hide"><?=lang("usr_validate_mail")?></div>
-<div class="usr_validate_password hide"><?=lang("usr_validate_password")?></div>
-<div id="buttonContent" style="display: none;"></div>
-
 <script type="text/javascript">
-  // isso deve ser carregado no js de cada pagina. como o index nao tem js dedicado, colocamos aqui manualmente.
-  // Load the FACEBOOK SDK asynchronously - like
-  (function(d, s, id) {
-      var js, fjs = d.getElementsByTagName(s)[0];
-      if (d.getElementById(id)) return;
-      js = d.createElement(s); js.id = id;
-      js.src = "//connect.facebook.net/en_GB/all.js#xfbml=1&appId=532888376778430";
-      fjs.parentNode.insertBefore(js, fjs);
-  }(document, 'script', 'facebook-jssdk'));
-      
   // Load the GOOGLE plusone asynchronously
   (function() {
     var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
