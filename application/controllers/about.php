@@ -9,9 +9,13 @@ class About extends My_Controller {
 
 	public function index()
 	{
-    $data->view = 'tzadi/about';
+
     $data->page_title = lang('abt_page_title');
+
+    $data->view = 'tzadi/about';
+
     $this->page->load($data);
+    
   }
 }
 
