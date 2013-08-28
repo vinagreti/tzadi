@@ -5,6 +5,8 @@ class My_Controller extends CI_Controller{
   public function __construct() {
     parent::__construct();
 
+    $this->defineIdentity();
+
     $this->handleSSL();
 
     $this->setUserKind();
@@ -17,59 +19,45 @@ class My_Controller extends CI_Controller{
 
     $this->loadCurrency();
 
-    $this->loadIdentityInfo();
+  }
+
+  private function defineIdentity(){
+
+    $subdomain = rtrim(strstr($_SERVER["HTTP_HOST"], ENVIRONMENT, true), '.');
+
+    if( $subdomain ) {
+
+      define('IDENTITY', $subdomain);
+
+      $this->loadIdentityInfo();
+
+    } else {
+
+      $this->session->set_userdata("ownProfile", false);
+      
+    }
 
   }
 
   private function handleSSL(){
 
-    $sslMethods = array("signup"
-      , "login"
-      , "facebookAuthenticate"
-      , "linkedinAuthenticate"
-      , "googleAuthenticate"
-      );
-
-    if( ENVIRONMENT == "tzadi.com" ) {
-
-      if( ( in_array($this->router->method, $sslMethods) || $this->router->class == "landing" ) && strpos(current_url(),'https') === false ){
-
-        $url  = str_replace("http", "https", current_url());
-
-        $url  = str_replace("/index.php", "", $url);
-
-        if(defined('IDENTITY')) $url  = str_replace( IDENTITY.".", "", $url);
-
-        redirect($url);
-        
-      } else if( ! in_array($this->router->method, $sslMethods) && $this->router->class != "landing" && strpos(current_url(),'https') !== false ){
+    if( defined('IDENTITY') && strpos(current_url(),'https') !== false ) {
 
         $url  = str_replace("https", "http", current_url());
 
         $url  = str_replace("/index.php", "", $url);
 
-        if(defined('IDENTITY')) $url  = str_replace( IDENTITY.".", "", $url);
-
         redirect($url);
 
-      }
-    } else if( strpos(current_url(),'https') !== false ) {
+    }
 
-      $url  = str_replace("https", "http", current_url());
+    if ( ! defined('IDENTITY') && strpos(current_url(),'https') === false ) {
 
-      $url  = str_replace("/index.php", "", $url);
+        $url  = str_replace("http", "https", current_url());
 
-      redirect($url);
+        $url  = str_replace("/index.php", "", $url);
 
-    } 
-
-    if( in_array($this->router->method, $sslMethods) && defined('IDENTITY') ){
-
-      $url  = str_replace( IDENTITY.".", "",  current_url());
-
-      $url  = str_replace("/index.php", "", $url);
-
-      redirect($url);
+        redirect($url);
 
     }
 
@@ -168,14 +156,6 @@ class My_Controller extends CI_Controller{
   }
 
   private function loadIdentityInfo(){
-
-    $subdomain = rtrim(strstr($_SERVER["HTTP_HOST"], ENVIRONMENT, true), '.');
-
-    if( $subdomain )
-      define('IDENTITY', $subdomain);
-
-    else
-      define('IDENTITY', "tzadi");
 
     if( ! $this->session->userdata("profileIdentity") || $this->session->userdata("profileIdentity") != IDENTITY ) {
       

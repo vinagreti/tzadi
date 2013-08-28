@@ -18,11 +18,25 @@ class Page {
     if( $this->CI->session->userdata("ownProfile") )
       $data->navbar = $this->CI->load->view($this->CI->session->userdata("profileKind")."/navbar_private", $data, true);
 
-    else if( $this->CI->session->userdata("_id") )
-      $data->navbar = $this->CI->load->view($this->CI->session->userdata("profileKind")."/navbar_public_logged", $data, true);
+    else if( $this->CI->session->userdata("_id") ) {
 
-    else
-      $data->navbar = $this->CI->load->view($this->CI->session->userdata("profileKind")."/navbar_public", $data, true);
+      if( defined("IDENTITY") )
+        $data->navbar = $this->CI->load->view($this->CI->session->userdata("profileKind")."/navbar_public_logged", $data, true);
+
+      else
+        $data->navbar = $this->CI->load->view("tzadi/navbar_public_logged", $data, true);
+
+    }
+
+    else {
+
+      if( defined("IDENTITY") )
+        $data->navbar = $this->CI->load->view($this->CI->session->userdata("profileKind")."/navbar_public", $data, true);
+
+      else
+        $data->navbar = $this->CI->load->view("tzadi/navbar_public", $data, true);
+
+    }
 
     $data->content = $this->CI->load->view($data->view, $data, true);
 

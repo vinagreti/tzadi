@@ -20,7 +20,7 @@ class Landing extends My_Controller {
   public function landing()
   {
 
-    if( $this->session->userdata("profileIdentity") == "tzadi" )
+    if( ! defined('IDENTITY') )
       $data->view = 'tzadi/landing';
     
     else if( $this->session->userdata("identity") == $this->session->userdata("profileIdentity") )
