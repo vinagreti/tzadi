@@ -27,6 +27,7 @@ class Product_Model extends CI_Model {
   function getPublic()
   {
     return $this->mongo_db
+      ->where('owner', $this->session->userdata("profileID"))
       ->where('vitrine', "yes")
       ->where('status', "active")
       ->order_by(array('name' => 'asc'))
