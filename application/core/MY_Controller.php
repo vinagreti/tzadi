@@ -29,12 +29,36 @@ class My_Controller extends CI_Controller{
 
       define('IDENTITY', $subdomain);
 
-      $this->loadIdentityInfo();
-
-    } else {
-
-      $this->session->set_userdata("ownProfile", false);
+      $this->load->model("user_model");
       
+      $user = $this->user_model->getByIdentity(IDENTITY);
+
+      if($user){
+
+        if( $user["_id"] == $this->session->userdata("_id") )
+          $this->session->set_userdata("ownProfile", true);
+
+        else
+          $this->session->set_userdata("ownProfile", false);
+
+        $this->session->set_userdata("profileIdentity", IDENTITY);
+
+        $this->session->set_userdata("profileID", $user["_id"]);
+
+        $this->session->set_userdata("profileName", $user["name"]);
+
+        $this->session->set_userdata("profileImg", $user["img"]);
+
+        $this->session->set_userdata("profileKind", $user["kind"] );
+       
+      } else if( $this->router->method != "identityNotFound" ) {
+        
+        $this->session->set_flashdata('IDENTITY', IDENTITY);
+        
+        redirect('http://'.ENVIRONMENT.'/error/identityNotFound', 'refresh');
+
+      }
+
     }
 
   }
@@ -166,50 +190,6 @@ class My_Controller extends CI_Controller{
     $this->lang->load('template', $this->session->userdata('language'));
 
     $this->lang->load('route', $this->session->userdata('language'));
-
-  }
-
-  private function loadIdentityInfo(){
-
-    if( ! $this->session->userdata("profileIdentity") || $this->session->userdata("profileIdentity") != IDENTITY ) {
-      
-      $this->load->model("user_model");
-      
-      $user = $this->user_model->getByIdentity(IDENTITY);
-
-      if($user){
-
-        if( $user["_id"] == $this->session->userdata("_id") )
-          $this->session->set_userdata("ownProfile", true);
-
-        else
-          $this->session->set_userdata("ownProfile", false);
-
-        $this->session->set_userdata("profileIdentity", IDENTITY);
-
-        $this->session->set_userdata("profileID", $user["_id"]);
-
-        $this->session->set_userdata("profileName", $user["name"]);
-
-        $this->session->set_userdata("profileImg", $user["img"]);
-
-        if( IDENTITY == "tzadi" )
-          $this->session->set_userdata("profileKind", "tzadi" );
-
-        else
-          $this->session->set_userdata("profileKind", $user["kind"] );
-
-        if( isset( $user["brief"] ) ) $this->session->set_userdata("profileBrief", $user["brief"]);
-        
-      } else if( $this->router->method != "identityNotFound" ) {
-        
-        $this->session->set_flashdata('IDENTITY', IDENTITY);
-        
-        redirect('http://'.ENVIRONMENT.'/error/identityNotFound', 'refresh');
-
-      }
-
-    }
 
   }
 

@@ -11,13 +11,13 @@
             <br>
             <h2 class="lead text-center"><?=lang('idx_explanation')?></h2>
             <ul>
-              <li>cria sua identidade na internet traduzida para dois idiomas. Português e Inglês.</li>
-              <li>gerencia seus fornecedores, produtos e clientes.</li>
-              <li>exibe seus produtos em sua vitrine virtual.</li>
-              <li>possibilita que seus clientes criem seus próprios pacotes e orçamentos.</li>
-              <li>faz conversões de moedas em um só clique. Você e seus clientes nunca mais terão que ficar perdendo tempo convertendo o preço de seus produtos.</li>
-              <li>cria seu blog. Sabia que gerar conteúdo para seus clientes faz com que eles confiem em você?</li>
-              <li>se conecta às mídias sociais sem precisar configurar nada.</li>
+              <p><i class="icon-ok"></i> cria sua identidade na internet traduzida para dois idiomas. Português e Inglês.</p>
+              <p><i class="icon-ok"></i> gerencia seus fornecedores, produtos e clientes.</p>
+              <p><i class="icon-ok"></i> exibe seus produtos em sua vitrine virtual.</p>
+              <p><i class="icon-ok"></i> possibilita que seus clientes criem seus próprios pacotes e orçamentos.</p>
+              <p><i class="icon-ok"></i> faz conversões de moedas em um só clique. Você e seus clientes nunca mais terão que ficar perdendo tempo convertendo o preço de seus produtos.</p>
+              <p><i class="icon-ok"></i> cria seu blog. Sabia que gerar conteúdo para seus clientes faz com que eles confiem em você?</p>
+              <p><i class="icon-ok"></i> se conecta às mídias sociais sem precisar configurar nada.</p>
             </ul>
             <p class='text-center'>Tudo de forma muito simples e intuitiva.</p>
           </div>

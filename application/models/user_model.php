@@ -103,6 +103,7 @@ class User_Model extends CI_Model {
                 , "password" => md5($passwd)
                 , "kind" => "new"
                 , "img" => "http://".ENVIRONMENT."/assets/img/no_photo_640x480.png"
+                , "register" => now()
                 )
               );
 
@@ -178,6 +179,7 @@ class User_Model extends CI_Model {
                 , "password" => md5($passwd)
                 , "kind" => "new"
                 , "img" => "http://".ENVIRONMENT."/assets/img/no_photo_640x480.png"
+                , "register" => now()
                 )
               );
 
@@ -255,6 +257,7 @@ class User_Model extends CI_Model {
                 , "password" => md5($passwd)
                 , "kind" => "new"
                 , "img" => "http://".ENVIRONMENT."/assets/img/no_photo_640x480.png"
+                , "register" => now()
                 )
               );
 
