@@ -90,9 +90,12 @@ class User_Model extends CI_Model {
         } else {
 
             $this->load->model("mongo_model");
+
             $newID = $this->mongo_model->newID();
 
             $passwd = time();
+
+            $this->load->helper('date');
 
             $this->mongo_db->insert('user',
               array(
@@ -166,9 +169,12 @@ class User_Model extends CI_Model {
         } else {
 
             $this->load->model("mongo_model");
+
             $newID = $this->mongo_model->newID();
 
             $passwd = time();
+
+            $this->load->helper('date');
 
             $this->mongo_db->insert('user',
               array(
@@ -244,9 +250,12 @@ class User_Model extends CI_Model {
         } else {
 
             $this->load->model("mongo_model");
+
             $newID = $this->mongo_model->newID();
 
             $passwd = time();
+
+            $this->load->helper('date');
 
             $this->mongo_db->insert('user',
               array(

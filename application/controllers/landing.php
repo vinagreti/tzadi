@@ -27,7 +27,7 @@ class Landing extends My_Controller {
       $data->view = $this->session->userdata("profileKind").'/index_private';
 
     else
-      $data->view = $this->session->userdata("profileKind").'/index_public';
+      redirect(base_url().lang("rt_vitrine"));
 
     $this->lang->load('user', $this->session->userdata('language'));
     $data->dynJS = 'user/signup';
