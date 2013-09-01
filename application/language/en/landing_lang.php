@@ -1,6 +1,6 @@
 <?php
 $lang['idx_title'] = 'TZADI. O mundo do intercâmbio conectado!';
-$lang['idx_phrase'] = 'O melhor sistema para gerenciar agências de intercâmbio!';
+$lang['idx_phrase'] = 'O melhor sistema para gerenciar agências de intercâmbio e viagem!';
 $lang['idx_explanation'] = 'Com a TZADI você:';
 $lang['idx_areYouAn'] = "Você é um";
 $lang['idx_orAn'] = "ou uma";

@@ -137,7 +137,7 @@ class My_Controller extends CI_Controller{
 
         default:
 
-          $this->session->set_userdata('language', "en");
+          $this->session->set_userdata('language', "pt");
 
           break;
 

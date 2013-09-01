@@ -381,7 +381,7 @@ class User_Model extends CI_Model {
                             array(
                                 "kind" => $user["kind"]
                                 , "name" => $user["name"]
-                                , "identity" => $user["identity"]
+                                , "identity" => strtolower($user["identity"])
                             )
                         )
                         ->update("user");
