@@ -41,7 +41,9 @@ class My_Controller extends CI_Controller{
 
   private function handleSSL(){
 
-    if( defined('IDENTITY') && strpos(current_url(),'https') !== false ) {
+    if( ENVIRONMENT == "tzadi.com" ){
+
+      if( defined('IDENTITY') && strpos(current_url(),'https') !== false ) {
 
         $url  = str_replace("https", "http", current_url());
 
@@ -49,9 +51,9 @@ class My_Controller extends CI_Controller{
 
         redirect($url);
 
-    }
+      }
 
-    if ( ! defined('IDENTITY') && strpos(current_url(),'https') === false ) {
+      if ( ! defined('IDENTITY') && strpos(current_url(),'https') === false ) {
 
         $url  = str_replace("http", "https", current_url());
 
@@ -59,7 +61,19 @@ class My_Controller extends CI_Controller{
 
         redirect($url);
 
+      }
+
+    } else if( strpos(current_url(),'https') !== false ){
+
+      $url  = str_replace("https", "http", current_url());
+
+      $url  = str_replace("/index.php", "", $url);
+
+      redirect($url);
+
     }
+
+
 
   }
 
