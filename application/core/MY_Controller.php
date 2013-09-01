@@ -55,10 +55,14 @@ class My_Controller extends CI_Controller{
         
         $this->session->set_flashdata('IDENTITY', IDENTITY);
         
-        redirect('http://'.ENVIRONMENT.'/error/identityNotFound', 'refresh');
+        redirect('http://'.IDENTITY.".".ENVIRONMENT.'/error/identityNotFound', 'refresh');
 
       }
 
+    } else {
+
+      $this->session->set_userdata("ownProfile", false);
+      
     }
 
   }
