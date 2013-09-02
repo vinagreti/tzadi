@@ -6,8 +6,13 @@
  * Copyright 2013 Bruno da Silva Joao
  * Released under the MIT license
  */
-TzadiJS.prototype.confirm = function( message ){
+TzadiJS.prototype.confirm = function( message, callback ){
 
-   return confirm(message);
+   var confirmation = confirm(message);
+
+   if( confirmation && callback )
+   	callback();
+
+   return confirmation;
 
 }

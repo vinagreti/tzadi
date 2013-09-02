@@ -19,7 +19,8 @@ $(document).ready(function(){
         var callback = function( product ){
           if( ! product.price || isNaN(product.price)) product.price = 0;
           line.find(".amount").val(amount);
-          line.find("a").html(product.name).attr("href", base_url+"product/view/"+product._id);
+          line.find(".productName").html(product.name).attr("href", base_url+"product/view/"+product._id);
+          line.find(".productImg").attr("href", base_url+"product/view/"+product._id);
           line.find(".price").html(product.price);
           line.find(".code").html(product._id);
           var total = amount*product.price;
@@ -40,10 +41,12 @@ $(document).ready(function(){
   budget.reload();
 
   $(".empty").live("click", function(){
-    $tzd.budget.empty();
-    $(".list").empty();
-    $(".totalPrice").html(0);
-    $(".productConvertCurrency").html("");
+    $tzd.confirm($("#pdt_wantToEmpty").html(), function(){
+      $tzd.budget.empty();
+      $(".list").empty();
+      $(".totalPrice").html(0);
+      $(".productConvertCurrency").html("");
+    })
   });
 
   $(".reload").live("click", function(){

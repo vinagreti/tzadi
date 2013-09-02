@@ -14,6 +14,7 @@
     <link rel="stylesheet" type="text/css" href="<?=base_url()?>assets/third_party/bootstrap-wysihtml5-master/src/bootstrap-wysihtml5.css"></link>
 
     <!-- tzadi global styles -->
+    <link href='http://fonts.googleapis.com/css?family=Crafty+Girls' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="<?=base_url()?>assets/css/global.css">
 
     <noscript>
