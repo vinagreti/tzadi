@@ -575,4 +575,43 @@ class User_Model extends CI_Model {
 
     }
 
+    function resetPassword( $email )
+    {
+
+        $user = $this->getByEmail( $email );
+
+        if( $user ){
+
+            $passwd = time();
+
+            $edited = $this->mongo_db
+                ->where( '_id', (int) $this->session->userdata("_id") )
+                ->set("password" , md5($passwd))
+                ->update("user");
+
+            $mailContent['subject'] = lang("usr_newPassword") . " - " . $user["name"];
+
+            $message = "<p> Sua senha TZADI foi reiniciada com sucesso! </p>";
+            $message .= "<p> Faça <a href='http://tzadi.com/".lang("rt_login")."'>login</a> utilizando os dados abaixo:</p>";
+            $message .= "<p> e-mail: " . $email . "</p>";
+            $message .= "<p> senha: " . $passwd . "</p>";
+            $mailContent["message"] = '<html><head><meta charset="utf-8"></head><body>'.$message.'</body></html>';
+
+            $mailContent["to"] = $user["email"];
+
+            $mailContent["kind"] = "user/resetPassword";
+
+            $this->load->model('mail_model');
+
+            $this->mail_model->queue($mailContent);
+
+            return array("success" => lang("usr_newPasswordSent") . $email);
+
+        } else {
+
+            return array("error" => lang("usr_emailNotFound"));
+
+        }
+    }
+
 }

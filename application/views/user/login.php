@@ -1,14 +1,17 @@
 <div class="row-fluid">
 	<div class="span12 offset6 well well-large">
 	  <h4 class="form-signin-heading"><?=lang("usr_signIn")?></h4>
-	  <label><?=lang("usr_enter_mail")?></label>
-	  <div class="control-group">
-	  	<input type="text" class="input-block-level" placeholder="<?=lang("usr_enter_mail")?>" id="email" name="email">
-	  </div>
-	  <label><?=lang("usr_enter_passwd")?></label>
-	  <div class="control-group">
-	  	<input type="password" class="input-block-level" placeholder="<?=lang("usr_enter_passwd")?>" id="password" name="password">
-	  </div>
+	  <label><?=lang("usr_enter_mail")?>
+		  <div class="control-group">
+		  	<input type="text" class="input-block-level" placeholder="<?=lang("usr_enter_mail")?>" id="email" name="email">
+		  </div>
+	  </label>
+	  <div class="pull-right text-warning"><a href="https://<?=ENVIRONMENT?>/<?=lang("rt_resetPassword")?>">Esqueceu a senha?</a></div>
+	  <label><?=lang("usr_enter_passwd")?>
+		  <div class="control-group">
+		  	<input type="password" class="input-block-level" placeholder="<?=lang("usr_enter_passwd")?>" id="password" name="password">
+		  </div>
+	  </label>
 	  <a src="#" class="btn btn-large btn-success btn-block" id="submitLogin"><i class="icon-signin icon-large"></i> <?=lang("usr_signIn")?></a>
 	  <br><p class="text-center"><?=lang("usr_orUse")?><p>
 	  <div class="row-fluid">

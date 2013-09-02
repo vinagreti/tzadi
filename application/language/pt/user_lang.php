@@ -61,3 +61,7 @@ $lang["usr_proposals"] = "Propostas";
 $lang["su_theEmail"] = "O e-mail";
 $lang["su_isAlreadyInUse"] = "já está sendo utilizado";
 $lang["usr_tellUsAboutYou"] = "fale um pouco sobre sua agência";
+$lang["usr_resetPassword"] = "Reset de senha";
+$lang["usr_newPassword"] = "Nova senha";
+$lang["usr_newPasswordSent"] = "uma nova senha foi enviada para.";
+$lang["usr_emailNotFound"] = "e-mail não encontrado";

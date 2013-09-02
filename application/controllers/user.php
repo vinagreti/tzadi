@@ -245,6 +245,32 @@ class User extends My_Controller {
     }
 
   }
+
+  public function resetPassword()
+  {
+
+    if( $this->input->post("email") ) {
+
+      $this->load->model("user_model");
+
+      echo json_encode( $this->user_model->resetPassword( $this->input->post("email") ) );
+
+    }
+
+    else {
+
+      $data->dynJS = 'user/resetPassword';
+
+      $data->view = 'user/resetPassword';
+
+      $data->page_title = lang('usr_resetPassword');
+
+      $this->page->load($data);
+
+    }
+
+  }
+
 }
 
 /* End of file*/

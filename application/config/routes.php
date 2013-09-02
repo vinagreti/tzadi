@@ -55,6 +55,9 @@ $route['produtos'] = 'product/manage';
 $route['budget'] = 'product/budget';
 $route['orcamento'] = 'product/budget';
 
+$route['resetPassword'] = 'user/resetPassword';
+$route['resetarSenha'] = 'user/resetPassword';
+
 $route['interests'] = 'user/interests';
 $route['interesses'] = 'user/interests';
 $route['proposals'] = 'user/proposals';
