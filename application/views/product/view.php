@@ -11,8 +11,8 @@
           <div class="carousel-inner">
             <?php if(isset($product["img"])) {
               foreach($product["img"] as $key => $img){
-                if($key == 0) { ?> <div class="active item"><a href="<?=base_url()?>file/open/<?=$img?>"><img class="img" alt="160x120" src="<?=base_url()?>file/open/<?=$img?>" style="width:100%;"></a></div>
-                <?php } else { ?><div class="item"><a href="<?=base_url()?>file/open/<?=$img?>"><img class="img" alt="160x120" src="<?=base_url()?>file/open/<?=$img?>" style="width:100%;"></a></div> <?php }
+                if($key == 0) { ?> <div class="active item"><p class="text-center"><a href="<?=base_url()?>file/open/<?=$img?>" target="blank"><img class="imgMedium" alt="160x120" src="<?=base_url()?>file/open/<?=$img?>"></p></a></div>
+                <?php } else { ?><div class="item"><p class="text-center"><a href="<?=base_url()?>file/open/<?=$img?>" target="blank"><img class="imgMedium" alt="160x120" src="<?=base_url()?>file/open/<?=$img?>"></p></a></div> <?php }
               }
             } else { ?>
               <div class="active item"><img class="img" alt="160x120" src="<?=base_url()?>assets/img/no_photo_640x480.png"></div>
