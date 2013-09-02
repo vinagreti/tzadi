@@ -585,7 +585,7 @@ class User_Model extends CI_Model {
             $passwd = time();
 
             $edited = $this->mongo_db
-                ->where( '_id', (int) $this->session->userdata("_id") )
+                ->where( 'email', $email )
                 ->set("password" , md5($passwd))
                 ->update("user");
 
