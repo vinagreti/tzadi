@@ -33,12 +33,12 @@
   <div class="span24 itensList">
     <div class="row-fluid line">
       <div class="span6 product hide item-vitrine">
-        <div class="thumbnail" >
-          <a class="open" href="#" target="_blank">
-            <p class="text-center"><img class="img" alt="160x120" style="height: 160px;" src="<?=base_url()?>assets/img/no_photo_160x120.png"><p>
-            <h5><span class="name"></span></h5>
-            <p><?=lang('pdt_price')?>: <span class="price"></span></p>
-          </a>
+        <a class="open" href="#" target="_blank">
+          <p class="text-center"><img class="img imgMedium" alt="160x120" src="<?=base_url()?>assets/img/no_photo_160x120.png"><p>
+        </a>
+        <div class="">
+          <h5><span class="name"></span></h5>
+          <p><?=lang('pdt_price')?>: <span class="price"></span></p>
           <a class="addToBudget btn btn-warning btn-block" rel="tooltip" title="<?=lang('pdt_addToBudget')?>"><?=lang('pdt_addToBudget')?></a>
         </div>
       </div>

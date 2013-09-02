@@ -126,7 +126,7 @@
                     &nbsp;&nbsp;<span class="imgNumber">0</span>/<span class="imgAmount">0</span>
                     <a class="nextImg pull-right btn btn-warning"  rel="tooltip" title="<?=lang('pdt_nextImgTitle')?>"><?=lang('pdt_nextImg')?> <i class="icon-arrow-right"></i></a>
                   </p>
-                  <img src="<?=base_url()?>assets/img/no_photo_160x120.png" class="img" alt="160x120" name="default">
+                  <img src="<?=base_url()?>assets/img/no_photo_160x120.png" class="img imgMedium" alt="160x120" name="default">
                 </div>
               </div>
               <div class="span17">
