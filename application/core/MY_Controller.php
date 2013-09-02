@@ -71,31 +71,25 @@ class My_Controller extends CI_Controller{
 
       if( defined('IDENTITY') && strpos(current_url(),'https') !== false ) {
 
-        $url  = str_replace("https", "http", $_SERVER['REQUEST_URI']);
+        $section  = str_replace("/index.php", "", $_SERVER['REQUEST_URI']);
 
-        $url  = str_replace("/index.php", "", $url);
-
-        redirect($url);
+        redirect("http://".ENVIRONMENT.$section);
 
       }
 
       if ( ! defined('IDENTITY') && strpos(current_url(),'https') === false ) {
 
-        $url  = str_replace("http", "https", $_SERVER['REQUEST_URI']);
+        $section  = str_replace("/index.php", "", $_SERVER['REQUEST_URI']);
 
-        $url  = str_replace("/index.php", "", $url);
-
-        redirect($url);
+        redirect("https://".ENVIRONMENT.$section);
 
       }
 
     } else if( strpos(current_url(),'https') !== false ){
 
-      $url  = str_replace("https", "http", $_SERVER['REQUEST_URI']);
+      $section  = str_replace("/index.php", "", $_SERVER['REQUEST_URI']);
 
-      $url  = str_replace("/index.php", "", $url);
-
-      redirect($url);
+      redirect("http://".ENVIRONMENT.$section);
 
     }
 
