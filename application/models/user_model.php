@@ -589,7 +589,7 @@ class User_Model extends CI_Model {
                 ->set("password" , md5($passwd))
                 ->update("user");
 
-            $mailContent['subject'] = lang("usr_newPassword") . " - " . $user["name"];
+            $mailContent['subject'] = lang("usr_passwordReseted") . " - " . $user["name"];
 
             $message = "<p> Sua senha TZADI foi reiniciada com sucesso! </p>";
             $message .= "<p> Faça <a href='http://tzadi.com/".lang("rt_login")."'>login</a> utilizando os dados abaixo:</p>";
@@ -610,6 +610,41 @@ class User_Model extends CI_Model {
         } else {
 
             return array("error" => lang("usr_emailNotFound"));
+
+        }
+    }
+
+    function changePassword( $data )
+    {
+
+        $user = $this->getByIdentity( $this->session->userdata("identity") );
+
+        if( $user["password"] == md5($data["passwdOld"]) ){
+
+            $edited = $this->mongo_db
+                ->where( 'identity', $this->session->userdata("identity") )
+                ->set("password" , md5($data["passwdNew"]))
+                ->update("user");
+
+            $mailContent['subject'] = lang("usr_newPassword") . " - " . $user["name"];
+
+            $message = "<p> Sua senha TZADI foi alterada com sucesso! </p>";
+            $message .= "<p> Sua nova senha é: " . $data["passwdNew"] . "</p>";
+            $mailContent["message"] = '<html><head><meta charset="utf-8"></head><body>'.$message.'</body></html>';
+
+            $mailContent["to"] = $user["email"];
+
+            $mailContent["kind"] = "user/changePassword";
+
+            $this->load->model('mail_model');
+
+            $this->mail_model->queue($mailContent);
+
+            return array("success" => lang("usr_passwordChanged"));
+
+        } else {
+
+            return array("error" => lang("usr_incorrectOldPasswd"));
 
         }
     }

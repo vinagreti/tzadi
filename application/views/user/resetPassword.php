@@ -3,7 +3,9 @@
 <div class="row">
 	<div class="span8">
 		E-mail
-		<input type="text" id="email" class="input-block-level" />
+		<div class="control-group">
+			<input type="text" id="email" class="input-block-level" />
+		</div>
 		<a id="resetPassword" class="btn btn-primary">enviar nova senha</a>
 	</div>
 </div>

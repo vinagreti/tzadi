@@ -58,6 +58,9 @@ $route['orcamento'] = 'product/budget';
 $route['resetPassword'] = 'user/resetPassword';
 $route['resetarSenha'] = 'user/resetPassword';
 
+$route['changePassword'] = 'user/changePassword';
+$route['alterarSenha'] = 'user/changePassword';
+
 $route['interests'] = 'user/interests';
 $route['interesses'] = 'user/interests';
 $route['proposals'] = 'user/proposals';

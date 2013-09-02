@@ -19,6 +19,8 @@
 
 		<p><span class="text-warning">e-mail: </span> <?=$user["email"]?></p>
 
+		<p><span class="text-warning"><?=lang("usr_password")?>: </span>***** <a href="https://<?=ENVIRONMENT?>/<?=lang('rt_changePassword')?>"><?=lang("usr_changePassword")?></a></p>
+
 		<label class="text-warning"><span><?=lang('usr_chooseYourAgencyName')?></span>
 			<div class="control-group">
 			  <input id="name" type="text" class="input-block-level" name="name" value="<?=$user["name"]?>">

@@ -271,6 +271,33 @@ class User extends My_Controller {
 
   }
 
+  public function changePassword()
+  {
+
+    $data = $this->input->post();
+
+    if( $data["passwdOld"] && $data["passwdNew"] && $data["passwdNewConf"] ) {
+
+      $this->load->model("user_model");
+
+      echo json_encode( $this->user_model->changePassword( $data ) );
+
+    }
+
+    else {
+
+      $data->dynJS = 'user/changePassword';
+
+      $data->view = 'user/changePassword';
+
+      $data->page_title = lang('usr_changePassword');
+
+      $this->page->load($data);
+
+    }
+
+  }
+
 }
 
 /* End of file*/
