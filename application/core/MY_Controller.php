@@ -55,7 +55,7 @@ class My_Controller extends CI_Controller{
         
         $this->session->set_flashdata('IDENTITY', IDENTITY);
 
-        if( defined("IDENTITY") )
+        if( $this->session->userdata("_id") )
           redirect('http://'.$this->session->userdata("identity").".".ENVIRONMENT.'/error/identityNotFound', 'refresh');
 
         else
