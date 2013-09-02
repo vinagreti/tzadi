@@ -48,9 +48,9 @@ TzadiJS.prototype.feedback = new function( ){
 
 			tzadiToken : tzadiToken
 
-			, subject : subject
-
 			, email : email
+
+			, subject : subject
 
 			, message : message
 
@@ -76,11 +76,11 @@ TzadiJS.prototype.feedback = new function( ){
 
     var valid = true;
 
-    valid = valid && $tzd.form.checkMask.range($('#feedbackSubject'), 1, 255, $(".usr_pleaseFillName").html());
+    valid = valid && $tzd.form.checkMask.range($('#feedbackSubject'), 1, 255, $(".fdb_pleaseFillName").html());
 
-    valid = valid && $tzd.form.checkMask.email($('#feedbackMail'), $(".usr_pleaseFillName").html());
+    valid = valid && $tzd.form.checkMask.email($('#feedbackMail'), $(".fdb_pleaseFillEmail").html());
 
-    valid = valid && $tzd.form.checkMask.range($('#feedbackMessage'), 1, 255, $(".usr_pleaseFillName").html());
+    valid = valid && $tzd.form.checkMask.range($('#feedbackMessage'), 1, 255, $(".fdb_pleaseFillMessage").html());
 
     if ( valid ) {
 

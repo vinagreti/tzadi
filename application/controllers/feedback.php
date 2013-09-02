@@ -29,6 +29,24 @@ class Feedback extends My_Controller {
 
 	}
 
+	public function send()
+	{
+
+		$data = $this->input->post();
+
+		if( isset($data["email"]) && isset($data["subject"]) && isset($data["message"]) ) {
+
+			$this->load->model("feedback_model");
+
+			echo json_encode( $this->feedback_model->send($data) );
+
+		} else {
+
+			echo json_encode( "informe todos os dados para enviar o contato" );
+
+		}
+
+	}
 }
 
 /* End of file welcome.php */
