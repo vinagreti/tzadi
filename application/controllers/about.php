@@ -12,7 +12,16 @@ class About extends My_Controller {
 
     $data->page_title = lang('abt_page_title');
 
-    $data->view = 'tzadi/about';
+    if( defined("IDENTITY") ) {
+
+      $data->user = $this->user_model->getByIdentity(IDENTITY);
+
+      $data->view = 'user/about';
+
+    }
+
+    else
+      $data->view = 'tzadi/about';
 
     $this->page->load($data);
     

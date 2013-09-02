@@ -545,7 +545,7 @@ class User_Model extends CI_Model {
         $userData["name"] = $data["name"];
 
         if( isset( $data["about"] ) )
-        $userData["about"] = $data["about"];
+        $userData["about"] = nl2br($data["about"]);
 
         $edited = $this->mongo_db
             ->where( '_id', (int) $this->session->userdata("_id") )
