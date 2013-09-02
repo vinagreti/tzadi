@@ -630,6 +630,7 @@ class User_Model extends CI_Model {
 
             $message = "<p> Sua senha TZADI foi alterada com sucesso! </p>";
             $message .= "<p> Sua nova senha é: " . $data["passwdNew"] . "</p>";
+            $message .= "<p> email: " . $user["email"] . "</p>";
             $mailContent["message"] = '<html><head><meta charset="utf-8"></head><body>'.$message.'</body></html>';
 
             $mailContent["to"] = $user["email"];
