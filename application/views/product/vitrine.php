@@ -35,7 +35,7 @@
       <div class="span6 product hide item-vitrine">
         <div class="thumbnail" >
           <a class="open" href="#" target="_blank">
-            <img class="img" alt="160x120" style="width: 100%; height: 160px;" src="<?=base_url()?>assets/img/no_photo_160x120.png">
+            <p class="text-center"><img class="img" alt="160x120" style="height: 160px;" src="<?=base_url()?>assets/img/no_photo_160x120.png"><p>
             <h5><span class="name"></span></h5>
             <p><?=lang('pdt_price')?>: <span class="price"></span></p>
           </a>
