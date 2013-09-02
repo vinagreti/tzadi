@@ -6,7 +6,6 @@ $(document).ready(function(){
 
     valid = valid && $tzd.form.checkMask.range($('#name'), 1, 255, $(".usr_pleaseFillName").html());
 
-
     if ( valid ) {
 
       $(".brand").find("a").html( $("#name").val() );
@@ -17,6 +16,7 @@ $(document).ready(function(){
 
         tzadiToken : tzadiToken
         , name : $("#name").val()
+        , about : $("#about").val()
 
       };
 

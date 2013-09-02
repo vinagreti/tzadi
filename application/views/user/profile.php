@@ -16,10 +16,20 @@
 	</div>
 
 	<div class="span18 offset1">
-		<label class="text-warning"><span><?=lang('usr_chooseYourAgencyName')?></span></label>
-		<div class="control-group">
-		  <input id="name" type="text" class="input-block-level" name="name" value="<?=$user["name"]?>">
-		</div>
+
+		<p><span class="text-warning">e-mail: </span> <?=$user["email"]?></p>
+
+		<label class="text-warning"><span><?=lang('usr_chooseYourAgencyName')?></span>
+			<div class="control-group">
+			  <input id="name" type="text" class="input-block-level" name="name" value="<?=$user["name"]?>">
+			</div>
+		</label>
+
+		<label class="text-warning"><span><?=lang('usr_tellUsAboutYou')?></span>
+			<div class="control-group">
+			  <textarea id="about" rows="5" class="input-block-level" name="about"><?=$user["about"]?></textarea>
+			</div>
+		</label>
 
 		<div class="pull-right">
 			<a id="save" class="btn btn-primary"><?=lang('usr_save')?></a>

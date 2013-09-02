@@ -1,1 +1,1 @@
-<h4><?=lang("error_pageNotFound")?></h4>
+<h3><?=lang("error_pageNotFound")?></h3>

@@ -1,6 +1,6 @@
 <p><?=$message?></p>
 
-<h2><?=$product["name"]?></h2>
+<h3><?=$product["name"]?></h3>
 
 <div class="row-fluid">
   <div class="span24 well well-mini">

@@ -1,6 +1,6 @@
 <div class="modal-header">
   <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-  <h4><?=lang("crc_changeCurrency")?></h4>
+  <h3><?=lang("crc_changeCurrency")?></h3>
 </div>
 
 <div class="modal-body" style="height:50px">

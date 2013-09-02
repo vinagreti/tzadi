@@ -1,4 +1,4 @@
-<h2><?=lang('splr_listTitle')?></h2>
+<h3><?=lang('splr_listTitle')?></h3>
 <div class="row-fluid">
   <div class="span24">
     <span class="input-append">

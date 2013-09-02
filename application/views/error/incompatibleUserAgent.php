@@ -1,4 +1,4 @@
-<h2><?=lang("error_yourBrowserIsIncompatible")?></h2>
+<h3><?=lang("error_yourBrowserIsIncompatible")?></h3>
 <p><small><a href="<?=site_url(lang("rt_contact"))?>"><?=lang("error_needingHelp?")?></a></small></p>
 <h4><?=lang("error_browserDetails")?></h4>
 <p><?=lang("error_Browser")?>: <?=$agent = $this->agent->browser()?></p>

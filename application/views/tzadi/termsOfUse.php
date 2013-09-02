@@ -1,4 +1,4 @@
-<h1><?=lang('term_page_title')?></h1>
+<h3><?=lang('term_page_title')?></h3>
 <h5><?=lang('term_text1')?></h5>
 <p><?=lang('term_text2')?></p>
 <p><?=lang('term_text3')?></p>

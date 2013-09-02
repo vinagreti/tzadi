@@ -1,4 +1,4 @@
-<h1><?=lang('abt_page_title')?></h1>
+<h3><?=lang('abt_page_title')?></h3>
 
 <h5><?=lang('abt_text7')?></h5>
 <p><?=lang('abt_text8')?></p>

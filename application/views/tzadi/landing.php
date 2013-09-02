@@ -9,7 +9,7 @@
         <div class="row-fluid">
           <div class="span12 pull-right">
             <br>
-            <h2 class="lead text-center"><?=lang('idx_explanation')?></h2>
+            <h3 class="lead text-center"><?=lang('idx_explanation')?></h3>
             <ul>
               <p><i class="icon-ok"></i> cria sua identidade na internet traduzida para dois idiomas. Português e Inglês.</p>
               <p><i class="icon-ok"></i> gerencia seus fornecedores, produtos e clientes.</p>

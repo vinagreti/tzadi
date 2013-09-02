@@ -1,4 +1,4 @@
-<h1><?=lang('pvc_page_title')?></h1>
+<h3><?=lang('pvc_page_title')?></h3>
 <h5><?=lang('pvc_text1')?></h5>
 <p><?=lang('pvc_text2')?></p>
 <p><?=lang('pvc_text3')?></p>

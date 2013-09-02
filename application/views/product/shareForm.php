@@ -2,7 +2,7 @@
 
   <div class="modal-header">
     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-    <h2><?=lang("pdt_shareThisProduct")?></h2>
+    <h3><?=lang("pdt_shareThisProduct")?></h3>
   </div>
 
   <div class="modal-body">

@@ -1,4 +1,4 @@
-<h2><?=lang('pdt_listTitle')?></h2>
+<h3><?=lang('pdt_listTitle')?></h3>
 
 <div class="row-fluid">
   <div class="span24">

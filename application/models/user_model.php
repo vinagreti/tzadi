@@ -471,7 +471,13 @@ class User_Model extends CI_Model {
           ->where('identity', $identity)
           ->get('user');
 
-        if($res) return $res[0];
+        if($res){
+
+            if( ! isset($res[0]["about"]) ) $res[0]["about"] = "";
+
+            return $res[0];
+
+        }
 
         else return false;
 
@@ -537,6 +543,9 @@ class User_Model extends CI_Model {
 
         if( isset( $data["name"] ) )
         $userData["name"] = $data["name"];
+
+        if( isset( $data["about"] ) )
+        $userData["about"] = $data["about"];
 
         $edited = $this->mongo_db
             ->where( '_id', (int) $this->session->userdata("_id") )

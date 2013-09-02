@@ -1,1 +1,1 @@
-<h2>Bem vindo a <span class="text-success"><strong><?=$this->session->userdata("profileName")?></strong></span></h2>
+<h3>Bem vindo a <span class="text-success"><strong><?=$this->session->userdata("profileName")?></strong></span></h3>

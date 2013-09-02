@@ -1,4 +1,4 @@
-<h2><?=lang("pdt_Budget")?> <a class="empty btn btn-danger"><i class="icon-remove"></i> <?=lang("pdt_empty")?></a> <a class="reload btn btn-info"><i class="icon-refresh"></i> <?=lang("pdt_refresh")?></a></h2>
+<h3><?=lang("pdt_Budget")?> <a class="empty btn btn-danger"><i class="icon-remove"></i> <?=lang("pdt_empty")?></a> <a class="reload btn btn-info"><i class="icon-refresh"></i> <?=lang("pdt_refresh")?></a></h3>
 
 <div class="row-fluid list">
   <div class="item span24 hide well well-mini">

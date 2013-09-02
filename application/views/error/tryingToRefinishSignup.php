@@ -1,1 +1,1 @@
-<h4><?=lang("error_maybeYouCanMaybeNot")?></h4>
+<h3><?=lang("error_maybeYouCanMaybeNot")?></h3>

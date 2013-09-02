@@ -62,10 +62,12 @@
         <ul>
           <small><li><a href="<?=base_url()?><?=lang('rt_about')?>"><?=lang('tmpt_AboutUs')?></a></li></small>
           <small><li><a href="<?=base_url()?><?=lang('rt_contact')?>"><?=lang('tmpt_ContactUs')?></a></li></small>
-          <small><li><a href="<?=base_url()?><?=lang('rt_privacyPolicy')?>"><?=lang('tmpt_PrivacyPolicy')?></a></li></small>
-          <small><li><a href="<?=base_url()?><?=lang('rt_termsOfUse')?>"><?=lang('tmpt_TermsOfUse')?></a></li></small>
         </ul>
-        <p class="text-center">&copy; <a target="_blank" href="http://<?=ENVIRONMENT?>">Tzadi</a> 2013</p>
+        <p class="text-center">
+            &copy; <a target="_blank" href="http://<?=ENVIRONMENT?>">Tzadi</a> 2013
+            - <small><a href="<?=base_url()?><?=lang('rt_privacyPolicy')?>"><?=lang('tmpt_PrivacyPolicy')?></a></small>
+            - <small><a href="<?=base_url()?><?=lang('rt_termsOfUse')?>"><?=lang('tmpt_TermsOfUse')?></a></small>
+        </p>
     </div>
 
     <!-- Loading the JQuery -->
