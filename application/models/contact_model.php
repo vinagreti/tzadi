@@ -14,6 +14,7 @@ class Contact_Model extends CI_Model {
     $this->mongo_db->insert('contact', $data);
 
     if(!defined('IDENTITY')) {
+
       $message = "<p> Contato enviado por: " . $data["email"] . "</p>";
       $message .= "<p> Assunto: " . $data["subject"] . "</p>";
       $message .= "<p> Mensagem: " . $data["message"] . "</p>";
@@ -24,7 +25,9 @@ class Contact_Model extends CI_Model {
       $mail["kind"] = "contact";
       $this->load->model('mail_model');
       $this->mail_model->queue($mail);
+
     } else {
+
       $message = "<p> Contato enviado por: " . $data["email"] . "</p>";
       $message .= "<p> para " . IDENTITY . "</p>";
       $message .= "<p> Assunto: " . $data["subject"] . "</p>";
@@ -32,10 +35,11 @@ class Contact_Model extends CI_Model {
       $mail["message"] = '<html><head><meta charset="utf-8"></head><body>'.$message.'</body></html>';
       $mail["subject"] = "Contato recebido - " . $data["email"];
       $mail["to"] =  $data["email"];
-      $mail["bcc"] =  array("bruno@tzadi.com", "tzadiinc@gmail.com", "lucas@tzadi.com");
+      $mail["bcc"] =  array($this->session->userdata("profileEmail"));
       $mail["kind"] = "contact";
       $this->load->model('mail_model');
       $this->mail_model->queue($mail);
+
     }
 
     return $data["_id"];

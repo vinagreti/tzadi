@@ -47,6 +47,7 @@
     </div>
 
     <!-- Dialogs -->
+    <span class="tzdFeedbackOpen"><i class="icon-question icon"></i></span>
     <div class="modal hide" id="tzadiDialogs" tabindex="-1"></div>
     <div class="loading"></div>
 
@@ -112,6 +113,7 @@
     <script src="<?=base_url()?>assets/js/tzadi/tzadi-list.js"></script>
     <script src="<?=base_url()?>assets/js/tzadi/tzadi-loading.js"></script>
     <script src="<?=base_url()?>assets/js/tzadi/tzadi-geocomplete.js"></script>
+    <script src="<?=base_url()?>assets/js/tzadi/tzadi-feedback.js"></script>
     <?php if (isset($dynJS) && is_string($dynJS)){?><script src="<?=base_url()?>assets/js/{dynJS}.js"></script><?php } ?>
     <?php if (isset($dynJS) && is_array($dynJS)){ foreach($dynJS as $js) { ?><script src="<?=base_url()?>assets/js/<?=$js?>.js"></script><?php } } ?>
 

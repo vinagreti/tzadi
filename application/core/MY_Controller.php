@@ -50,6 +50,8 @@ class My_Controller extends CI_Controller{
         $this->session->set_userdata("profileImg", $user["img"]);
 
         $this->session->set_userdata("profileKind", $user["kind"] );
+
+        $this->session->set_userdata("profileEmail", $user["email"] );
        
       } else if( $this->router->method != "identityNotFound" ) {
         
