@@ -11,7 +11,9 @@ class Feedback_Model extends CI_Model {
 
     $this->load->model("mongo_model");
     $data["_id"] = $this->mongo_model->newID();
-    $this->mongo_db->insert('contact', $data);
+    $this->mongo_db->insert('feedback', $data);
+
+
     $message = "<p> Feedback enviado por: " . $data["email"] . "</p>";
     $message .= "<p> Assunto: " . $data["subject"] . "</p>";
     $message .= "<p> Mensagem: " . $data["message"] . "</p>";
@@ -23,7 +25,7 @@ class Feedback_Model extends CI_Model {
     $this->load->model('mail_model');
     $this->mail_model->queue($mail);
 
-    return "Mensagem enviada";
+    return array("success" => "mensagem enviada");
 
   }
 }

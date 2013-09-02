@@ -42,7 +42,7 @@ class Feedback extends My_Controller {
 
 		} else {
 
-			echo json_encode( "informe todos os dados para enviar o contato" );
+			echo json_encode( array("error" => "informe todos os dados para enviar o contato") );
 
 		}
 

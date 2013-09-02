@@ -56,9 +56,15 @@ TzadiJS.prototype.feedback = new function( ){
 
 		};
 
-		var callback = function( modal ){
+		var callback = function( res ){
 
-			$('#tzadiDialogs').modal('close');
+			$('#tzadiDialogs').modal('hide');
+
+			$('#tzadiDialogs').empty();
+
+			if( res.error ) $tzd.alert.error( res.error );
+
+			if( res.success ) $tzd.alert.success( res.success );
 
 		};
 
