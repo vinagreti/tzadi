@@ -25,6 +25,6 @@
     <a href="#" class="closeModal btn" data-dismiss="modal"><?=lang("fdb_cancel")?></a>
 </div>
 
-<div class="fdb_pleaseFillName hide"><?=lang("fdb_pleaseFillName")?></div>
+<div class="fdb_pleaseFillSubject hide"><?=lang("fdb_pleaseFillSubject")?></div>
 <div class="fdb_pleaseFillEmail hide"><?=lang("fdb_pleaseFillEmail")?></div>
 <div class="fdb_pleaseFillMessage hide"><?=lang("fdb_pleaseFillMessage")?></div>

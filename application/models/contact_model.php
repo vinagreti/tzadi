@@ -16,6 +16,7 @@ class Contact_Model extends CI_Model {
     if(!defined('IDENTITY')) {
 
       $message = "<p> Contato enviado por: " . $data["email"] . "</p>";
+      $message .= "<p> para tzadi.com</p>";
       $message .= "<p> Assunto: " . $data["subject"] . "</p>";
       $message .= "<p> Mensagem: " . $data["message"] . "</p>";
       $mail["message"] = '<html><head><meta charset="utf-8"></head><body>'.$message.'</body></html>';
@@ -29,11 +30,11 @@ class Contact_Model extends CI_Model {
     } else {
 
       $message = "<p> Contato enviado por: " . $data["email"] . "</p>";
-      $message .= "<p> para " . IDENTITY . "</p>";
+      $message .= "<p> Contato enviado para <a href='" . IDENTITY . ".tzadi.com'>".IDENTITY . ".tzadi.com</p>";
       $message .= "<p> Assunto: " . $data["subject"] . "</p>";
       $message .= "<p> Mensagem: " . $data["message"] . "</p>";
       $mail["message"] = '<html><head><meta charset="utf-8"></head><body>'.$message.'</body></html>';
-      $mail["subject"] = "Contato recebido - " . $data["email"];
+      $mail["subject"] = "Contato enviado - " . $data["email"];
       $mail["to"] =  $data["email"];
       $mail["bcc"] =  array($this->session->userdata("profileEmail"));
       $mail["kind"] = "contact";
