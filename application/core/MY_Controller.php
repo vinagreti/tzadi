@@ -53,13 +53,7 @@ class My_Controller extends CI_Controller{
        
       } else if( $this->router->method != "identityNotFound" ) {
         
-        $this->session->set_flashdata('IDENTITY', IDENTITY);
-
-        if( $this->session->userdata("_id") )
-          redirect('http://'.$this->session->userdata("identity").".".ENVIRONMENT.'/error/identityNotFound', 'refresh');
-
-        else
-          redirect('http://'.ENVIRONMENT.'/error/identityNotFound', 'refresh');
+        redirect('http://'.ENVIRONMENT.'/error/identityNotFound/?identity='.IDENTITY, 'refresh');
 
       }
 
