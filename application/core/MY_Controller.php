@@ -53,7 +53,7 @@ class My_Controller extends CI_Controller{
        
       } else if( $this->router->method != "identityNotFound" ) {
         
-        redirect('http://'.ENVIRONMENT.'/error/identityNotFound/?identity='.IDENTITY, 'refresh');
+        redirect('https://'.ENVIRONMENT.'/error/identityNotFound/?identity='.IDENTITY, 'refresh');
 
       }
 
