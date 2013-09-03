@@ -669,7 +669,11 @@ class User_Model extends CI_Model {
             ->where( 'identity', $this->session->userdata("identity") )
             ->get("user");
 
-        return $users[0]["exchangeRate"];
+        if( isset( $users[0]["exchangeRate"] ) )
+            return $users[0]["exchangeRate"];
+
+        else
+            return false;
 
     }
 
