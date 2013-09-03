@@ -4,6 +4,7 @@ $lang["crc_currency"] = "moeda";
 $lang["crc_todayRateBuy"] = "compra";
 $lang["crc_todayRateSell"] = "venda";
 $lang["crc_changeExchangeRate"] = "Definir câmbio";
+$lang["usr_exchangeRateChanged"] = "Câmbio definido";
 $lang["crc_todayRate"] = "Cotações";
 $lang["crc_cancel"] = "cancelar";
 $lang["crc_changeCurrency"] = "Alterar moeda";
