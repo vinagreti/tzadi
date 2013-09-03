@@ -3,7 +3,7 @@
 <div class="row-fluid">
 	<div class="span24 form-inline">
 
-		<?=lang("crc_exchangeFeesByEURO")?><input id="value" type="text" value="<?=$exchangeRate['value']?>" class="span2"/>
+		<?=lang("crc_exchangeFeesByEURO")?> <input id="value" type="text" value="<?=$exchangeRate['value']?>" class="span2"/>
 
 		<select id="kind" class="span5" rel="tooltip" title="<?=lang('crc_changeCurrency')?>">
 			<option value="<?=$exchangeRate['kind']?>"><?=lang("crc_".$exchangeRate['kind'])?></option>
