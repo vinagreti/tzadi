@@ -14,11 +14,11 @@
       <li class="dropdown">
         <a class="dropdown-toggle" data-toggle="dropdown" rel="tooltip" title="<?=lang('tmpt_Agency')?>"><i class="icon-plane icon-large"></i> <?=lang('tmpt_Agency')?></a>
         <ul class="dropdown-menu">
+          <li><a href="<?=base_url()?><?=lang('rt_customer')?>" rel="tooltip" title="<?=lang('tmpt_CustomersTitle')?>"><?=lang('tmpt_Customers')?></a></li>
+          <li><a href="<?=base_url()?><?=lang('rt_currency')?>" rel="tooltip" title="<?=lang('tmpt_CurrencyTitle')?>"><?=lang('tmpt_Currency')?></a></li>
           <li><a href="<?=base_url()?><?=lang('rt_supplier')?>" rel="tooltip" title="<?=lang('tmpt_InstitutionsTitle')?>"><?=lang('tmpt_Institutions')?></a></li>
           <li><a href="<?=base_url()?><?=lang('rt_products')?>" rel="tooltip" title="<?=lang('tmpt_ProductsTitle')?>"><?=lang('tmpt_Products')?></a></li>
-          <li><a href="<?=base_url()?><?=lang('rt_customer')?>" rel="tooltip" title="<?=lang('tmpt_CustomersTitle')?>"><?=lang('tmpt_Customers')?></a></li>
           <li><a href="<?=base_url()?><?=lang('rt_vitrine')?>" rel="tooltip" title="<?=lang('tmpt_VitrineTitle')?>"><?=lang('tmpt_Vitrine')?></a></li>
-          <li><a href="<?=base_url()?><?=lang('rt_currency')?>" rel="tooltip" title="<?=lang('tmpt_CurrencyTitle')?>"><?=lang('tmpt_Currency')?></a></li>
         </ul>
       </li>
       <li><a href="<?=base_url()?><?=lang('rt_budget')?>" target="_blank"><i class="icon-flag"></i> <?=lang('tmpt_Budget')?> <span class="label label-warning budgetTotal"></span></a></li>
