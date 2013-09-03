@@ -69,5 +69,5 @@ $lang["tmpt_todayRates"] = "cotações de hoje";
 $lang["tmpt_myExchange"] = "Meu Intercâmbio";
 $lang["tmpt_interests"] = "Interesses";
 $lang["tmpt_proposes"] = "Propostas";
-$lang["tmpt_Currency"] = "Cotação de moedas";
+$lang["tmpt_Currency"] = "Definiçoes de câmbio";
 $lang["tmpt_CurrencyTitle"] = "Veja e configure as cotações das moedas";
