@@ -69,7 +69,7 @@ class Currency extends My_Controller {
 
 		$data = $this->input->post();
 
-		if( $data["kind"] && $data["value"] ) {
+		if( $data["kind"] && $data["value"] !== false ) {
 
 			$this->load->model("user_model");
 
