@@ -20,3 +20,4 @@ $lang['rt_interests'] = 'interesses';
 $lang['rt_proposals'] = 'propostas';
 $lang['rt_resetPassword'] = 'resetarSenha';
 $lang['rt_changePassword'] = 'alterarSenha';
+$lang['rt_currency'] = 'cotacao';

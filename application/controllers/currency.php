@@ -13,27 +13,35 @@ class Currency extends My_Controller {
 	public function index()
 	{
 
-		$this->load->model("currency_model");
+		if( $this->session->userdata("ownProfile") ){
 
-		if( defined("IDENTITY") )
-			$currency = $this->currency_model->getProfileCurrency( );
-
-		else
-			$currency = $this->currency_model->getToday( );
-
-		if($this->input->post()) {
-
-			echo json_encode( $currency );
+			$this->changeExchangeRate();
 
 		} else {
 
-		    $data->view = 'currency/today';
+			$this->load->model("currency_model");
 
-		    $data->page_title = lang('crc_Rates');
+			if( defined("IDENTITY") )
+				$currency = $this->currency_model->getProfileCurrency( );
 
-		    $data->currency = $currency;
+			else
+				$currency = $this->currency_model->getToday( );
 
-		    $this->page->load($data);
+			if($this->input->post()) {
+
+				echo json_encode( $currency );
+
+			} else {
+
+			    $data->view = 'currency/today';
+
+			    $data->page_title = lang('crc_Rates');
+
+			    $data->currency = $currency;
+
+			    $this->page->load($data);
+
+			}
 
 		}
 
@@ -61,7 +69,7 @@ class Currency extends My_Controller {
 
 		$data = $this->input->post();
 
-		if( $data["passwdOld"] && $data["passwdNew"] && $data["passwdNewConf"] ) {
+		if( $data["kind"] && $data["value"] ) {
 
 			$this->load->model("user_model");
 
@@ -72,6 +80,10 @@ class Currency extends My_Controller {
 		else {
 
 			$this->load->model("currency_model");
+
+			$this->load->model("user_model");
+
+			$data->exchangeRate = $this->user_model->getExchangeRate( );
 
 			$data->currency = $this->currency_model->getToday( );
 

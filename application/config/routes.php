@@ -61,6 +61,8 @@ $route['resetarSenha'] = 'user/resetPassword';
 $route['changePassword'] = 'user/changePassword';
 $route['alterarSenha'] = 'user/changePassword';
 
+$route['cotacao'] = 'currency';
+
 $route['interests'] = 'user/interests';
 $route['interesses'] = 'user/interests';
 $route['proposals'] = 'user/proposals';

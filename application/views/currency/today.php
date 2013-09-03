@@ -1,4 +1,4 @@
-<h3><?=lang("ctc_todayRate")?> <?=$currency["day"]?></h3>
+<h3><?=lang("crc_todayRate")?> <?=$currency["day"]?></h3>
 
 <div class="row-fluid">
 	<div class="span4">
