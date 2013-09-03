@@ -11,6 +11,7 @@ $lang["crc_changeCurrency"] = "Alterar moeda";
 $lang["crc_selectACurrency"] = "selecione a moeda";
 $lang["crc_pleaseFillKinAndValue"] = "por favor, informe o tipo e o valor da taxa de câmbio";
 $lang["crc_percent"] = "porcento";
+$lang["crc_exchangeFeesByEURO"] = "Taxa de câmbio a cada 1 EURO";
 $lang["crc_EUR"] = "EUR - Euro";
 $lang["crc_USD"] = "USD - Dólar Americano";
 $lang["crc_JPY"] = "JPY - Iene";
