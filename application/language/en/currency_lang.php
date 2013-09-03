@@ -1,5 +1,5 @@
 <?php
-$lang["crc_Rates"] = "Corações";
+$lang["crc_Rates"] = "Cotações";
 $lang["ctc_todayRate"] = "Cotações";
 $lang["crc_cancel"] = "cancelar";
 $lang["crc_changeCurrency"] = "Alterar moeda";

@@ -12,10 +12,16 @@ class Currency_Model extends CI_Model {
 
   public function getToday( ) {
 
-    $currency = $this->getLocal();
+    $lastCurrency = $this->getLocal();
 
-    if( $currency && $currency["day"] == date("Y-m-d") )
-      return $currency;
+    print_r($lastCurrency);
+    echo $lastCurrency["day"];
+    echo date("Y-m-d");
+
+    echo ( $lastCurrency && $lastCurrency["day"] == date("Y-m-d") );
+
+    if( $lastCurrency && $lastCurrency["day"] == date("Y-m-d") )
+      return $lastCurrency;
 
     else {
 
@@ -28,27 +34,33 @@ class Currency_Model extends CI_Model {
 
       $array = json_decode($json,TRUE);
 
-      $xmlDay = $array["Cube"]["Cube"]["@attributes"]["time"];
+      $newCurrency["day"] = $array["Cube"]["Cube"]["@attributes"]["time"];
 
-      $currency["day"] = $array["Cube"]["Cube"]["@attributes"]["time"];
+      if( $newCurrency["day"] == $lastCurrency["day"] ) {
 
-      foreach( $array["Cube"]["Cube"]["Cube"] as $curr) {
+        return $lastCurrency;
 
-        $currency[ $curr["@attributes"]["currency"] ] = $curr["@attributes"]["rate"];
+      } else {
+
+        foreach( $array["Cube"]["Cube"]["Cube"] as $curr) {
+
+          $newCurrency[ $curr["@attributes"]["currency"] ] = $curr["@attributes"]["rate"];
+
+        }
+
+        $this->load->model("mongo_model");
+
+        $newCurrency["_id"] = $this->mongo_model->newID();
+
+        $newCurrency["EUR"] = 1;
+
+        ksort($newCurrency);
+
+        $this->mongo_db->insert('currency', $newCurrency);
+
+        return $newCurrency;
 
       }
-
-      $this->load->model("mongo_model");
-
-      $currency["_id"] = $this->mongo_model->newID();
-
-      $currency["EUR"] = 1;
-
-      ksort($currency);
-
-      $this->mongo_db->insert('currency', $currency);
-
-      return $currency;
 
     }
 
