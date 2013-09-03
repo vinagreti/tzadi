@@ -52,7 +52,13 @@ class My_Controller extends CI_Controller{
         $this->session->set_userdata("profileKind", $user["kind"] );
 
         $this->session->set_userdata("profileEmail", $user["email"] );
-       
+
+        if( isset( $user["exchangeRate"] ) )
+          $this->session->set_userdata("profileExchangeRate", $user["exchangeRate"]);
+
+        else
+          $this->session->set_userdata("profileExchangeRate", false);
+
       } else if( $this->router->method != "identityNotFound" ) {
         
         redirect('https://'.ENVIRONMENT.'/error/identityNotFound/?identity='.IDENTITY, 'refresh');
@@ -129,27 +135,21 @@ class My_Controller extends CI_Controller{
 
     $this->load->helper('cookie');
 
-    $currency = $this->input->cookie("tzdCurrency");
+    $expire = strtotime('tomorrow') - time() + 300;
 
-    if( ! $currency ) {
+    $this->load->model("currency_model");
 
-      $expire = strtotime('tomorrow') - time() + 300;
+    $currency = $this->currency_model->getProfileCurrency();
 
-      $this->load->model("currency_model");
+    $currency["base"] = "BRL";
 
-      $currency = $this->currency_model->getToday();
+    $cookie = array(
+      'name'   => 'tzdCurrency'
+      , 'value'  => json_encode( $currency )
+      , 'expire' => $expire
+    );
 
-      $currency["base"] = "BRL";
-
-      $cookie = array(
-        'name'   => 'tzdCurrency'
-        , 'value'  => json_encode( $currency )
-        , 'expire' => $expire
-      );
-
-      $this->input->set_cookie($cookie);
-
-    }
+    $this->input->set_cookie($cookie);
 
   }
 

@@ -650,4 +650,16 @@ class User_Model extends CI_Model {
         }
     }
 
+    function changeExchangeRate( $data )
+    {
+
+        $this->mongo_db
+            ->where( 'identity', $this->session->userdata("identity") )
+            ->set("exchangeRate" , false )
+            ->update("user");
+
+        return array("success" => lang("usr_exchangeRateChanged"));
+
+    }
+
 }

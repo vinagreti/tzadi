@@ -14,12 +14,6 @@ class Currency_Model extends CI_Model {
 
     $lastCurrency = $this->getLocal();
 
-    print_r($lastCurrency);
-    echo $lastCurrency["day"];
-    echo date("Y-m-d");
-
-    echo ( $lastCurrency && $lastCurrency["day"] == date("Y-m-d") );
-
     if( $lastCurrency && $lastCurrency["day"] == date("Y-m-d") )
       return $lastCurrency;
 
@@ -79,6 +73,35 @@ class Currency_Model extends CI_Model {
 
     else
       return false;
+
+  }
+
+  public function getProfileCurrency(){
+
+    $currency = $this->getToday();
+
+    $exchangeRate = $this->session->userdata("profileExchangeRate");
+
+    if( $exchangeRate ) {
+
+      if( $exchangeRate["kind"] == "percent")
+        $percent = $exchangeRate["value"];
+
+      else
+        $percent = 100 / ( $currency[ $exchangeRate["kind"] ] / $exchangeRate["value"] );
+
+      foreach($currency as $key => $val){
+
+        if( $key != "_id" && $key != "day" && $key != "EUR" )
+          $currency[$key] = $val + ( $val * ( $percent / 100 ) );
+
+      }
+
+      return $currency;
+
+    }
+
+    return $currency;
 
   }
 
