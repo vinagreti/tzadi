@@ -26,7 +26,7 @@
       </div>
       <div class="span16">
         <h5><?=$name?></h5>
-        <p><?=lang("pdt_price")?>: <?=$price?> </p>
+        <p><?=lang("pdt_price")?>: <?=$currency . " " . $price?> </p>
       </div>
     </div>
 

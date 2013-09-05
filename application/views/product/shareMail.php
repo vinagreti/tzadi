@@ -13,7 +13,7 @@
 
     <div class="row-fluid">
       <div class="span24">
-        <?php if(isset($product["price"])) echo "<p>" . lang("pdt_price") . ": " . $product["price"] . "</p>"; ?>
+        <?php if(isset($product["price"])) echo "<p>" . lang("pdt_price") . ": " . $product["currency"] . " " . $product["price"] . "</p>"; ?>
         <?php if(isset($product["detail"])) echo "<p>" . lang("pdt_detail") . ": " . $product["detail"] . "</p>"; ?>
         <?php if(isset($product["courseDuration"])) echo "<p>" . lang("pdt_courseDuration") . ": " . $product["courseDuration"] . "</p>"; ?>
         <?php if(isset($product["courseKind"])) echo "<p>" . lang("pdt_courseKind") . ": " . $product["courseKind"] . "</p>"; ?>
