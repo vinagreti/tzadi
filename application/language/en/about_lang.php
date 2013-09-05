@@ -1,11 +1,11 @@
 <?php
-$lang['abt_page_title'] = 'Sobre';
-$lang['abt_text1'] = 'Nossa equipe é especializada no desenvolvimento de ferramentas para facilitar o dia-a-dia de agentes e agências.';
+$lang['abt_page_title'] = "About";
+$lang['abt_text1'] = 'Our team specializes in the development of tools to facilitate the day-to-day of agents and agencies.';
 $lang['abt_text2'] = '';
-$lang['abt_text3'] = 'Como fazemos?';
-$lang['abt_text4'] = 'Todos os nossos produtos estão disponíveis através do site TZADI.com.';
+$lang['abt_text3'] = 'How we do?';
+$lang['abt_text4'] = 'All our products are available through the website TZADI.com.';
 $lang['abt_text5'] = '';
-$lang['abt_text6'] = '<br>TZADI, a melhor ferramenta de gestão de agências de viagem e intercâmbio!';
-$lang["abt_text7"] = "Quem somos?";
-$lang["abt_text8"] = "A TZADI é uma empresa de tecnologia voltada para o setor de viagens e intercâmbio.";
-$lang["abt_text9"] = "O que fazemos?";
+$lang['abt_text6'] = '<br>TZADI, the best management tool for travel and education exchange agencies!';
+$lang["abt_text7"] = "Who we are?";
+$lang["abt_text8"] = "The TZADI is formed by former exchange students and professionals in the field of information technology.";
+$lang["abt_text9"] = "What we do?";

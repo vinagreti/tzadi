@@ -1,12 +1,12 @@
 <?php
-$lang['ct_page_title'] = 'Contato';
-$lang['ct_page_p1'] = 'Entre em contato';
-$lang['ct_page_p2'] = 'Estamos a sua disposição para esclarecer dúvidas, trocar experiências, fazer parcerias e ouvir críticas e sugestões.';
-$lang['ct_page_p3'] = 'Preencha o formulário abaixo e clique em enviar.';
-$lang['ct_email'] = 'informe seu endereço de e-mail';
-$lang['ct_subject'] = 'informe o assunto';
-$lang['ct_message'] = 'informe a mensagem';
-$lang['ct_Send'] = 'enviar';
-$lang['ct_insert_valid_mail'] = 'informe um email válido';
-$lang['ct_insert_subject'] = 'o assunto deve ter entre 1 e 512 caracteres.';
-$lang['ct_insert_message'] = 'escreva sua mensagem antes de enviar';
+$lang["ct_page_title"] = 'Contact';
+$lang["ct_page_p1"] = 'Contact us';
+$lang["ct_page_p2"] = 'We are available to answer questions, share experiences, make partnerships and listen to suggestions.';
+$lang["ct_page_p3"] = 'Fill out the form below and click submit.';
+$lang["ct_email"] = 'enter your e-mail';
+$lang["ct_subject"] = 'enter the subject';
+$lang["ct_message"] = 'enter the message';
+$lang["ct_Send"] = 'send';
+$lang["ct_insert_valid_mail"] = 'enter a valid email address';
+$lang["ct_insert_subject"] = 'the subject must be between 1 and 512 characters.';
+$lang["ct_insert_message"] = 'Please, write your message before send it';

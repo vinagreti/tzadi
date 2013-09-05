@@ -1,11 +1,11 @@
 <?php
-$lang["fdb_mayWeHelp"] = "Podemos te ajudar?";
-$lang["fdb_email"] = "informe o seu email";
-$lang["fdb_subject"] = "informe o assunto";
-$lang["fdb_message"] = "mensagem...";
-$lang["fdb_send"] = "enviar";
-$lang["fdb_cancel"] = "cancelar";
-$lang["fdb_pleaseFillSubject"] = "informe o assunto";
-$lang["fdb_pleaseFillEmail"] = "informe um e-mail válido";
-$lang["fdb_pleaseFillMessage"] = "informe sua mensagem";
-$lang["fdb_referer"] = "referência";
+$lang["fdb_mayWeHelp"] = "Can I help you?";
+$lang["fdb_email"] = "please enter your email";
+$lang["fdb_subject"] = "enter the subject";
+$lang["fdb_message"] = "message ...";
+$lang["fdb_send"] = "send";
+$lang["fdb_cancel"] = "cancel";
+$lang["fdb_pleaseFillSubject"] = "enter the subject";
+$lang["fdb_pleaseFillEmail"] = "enter a valid email address";
+$lang["fdb_pleaseFillMessage"] = "enter your message";
+$lang["fdb_referer"] = "reference";
