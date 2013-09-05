@@ -2,6 +2,9 @@ body {
   margin : 0px;
   padding-top: 0px;
   padding-bottom: 40px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 .globalAlert {
@@ -80,11 +83,8 @@ body {
 
 @media (min-width: 980px) {
   .tzdContent{
-    min-height: 500px;
+    min-height: 550px;
     padding: 80px 30px 0px 30px;
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
   }
 
   .dropdown-menu .sub-menu {
