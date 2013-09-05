@@ -68,9 +68,24 @@ TzadiJS.prototype.currency = new function( ){
 
 		var currency = $.cookie("tzdCurrency");
 
-		console.log(currency);
+		var url = base_url+'currency/change';
 
-		location.reload();
+		var data = {
+
+			tzadiToken : tzadiToken
+
+			, currencyBase : base
+
+		};
+
+		var callback = function( res ){
+
+			location.reload();
+
+		};
+
+		$tzd.ajax.post(url, data, callback);
+		
 
 	});
 

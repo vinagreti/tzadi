@@ -18,6 +18,23 @@ class User_Model extends CI_Model {
         else return false;
     }
 
+    function changeCurrencyBase( $currencyBase )
+    {
+
+        $this->session->set_userdata("currencyBase", $currencyBase);
+
+        if( $this->session->userdata("_id") ){
+
+            $this->mongo_db
+              ->where('_id', $this->session->userdata("_id"))
+              ->set("currencyBase", $currencyBase)
+              ->update("user");
+            
+        }
+
+        return true;
+    }
+
     function authenticate( $email, $password ) {
 
         $data["email"] = strtolower($email);
@@ -455,6 +472,7 @@ class User_Model extends CI_Model {
         $this->session->set_userdata('name', $user["name"]);
         $this->session->set_userdata('email', $user["email"]);
         $this->session->set_userdata('kind', $user["kind"]);
+        if( isset($user["currencyBase"] ) ) $this->session->set_userdata("currencyBase", $user["currencyBase"]);
         if( isset( $user["img"] ) ) $this->session->set_userdata('img', $user["img"]);
         if( isset( $user["identity"] ) ) $this->session->set_userdata('identity', $user["identity"]);
 

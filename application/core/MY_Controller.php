@@ -11,6 +11,8 @@ class My_Controller extends CI_Controller{
 
     $this->setUserKind();
 
+    $this->setUserCurrencyBase();
+
     $this->detectUnfinishedSignup();
 
     $this->detectLanguage();
@@ -112,6 +114,13 @@ class My_Controller extends CI_Controller{
 
   }
 
+  private function setUserCurrencyBase(){
+
+    if( ! $this->session->userdata('currencyBase') )
+      $this->session->set_userdata("currencyBase", "BRL");
+
+  }
+
   private function detectUnfinishedSignup(){
 
     if( $this->session->userdata('kind') == "new") {
@@ -141,7 +150,7 @@ class My_Controller extends CI_Controller{
 
     $currency = $this->currency_model->getProfileCurrency();
 
-    $currency["base"] = "BRL";
+    $currency["base"] = $this->session->userdata("currencyBase");
 
     $cookie = array(
       'name'   => 'tzdCurrency'

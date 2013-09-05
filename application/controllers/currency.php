@@ -60,7 +60,16 @@ class Currency extends My_Controller {
 	public function change()
 	{
 
-		echo json_encode($this->load->view('currency/change', "", TRUE));
+		$currencyBase = $this->input->post("currencyBase");
+
+		if( $currencyBase ){
+
+			$this->load->model("user_model");
+
+			echo json_encode( $this->user_model->changeCurrencyBase( $currencyBase ) );
+
+		} else
+			echo json_encode($this->load->view('currency/change', "", TRUE));
 
 	}
 
