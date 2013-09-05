@@ -8,6 +8,9 @@ class Blog extends My_Controller {
 
 		$this->lang->load('blog', $this->session->userdata('language'));
 
+    if( ! $this->session->userdata("identity") )
+      redirect("http://blog.tzadi.com");
+
   }
 
   public function index(){

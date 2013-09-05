@@ -369,17 +369,15 @@ class User_Model extends CI_Model {
                 $reservedIdentities = array("www"
                     , "staging"
                     , "intranet"
-                    , "intranetstaging"
                     , "blog"
-                    , "blogstaging"
                     , "database"
-                    , "databasestaging"
                     , "driver"
-                    , "driverstaging"
                     , "task"
-                    , "taskstaging"
                     , "developer"
-                    , "developerstaging"
+                    , "official"
+                    , "oficial"
+                    , "home"
+                    , "inicio"
                     );
 
                 if( $this->getByIdentity( $user["identity"] ) || in_array( $user["identity"], $reservedIdentities ) )

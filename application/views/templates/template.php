@@ -57,7 +57,7 @@
         {content}
     </div>
 
-    <hr>
+    <br>
 
     <div class="footer">
         <ul>
