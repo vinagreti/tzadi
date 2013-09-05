@@ -8,7 +8,7 @@ class Blog extends My_Controller {
 
 		$this->lang->load('blog', $this->session->userdata('language'));
 
-    if( ! $this->session->userdata("identity") )
+    if( ! $this->session->userdata("profileIdentity") )
       redirect("http://blog.tzadi.com");
 
   }
