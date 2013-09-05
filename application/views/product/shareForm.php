@@ -9,7 +9,7 @@
 
     <div class="globalModalAlert hide" id="modalAlert"><?=lang("pdt_fillAllFieldsCorrectly")?></div>
 
-    <div class="row-fluid-fluid">
+    <div class="row-fluid">
       <div class="span24">
         <label><?=lang("pdt_yourName")?></label>
         <input class="mailYourName input-block-level" type="text" />
@@ -20,7 +20,7 @@
       </div>
     </div>
 
-    <div class="row-fluid-fluid">
+    <div class="row-fluid">
       <div class="span8">
         <img src="<?=$img?>"></img>
       </div>

@@ -181,3 +181,4 @@ $lang['pdt_minPrice'] = "preço mínimo";
 $lang['pdt_maxPrice'] = "preço máximo";
 $lang['pdt_interestPlaces'] = "locais de interesse. ex Londres, Austrália, Canadá, Dublin...";
 $lang['pdt_wantToEmptyBudget'] = "tem certeza que deseja remover todos os produtos do orçamento?";
+$lang['pdt_buy'] = "comprar";

@@ -29,7 +29,7 @@ $(document).ready(function(){
           line.find(".totalValueConverted").html( $tzd.currency.convert(total, product.currency).toFixed(2) );
           totalPrice += $tzd.currency.convert(total, product.currency);
           $(".totalPrice").html(totalPrice.toFixed(2));
-          $(".productCurrency").html(product.currency);
+          line.find(".productCurrency").html(product.currency);
         };
 
         $tzd.ajax.post(url, data, callback);

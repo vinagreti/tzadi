@@ -5,7 +5,7 @@
 <div class="row-fluid">
   <div class="span24 list">
     <div class="row-fluid item hide">
-      <div class="span24  well well-mini">
+      <div class="span24  tzdTableRow">
         <div class="span2 text-center"><a class="productImg" target="_blank"><img class="imgSmall"></img></a></div>
         <div class="span6">
           <small>
@@ -28,7 +28,9 @@
     <dt><?=lang("pdt_totalValue")?></dt><dd><span class="currencyCode"></span> <span class="totalPrice">0</span></dd>
   </dl>
 
-  <div class="pull-right"><a class="empty btn btn-danger"><i class="icon-remove"></i> <?=lang("pdt_emptyBudget")?></a></div>
+  <span><a class="share btn btn-primary"><?=lang("pdt_shareProductByMail")?></a></span>
+  <span><a class="more btn btn-success"><?=lang("pdt_buy")?></a></span>
+  <span><a class="empty btn btn-danger"><?=lang("pdt_emptyBudget")?></a></span>
 
 </div>
 

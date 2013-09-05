@@ -35,8 +35,8 @@
             </div>
           </div>
           <div class="span24">
-            <a class="addToBudget btn btn-block btn-warning" id="<?=$product["_id"]?>" rel="tooltip" title="<?=lang('pdt_addToBudget')?>"><i class="icon-flag"></i> <?=lang('pdt_addToBudget')?></a>
-            <a class="shareProductByMail btn btn-block btn-primary" href="#" id="<?=$product["_id"]?>" rel="tooltip" title="<?=lang('pdt_shareProductByMail')?>"><i class="icon-group"></i> <?=lang('pdt_shareProductByMail')?></a>
+            <a class="addToBudget btn btn-warning" id="<?=$product["_id"]?>" rel="tooltip" title="<?=lang('pdt_addToBudget')?>"><?=lang('pdt_addToBudget')?></a>
+            <a class="shareProductByMail btn btn-primary" href="#" id="<?=$product["_id"]?>" rel="tooltip" title="<?=lang('pdt_shareProductByMail')?>"><?=lang('pdt_shareProductByMail')?></a>
           </div>
         </div>
       </div>
