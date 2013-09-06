@@ -27,7 +27,7 @@
   <dl class="dl-horizontal">
     <dt><?=lang("pdt_totalValue")?></dt><dd><span class="currencyCode"></span> <span class="totalPrice">0</span></dd>
   </dl>
-  <span><a class="more btn btn-success"><?=lang("pdt_buy")?></a></span>
+  <span><a class="more btn btn-success"><?=lang("pdt_knowMore")?></a></span>
   <span><a class="share btn btn-primary"><?=lang("pdt_shareProductByMail")?></a></span>
   <span><a class="empty btn btn-danger"><?=lang("pdt_emptyBudget")?></a></span>
 

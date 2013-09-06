@@ -181,4 +181,4 @@ $lang["pdt_minPrice"] = "minimum price";
 $lang["pdt_maxPrice"] = "maximum price";
 $lang["pdt_interestPlaces"] = "sights . former London, Australia , Canada , Dublin ...";
 $lang["pdt_wantToEmptyBudget"] = "Are you sure you want to remove all products of the budget";
-$lang["pdt_buy"] = "buy";
+$lang['pdt_knowMore'] = "know more";

@@ -1,5 +1,5 @@
 <div class="row-fluid">
-  <div class="span24 well">
+  <div class="span24">
 
     <h3><?=$product["name"]?></h3>
 
@@ -14,7 +14,7 @@
     <br>
 
     <div class="row-fluid">
-      <div class="span7">
+      <div class="span12">
         <div class="row-fluid">
          
           <div class="span24">
@@ -22,8 +22,8 @@
               <div class="carousel-inner">
                 <?php if(isset($product["img"])) {
                   foreach($product["img"] as $key => $img){
-                    if($key == 0) { ?> <div class="active item"><p class="text-center"><a href="<?=base_url()?>file/open/<?=$img?>" target="blank"><img class="imgMedium" alt="160x120" src="<?=base_url()?>file/open/<?=$img?>"></p></a></div>
-                    <?php } else { ?><div class="item"><p class="text-center"><a href="<?=base_url()?>file/open/<?=$img?>" target="blank"><img class="imgMedium" alt="160x120" src="<?=base_url()?>file/open/<?=$img?>"></p></a></div> <?php }
+                    if($key == 0) { ?> <div class="active item"><p class="text-center"><a href="<?=base_url()?>file/open/<?=$img?>" target="blank"><img class="imgLarge" alt="160x120" src="<?=base_url()?>file/open/<?=$img?>"></p></a></div>
+                    <?php } else { ?><div class="item"><p class="text-center"><a href="<?=base_url()?>file/open/<?=$img?>" target="blank"><img class="imgLarge" alt="160x120" src="<?=base_url()?>file/open/<?=$img?>"></p></a></div> <?php }
                   }
                 } else { ?>
                   <div class="active item"><img class="img" alt="160x120" src="<?=base_url()?>assets/img/no_photo_640x480.png"></div>
@@ -34,14 +34,10 @@
               <a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>
             </div>
           </div>
-          <div class="span24">
-            <a class="addToBudget btn btn-warning" id="<?=$product["_id"]?>" rel="tooltip" title="<?=lang('pdt_addToBudget')?>"><?=lang('pdt_addToBudget')?></a>
-            <a class="shareProductByMail btn btn-primary" href="#" id="<?=$product["_id"]?>" rel="tooltip" title="<?=lang('pdt_shareProductByMail')?>"><?=lang('pdt_shareProductByMail')?></a>
-          </div>
         </div>
       </div>
 
-      <div class="span17">
+      <div class="span12">
         <dl class="dl-horizontal">
           <dt><?=lang("pdt_code")?></dt><dd><?=$product["_id"]?></dd>
           <?php if(isset($product["price"])) {
@@ -75,9 +71,23 @@
             }
           }
           ?>
-          <?php if(isset($product["detail"])) echo "<dl><dt>" . lang("pdt_detail") . "</dt><dd>" . nl2br($product["detail"]) . "</dd></dl>"; ?>
         </dl>
       </div>
     </div>
+
+    <div class="row-fluid">
+      <div class="span24">
+        <span><a class="more btn btn-success"><?=lang("pdt_knowMore")?></a></span>
+        <a class="addToBudget btn btn-warning" id="<?=$product["_id"]?>" rel="tooltip" title="<?=lang('pdt_addToBudget')?>"><?=lang('pdt_addToBudget')?></a>
+        <a class="shareProductByMail btn btn-primary" href="#" id="<?=$product["_id"]?>" rel="tooltip" title="<?=lang('pdt_shareProductByMail')?>"><?=lang('pdt_shareProductByMail')?></a>
+      </div>
+    </div>
+    
+    <div class="row-fluid">
+      <div class="span24">
+        <?php if(isset($product["detail"])) echo nl2br($product["detail"]); ?>
+      </div>
+    </div>
+
   </div>
 </div>
