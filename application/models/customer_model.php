@@ -26,7 +26,7 @@ class Customer_Model extends CI_Model {
         ,"name" => $name
         ,"owner" => $this->session->userdata("_id")
         ,"creation" => now()
-        ,"creator" => $this->session->userdata("userID")
+        ,"creator" => $this->session->userdata("_id")
         ,"status" => "active"
         ,"attachment" => array()
       )
@@ -122,5 +122,61 @@ class Customer_Model extends CI_Model {
       }
       if(isset($supplier[0]["img"])) $this->file_model->drop($supplier[0]["img"]);
     return $this->mongo_db->where('_id', $_id)->delete('customer');
+  }
+
+
+  public function getOrCreate( $email )
+  {
+
+    $customer = $this->mongo_db
+      ->where('email', $email)
+      ->get('customer');
+
+    if( $customer ) {
+
+      return $customer[0]["_id"];
+
+    } else {
+
+      $this->load->model("mongo_model");
+
+      $newID = $this->mongo_model->newID();
+
+      $this->load->helper('date');
+
+      $this->mongo_db->insert(
+        'customer',array(
+          "_id" => $newID
+          ,"name" => $email
+          ,"email" => $email
+          ,"owner" => $this->session->userdata("_id")
+          ,"creation" => now()
+          ,"creator" => $this->session->userdata("_id")
+          ,"status" => "active"
+          ,"attachment" => array()
+        )
+      );
+
+      return $newID;
+
+    }
+
+  }
+
+  public function addTimeline( $customer_id, $action )
+  {
+
+    $this->load->model("mongo_model");
+
+    $action_id = $this->mongo_model->newID();
+
+    $this->mongo_db
+    ->insert('timeline', array( 
+      "_id" => $action_id
+      , "customer_id" => $customer_id
+      , "action" => $action
+      )
+    );
+
   }
 }

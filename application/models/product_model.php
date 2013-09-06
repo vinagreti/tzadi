@@ -252,7 +252,6 @@ class Product_Model extends CI_Model {
 
       }
 
-
       $product["itens"] = $itens;
 
     }
@@ -269,27 +268,49 @@ class Product_Model extends CI_Model {
 
     else $product["img"] = base_url()."assets/img/no_photo_160x120.png";
 
-    if(isset($data["addresses"])) {
+    if( isset( $data["addresses"] ) ) {
 
-      $address = $data["addresses"];
+      $this->load->helper('email');
 
-      $mailContent['subject'] = $data["name"] . " " . lang("pdt_shareIndicated") . ": " . $product["name"];
+      $this->load->model('customer_model');
 
-      $mail->message = $data["message"];
-      
-      $mail->product = $product;
+      $addresses = explode(",", str_replace(' ', '', $data["addresses"]) );
 
-      $mailContent["message"] = $this->load->view("product/shareMail", $mail, true);
+      foreach( $addresses as $key => $email ){
 
-      $mailContent["to"] = $address;
+        if ( valid_email( $email ) ) {
 
-      $mailContent["kind"] = "product/share";
+          $customer_id = $this->customer_model->getOrCreate( $email );
 
-      $this->load->model('mail_model');
+          $address = $data["addresses"];
 
-      $this->mail_model->queue($mailContent);
+          $mailContent['subject'] = $data["name"] . " " . lang("pdt_shareIndicated") . ": " . $product["name"];
 
-      $error = false;
+          $mail->message = $data["message"];
+          
+          $mail->product = $product;
+
+          $mailContent["message"] = $this->load->view("product/shareMail", $mail, true);
+
+          $mailContent["to"] = $email;
+
+          $mailContent["kind"] = "product/share";
+
+          $this->load->model('mail_model');
+
+          $this->mail_model->queue($mailContent);
+
+          $action->kind = "product/share";
+
+          $action->mailContent = $mailContent;
+
+          $this->customer_model->addTimeline( $customer_id, $action );
+
+          $error = false;
+
+        }
+
+      }
 
     } else {
 

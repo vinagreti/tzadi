@@ -298,6 +298,23 @@ class User extends My_Controller {
 
   }
 
+  public function timeline()
+  {
+
+    $this->load->model("user_model");
+
+    $data->timeline = json_encode( $this->user_model->getTimeline( ) );
+
+    $data->dynJS = 'user/timeline';
+
+    $data->view = 'user/timeline';
+
+    $data->page_title = lang('usr_Timeline');
+
+    $this->page->load($data);
+
+  }
+
 }
 
 /* End of file*/

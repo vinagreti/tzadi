@@ -507,6 +507,7 @@ class User_Model extends CI_Model {
         $this->mongo_db->delete_all("product");
         $this->mongo_db->delete_all("supplier");
         $this->mongo_db->delete_all("mail");
+        $this->mongo_db->delete_all("timeline");
         $this->mongo_db->delete_all("agency");
         $this->mongo_db->delete_all("contact");
         $this->mongo_db->delete_all("currency");
