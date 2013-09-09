@@ -40,3 +40,6 @@ $lang["ctm_pleaseFillValidCity"] = "city name should contain up to 255 character
 $lang["ctm_pleaseFillValidState"] = "The name of the county should contain up to 128 characters";
 $lang["ctm_pleaseFillValidCountry"] = "the name of the country should contain up to 128 characters";
 $lang["ctm_pleaseFillValiDetails"] = "the details should contain up to 1024 characters";
+$lang["ctm_status"] = "status";
+$lang["ctm_active"] = "active";
+$lang["ctm_inactive"] = "inactive";

@@ -71,3 +71,5 @@ $lang["tmpt_interests"] = "Interests";
 $lang["tmpt_proposes"] = "Proposals";
 $lang["tmpt_Currency"] = "Exchange Settings";
 $lang["tmpt_CurrencyTitle"] = "View and set the prices of currencies";
+$lang["tmpt_Customer"] = "Customer";
+$lang['tmpt_creationDate'] = 'creation date';

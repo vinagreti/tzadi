@@ -71,3 +71,5 @@ $lang["tmpt_interests"] = "Interesses";
 $lang["tmpt_proposes"] = "Propostas";
 $lang["tmpt_Currency"] = "Definiçoes de câmbio";
 $lang["tmpt_CurrencyTitle"] = "Veja e configure as cotações das moedas";
+$lang['tmpt_Customer'] = 'Cliente';
+$lang['tmpt_creationDate'] = 'data de criação';

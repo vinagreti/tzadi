@@ -4,21 +4,21 @@
 	<div class="span24 tzdTableRow">
 		<div class="row-fluid">
 			<div class="span8">
-				<p>creation: <?php if( isset( $customer["creation"] ) ) echo  date( "d/m/Y h:m", time($customer["creation"]) ); ?></p>
-				<p>birth: <?php if( isset( $customer["birth"] ) ) echo  date( "d/m/Y", time($customer["birth"]) ); ?></p>
-				<p>email: <?php if( isset( $customer["email"] ) ) echo $customer["email"]; ?></p>
-				<p>phone: <?php if( isset( $customer["phone"] ) ) echo $customer["phone"]; ?></p>
-				<p>cellphone: <?php if( isset( $customer["cellphone"] ) ) echo $customer["cellphone"]; ?></p>
+				<p><span class="text-warning"><?=lang("tmpt_creationDate")?>:</span> <?php if( isset( $customer["creation"] ) ) echo  date( "d/m/Y h:m", time($customer["creation"]) ); ?></p>
+				<p><span class="text-warning"><?=lang("ctm_birth")?>:</span> <?php if( isset( $customer["birth"] ) ) echo  date( "d/m/Y", time($customer["birth"]) ); ?></p>
+				<p><span class="text-warning"><?=lang("ctm_email")?>:</span> <?php if( isset( $customer["email"] ) ) echo $customer["email"]; ?></p>
+				<p><span class="text-warning"><?=lang("ctm_phone")?>:</span> <?php if( isset( $customer["phone"] ) ) echo $customer["phone"]; ?></p>
+				<p><span class="text-warning"><?=lang("ctm_cellphone")?>:</span> <?php if( isset( $customer["cellphone"] ) ) echo $customer["cellphone"]; ?></p>
 			</div>
 			<div class="span8">
-				<p>status: <?php if( isset( $customer["status"] ) ) echo $customer["status"]; ?></p>
-				<p>address: <?php if( isset( $customer["address"] ) ) echo $customer["address"]; ?></p>
-				<p>city: <?php if( isset( $customer["city"] ) ) echo $customer["city"]; ?></p>
-				<p>state: <?php if( isset( $customer["state"] ) ) echo $customer["state"]; ?></p>
-				<p>country: <?php if( isset( $customer["country"] ) ) echo $customer["country"]; ?></p>
+				<p><span class="text-warning"><?=lang("ctm_status")?>:</span> <?= lang("ctm_".$customer["status"]) ?></p>
+				<p><span class="text-warning"><?=lang("ctm_address")?>:</span> <?php if( isset( $customer["address"] ) ) echo $customer["address"]; ?></p>
+				<p><span class="text-warning"><?=lang("ctm_city")?>:</span> <?php if( isset( $customer["city"] ) ) echo $customer["city"]; ?></p>
+				<p><span class="text-warning"><?=lang("ctm_state")?>:</span> <?php if( isset( $customer["state"] ) ) echo $customer["state"]; ?></p>
+				<p><span class="text-warning"><?=lang("ctm_country")?>:</span> <?php if( isset( $customer["country"] ) ) echo $customer["country"]; ?></p>
 			</div>
 			<div class="span8">
-				<p>details: <?php if( isset( $customer["details"] ) ) echo $customer["details"]; ?></p>
+				<p><span class="text-warning"><?=lang("ctm_details")?>:</span> <?php if( isset( $customer["details"] ) ) echo $customer["details"]; ?></p>
 			</div>
 		</div>
 	</div>
@@ -28,10 +28,10 @@
 
 <div class="row-fluid hideFromResponsive">
 	<div class="span12 text-center">
-		Agency
+		<?=lang("tmpt_Agency")?>
 	</div>
 	<div class="span12 text-center">
-		Customer
+		<?=lang("tmpt_Customer")?>
 	</div>
 </div>
 

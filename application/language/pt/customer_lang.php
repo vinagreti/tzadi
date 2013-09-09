@@ -40,3 +40,6 @@ $lang["ctm_pleaseFillValidCity"] = "o nome da cidade deve conter até 255 caract
 $lang["ctm_pleaseFillValidState"] = "o nome do estado deve conter até 128 caractéres";
 $lang["ctm_pleaseFillValidCountry"] = "o nome do país deve conter até 128 caractéres";
 $lang["ctm_pleaseFillValiDetails"] = "os detelhes devem conter até 1024 caractéres";
+$lang["ctm_status"] = "status";
+$lang["ctm_active"] = "ativo";
+$lang["ctm_inactive"] = "inativo";
