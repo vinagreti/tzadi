@@ -156,6 +156,8 @@ class Customer_Model extends CI_Model {
       ->where('_id', $_id)
       ->get('customer');
 
+    $this->mongo_db->where('customer_id', (int) $_id)->delete('timeline');
+
     $this->load->model("file_model");
       foreach($customer[0]["attachment"] as $attachment) {
         $this->file_model->drop($attachment["_id"]);
