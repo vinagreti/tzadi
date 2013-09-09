@@ -28,9 +28,11 @@ $(document).ready(function(){
 
       var callback = function( e ) {
 
+        if( e.error ) $tzd.alert.error(e.error);
+
         if( e.success ) {
 
-          $tzd.alert.success(e.message);
+          $tzd.alert.success(e.success);
 
           $("#email").val("");
 
@@ -40,8 +42,6 @@ $(document).ready(function(){
 
         }
 
-        else $tzd.alert.error(e.message);
-        
       }
 
       $tzd.ajax.post(url, data, callback);

@@ -10,3 +10,4 @@ $lang['ct_Send'] = 'enviar';
 $lang['ct_insert_valid_mail'] = 'informe um email válido';
 $lang['ct_insert_subject'] = 'o assunto deve ter entre 1 e 512 caracteres.';
 $lang['ct_insert_message'] = 'escreva sua mensagem antes de enviar';
+$lang['ct_sent'] = 'contato enviado';

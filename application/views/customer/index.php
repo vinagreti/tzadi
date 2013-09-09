@@ -38,6 +38,17 @@
 <br>
 <div class="row-fluid tzdTable"> <!-- é toda a tabela -->
   <div class="span24">
+
+    <div class="row-fluid hideFromResponsive tzdTableHeader">
+      <div class="span4"></div>
+      <div class="span10">
+        <?=lang("ctm_name")?>
+      </div>
+      <div class="span9">
+        <?=lang("ctm_email")?>
+      </div>
+    </div>
+
     <div class="row-fluid tzdTableLine hide"> <!-- é/são as linhas da tabela ou cada linha da tabela -->
       <div class="span24 tzdTableRow">
         <div class="row-fluid tzdTableBrief"> <!-- é o conteúdo de cada linha da tabela, é onde se clica -->
@@ -47,15 +58,11 @@
           <div class="span2">
             <a class="openDetail btn btn-info btn-small btn-block"><?=lang("tmpt_open")?></a>
           </div>
-          <div class="span19">
-            <div class="row-fluid">
-              <div class="span10 name" title="<?=lang('ctm_name')?>">>
-                <!-- o valor NOME de cada class do span é jogado aqui -->
-              </div>
-              <div class="span10 customerEmail" title="<?=lang('ctm_email')?>">
-                <!-- o valor EMAIL de cada class do span é jogado aqui -->
-              </div>
-            </div>
+          <div class="span10 name" title="<?=lang('ctm_name')?>">>
+            <!-- o valor NOME de cada class do span é jogado aqui -->
+          </div>
+          <div class="span9 customerEmail" title="<?=lang('ctm_email')?>">
+            <!-- o valor EMAIL de cada class do span é jogado aqui -->
           </div>
           <div class="span1" rel="tooltip" title="<?=lang('tmpt_open')?>"><a class="openView" target="_blank"><i class="icon-external-link icon-2x"></i></a></div>
         </div> <!-- \\\\ é o fim do conteúdo de cada linha da tabela -->

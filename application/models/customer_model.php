@@ -48,6 +48,11 @@ class Customer_Model extends CI_Model {
         ,"attachment" => array()
       )
     );
+
+    $action->kind = "customer/add";
+
+    $this->customer_model->addTimeline( $newID, $action );
+
     return $this->mongo_db
       ->where('_id', $newID)
       ->get('customer');
@@ -173,6 +178,10 @@ class Customer_Model extends CI_Model {
           ,"attachment" => array()
         )
       );
+
+        $action->kind = "customer/getOrCreate";
+
+        $this->customer_model->addTimeline( $newID, $action );
 
       return $newID;
 

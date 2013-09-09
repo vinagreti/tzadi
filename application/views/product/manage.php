@@ -72,6 +72,18 @@
 <br>
 <div class="row-fluid tzdTable">
   <div class="span24">
+    <div class="row-fluid hideFromResponsive tzdTableHeader">
+      <div class="span4"></div>
+      <div class="span11">
+        <?=lang("pdt_name")?>
+      </div>
+      <div class="span4">
+        <?=lang("pdt_kind")?>
+      </div>
+      <div class="span4">
+        <?=lang("pdt_supplier")?>
+      </div>
+    </div>
     <div class="row-fluid tzdTableLine hide">
       <div class="span24 tzdTableRow">
         <div class="row-fluid tzdTableBrief">

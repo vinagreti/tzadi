@@ -307,11 +307,11 @@ class Product_Model extends CI_Model {
 
         $this->load->model('mail_model');
 
-        $this->mail_model->queue($mailContent);
+        $mail_id = $this->mail_model->queue($mailContent);
 
         $action->kind = "product/share";
 
-        $action->mailContent = $mailContent;
+        $action->mail_id = $mail_id;
 
         $this->customer_model->addTimeline( $customer_id, $action );
 
@@ -354,11 +354,11 @@ class Product_Model extends CI_Model {
 
       $this->load->model('mail_model');
 
-      $this->mail_model->queue($mailContent);
+      $mail_id = $this->mail_model->queue($mailContent);
 
       $action->kind = "product/knowMore";
 
-      $action->mailContent = $mailContent;
+      $action->mail_id = $mail_id;
 
       $this->customer_model->addTimeline( $customer_id, $action );
 

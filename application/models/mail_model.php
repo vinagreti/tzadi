@@ -31,6 +31,8 @@ class Mail_Model extends CI_Model {
 
     $this->mongo_db->insert('mail', $data);
 
+    return $data["_id"];
+
   }
 
 

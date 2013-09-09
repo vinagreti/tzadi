@@ -26,7 +26,7 @@
 
 <h3 class="text-center">Timeline</h3>
 
-<div class="row-fluid">
+<div class="row-fluid hideFromResponsive">
 	<div class="span12 text-center">
 		Agency
 	</div>
@@ -38,14 +38,14 @@
 <div class="row-fluid">
 	<div class="span12 offset12 tzdTableRow">
 		<p><?=$customer["timeline"][0]["action"]["kind"];?></p>
-		<p><a href="<?=base_url()."email/".$customer["timeline"][0]["_id"];?>">dd</a></p>
+		<p><a href="<?=base_url()."email/".$customer["timeline"][0]["mail_id"];?>">dd</a></p>
 	</div>
 </div>
 
 <div class="row-fluid">
 	<div class="span12 offset12 tzdTableRow">
 		<p><?=$customer["timeline"][1]["action"]["kind"];?></p>
-		<p><a href="<?=base_url()?>email/<?=$customer["timeline"][1]["_id"];?>">dd</a></p>
+		<p><a href="<?=base_url()?>email/<?=$customer["timeline"][1]["mail_id"];?>">dd</a></p>
 	</div>
 </div>
 

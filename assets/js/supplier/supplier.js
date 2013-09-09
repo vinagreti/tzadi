@@ -27,7 +27,7 @@ $(document).ready(function(){
         line.attr("id", objSupplier._id);
         line.children().html(brief);
         this.body.children().append(line);
-        if(position && position == "before") this.body.children().prepend(line);
+        if(position && position == "before") line.insertAfter(this.body.find(".tzdTableHeader"));
         else this.body.children().append(line);
       }
       if(open && open == true) this.openDetails( id );

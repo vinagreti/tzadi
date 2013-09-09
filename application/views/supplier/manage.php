@@ -32,6 +32,13 @@
 <br>
 <div class="row-fluid tzdTable">
   <div class="span24">
+    <div class="row-fluid hideFromResponsive tzdTableHeader">
+      <div class="span4"></div>
+      <div class="span20">
+        <?=lang("splr_name")?>
+      </div>
+    </div>
+
     <div class="row-fluid tzdTableLine hide">
       <div class="span24 tzdTableRow">
         <div class="row-fluid tzdTableBrief">

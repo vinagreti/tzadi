@@ -57,7 +57,7 @@ $(document).ready(function(){
         var line = this.line.clone();
         line.attr("id", id)
         line.children().html(brief);
-        if(position && position == "before") this.body.children().prepend(line);
+        if(position && position == "before") line.insertAfter(this.body.find(".tzdTableHeader"));
         else this.body.children().append(line);
       }
       if(open && open == true) this.openDetails( id );

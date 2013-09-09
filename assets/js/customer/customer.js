@@ -49,7 +49,7 @@ $(document).ready(function(){
         line.children().html(brief);
         this.body.children().append(line);
         if(position && position == "append") this.body.children().append(line);
-        else this.body.children().prepend(line);
+        else line.insertAfter(this.body.find(".tzdTableHeader"));
       }
       if(open && open == true) this.openDetails( id );
     };
