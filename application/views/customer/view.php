@@ -4,21 +4,21 @@
 	<div class="span24 tzdTableRow">
 		<div class="row-fluid">
 			<div class="span8">
-				<p>creation: <?= date( "d/m/Y h:m", time($customer["creation"]) ) ?></p>
-				<p>birth: <?= date( "d/m/Y", time($customer["birth"]) ) ?></p>
-				<p>email: <?=$customer["email"]?></p>
-				<p>phone: <?=$customer["phone"]?></p>
-				<p>cellphone: <?=$customer["cellphone"]?></p>
+				<p>creation: <?php if( isset( $customer["creation"] ) ) echo  date( "d/m/Y h:m", time($customer["creation"]) ); ?></p>
+				<p>birth: <?php if( isset( $customer["birth"] ) ) echo  date( "d/m/Y", time($customer["birth"]) ); ?></p>
+				<p>email: <?php if( isset( $customer["email"] ) ) echo $customer["email"]; ?></p>
+				<p>phone: <?php if( isset( $customer["phone"] ) ) echo $customer["phone"]; ?></p>
+				<p>cellphone: <?php if( isset( $customer["cellphone"] ) ) echo $customer["cellphone"]; ?></p>
 			</div>
 			<div class="span8">
-				<p>status: <?=$customer["status"]?></p>
-				<p>address: <?=$customer["address"]?></p>
-				<p>city: <?=$customer["city"]?></p>
-				<p>state: <?=$customer["state"]?></p>
-				<p>country: <?=$customer["country"]?></p>
+				<p>status: <?php if( isset( $customer["status"] ) ) echo $customer["status"]; ?></p>
+				<p>address: <?php if( isset( $customer["address"] ) ) echo $customer["address"]; ?></p>
+				<p>city: <?php if( isset( $customer["city"] ) ) echo $customer["city"]; ?></p>
+				<p>state: <?php if( isset( $customer["state"] ) ) echo $customer["state"]; ?></p>
+				<p>country: <?php if( isset( $customer["country"] ) ) echo $customer["country"]; ?></p>
 			</div>
 			<div class="span8">
-				<p>details: <?=$customer["details"]?></p>
+				<p>details: <?php if( isset( $customer["details"] ) ) echo $customer["details"]; ?></p>
 			</div>
 		</div>
 	</div>
