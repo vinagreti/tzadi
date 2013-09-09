@@ -21,7 +21,12 @@ class Product_Model extends CI_Model {
       ->where('status', "active")
       ->where('_id', (int) $_id)
       ->get('product');
-    return $products[0];
+
+    if( isset($products[0]) )
+      return $products[0];
+
+    else
+      return false;
   }
 
   function getPublic()

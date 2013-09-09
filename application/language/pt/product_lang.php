@@ -191,3 +191,5 @@ $lang['pdt_yourMailAddress'] = "seu endereço de e-mail";
 $lang['pdt_questions'] = "perguntas";
 $lang['pdt_questionsSent'] = "suas dúvidas foram encaminhadas para nossa equipe. Em breve entraremos em contato com mais informações.";
 $lang['pdt_wantsToKnowMoreAbout'] = "quer saber mais sobre";
+$lang["pdt_TheProduct"] = "O produto";
+$lang["pdt_wasNotFound"] = "não foi encontrado";

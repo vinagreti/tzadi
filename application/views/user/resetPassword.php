@@ -1,4 +1,4 @@
-<h3>Reset de senha</h3>
+<h3><?=lang("usr_ResetPassword")?></h3>
 
 <div class="row">
 	<div class="span8">
@@ -6,7 +6,7 @@
 		<div class="control-group">
 			<input type="text" id="email" class="input-block-level" />
 		</div>
-		<a id="resetPassword" class="btn btn-primary">enviar nova senha</a>
+		<a id="resetPassword" class="btn btn-primary"><?=lang("usr_sendNewPassword")?></a>
 	</div>
 </div>
 

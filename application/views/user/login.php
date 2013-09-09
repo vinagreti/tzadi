@@ -6,7 +6,7 @@
 		  	<input type="text" class="input-block-level" placeholder="<?=lang("usr_enter_mail")?>" id="email" name="email">
 		  </div>
 	  </label>
-	  <div class="pull-right text-warning"><a href="https://<?=ENVIRONMENT?>/<?=lang("rt_resetPassword")?>">Esqueceu a senha?</a></div>
+	  <div class="pull-right text-warning"><a href="https://<?=ENVIRONMENT?>/<?=lang("rt_resetPassword")?>"><?=lang("usr_forgotPassword")?>?</a></div>
 	  <label><?=lang("usr_enter_passwd")?>
 		  <div class="control-group">
 		  	<input type="password" class="input-block-level" placeholder="<?=lang("usr_enter_passwd")?>" id="password" name="password">

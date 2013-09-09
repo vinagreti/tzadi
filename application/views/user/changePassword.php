@@ -1,20 +1,20 @@
-<h3>Reset de senha</h3>
+<h3><?=lang("usr_ChangePassword")?></h3>
 
 <div class="row">
 	<div class="span8">
-		senha atual
+		<?=lang("usr_currentPassword")?>
 		<div class="control-group">
 			<input type="password" id="passwdOld" class="input-block-level" />
 		</div>
-		nova senha
+		<?=lang("usr_newPassword")?>
 		<div class="control-group">
 			<input type="password" id="passwdNew" class="input-block-level" />
 		</div>
-		nova senha - confirmação
+		<?=lang("usr_confirmNewPassword")?>
 		<div class="control-group">
 			<input type="password" id="passwdNewConf" class="input-block-level" />
 		</div>
-		<a id="changePassword" class="btn btn-primary">alterar senha</a>
+		<a id="changePassword" class="btn btn-primary"><?=lang("usr_changePassword")?></a>
 	</div>
 </div>
 

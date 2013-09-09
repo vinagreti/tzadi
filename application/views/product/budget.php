@@ -34,3 +34,6 @@
 </div>
 
 <div class="hide" id="pdt_wantToEmpty"><?=lang("pdt_wantToEmptyBudget")?></div>
+
+<div id="pdt_TheProduct" class="hide"><?=lang("pdt_TheProduct")?></div>
+<div id="pdt_wasNotFound" class="hide"><?=lang("pdt_wasNotFound")?></div>
