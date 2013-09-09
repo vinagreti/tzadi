@@ -2,6 +2,27 @@
 
 class Mail extends My_Controller {
 
+  public function __construct() {
+    parent::__construct();
+		$this->lang->load('mail', $this->session->userdata('language'));
+  }
+
+	public function read( $mail_id ){
+
+		$this->load->model("mail_model");
+
+		$data->mail = $this->mail_model->read( $mail_id );
+
+        $data->dynJS = 'mail/read';
+
+        $data->view = 'mail/read';
+
+        $data->page_title = lang('mail_readTitle');
+
+        $this->page->load($data);
+
+	}
+
 	public function send()
 	{
 		// este método tem que ser acionado por um cron, para que seja executado automaticamente

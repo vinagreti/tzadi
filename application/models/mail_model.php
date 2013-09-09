@@ -17,6 +17,16 @@ class Mail_Model extends CI_Model {
 
   }
 
+  public function read( $mail_id ){
+
+    $mail = $this->mongo_db
+      ->where( "_id", (int) $mail_id )
+      ->get('mail');
+
+    return $mail[0];
+
+  }
+
   public function queue($data) {
 
     $this->load->model("mongo_model");

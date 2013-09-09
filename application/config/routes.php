@@ -52,6 +52,8 @@ $route['vitrine'] = 'product';
 $route['products'] = 'product/manage';
 $route['produtos'] = 'product/manage';
 
+$route['mail/(:num)'] = 'mail/read/$1';
+
 $route['budget'] = 'product/budget';
 $route['orcamento'] = 'product/budget';
 
