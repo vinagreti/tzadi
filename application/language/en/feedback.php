@@ -1,5 +1,5 @@
 <?php
-$lang["fdb_mayWeHelp"] = "Can I help you?";
+$lang["fdb_mayWeHelp"] = "How can we help you?";
 $lang["fdb_email"] = "please enter your email";
 $lang["fdb_subject"] = "enter the subject";
 $lang["fdb_message"] = "message ...";

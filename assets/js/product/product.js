@@ -8,12 +8,6 @@
  */
 TzadiJS.prototype.product = new function(){
 
-  this.setModal = function( modal ) {
-
-    this.modal = modal;
-    
-  }
-
   this.like = function( _id ){
 
     var url = base_url+'product/like';

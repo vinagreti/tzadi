@@ -11,6 +11,10 @@ $(document).ready(function(){
   $(".shareProductByMail").live("click", function(){
     $tzd.product.share.open( $(this).attr("id") );
   });
+
+  $(".knowMore").live("click", function(){
+    $tzd.product.knowMore.open( $(this).attr("id") );
+  });
   
   $(".priceConverted").html($(".currencyCode").html() + " " + $tzd.currency.convert( $(".price").html(), $(".productCurrency").html()).toFixed(2) );
 

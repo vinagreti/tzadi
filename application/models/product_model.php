@@ -274,7 +274,7 @@ class Product_Model extends CI_Model {
 
       $this->load->model('customer_model');
 
-      $addresses = explode(",", str_replace(' ', '', $data["addresses"]) );
+      $addresses = explode( ",", preg_replace('/\s+/', '', $data["addresses"] ) );
 
       foreach( $addresses as $key => $email ){
 
