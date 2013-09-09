@@ -13,9 +13,9 @@ class Contact extends My_Controller {
 
 		if(!$data){
 
-	        $data->dynJS = 'tzadi/contact';
+	        $data->dynJS = 'contact/index';
 
-	        $data->view = 'tzadi/contact';
+	        $data->view = 'contact/index';
 
 	        $data->page_title = lang('ct_page_title');
 
