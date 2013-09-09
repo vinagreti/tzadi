@@ -41,37 +41,41 @@
 	<div class="span24 timeline">
 
 		<div class="row-fluid customerAdd hide">
-			<div class="offset12 span12 tzdTableRow">
-				<p class="date"></p>
+			<div class="span10"></div>
+			<div class="span4 tzdTableRow"><p class="date text-center"></p></div>
+			<div class="span10 tzdTableRow">
 				<p><?=lang("ctm_created")?></p>
 			</div>
 		</div>
 
 		<div class="row-fluid system hide">
-			<div class="span12 tzdTableRow">
-				<p class="date"></p>
+			<div class="span10 tzdTableRow">
 				<p><?=lang("ctm_createdBySystem")?></p>
 			</div>
+			<div class="span4 tzdTableRow"><p class="date text-center"></p></div>
 		</div>
 
 		<div class="row-fluid contact hide">
-			<div class="span12 offset12 tzdTableRow">
-				<p class="date"></p>
-				<p><a class="mail_id"><?=lang("ctm_contact")?></a></p>
+			<div class="span10"></div>
+			<div class="span4 tzdTableRow"><p class="date text-center"></p></div>
+			<div class="span10 tzdTableRow">
+				<p><a class="mail_id" target="_blank"><?=lang("ctm_contact")?></a></p>
 			</div>
 		</div>
 
 		<div class="row-fluid productShare hide">
-			<div class="span12 offset12 tzdTableRow">
-				<p class="date"></p>
-				<p><a class="mail_id"><?=lang("ctm_shareProduct")?></a></p>
+			<div class="span10"></div>
+			<div class="span4 tzdTableRow"><p class="date text-center"></p></div>
+			<div class="span10 tzdTableRow">
+				<p><a class="mail_id" target="_blank"><?=lang("ctm_shareProduct")?></a></p>
 			</div>
 		</div>
 
 		 <div class="row-fluid productKnowMore hide">
-			<div class="span12 offset12 tzdTableRow">
-				<p class="date"></p>
-				<p><a class="mail_id"><?=lang("ctm_knowMoreProduct")?></a></p>
+			<div class="span10"></div>
+			<div class="span4 tzdTableRow"><p class="date text-center"></p></div>
+			<div class="span10 tzdTableRow">
+				<p><a class="mail_id" target="_blank"><?=lang("ctm_knowMoreProduct")?></a></p>
 			</div>
 		</div>
 	</div>
