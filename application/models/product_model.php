@@ -165,7 +165,7 @@ class Product_Model extends CI_Model {
 
         $error = false;
       }
-      else $error = lang("pdt_noChanges");
+      else $error = false;
     }
 
     return $error;

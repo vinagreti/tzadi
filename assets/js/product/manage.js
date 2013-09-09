@@ -170,7 +170,6 @@ $(document).ready(function(){
           line.find(".courseKind").select2();
           line.find(".courseKind").select2("val", objProduct.courseKind);
           line.find(".courseLanguage").val(objProduct.courseLanguage);
-          line.find(".courseLanguage").mask("S{1,9}S{0,9}S{0,9}S{0,2}");
           line.find(".courseModality").select2();
           line.find(".courseModality").select2("val", objProduct.courseModality);
           line.find(".coursePeriod").select2();
@@ -648,7 +647,7 @@ $(document).ready(function(){
         };
         $tzd.ajax.post(url, formData, callback);
       } else {
-        $tzd.alert.error($(".pdt_noChanges").html());
+        $tzd.alert.success($(".pdt_saved").html());
       }
     },
     search : function( searchString ){
