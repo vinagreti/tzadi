@@ -41,10 +41,10 @@
 	<div class="span24 timeline">
 
 		<div class="row-fluid customerAdd hide">
-			<div class="span10 tzdTableRow">
+			<div class="span4 tzdTableRow pull-right"><p class="date text-center"></p></div>
+			<div class="span10 tzdTableRow pull-left">
 				<p><?=lang("ctm_created")?></p>
 			</div>
-			<div class="span4 tzdTableRow"><p class="date text-center"></p></div>
 		</div>
 
 		<div class="row-fluid system hide">
