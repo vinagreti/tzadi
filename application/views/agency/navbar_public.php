@@ -12,7 +12,7 @@
     <ul class="nav">
       <li><a class="blogLink" href="/blog" rel="tooltip" title="Blog"><i class="icon-coffee icon-large"></i> Blog</a></li>
       <li><a href="<?=base_url()?><?=lang('rt_vitrine')?>" rel="tooltip" title="<?=lang('tmpt_VitrineTitle')?>"><i class="icon-windows"></i> <?=lang('tmpt_Vitrine')?></a></li>
-      <li><a href="<?=base_url()?><?=lang('rt_budget')?>" target="_blank"><i class="icon-flag"></i> <?=lang('tmpt_Budget')?> <span class="label label-warning budgetTotal"></span></a></li>
+      <li><a href="<?=base_url()?><?=lang('rt_budget')?>"><i class="icon-flag"></i> <?=lang('tmpt_Budget')?> <span class="label label-warning budgetTotal"></span></a></li>
     </ul>
     <ul class="nav pull-right">
       <li class="dropdown">

@@ -149,9 +149,9 @@ class Customer_Model extends CI_Model {
           "_id" => $newID
           ,"name" => $email
           ,"email" => $email
-          ,"owner" => $this->session->userdata("_id")
+          ,"owner" => $this->session->userdata("profileID")
           ,"creation" => now()
-          ,"creator" => $this->session->userdata("_id")
+          ,"creator" => "system"
           ,"status" => "active"
           ,"attachment" => array()
         )

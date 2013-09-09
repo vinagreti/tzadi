@@ -21,7 +21,7 @@
           <li><a href="<?=base_url()?><?=lang('rt_vitrine')?>" rel="tooltip" title="<?=lang('tmpt_VitrineTitle')?>"><?=lang('tmpt_Vitrine')?></a></li>
         </ul>
       </li>
-      <li><a href="<?=base_url()?><?=lang('rt_budget')?>" target="_blank"><i class="icon-flag"></i> <?=lang('tmpt_Budget')?> <span class="label label-warning budgetTotal"></span></a></li>
+      <li><a href="<?=base_url()?><?=lang('rt_budget')?>"><i class="icon-flag"></i> <?=lang('tmpt_Budget')?> <span class="label label-warning budgetTotal"></span></a></li>
     </ul>
     <ul class="nav pull-right">
       <li class="dropdown">
