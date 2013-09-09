@@ -14,6 +14,23 @@ class Customer_Model extends CI_Model {
       ->get('customer');
   }
 
+  function getBy( $_id )
+  {
+    $customer = $this->mongo_db
+      ->where('owner', $this->session->userdata("_id"))
+      ->where('_id', (int) $_id )
+      ->get('customer');
+
+    return $customer[0];
+  }
+
+  function getTimelineByID( $_id )
+  {
+    return $this->mongo_db
+      ->where('customer_id', (int) $_id )
+      ->get('timeline');
+  }
+
   function add($name)
   {
     $this->load->model("mongo_model");

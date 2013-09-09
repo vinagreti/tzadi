@@ -47,7 +47,7 @@
           <div class="span2">
             <a class="openDetail btn btn-info btn-small btn-block"><?=lang("tmpt_open")?></a>
           </div>
-          <div class="span20">
+          <div class="span19">
             <div class="row-fluid">
               <div class="span10 name" title="<?=lang('ctm_name')?>">>
                 <!-- o valor NOME de cada class do span é jogado aqui -->
@@ -57,6 +57,7 @@
               </div>
             </div>
           </div>
+          <div class="span1" rel="tooltip" title="<?=lang('tmpt_open')?>"><a class="openView" target="_blank"><i class="icon-external-link icon-2x"></i></a></div>
         </div> <!-- \\\\ é o fim do conteúdo de cada linha da tabela -->
       </div>
     </div> <!-- \\\\ é o fim do conteúdo de cada linha da tabela -->
@@ -73,12 +74,13 @@
             <div class="span2">
               <a class="customerSave btn btn-primary btn-block"><?=lang('tmpt_Save')?></a>
             </div>
-            <div class="span18">
+            <div class="span17">
               <input type="hidden" name="customerID" id="customerID" />
               <div class="control-group">
                 <input type="text" class="input-block-level name" name="name" id="name" rel="tooltip" title="<?=lang('ctm_name')?>" />
               </div>
             </div>
+            <div class="span1" rel="tooltip" title="<?=lang('tmpt_open')?>"><a class="openView" target="_blank"><i class="icon-external-link icon-2x"></i></a></div>
           </div>
         </div>
       </div>
@@ -207,3 +209,4 @@
 <div class="ctm_pleaseFillValidState hide"><?=lang("ctm_pleaseFillValidState")?></div>
 <div class="ctm_pleaseFillValidCountry hide"><?=lang("ctm_pleaseFillValidCountry")?></div>
 <div class="ctm_pleaseFillValiDetails hide"><?=lang("ctm_pleaseFillValiDetails")?></div>
+<div class="rt_customer hide"><?=lang("rt_customer")?></div>

@@ -67,6 +67,7 @@ $(document).ready(function(){
       var objProduct = products.all[id];
       var detail = this.detail.clone();
       line.children().html(detail);
+      line.find(".openView").attr( "href" , base_url+objProduct._id+"/"+$tzd.string.makeURL( objProduct.name ) );
       line.find(".productKind").html($("#"+objProduct.kind).html());
       line.find(".purchase").val(objProduct.purchase);
       line.find(".purchase").mask('000000000000000.00', {reverse: true});

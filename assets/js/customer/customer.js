@@ -32,6 +32,7 @@ $(document).ready(function(){
       detail.find("#state").val(objCustomer.state);
       detail.find("#country").val(objCustomer.country);
       detail.find("#details").val(objCustomer.details);
+      detail.find(".openView").attr( "href" , base_url+$(".rt_customer").html()+"/"+objCustomer._id+"/"+$tzd.string.makeURL( objCustomer.name ) );
       if(objCustomer.status == "active") detail.find(".customerActive").addClass("btn-success").removeClass("btn-danger").html($(".ctm_inactivate").html());
       else detail.find(".customerActive").addClass("btn-danger").removeClass("btn-success").html($(".ctm_activate").html());
       if(objCustomer.img) detail.find(".changeImg").attr("src", base_url+"file/open/"+objCustomer.img);
@@ -60,6 +61,7 @@ $(document).ready(function(){
       var brief = this.brief.clone();
       // preenchemos a div com os dados do objeto
       brief.find(".customerID").html(objCustomer._id);
+      brief.find(".openView").attr( "href" , base_url+$(".rt_customer").html()+"/"+objCustomer._id+"/"+$tzd.string.makeURL( objCustomer.name ) );
       brief.find(".name").html(objCustomer.name);
       brief.find(".customerEmail").html(objCustomer.email);
       if(objCustomer.status == "active") brief.find(".customerActive").addClass("btn-success").removeClass("btn-danger").html($(".ctm_inactivate").html());

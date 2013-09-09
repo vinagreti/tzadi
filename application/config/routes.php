@@ -88,6 +88,10 @@ $route['fornecedor'] = 'supplier';
 
 $route['cliente'] = 'customer';
 
+$route['customer/(:num)'] = 'customer/view/$1';
+$route['customer/(:num)/(:any)'] = 'customer/view/$1';
+$route['cliente/(:num)'] = 'customer/view/$1';
+$route['cliente/(:num)/(:any)'] = 'customer/view/$1';
 // tivemos que criar o controller como privacy pois estava dando erro em produção com privacypolicy
 // depois criamos o alias pra rota privacypolicy
 $route['privacypolicy'] = 'privacy';

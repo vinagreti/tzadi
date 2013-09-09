@@ -31,9 +31,9 @@ class Customer extends My_Controller {
   {
     $this->load->model("customer_model");
     $name = $this->input->post("name");
-    if(!$name) $name = lang('ctm_newCostumer');
-    $newCostumer = $this->customer_model->add($name);
-    echo json_encode($newCostumer[0]);
+    if(!$name) $name = lang('ctm_newCustomer');
+    $newCustomer = $this->customer_model->add($name);
+    echo json_encode($newCustomer[0]);
   }
 
   public function changeImg()
@@ -74,6 +74,17 @@ class Customer extends My_Controller {
     $this->load->model("customer_model");
     $res = $this->customer_model->drop($_id);
     echo json_encode($res);
+  }
+
+  public function view( $_id ){
+    $this->load->model("customer_model");
+    $data->customer = $this->customer_model->getBy( $_id );
+    $data->customer["timeline"] = $this->customer_model->getTimelineByID( $_id );
+
+    $data->dynJS = 'customer/view';
+    $data->view = 'customer/view';
+    $data->page_title = lang('ctm_viewTitle');
+    $this->page->load($data);
   }
 
 }

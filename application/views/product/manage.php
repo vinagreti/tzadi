@@ -104,11 +104,12 @@
                   <div class="span2">
                     <a class="productSave btn btn-block btn-primary"><?=lang("tmpt_Save")?></a>
                   </div>
-                  <div class="span18">
+                  <div class="span17">
                     <div class="control-group">
                       <input type="text" class="input-block-level name nameInput" />
                     </div>
                   </div>
+                  <div class="span1" rel="tooltip" title="<?=lang('tmpt_open')?>"><a class="openView" target="_blank"><i class="icon-external-link icon-2x"></i></a></div>
                 </div>
               </div>
             </div>
