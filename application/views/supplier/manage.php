@@ -36,10 +36,10 @@
       <div class="span24 tzdTableRow">
         <div class="row-fluid tzdTableBrief">
           <div class="span2">
-            <a class="btn supplierStatus btn-block" rel="tooltip" title="<?=lang('splr_supplierStatusBtnTitle')?>"></a>
+            <a class="btn supplierStatus btn-small btn-block" rel="tooltip" title="<?=lang('splr_supplierStatusBtnTitle')?>"></a>
           </div>
           <div class="span2">
-            <a class="openDetail btn btn-info btn-block" rel="tooltip" title="<?=lang('tmpt_open')?>"><?=lang('tmpt_open')?></a>
+            <a class="openDetail btn btn-info btn-small btn-block" rel="tooltip" title="<?=lang('tmpt_open')?>"><?=lang('tmpt_open')?></a>
           </div>
           <div class="span20">
             <div class="row-fluid">

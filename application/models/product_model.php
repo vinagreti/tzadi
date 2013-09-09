@@ -191,17 +191,23 @@ class Product_Model extends CI_Model {
     return $likes;
   }
 
-  function getHumanized( $productID ){
+  function getHumanized( $product_id ){
 
     $product = $this->mongo_db
-      ->where('_id', (int) $productID)
+      ->where('_id', (int) $product_id)
       ->get('product');
 
     $product = $product[0];
 
     if(!isset($product["currency"])) $product["currency"] = "USD";
 
-    if(isset($product["price"])) $product["humanPrice"] = $product["currency"] . " " . $product["price"];
+    if(isset($product["price"])) {
+
+      if($product["price"] == "") $product["price"] = "0.00";
+
+      $product["humanPrice"] = $product["currency"] . " " . $product["price"];
+
+    }
 
     if(isset($product["courseEnrollmentFees"])) $product["courseEnrollmentFees"] = $product["currency"] . " " . $product["courseEnrollmentFees"];
 
@@ -235,6 +241,10 @@ class Product_Model extends CI_Model {
     
     if(isset($product["workKind"])) $product["workKind"] = lang("pdt_" . $product["workKind"]);
 
+    if(isset($product["img"])) $product["coverImg"] = base_url()."file/open/".$product["img"][0];
+
+    else $product["coverImg"] = base_url()."assets/img/no_photo_160x120.png";
+
     if(isset($product["itens"])) {
 
       $itens = array();
@@ -259,66 +269,102 @@ class Product_Model extends CI_Model {
     return $product;
   }
 
-  function share($data)
+  function share( $data )
   {
 
-    $product = $this->getHumanized( $data["productID"] );
+    $product = $this->getHumanized( $data["product_id"] );
 
-    if(isset($product["img"])) $product["img"] = base_url()."file/open/".$product["img"][0];
+    $this->load->helper('email');
 
-    else $product["img"] = base_url()."assets/img/no_photo_160x120.png";
+    $this->load->model('customer_model');
 
-    if( isset( $data["addresses"] ) ) {
+    $addresses = explode( ",", preg_replace('/\s+/', '', $data["addresses"] ) );
 
-      $this->load->helper('email');
+    foreach( $addresses as $key => $email ){
 
-      $this->load->model('customer_model');
+      if ( valid_email( $email ) ) {
 
-      $addresses = explode( ",", preg_replace('/\s+/', '', $data["addresses"] ) );
+        $customer_id = $this->customer_model->getOrCreate( $email );
 
-      foreach( $addresses as $key => $email ){
+        $address = $data["addresses"];
 
-        if ( valid_email( $email ) ) {
+        $mailContent['subject'] = $data["name"] . " " . lang("pdt_shareIndicated") . ": " . $product["name"];
 
-          $customer_id = $this->customer_model->getOrCreate( $email );
+        $mail->message = $data["message"];
+        
+        $mail->product = $product;
 
-          $address = $data["addresses"];
+        $mailContent["message"] = $this->load->view("product/shareMail", $mail, true);
 
-          $mailContent['subject'] = $data["name"] . " " . lang("pdt_shareIndicated") . ": " . $product["name"];
+        $mailContent["to"] = $email;
 
-          $mail->message = $data["message"];
-          
-          $mail->product = $product;
+        $mailContent["kind"] = "product/share";
 
-          $mailContent["message"] = $this->load->view("product/shareMail", $mail, true);
+        $this->load->model('mail_model');
 
-          $mailContent["to"] = $email;
+        $this->mail_model->queue($mailContent);
 
-          $mailContent["kind"] = "product/share";
+        $action->kind = "product/share";
 
-          $this->load->model('mail_model');
+        $action->mailContent = $mailContent;
 
-          $this->mail_model->queue($mailContent);
-
-          $action->kind = "product/share";
-
-          $action->mailContent = $mailContent;
-
-          $this->customer_model->addTimeline( $customer_id, $action );
-
-          $error = false;
-
-        }
+        $this->customer_model->addTimeline( $customer_id, $action );
 
       }
 
+    }
+
+    return array( "success" => lang("pdt_shared") );
+
+  }
+
+  function knowMore( $data )
+  {
+
+    $product = $this->getHumanized( $data["product_id"] );
+
+    $this->load->helper('email');
+
+    $this->load->model('customer_model');
+
+    $email = preg_replace('/\s+/', '', $data["address"] );
+
+    if ( valid_email( $email ) ) {
+
+      $customer_id = $this->customer_model->getOrCreate( $email );
+
+      $address = $data["address"];
+
+      $mailContent['subject'] = $data["name"] . " " . lang("pdt_wantsToKnowMoreAbout") . ": " . $product["name"];
+
+      $mail->questions = $data["questions"];
+      
+      $mail->product = $product;
+
+      $mailContent["message"] = $this->load->view("product/knowMoreMail", $mail, true);
+
+      $mailContent["to"] = $email;
+
+      $mailContent["kind"] = "product/knowMore";
+
+      $this->load->model('mail_model');
+
+      $this->mail_model->queue($mailContent);
+
+      $action->kind = "product/knowMore";
+
+      $action->mailContent = $mailContent;
+
+      $this->customer_model->addTimeline( $customer_id, $action );
+
+      return array( "success" => lang("pdt_questionsSent") );
+
     } else {
 
-      $error = $this->load->view('product/shareForm', $product, true);
+      return array( "error" => lang("pdt_fillValidEmail") );
 
     }
 
-    return $error;
-
   }
+
 }

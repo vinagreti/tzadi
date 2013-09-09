@@ -373,13 +373,13 @@ class User_Model extends CI_Model {
 
         if( ! isset( $user["kind"] ) || ! isset( $user["name"] ) || ! isset( $user["identity"] ) ) {
 
-            $res->error = "favor informar todos os dados";
+            $res->error = lang("usr_fillAllData");
 
         } else {
 
             if( ! preg_match('/^[a-zA-Z0-9]{1,32}$/', $user["identity"]) ) {
 
-                $res->error = "informe uma identidade válida";
+                $res->error = lang("usr_fillValidIdentity");
 
             } else {
 
@@ -398,7 +398,7 @@ class User_Model extends CI_Model {
                     );
 
                 if( $this->getByIdentity( $user["identity"] ) || in_array( $user["identity"], $reservedIdentities ) )
-                    $res->error = "esta identidade ja está em uso";
+                    $res->error = lang("usr_identityAlreadyUse");
 
                 else {
 
@@ -571,7 +571,7 @@ class User_Model extends CI_Model {
 
         if( $userData["name"] ) {
 
-            $res->success = "Salvo!";
+            $res->success = lang("usr_saved");
 
             $this->session->set_userdata('name', $userData["name"]);
 
@@ -580,7 +580,7 @@ class User_Model extends CI_Model {
         }
 
         else
-            $res->success = "Erro ao salvar!";
+            $res->success = lang("usr_errorWhenSaving");
 
         return $res;
 
@@ -608,8 +608,8 @@ class User_Model extends CI_Model {
 
             $mailContent['subject'] = lang("usr_passwordReseted") . " - " . $user["name"];
 
-            $message = "<p> Sua senha TZADI foi reiniciada com sucesso! </p>";
-            $message .= "<p> Faça <a href='http://tzadi.com/".lang("rt_login")."'>login</a> utilizando os dados abaixo:</p>";
+            $message = "<p> ".lang("usr_yourPasswordWasReseted")." </p>";
+            $message .= "<p> ".lang("usr_doMake")." <a href='http://tzadi.com/".lang("rt_login")."'>login</a> ". lang("usr_usingTheDataBelow") .":</p>";
             $message .= "<p> e-mail: " . $email . "</p>";
             $message .= "<p> senha: " . $passwd . "</p>";
             $mailContent["message"] = '<html><head><meta charset="utf-8"></head><body>'.$message.'</body></html>';
@@ -645,8 +645,8 @@ class User_Model extends CI_Model {
 
             $mailContent['subject'] = lang("usr_newPassword") . " - " . $user["name"];
 
-            $message = "<p> Sua senha TZADI foi alterada com sucesso! </p>";
-            $message .= "<p> Sua nova senha é: " . $data["passwdNew"] . "</p>";
+            $message = "<p> ". lang("usr_yourPasswordWasChanged") ."! </p>";
+            $message .= "<p> ". lang("usr_yourPasswordIs") .": " . $data["passwdNew"] . "</p>";
             $message .= "<p> email: " . $user["email"] . "</p>";
             $mailContent["message"] = '<html><head><meta charset="utf-8"></head><body>'.$message.'</body></html>';
 

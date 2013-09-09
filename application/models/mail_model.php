@@ -99,7 +99,9 @@ class Mail_Model extends CI_Model {
 
   public function log() {
 
-    return $this->mongo_db->get('mail');
+    return $this->mongo_db
+      ->order_by( array("_id" => "desc") )
+      ->get('mail');
 
   }
 }

@@ -20,17 +20,18 @@ TzadiJS.prototype.product = new function(){
 
   };
 
+  // share product by e-mail
   this.share = new function() {
 
-    this.modal = false;
+    this.shareModal = false;
 
     this.eventsApplied = false;
 
-    this.open = function( productID ) {
+    this.open = function( product_id ) {
 
-      if( this.modal ) {
+      if( this.shareModal ) {
 
-        this.showModal( productID );
+        this.showModal( product_id );
 
       } else {
 
@@ -42,15 +43,15 @@ TzadiJS.prototype.product = new function(){
 
           tzadiToken : tzadiToken
 
-          , productID : productID
+          , product_id : product_id
 
         };
 
         var callback = function( modal ){
 
-          self.modal = modal;
+          self.shareModal = modal;
 
-          self.showModal( productID );
+          self.showModal( product_id );
 
         };
 
@@ -59,9 +60,9 @@ TzadiJS.prototype.product = new function(){
 
     };
 
-    this.showModal = function ( productID ){
+    this.showModal = function ( product_id ){
 
-      $('#tzadiDialogs').html( this.modal );
+      $('#tzadiDialogs').html( this.shareModal );
 
       $('#tzadiDialogs').modal('show');
 
@@ -73,46 +74,179 @@ TzadiJS.prototype.product = new function(){
 
         $(".shareProduct").live("click", function(){
 
-          self.send(productID);
+          self.send(product_id);
           
         });
 
       }
 
     }
-    this.send = function( productID ){
+    this.send = function( product_id ){
 
-      var name = $('#tzadiDialogs').find(".mailYourName").val();
+      var valid = true;
 
-      var message = $('#tzadiDialogs').find(".mailMessage").val();
+      valid = valid && $tzd.form.checkMask.range($('#tzadiDialogs').find(".mailYourName"), 1, 255, $("#pdt_fillName").html());
 
-      var addresses = $('#tzadiDialogs').find(".mailEmail").val();
+      valid = valid && $tzd.form.checkMask.range($('#tzadiDialogs').find(".mailEmail"), 1, 512, $("#pdt_fillAtLeastOneEmail").html());
 
-      var url = base_url+'product/share';
-      
-      var data = {
+      if( valid ){
 
-        tzadiToken : tzadiToken
+        var name = $('#tzadiDialogs').find(".mailYourName").val();
 
-        , name : name
+        var message = $('#tzadiDialogs').find(".mailMessage").val();
 
-        , message : message
-      
-        , productID : productID
-      
-        , addresses : addresses
+        var addresses = $('#tzadiDialogs').find(".mailEmail").val();
 
-      };
-      
-      var callback = function( e ){
+        var url = base_url+'product/share';
+        
+        var data = {
 
-        if(e) $tzd.alert.error( e );
+          tzadiToken : tzadiToken
 
-        else $('#tzadiDialogs').find(".closeModal").click();
+          , name : name
 
-      };
-      
-      $tzd.ajax.post(url, data, callback);
+          , message : message
+        
+          , product_id : product_id
+        
+          , addresses : addresses
+
+        };
+        
+        var callback = function( e ){
+
+          if(e.error) $tzd.alert.error( e.error );
+
+          if(e.success){
+
+            $('#tzadiDialogs').find(".closeModal").click();
+
+            $tzd.alert.success( e.success );
+
+          }
+
+        };
+        
+        $tzd.ajax.post(url, data, callback);
+
+      }
+
+    };
+
+  }
+
+  // ask for more info about a product
+  this.knowMore = new function() {
+
+    this.knowMoreModal = false;
+
+    this.eventsApplied = false;
+
+    this.open = function( product_id ) {
+
+      if( this.knowMoreModal ) {
+
+        this.showModal( product_id );
+
+      } else {
+
+        var self = this;
+
+        var url = base_url+'product/knowMore';
+
+        var data = {
+
+          tzadiToken : tzadiToken
+
+          , product_id : product_id
+
+        };
+
+        var callback = function( modal ){
+
+          self.knowMoreModal = modal;
+
+          self.showModal( product_id );
+
+        };
+
+        $tzd.ajax.post(url, data, callback);        
+      }
+
+    };
+
+    this.showModal = function ( product_id ){
+
+      $('#tzadiDialogs').html( this.knowMoreModal );
+
+      $('#tzadiDialogs').modal('show');
+
+      if( ! this.eventsApplied ) {
+
+        this.eventsApplied = true;
+
+        var self = this;
+
+        $(".knowMoreProduct").live("click", function(){
+
+          self.send(product_id);
+          
+        });
+
+      }
+
+    }
+    this.send = function( product_id ){
+
+      var valid = true;
+
+      valid = valid && $tzd.form.checkMask.range($('#tzadiDialogs').find(".knowMoreYourName"), 1, 255, $("#pdt_fillName").html());
+
+      valid = valid && $tzd.form.checkMask.email($('#tzadiDialogs').find(".knowMoreEmail"), $("#pdt_fillValidEmail").html());
+
+      valid = valid && $tzd.form.checkMask.range($('#tzadiDialogs').find(".knowMoreQuestions"), 1, 255, $("#pdt_fillQuestions").html());
+
+      if( valid ){
+
+        var name = $('#tzadiDialogs').find(".knowMoreYourName").val();
+
+        var questions = $('#tzadiDialogs').find(".knowMoreQuestions").val();
+
+        var address = $('#tzadiDialogs').find(".knowMoreEmail").val();
+
+        var url = base_url+'product/knowMore';
+        
+        var data = {
+
+          tzadiToken : tzadiToken
+
+          , name : name
+
+          , questions : questions
+        
+          , product_id : product_id
+        
+          , address : address
+
+        };
+        
+        var callback = function( e ){
+
+          if(e.error) $tzd.alert.error( e.error );
+
+          if(e.success){
+
+            $('#tzadiDialogs').find(".closeModal").click();
+
+            $tzd.alert.success( e.success );
+
+          }
+
+        };
+        
+        $tzd.ajax.post(url, data, callback);
+
+      }
 
     };
 

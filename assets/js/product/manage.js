@@ -36,7 +36,7 @@ $(document).ready(function(){
       if(objProduct.status == "active") brief.find(".productStatus").addClass("btn-success").removeClass("btn-danger").html($(".pdt_inactivate").html());
       else brief.find(".productStatus").addClass("btn-danger").removeClass("btn-success").html($(".pdt_activate").html());
       brief.find(".name").html(objProduct.name);
-
+      brief.find(".openView").attr( "href" , base_url+objProduct._id+"/"+$tzd.string.makeURL( objProduct.name ) );
       brief.find(".productKind").html($("#"+objProduct.kind).html());
 
       var supplier = products.suppliers.filter(function ( supplier ) {

@@ -78,14 +78,15 @@
           <div class="span24 tzdTableBriefContent">
             <div class="row-fluid">
               <div class="span2">
-                <a class="btn productStatus btn-block" rel="tooltip" title="<?=lang('pdt_productStatusBtnTitle')?>" ></a>
+                <a class="btn productStatus btn-small btn-block" rel="tooltip" title="<?=lang('pdt_productStatusBtnTitle')?>" ></a>
               </div>
               <div class="span2">
-                <a class="openDetail btn btn-info btn-block"><?=lang("tmpt_open")?></a>
+                <a class="openDetail btn btn-info btn-small btn-block"><?=lang("tmpt_open")?></a>
               </div>
-              <div class="span12 name" rel="tooltip" title="<?=lang('pdt_name')?>"></div>
+              <div class="span11 name" rel="tooltip" title="<?=lang('pdt_name')?>"></div>
               <div class="span4 productKind" rel="tooltip" title="<?=lang('pdt_kind')?>"></div>
               <div class="span4 productSupplier" rel="tooltip" title="<?=lang('pdt_supplier')?>"></div>
+              <div class="span1" rel="tooltip" title="<?=lang('tmpt_open')?>"><a class="openView" target="_blank"><i class="icon-external-link icon-2x"></i></a></div>
             </div>
           </div>
         </div>

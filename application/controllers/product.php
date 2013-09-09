@@ -109,8 +109,43 @@ class Product extends My_Controller {
   public function share()
   {
     $data = $this->input->post();
+
     $this->load->model("product_model");
-    echo json_encode($this->product_model->share($data));
+
+    if( isset( $data["addresses"] ) ) {
+
+      echo json_encode($this->product_model->share($data));
+
+    } else {
+
+      $shareForm = $this->load->view('product/shareForm', $this->product_model->getHumanized( $data["product_id"] ), true);
+
+      echo json_encode($shareForm);
+
+    }
+
+    
+  }
+
+  public function knowMore()
+  {
+    $data = $this->input->post();
+
+    $this->load->model("product_model");
+
+    if( isset( $data["address"] ) ) {
+
+      echo json_encode($this->product_model->knowMore($data));
+
+    } else {
+
+      $shareForm = $this->load->view('product/knowMoreForm', $this->product_model->getHumanized( $data["product_id"] ), true);
+
+      echo json_encode($shareForm);
+
+    }
+
+    
   }
 }
 /* End of file product.php */
