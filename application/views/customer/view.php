@@ -19,6 +19,7 @@
 			</div>
 			<div class="span8">
 				<p><span class="text-warning"><?=lang("ctm_details")?>:</span> <?php if( isset( $customer["details"] ) ) echo $customer["details"]; ?></p>
+				<div id="customer_id" class="hide"><?=$customer["_id"]?></div>
 			</div>
 		</div>
 	</div>
@@ -35,20 +36,43 @@
 	</div>
 </div>
 
-<div class="row-fluid">
-	<div class="span12 offset12 tzdTableRow">
-		<p><?=$customer["timeline"][0]["action"]["kind"];?></p>
-		<p><a href="<?=base_url()."email/".$customer["timeline"][0]["mail_id"];?>">dd</a></p>
-	</div>
-</div>
 
 <div class="row-fluid">
-	<div class="span12 offset12 tzdTableRow">
-		<p><?=$customer["timeline"][1]["action"]["kind"];?></p>
-		<p><a href="<?=base_url()?>email/<?=$customer["timeline"][1]["mail_id"];?>">dd</a></p>
+	<div class="span24 timeline">
+
+		<div class="row-fluid customerAdd hide">
+			<div class="offset12 span12 tzdTableRow">
+				<p class="date"></p>
+				<p><?=lang("ctm_created")?></p>
+			</div>
+		</div>
+
+		<div class="row-fluid system hide">
+			<div class="span12 tzdTableRow">
+				<p class="date"></p>
+				<p><?=lang("ctm_createdBySystem")?></p>
+			</div>
+		</div>
+
+		<div class="row-fluid contact hide">
+			<div class="span12 offset12 tzdTableRow">
+				<p class="date"></p>
+				<p><a class="mail_id"><?=lang("ctm_contact")?></a></p>
+			</div>
+		</div>
+
+		<div class="row-fluid productShare hide">
+			<div class="span12 offset12 tzdTableRow">
+				<p class="date"></p>
+				<p><a class="mail_id"><?=lang("ctm_shareProduct")?></a></p>
+			</div>
+		</div>
+
+		 <div class="row-fluid productKnowMore hide">
+			<div class="span12 offset12 tzdTableRow">
+				<p class="date"></p>
+				<p><a class="mail_id"><?=lang("ctm_knowMoreProduct")?></a></p>
+			</div>
+		</div>
 	</div>
 </div>
-
-
-
- 

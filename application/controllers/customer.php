@@ -79,12 +79,27 @@ class Customer extends My_Controller {
   public function view( $_id ){
     $this->load->model("customer_model");
     $data->customer = $this->customer_model->getBy( $_id );
-    $data->customer["timeline"] = $this->customer_model->getTimelineByID( $_id );
-
     $data->dynJS = 'customer/view';
     $data->view = 'customer/view';
     $data->page_title = lang('ctm_viewTitle');
     $this->page->load($data);
+  }
+
+  public function getTimelineByID( ){
+
+    $data = $this->input->post();
+
+    if( $data["customer_id"] ){
+
+      $this->load->model("customer_model");
+
+      echo json_encode( $this->customer_model->getTimelineByID( $data["customer_id"] ) );
+
+    } else {
+
+      echo json_encode( array("error"=> lang("ctm_idNotSet") ) );
+
+    }
   }
 
 }

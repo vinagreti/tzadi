@@ -24,11 +24,29 @@ class Customer_Model extends CI_Model {
     return $customer[0];
   }
 
-  function getTimelineByID( $_id )
+  function getTimelineByID( $customer_id )
   {
-    return $this->mongo_db
-      ->where('customer_id', (int) $_id )
-      ->get('timeline');
+
+    $customer = $this->mongo_db
+      ->where('_id', (int) $customer_id )
+      ->get('customer');
+
+    if( ! $customer ){
+
+      return array("error" => lang("ctm_customerNotFound") );
+
+    } else if ( $customer[0]['owner'] != $this->session->userdata("_id") ) {
+
+      return array("error" => lang("ctm_thisCustomerISNotYours") );
+
+    } else {
+
+      return $this->mongo_db
+        ->where('customer_id', (int) $customer_id )
+        ->get('timeline');
+
+    }
+
   }
 
   function add($name)
@@ -194,11 +212,14 @@ class Customer_Model extends CI_Model {
 
     $this->load->model("mongo_model");
 
+    $this->load->helper('date');
+
     $action_id = $this->mongo_model->newID();
 
     $this->mongo_db
     ->insert('timeline', array( 
       "_id" => $action_id
+      , "date" => now()
       , "customer_id" => $customer_id
       , "action" => $action
       )
