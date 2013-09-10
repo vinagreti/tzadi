@@ -30,8 +30,6 @@ $(document).ready(function(){
 
 			$.each( e, function( index, event ){
 
-				var date = new $tzd.date();
-
 				switch( event.action.kind ){
 
 					case "customer/add":
