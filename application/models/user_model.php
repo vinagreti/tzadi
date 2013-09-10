@@ -472,6 +472,7 @@ class User_Model extends CI_Model {
         $this->session->set_userdata('name', $user["name"]);
         $this->session->set_userdata('email', $user["email"]);
         $this->session->set_userdata('kind', $user["kind"]);
+        $this->session->set_userdata('agency_id', $user["_id"]);
         if( isset($user["currencyBase"] ) ) $this->session->set_userdata("currencyBase", $user["currencyBase"]);
         if( isset( $user["img"] ) ) $this->session->set_userdata('img', $user["img"]);
         if( isset( $user["identity"] ) ) $this->session->set_userdata('identity', $user["identity"]);

@@ -194,10 +194,6 @@ class My_Controller extends CI_Controller{
 
       }
 
-    } else {
-
-      $this->session->set_userdata('language', "pt");
-
     }
 
   }

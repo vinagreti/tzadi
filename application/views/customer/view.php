@@ -74,12 +74,26 @@
 			</div>
 		</div>
 
+		<div class="row-fluid productShareByStaff hide">
+			<div class="span10 tzdTableRow">
+				<p><a class="mail_id" target="_blank"><?=lang("ctm_shareProductByStaff")?></a></p>
+			</div>
+			<div class="span4 tzdTableRow"><p class="date text-center"></p></div>
+		</div>
+
 		 <div class="row-fluid productKnowMore hide">
 			<div class="span10"></div>
 			<div class="span4 tzdTableRow"><p class="date text-center"></p></div>
 			<div class="span10 tzdTableRow">
 				<p><a class="mail_id" target="_blank"><?=lang("ctm_knowMoreProduct")?></a></p>
 			</div>
+		</div>
+
+		 <div class="row-fluid productKnowMoreByStaff hide">
+			<div class="span10 tzdTableRow">
+				<p><a class="mail_id" target="_blank"><?=lang("ctm_knowMoreProductByStaff")?></a></p>
+			</div>
+			<div class="span4 tzdTableRow"><p class="date text-center"></p></div>
 		</div>
 	</div>
 </div>

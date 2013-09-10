@@ -12,9 +12,15 @@ $(document).ready(function(){
 	var productShare = $(".productShare").clone();
 	productShare.removeClass("hide");
 	$(".productShare").remove();
+	var productShareByStaff = $(".productShareByStaff").clone();
+	productShareByStaff.removeClass("hide");
+	$(".productShareByStaff").remove();
 	var productKnowMore = $(".productKnowMore").clone();
 	productKnowMore.removeClass("hide");
 	$(".productKnowMore").remove();
+	var productKnowMoreByStaff = $(".productKnowMoreByStaff").clone();
+	productKnowMoreByStaff.removeClass("hide");
+	$(".productKnowMoreByStaff").remove();
 	var timeline = $(".timeline");
 
 	var url = base_url+'customer/getTimelineByID';
@@ -52,14 +58,30 @@ $(document).ready(function(){
 						break;
 
 					case "product/share":
-						var productShareNew = productShare.clone();
+
+						var productShareNew;
+
+						if( event.action.staff_id )
+							productShareNew = productShareByStaff.clone();
+
+						else
+							productShareNew = productShare.clone();
+
 						productShareNew.find(".date").html( new $tzd.date(event.date).shortDateTime );
 						productShareNew.find(".mail_id").attr("href", base_url+"mail/"+event.action.mail_id );
 						timeline.append( productShareNew );
 						break;
 
 					case "product/knowMore":
-						var productKnowMoreNew = productKnowMore.clone();
+
+						var productKnowMoreNew;
+
+						if( event.action.staff_id )
+							productKnowMoreNew = productKnowMoreByStaff.clone();
+
+						else
+							productKnowMoreNew = productKnowMore.clone();
+
 						productKnowMoreNew.find(".date").html( new $tzd.date(event.date).shortDateTime );
 						productKnowMoreNew.find(".mail_id").attr("href", base_url+"mail/"+event.action.mail_id );
 						timeline.append( productKnowMoreNew );

@@ -51,3 +51,5 @@ $lang["ctm_contact"] = "contato";
 $lang["ctm_createdBySystem"] = "criado pelo sistema";
 $lang["ctm_shareProduct"] = "compartilhou um produto";
 $lang["ctm_knowMoreProduct"] = "solicitou mais informações sobre um produto";
+$lang["ctm_shareProductByStaff"] = "enviou email de produto";
+$lang["ctm_knowMoreProductByStaff"] = "solicitou mais informações sobre um produto";

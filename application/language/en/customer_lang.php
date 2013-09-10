@@ -51,3 +51,5 @@ $lang["ctm_contact"] = "contact";
 $lang["ctm_createdBySystem"] = "created by system";
 $lang["ctm_shareProduct"] = "shared product";
 $lang["ctm_knowMoreProduct"] = "ask for more info about product";
+$lang["ctm_shareProductByStaff"] = "sent a product by e-mail";
+$lang["ctm_knowMoreProductByStaff"] = "ask for more info about product";
