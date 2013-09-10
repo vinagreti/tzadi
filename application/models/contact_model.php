@@ -51,9 +51,11 @@ class Contact_Model extends CI_Model {
 
         $customer_id = $this->customer_model->getOrCreate( $email );
 
-        $message = "<p>".lang('ct_contactSentBy').": " . $email . "</p>";
+        $name = substr($email, 0, strpos($email, "@"));
 
-        $message .= "<p>".lang('ct_contactSentFor')." <a href='" . IDENTITY . ".tzadi.com'>".IDENTITY . ".tzadi.com</p>";
+        $message = "<p>".lang('ct_contactSentBy').": <a href=".base_url().lang("rt_customer")."/".$customer_id.">" . $name . "</a></p>";
+
+        $message .= "<p>".lang('ct_contactSentFor')." <a href='" . IDENTITY . ".tzadi.com'>".IDENTITY . ".tzadi.com</a></p>";
 
         $message .= "<p>".lang('ct_Subject').": " . $data["subject"] . "</p>";
 
@@ -61,7 +63,7 @@ class Contact_Model extends CI_Model {
 
         $mail["message"] = '<html><head><meta charset="utf-8"></head><body>'.$message.'</body></html>';
 
-        $mail["subject"] = "".lang('ct_contactReceived')." - " . $email;
+        $mail["subject"] = "".lang('ct_contactReceived')." - " . $name;
 
         $mail["to"] =  $email;
 
