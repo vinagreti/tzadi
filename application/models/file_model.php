@@ -49,6 +49,8 @@ class File_Model extends CI_Model {
 
   public function saveTempFile( $url ){
 
+    $this->load->library("tzd_string");
+
     $this->load->helper('file');
 
     $data = file_get_contents( $url );
@@ -57,7 +59,7 @@ class File_Model extends CI_Model {
 
     $extension = image_type_to_extension($size[2]);
 
-    $tempFile = './assets/temp_files/'.time().$extension;
+    $tempFile = './assets/temp_files/'.end(explode("/", $url)).$extension;
 
     if ( ! write_file( $tempFile, $data ) )
       echo 'Unable to write the file';
