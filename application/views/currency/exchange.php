@@ -67,9 +67,9 @@
 
 					<strong class='text-warning'><?=$key?></strong>
 
-					<b class="text-success"><?=lang("crc_todayRateBuy")?>:</b> <?=$val?>
+					<b class="text-success">&nbsp;&nbsp;&nbsp;<?=lang("crc_todayRateBuy")?>:</b> <?=$val?>
 
-					<b class="text-success"><?=lang("crc_todayRateSell")?>:</b> <?=$exchanged?>
+					<b class="text-success">&nbsp;&nbsp;&nbsp;<?=lang("crc_todayRateSell")?>:</b> <?=$exchanged?>
 
 				</p>
 				
@@ -78,4 +78,4 @@
 	</div>
 </div>
 
-<div id="crc_pleaseFillKinAndValue"><?=lang("crc_pleaseFillKinAndValue")?></div>
+<div id="crc_pleaseFillKinAndValue" class="hide"><?=lang("crc_pleaseFillKinAndValue")?></div>
