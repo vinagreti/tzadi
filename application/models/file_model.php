@@ -57,7 +57,7 @@ class File_Model extends CI_Model {
 
     $extension = image_type_to_extension($size[2]);
 
-    $tempFile = './assets/temp/'.time().$extension;
+    $tempFile = './assets/temp_files/'.time().$extension;
 
     if ( ! write_file( $tempFile, $data ) )
       echo 'Unable to write the file';
