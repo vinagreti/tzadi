@@ -316,6 +316,12 @@ class Product_Model extends CI_Model {
 
     $product = $this->getHumanized( $data["product_id"] );
 
+    $this->load->model("file_model");
+
+    $file = $this->file_model->get((int) $product["img"][0]);
+
+    $product["coverImgBin"] = base64_encode( ($file[0]["binary"]->bin) );
+
     $this->load->helper('email');
 
     $this->load->model('customer_model');
@@ -365,6 +371,12 @@ class Product_Model extends CI_Model {
 
     $product = $this->getHumanized( $data["product_id"] );
 
+    $this->load->model("file_model");
+
+    $file = $this->file_model->get((int) $product["img"][0]);
+
+    $product["coverImgBin"] = base64_encode( ($file[0]["binary"]->bin) );
+    
     $this->load->helper('email');
 
     $this->load->model('customer_model');
