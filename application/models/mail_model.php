@@ -63,20 +63,22 @@ class Mail_Model extends CI_Model {
 
     $log = "";
 
+    $config = Array(
+      'protocol' => 'smtp',
+      'smtp_host' => 'ssl://smtp.googlemail.com',
+      'smtp_port' => 465,
+      'smtp_user' => $this->smtp_user,
+      'smtp_pass' => $this->smtp_pass,
+      'mailtype' => 'html',
+      'charset' => 'iso-8859-1',
+      'wordwrap' => TRUE
+    );
+
+    $this->load->library('email', $config);
+
     foreach($queued as $key => $data) {
 
-      $config = Array(
-        'protocol' => 'smtp',
-        'smtp_host' => 'ssl://smtp.googlemail.com',
-        'smtp_port' => 465,
-        'smtp_user' => $this->smtp_user,
-        'smtp_pass' => $this->smtp_pass,
-        'mailtype' => 'html',
-        'charset' => 'iso-8859-1',
-        'wordwrap' => TRUE
-      );
-
-      $this->load->library('email', $config);
+      $this->email->clear(TRUE);
 
       $this->email->set_newline("\r\n");
 
@@ -95,6 +97,8 @@ class Mail_Model extends CI_Model {
         $attachsTempPath = $this->getTempFiles($data["attach"]);
 
         foreach( $attachsTempPath as $key => $attach ){
+
+          echo "uma vez ".$attach;
 
           $this->email->attach( $attach, "inline" );
 

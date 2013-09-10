@@ -380,22 +380,6 @@ class Product_Model extends CI_Model {
     $product = $this->getHumanized( $data["product_id"] );
 
     $this->load->model("file_model");
-
-    if( isset( $product["img"][0] ) ) {
-
-      $file = $this->file_model->get((int) $product["img"][0]);
-
-      $product["coverImgBin"] = base64_encode( ($file[0]["binary"]->bin) );
-
-      $product["coverImgBinType"] = $file[0]["type"];
-
-    } else {
-
-      $product["coverImgBin"] = base64_encode( file_get_contents( "assets/img/no_photo_160x120.png") );
-
-      $product["coverImgBinType"] = "png";
-
-    }
     
     $this->load->helper('email');
 
@@ -418,6 +402,16 @@ class Product_Model extends CI_Model {
       $mailContent["message"] = $this->load->view("product/knowMoreMail", $mail, true);
 
       $mailContent["to"] = $email;
+
+      if( isset( $product["img"][0] ) ) {
+
+        $mailContent["attach"] = base_url().'file/open/'.$product["img"][0];
+
+      } else {
+
+        $mailContent["attach"] = base_url().'assets/img/no_photo_160x120.png';
+
+      }
 
       $mailContent["bcc"] = $this->session->userdata("profileEmail");
 

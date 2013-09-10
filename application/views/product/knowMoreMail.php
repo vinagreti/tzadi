@@ -1,4 +1,4 @@
-<p><?=$message?></p>
+<p><?=$questions?></p>
 
 <h3><a href="<?=base_url() . $product['_id']?>"><?=$product["name"]?></a></h3>
 
@@ -8,7 +8,6 @@
     <div class="row-fluid">
       <div class="span24">
         <?php if(isset($product["price"])) echo "<p>" . lang("pdt_price") . ": " . $product["currency"] . " " . $product["price"] . "</p>"; ?>
-        <?php if(isset($product["detail"])) echo "<p>" . lang("pdt_detail") . ": " . $product["detail"] . "</p>"; ?>
         <?php if(isset($product["courseDuration"])) echo "<p>" . lang("pdt_courseDuration") . ": " . $product["courseDuration"] . "</p>"; ?>
         <?php if(isset($product["courseKind"])) echo "<p>" . lang("pdt_courseKind") . ": " . $product["courseKind"] . "</p>"; ?>
         <?php if(isset($product["coursePeriod"])) echo "<p>" . lang("pdt_period") . ": " . $product["coursePeriod"] . "</p>"; ?>
@@ -26,7 +25,8 @@
         <?php if(isset($product["passTransportKind"])) echo "<p>" . lang("pdt_passTransportKind") . ": " . $product["passTransportKind"] . "</p>"; ?>
         <?php if(isset($product["passFrom"])) echo "<p>" . lang("pdt_passFrom") . ": " . $product["passFrom"] . "</p>"; ?>
         <?php if(isset($product["passTo"])) echo "<p>" . lang("pdt_passTo") . ": " . $product["passTo"] . "</p>"; ?>
-        <?php if(isset($product["workKind"])) echo "<p>" . lang("pdt_workKind") . ": " . $product["workKind"] . "</p>"; ?>
+        <?php if(isset($product["workKind"]) && $product["workKind"] != "") echo "<p>" . lang("pdt_workKind") . ": " . $product["workKind"] . "</p>"; ?>
+        <?php if(isset($product["detail"]) && $product["detail"] != "") echo "<p>" . lang("pdt_detail") . ": " . $product["detail"] . "</p>"; ?>
       </div>
     </div>
 

@@ -71,9 +71,9 @@ class File_Model extends CI_Model {
 
     $this->load->helper('file');
 
-    echo $path;
+    //echo $path;
 
-    echo delete_files( $path );
+    //echo delete_files( $path );
 
   }
 
