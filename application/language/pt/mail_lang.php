@@ -1,2 +1,14 @@
 <?php
-$lang["mail_readTitle"] = "Lendo e-mail";
+$lang["mail_readTitle"] = "Lendo e=mail";
+$lang["mail_from"] = "De";
+$lang["mail_to"] = "Para";
+$lang["mail_cc"] = "Cc";
+$lang["mail_bcc"] = "Bcc";
+$lang["mail_kind"] = "Tipo";
+$lang["mail_status"] = "Status";
+$lang["mail_queue_date"] = "Criação";
+$lang["mail_sent_date"] = "Envio";
+$lang["mail_subject"] = "Assunto";
+$lang["mail_product/share"] = "Compartilhamento de produto";
+$lang["mail_product/knowMore"] = "Solicitação de informações sobre um produto";
+$lang["mail_contact"] = "Contato";
