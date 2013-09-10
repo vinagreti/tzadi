@@ -1,17 +1,10 @@
 <p><?=$message?></p>
 
-<h3><?=$product["name"]?></h3>
+<h3><a href="<?=base_url() . $product['_id']?>"><?=$product["name"]?></a></h3>
 
 <div class="row-fluid">
   <div class="span24 well well-mini">
     
-    <div class="row-fluid">
-      <div class="span24">
-        <p><a href="<?=base_url() . $product['_id']?>"><img class="imgMedium" src="data:image/<?=$product['coverImgBinType']?>;base64,<?=$product['coverImgBin']?>"></img></a></p>
-        <p><a href="<?=base_url() . $product['_id']?>"><?=lang("pdt_seeDetails")?></a></p>
-      </div>
-    </div>
-
     <div class="row-fluid">
       <div class="span24">
         <?php if(isset($product["price"])) echo "<p>" . lang("pdt_price") . ": " . $product["currency"] . " " . $product["price"] . "</p>"; ?>

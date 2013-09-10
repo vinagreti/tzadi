@@ -46,4 +46,35 @@ class File_Model extends CI_Model {
       ->where('_id', $_id)
       ->delete('file');
   }
+
+  public function saveTempFile( $url ){
+
+    $this->load->helper('file');
+
+    $data = file_get_contents( $url );
+
+    $size = getimagesize( $url );
+
+    $extension = image_type_to_extension($size[2]);
+
+    $tempFile = './assets/temp/'.time().$extension;
+
+    if ( ! write_file( $tempFile, $data ) )
+      echo 'Unable to write the file';
+
+    else
+      return $tempFile;
+
+  }
+
+  public function dropTempFile( $path ){
+
+    $this->load->helper('file');
+
+    echo $path;
+
+    echo delete_files( $path );
+
+  }
+
 }

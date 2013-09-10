@@ -164,7 +164,7 @@ class My_Controller extends CI_Controller{
 
   private function detectLanguage(){
 
-    if( ! $this->session->userdata('language') ) {
+    if( ! $this->session->userdata('language') && isset( $_SERVER["HTTP_ACCEPT_LANGUAGE"] ) ) {
 
       $language = explode(';',$_SERVER["HTTP_ACCEPT_LANGUAGE"]);
 
@@ -180,6 +180,12 @@ class My_Controller extends CI_Controller{
 
           break;
 
+        case 'en':
+
+          $this->session->set_userdata('language', "en");
+
+          break;
+
         default:
 
           $this->session->set_userdata('language', "pt");
@@ -187,6 +193,10 @@ class My_Controller extends CI_Controller{
           break;
 
       }
+
+    } else {
+
+      $this->session->set_userdata('language', "pt");
 
     }
 
