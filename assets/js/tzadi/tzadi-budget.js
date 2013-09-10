@@ -8,7 +8,7 @@
  */
 TzadiJS.prototype.budget = new function(){
 
-  this.cookieElement = "tzdBudget";
+  this.cookieElement = "tzdBudget"+IDENTITY;
 
   this.totalElement = ".budgetTotal";
 
