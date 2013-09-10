@@ -35,6 +35,7 @@ class Customer_Model extends CI_Model {
   {
 
     $customer = $this->mongo_db
+      ->order_by( array("_id" => "desc") )
       ->where('_id', (int) $customer_id )
       ->get('customer');
 
