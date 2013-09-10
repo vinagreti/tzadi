@@ -98,8 +98,6 @@ class Mail_Model extends CI_Model {
 
         foreach( $attachsTempPath as $key => $attach ){
 
-          echo "uma vez ".$attach;
-
           $this->email->attach( $attach, "inline" );
 
         }
