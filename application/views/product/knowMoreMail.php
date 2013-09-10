@@ -7,7 +7,8 @@
     
     <div class="row-fluid">
       <div class="span24">
-        <a href="<?=base_url() . $product['_id']?>"><img class="img" src="<?=$product['coverImg']?>"></a>
+        <p><a href="<?=base_url() . $product['_id']?>"><img class="img" src="<?=$product['coverImg']?>"></a></p>
+        <p><a href="<?=base_url() . $product['_id']?>"><?=lang("pdt_seeDetails")?></a></p>
       </div>
     </div>
 

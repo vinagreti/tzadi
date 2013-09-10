@@ -193,3 +193,4 @@ $lang['pdt_questionsSent'] = "your questions were sent to our team. We'll contac
 $lang['pdt_wantsToKnowMoreAbout'] = "want's to know more about";
 $lang["pdt_TheProduct"] = "The product";
 $lang["pdt_wasNotFound"] = "was not found";
+$lang["pdt_seeDetails"] = "see details";
