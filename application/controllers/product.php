@@ -91,12 +91,25 @@ class Product extends My_Controller {
   }
 
   public function view( $_id ){
-    $data->dynJS = array('product/view', "product/product");
     $this->load->model("product_model");
     $data->product = $this->product_model->getHumanized( $_id );
-    $data->view = 'product/view';
-    $data->page_title = $data->product["name"];
+
+    if( $data->product ){
+
+      $data->dynJS = array('product/view', "product/product");
+      $data->view = 'product/view';
+      $data->page_title = $data->product["name"];
+
+    } else {
+
+      $data->view = 'product/notFound';
+      $data->page_title = lang("pdt_NotFound");
+
+    }
+
     $this->page->load($data);
+
+
   }
 
   public function like()

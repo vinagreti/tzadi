@@ -86,33 +86,61 @@ class Product_Model extends CI_Model {
   }
 
   function drop($_id){
-    $produtos = $product = $this->mongo_db->get('product');
-    $pacotes = array();
-    foreach($produtos as $product){
+
+    $products = $this->mongo_db->get('product');
+
+    $packages = array();
+
+    foreach($products as $product){
+
       if(isset($product["itens"])){
+
         foreach($product["itens"] as $item => $amount){
-          if( (int)$item == (int)$_id ) $pacotes[$product["name"]] = $product["_id"];
+
+          if( (int)$item == (int)$_id ) $packages[$product["name"]] = $product["_id"];
+
         }
+
       }
+
     }
-    if(count($pacotes) > 0) {
-      $error = "este produto não poder ser removido porque esta sendo utilizado nos seguintes pacotes:";
-      foreach($pacotes as $name => $_id) $error .= '<br>- <a href="'.base_url().$_id.'" target="_blank">'.$name.'</a>';
+
+    if(count($packages) > 0) {
+
+      $error = lang("pdt_cantDropUsedByPackage").":";
+
+      foreach($packages as $name => $_id) $error .= '<br>- <a href="'.base_url().$_id.'" target="_blank">'.$name.'</a>';
+
     } else {
-      $product = $this->mongo_db
+
+      $productCopy = $this->mongo_db
         ->where('_id', $_id)
         ->get('product');
+
       $deleted = $this->mongo_db->where('_id', $_id)->delete('product');
+
       if($deleted){
-        if(isset($product[0]["img"])) {
+
+        if(isset($productCopy[0]["img"])) {
+
           $this->load->model("file_model");
-          $this->file_model->drop($product[0]["img"]);
+
+          foreach( $productCopy[0]["img"] as $img_key => $img_id ) {
+
+            $this->file_model->drop($img_id);
+
+          }
+
         }
+
       }
 
       $error = false;
+
     }
+
     return $error;
+
   }
 
   function attachImg($_id)
@@ -153,7 +181,7 @@ class Product_Model extends CI_Model {
         if(isset($product["itens"])){
           foreach($product["itens"] as $key2 => $value2){
             if($key2 == $_id) {
-              if(!$error) $error = lang("pdt_cantDropUsedByPackage");
+              if(!$error) $error = lang("pdt_cantInactiveUsedByPackage");
               $error .= '<br>- <a href="'.base_url()."product/view/".$product["_id"].'" target="_blank">'.$product["name"].'</a>';
             }
           }
@@ -202,76 +230,85 @@ class Product_Model extends CI_Model {
       ->where('_id', (int) $product_id)
       ->get('product');
 
-    $product = $product[0];
+    if( $product ){
 
-    if(!isset($product["currency"])) $product["currency"] = "USD";
+      $product = $product[0];
 
-    if(isset($product["price"])) {
+      if(!isset($product["currency"])) $product["currency"] = "USD";
 
-      if($product["price"] == "") $product["price"] = "0.00";
+      if(isset($product["price"])) {
 
-      $product["humanPrice"] = $product["currency"] . " " . $product["price"];
+        if($product["price"] == "") $product["price"] = "0.00";
 
-    }
-
-    if(isset($product["courseEnrollmentFees"])) $product["courseEnrollmentFees"] = $product["currency"] . " " . $product["courseEnrollmentFees"];
-
-    if(isset($product["courseAdministrativeFees"])) $product["courseAdministrativeFees"] = $product["currency"] . " " . $product["courseAdministrativeFees"];
-
-    if(isset($product["courseBook"])) $product["courseBook"] = $product["currency"] . " " . $product["courseBook"];
-
-    if(!isset($product["courseDurationScale"])) $product["courseDurationScale"] = "days";
-
-    if(isset($product["courseDurationValue"])) $product["courseDuration"] = $product["courseDurationValue"] . " " . lang("pdt_" .$product["courseDurationScale"]);
-
-    if(isset($product["courseKind"])) $product["courseKind"] = lang("pdt_".$product["courseKind"]);
-
-    if(isset($product["coursePeriod"])) $product["coursePeriod"] = lang("pdt_".$product["coursePeriod"] . "Period");
-
-    if(isset($product["courseModality"])) $product["courseModality"] = lang("pdt_".$product["courseModality"]);
-
-    if(!isset($product["ensuranceDurationScale"])) $product["ensuranceDurationScale"] = "days";
-
-    if(isset($product["ensuranceDurationValue"])) $product["ensuranceDuration"] = $product["ensuranceDurationValue"] . " " . lang("pdt_" .$product["ensuranceDurationScale"]);
-
-    if(isset($product["accommodationKind"])) $product["accommodationKind"] = lang("pdt_" . $product["accommodationKind"]);
-
-    if(isset($product["accommodationDurationScale"])) $product["accommodationDurationScale"] = "days";
-
-    if(isset($product["accommodationDurationValue"])) $product["accommodationDuration"] = $product["accommodationDurationValue"]. " " . lang("pdt_" .$product["accommodationDurationScale"]);
-
-    if(isset($product["accommodationFood"])) $product["accommodationFood"] = lang("pdt_" . $product["accommodationFood"]);
-
-    if(isset($product["passTransportKind"])) $product["passTransportKind"] = lang("pdt_" . $product["passTransportKind"]);
-    
-    if(isset($product["workKind"])) $product["workKind"] = lang("pdt_" . $product["workKind"]);
-
-    if(isset($product["img"])) $product["coverImg"] = base_url()."file/open/".$product["img"][0];
-
-    else $product["coverImg"] = base_url()."assets/img/no_photo_160x120.png";
-
-    if(isset($product["itens"])) {
-
-      $itens = array();
-
-      foreach($product["itens"] as $product_id => $amount){
-
-        $productItem = $this->mongo_db
-          ->where('_id', (int) $product_id)
-          ->select("name")
-          ->get('product');
-
-        $productItem[0]["amount"] = $amount;
-
-        array_push($itens, $productItem[0]);
+        $product["humanPrice"] = $product["currency"] . " " . $product["price"];
 
       }
 
-      $product["itens"] = $itens;
+      if(isset($product["courseEnrollmentFees"])) $product["courseEnrollmentFees"] = $product["currency"] . " " . $product["courseEnrollmentFees"];
+
+      if(isset($product["courseAdministrativeFees"])) $product["courseAdministrativeFees"] = $product["currency"] . " " . $product["courseAdministrativeFees"];
+
+      if(isset($product["courseBook"])) $product["courseBook"] = $product["currency"] . " " . $product["courseBook"];
+
+      if(!isset($product["courseDurationScale"])) $product["courseDurationScale"] = "days";
+
+      if(isset($product["courseDurationValue"])) $product["courseDuration"] = $product["courseDurationValue"] . " " . lang("pdt_" .$product["courseDurationScale"]);
+
+      if(isset($product["courseKind"])) $product["courseKind"] = lang("pdt_".$product["courseKind"]);
+
+      if(isset($product["coursePeriod"])) $product["coursePeriod"] = lang("pdt_".$product["coursePeriod"] . "Period");
+
+      if(isset($product["courseModality"])) $product["courseModality"] = lang("pdt_".$product["courseModality"]);
+
+      if(!isset($product["ensuranceDurationScale"])) $product["ensuranceDurationScale"] = "days";
+
+      if(isset($product["ensuranceDurationValue"])) $product["ensuranceDuration"] = $product["ensuranceDurationValue"] . " " . lang("pdt_" .$product["ensuranceDurationScale"]);
+
+      if(isset($product["accommodationKind"])) $product["accommodationKind"] = lang("pdt_" . $product["accommodationKind"]);
+
+      if(isset($product["accommodationDurationScale"])) $product["accommodationDurationScale"] = "days";
+
+      if(isset($product["accommodationDurationValue"])) $product["accommodationDuration"] = $product["accommodationDurationValue"]. " " . lang("pdt_" .$product["accommodationDurationScale"]);
+
+      if(isset($product["accommodationFood"])) $product["accommodationFood"] = lang("pdt_" . $product["accommodationFood"]);
+
+      if(isset($product["passTransportKind"])) $product["passTransportKind"] = lang("pdt_" . $product["passTransportKind"]);
+      
+      if(isset($product["workKind"])) $product["workKind"] = lang("pdt_" . $product["workKind"]);
+
+      if(isset($product["img"])) $product["coverImg"] = base_url()."file/open/".$product["img"][0];
+
+      else $product["coverImg"] = base_url()."assets/img/no_photo_160x120.png";
+
+      if(isset($product["itens"])) {
+
+        $itens = array();
+
+        foreach($product["itens"] as $product_id => $amount){
+
+          $productItem = $this->mongo_db
+            ->where('_id', (int) $product_id)
+            ->select("name")
+            ->get('product');
+
+          $productItem[0]["amount"] = $amount;
+
+          array_push($itens, $productItem[0]);
+
+        }
+
+        $product["itens"] = $itens;
+
+      }
+
+      return $product;
+
+    } else {
+
+      return false;
 
     }
 
-    return $product;
   }
 
   function share( $data )
