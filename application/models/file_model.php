@@ -73,8 +73,6 @@ class File_Model extends CI_Model {
 
     $this->load->helper('file');
 
-    echo "<br>".$path."</br>";
-
     unlink( $path );
 
   }
