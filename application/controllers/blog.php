@@ -37,7 +37,7 @@ class Blog extends My_Controller {
 
       }
 
-      $data->page_title = lang('blg_Blog');
+      $data->page_title = lang('blg_Blog')." ".$this->session->userdata("profileName");
 
       $this->page->load($data);
 
@@ -49,7 +49,7 @@ class Blog extends My_Controller {
       else
         $data->view = 'blog/public_empty';
 
-      $data->page_title = lang('blg_Blog');
+      $data->page_title = lang('blg_Blog')." ".$this->session->userdata("profileName");
 
       $this->page->load($data);
 
@@ -74,7 +74,7 @@ class Blog extends My_Controller {
       else
         $data->view = 'blog/public_list';
 
-      $data->page_title = lang('blg_Blog');
+      $data->page_title = lang('blg_Blog')." ".$this->session->userdata("profileName");
 
       $this->page->load($data);
 
@@ -86,7 +86,7 @@ class Blog extends My_Controller {
       else
         $data->view = 'blog/public_empty';
 
-      $data->page_title = lang('blg_Blog');
+      $data->page_title = lang('blg_Blog')." ".$this->session->userdata("profileName");
 
       $this->page->load($data);
 
@@ -111,7 +111,7 @@ class Blog extends My_Controller {
 
         $data->view = 'blog/write';
 
-        $data->page_title = lang('blg_Blog');
+        $data->page_title = lang('blg_Blog')." ".$this->session->userdata("profileName");
 
         $this->page->load($data);
 
@@ -146,7 +146,7 @@ class Blog extends My_Controller {
 
         $data->view = 'blog/edit';
 
-        $data->page_title = lang('blg_Blog');
+        $data->page_title = lang('blg_Blog')." ".$this->session->userdata("profileName");
 
         $this->page->load($data);
 
@@ -158,7 +158,7 @@ class Blog extends My_Controller {
         else
           $data->view = 'blog/public_empty';
 
-        $data->page_title = lang('blg_Blog');
+        $data->page_title = lang('blg_Blog')." ".$this->session->userdata("profileName");
 
         $this->page->load($data);
 
@@ -185,7 +185,7 @@ class Blog extends My_Controller {
 
       $data->dynJS = array("blog/blog");
 
-      $data->page_title = lang('blg_Blog');
+      $data->page_title = lang('blg_Blog')." ".$this->session->userdata("profileName");
 
       $this->page->load($data);
 
@@ -197,7 +197,7 @@ class Blog extends My_Controller {
       else
         $data->view = 'blog/public_empty';
 
-      $data->page_title = lang('blg_Blog');
+      $data->page_title = lang('blg_Blog')." ".$this->session->userdata("profileName");
 
       $this->page->load($data);
 

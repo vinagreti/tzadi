@@ -1,5 +1,5 @@
 <?php
-$lang["mail_readTitle"] = "Reading e=mail";
+$lang["mail_readTitle"] = "Reading e-mail";
 $lang["mail_from"] = "From";
 $lang["mail_to"] = "To";
 $lang["mail_cc"] = "Cc";

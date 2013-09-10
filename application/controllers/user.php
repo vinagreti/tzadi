@@ -35,7 +35,7 @@ class User extends My_Controller {
 
         $data->dynJS = "user/login";
 
-        $data->page_title = lang('lgn_Sign_In');
+        $data->page_title = lang('usr_Login');
 
         $data->view = 'user/login';
 
@@ -128,7 +128,7 @@ class User extends My_Controller {
       } else {
         $data->dynJS = 'user/signup';
         $data->view = 'user/signup';
-        $data->page_title = lang('usr_signup');
+        $data->page_title = lang('usr_Signup');
         $this->page->load($data); 
       }
 
@@ -182,7 +182,7 @@ class User extends My_Controller {
 
       $data->user = $this->user_model->getByIdentity(IDENTITY);
 
-      $data->page_title = lang('usr_profile');
+      $data->page_title = lang('usr_Profile')." ".$this->session->userdata("profileName");
 
       $this->page->load($data); 
 

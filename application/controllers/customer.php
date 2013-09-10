@@ -81,7 +81,7 @@ class Customer extends My_Controller {
     $data->customer = $this->customer_model->getBy( $_id );
     $data->dynJS = 'customer/view';
     $data->view = 'customer/view';
-    $data->page_title = lang('ctm_viewTitle');
+    $data->page_title = $data->customer["name"] ;
     $this->page->load($data);
   }
 

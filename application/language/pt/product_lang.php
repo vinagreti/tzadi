@@ -194,3 +194,4 @@ $lang['pdt_wantsToKnowMoreAbout'] = "quer saber mais sobre";
 $lang["pdt_TheProduct"] = "O produto";
 $lang["pdt_wasNotFound"] = "não foi encontrado";
 $lang["pdt_seeDetails"] = "veja mais detalhes";
+$lang["pdt_budgetTitle"] = "Orçamento";

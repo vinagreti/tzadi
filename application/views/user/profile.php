@@ -1,6 +1,6 @@
 <div class="row-fluid">
 	<div class="span24">
-		<h3><?=lang('usr_Profile')?></h3>
+		<h3><?=lang('usr_Profile')." ".$this->session->userdata("profileName")?></h3>
 	</div>
 </div>
 

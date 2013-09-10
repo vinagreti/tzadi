@@ -92,3 +92,5 @@ $lang["usr_changePassword"] = "change password";
 $lang["usr_sendNewPassword"] = "send new password";
 $lang["usr_ResetPassword"] = "Reset password";
 $lang["usr_ChangePassword"] = "Change password";
+$lang["usr_Signup"] = "Signup";
+$lang["usr_Login"] = "Login";

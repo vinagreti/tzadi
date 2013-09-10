@@ -1,5 +1,6 @@
 <?php
 $lang["blg_BlogTzadi"] = "Blog TZADI";
+$lang["blg_Blog"] = "Blog";
 $lang["blg_title"] = "title";
 $lang["blg_subtitle"] = "subtitle";
 $lang["blg_text"] = "text";
