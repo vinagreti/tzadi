@@ -21,6 +21,13 @@ class Customer_Model extends CI_Model {
       ->where('_id', (int) $_id )
       ->get('customer');
 
+    if( isset( $customer[0]["img"] ) )
+      $customer[0]["img"] = base_url()."file/open/".$customer[0]["img"];
+
+    else
+      $customer[0]["img"] = base_url()."assets/img/no_photo_160x120.png";
+
+
     return $customer[0];
   }
 
