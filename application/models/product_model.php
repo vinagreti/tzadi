@@ -322,6 +322,8 @@ class Product_Model extends CI_Model {
 
     $product["coverImgBin"] = base64_encode( ($file[0]["binary"]->bin) );
 
+    $product["coverImgBinType"] = $file[0]["type"];
+
     $this->load->helper('email');
 
     $this->load->model('customer_model');
@@ -376,6 +378,8 @@ class Product_Model extends CI_Model {
     $file = $this->file_model->get((int) $product["img"][0]);
 
     $product["coverImgBin"] = base64_encode( ($file[0]["binary"]->bin) );
+
+    $product["coverImgBinType"] = $file[0]["type"];
     
     $this->load->helper('email');
 
