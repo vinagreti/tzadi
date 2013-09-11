@@ -212,7 +212,7 @@ class My_Controller extends CI_Controller{
 
       $reffer  = str_replace("/index.php", "", current_url());
 
-      $this->session->set_flashdata('HTTP_REFERER', $reffer);
+      $this->session->set_userdata('lastPage', $reffer);
 
       redirect("http://".ENVIRONMENT."/".lang("rt_login"));
 
@@ -226,7 +226,7 @@ class My_Controller extends CI_Controller{
 
       $reffer  = str_replace("/index.php", "", current_url());
 
-      $this->session->set_flashdata('HTTP_REFERER', $reffer);
+      $this->session->set_userdata('lastPage', $reffer);
 
       redirect("http://".ENVIRONMENT."/".lang("rt_login"));
 

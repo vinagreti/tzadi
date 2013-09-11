@@ -50,12 +50,7 @@ class User_Model extends CI_Model {
 
             $this->setUserSession( $user[0] );
 
-
-            if( isset( $user[0]["identity"] ) )
-                $res->url = "http://".$user[0]["identity"].".".ENVIRONMENT;
-
-            else
-                $res->url = "http://".ENVIRONMENT;
+            $res->url = $this->setReturnUrl( $user );
 
         }
 
@@ -63,6 +58,27 @@ class User_Model extends CI_Model {
             $res->error = lang("usr_invalid_credential");
 
         return $res;
+
+    }
+
+
+    private function setReturnUrl( $user ){
+
+        if( $this->session->userdata('lastPage') ){
+
+            $url = $this->session->userdata('lastPage');
+
+            $this->session->unset_userdata('lastPage');
+
+        }
+            
+        else if( isset( $user["identity"] ) )
+            $url = "http://".$user["identity"].".".ENVIRONMENT;
+
+        else
+            $url = "http://".ENVIRONMENT;
+
+        return $url;
 
     }
 
@@ -77,11 +93,7 @@ class User_Model extends CI_Model {
 
                 $this->setUserSession( $user );
 
-                if( isset( $user["identity"] ) )
-                    $res->url = "http://".$user["identity"].".".ENVIRONMENT;
-
-                else
-                    $res->url = "http://".ENVIRONMENT;
+                $res->url = $this->setReturnUrl( $user );
 
             } else {
 
@@ -96,11 +108,7 @@ class User_Model extends CI_Model {
 
                 $this->setUserSession( $user );
 
-                if( isset( $user["identity"] ) )
-                    $res->url = "http://".$user["identity"].".".ENVIRONMENT;
-
-                else
-                    $res->url = "http://".ENVIRONMENT;
+                $res->url = $this->setReturnUrl( $user );
 
             }
 
@@ -137,7 +145,7 @@ class User_Model extends CI_Model {
 
             $this->sendSigupMail( $user, "signupThirdMail" );
 
-            $res->url = "http://".ENVIRONMENT;
+            $res->url = $this->setReturnUrl( $user );
 
         }
 
@@ -156,11 +164,7 @@ class User_Model extends CI_Model {
 
                 $this->setUserSession( $user );
 
-                if( isset( $user["identity"] ) )
-                    $res->url = "http://".$user["identity"].".".ENVIRONMENT;
-
-                else
-                    $res->url = "http://".ENVIRONMENT;
+                $res->url = $this->setReturnUrl( $user );
 
             } else {
 
@@ -175,11 +179,7 @@ class User_Model extends CI_Model {
 
                 $this->setUserSession( $user );
 
-                if( isset( $user["identity"] ) )
-                    $res->url = "http://".$user["identity"].".".ENVIRONMENT;
-
-                else
-                    $res->url = "http://".ENVIRONMENT;
+                $res->url = $this->setReturnUrl( $user );
 
             }
 
@@ -216,7 +216,7 @@ class User_Model extends CI_Model {
 
             $this->sendSigupMail( $user, "signupThirdMail" );
 
-            $res->url = "http://".ENVIRONMENT;
+            $res->url = $this->setReturnUrl( $user );
 
         }
 
@@ -235,11 +235,7 @@ class User_Model extends CI_Model {
 
                 $this->setUserSession( $user );
 
-                if( isset( $user["identity"] ) )
-                    $res->url = "http://".$user["identity"].".".ENVIRONMENT;
-
-                else
-                    $res->url = "http://".ENVIRONMENT;
+                $res->url = $this->setReturnUrl( $user );
 
 
             } else {
@@ -255,11 +251,7 @@ class User_Model extends CI_Model {
 
                 $this->setUserSession( $user );
 
-                if( isset( $user["identity"] ) )
-                    $res->url = "http://".$user["identity"].".".ENVIRONMENT;
-
-                else
-                    $res->url = "http://".ENVIRONMENT;
+                $res->url = $this->setReturnUrl( $user );
 
 
             }
@@ -297,7 +289,7 @@ class User_Model extends CI_Model {
 
             $this->sendSigupMail( $user, "signupThirdMail" );
 
-            $res->url = "http://".ENVIRONMENT;
+            $res->url = $this->setReturnUrl( $user );
 
         }
 
@@ -339,7 +331,7 @@ class User_Model extends CI_Model {
 
             $this->sendSigupMail( $user, "signupMail" );
 
-            $res->url = "http://".ENVIRONMENT;
+            $res->url = $this->setReturnUrl( $user );
 
         } else {
 
@@ -353,11 +345,7 @@ class User_Model extends CI_Model {
 
                 $this->setUserSession( $user );
 
-                if( isset( $user["identity"] ) )
-                    $res->url = "http://".$user["identity"].".".ENVIRONMENT;
-
-                else
-                    $res->url = "http://".ENVIRONMENT;
+                $res->url = $this->setReturnUrl( $user );
 
             }
 

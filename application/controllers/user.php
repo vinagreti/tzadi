@@ -141,8 +141,6 @@ class User extends My_Controller {
   public function finishSignup()
   {
 
-    $this->MYensureOwnProfile();
-
     if($this->session->userdata("kind") == "new") {
 
       if($this->input->post()) {
