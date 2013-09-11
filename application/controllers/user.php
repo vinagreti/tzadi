@@ -91,7 +91,7 @@ class User extends My_Controller {
 
   public function changeImg( ) {
 
-    $this->MYensureOwnProfile();
+    $this->MYensureLogged();
 
     $this->load->model('user_model');
 
