@@ -502,7 +502,7 @@ class Product_Model extends CI_Model {
 
         $product["totalPrice"] = round($fullTotalPrice, 2);
 
-        $product["humanPrice"] = $tzdCurrency["base"] . " " . ( $product["totalPrice"] );
+        $product["humanPrice"] = $product["currency"] . " " . round( $amount * $product["price"], 2 );
 
       } else {
 
