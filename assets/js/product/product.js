@@ -252,4 +252,237 @@ TzadiJS.prototype.product = new function(){
 
   }
 
+
+  // share budget by e-mail
+  this.shareBudget = new function() {
+
+    this.shareBudgetModal = false;
+
+    this.eventsApplied = false;
+
+    this.open = function( product_id ) {
+
+      if( this.shareBudgetModal ) {
+
+        this.showModal( product_id );
+
+      } else {
+
+        var self = this;
+
+        var url = base_url+'product/shareBudget';
+
+        var data = {
+
+          tzadiToken : tzadiToken
+
+          , product_id : product_id
+
+        };
+
+        var callback = function( modal ){
+
+          self.shareBudgetModal = modal;
+
+          self.showModal( product_id );
+
+        };
+
+        $tzd.ajax.post(url, data, callback);        
+      }
+
+    };
+
+    this.showModal = function ( product_id ){
+
+      $('#tzadiDialogs').html( this.shareBudgetModal );
+
+      $('#tzadiDialogs').modal('show');
+
+      if( ! this.eventsApplied ) {
+
+        this.eventsApplied = true;
+
+        var self = this;
+
+        $(".shareProduct").live("click", function(){
+
+          self.send(product_id);
+          
+        });
+
+      }
+
+    }
+    this.send = function( product_id ){
+
+      var valid = true;
+
+      valid = valid && $tzd.form.checkMask.range($('#tzadiDialogs').find(".mailYourName"), 1, 255, $("#pdt_fillName").html());
+
+      valid = valid && $tzd.form.checkMask.range($('#tzadiDialogs').find(".mailEmail"), 1, 512, $("#pdt_fillAtLeastOneEmail").html());
+
+      if( valid ){
+
+        var name = $('#tzadiDialogs').find(".mailYourName").val();
+
+        var message = $('#tzadiDialogs').find(".mailMessage").val();
+
+        var addresses = $('#tzadiDialogs').find(".mailEmail").val();
+
+        var url = base_url+'product/share';
+        
+        var data = {
+
+          tzadiToken : tzadiToken
+
+          , name : name
+
+          , message : message
+        
+          , product_id : product_id
+        
+          , addresses : addresses
+
+        };
+        
+        var callback = function( e ){
+
+          if(e.error) $tzd.alert.error( e.error );
+
+          if(e.success){
+
+            $('#tzadiDialogs').find(".closeModal").click();
+
+            $tzd.alert.success( e.success );
+
+          }
+
+        };
+        
+        $tzd.ajax.post(url, data, callback);
+
+      }
+
+    };
+
+  }
+
+  // ask for more info about a budget
+  this.knowMoreBudget = new function() {
+
+    this.knowMoreBudgetModal = false;
+
+    this.eventsApplied = false;
+
+    this.open = function( product_id ) {
+
+      if( this.knowMoreBudgetModal ) {
+
+        this.showModal( product_id );
+
+      } else {
+
+        var self = this;
+
+        var url = base_url+'product/knowMore';
+
+        var data = {
+
+          tzadiToken : tzadiToken
+
+          , product_id : product_id
+
+        };
+
+        var callback = function( modal ){
+
+          self.knowMoreBudgetModal = modal;
+
+          self.showModal( product_id );
+
+        };
+
+        $tzd.ajax.post(url, data, callback);        
+      }
+
+    };
+
+    this.showModal = function ( product_id ){
+
+      $('#tzadiDialogs').html( this.knowMoreBudgetModal );
+
+      $('#tzadiDialogs').modal('show');
+
+      if( ! this.eventsApplied ) {
+
+        this.eventsApplied = true;
+
+        var self = this;
+
+        $(".knowMoreProduct").live("click", function(){
+
+          self.send(product_id);
+          
+        });
+
+      }
+
+    }
+    this.send = function( product_id ){
+
+      var valid = true;
+
+      valid = valid && $tzd.form.checkMask.range($('#tzadiDialogs').find(".knowMoreYourName"), 1, 255, $("#pdt_fillName").html());
+
+      valid = valid && $tzd.form.checkMask.email($('#tzadiDialogs').find(".knowMoreEmail"), $("#pdt_fillValidEmail").html());
+
+      valid = valid && $tzd.form.checkMask.range($('#tzadiDialogs').find(".knowMoreQuestions"), 1, 255, $("#pdt_fillQuestions").html());
+
+      if( valid ){
+
+        var name = $('#tzadiDialogs').find(".knowMoreYourName").val();
+
+        var questions = $('#tzadiDialogs').find(".knowMoreQuestions").val();
+
+        var address = $('#tzadiDialogs').find(".knowMoreEmail").val();
+
+        var url = base_url+'product/knowMore';
+        
+        var data = {
+
+          tzadiToken : tzadiToken
+
+          , name : name
+
+          , questions : questions
+        
+          , product_id : product_id
+        
+          , address : address
+
+        };
+        
+        var callback = function( e ){
+
+          if(e.error) $tzd.alert.error( e.error );
+
+          if(e.success){
+
+            $('#tzadiDialogs').find(".closeModal").click();
+
+            $tzd.alert.success( e.success );
+
+          }
+
+        };
+        
+        $tzd.ajax.post(url, data, callback);
+
+      }
+
+    };
+
+  }
+
 }

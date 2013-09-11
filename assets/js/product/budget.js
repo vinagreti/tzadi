@@ -85,4 +85,13 @@ $(document).ready(function(){
       $(".totalPrice").html(totalPrice.toFixed(2));
     }
   });
+
+  $(".shareBudget").live("click", function(){
+    $tzd.product.shareBudget.open( $(this).attr("id") );
+  });
+
+  $(".knowMoreBudget").live("click", function(){
+    $tzd.product.knowMoreBudget.open( $(this).attr("id") );
+  });
+  
 });

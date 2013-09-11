@@ -197,3 +197,4 @@ $lang["pdt_wasNotFound"] = "was not found";
 $lang["pdt_seeDetails"] = "see details";
 $lang["pdt_budgetTitle"] = "Budget";
 $lang["pdt_NotFound"] = "Product not found";
+$lang["pdt_shareThisBudget"] = "Send budget by e-mail";

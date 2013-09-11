@@ -25,7 +25,7 @@ class Product extends My_Controller {
 
   public function budget()
   {
-    $data->dynJS = 'product/budget';
+    $data->dynJS = array('product/budget', "product/product");
     $data->view = 'product/budget';
     $data->page_title = lang('pdt_budgetTitle');
     $this->page->load($data);
@@ -121,6 +121,7 @@ class Product extends My_Controller {
 
   public function share()
   {
+
     $data = $this->input->post();
 
     $this->load->model("product_model");
@@ -142,6 +143,7 @@ class Product extends My_Controller {
 
   public function knowMore()
   {
+
     $data = $this->input->post();
 
     $this->load->model("product_model");
@@ -158,8 +160,53 @@ class Product extends My_Controller {
 
     }
 
+  }
+
+  public function shareBudget()
+  {
+    
+    $data = $this->input->post();
+
+    $this->load->model("product_model");
+
+    if( isset( $data["addresses"] ) ) {
+
+      echo json_encode($this->product_model->shareBudget($data));
+
+    } else {
+
+      $budget = $this->product_model->getBudgetResume();
+
+      $shareForm = $this->load->view('product/shareBudgetForm', $budget, true);
+
+      echo json_encode($shareForm);
+
+    }
+
     
   }
+
+  public function knowMoreBudget()
+  {
+
+    $data = $this->input->post();
+
+    $this->load->model("product_model");
+
+    if( isset( $data["address"] ) ) {
+
+      echo json_encode($this->product_model->knowMore($data));
+
+    } else {
+
+      $shareForm = $this->load->view('product/knowMoreForm', $this->product_model->getHumanized( $data["product_id"] ), true);
+
+      echo json_encode($shareForm);
+
+    }
+
+  }
+
 }
 /* End of file product.php */
 /* Location: ./application/controllers/product.php */

@@ -196,4 +196,5 @@ $lang["pdt_TheProduct"] = "O produto";
 $lang["pdt_wasNotFound"] = "não foi encontrado";
 $lang["pdt_seeDetails"] = "veja mais detalhes";
 $lang["pdt_budgetTitle"] = "Orçamento";
-$lang["pdt_NotFound"] = "Product not found";
+$lang["pdt_NotFound"] = "O produtão não foi encontrado";
+$lang["pdt_shareThisBudget"] = "Enviar orçamento por e-mail";

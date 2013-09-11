@@ -236,9 +236,7 @@ class Product_Model extends CI_Model {
 
       if(!isset($product["currency"])) $product["currency"] = "USD";
 
-      if(isset($product["price"])) {
-
-        if($product["price"] == "") $product["price"] = "0.00";
+      if( isset($product["price"]) && $product["price"] > 0 ) {
 
         $product["humanPrice"] = $product["currency"] . " " . $product["price"];
 
@@ -446,6 +444,93 @@ class Product_Model extends CI_Model {
       return array( "error" => lang("pdt_fillValidEmail") );
 
     }
+
+  }
+
+  function getBudgetResume()
+  {
+
+    $this->load->helper('cookie');
+
+    $tzdBudget = json_decode( get_cookie( 'tzdBudget'.$this->session->userdata('profileID') ), true );
+
+    $budget->itens = array();
+
+    $budget->price = 0;
+
+    foreach( $tzdBudget as $product_id => $amount ) {
+
+      $product = $this->getBudgetItenHumanized( $product_id, $amount );
+
+      if( $product ){
+
+        $budget->price += $product["totalPrice"];
+
+        $product["budgetAmount"] = $amount;
+
+        array_push($budget->itens, $product );
+
+      }
+        
+
+    }
+
+    $tzdCurrency = json_decode( get_cookie( 'tzdCurrency' ), true );
+
+    $budget->price = $tzdCurrency["base"] . " " . round($budget->price, 2);
+
+    return $budget;
+
+  }
+
+  function getBudgetItenHumanized( $product_id, $amount ) {
+
+    $product = $this->mongo_db
+      ->where('_id', (int) $product_id)
+      ->select(array("name", "price", "currency", "_id"))
+      ->get('product');
+
+    if( $product ){
+
+      $product = $product[0];
+
+      if( isset($product["price"]) && $product["price"] > 0 ) {
+
+        $tzdCurrency = json_decode( get_cookie( 'tzdCurrency' ), true );
+
+        $fullTotalPrice = $this->convertCurrency($product["price"], $product["currency"] );
+
+        $product["totalPrice"] = round($fullTotalPrice, 2);
+
+        $product["humanPrice"] = $tzdCurrency["base"] . " " . ( $product["totalPrice"] );
+
+      } else {
+
+        $product["totalPrice"] = 0;
+
+        $product["humanPrice"] = 0;
+
+      }
+
+      return $product;
+
+    }
+      
+
+    else
+      return false;
+
+  }
+
+  function convertCurrency( $amount, $base ) {
+
+    $tzdCurrency = json_decode( get_cookie( 'tzdCurrency' ), true );
+
+    $euros = $amount / $tzdCurrency[ $base ];
+
+    $total = $euros * $tzdCurrency[ $tzdCurrency["base"] ];
+
+    return $total;
 
   }
 
