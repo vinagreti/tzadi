@@ -13,7 +13,7 @@
       <div class="span24">
         <label><?=lang("pdt_yourName")?>
           <span class="control-group">
-            <input class="mailYourName input-block-level" type="text" />
+            <input class="mailYourName input-block-level" type="text" value="<?=$this->session->userdata("name")?>" />
           </span>
         </label>
         <label><?=lang("pdt_adressesToSend")?>
