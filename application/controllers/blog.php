@@ -21,7 +21,7 @@ class Blog extends My_Controller {
 
     if( $data->post ) {
 
-      if( $this->session->userdata("identity") == $this->session->userdata("profileIdentity") ) {
+      if( $this->session->userdata("ownProfile") ) {
 
         $data->dynJS = 'blog/blog';
 
@@ -43,7 +43,7 @@ class Blog extends My_Controller {
 
     } else {
 
-      if( $this->session->userdata("identity") == $this->session->userdata("profileIdentity") )
+      if( $this->session->userdata("ownProfile") )
         $data->view = 'blog/owner_empty';
 
       else
@@ -68,7 +68,7 @@ class Blog extends My_Controller {
 
       $data->dynJS = array('blog/list', 'blog/blog');
 
-      if( $this->session->userdata("identity") == $this->session->userdata("profileIdentity") )
+      if( $this->session->userdata("ownProfile") )
         $data->view = 'blog/owner_list';
 
       else
@@ -80,7 +80,7 @@ class Blog extends My_Controller {
 
     } else {
 
-      if( $this->session->userdata("identity") == $this->session->userdata("profileIdentity") )
+      if( $this->session->userdata("ownProfile") )
         $data->view = 'blog/owner_empty';
 
       else
@@ -97,7 +97,9 @@ class Blog extends My_Controller {
   public function write()
   {
 
-    if( $this->session->userdata("identity") == $this->session->userdata("profileIdentity") ) {
+    $this->MYensureOwnProfile();
+
+    if( $this->session->userdata("ownProfile") ) {
 
       if( $this->input->post() ) {
 
@@ -128,6 +130,8 @@ class Blog extends My_Controller {
   public function edit( $url )
   {
 
+    $this->MYensureOwnProfile();
+
     if( $this->input->post() ) {
 
       $this->load->model("blog_model");
@@ -152,7 +156,7 @@ class Blog extends My_Controller {
 
       } else {
 
-        if( $this->session->userdata("identity") == $this->session->userdata("profileIdentity") )
+        if( $this->session->userdata("ownProfile") )
           $data->view = 'blog/owner_empty';
 
         else
@@ -177,7 +181,7 @@ class Blog extends My_Controller {
 
     if( $data->post ) {
 
-      if( $this->session->userdata("identity") == $this->session->userdata("profileIdentity") )
+      if( $this->session->userdata("ownProfile") )
         $data->view = 'blog/owner_view';
 
       else
@@ -191,7 +195,7 @@ class Blog extends My_Controller {
 
     } else {
 
-      if( $this->session->userdata("identity") == $this->session->userdata("profileIdentity") )
+      if( $this->session->userdata("ownProfile") )
         $data->view = 'blog/owner_empty';
 
       else
@@ -208,6 +212,8 @@ class Blog extends My_Controller {
   public function drop()
   {
 
+    $this->MYensureOwnProfile();
+    
     $this->load->model("blog_model");
 
     echo json_encode( $this->blog_model->drop( $this->input->post() ) );

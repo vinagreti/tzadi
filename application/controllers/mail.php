@@ -9,6 +9,8 @@ class Mail extends My_Controller {
 
 	public function read( $mail_id ){
 
+	    $this->MYensureOwnProfile();
+
 		$this->load->model("mail_model");
 
 		$data->mail = $this->mail_model->read( $mail_id );

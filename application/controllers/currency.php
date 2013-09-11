@@ -76,6 +76,8 @@ class Currency extends My_Controller {
 	public function changeExchangeRate()
 	{
 
+	    $this->MYensureOwnProfile();
+  
 		$data = $this->input->post();
 
 		if( $data["kind"] && $data["value"] !== false ) {

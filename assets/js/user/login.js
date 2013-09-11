@@ -27,9 +27,14 @@ $(document).ready(function(){
 
       var callback = function( res ) {
 
+        console.log(res)
+
         if( res.error ) $tzd.alert.error( res.error );
 
-        if( res.url ) window.location = res.url;
+        else if( $("#httpReferer").html() != "" )
+          window.location = $("#httpReferer").html();
+
+        else if( res.url ) window.location = res.url;
 
       }
 
@@ -104,9 +109,14 @@ window.fbAsyncInit = function() {
 
           var callback = function( res ) {
 
+            console.log(res)
+
             if( res.error ) $tzd.alert.error( res.error );
 
-            if( res.url ) window.location = res.url;
+            else if( $("#httpReferer").html() != "" )
+              window.location = $("#httpReferer").html();
+
+            else if( res.url ) window.location = res.url;
 
           }
 
@@ -161,9 +171,14 @@ function onLinkedInAuth() {
 
     var callback = function( res ) {
 
+      console.log(res)
+
       if( res.error ) $tzd.alert.error( res.error );
 
-      if( res.url ) window.location = res.url;
+      else if( $("#httpReferer").html() != "" )
+        window.location = $("#httpReferer").html();
+
+      else if( res.url ) window.location = res.url;
 
     }
 
@@ -231,9 +246,14 @@ function handleGoogleLoad(){
 
             var callback = function( res ) {
 
+              console.log(res)
+
               if( res.error ) $tzd.alert.error( res.error );
 
-              if( res.url ) window.location = res.url;
+              else if( $("#httpReferer").html() != "" )
+                window.location = $("#httpReferer").html();
+
+              else if( res.url ) window.location = res.url;
 
             }
 

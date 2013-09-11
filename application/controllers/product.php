@@ -17,6 +17,9 @@ class Product extends My_Controller {
 
   public function manage()
   {
+
+    $this->MYensureOwnProfile();
+
     $data->dynJS = 'product/manage';
     $data->view = 'product/manage';
     $data->page_title = lang('pdt_listTitle');
@@ -32,6 +35,9 @@ class Product extends My_Controller {
   }
 
   public function getAll(){
+
+    $this->MYensureOwnProfile();
+
     $this->load->model("product_model");
     echo json_encode($this->product_model->getAll());
   }
@@ -44,6 +50,7 @@ class Product extends My_Controller {
   }
 
   public function getByID(){
+
     $productID = $this->input->post("productID");
     $this->load->model("product_model");
     $data = $this->product_model->getByID( $productID );
@@ -52,6 +59,9 @@ class Product extends My_Controller {
 
   public function drop()
   {
+
+    $this->MYensureOwnProfile();
+
     $_id = (int) $this->input->post('_id');
     if(!isset($_id)) echo json_encode(lang("pdt_idNotSent"));
     else {
@@ -61,6 +71,9 @@ class Product extends My_Controller {
   }
   public function add()
   {
+
+    $this->MYensureOwnProfile();
+
     $this->load->model("product_model");
     $data->name = $this->input->post("name");
     $data->kind = $this->input->post("kind");
@@ -71,6 +84,9 @@ class Product extends My_Controller {
 
   public function makeClone()
   {
+
+    $this->MYensureOwnProfile();
+
     $this->load->model("product_model");
     $newProduct = $this->product_model->makeClone($this->input->post("productID"));
     echo json_encode($newProduct);
@@ -78,12 +94,18 @@ class Product extends My_Controller {
 
   public function set()
   {
+
+    $this->MYensureOwnProfile();
+
     $data = $this->input->post();
     $this->load->model("product_model");
     echo json_encode($this->product_model->set($data));
   }
   public function attachImg()
   {
+
+    $this->MYensureOwnProfile();
+    
     $_id = (int) $this->input->post('_id');
     $this->load->model("product_model");
     $res = $this->product_model->attachImg($_id);

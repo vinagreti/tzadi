@@ -2,6 +2,10 @@
 
 class File extends My_Controller {
 
+  public function __construct() { 
+    parent::__construct();
+  }
+
   public function download($_id){
     $this->load->model("file_model");
     $file = $this->file_model->get((int) $_id);

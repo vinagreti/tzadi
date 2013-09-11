@@ -206,6 +206,34 @@ class My_Controller extends CI_Controller{
 
   }
 
+  public function MYensureOwnProfile(){
+
+    if( ! $this->session->userdata("ownProfile") ){
+
+      $reffer  = str_replace("/index.php", "", current_url());
+
+      $this->session->set_flashdata('HTTP_REFERER', $reffer);
+
+      redirect("http://".ENVIRONMENT."/".lang("rt_login"));
+
+    }
+    
+  }
+
+  public function MYensureLogged(){
+
+    if( ! $this->session->userdata("_id") ){
+
+      $reffer  = str_replace("/index.php", "", current_url());
+
+      $this->session->set_flashdata('HTTP_REFERER', $reffer);
+
+      redirect("http://".ENVIRONMENT."/".lang("rt_login"));
+
+    }
+    
+  }
+
 }
 
 

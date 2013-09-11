@@ -11,6 +11,9 @@ class Customer extends My_Controller {
   public function __construct() { 
     parent::__construct();
     $this->lang->load('customer', $this->session->userdata('language'));
+
+    $this->MYensureOwnProfile();
+        
   }
 
   public function index() 

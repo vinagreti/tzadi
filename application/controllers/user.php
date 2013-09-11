@@ -52,7 +52,7 @@ class User extends My_Controller {
 		$data = $this->input->post('data');
 		$this->load->model('user_model');
     if($data["id"]) echo json_encode($this->user_model->facebookAuthenticate($data));
-    else echo json_encode("não foi informado nenhum linkedin_id");
+    else echo json_encode("não foi informado nenhum facebook_id");
 	}
 
   public function linkedinAuthenticate()
@@ -68,7 +68,7 @@ class User extends My_Controller {
     $data = $this->input->post('data');
     $this->load->model('user_model');
     if($data["id"]) echo json_encode($this->user_model->googleAuthenticate($data));
-    else echo json_encode("não foi informado nenhum linkedin_id");
+    else echo json_encode("não foi informado nenhum google_id");
   }
 
 	public function logout()
@@ -90,6 +90,8 @@ class User extends My_Controller {
 	}
 
   public function changeImg( ) {
+
+    $this->MYensureOwnProfile();
 
     $this->load->model('user_model');
 
@@ -139,6 +141,8 @@ class User extends My_Controller {
   public function finishSignup()
   {
 
+    $this->MYensureOwnProfile();
+
     if($this->session->userdata("kind") == "new") {
 
       if($this->input->post()) {
@@ -166,6 +170,8 @@ class User extends My_Controller {
   public function profile()
   {
 
+    $this->MYensureOwnProfile();
+
     if( IDENTITY != $this->session->userdata("identity") )
       redirect("http://".$this->session->userdata("identity").".".ENVIRONMENT."/".lang("rt_profile"));
 
@@ -192,6 +198,8 @@ class User extends My_Controller {
 
   public function interests()
   {
+
+    $this->MYensureOwnProfile();
 
     $this->lang->load('product', $this->session->userdata('language'));
 
@@ -221,6 +229,8 @@ class User extends My_Controller {
 
   public function proposals()
   {
+
+    $this->MYensureOwnProfile();
 
     if( IDENTITY != $this->session->userdata("identity") )
       redirect("http://".$this->session->userdata("identity").".".ENVIRONMENT."/".lang("rt_proposals"));
@@ -274,6 +284,8 @@ class User extends My_Controller {
   public function changePassword()
   {
 
+    $this->MYensureOwnProfile();
+
     $data = $this->input->post();
 
     if( $data["passwdOld"] && $data["passwdNew"] && $data["passwdNewConf"] ) {
@@ -295,23 +307,6 @@ class User extends My_Controller {
       $this->page->load($data);
 
     }
-
-  }
-
-  public function timeline()
-  {
-
-    $this->load->model("user_model");
-
-    $data->timeline = json_encode( $this->user_model->getTimeline( ) );
-
-    $data->dynJS = 'user/timeline';
-
-    $data->view = 'user/timeline';
-
-    $data->page_title = lang('usr_Timeline');
-
-    $this->page->load($data);
 
   }
 
