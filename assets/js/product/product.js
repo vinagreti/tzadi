@@ -208,25 +208,19 @@ TzadiJS.prototype.product = new function(){
 
       if( valid ){
 
-        var name = $('#tzadiDialogs').find(".knowMoreYourName").val();
-
-        var questions = $('#tzadiDialogs').find(".knowMoreQuestions").val();
-
-        var address = $('#tzadiDialogs').find(".knowMoreEmail").val();
-
         var url = base_url+'product/knowMore';
         
         var data = {
 
           tzadiToken : tzadiToken
 
-          , name : name
+          , name : $('#tzadiDialogs').find(".knowMoreYourName").val()
 
-          , questions : questions
+          , questions : $('#tzadiDialogs').find(".knowMoreQuestions").val()
         
           , product_id : product_id
         
-          , address : address
+          , address : $('#tzadiDialogs').find(".knowMoreEmail").val()
 
         };
         
@@ -260,11 +254,11 @@ TzadiJS.prototype.product = new function(){
 
     this.eventsApplied = false;
 
-    this.open = function( product_id ) {
+    this.open = function() {
 
       if( this.shareBudgetModal ) {
 
-        this.showModal( product_id );
+        this.showModal();
 
       } else {
 
@@ -276,15 +270,13 @@ TzadiJS.prototype.product = new function(){
 
           tzadiToken : tzadiToken
 
-          , product_id : product_id
-
         };
 
         var callback = function( modal ){
 
           self.shareBudgetModal = modal;
 
-          self.showModal( product_id );
+          self.showModal();
 
         };
 
@@ -293,7 +285,7 @@ TzadiJS.prototype.product = new function(){
 
     };
 
-    this.showModal = function ( product_id ){
+    this.showModal = function (){
 
       $('#tzadiDialogs').html( this.shareBudgetModal );
 
@@ -305,16 +297,16 @@ TzadiJS.prototype.product = new function(){
 
         var self = this;
 
-        $(".shareProduct").live("click", function(){
+        $(".shareBudget").live("click", function(){
 
-          self.send(product_id);
+          self.send();
           
         });
 
       }
 
     }
-    this.send = function( product_id ){
+    this.send = function(){
 
       var valid = true;
 
@@ -324,25 +316,17 @@ TzadiJS.prototype.product = new function(){
 
       if( valid ){
 
-        var name = $('#tzadiDialogs').find(".mailYourName").val();
-
-        var message = $('#tzadiDialogs').find(".mailMessage").val();
-
-        var addresses = $('#tzadiDialogs').find(".mailEmail").val();
-
-        var url = base_url+'product/share';
+        var url = base_url+'product/shareBudget';
         
         var data = {
 
           tzadiToken : tzadiToken
 
-          , name : name
+          , name : $('#tzadiDialogs').find(".mailYourName").val()
 
-          , message : message
+          , message : $('#tzadiDialogs').find(".mailMessage").val()
         
-          , product_id : product_id
-        
-          , addresses : addresses
+          , addresses : $('#tzadiDialogs').find(".mailEmail").val()
 
         };
         
@@ -385,7 +369,7 @@ TzadiJS.prototype.product = new function(){
 
         var self = this;
 
-        var url = base_url+'product/knowMore';
+        var url = base_url+'product/knowMoreBudget';
 
         var data = {
 
@@ -420,7 +404,7 @@ TzadiJS.prototype.product = new function(){
 
         var self = this;
 
-        $(".knowMoreProduct").live("click", function(){
+        $(".knowMoreBudget").live("click", function(){
 
           self.send(product_id);
           
@@ -441,25 +425,19 @@ TzadiJS.prototype.product = new function(){
 
       if( valid ){
 
-        var name = $('#tzadiDialogs').find(".knowMoreYourName").val();
-
-        var questions = $('#tzadiDialogs').find(".knowMoreQuestions").val();
-
-        var address = $('#tzadiDialogs').find(".knowMoreEmail").val();
-
-        var url = base_url+'product/knowMore';
+        var url = base_url+'product/knowMoreBudget';
         
         var data = {
 
           tzadiToken : tzadiToken
 
-          , name : name
+          , name : $('#tzadiDialogs').find(".knowMoreYourName").val()
 
-          , questions : questions
+          , questions : $('#tzadiDialogs').find(".knowMoreQuestions").val()
         
           , product_id : product_id
         
-          , address : address
+          , address : $('#tzadiDialogs').find(".knowMoreEmail").val()
 
         };
         

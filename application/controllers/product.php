@@ -177,9 +177,9 @@ class Product extends My_Controller {
 
       $budget = $this->product_model->getBudgetResume();
 
-      $shareForm = $this->load->view('product/shareBudgetForm', $budget, true);
+      $shareBudgetForm = $this->load->view('product/shareBudgetForm', $budget, true);
 
-      echo json_encode($shareForm);
+      echo json_encode($shareBudgetForm);
 
     }
 
@@ -195,13 +195,15 @@ class Product extends My_Controller {
 
     if( isset( $data["address"] ) ) {
 
-      echo json_encode($this->product_model->knowMore($data));
+      echo json_encode($this->product_model->knowMoreBudget($data));
 
     } else {
 
-      $shareForm = $this->load->view('product/knowMoreForm', $this->product_model->getHumanized( $data["product_id"] ), true);
+      $budget = $this->product_model->getBudgetResume();
 
-      echo json_encode($shareForm);
+      $knowMoreBudgetForm = $this->load->view('product/knowMoreBudgetForm', $budget, true);
+
+      echo json_encode($knowMoreBudgetForm);
 
     }
 

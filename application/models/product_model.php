@@ -534,4 +534,120 @@ class Product_Model extends CI_Model {
 
   }
 
+  function shareBudget( $data )
+  {
+
+    $budget = $this->getBudgetResume();
+
+    $this->load->model("file_model");
+
+    $this->load->helper('email');
+
+    $this->load->model('customer_model');
+
+    $addresses = explode( ",", preg_replace('/\s+/', '', $data["addresses"] ) );
+
+    foreach( $addresses as $key => $email ){
+
+      if ( valid_email( $email ) ) {
+
+        $customer_id = $this->customer_model->getOrCreate( $email );
+
+        $address = $data["addresses"];
+
+        $mailContent['subject'] = $data["name"] . " " . lang("pdt_sharedABudgetWithYou");
+
+        $mail->message = $data["message"];
+        
+        $mail->budget = $budget;
+
+        $mailContent["message"] = $this->load->view("product/shareBudgetMail", $mail, true);
+
+        $mailContent["to"] = $email;
+
+        $mailContent["bcc"] = $this->session->userdata("profileEmail");
+
+        $mailContent["kind"] = "product/shareBudget";
+
+        $this->load->model('mail_model');
+
+        $mail_id = $this->mail_model->queue($mailContent);
+
+        $action->kind = "product/shareBudget";
+
+        if( $this->session->userdata("ownProfile") )
+          $action->staff_id = $this->session->userdata("_id");
+
+        else if( $this->session->userdata("_id") )
+          $action->user_id = $this->session->userdata("_id");
+
+        $action->mail_id = $mail_id;
+
+        $this->customer_model->addTimeline( $customer_id, $action );
+
+      }
+
+    }
+
+    return array( "success" => lang("pdt_shared") );
+
+  }
+
+  function knowMoreBudget( $data )
+  {
+
+    $budget = $this->getBudgetResume();
+
+    $this->load->model("file_model");
+
+    $this->load->helper('email');
+
+    $this->load->model('customer_model');
+
+    $email = $data["address"];
+
+    if ( valid_email( $email ) ) {
+
+      $customer_id = $this->customer_model->getOrCreate( $email );
+
+      $mailContent['subject'] = $data["name"] . " " . lang("pdt_wnatsToKnowMoreInfoAboutABudget");
+
+      $mail->questions = $data["questions"];
+      
+      $mail->budget = $budget;
+
+      $mailContent["message"] = $this->load->view("product/knowMoreBudgetMail", $mail, true);
+
+      $mailContent["to"] = $email;
+
+      $mailContent["bcc"] = $this->session->userdata("profileEmail");
+
+      $mailContent["kind"] = "product/knowMoreBudget";
+
+      $this->load->model('mail_model');
+
+      $mail_id = $this->mail_model->queue($mailContent);
+
+      $action->kind = "product/knowMoreBudget";
+
+      if( $this->session->userdata("ownProfile") )
+        $action->staff_id = $this->session->userdata("_id");
+
+      else if( $this->session->userdata("_id") )
+        $action->user_id = $this->session->userdata("_id");
+
+      $action->mail_id = $mail_id;
+
+      $this->customer_model->addTimeline( $customer_id, $action );
+
+      return array( "success" => lang("pdt_questionsSent") );
+
+    } else {
+
+      return array( "error" => lang("pdt_fillValidEmail") );
+
+    }
+
+  }
+
 }

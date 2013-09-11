@@ -2,7 +2,7 @@
 
   <div class="modal-header">
     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-    <h3><?=lang("pdt_knowMoreThisProduct")?></h3>
+    <h3><?=lang("pdt_knowsMoreThisBudget")?></h3>
   </div>
 
   <div class="modal-body">
@@ -30,19 +30,20 @@
     </div>
 
     <div class="row-fluid">
-      <div class="span8">
-        <img class="imgSmallMedium" src="<?=$coverImg?>"></img>
-      </div>
-      <div class="span16">
-        <h5><?=$name?></h5>
-        <p><?=lang("pdt_price")?>: <?=$currency . " " . $price?> </p>
+      <div class="span24">
+        <?php foreach( $itens as $iten ) { ?>
+
+            <p><?=$iten["budgetAmount"]?>x <a href="<?=base_url().$iten["_id"]?>"><?=$iten["name"]?></a><span class="pull-right"><?=$iten["humanPrice"]?></span></p>
+
+        <?php } ?>
+        <p class="pull-right"><strong class="text-warning"><?=lang("pdt_total")?>:</strong> <?=$price?></p>
       </div>
     </div>
 
   </div>
 
   <div class="modal-footer">
-    <a class="knowMoreProduct btn btn-primary"><?=lang("pdt_send")?></a>
+    <a class="knowMoreBudget btn btn-primary"><?=lang("pdt_send")?></a>
     <a class="closeModal btn" data-dismiss="modal"><?=lang("pdt_cancel")?></a>
   </div>
 

@@ -15,12 +15,25 @@ $(document).ready(function(){
 	var productShareByStaff = $(".productShareByStaff").clone();
 	productShareByStaff.removeClass("hide");
 	$(".productShareByStaff").remove();
+	var budgetShare = $(".budgetShare").clone();
+	budgetShare.removeClass("hide");
+	$(".budgetShare").remove();
+	var budgetShareByStaff = $(".budgetShareByStaff").clone();
+	budgetShareByStaff.removeClass("hide");
+	$(".productShareByStaff").remove();
 	var productKnowMore = $(".productKnowMore").clone();
 	productKnowMore.removeClass("hide");
 	$(".productKnowMore").remove();
 	var productKnowMoreByStaff = $(".productKnowMoreByStaff").clone();
 	productKnowMoreByStaff.removeClass("hide");
 	$(".productKnowMoreByStaff").remove();
+	var timeline = $(".timeline");
+	var budgetKnowMore = $(".budgetKnowMore").clone();
+	budgetKnowMore.removeClass("hide");
+	$(".budgetKnowMore").remove();
+	var budgetKnowMoreByStaff = $(".budgetKnowMoreByStaff").clone();
+	budgetKnowMoreByStaff.removeClass("hide");
+	$(".budgetKnowMoreByStaff").remove();
 	var timeline = $(".timeline");
 
 	var url = base_url+'customer/getTimelineByID';
@@ -85,6 +98,36 @@ $(document).ready(function(){
 						productKnowMoreNew.find(".date").html( new $tzd.date(event.date).shortDateTime );
 						productKnowMoreNew.find(".mail_id").attr("href", base_url+"mail/"+event.action.mail_id );
 						timeline.append( productKnowMoreNew );
+						break;
+
+					case "product/shareBudget":
+
+						var budgetShareNew;
+
+						if( event.action.staff_id )
+							budgetShareNew = budgetShareByStaff.clone();
+
+						else
+							budgetShareNew = budgetShare.clone();
+
+						budgetShareNew.find(".date").html( new $tzd.date(event.date).shortDateTime );
+						budgetShareNew.find(".mail_id").attr("href", base_url+"mail/"+event.action.mail_id );
+						timeline.append( budgetShareNew );
+						break;
+
+					case "product/knowMoreBudget":
+
+						var budgetKnowMoreNew;
+
+						if( event.action.staff_id )
+							budgetKnowMoreNew = budgetKnowMoreByStaff.clone();
+
+						else
+							budgetKnowMoreNew = budgetKnowMore.clone();
+
+						budgetKnowMoreNew.find(".date").html( new $tzd.date(event.date).shortDateTime );
+						budgetKnowMoreNew.find(".mail_id").attr("href", base_url+"mail/"+event.action.mail_id );
+						timeline.append( budgetKnowMoreNew );
 						break;
 				}
 

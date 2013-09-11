@@ -95,5 +95,36 @@
 			</div>
 			<div class="span4 tzdTableRow"><p class="date text-center"></p></div>
 		</div>
+
+		<div class="row-fluid budgetShare hide">
+			<div class="span10"></div>
+			<div class="span4 tzdTableRow"><p class="date text-center"></p></div>
+			<div class="span10 tzdTableRow">
+				<p><a class="mail_id" target="_blank"><?=lang("ctm_shareBudget")?></a></p>
+			</div>
+		</div>
+
+		<div class="row-fluid budgetShareByStaff hide">
+			<div class="span10 tzdTableRow">
+				<p><a class="mail_id" target="_blank"><?=lang("ctm_shareBudgetByStaff")?></a></p>
+			</div>
+			<div class="span4 tzdTableRow"><p class="date text-center"></p></div>
+		</div>
+
+		 <div class="row-fluid budgetKnowMore hide">
+			<div class="span10"></div>
+			<div class="span4 tzdTableRow"><p class="date text-center"></p></div>
+			<div class="span10 tzdTableRow">
+				<p><a class="mail_id" target="_blank"><?=lang("ctm_knowMoreBudget")?></a></p>
+			</div>
+		</div>
+
+		 <div class="row-fluid budgetKnowMoreByStaff hide">
+			<div class="span10 tzdTableRow">
+				<p><a class="mail_id" target="_blank"><?=lang("ctm_knowMoreBudgetByStaff")?></a></p>
+			</div>
+			<div class="span4 tzdTableRow"><p class="date text-center"></p></div>
+		</div>
+
 	</div>
 </div>

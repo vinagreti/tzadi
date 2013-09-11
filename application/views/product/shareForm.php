@@ -11,12 +11,21 @@
 
     <div class="row-fluid">
       <div class="span24">
-        <label><?=lang("pdt_yourName")?></label>
-        <input class="mailYourName input-block-level" type="text" />
-        <label><?=lang("pdt_adressesToSend")?></label>
-        <input class="mailEmail input-block-level" type="email" />
-        <label><?=lang("pdt_message")?></label>
-        <textarea class="mailMessage input-block-level" rows="3"></textarea>
+        <label><?=lang("pdt_yourName")?>
+          <span class="control-group">
+            <input class="mailYourName input-block-level" type="text" />
+          </span>
+        </label>
+        <label><?=lang("pdt_adressesToSend")?>
+          <span class="control-group">
+            <input class="mailEmail input-block-level" type="email" />
+          </span>
+        </label>
+        <label><?=lang("pdt_message")?>
+          <span class="control-group">
+            <textarea class="mailMessage input-block-level" rows="3"></textarea>
+          </span>
+        </label>
       </div>
     </div>
 
@@ -33,8 +42,8 @@
   </div>
 
   <div class="modal-footer">
-    <a href="#" class="shareProduct btn btn-primary"><?=lang("pdt_send")?></a>
-    <a href="#" class="closeModal btn" data-dismiss="modal"><?=lang("pdt_cancel")?></a>
+    <a class="shareProduct btn btn-primary"><?=lang("pdt_send")?></a>
+    <a class="closeModal btn" data-dismiss="modal"><?=lang("pdt_cancel")?></a>
   </div>
 
 </div>

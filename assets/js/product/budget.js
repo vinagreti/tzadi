@@ -86,11 +86,11 @@ $(document).ready(function(){
     }
   });
 
-  $(".shareBudget").live("click", function(){
+  $(".openShareBudget").live("click", function(){
     $tzd.product.shareBudget.open( $(this).attr("id") );
   });
 
-  $(".knowMoreBudget").live("click", function(){
+  $(".openKnowMoreBudget").live("click", function(){
     $tzd.product.knowMoreBudget.open( $(this).attr("id") );
   });
   
