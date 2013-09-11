@@ -282,7 +282,7 @@ class User extends My_Controller {
   public function changePassword()
   {
 
-    $this->MYensureOwnProfile();
+    $this->MYensureLogged();
 
     $data = $this->input->post();
 
