@@ -208,7 +208,7 @@ $(document).ready(function(){
         };
         $tzd.ajax.post(url, formData, callback);
       } else {
-        $tzd.alert.error($(".ctm_noChanges").html());
+        $tzd.alert.success($(".ctm_saved").html());
       }
     }
     ,drop : function( id ){
@@ -363,7 +363,6 @@ $(document).ready(function(){
     var valid = true;
 
     valid = valid && $tzd.form.checkMask.range(line.find(".name"), 1, 512, $(".ctm_pleaseFillName").html());
-    valid = valid && $tzd.form.checkMask.email($('#customerEmail'), $(".ctm_pleaseFillValidEmail").html() );
     valid = valid && $tzd.form.checkMask.range($('#phone'), 0, 32, $(".ctm_pleaseFillValidPhone").html() );
     valid = valid && $tzd.form.checkMask.range($('#cellphone'), 0, 32, $(".ctm_pleaseFillValidCellphone").html() );
     valid = valid && $tzd.form.checkMask.range($('#birth'), 0, 10, $(".ctm_pleaseFillValidBirth").html() );

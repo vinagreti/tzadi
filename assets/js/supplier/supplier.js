@@ -393,7 +393,7 @@ $(document).ready(function(){
         };
         $tzd.ajax.post(url, data, callback);
       } else {
-        $tzd.alert.error($(".splr_noChange").html());
+        $tzd.alert.success($(".tmpt_changesSaved").html());
       }
     }
   }
