@@ -332,7 +332,7 @@ class Mail_Model extends CI_Model {
 
     $mail["_id"] = $this->mongo_model->newID();
 
-    $mail["message"] = $data["message"];
+    $mail["message"] = $data["message"] . "<br></br><hr>\r\n".date( "d/m/Y h:m", time($mail["sent_date"]) )."\r\n". $mail["message"]."<hr>";
 
     $mail["subject"] = $mail["subject"];
 
