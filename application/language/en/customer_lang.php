@@ -59,3 +59,4 @@ $lang["ctm_knowMoreBudget"] = "asked for more info about budget";
 $lang["ctm_knowMoreBudgetByStaff"] = "asked for more info about budget";
 $lang["ctm_replyReceived"] = "Replied the e-mail";
 $lang["ctm_sentMessage"] = "Sent message";
+$lang["ctm_repliedMessage"] = "Replied the e-mail";

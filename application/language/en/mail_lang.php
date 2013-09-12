@@ -21,3 +21,6 @@ $lang["mail_cancel"] = "cancel";
 $lang["mail_pleaseFillSubject"] = "insert the subject";
 $lang["mail_pleaseFillMessage"] = "insert your message";
 $lang["mail_sentMessage"] = "Sent e-mail";
+$lang["mail_reply"] = "reply";
+$lang["mail_replyMessage"] = "Reply message";
+$lang["mail_repliedMessage"] = "Reply sent";

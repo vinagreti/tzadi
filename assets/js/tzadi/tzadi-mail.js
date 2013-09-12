@@ -15,11 +15,11 @@ TzadiJS.prototype.mail = new function(){
 
     this.eventsApplied = false;
 
-    this.open = function( email ) {
+    this.open = function( mail ) {
 
       if( this.messageModal ) {
 
-        this.showModal( email );
+        this.showModal( mail );
 
       } else {
 
@@ -37,7 +37,7 @@ TzadiJS.prototype.mail = new function(){
 
           self.messageModal = modal;
 
-          self.showModal( email );
+          self.showModal( mail );
 
         };
 
@@ -46,7 +46,7 @@ TzadiJS.prototype.mail = new function(){
 
     };
 
-    this.showModal = function ( email ){
+    this.showModal = function ( mail ){
 
       $('#tzadiDialogs').html( this.messageModal );
 
@@ -60,7 +60,7 @@ TzadiJS.prototype.mail = new function(){
 
         $('#tzadiDialogs').find(".send").live("click", function(){
 
-          self.send(email);
+          self.send(mail);
           
         });
 
@@ -68,7 +68,7 @@ TzadiJS.prototype.mail = new function(){
 
     }
 
-    this.send = function( email ){
+    this.send = function( mail ){
 
       var valid = true;
 
@@ -88,7 +88,113 @@ TzadiJS.prototype.mail = new function(){
 
           , message : $('#tzadiDialogs').find("#mailMessage").val()
         
-          , email : email
+          , mail : mail
+
+        };
+        
+        var callback = function( e ){
+
+          if(e.error) $tzd.alert.error( e.error );
+
+          if(e.success){
+
+            $('#tzadiDialogs').find(".closeModal").click();
+
+            $tzd.alert.success( e.success );
+
+            $("#refreshTimeline").click();
+
+          }
+
+        };
+        
+        $tzd.ajax.post(url, data, callback);
+
+      }
+
+    };
+
+  }
+
+  // share product by e-mail
+  this.reply = new function() {
+
+    this.messageModal = false;
+
+    this.eventsApplied = false;
+
+    this.open = function( mail_id ) {
+
+      if( this.messageModal ) {
+
+        this.showModal( mail_id );
+
+      } else {
+
+        var self = this;
+
+        var url = base_url+'mail/reply';
+
+        var data = {
+
+          tzadiToken : tzadiToken
+
+          , mail_id : mail_id
+
+        };
+
+        var callback = function( modal ){
+
+          self.messageModal = modal;
+
+          self.showModal( mail_id );
+
+        };
+
+        $tzd.ajax.post(url, data, callback);        
+      }
+
+    };
+
+    this.showModal = function ( mail_id ){
+
+      $('#tzadiDialogs').html( this.messageModal );
+
+      $('#tzadiDialogs').modal('show');
+
+      if( ! this.eventsApplied ) {
+
+        this.eventsApplied = true;
+
+        var self = this;
+
+        $('#tzadiDialogs').find(".send").live("click", function(){
+
+          self.send(mail_id);
+          
+        });
+
+      }
+
+    }
+
+    this.send = function( mail_id ){
+
+      var valid = true;
+
+      valid = valid && $tzd.form.checkMask.range($('#tzadiDialogs').find("#mailMessage"), 1, 1024, $("#mail_pleaseFillMessage").html());
+
+      if( valid ){
+
+        var url = base_url+'mail/reply';
+        
+        var data = {
+
+          tzadiToken : tzadiToken
+
+          , message : $('#tzadiDialogs').find("#mailMessage").val()
+        
+          , mail_id : mail_id
 
         };
         

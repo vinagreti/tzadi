@@ -59,7 +59,7 @@ class Mail_Model extends CI_Model {
   }
 
 
-  public function send() {
+  public function send( ) {
 
     $queued = $this->mongo_db
       ->where('status', "waiting")
@@ -90,7 +90,11 @@ class Mail_Model extends CI_Model {
 
       $this->email->to($data["to"]);
 
-      $this->email->subject(utf8_decode($data["subject"]) . " <msgid>".$data['_id']."</msgid>");
+      if( $data["kind"] == "repliedMessage" ) $tag = "";
+
+      else $tag = " <msgid>".$data['_id']."</msgid>";
+
+      $this->email->subject(utf8_decode($data["subject"]) . $tag);
 
       if(isset($data["cc"])) $this->email->cc($data["cc"]);
 
@@ -302,7 +306,7 @@ class Mail_Model extends CI_Model {
 
     $mail["subject"] = $data["subject"];
 
-    $mail["to"] =  $data["email"];
+    $mail["to"] =  $data["mail"];
 
     $mail["kind"] = "sentMessage";
 
@@ -310,7 +314,39 @@ class Mail_Model extends CI_Model {
 
     $action->kind = "sentMessage";
 
-    $action->customer_id = $this->customer_model->getOrCreate( $data["email"] );
+    $action->customer_id = $this->customer_model->getOrCreate( $data["mail"] );
+
+    $this->customer_model->addTimeline( $action );
+
+    return array("success" => "mensagem enviada");
+
+  }
+
+  public function reply( $data ) {
+
+    $mail = $this->read( $data["mail_id"] );
+
+    $this->load->model("mongo_model");
+
+    $this->load->model("customer_model");
+
+    $mail["_id"] = $this->mongo_model->newID();
+
+    $mail["message"] = $data["message"];
+
+    $mail["subject"] = $mail["subject"];
+
+    $mail["to"] =  $mail["from"];
+
+    $mail["kind"] = "repliedMessage";
+
+    $action->mail_id = $this->queue($mail);
+
+    $action->mail_referer_id = $mail["mail_referer_id"];
+
+    $action->kind = "repliedMessage";
+
+    $action->customer_id = $this->customer_model->getOrCreate( $mail["from"] );
 
     $this->customer_model->addTimeline( $action );
 

@@ -37,6 +37,9 @@ $(document).ready(function(){
 	var replyReceived = $(".replyReceived").clone();
 	replyReceived.removeClass("hide");
 	$(".replyReceived").remove();
+	var repliedMessage = $(".repliedMessage").clone();
+	repliedMessage.removeClass("hide");
+	$(".repliedMessage").remove();
 	var sentMessage = $(".sentMessage").clone();
 	sentMessage.removeClass("hide");
 	$(".sentMessage").remove();
@@ -88,6 +91,14 @@ $(document).ready(function(){
 							timeline.append( newReplyReceived );
 							break;
 
+						case "repliedMessage":
+							var newrepliedMessage = repliedMessage.clone();
+							newrepliedMessage.find(".date").html( new $tzd.date(event.date).shortDateTime );
+							newrepliedMessage.find(".mail_id").attr("href", base_url+"mail/"+event.mail_id );
+							newrepliedMessage.find(".mail_referer_id").html( event.mail_referer_id );
+							timeline.append( newrepliedMessage );
+							break;
+							
 						case "product/share":
 
 							var productShareNew;

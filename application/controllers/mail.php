@@ -15,7 +15,7 @@ class Mail extends My_Controller {
 
 		$data->mail = $this->mail_model->read( $mail_id );
 
-        $data->dynJS = 'mail/read';
+        $data->dynJS = array( 'mail/read', 'tzadi/tzadi-mail');
 
         $data->view = 'mail/read';
 
@@ -108,7 +108,7 @@ class Mail extends My_Controller {
 
 		} else {
 
-			if( isset($data["email"]) && isset($data["subject"]) && isset($data["message"]) ) {
+			if( isset($data["mail"]) && isset($data["subject"]) && isset($data["message"]) ) {
 
 				$this->load->model("mail_model");
 
@@ -116,9 +116,40 @@ class Mail extends My_Controller {
 
 			} else {
 
-				echo json_encode( array("error" => "informe todos os dados para enviar o contato") );
+				echo json_encode( array("error" => "informe todos os dados para enviar o e-mail") );
 
 			}
+
+		}
+
+	}
+
+	public function reply()
+	{
+
+		$data = $this->input->post();
+
+		if( isset( $data["message"] ) && $data["mail_id"] ){
+
+			$this->load->model("mail_model");
+
+			echo json_encode( $this->mail_model->reply( $data ) );
+
+		} else if( isset( $data["mail_id"] ) ){
+
+			$this->load->model("mail_model");
+
+			$data["mail"] = $this->mail_model->read( $data["mail_id"] );
+
+			echo json_encode($this->load->view('mail/modalReplyForm', $data, TRUE));
+
+		} else if( isset( $data["message"] ) ){
+
+			echo json_encode(array("error" => "informe o id do e-mail"));
+
+		} else {
+
+			echo json_encode(array("error" => "informe a mensagem"));
 
 		}
 

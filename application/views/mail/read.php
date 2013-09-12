@@ -18,8 +18,18 @@
 </div>
 
 <hr>
+<div class="row-fluid">
+	<div class="span20">
+		<h4><span class="text-warning"><?=lang("mail_subject")?>:</span> <?=$mail["subject"]?></h4>
+	</div>
+	<div class="span3 pull-right">
+		<?php if($mail["kind"] == "replyReceived"){ ?>
+			<a id="<?=$mail["_id"]?>" class="reply btn btn-block"><i class="icon-reply"></i> <?=lang("mail_reply")?></a>
+		<?php } ?>
+	</div>
+</div>
 
-<h4><p><span class="text-warning"><?=lang("mail_subject")?>:</span> <?=$mail["subject"]?></p></h4>
+
 <hr>
 
 <p><?=$mail["message"]?></p>
