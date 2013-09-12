@@ -94,15 +94,16 @@ class Mail extends My_Controller {
 
 		foreach ($newMessages as $key => $message) {
 
-			echo "<p>".$message["mail_referer_id"]."</p>";
-			echo "<p>".$message["from"]."</p>";
-			echo "<p>".$message["kind"]."</p>";
-			echo "<p>".$message["message"]."</p>";
-			echo "<p>".$message["date"]."</p>";
-			echo "<p>".$message["status"]."</p>";
-			echo "<p>".$message["subject"]."</p>";
-			echo "<p>".$message["to"]."</p>";
-
+			echo "<hr>";
+			echo "<p>mail_referer_id: ".$message["mail_referer_id"]."</p>";
+			echo "<p>from: ".$message["from"]."</p>";
+			echo "<p>to: ".$message["to"]."</p>";
+			echo "<p>kind: ".$message["kind"]."</p>";
+			echo "<p>queue_date: ".$message["queue_date"]."</p>";
+			echo "<p>sent_date: ".$message["sent_date"]."</p>";
+			echo "<p>status: ".$message["status"]."</p>";
+			echo "<p>subject: ".$message["subject"]."</p>";
+			echo "<p>message: ".$message["message"]."</p>";
 		}
 
 

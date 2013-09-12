@@ -231,9 +231,17 @@ class Mail_Model extends CI_Model {
         mb_internal_encoding('UTF-8');
         $mail["subject"] = str_replace("_"," ", mb_decode_mimeheader($overview[0]->subject));
 
-        $mail["from"] = str_replace("_"," ", mb_decode_mimeheader($overview[0]->from));
+        // this regex handles more email address formats like a+b@google.com.sg, and the i makes it case insensitive
+        $mail_pattern = '/[a-z0-9_\-\+]+@[a-z0-9\-]+\.([a-z]{2,3})(?:\.[a-z]{2})?/i';
 
-        $mail["to"] =  $overview[0]->to;
+        // preg_match_all returns an associative array
+        preg_match($mail_pattern, $overview[0]->from, $froms);
+
+        $mail["from"] = $froms[0];
+
+        $mail["to"] = "";
+
+        foreach( $tos as $to_mail ) $mail["to"] .= $to_mail.",";
 
         $mail["queue_date"] =  time($overview[0]->date);
 
