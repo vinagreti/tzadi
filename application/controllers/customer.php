@@ -18,7 +18,7 @@ class Customer extends My_Controller {
 
   public function index() 
   {
-    $data->dynJS = 'customer/customer';
+    $data->dynJS = 'customer/manage';
     $data->view = 'customer/index';
     $data->page_title = lang('ctm_listTitle');
     $this->page->load($data);
@@ -82,7 +82,7 @@ class Customer extends My_Controller {
   public function view( $_id ){
     $this->load->model("customer_model");
     $data->customer = $this->customer_model->getBy( $_id );
-    $data->dynJS = 'customer/view';
+    $data->dynJS = array('customer/view', 'tzadi/tzadi-mail');
     $data->view = 'customer/view';
     $data->page_title = $data->customer["name"] ;
     $this->page->load($data);

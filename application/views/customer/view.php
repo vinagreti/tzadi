@@ -3,8 +3,9 @@
 <div class="row-fluid">
 	<div class="span24 tzdTableRow">
 		<div class="row-fluid">
-			<div class="span4 text-center">
-				<img class="imgMediumSmall" src="<?=$customer['img']?>" >
+			<div class="span4">
+				<p class="text-center"><img class="imgSmallMedium" src="<?=$customer['img']?>" ></p>
+				<p><a id="<?=$customer['email']?>" class="sendMessage btn btn-primary"><i class="icon-envelope"></i></a></p>
 			</div>
 			<div class="span7">
 				<p><span class="text-warning"><?=lang("tmpt_creationDate")?>:</span> <?php if( isset( $customer["creation"] ) ) echo  date( "d/m/Y h:m", time($customer["creation"]) ); ?></p>
@@ -28,7 +29,7 @@
 	</div>
 </div>
 
-<h3 class="text-center">Timeline</h3>
+<h3 class="text-center">Timeline <a id="refreshTimeline" class="btn btn-info"><i class="icon-refresh"></i></a></h3>
 
 <div class="row-fluid hideFromResponsive">
 	<div class="span12 text-center">
@@ -38,7 +39,6 @@
 		<?=lang("tmpt_Customer")?>
 	</div>
 </div>
-
 
 <div class="row-fluid">
 	<div class="span24 timeline">
@@ -132,6 +132,13 @@
 			<div class="span10 tzdTableRow">
 				<p><a class="mail_id" target="_blank"><?=lang("ctm_replyReceived")?> <span class="mail_referer_id"></span></a></p>
 			</div>
+		</div>
+
+		<div class="row-fluid sentMessage hide">
+			<div class="span10 tzdTableRow">
+				<p><a class="mail_id" target="_blank"><?=lang("ctm_sentMessage")?></a></p>
+			</div>
+			<div class="span4 tzdTableRow"><p class="date text-center"></p></div>
 		</div>
 
 	</div>

@@ -290,4 +290,32 @@ class Mail_Model extends CI_Model {
 
   }
 
+  public function write( $data ) {
+
+    $this->load->model("mongo_model");
+
+    $this->load->model("customer_model");
+
+    $mail["_id"] = $this->mongo_model->newID();
+
+    $mail["message"] = $data["message"];
+
+    $mail["subject"] = $data["subject"];
+
+    $mail["to"] =  $data["email"];
+
+    $mail["kind"] = "sentMessage";
+
+    $action->mail_id = $this->queue($mail);
+
+    $action->kind = "sentMessage";
+
+    $action->customer_id = $this->customer_model->getOrCreate( $data["email"] );
+
+    $this->customer_model->addTimeline( $action );
+
+    return array("success" => "mensagem enviada");
+
+  }
+
 }
