@@ -93,7 +93,7 @@
                 <a class="btn productStatus btn-small btn-block" rel="tooltip" title="<?=lang('pdt_productStatusBtnTitle')?>" ></a>
               </div>
               <div class="span2">
-                <a class="openDetail btn btn-info btn-small btn-block"><?=lang("tmpt_open")?></a>
+                <a class="openDetail btn btn-info btn-small btn-block"><?=lang("tmpt_Edit")?></a>
               </div>
               <div class="span11 name" rel="tooltip" title="<?=lang('pdt_name')?>"></div>
               <div class="span4 productKind" rel="tooltip" title="<?=lang('pdt_kind')?>"></div>
@@ -111,7 +111,7 @@
                     <a class="productStatus btn btn-block" rel="tooltip" title="<?=lang('pdt_productStatusBtnTitle')?>" ></a>
                   </div>
                   <div class="span2">
-                    <a class="closeDetail btn btn-block"><?=lang("tmpt_Close")?></a>
+                    <a class="closeDetail btn btn-block"><?=lang("tmpt_Cancel")?></a>
                   </div>
                   <div class="span2">
                     <a class="productSave btn btn-block btn-primary"><?=lang("tmpt_Save")?></a>
@@ -460,7 +460,7 @@
                       <a class="btn btn-primary productSave"><?=lang("tmpt_Save")?></a>
                       <a class="btn btn-warning productClone" href="#"><?=lang("tmpt_Clone")?></a>
                       <a class="btn btn-danger productDrop" rel="tooltip" title="<?=lang("productDropTitle")?>"><?=lang("tmpt_Remove")?></a>
-                      <a class="closeDetail btn"><?=lang("tmpt_Close")?></a>
+                      <a class="closeDetail btn"><?=lang("tmpt_Cancel")?></a>
                     </div>
                   </div>
                 </div>

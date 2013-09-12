@@ -56,7 +56,7 @@
             <a class="btn customerActive btn-small btn-block" rel="tooltip" title="<?=lang('ctm_customerStatusBtnTitle')?>" ></a>
           </div>
           <div class="span2">
-            <a class="openDetail btn btn-info btn-small btn-block"><?=lang("tmpt_open")?></a>
+            <a class="openDetail btn btn-info btn-small btn-block"><?=lang("tmpt_Edit")?></a>
           </div>
           <div class="span10 name" title="<?=lang('ctm_name')?>">>
             <!-- o valor NOME de cada class do span é jogado aqui -->
@@ -76,7 +76,7 @@
               <a class="btn customerActive btn-block" rel="tooltip" title="<?=lang('ctm_customerStatusBtnTitle')?>" ></a>
             </div>
             <div class="span2">
-              <a class="tableCancelButton btn btn-block"><?=lang('tmpt_Close')?></a>
+              <a class="tableCancelButton btn btn-block"><?=lang('tmpt_Cancel')?></a>
             </div>
             <div class="span2">
               <a class="customerSave btn btn-primary btn-block"><?=lang('tmpt_Save')?></a>
@@ -193,7 +193,7 @@
           <div class="pull-right">
             <a class="customerSave btn btn-primary"><?=lang('tmpt_Save')?></a>
             <a class="customerDrop btn btn-danger"><?=lang('tmpt_Remove')?></a>
-            <a class="tableCancelButton btn"><?=lang('tmpt_Close')?></a>
+            <a class="tableCancelButton btn"><?=lang('tmpt_Cancel')?></a>
           </div>
         </div>
       </div>

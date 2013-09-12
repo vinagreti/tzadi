@@ -46,7 +46,7 @@
             <a class="btn supplierStatus btn-small btn-block" rel="tooltip" title="<?=lang('splr_supplierStatusBtnTitle')?>"></a>
           </div>
           <div class="span2">
-            <a class="openDetail btn btn-info btn-small btn-block" rel="tooltip" title="<?=lang('tmpt_open')?>"><?=lang('tmpt_open')?></a>
+            <a class="openDetail btn btn-info btn-small btn-block" rel="tooltip" title="<?=lang('tmpt_Edit')?>"><?=lang('tmpt_Edit')?></a>
           </div>
           <div class="span20">
             <div class="row-fluid">
@@ -61,7 +61,7 @@
                 <a class="supplierStatus btn btn-block"  rel="tooltip" title="<?=lang('splr_supplierStatusBtnTitle')?>"></a>
               </div>
               <div class="span2">
-                <a class="closeDetail btn btn-block"><?=lang('tmpt_Close')?></a>
+                <a class="closeDetail btn btn-block"><?=lang('tmpt_Cancel')?></a>
               </div>
               <div class="span2">
                 <a class="save btn btn-primary btn-block"><?=lang('tmpt_Save')?></a>
@@ -153,7 +153,7 @@
                 <a class="save btn btn-primary"><?=lang('tmpt_Save')?></a>
                 <a class="clone btn btn-warning" href="#"><?=lang('tmpt_Clone')?></a>
                 <a class="drop btn btn-danger"><?=lang('tmpt_Remove')?></a>
-                <a class="closeDetail btn"><?=lang('tmpt_Close')?></a>
+                <a class="closeDetail btn"><?=lang('tmpt_Cancel')?></a>
               </div>
             </div>
           </div>
