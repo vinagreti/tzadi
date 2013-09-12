@@ -77,7 +77,9 @@ class Customer_Model extends CI_Model {
 
     $action->kind = "customer/add";
 
-    $this->customer_model->addTimeline( $newID, $action );
+    $action->customer_id = $newID;
+
+    $this->customer_model->addTimeline( $action );
 
     return $this->mongo_db
       ->where('_id', $newID)
@@ -209,7 +211,9 @@ class Customer_Model extends CI_Model {
 
         $action->kind = "customer/getOrCreate";
 
-        $this->customer_model->addTimeline( $newID, $action );
+        $action->customer_id = $newID;
+
+        $this->customer_model->addTimeline( $action );
 
       return $newID;
 
@@ -217,23 +221,31 @@ class Customer_Model extends CI_Model {
 
   }
 
-  public function addTimeline( $customer_id, $action )
+  public function addTimeline( $action )
   {
 
     $this->load->model("mongo_model");
 
     $this->load->helper('date');
 
-    $action_id = $this->mongo_model->newID();
+    $action->_id = $this->mongo_model->newID();
 
-    $this->mongo_db
-    ->insert('timeline', array( 
-      "_id" => $action_id
-      , "date" => now()
-      , "customer_id" => $customer_id
-      , "action" => $action
-      )
-    );
+    $action->date = now();
+
+    $this->mongo_db->insert('timeline', (array) $action);
 
   }
+
+  public function getCustomerIdByMailId( $mail_id )
+  {
+
+    $customer = $this->mongo_db
+      ->order_by( array("_id" => "asc") )
+      ->where('mail_id', (int) $mail_id )
+      ->get('timeline');
+
+    return $customer[0]["customer_id"];
+
+  }
+
 }

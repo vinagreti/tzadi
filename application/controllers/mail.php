@@ -27,10 +27,7 @@ class Mail extends My_Controller {
 
 	public function send()
 	{
-		// este método tem que ser acionado por um cron, para que seja executado automaticamente
-		// instala o pacote lynx: sudo apt-get install lynx
-		// crie a pasta: /var/log/tzadi/
-		// insira o cron (crontab -e): */1 * * * * lynx -dump http://tzadi.com/mail/send > /var/log/tzadi/mail.log
+
 		$this->load->model('mail_model');
 
 		echo $this->mail_model->send();
@@ -86,6 +83,28 @@ class Mail extends My_Controller {
 			echo utf8_decode($mailData);
 
 		}
+
+	}
+
+	public function getNew()
+	{
+		$this->load->model('mail_model');
+
+		$newMessages = $this->mail_model->getNew();
+
+		foreach ($newMessages as $key => $message) {
+
+			echo "<p>".$message["mail_referer_id"]."</p>";
+			echo "<p>".$message["from"]."</p>";
+			echo "<p>".$message["kind"]."</p>";
+			echo "<p>".$message["message"]."</p>";
+			echo "<p>".$message["date"]."</p>";
+			echo "<p>".$message["status"]."</p>";
+			echo "<p>".$message["subject"]."</p>";
+			echo "<p>".$message["to"]."</p>";
+
+		}
+
 
 	}
 }

@@ -79,7 +79,9 @@ class Contact_Model extends CI_Model {
 
         $action->mail_id = $mail_id;
 
-        $this->customer_model->addTimeline( $customer_id, $action );
+        $action->customer_id = $customer_id;
+
+        $this->customer_model->addTimeline( $action );
 
         return array( "success" => lang("ct_sent") );
 

@@ -6,6 +6,10 @@ class Mail_Model extends CI_Model {
 
     $this->load->library("mongo_db");
 
+    $this->smtp_host = 'ssl://smtp.googlemail.com';
+
+    $this->imap_host = '{imap.gmail.com:993/imap/ssl}MESSAGE_NEW';
+
     if (ENVIRONMENT ==  'tzadi.com') {
 
       $this->smtp_user = 'contact@tzadi.com';
@@ -65,7 +69,7 @@ class Mail_Model extends CI_Model {
 
     $config = Array(
       'protocol' => 'smtp',
-      'smtp_host' => 'ssl://smtp.googlemail.com',
+      'smtp_host' => $this->smtp_host,
       'smtp_port' => 465,
       'smtp_user' => $this->smtp_user,
       'smtp_pass' => $this->smtp_pass,
@@ -86,7 +90,7 @@ class Mail_Model extends CI_Model {
 
       $this->email->to($data["to"]);
 
-      $this->email->subject(utf8_decode($data["subject"]));
+      $this->email->subject(utf8_decode($data["subject"]) . " <msgid>".$data['_id']."</msgid>");
 
       if(isset($data["cc"])) $this->email->cc($data["cc"]);
 
@@ -186,6 +190,96 @@ class Mail_Model extends CI_Model {
       echo $this->file_model->dropTempFile( $path );
 
     }
+
+    return true;
+
+  }
+
+  public function getNew(){
+
+    $return = array();
+
+    /* try to connect */
+    $inbox = imap_open($this->imap_host,$this->smtp_user,$this->smtp_pass) or die('Cannot connect to Gmail: ' . imap_last_error());
+
+    /* grab emails */
+    $emails = imap_search($inbox,'ALL');
+
+    /* if emails are returned, cycle through each... */
+    if($emails) {
+      
+      /* begin output var */
+      $output = '';
+      
+      /* put the newest emails on top */
+      rsort($emails);
+
+      /* for every email... */
+      foreach($emails as $email_number) {
+
+        $mail = array();
+
+        /* get information specific to this email */
+        $overview = imap_fetch_overview($inbox,$email_number,0);
+        $mail["message"] = imap_fetchbody($inbox,$email_number,2);
+
+        $regex = '#<msgid>(.*?)</msgid>#';
+
+        preg_match($regex, $overview[0]->subject, $matches);
+        $mail["mail_referer_id"] = $matches[1];
+
+        mb_internal_encoding('UTF-8');
+        $mail["subject"] = str_replace("_"," ", mb_decode_mimeheader($overview[0]->subject));
+
+        $mail["from"] = str_replace("_"," ", mb_decode_mimeheader($overview[0]->from));
+
+        $mail["to"] =  $overview[0]->to;
+
+        $mail["queue_date"] =  time($overview[0]->date);
+
+        $this->load->helper('date');
+
+        $mail["sent_date"] =  now();
+
+        $mail["kind"] = "incoming";
+
+        $mail["status"] = "new";
+
+        $this->add($mail);
+
+      }
+
+      imap_delete($inbox, "1:*");
+      
+      array_push( $return, $mail );
+    } 
+
+    /* close the connection */
+    imap_close($inbox);
+
+    return $return;
+
+  }
+
+  public function add($mail) {
+
+    $this->load->model("mongo_model");
+
+    $mail["_id"] = $this->mongo_model->newID();
+
+    $this->mongo_db->insert('mail', $mail);
+
+    $this->load->model("customer_model");
+
+    $action->kind = "mail/new";
+
+    $action->mail_id = $mail["_id"];
+
+    $action->mail_referer_id = $mail["mail_referer_id"];
+
+    $action->customer_id = $this->customer_model->getCustomerIdByMailId( $mail["mail_referer_id"] );
+
+    $this->customer_model->addTimeline( $action );
 
     return true;
 

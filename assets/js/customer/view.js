@@ -49,7 +49,7 @@ $(document).ready(function(){
 
 			$.each( e, function( index, event ){
 
-				switch( event.action.kind ){
+				switch( event.kind ){
 
 					case "customer/add":
 						var customerAddNew = customerAdd.clone();
@@ -66,7 +66,7 @@ $(document).ready(function(){
 					case "contact":
 						var contactNew = contact.clone();
 						contactNew.find(".date").html( new $tzd.date(event.date).shortDateTime );
-						contactNew.find(".mail_id").attr("href", base_url+"mail/"+event.action.mail_id );
+						contactNew.find(".mail_id").attr("href", base_url+"mail/"+event.mail_id );
 						timeline.append( contactNew );
 						break;
 
@@ -74,14 +74,14 @@ $(document).ready(function(){
 
 						var productShareNew;
 
-						if( event.action.staff_id )
+						if( event.staff_id )
 							productShareNew = productShareByStaff.clone();
 
 						else
 							productShareNew = productShare.clone();
 
 						productShareNew.find(".date").html( new $tzd.date(event.date).shortDateTime );
-						productShareNew.find(".mail_id").attr("href", base_url+"mail/"+event.action.mail_id );
+						productShareNew.find(".mail_id").attr("href", base_url+"mail/"+event.mail_id );
 						timeline.append( productShareNew );
 						break;
 
@@ -89,14 +89,14 @@ $(document).ready(function(){
 
 						var productKnowMoreNew;
 
-						if( event.action.staff_id )
+						if( event.staff_id )
 							productKnowMoreNew = productKnowMoreByStaff.clone();
 
 						else
 							productKnowMoreNew = productKnowMore.clone();
 
 						productKnowMoreNew.find(".date").html( new $tzd.date(event.date).shortDateTime );
-						productKnowMoreNew.find(".mail_id").attr("href", base_url+"mail/"+event.action.mail_id );
+						productKnowMoreNew.find(".mail_id").attr("href", base_url+"mail/"+event.mail_id );
 						timeline.append( productKnowMoreNew );
 						break;
 
@@ -104,14 +104,14 @@ $(document).ready(function(){
 
 						var budgetShareNew;
 
-						if( event.action.staff_id )
+						if( event.staff_id )
 							budgetShareNew = budgetShareByStaff.clone();
 
 						else
 							budgetShareNew = budgetShare.clone();
 
 						budgetShareNew.find(".date").html( new $tzd.date(event.date).shortDateTime );
-						budgetShareNew.find(".mail_id").attr("href", base_url+"mail/"+event.action.mail_id );
+						budgetShareNew.find(".mail_id").attr("href", base_url+"mail/"+event.mail_id );
 						timeline.append( budgetShareNew );
 						break;
 
@@ -119,14 +119,14 @@ $(document).ready(function(){
 
 						var budgetKnowMoreNew;
 
-						if( event.action.staff_id )
+						if( event.staff_id )
 							budgetKnowMoreNew = budgetKnowMoreByStaff.clone();
 
 						else
 							budgetKnowMoreNew = budgetKnowMore.clone();
 
 						budgetKnowMoreNew.find(".date").html( new $tzd.date(event.date).shortDateTime );
-						budgetKnowMoreNew.find(".mail_id").attr("href", base_url+"mail/"+event.action.mail_id );
+						budgetKnowMoreNew.find(".mail_id").attr("href", base_url+"mail/"+event.mail_id );
 						timeline.append( budgetKnowMoreNew );
 						break;
 				}

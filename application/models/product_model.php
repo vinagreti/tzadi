@@ -368,7 +368,9 @@ class Product_Model extends CI_Model {
 
         $action->mail_id = $mail_id;
 
-        $this->customer_model->addTimeline( $customer_id, $action );
+        $action->customer_id = $customer_id;
+
+        $this->customer_model->addTimeline( $action );
 
       }
 
@@ -435,7 +437,9 @@ class Product_Model extends CI_Model {
 
       $action->mail_id = $mail_id;
 
-      $this->customer_model->addTimeline( $customer_id, $action );
+      $action->customer_id = $customer_id;
+
+      $this->customer_model->addTimeline( $action );
 
       return array( "success" => lang("pdt_questionsSent") );
 
@@ -583,7 +587,9 @@ class Product_Model extends CI_Model {
 
         $action->mail_id = $mail_id;
 
-        $this->customer_model->addTimeline( $customer_id, $action );
+        $action->customer_id = $customer_id;
+
+        $this->customer_model->addTimeline( $action );
 
       }
 
@@ -638,7 +644,9 @@ class Product_Model extends CI_Model {
 
       $action->mail_id = $mail_id;
 
-      $this->customer_model->addTimeline( $customer_id, $action );
+      $action->customer_id = $customer_id;
+
+      $this->customer_model->addTimeline( $action );
 
       return array( "success" => lang("pdt_questionsSent") );
 
