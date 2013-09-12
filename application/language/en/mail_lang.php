@@ -12,3 +12,4 @@ $lang["mail_subject"] = "Subject";
 $lang["mail_product/share"] = "Product sharing";
 $lang["mail_product/knowMore"] = "Request product info";
 $lang["mail_contact"] = "Contact";
+$lang["mail_replyReceived"] = "Reply received";

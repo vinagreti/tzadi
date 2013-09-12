@@ -126,5 +126,13 @@
 			<div class="span4 tzdTableRow"><p class="date text-center"></p></div>
 		</div>
 
+		 <div class="row-fluid replyReceived hide">
+			<div class="span10"></div>
+			<div class="span4 tzdTableRow"><p class="date text-center"></p></div>
+			<div class="span10 tzdTableRow">
+				<p><a class="mail_id" target="_blank"><?=lang("ctm_replyReceived")?> <span class="mail_referer_id"></span></a></p>
+			</div>
+		</div>
+
 	</div>
 </div>

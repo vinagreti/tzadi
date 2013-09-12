@@ -57,3 +57,4 @@ $lang["ctm_shareBudget"] = "shared a budget";
 $lang["ctm_shareBudgetByStaff"] = "sent a budget by e-mail";
 $lang["ctm_knowMoreBudget"] = "asked for more info about budget";
 $lang["ctm_knowMoreBudgetByStaff"] = "asked for more info about budget";
+$lang["ctm_replyReceived"] = "Replied the e-mail";

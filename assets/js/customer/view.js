@@ -34,6 +34,9 @@ $(document).ready(function(){
 	var budgetKnowMoreByStaff = $(".budgetKnowMoreByStaff").clone();
 	budgetKnowMoreByStaff.removeClass("hide");
 	$(".budgetKnowMoreByStaff").remove();
+	var replyReceived = $(".replyReceived").clone();
+	replyReceived.removeClass("hide");
+	$(".replyReceived").remove();
 	var timeline = $(".timeline");
 
 	var url = base_url+'customer/getTimelineByID';
@@ -68,6 +71,14 @@ $(document).ready(function(){
 						contactNew.find(".date").html( new $tzd.date(event.date).shortDateTime );
 						contactNew.find(".mail_id").attr("href", base_url+"mail/"+event.mail_id );
 						timeline.append( contactNew );
+						break;
+
+					case "replyReceived":
+						var newReplyReceived = replyReceived.clone();
+						newReplyReceived.find(".date").html( new $tzd.date(event.date).shortDateTime );
+						newReplyReceived.find(".mail_id").attr("href", base_url+"mail/"+event.mail_id );
+						newReplyReceived.find(".mail_referer_id").html( event.mail_referer_id );
+						timeline.append( newReplyReceived );
 						break;
 
 					case "product/share":

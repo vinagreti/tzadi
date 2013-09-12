@@ -88,24 +88,12 @@ class Mail extends My_Controller {
 
 	public function getNew()
 	{
+
 		$this->load->model('mail_model');
 
-		$newMessages = $this->mail_model->getNew();
+		$this->mail_model->getNew();
 
-		foreach ($newMessages as $key => $message) {
-
-			echo "<hr>";
-			echo "<p>mail_referer_id: ".$message["mail_referer_id"]."</p>";
-			echo "<p>from: ".$message["from"]."</p>";
-			echo "<p>to: ".$message["to"]."</p>";
-			echo "<p>kind: ".$message["kind"]."</p>";
-			echo "<p>queue_date: ".$message["queue_date"]."</p>";
-			echo "<p>sent_date: ".$message["sent_date"]."</p>";
-			echo "<p>status: ".$message["status"]."</p>";
-			echo "<p>subject: ".$message["subject"]."</p>";
-			echo "<p>message: ".$message["message"]."</p>";
-		}
-
+		echo "baixado";
 
 	}
 }

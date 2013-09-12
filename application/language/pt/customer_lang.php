@@ -57,3 +57,4 @@ $lang["ctm_shareBudget"] = "compartilhou orçamento por e-mail";
 $lang["ctm_shareBudgetByStaff"] = "enviou orçamento por email";
 $lang["ctm_knowMoreBudget"] = "solicitou mais informações sobre o orçamento";
 $lang["ctm_knowMoreBudgetByStaff"] = "solicitou mais informações sobre o orçamento";
+$lang["ctm_replyReceived"] = "Respondeu o e-mail ";

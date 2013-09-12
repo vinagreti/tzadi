@@ -197,8 +197,6 @@ class Mail_Model extends CI_Model {
 
   public function getNew(){
 
-    $return = array();
-
     /* try to connect */
     $inbox = imap_open($this->imap_host,$this->smtp_user,$this->smtp_pass) or die('Cannot connect to Gmail: ' . imap_last_error());
 
@@ -239,9 +237,9 @@ class Mail_Model extends CI_Model {
 
         $mail["from"] = $froms[0];
 
-        $mail["to"] = "";
+        preg_match($mail_pattern, $overview[0]->to, $tos);
 
-        foreach( $tos as $to_mail ) $mail["to"] .= $to_mail.",";
+        $mail["to"] = $tos[0];
 
         $mail["queue_date"] =  time($overview[0]->date);
 
@@ -249,7 +247,7 @@ class Mail_Model extends CI_Model {
 
         $mail["sent_date"] =  now();
 
-        $mail["kind"] = "incoming";
+        $mail["kind"] = "replyReceived";
 
         $mail["status"] = "new";
 
@@ -258,14 +256,13 @@ class Mail_Model extends CI_Model {
       }
 
       imap_delete($inbox, "1:*");
-      
-      array_push( $return, $mail );
+
     } 
 
     /* close the connection */
     imap_close($inbox);
 
-    return $return;
+    return true;
 
   }
 
@@ -279,7 +276,7 @@ class Mail_Model extends CI_Model {
 
     $this->load->model("customer_model");
 
-    $action->kind = "mail/new";
+    $action->kind = "replyReceived";
 
     $action->mail_id = $mail["_id"];
 
