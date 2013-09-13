@@ -50,7 +50,7 @@ class User_Model extends CI_Model {
 
             $this->setUserSession( $user[0] );
 
-            $res->url = $this->setReturnUrl( $user );
+            $res->url = $this->setReturnUrl( $user[0] );
 
         }
 
