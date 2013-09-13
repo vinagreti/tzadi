@@ -258,6 +258,12 @@ $(document).ready(function(){
 
 			}
 
+			$('#tzadiDialogs').find('#deadLine').datetimepicker({
+
+				language: 'pt-BR'
+
+			}).data('datetimepicker').setLocalDate(new Date());
+
 		}
 
 		this.send = function( mail ){
@@ -283,6 +289,8 @@ $(document).ready(function(){
 					, mail : mail
 
 					, kind : $('#tzadiDialogs').find("#eventKind:checked").val()
+
+					, date : $('#tzadiDialogs').find("#deadLineDate").val()
 
 				};
 

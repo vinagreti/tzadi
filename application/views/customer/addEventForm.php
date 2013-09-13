@@ -5,10 +5,20 @@
 
 <div class="modal-body">
 
+    <div id="deadLine" class="input-append date">
+      <input data-format="dd/MM/yyyy hh:mm:ss" type="text" id="deadLineDate"></input>
+      <span class="add-on">
+        <i data-time-icon="icon-time" data-date-icon="icon-calendar">
+        </i>
+      </span>
+    </div>
+
     <div class="control-group">
         <input id="eventTitle" type="text" class="input-block-level" placeholder="<?=lang('ctm_title')?>" />
     </div>
-    
+
+
+
     <div class="control-group">
         <textarea id="eventDetail" rows="6" class="input-block-level" placeholder="<?=lang('ctm_details')?>"></textarea>
     </div>
@@ -22,6 +32,8 @@
       <input type="radio" name="eventKind" id="eventKind" value="customerEvent">
       <?=lang("ctm_doneByCustomer")?>
     </label>
+
+
 
 </div>
 

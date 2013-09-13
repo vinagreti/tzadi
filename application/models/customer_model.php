@@ -227,11 +227,15 @@ class Customer_Model extends CI_Model {
 
     $this->load->model("mongo_model");
 
-    $this->load->helper('date');
-
     $action->_id = $this->mongo_model->newID();
 
-    $action->date = now();
+    if( ! isset($action->date) ){
+
+      $this->load->helper('date');
+
+      $action->date = now();
+
+    }
 
     $this->mongo_db->insert('timeline', (array) $action);
 
@@ -261,6 +265,8 @@ class Customer_Model extends CI_Model {
     $event->title = $data["title"];
 
     $event->detail = $data["detail"];
+
+    $event->date = strtotime( str_replace("/", "-", $data["date"]) );
 
     $event->customer_id = $this->customer_model->getOrCreate( $data["mail"] );
 
