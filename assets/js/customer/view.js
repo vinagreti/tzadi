@@ -43,6 +43,12 @@ $(document).ready(function(){
 	var sentMessage = $(".sentMessage").clone();
 	sentMessage.removeClass("hide");
 	$(".sentMessage").remove();
+	var ownEvent = $(".ownEvent").clone();
+	ownEvent.removeClass("hide");
+	$(".ownEvent").remove();
+	var customerEvent = $(".customerEvent").clone();
+	customerEvent.removeClass("hide");
+	$(".customerEvent").remove();
 	var timeline = $(".timeline");
 
 	var refreshTimeline = function(){
@@ -165,6 +171,22 @@ $(document).ready(function(){
 							newsentMessage.find(".mail_id").attr("href", base_url+"mail/"+event.mail_id );
 							timeline.append( newsentMessage );
 							break;
+
+						case "ownEvent":
+							var ownEventNew = ownEvent.clone();
+							ownEventNew.find(".date").html( new $tzd.date(event.date).shortDateTime );
+							ownEventNew.find(".eventTitle").html( event.title );
+							ownEventNew.find(".eventDetail").html( event.detail );
+							timeline.append( ownEventNew );
+							break;
+
+						case "customerEvent":
+							var customerEventNew = customerEvent.clone();
+							customerEventNew.find(".date").html( new $tzd.date(event.date).shortDateTime );
+							customerEventNew.find(".eventTitle").html( event.title );
+							customerEventNew.find(".eventDetail").html( event.detail );
+							timeline.append( customerEventNew );
+							break;
 					}
 
 				});
@@ -179,8 +201,121 @@ $(document).ready(function(){
 
 	refreshTimeline();
 
+	var addEvent = new function(){
+
+		this.messageModal = false;
+
+		this.eventsApplied = false;
+
+		this.open = function( mail ) {
+
+			if( this.messageModal ) {
+
+				this.showModal( mail );
+
+			} else {
+
+				var self = this;
+
+				var url = base_url+'customer/addEvent';
+
+				var data = {
+
+					tzadiToken : tzadiToken
+
+				};
+
+				var callback = function( modal ){
+
+					self.messageModal = modal;
+
+					self.showModal( mail );
+
+				};
+
+				$tzd.ajax.post(url, data, callback);        
+			}
+
+		};
+
+		this.showModal = function ( mail ){
+
+			$('#tzadiDialogs').html( this.messageModal );
+
+			$('#tzadiDialogs').modal('show');
+
+			if( ! this.eventsApplied ) {
+
+				this.eventsApplied = true;
+
+				var self = this;
+
+				$('#tzadiDialogs').find(".send").live("click", function(){
+
+					self.send(mail);
+
+				});
+
+			}
+
+		}
+
+		this.send = function( mail ){
+
+			var valid = true;
+
+			valid = valid && $tzd.form.checkMask.range($('#tzadiDialogs').find("#eventTitle"), 1, 255, $("#ctm_fillTitle").html());
+
+			valid = valid && $tzd.form.checkMask.range($('#tzadiDialogs').find("#eventDetail"), 1, 1024, $("#ctm_fillDetail").html());
+
+			if( valid ){
+
+				var url = base_url+'customer/addEvent';
+
+				var data = {
+
+					tzadiToken : tzadiToken
+
+					, title : $('#tzadiDialogs').find("#eventTitle").val()
+
+					, detail : $('#tzadiDialogs').find("#eventDetail").val()
+
+					, mail : mail
+
+					, kind : $('#tzadiDialogs').find("#eventKind:checked").val()
+
+				};
+
+				var callback = function( e ){
+
+					if(e.error) $tzd.alert.error( e.error );
+
+					if(e.success){
+
+						$('#tzadiDialogs').find(".closeModal").click();
+
+						$tzd.alert.success( e.success );
+
+						$("#refreshTimeline").click();
+
+					}
+
+				};
+
+				$tzd.ajax.post(url, data, callback);
+
+			}
+
+		};
+
+	}
+
 	$(".sendMessage").live("click", function() {
 		$tzd.mail.write.open( $(this).attr("id") );
+	});
+
+	$(".addEvent").live("click", function() {
+		addEvent.open( $(this).attr("id") );
 	});
 
 	$("#refreshTimeline").live("click", function() {

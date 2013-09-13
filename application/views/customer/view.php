@@ -5,7 +5,6 @@
 		<div class="row-fluid">
 			<div class="span4">
 				<p class="text-center"><img class="imgSmallMedium" src="<?=$customer['img']?>" ></p>
-				<p><a id="<?=$customer['email']?>" class="sendMessage btn btn-primary"><i class="icon-envelope"></i></a></p>
 			</div>
 			<div class="span7">
 				<p><span class="text-warning"><?=lang("tmpt_creationDate")?>:</span> <?php if( isset( $customer["creation"] ) ) echo  date( "d/m/Y h:m", time($customer["creation"]) ); ?></p>
@@ -30,6 +29,11 @@
 </div>
 
 <h3 class="text-center">Timeline <a id="refreshTimeline" class="btn btn-info"><i class="icon-refresh"></i></a></h3>
+
+<div class="text-center">
+	<a id="<?=$customer['email']?>" class="sendMessage btn btn-primary"><i class="icon-envelope"></i> <?=lang("ctm_email")?></a>
+	<a id="<?=$customer['email']?>" class="addEvent btn btn-success"><i class="icon-plus"></i> <?=lang("ctm_event")?></a>
+</div>
 
 <div class="row-fluid hideFromResponsive">
 	<div class="span12 text-center">
@@ -147,6 +151,22 @@
 			</div>
 			<div class="span4 tzdTableRow"><p class="date text-center"></p></div>
 		</div>
-		
+
+		<div class="row-fluid ownEvent hide">
+			<div class="span10 tzdTableRow">
+				<p><span class="text-warning"><?=lang("ctm_event")?>:</span>  <span class="eventTitle"></span></p>
+				<small><span class="eventDetail"></span></small>
+			</div>
+			<div class="span4 tzdTableRow"><p class="date text-center"></p></div>
+		</div>
+
+		 <div class="row-fluid customerEvent hide">
+			<div class="span10"></div>
+			<div class="span4 tzdTableRow"><p class="date text-center"></p></div>
+			<div class="span10 tzdTableRow">
+				<p><span class="text-warning"><?=lang("ctm_event")?>:</span>  <span class="eventTitle"></span></p>
+				<small><span class="eventDetail"></span></small>			</div>
+		</div>
+
 	</div>
 </div>

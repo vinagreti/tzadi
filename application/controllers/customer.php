@@ -105,6 +105,33 @@ class Customer extends My_Controller {
     }
   }
 
+  public function addEvent()
+  {
+
+    $data = $this->input->post();
+
+    if( ! $data ){
+
+      echo json_encode($this->load->view('customer/addEventForm', $data, TRUE));
+
+    } else {
+
+      if( isset($data["mail"]) && isset($data["title"]) && isset($data["detail"]) && isset($data["kind"]) ) {
+
+        $this->load->model("customer_model");
+
+        echo json_encode( $this->customer_model->addEvent($data) );
+
+      } else {
+
+        echo json_encode( array("error" => "informe todos os dados para criar o evento") );
+
+      }
+
+    }
+
+  }
+
 }
 /* End of file customer.php */
 /* Location: ./application/controllers/customer.php */

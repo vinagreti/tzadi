@@ -50,6 +50,7 @@ class Customer_Model extends CI_Model {
     } else {
 
       return $this->mongo_db
+        ->order_by( array("date" => "desc") )
         ->where('customer_id', (int) $customer_id )
         ->get('timeline');
 
@@ -245,6 +246,27 @@ class Customer_Model extends CI_Model {
       ->get('timeline');
 
     return $customer[0]["customer_id"];
+
+  }
+
+
+  public function addEvent( $data ) {
+
+    $this->load->model("mongo_model");
+
+    $this->load->model("customer_model");
+
+    $event->kind = $data["kind"];
+
+    $event->title = $data["title"];
+
+    $event->detail = $data["detail"];
+
+    $event->customer_id = $this->customer_model->getOrCreate( $data["mail"] );
+
+    $this->customer_model->addTimeline( $event );
+
+    return array("success" => "evento adicionado");
 
   }
 
