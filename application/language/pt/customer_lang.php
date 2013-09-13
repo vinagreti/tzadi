@@ -65,5 +65,5 @@ $lang["ctm_title"] = "título";
 $lang["ctm_fillTitle"] = "informe o título";
 $lang["ctm_fillDetail"] = "informe os detalhes";
 $lang["ctm_event"] = "evento";
-$lang["ctm_doneByMe"] = "relizado por mim";
-$lang["ctm_doneByCustomer"] = "realizado pelo cliente";
+$lang["ctm_doneByMe"] = "meu evento";
+$lang["ctm_doneByCustomer"] = "evento do cliente";
