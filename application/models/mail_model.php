@@ -86,7 +86,7 @@ class Mail_Model extends CI_Model {
 
       $this->email->set_newline("\r\n");
 
-      $this->email->from($this->from);
+      $this->email->from($this->from, "O NOME DA AGENCIA");
 
       $this->email->to($data["to"]);
 
