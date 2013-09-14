@@ -73,13 +73,13 @@
         <div class="span24">
           <div class="row-fluid">
             <div class="span2">
-              <a class="btn customerActive btn-block" rel="tooltip" title="<?=lang('ctm_customerStatusBtnTitle')?>" ></a>
+              <a class="btn customerActive btn-small btn-block" rel="tooltip" title="<?=lang('ctm_customerStatusBtnTitle')?>" ></a>
             </div>
             <div class="span2">
-              <a class="tableCancelButton btn btn-block"><?=lang('tmpt_Cancel')?></a>
+              <a class="tableCancelButton btn btn-small btn-block"><?=lang('tmpt_Close')?></a>
             </div>
             <div class="span2">
-              <a class="customerSave btn btn-primary btn-block"><?=lang('tmpt_Save')?></a>
+              <a class="customerSave btn btn-primary btn-small btn-block"><?=lang('tmpt_Save')?></a>
             </div>
             <div class="span17">
               <input type="hidden" name="customerID" id="customerID" />

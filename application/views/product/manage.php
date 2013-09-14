@@ -108,13 +108,13 @@
               <div class="span24">
                 <div class="row-fluid">
                   <div class="span2">
-                    <a class="productStatus btn btn-block" rel="tooltip" title="<?=lang('pdt_productStatusBtnTitle')?>" ></a>
+                    <a class="productStatus btn btn-block btn-small" rel="tooltip" title="<?=lang('pdt_productStatusBtnTitle')?>" ></a>
                   </div>
                   <div class="span2">
-                    <a class="closeDetail btn btn-block"><?=lang("tmpt_Cancel")?></a>
+                    <a class="closeDetail btn btn-block btn-small"><?=lang("tmpt_Close")?></a>
                   </div>
                   <div class="span2">
-                    <a class="productSave btn btn-block btn-primary"><?=lang("tmpt_Save")?></a>
+                    <a class="productSave btn btn-block btn-small btn-primary"><?=lang("tmpt_Save")?></a>
                   </div>
                   <div class="span17">
                     <div class="control-group">

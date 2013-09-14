@@ -58,13 +58,13 @@
           <div class="span24 tzdTableDetailContent">
             <div class="row-fluid">
               <div class="span2">
-                <a class="supplierStatus btn btn-block"  rel="tooltip" title="<?=lang('splr_supplierStatusBtnTitle')?>"></a>
+                <a class="supplierStatus btn btn-block btn-small"  rel="tooltip" title="<?=lang('splr_supplierStatusBtnTitle')?>"></a>
               </div>
               <div class="span2">
-                <a class="closeDetail btn btn-block"><?=lang('tmpt_Cancel')?></a>
+                <a class="closeDetail btn btn-block btn-small"><?=lang('tmpt_Close')?></a>
               </div>
               <div class="span2">
-                <a class="save btn btn-primary btn-block"><?=lang('tmpt_Save')?></a>
+                <a class="save btn btn-primary btn-block btn-small"><?=lang('tmpt_Save')?></a>
               </div>
               <div class="span18">
                 <input type="text" class="name input-block-level" />
