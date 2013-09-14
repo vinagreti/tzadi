@@ -37,4 +37,4 @@ $lang["splr_removeAttachment"] = "want to remove this attachment?";
 $lang["splr_noChange"] = "There are no changes to be saved .";
 $lang["splr_invalidName"] = "supplier name must contain between 1 and 512 characters";
 $lang["splr_invalidCampusName"] = "the branch office name must contain between 1 and 512 characters";
-$lang["splr_invalidCep"] =" he zip code can not be empty";
+$lang["splr_invalidCep"] ="the zip code can not be empty";

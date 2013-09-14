@@ -475,9 +475,7 @@ $(document).ready(function(){
 
     valid = valid && $tzd.form.checkMask.range(line.find(".name"), 1, 512, $(".splr_invalidName").html());
     valid = valid && $tzd.form.checkMask.range(line.find(".campusName"), 1, 512, $(".splr_invalidCampusName").html());
-    if(line.find(".cep").val() != "")
-      valid = valid && line.find(".cep").val() != "" && $tzd.form.checkMask.cep(line.find(".cep"), $(".splr_invalidCep").html());
-    
+
     if( valid ) {
       var supplierID = $(this).parents(".tzdTableLine").attr("id");
       var campusID = $(this).parents(".tzdTableLine").find(".tzdTableCampus").attr("id");
