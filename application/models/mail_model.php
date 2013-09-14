@@ -98,7 +98,7 @@ class Mail_Model extends CI_Model {
 
       if( $data["kind"] == "repliedMessage" ) $tag = "";
 
-      else $tag = " <m".$data['_id']."id>";
+      else $tag = " <id>".$data['_id']."</m>";
 
       $this->email->subject(utf8_decode($data["subject"]) . $tag);
 
@@ -231,7 +231,7 @@ class Mail_Model extends CI_Model {
         $overview = imap_fetch_overview($inbox,$email_number,0);
         $mail["message"] = imap_fetchbody($inbox,$email_number,2);
 
-        $regex = '#<m(.*?)id>#';
+        $regex = '#<id>(.*?)</m>#';
 
         preg_match($regex, $overview[0]->subject, $matches);
         $mail["mail_referer_id"] = $matches[1];
