@@ -18,7 +18,7 @@ class User_Model extends CI_Model {
         else return false;
     }
 
-    function getByEmail($user_id)
+    function getByID($user_id)
     {
 
         $res = $this->mongo_db
