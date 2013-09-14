@@ -31,7 +31,7 @@
 <h3 class="text-center">Timeline <a id="refreshTimeline" class="btn btn-info"><i class="icon-refresh"></i></a></h3>
 
 <div class="text-center">
-	<?php if( isset( $customer["email"] ) ) { ?>
+	<?php if( isset( $customer["email"] ) && $customer["email"] != "" ) { ?>
 		<a id="<?=$customer['email']?>" class="sendMessage btn btn-primary"><i class="icon-envelope"></i> <?=lang("ctm_email")?></a>
 		<a id="<?=$customer['email']?>" class="addEvent btn btn-success"><i class="icon-plus"></i> <?=lang("ctm_event")?></a>
 	<?php } ?>
