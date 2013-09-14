@@ -84,13 +84,13 @@ class Mail_Model extends CI_Model {
 
     $this->load->model("user_model");
 
-    $staff = $this->user_model->getByID( $data["staff_id"] );
-
     foreach($queued as $key => $data) {
 
       $this->email->clear(TRUE);
 
       $this->email->set_newline("\r\n");
+
+      $staff = $this->user_model->getByID( $data["staff_id"] );
 
       $this->email->from($this->from, $staff["name"]);
 
