@@ -91,9 +91,7 @@ class Mail extends My_Controller {
 
 		$this->load->model('mail_model');
 
-		$this->mail_model->getNew();
-
-		echo "baixado";
+		echo $this->mail_model->getNew();
 
 	}
 

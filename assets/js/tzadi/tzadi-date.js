@@ -25,11 +25,19 @@ TzadiJS.prototype.date = function( date ){
 
   this.hour = d.getHours();
 
+  if( this.hour < 10 ) this.hour = "0"+this.hour;
+
   this.millisecond = d.getMilliseconds();
+
+  if( this.millisecond < 10 ) this.millisecond = "0"+this.millisecond;
 
   this.minute = d.getMinutes();
 
+  if( this.minute < 10 ) this.minute = "0"+this.minute;
+
   this.second = d.getSeconds();
+
+  if( this.second < 10 ) this.second = "0"+this.second;
 
   this.date = this.day+"/"+this.month+"/"+this.year;
 

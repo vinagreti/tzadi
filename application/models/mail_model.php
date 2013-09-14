@@ -98,7 +98,7 @@ class Mail_Model extends CI_Model {
 
       if( $data["kind"] == "repliedMessage" ) $tag = "";
 
-      else $tag = " <msgid>".$data['_id']."</msgid>";
+      else $tag = " <m".$data['_id']."id>";
 
       $this->email->subject(utf8_decode($data["subject"]) . $tag);
 
@@ -231,7 +231,7 @@ class Mail_Model extends CI_Model {
         $overview = imap_fetch_overview($inbox,$email_number,0);
         $mail["message"] = imap_fetchbody($inbox,$email_number,2);
 
-        $regex = '#<msgid>(.*?)</msgid>#';
+        $regex = '#<m(.*?)id>#';
 
         preg_match($regex, $overview[0]->subject, $matches);
         $mail["mail_referer_id"] = $matches[1];
@@ -267,12 +267,18 @@ class Mail_Model extends CI_Model {
 
       imap_delete($inbox, "1:*");
 
-    } 
+      $res = "baixados";
+
+    } else {
+
+      $res = "sem emails na caixa";
+
+    }
 
     /* close the connection */
     imap_close($inbox);
 
-    return true;
+    return $res;
 
   }
 
@@ -338,7 +344,7 @@ class Mail_Model extends CI_Model {
 
     $mail["_id"] = $this->mongo_model->newID();
 
-    $mail["message"] = $data["message"] . "<br></br><hr>\r\n".date( "d/m/Y h:m", time($mail["sent_date"]) )."\r\n". nl2br($mail["message"])."<hr>";
+    $mail["message"] = $data["message"] . "<br></br><hr>\r\n".date( "d/m/Y h:m", time($mail["sent_date"]) )."\r\n". $mail["message"]."<hr>";
 
     $mail["subject"] = $mail["subject"];
 
