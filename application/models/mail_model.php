@@ -119,7 +119,7 @@ class Mail_Model extends CI_Model {
       }
 
 
-      $message = '<html><head><meta charset="utf-8"></head><body>'.nl2br($data["message"]).'</body></html>';
+      $message = '<html><head><meta charset="utf-8"></head><body>'.$data["message"].'</body></html>';
 
       $this->email->message(utf8_decode($message));
 
@@ -338,7 +338,7 @@ class Mail_Model extends CI_Model {
 
     $mail["_id"] = $this->mongo_model->newID();
 
-    $mail["message"] = $data["message"] . "<br></br><hr>\r\n".date( "d/m/Y h:m", time($mail["sent_date"]) )."\r\n". $mail["message"]."<hr>";
+    $mail["message"] = $data["message"] . "<br></br><hr>\r\n".date( "d/m/Y h:m", time($mail["sent_date"]) )."\r\n". nl2br($mail["message"])."<hr>";
 
     $mail["subject"] = $mail["subject"];
 
