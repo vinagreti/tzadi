@@ -52,6 +52,8 @@ class Mail_Model extends CI_Model {
 
     $data["from"] = $this->from;
 
+    $data["staff_id"] = $this->session->userdata("_id");
+
     $this->mongo_db->insert('mail', $data);
 
     return $data["_id"];
@@ -80,13 +82,17 @@ class Mail_Model extends CI_Model {
 
     $this->load->library('email', $config);
 
+    $this->load->model("user_model");
+
+    $staff = $this->user_model->getByID( $data["staff_id"] );
+
     foreach($queued as $key => $data) {
 
       $this->email->clear(TRUE);
 
       $this->email->set_newline("\r\n");
 
-      $this->email->from($this->from, "O NOME DA AGENCIA");
+      $this->email->from($this->from, $staff["name"]);
 
       $this->email->to($data["to"]);
 

@@ -18,6 +18,17 @@ class User_Model extends CI_Model {
         else return false;
     }
 
+    function getByEmail($user_id)
+    {
+
+        $res = $this->mongo_db
+        ->where('_id', strtolower($user_id))
+        ->get('user');
+
+        if($res) return $res[0];
+        else return false;
+    }
+
     function changeCurrencyBase( $currencyBase )
     {
 
