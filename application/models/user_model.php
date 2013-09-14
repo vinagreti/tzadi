@@ -22,7 +22,7 @@ class User_Model extends CI_Model {
     {
 
         $res = $this->mongo_db
-        ->where('_id', strtolower($user_id))
+        ->where('_id', (int) $user_id)
         ->get('user');
 
         if($res) return $res[0];
