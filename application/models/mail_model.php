@@ -92,7 +92,7 @@ class Mail_Model extends CI_Model {
 
       $staff = $this->user_model->getByID( $data["staff_id"] );
 
-      $this->email->from($this->from, imap_8bit($staff["name"]) );
+      $this->email->from($this->from, iconv('iso-8859-1', "UTF-8", $staff["name"]) );
 
       $this->email->to($data["to"]);
 
