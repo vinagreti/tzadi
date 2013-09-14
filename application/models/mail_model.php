@@ -119,7 +119,7 @@ class Mail_Model extends CI_Model {
       }
 
 
-      $message = '<html><head><meta charset="utf-8"></head><body>'.nl2br($data["message"]).'</body></html>';
+      $message = '<html><head><meta charset="utf-8"></head><body>'.$data["message"].'</body></html>';
 
       $this->email->message(utf8_decode($message));
 
