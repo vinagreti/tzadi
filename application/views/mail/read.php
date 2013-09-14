@@ -32,4 +32,4 @@
 
 <hr>
 
-<p><?=$mail["message"]?></p>
+<p><?=nl2br($mail["message"])?></p>
