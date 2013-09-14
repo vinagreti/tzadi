@@ -52,7 +52,6 @@ $(document).ready(function(){
       campus.find(".campusName").val(objCampus.name);
       campus.find(".address").val(objCampus.address);
       campus.find(".cep").val(objCampus.cep);
-      campus.find(".cep").mask('99999-999');
       campus.find(".city").val(objCampus.city);
       campus.find(".state").val(objCampus.state);
       campus.find(".country").val(objCampus.country);
