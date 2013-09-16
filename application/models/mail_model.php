@@ -261,7 +261,7 @@ class Mail_Model extends CI_Model {
 
         $mail["status"] = "new";
 
-        $this->add($mail);
+        $this->saveAnswers( $mail );
 
       }
 
@@ -282,11 +282,13 @@ class Mail_Model extends CI_Model {
 
   }
 
-  public function add($mail) {
+  public function saveAnswers($mail) {
 
     $this->load->model("mongo_model");
 
-    $mail["_id"] = $this->mongo_model->newID();
+    $mail_id = $this->mongo_model->newID();
+
+    $mail["_id"] = $mail_id;
 
     $this->mongo_db->insert('mail', $mail);
 
@@ -304,7 +306,33 @@ class Mail_Model extends CI_Model {
 
     $this->customer_model->addTimeline( $event );
 
-    return true;
+    $this->messageWatchers($mail );
+
+    return $mail_id;
+
+  }
+
+  public function messageWatchers( $mail ) {
+
+    $this->load->model('mail_model');
+
+    $referer_data = $this->read(  $mail["mail_referer_id"] );
+
+    $this->load->model("user_model");
+
+    $staff = $this->user_model->getByID( $referer_data["staff_id"] );
+
+    $mailToSend["message"] = $mail["message"];
+
+    $mailToSend["subject"] = $mail["subject"];
+
+    $mailToSend["to"] =  $staff["email"];
+
+    $mailToSend["kind"] = "mail/messageWatchers";
+
+    $mail_id = $this->queue($mailToSend);
+
+    return $mail_id;
 
   }
 

@@ -370,7 +370,7 @@ $(document).ready(function(){
     valid = valid && $tzd.form.checkMask.range($('#city'), 0, 255, $(".ctm_pleaseFillValidCity").html() );
     valid = valid && $tzd.form.checkMask.range($('#state'), 0, 128, $(".ctm_pleaseFillValidState").html() );
     valid = valid && $tzd.form.checkMask.range($('#country'), 0, 128, $(".ctm_pleaseFillValidCountry").html() );
-    valid = valid && $tzd.form.checkMask.range($('#details'), 0, 1024, $(".ctm_pleaseFillValiDetails").html() );
+    valid = valid && $tzd.form.checkMask.range($('#details'), 0, 4096, $(".ctm_pleaseFillValiDetails").html() );
     if ( valid ) 
       customers.set(id);
   });
