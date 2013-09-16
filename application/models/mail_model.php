@@ -96,7 +96,7 @@ class Mail_Model extends CI_Model {
 
       $this->email->to($data["to"]);
 
-      if( $data["kind"] == "repliedMessage" ) $tag = "";
+      if( $data["kind"] != "sentMessage" ) $tag = "";
 
       else $tag = " <id>".$data['_id']."</m>";
 
@@ -119,7 +119,7 @@ class Mail_Model extends CI_Model {
       }
 
 
-      $message = '<html><head><meta charset="utf-8"></head><body>'.$data["message"].'</body></html>';
+      $message = '<html><head><meta charset="utf-8"></head><body>'.nl2br($data["message"]).'</body></html>';
 
       $this->email->message(utf8_decode($message));
 
@@ -292,15 +292,17 @@ class Mail_Model extends CI_Model {
 
     $this->load->model("customer_model");
 
-    $action->kind = "replyReceived";
+    $event->kind = "replyReceived";
 
-    $action->mail_id = $mail["_id"];
+    $event->mail_id = $mail["_id"];
 
-    $action->mail_referer_id = $mail["mail_referer_id"];
+    $event->mail_subject = $mail["subject"];
 
-    $action->customer_id = $this->customer_model->getCustomerIdByMailId( $mail["mail_referer_id"] );
+    $event->mail_referer_id = $mail["mail_referer_id"];
 
-    $this->customer_model->addTimeline( $action );
+    $event->customer_id = $this->customer_model->getCustomerIdByMailId( $mail["mail_referer_id"] );
+
+    $this->customer_model->addTimeline( $event );
 
     return true;
 
@@ -322,13 +324,15 @@ class Mail_Model extends CI_Model {
 
     $mail["kind"] = "sentMessage";
 
-    $action->mail_id = $this->queue($mail);
+    $event->mail_id = $this->queue($mail);
 
-    $action->kind = "sentMessage";
+    $event->mail_subject = $mail["subject"];
 
-    $action->customer_id = $this->customer_model->getOrCreate( $data["mail"] );
+    $event->kind = "sentMessage";
 
-    $this->customer_model->addTimeline( $action );
+    $event->customer_id = $this->customer_model->getOrCreate( $data["mail"] );
+
+    $this->customer_model->addTimeline( $event );
 
     return array("success" => "mensagem enviada");
 
@@ -352,15 +356,17 @@ class Mail_Model extends CI_Model {
 
     $mail["kind"] = "repliedMessage";
 
-    $action->mail_id = $this->queue($mail);
+    $event->mail_id = $this->queue($mail);
 
-    $action->mail_referer_id = $mail["mail_referer_id"];
+    $event->mail_subject = $mail["subject"];
 
-    $action->kind = "repliedMessage";
+    $event->mail_referer_id = $mail["mail_referer_id"];
 
-    $action->customer_id = $this->customer_model->getOrCreate( $mail["from"] );
+    $event->kind = "repliedMessage";
 
-    $this->customer_model->addTimeline( $action );
+    $event->customer_id = $this->customer_model->getOrCreate( $mail["from"] );
+
+    $this->customer_model->addTimeline( $event );
 
     return array("success" => "mensagem enviada");
 

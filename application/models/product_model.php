@@ -358,19 +358,21 @@ class Product_Model extends CI_Model {
 
         $mail_id = $this->mail_model->queue($mailContent);
 
-        $action->kind = "product/share";
+        $event->kind = "product/share";
 
         if( $this->session->userdata("ownProfile") )
-          $action->staff_id = $this->session->userdata("_id");
+          $event->staff_id = $this->session->userdata("_id");
 
         else if( $this->session->userdata("_id") )
-          $action->user_id = $this->session->userdata("_id");
+          $event->user_id = $this->session->userdata("_id");
 
-        $action->mail_id = $mail_id;
+        $event->mail_id = $mail_id;
 
-        $action->customer_id = $customer_id;
+        $event->mail_subject = $mailContent["subject"];
 
-        $this->customer_model->addTimeline( $action );
+        $event->customer_id = $customer_id;
+
+        $this->customer_model->addTimeline( $event );
 
       }
 
@@ -427,19 +429,21 @@ class Product_Model extends CI_Model {
 
       $mail_id = $this->mail_model->queue($mailContent);
 
-      $action->kind = "product/knowMore";
+      $event->kind = "product/knowMore";
 
       if( $this->session->userdata("ownProfile") )
-        $action->staff_id = $this->session->userdata("_id");
+        $event->staff_id = $this->session->userdata("_id");
 
       else if( $this->session->userdata("_id") )
-        $action->user_id = $this->session->userdata("_id");
+        $event->user_id = $this->session->userdata("_id");
 
-      $action->mail_id = $mail_id;
+      $event->mail_id = $mail_id;
 
-      $action->customer_id = $customer_id;
+      $event->mail_subject = $mailContent['subject'];
 
-      $this->customer_model->addTimeline( $action );
+      $event->customer_id = $customer_id;
+
+      $this->customer_model->addTimeline( $event );
 
       return array( "success" => lang("pdt_questionsSent") );
 
@@ -577,19 +581,21 @@ class Product_Model extends CI_Model {
 
         $mail_id = $this->mail_model->queue($mailContent);
 
-        $action->kind = "product/shareBudget";
+        $event->kind = "product/shareBudget";
 
         if( $this->session->userdata("ownProfile") )
-          $action->staff_id = $this->session->userdata("_id");
+          $event->staff_id = $this->session->userdata("_id");
 
         else if( $this->session->userdata("_id") )
-          $action->user_id = $this->session->userdata("_id");
+          $event->user_id = $this->session->userdata("_id");
 
-        $action->mail_id = $mail_id;
+        $event->mail_id = $mail_id;
 
-        $action->customer_id = $customer_id;
+        $event->mail_subject = $mailContent['subject'];
 
-        $this->customer_model->addTimeline( $action );
+        $event->customer_id = $customer_id;
+
+        $this->customer_model->addTimeline( $event );
 
       }
 
@@ -634,19 +640,21 @@ class Product_Model extends CI_Model {
 
       $mail_id = $this->mail_model->queue($mailContent);
 
-      $action->kind = "product/knowMoreBudget";
+      $event->kind = "product/knowMoreBudget";
 
       if( $this->session->userdata("ownProfile") )
-        $action->staff_id = $this->session->userdata("_id");
+        $event->staff_id = $this->session->userdata("_id");
 
       else if( $this->session->userdata("_id") )
-        $action->user_id = $this->session->userdata("_id");
+        $event->user_id = $this->session->userdata("_id");
 
-      $action->mail_id = $mail_id;
+      $event->mail_id = $mail_id;
 
-      $action->customer_id = $customer_id;
+      $event->mail_subject = $mailContent['subject'];
 
-      $this->customer_model->addTimeline( $action );
+      $event->customer_id = $customer_id;
+
+      $this->customer_model->addTimeline( $event );
 
       return array( "success" => lang("pdt_questionsSent") );
 

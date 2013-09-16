@@ -51,7 +51,7 @@
 
 		<div class="row-fluid customerAdd hide">
 			<div class="span10 tzdTableRow">
-				<p><?=lang("ctm_created")?></p>
+				<p class="text-warning"><?=lang("ctm_created")?></p>
 			</div>
 			<div class="span4 tzdTableRow"><p class="date text-center"></p></div>
 		</div>
@@ -60,7 +60,7 @@
 			<div class="span10"></div>
 			<div class="span4 tzdTableRow"><p class="date text-center"></p></div>
 			<div class="span10 tzdTableRow">
-				<p><?=lang("ctm_createdBySystem")?></p>
+				<p class="text-warning"><?=lang("ctm_createdBySystem")?></p>
 			</div>
 		</div>
 
@@ -68,7 +68,7 @@
 			<div class="span10"></div>
 			<div class="span4 tzdTableRow"><p class="date text-center"></p></div>
 			<div class="span10 tzdTableRow">
-				<p><a class="mail_id" target="_blank"><?=lang("ctm_contact")?></a></p>
+				<p><span class="text-warning"><?=lang("ctm_contact")?></span> <a class="mail_id mail_subject" target="_blank"></a></p>
 			</div>
 		</div>
 
@@ -76,13 +76,13 @@
 			<div class="span10"></div>
 			<div class="span4 tzdTableRow"><p class="date text-center"></p></div>
 			<div class="span10 tzdTableRow">
-				<p><a class="mail_id" target="_blank"><?=lang("ctm_shareProduct")?></a></p>
+				<p><span class="text-warning"><?=lang("ctm_shareProduct")?></span> <a class="mail_id mail_subject" target="_blank"></a></p>
 			</div>
 		</div>
 
 		<div class="row-fluid productShareByStaff hide">
 			<div class="span10 tzdTableRow">
-				<p><a class="mail_id" target="_blank"><?=lang("ctm_shareProductByStaff")?></a></p>
+				<p><span class="text-warning"><?=lang("ctm_shareProductByStaff")?></span> <a class="mail_id mail_subject" target="_blank"></a></p>
 			</div>
 			<div class="span4 tzdTableRow"><p class="date text-center"></p></div>
 		</div>
@@ -91,13 +91,13 @@
 			<div class="span10"></div>
 			<div class="span4 tzdTableRow"><p class="date text-center"></p></div>
 			<div class="span10 tzdTableRow">
-				<p><a class="mail_id" target="_blank"><?=lang("ctm_knowMoreProduct")?></a></p>
+				<p><span class="text-warning"><?=lang("ctm_knowMoreProduct")?></span> <a class="mail_id mail_subject" target="_blank"></a></p>
 			</div>
 		</div>
 
 		 <div class="row-fluid productKnowMoreByStaff hide">
 			<div class="span10 tzdTableRow">
-				<p><a class="mail_id" target="_blank"><?=lang("ctm_knowMoreProductByStaff")?></a></p>
+				<p><span class="text-warning"><?=lang("ctm_knowMoreProductByStaff")?></span> <a class="mail_id mail_subject" target="_blank"></a></p>
 			</div>
 			<div class="span4 tzdTableRow"><p class="date text-center"></p></div>
 		</div>
@@ -106,13 +106,13 @@
 			<div class="span10"></div>
 			<div class="span4 tzdTableRow"><p class="date text-center"></p></div>
 			<div class="span10 tzdTableRow">
-				<p><a class="mail_id" target="_blank"><?=lang("ctm_shareBudget")?></a></p>
+				<p><span class="text-warning"><?=lang("ctm_shareBudget")?></span> <a class="mail_id mail_subject" target="_blank"></a></p>
 			</div>
 		</div>
 
 		<div class="row-fluid budgetShareByStaff hide">
 			<div class="span10 tzdTableRow">
-				<p><a class="mail_id" target="_blank"><?=lang("ctm_shareBudgetByStaff")?></a></p>
+				<p><span class="text-warning"><?=lang("ctm_shareBudgetByStaff")?></span> <a class="mail_id mail_subject" target="_blank"></a></p>
 			</div>
 			<div class="span4 tzdTableRow"><p class="date text-center"></p></div>
 		</div>
@@ -121,13 +121,13 @@
 			<div class="span10"></div>
 			<div class="span4 tzdTableRow"><p class="date text-center"></p></div>
 			<div class="span10 tzdTableRow">
-				<p><a class="mail_id" target="_blank"><?=lang("ctm_knowMoreBudget")?></a></p>
+				<p><span class="text-warning"><?=lang("ctm_knowMoreBudget")?></span> <a class="mail_id mail_subject" target="_blank"></a></p>
 			</div>
 		</div>
 
 		 <div class="row-fluid budgetKnowMoreByStaff hide">
 			<div class="span10 tzdTableRow">
-				<p><a class="mail_id" target="_blank"><?=lang("ctm_knowMoreBudgetByStaff")?></a></p>
+				<p><span class="text-warning"><?=lang("ctm_knowMoreBudgetByStaff")?></span> <a class="mail_id mail_subject" target="_blank"></a></p>
 			</div>
 			<div class="span4 tzdTableRow"><p class="date text-center"></p></div>
 		</div>
@@ -136,27 +136,27 @@
 			<div class="span10"></div>
 			<div class="span4 tzdTableRow"><p class="date text-center"></p></div>
 			<div class="span10 tzdTableRow">
-				<p><a class="mail_id" target="_blank"><?=lang("ctm_replyReceived")?> <span class="mail_referer_id"></span></a></p>
+				<p><span class="text-warning"><?=lang("ctm_replyReceived")?></span> <a class="mail_id mail_subject" target="_blank"></a></p>
 			</div>
 		</div>
 
 		<div class="row-fluid sentMessage hide">
 			<div class="span10 tzdTableRow">
-				<p><a class="mail_id" target="_blank"><?=lang("ctm_sentMessage")?></a></p>
+				<p><span class="text-warning"><?=lang("ctm_sentMessage")?></span> <a class="mail_id mail_subject" target="_blank"></a></p>
 			</div>
 			<div class="span4 tzdTableRow"><p class="date text-center"></p></div>
 		</div>
 
 		<div class="row-fluid repliedMessage hide">
 			<div class="span10 tzdTableRow">
-				<p><a class="mail_id" target="_blank"><?=lang("ctm_repliedMessage")?> <span class="mail_referer_id"></span></a></p>
+				<p><span class="text-warning"><?=lang("ctm_repliedMessage")?></span> <a class="mail_id mail_subject" target="_blank"></a></p>
 			</div>
 			<div class="span4 tzdTableRow"><p class="date text-center"></p></div>
 		</div>
 
 		<div class="row-fluid ownEvent hide">
 			<div class="span10 tzdTableRow">
-				<p><span class="text-warning"><?=lang("ctm_event")?>:</span>  <span class="eventTitle"></span></p>
+				<p><span class="text-warning eventTitle"></span></p>
 				<small><span class="eventDetail"></span></small>
 			</div>
 			<div class="span4 tzdTableRow"><p class="date text-center"></p></div>
@@ -166,7 +166,7 @@
 			<div class="span10"></div>
 			<div class="span4 tzdTableRow"><p class="date text-center"></p></div>
 			<div class="span10 tzdTableRow">
-				<p><span class="text-warning"><?=lang("ctm_event")?>:</span>  <span class="eventTitle"></span></p>
+				<p><span class="text-warning eventTitle"></span></p>
 				<small><span class="eventDetail"></span></small>			</div>
 		</div>
 

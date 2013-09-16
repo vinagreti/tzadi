@@ -84,6 +84,7 @@ $(document).ready(function(){
 
 						case "contact":
 							var contactNew = contact.clone();
+							contactNew.find(".mail_subject").html( event.mail_subject );
 							contactNew.find(".date").html( new $tzd.date(event.date).shortDateTime );
 							contactNew.find(".mail_id").attr("href", base_url+"mail/"+event.mail_id );
 							timeline.append( contactNew );
@@ -91,30 +92,30 @@ $(document).ready(function(){
 
 						case "replyReceived":
 							var newReplyReceived = replyReceived.clone();
+							newReplyReceived.find(".mail_subject").html( event.mail_subject );
 							newReplyReceived.find(".date").html( new $tzd.date(event.date).shortDateTime );
 							newReplyReceived.find(".mail_id").attr("href", base_url+"mail/"+event.mail_id );
-							newReplyReceived.find(".mail_referer_id").html( event.mail_referer_id );
 							timeline.append( newReplyReceived );
 							break;
 
 						case "repliedMessage":
 							var newrepliedMessage = repliedMessage.clone();
+							newrepliedMessage.find(".mail_subject").html( event.mail_subject );
 							newrepliedMessage.find(".date").html( new $tzd.date(event.date).shortDateTime );
 							newrepliedMessage.find(".mail_id").attr("href", base_url+"mail/"+event.mail_id );
-							newrepliedMessage.find(".mail_referer_id").html( event.mail_referer_id );
 							timeline.append( newrepliedMessage );
 							break;
 							
 						case "product/share":
 
 							var productShareNew;
-
 							if( event.staff_id )
 								productShareNew = productShareByStaff.clone();
 
 							else
 								productShareNew = productShare.clone();
 
+							productShareNew.find(".mail_subject").html( event.mail_subject );
 							productShareNew.find(".date").html( new $tzd.date(event.date).shortDateTime );
 							productShareNew.find(".mail_id").attr("href", base_url+"mail/"+event.mail_id );
 							timeline.append( productShareNew );
@@ -130,6 +131,7 @@ $(document).ready(function(){
 							else
 								productKnowMoreNew = productKnowMore.clone();
 
+							productKnowMoreNew.find(".mail_subject").html( event.mail_subject );
 							productKnowMoreNew.find(".date").html( new $tzd.date(event.date).shortDateTime );
 							productKnowMoreNew.find(".mail_id").attr("href", base_url+"mail/"+event.mail_id );
 							timeline.append( productKnowMoreNew );
@@ -145,6 +147,7 @@ $(document).ready(function(){
 							else
 								budgetShareNew = budgetShare.clone();
 
+							budgetShareNew.find(".mail_subject").html( event.mail_subject );
 							budgetShareNew.find(".date").html( new $tzd.date(event.date).shortDateTime );
 							budgetShareNew.find(".mail_id").attr("href", base_url+"mail/"+event.mail_id );
 							timeline.append( budgetShareNew );
@@ -160,6 +163,7 @@ $(document).ready(function(){
 							else
 								budgetKnowMoreNew = budgetKnowMore.clone();
 
+							budgetKnowMoreNew.find(".mail_subject").html( event.mail_subject );
 							budgetKnowMoreNew.find(".date").html( new $tzd.date(event.date).shortDateTime );
 							budgetKnowMoreNew.find(".mail_id").attr("href", base_url+"mail/"+event.mail_id );
 							timeline.append( budgetKnowMoreNew );
@@ -167,6 +171,7 @@ $(document).ready(function(){
 
 						case "sentMessage":
 							var newsentMessage = sentMessage.clone();
+							newsentMessage.find(".mail_subject").html( event.mail_subject );
 							newsentMessage.find(".date").html( new $tzd.date(event.date).shortDateTime );
 							newsentMessage.find(".mail_id").attr("href", base_url+"mail/"+event.mail_id );
 							timeline.append( newsentMessage );
@@ -174,6 +179,7 @@ $(document).ready(function(){
 
 						case "ownEvent":
 							var ownEventNew = ownEvent.clone();
+							ownEventNew.find(".mail_subject").html( event.mail_subject );
 							ownEventNew.find(".date").html( new $tzd.date(event.date).shortDateTime );
 							ownEventNew.find(".eventTitle").html( event.title );
 							ownEventNew.find(".eventDetail").html( event.detail );
@@ -182,6 +188,7 @@ $(document).ready(function(){
 
 						case "customerEvent":
 							var customerEventNew = customerEvent.clone();
+							customerEventNew.find(".mail_subject").html( event.mail_subject );
 							customerEventNew.find(".date").html( new $tzd.date(event.date).shortDateTime );
 							customerEventNew.find(".eventTitle").html( event.title );
 							customerEventNew.find(".eventDetail").html( event.detail );

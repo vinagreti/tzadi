@@ -75,13 +75,15 @@ class Contact_Model extends CI_Model {
 
         $mail_id = $this->mail_model->queue($mail);
 
-        $action->kind = "contact";
+        $event->kind = "contact";
 
-        $action->mail_id = $mail_id;
+        $event->mail_id = $mail_id;
 
-        $action->customer_id = $customer_id;
+        $event->mail_subject = $mail["subject"];
 
-        $this->customer_model->addTimeline( $action );
+        $event->customer_id = $customer_id;
+
+        $this->customer_model->addTimeline( $event );
 
         return array( "success" => lang("ct_sent") );
 
