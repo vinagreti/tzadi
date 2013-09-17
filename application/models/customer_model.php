@@ -10,14 +10,14 @@ class Customer_Model extends CI_Model {
   function getAll()
   {
     return $this->mongo_db
-      ->where('owner', $this->session->userdata("_id"))
+      ->where('owner', $this->session->userdata("profileID"))
       ->get('customer');
   }
 
   function getBy( $_id )
   {
     $customer = $this->mongo_db
-      ->where('owner', $this->session->userdata("_id"))
+      ->where('owner', $this->session->userdata("profileID"))
       ->where('_id', (int) $_id )
       ->get('customer');
 
@@ -43,7 +43,7 @@ class Customer_Model extends CI_Model {
 
       return array("error" => lang("ctm_customerNotFound") );
 
-    } else if ( $customer[0]['owner'] != $this->session->userdata("_id") ) {
+    } else if ( $customer[0]['owner'] != $this->session->userdata("profileID") ) {
 
       return array("error" => lang("ctm_thisCustomerISNotYours") );
 
@@ -68,7 +68,7 @@ class Customer_Model extends CI_Model {
       'customer',array(
         "_id" => $newID
         ,"name" => $name
-        ,"owner" => $this->session->userdata("_id")
+        ,"owner" => $this->session->userdata("profileID")
         ,"creation" => now()
         ,"creator" => $this->session->userdata("_id")
         ,"status" => "active"
@@ -182,7 +182,7 @@ class Customer_Model extends CI_Model {
   {
 
     $customer = $this->mongo_db
-      ->where('email', $email)
+      ->where(array('email' => $email, "owner" => $this->session->userdata("profileID")))
       ->get('customer');
 
     if( $customer ) {
