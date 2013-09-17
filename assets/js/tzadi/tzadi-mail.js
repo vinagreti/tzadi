@@ -74,7 +74,7 @@ TzadiJS.prototype.mail = new function(){
 
       valid = valid && $tzd.form.checkMask.range($('#tzadiDialogs').find("#mailSubject"), 1, 255, $("#mail_pleaseFillSubject").html());
 
-      valid = valid && $tzd.form.checkMask.range($('#tzadiDialogs').find("#mailMessage"), 1, 1024, $("#mail_pleaseFillMessage").html());
+      valid = valid && $tzd.form.checkMask.range($('#tzadiDialogs').find("#mailMessage"), 1, 8192, $("#mail_pleaseFillMessage").html());
 
       if( valid ){
 
@@ -182,7 +182,7 @@ TzadiJS.prototype.mail = new function(){
 
       var valid = true;
 
-      valid = valid && $tzd.form.checkMask.range($('#tzadiDialogs').find("#mailMessage"), 1, 1024, $("#mail_pleaseFillMessage").html());
+      valid = valid && $tzd.form.checkMask.range($('#tzadiDialogs').find("#mailMessage"), 1, 8192, $("#mail_pleaseFillMessage").html());
 
       if( valid ){
 
