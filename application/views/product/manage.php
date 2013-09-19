@@ -425,18 +425,16 @@
                               </div>
                             </label>
                             <label><?=lang('pdt_packageItens')?>
-
-                              <div class="packageItem alert alert-block alert-success">
-                                <span class="alert-heading"><a class="btn btn-danger dropPackageItem"><i class="icon-remove"></i></a> <a class="packageProductName"></a> (<?=lang("pdt_price")?>: <span class="packageProductTotalPriceCurrency"></span> <span class="packageProductPrice"></span>) </span>
+                              <div class="packageItem alert alert-success">
+                                <span class="alert-heading">
+                                  <span class="pull-right"><a class="dropPackageItem"><i class="icon-remove"></i></a></span> <strong><a class="packageProductName"></a></strong></span>
                                 <p class="packageProductDetail"></p>
                                 <p>
                                   <div class="control-group">
-                                    <?=lang("pdt_amount")?>: <input class="packageProductQtd span4" type="number" />
+                                    <span class="packageProductTotalPriceCurrency"></span> <span class="packageProductPrice"></span> x <input class="packageProductQtd span4" type="number" /> <?=lang("pdt_total")?>: <span class="packageProductTotalPriceCurrency"></span> <span class="packageProductTotalPrice"></span>
                                   </div>
-                                  <?=lang("pdt_total")?>: <span class="packageProductTotalPriceCurrency"></span> <span class="packageProductTotalPrice"></span>
                                 </p>
                               </div>
-
                             </label>
                             <div class="packageItens"></div>
                             <div class="pull-right">
