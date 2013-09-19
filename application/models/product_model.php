@@ -232,6 +232,8 @@ class Product_Model extends CI_Model {
 
     if( $product ){
 
+      print_r($product);
+
       $product = $product[0];
 
       if(!isset($product["currency"])) $product["currency"] = "USD";
@@ -270,7 +272,7 @@ class Product_Model extends CI_Model {
 
       if(isset($product["accommodationFood"])) $product["accommodationFood"] = lang("pdt_" . $product["accommodationFood"]);
 
-      if(isset($product["passTransportKind"])) $product["passTransportKind"] = lang("pdt_" . $product["passTransportKind"]);
+      if(isset($product["passTransportKind"])) $product["passTransportKind"] = lang("pdt_" . $product["passTransportKind"] . "TransportKind");
       
       if(isset($product["workKind"])) $product["workKind"] = lang("pdt_" . $product["workKind"]);
 
