@@ -240,6 +240,7 @@ $(document).ready(function(){
               packageItem.find(".packageProductTotalPrice").html(product.price*amount);
               packageItem.find(".packageProductTotalPriceCurrency").html(product.currency);
               packageItem.find(".packageProductQtd").val(amount);
+              packageItem.find(".productKind").html($("#"+product.kind).html());
               packageItem.find(".packageProductName").html(product.name).attr("href", product._id).attr("target", "_blank");
               line.find(".packageItens").prepend(packageItem);
             });
@@ -434,6 +435,7 @@ $(document).ready(function(){
       var line = this.body.find("#"+productID);
       var product = $tzd.list.getBy(products.all, "_id", item)[0];
       line.find("#"+item).find(".packageProductQtd").val(amount);
+      line.find(".productKind").html($("#"+product.kind).html());
       line.find("#"+item).find(".packageProductTotalPrice").html(amount*product.price);
     };
     this.setPackageTotal = function(productID, total){
