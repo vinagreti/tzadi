@@ -427,8 +427,8 @@
                             <label><?=lang('pdt_packageItens')?>
                               <div class="packageItem alert alert-success">
                                 <span class="alert-heading">
-                                  <strong><a class="packageProductName"></a></strong> (<span class="productKind"> </span>)</span>
                                   <span class="pull-right"><a class="dropPackageItem"><i class="icon-remove"></i></a></span>
+                                  <strong><a class="packageProductName"></a></strong> (<span class="productKind"> </span>)</span>
                                 <p>
                                   <div class="control-group">
                                     <span class="packageProductTotalPriceCurrency"></span> <span class="packageProductPrice"></span> x <input class="packageProductQtd span4" type="number" /> <?=lang("pdt_total")?>: <span class="packageProductTotalPriceCurrency"></span> <span class="packageProductTotalPrice"></span>
