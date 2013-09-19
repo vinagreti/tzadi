@@ -264,7 +264,7 @@ class Product_Model extends CI_Model {
 
       if(isset($product["accommodationKind"])) $product["accommodationKind"] = lang("pdt_" . $product["accommodationKind"]);
 
-      if(isset($product["accommodationDurationScale"])) $product["accommodationDurationScale"] = "days";
+      if( ! isset($product["accommodationDurationScale"]) ) $product["accommodationDurationScale"] = "days";
 
       if(isset($product["accommodationDurationValue"])) $product["accommodationDuration"] = $product["accommodationDurationValue"]. " " . lang("pdt_" .$product["accommodationDurationScale"]);
 
