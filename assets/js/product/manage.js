@@ -238,6 +238,7 @@ $(document).ready(function(){
               packageItem.attr("id", index);
               packageItem.find(".packageProductPrice").html(product.price);
               packageItem.find(".packageProductTotalPrice").html(product.price*amount);
+              packageItem.find(".packageProductTotalPriceCurrency").html(product.currency);
               packageItem.find(".packageProductQtd").val(amount);
               if(product.detail) packageItem.find(".packageProductDetail").html(product.detail.slice(0, 124));
               packageItem.find(".packageProductName").html(product.name).attr("href", product._id).attr("target", "_blank");
@@ -733,9 +734,9 @@ $(document).ready(function(){
       var self = this;
       $.each(self.all[productID].itens, function(item, amount){
         var product = $tzd.list.getBy(self.all, "_id", item)[0];
-        total += product.price*amount;
+        total += $tzd.currency.convert(product.price, product.currency) * amount;
       });
-      this.table.setPackageTotal(productID, total);
+      this.table.setPackageTotal(productID, total.toFixed(2));
     }
     , removeImg : function( productID, imgID ) {
       if( this.all[productID].img.length > 1 ) {

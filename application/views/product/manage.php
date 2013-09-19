@@ -417,29 +417,33 @@
                               </select>
                             </label>
                           </div> <!-- fim workForm -->
-                          <div class="packageForm"> <!-- inicio workForm -->
+
+                          <div class="packageForm"> <!-- inicio packageForm -->
                             <label><?=lang('pdt_addPackageProductTitle')?>
                               <div class="control-group">
                                 <input class="addPackageProduct input-block-level"/>
                               </div>
                             </label>
                             <label><?=lang('pdt_packageItens')?>
+
                               <div class="packageItem alert alert-block alert-success">
                                 <h4 class="alert-heading"><a class="btn btn-danger dropPackageItem"><i class="icon-remove"></i></a> <a class="packageProductName"></a> (<?=lang("pdt_price")?>: <span class="packageProductPrice"></span>) </h4>
                                 <p class="packageProductDetail"></p>
                                 <p>
                                   <div class="control-group">
-                                    <?=lang("pdt_amount")?>: <input class="packageProductQtd span2" type="number" />
+                                    <?=lang("pdt_amount")?>: <input class="packageProductQtd span4" type="number" />
                                   </div>
-                                  <?=lang("pdt_total")?>: <span class="packageProductTotalPrice"></span>
+                                  <?=lang("pdt_total")?>: <span class="packageProductTotalPriceCurrency"></span> <span class="packageProductTotalPrice"></span>
                                 </p>
                               </div>
+
                             </label>
                             <div class="packageItens"></div>
                             <div class="pull-right">
-                              <span><?=lang("pdt_totalValue")?>:</span> <span class="packageTotal"></span>
+                              <span><?=lang("pdt_totalValue")?>:</span>: <span class="currencyCode"></span> <span class="packageTotal"></span>
                             </div>
-                          </div> <!-- fim workForm -->
+                          </div> <!-- fim packageForm -->
+
                         </div>
                       </div>
                       <div class="row-fluid">
