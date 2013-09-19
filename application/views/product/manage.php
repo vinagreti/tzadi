@@ -427,7 +427,7 @@
                             <label><?=lang('pdt_packageItens')?>
 
                               <div class="packageItem alert alert-block alert-success">
-                                <h4 class="alert-heading"><a class="btn btn-danger dropPackageItem"><i class="icon-remove"></i></a> <a class="packageProductName"></a> (<?=lang("pdt_price")?>: <span class="packageProductTotalPriceCurrency"></span> <span class="packageProductPrice"></span>) </h4>
+                                <span class="alert-heading"><a class="btn btn-danger dropPackageItem"><i class="icon-remove"></i></a> <a class="packageProductName"></a> (<?=lang("pdt_price")?>: <span class="packageProductTotalPriceCurrency"></span> <span class="packageProductPrice"></span>) </span>
                                 <p class="packageProductDetail"></p>
                                 <p>
                                   <div class="control-group">
