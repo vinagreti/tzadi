@@ -232,8 +232,6 @@ class Product_Model extends CI_Model {
 
     if( $product ){
 
-      print_r($product);
-
       $product = $product[0];
 
       if(!isset($product["currency"])) $product["currency"] = "USD";
