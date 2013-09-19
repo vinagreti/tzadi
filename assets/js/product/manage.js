@@ -240,7 +240,6 @@ $(document).ready(function(){
               packageItem.find(".packageProductTotalPrice").html(product.price*amount);
               packageItem.find(".packageProductTotalPriceCurrency").html(product.currency);
               packageItem.find(".packageProductQtd").val(amount);
-              if(product.detail) packageItem.find(".packageProductDetail").html(product.detail.slice(0, 124));
               packageItem.find(".packageProductName").html(product.name).attr("href", product._id).attr("target", "_blank");
               line.find(".packageItens").prepend(packageItem);
             });
@@ -429,7 +428,6 @@ $(document).ready(function(){
       packageItem.find(".packageProductTotalPrice").html(product.price);
       packageItem.find(".packageProductQtd").val(1);
       packageItem.find(".packageProductName").html(product.name).attr("href", product._id).attr("target", "_blank");
-      if(product.detail) packageItem.find(".packageProductDetail").html(product.detail.slice(0, 124));
       line.find(".packageItens").prepend(packageItem);
     };
     this.setPackageItemQtd = function(productID, item, amount){
