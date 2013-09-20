@@ -27,9 +27,9 @@
     <meta property="fb:admins" content="100000036122524"/> <!-- Bruno Facebook ID -->
     <meta property="fb:app_id" content="532888376778430"/>
     <meta property="og:type" content="website" />
-    <meta property="og:video" content="http://www.youtube.com/v/mruP0yf7wvw?version=3&amp;autohide=1">
+    <meta property="og:video" content="http://www.youtube.com/v/mruP0yf7wvw?version=3&amp;autohide=1&keepEmbedCode=true">
     <meta property="og:video:type" content="application/x-shockwave-flash">
-    <meta property="og:video:secure_url" content="https://www.youtube.com/watch?v=mruP0yf7wvw" />
+    <meta property="og:video:secure_url" content="https://www.youtube.com/v/mruP0yf7wvw?version=3&amp;autohide=1&keepEmbedCode=true" />
 
     {the_head}
 
