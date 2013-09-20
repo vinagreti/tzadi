@@ -32,7 +32,11 @@ class Landing extends My_Controller {
     $this->lang->load('user', $this->session->userdata('language'));
     $data->dynJS = 'user/signup';
     $data->page_title = lang('idx_title');
-
+    $data->the_head = '<link rel="image_src" href="' . base_url() . 'assets/img/144x144.png"  />';
+    $data->the_head .= '<meta property="og:image" content="' . base_url() . 'assets/img/144x144.png" />';
+    $data->the_head .= '<meta property="og:title" content="Título aqui" />';
+    $data->the_head .= '<meta property="og:description" content="Descrição aqui" />';
+    $data->the_head .= '<meta property="fb:page_id" content="1375286466027022" />';
     $this->page->load($data);
   }
 }

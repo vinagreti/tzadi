@@ -23,7 +23,7 @@
     <link rel="apple-touch-icon-precomposed" href="<?=base_url()?>assets/img/32x32.png">
     <link rel="shortcut icon" href="<?=base_url()?>assets/img/32x32.png">
 
-    {head}
+    {the_head}
 
     <noscript>
       <p class='hero-unit'><?=lang("tmpt_need_js")?></p>
