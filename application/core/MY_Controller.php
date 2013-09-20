@@ -27,7 +27,8 @@ class My_Controller extends CI_Controller{
 
     $subdomain = rtrim(strstr($_SERVER["HTTP_HOST"], ENVIRONMENT, true), '.');
 
-
+    if( $subdomain == "www" )
+      redirect('https://'.ENVIRONMENT, 'refresh');
 
     if( $subdomain ) {
 
