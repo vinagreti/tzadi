@@ -2,8 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title></title>
-    {head}
+    <title>{page_title}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -24,7 +23,7 @@
     <link rel="apple-touch-icon-precomposed" href="<?=base_url()?>assets/img/32x32.png">
     <link rel="shortcut icon" href="<?=base_url()?>assets/img/32x32.png">
 
-  </head>
+    {head}
 
     <noscript>
       <p class='hero-unit'><?=lang("tmpt_need_js")?></p>
@@ -40,6 +39,7 @@
         ga('send', 'pageview');
     </script>
 
+  </head>
   <body>
     <div id="fb-root"></div>
 
