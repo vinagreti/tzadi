@@ -25,7 +25,7 @@
 
     <meta property="fb:admins" content="100000036122524,1110189261"/>
     <meta property="fb:page_id" content="1375286466027022"/>
-    
+    <meta property="og:type" content="website" />
 
     {the_head}
 
