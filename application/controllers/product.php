@@ -129,6 +129,12 @@ class Product extends My_Controller {
 
     }
 
+    $data->the_head = '<link rel="image_src" href="' . $data->product["coverImg"] . '"  />';
+    $data->the_head .= '<meta property="og:image" content="' . $data->product["coverImg"] . '" />';
+    $data->the_head .= '<meta property="og:url" content="' . str_replace("/index.php", "", current_url()) . '" />';
+    $data->the_head .= '<meta property="og:title" content="' . $data->product["name"] . '" />';
+    $data->the_head .= '<meta property="og:description" content="'. $data->product["detail"] .'" />';
+
     $this->page->load($data);
 
 
