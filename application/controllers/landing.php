@@ -33,7 +33,7 @@ class Landing extends My_Controller {
     $data->dynJS = 'user/signup';
     $data->page_title = lang('idx_title');
     $data->the_head = '<link rel="image_src" href="' . base_url() . 'assets/img/144x144.png"  />';
-    $data->the_head .= '<link rel="video_src" href="http://www.youtube.com/v/mruP0yf7wvw&fs=1"/>';
+    $data->the_head .= '<link rel="video_src" href="http://www.youtube.com/watch?v=mruP0yf7wvw"/>';
     $data->the_head .= '<meta property="og:image" content="' . base_url() . 'assets/img/144x144.png" />';
     $data->the_head .= '<meta property="og:url" content="' . base_url() . '" />';
     $data->the_head .= '<meta property="og:title" content="TZADI" />';
