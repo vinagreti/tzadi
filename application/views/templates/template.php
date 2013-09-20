@@ -16,16 +16,18 @@
     <!-- tzadi global styles -->
     <link rel="stylesheet" href="<?=base_url()?>assets/css/global.css">
 
-    <noscript>
-      <p class='hero-unit'><?=lang("tmpt_need_js")?></p>
-    </noscript>
-
     <!-- Fav and touch icons -->
     <link rel="apple-touch-icon-precomposed" sizes="144x144" href="<?=base_url()?>assets/img/144x144.png">
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="<?=base_url()?>assets/img/114x114.png">
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="<?=base_url()?>assets/img/72x72.png">
     <link rel="apple-touch-icon-precomposed" href="<?=base_url()?>assets/img/32x32.png">
     <link rel="shortcut icon" href="<?=base_url()?>assets/img/32x32.png">
+
+    {head}
+
+    <noscript>
+      <p class='hero-unit'><?=lang("tmpt_need_js")?></p>
+    </noscript>
 
     <script>
         (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -36,9 +38,7 @@
         ga('create', 'UA-42648751-1', 'tzadi.com');
         ga('send', 'pageview');
     </script>
-
-    {head}
-
+    
   </head>
   <body>
     <div id="fb-root"></div>
