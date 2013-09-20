@@ -28,6 +28,7 @@
     <meta property="fb:app_id" content="532888376778430"/>
     <meta property="og:type" content="website" />
     <meta property="og:video" content="http://www.youtube.com/watch?v=mruP0yf7wvw" />
+    <meta property="og:video:secure_url" content="https://www.youtube.com/watch?v=mruP0yf7wvw" />
 
     {the_head}
 
