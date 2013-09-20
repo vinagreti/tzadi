@@ -34,6 +34,8 @@ class Landing extends My_Controller {
     $data->page_title = lang('idx_title');
     $data->head = '<link rel="image_src" href="' . base_url() . 'assets/img/144x144.png"  />';
     $data->head .= '<meta property="og:image" content="' . base_url() . 'assets/img/144x144.png" />';
+    $data->head .= '<meta property="og:title" content="Título aqui" />';
+    $data->head .= '<meta property="og:description" content="Descrição aqui" />';
     $this->page->load($data);
   }
 }
