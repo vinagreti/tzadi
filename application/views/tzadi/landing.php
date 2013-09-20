@@ -6,6 +6,7 @@
     <div class="row-fluid">
       <div class="span23">
         <h1 class="text-center"><?=lang('idx_phrase')?></h1>
+        <br></br>
         <div class="row-fluid">
           <div class="span12 pull-right">
             <div class="flex-video widescreen" style="margin: 0 auto;text-align:center;">
