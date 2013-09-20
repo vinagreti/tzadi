@@ -24,8 +24,8 @@
     <link rel="shortcut icon" href="<?=base_url()?>assets/img/32x32.png">
 
     <meta property="fb:admins" content="100000036122524,1110189261"/>
-    <meta property="og:app_id" content="532888376778430"/>
-
+    <meta property="fb:app_id" content="532888376778430"/>
+    <meta property="og:type" content="website" />
     <meta property="og:video" content="https://www.youtube.com/embed/mruP0yf7wvw" />
 
     {the_head}
