@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>{page_title}</title>
+    <title></title>
     {head}
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
@@ -25,7 +25,7 @@
     <link rel="shortcut icon" href="<?=base_url()?>assets/img/32x32.png">
 
   </head>
-  
+
     <noscript>
       <p class='hero-unit'><?=lang("tmpt_need_js")?></p>
     </noscript>
