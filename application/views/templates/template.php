@@ -24,7 +24,7 @@
     <link rel="shortcut icon" href="<?=base_url()?>assets/img/32x32.png">
 
     <meta property="fb:admins" content="100000036122524,1110189261"/>
-    <meta property="fb:app_id" content="10150102682125471"/>
+    <meta property="fb:page_id" content="10150102682125471"/>
 
     {the_head}
 
