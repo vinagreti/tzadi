@@ -1,5 +1,3 @@
-<link rel="image_src" href="<?=base_url()?>assets/img/144x144.png"  />
-
 <div class="g-plus" data-action="share" data-annotation="bubble"></div>
 <div class="fb-like" data-href="http://facebook.com/tzadiinc" data-width="450" data-layout="button_count" data-show-faces="true" data-send="true"></div>
 
