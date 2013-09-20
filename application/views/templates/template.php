@@ -36,6 +36,9 @@
         ga('create', 'UA-42648751-1', 'tzadi.com');
         ga('send', 'pageview');
     </script>
+
+    {head}
+
   </head>
   <body>
     <div id="fb-root"></div>

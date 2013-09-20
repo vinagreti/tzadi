@@ -32,6 +32,7 @@ class Landing extends My_Controller {
     $this->lang->load('user', $this->session->userdata('language'));
     $data->dynJS = 'user/signup';
     $data->page_title = lang('idx_title');
+    $data->head = '<meta property="og:image" content="'. base_url() . 'assets/img/144x144.png" />';
     $this->page->load($data);
   }
 }
