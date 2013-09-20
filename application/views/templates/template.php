@@ -11,10 +11,10 @@
     <link rel="stylesheet" href="<?=base_url()?>assets/third_party/bootstrap/css/bootstrap-datetimepicker.min.css">
     <link rel="stylesheet" href="<?=base_url()?>assets/third_party/bootstrap/css/font-awesome.min.css">
     <link rel="stylesheet" href="<?=base_url()?>assets/third_party/select2/select2.css"/>
-    <link rel="stylesheet" type="text/css" href="<?=base_url()?>assets/third_party/bootstrap-wysihtml5-master/src/bootstrap-wysihtml5.css"></link>
+    <link rel="stylesheet" type="text/css" href="<?=base_url()?>assets/third_party/bootstrap-wysihtml5-master/src/bootstrap-wysihtml5.css" />
 
     <!-- tzadi global styles -->
-    <link rel="stylesheet" href="<?=base_url()?>assets/css/global.css">
+    <link rel="stylesheet" href="<?=base_url()?>assets/css/global.css" />
 
     <!-- Fav and touch icons -->
     <link rel="apple-touch-icon-precomposed" sizes="144x144" href="<?=base_url()?>assets/img/144x144.png">
@@ -38,7 +38,7 @@
         ga('create', 'UA-42648751-1', 'tzadi.com');
         ga('send', 'pageview');
     </script>
-    
+
   </head>
   <body>
     <div id="fb-root"></div>
