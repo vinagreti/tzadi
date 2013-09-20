@@ -448,7 +448,7 @@
                         <div class="span24">
                           <label><?=lang('pdt_detail')?>
                             <div class="control-group">
-                              <div class="detail input-block-level input-content-editable" contentEditable="true"></div>
+                              <textarea class="detail input-block-level" rows="3"></textarea>
                             </div>
                           </label>
                         </div>
