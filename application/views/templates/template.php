@@ -26,6 +26,7 @@
     <meta property="fb:admins" content="100000036122524,1110189261"/>
     <meta property="og:page_id" content="1375286466027022"/>
     <meta property="og:type" content="website" />
+    <meta property="og:video" content="https://www.youtube.com/embed/mruP0yf7wvw" />
 
     {the_head}
 
