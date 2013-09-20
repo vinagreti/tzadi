@@ -9,7 +9,7 @@
         <div class="row-fluid">
           <div class="span12 pull-right">
             <div class="flex-video widescreen" style="margin: 0 auto;text-align:center;">
-              <iframe allowfullscreen="" src="https://www.youtube.com/embed/mruP0yf7wvw?feature=player_detailpage" frameborder="0"></iframe>
+              <iframe id="ytplayer" type="text/html" src="https://www.youtube.com/embed/mruP0yf7wvw?loop=1&rel=0&showinfo=0&autohide=1" frameborder="0" allowfullscreen></iframe>
             </div>
           </div>
           <div class="span12 text-center pull-left">
