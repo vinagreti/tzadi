@@ -4,22 +4,13 @@
 <div class="row-fluid">
   <div class="span24 home-phrase-bg">
     <div class="row-fluid">
-      <div class="span20 offset2">
+      <div class="span23">
         <h1 class="text-center"><?=lang('idx_phrase')?></h1>
         <div class="row-fluid">
           <div class="span12 pull-right">
-            <br>
-            <h3 class="lead text-center"><?=lang('idx_explanation')?></h3>
-            <ul>
-              <p><i class="icon-ok"></i> <?=lang("idx_explanation1")?>.</p>
-              <p><i class="icon-ok"></i> <?=lang("idx_explanation2")?>.</p>
-              <p><i class="icon-ok"></i> <?=lang("idx_explanation3")?>.</p>
-              <p><i class="icon-ok"></i> <?=lang("idx_explanation4")?>.</p>
-              <p><i class="icon-ok"></i> <?=lang("idx_explanation5")?>.</p>
-              <p><i class="icon-ok"></i> <?=lang("idx_explanation6")?>?</p>
-              <p><i class="icon-ok"></i> <?=lang("idx_explanation7")?>.</p>
-            </ul>
-            <p class='text-center'><?=lang("idx_explanation8")?>.</p>
+            <div class="flex-video widescreen" style="margin: 0 auto;text-align:center;">
+              <iframe allowfullscreen="" src="http://www.youtube.com/embed/mruP0yf7wvw?feature=player_detailpage" frameborder="0"></iframe>
+            </div>
           </div>
           <div class="span12 text-center pull-left">
             <br></br><br>

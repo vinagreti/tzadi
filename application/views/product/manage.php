@@ -427,7 +427,7 @@
                             <label><?=lang('pdt_packageItens')?>
                               <div class="packageItem alert alert-success">
                                 <span class="alert-heading">
-                                  <span class="pull-right"><a class="dropPackageItem"><i class="icon-remove"></i></a></span>
+                                  <span class="span1 pull-right"><a class="dropPackageItem"><i class="icon-remove"></i></a></span>
                                   <strong><a class="packageProductName"></a></strong> (<span class="productKind"> </span>)</span>
                                 <p>
                                   <div class="control-group">
