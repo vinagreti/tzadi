@@ -260,7 +260,7 @@ $(document).ready(function(){
           if(objProduct.itens) {
             $.each(objProduct.itens, function( index, amount ){
               var packageItem = products.table.packageItem.clone();
-              var product = $tzd.list.getBy(products.all, "_id", index)[0];
+              var product = jQuery.extend(true, {}, $tzd.list.getBy(products.all, "_id", index)[0]);
               product.purchase = product.purchase ? product.purchase : 0;
               product.price = product.price ? product.price : 0;
               product.price -= $tzd.currency.convertTo( product.discount, product.discountCurrency, product.currency );
