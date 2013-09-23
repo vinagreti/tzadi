@@ -239,21 +239,23 @@ class Product_Model extends CI_Model {
 
       $currencyBase = $this->session->userdata("currencyBase");
 
-      if(!isset($product["currency"])) $product["currency"] = "USD";
+      $product["currency"] = isset($product["currency"]) ? $product["currency"] : $currencyBase;
 
-      if( isset($product["price"]) && $product["price"] > 0 ) {
+      $product["price"] = isset($product["price"]) ? $product["price"] : 0;
 
-        $product["humanPrice"] = $product["currency"] . " " . $product["price"];
+      $product["discount"] = isset($product["discount"]) ? $product["discount"] : 0;
 
-        $discountConverted = $this->convertCurrencyTo( $product["discount"], $product["discountCurrency"], $product["currency"] );
+      $product["discountCurrency"] = isset($product["discountCurrency"]) ? $product["discountCurrency"] : $currencyBase;
 
-        $priceWithDiscount = $product["price"] - $discountConverted;
+      $product["humanPrice"] = $product["currency"] . " " . $product["price"];
 
-        $product["priceWithDiscount"] = $product["currency"] . " " . number_format( $priceWithDiscount, 2, '.', '');
+      $discountConverted = $this->convertCurrencyTo( $product["discount"], $product["discountCurrency"], $product["currency"] );
 
-        $product["priceConverted"] = $currencyBase . " " . number_format( $this->convertCurrency( $priceWithDiscount, $product["currency"] ), 2, '.', '');
+      $priceWithDiscount = $product["price"] - $discountConverted;
 
-      }
+      $product["priceWithDiscount"] = $product["currency"] . " " . number_format( $priceWithDiscount, 2, '.', '');
+
+      $product["priceConverted"] = $currencyBase . " " . number_format( $this->convertCurrency( $priceWithDiscount, $product["currency"] ), 2, '.', '');
 
       if(isset($product["courseEnrollmentFees"])) $product["courseEnrollmentFees"] = $product["currency"] . " " . $product["courseEnrollmentFees"];
 
