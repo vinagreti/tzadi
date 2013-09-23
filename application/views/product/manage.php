@@ -536,11 +536,11 @@
                                       <strong><a class="packageProductName"></a></strong> (<span class="productKind"> </span>) <input class="packageProductQtd span4 pull-left" type="number" />
                                     </span>
                                     <p>
-                                      Custo: <span class="packageProductTotalPriceCurrency"></span> <span class="packageProductPurchase"></span> <?=lang("pdt_total")?>: <span class="packageProductTotalPriceCurrency"></span> <span class="packageProductTotalPurchase"></span>
+                                      <?=lang("pdt_purchase")?>: <strong><span class="packageProductTotalPriceCurrency"></span> <span class="packageProductPurchase"></span></strong> <span class="pull-right"><?=lang("pdt_purchase")?> <?=lang("pdt_total")?>: <strong><span class="packageProductTotalPriceCurrency"></span> <span class="packageProductTotalPurchase"></span></strong></span>
                                     </p>
                                     <p>
                                       <div class="control-group">
-                                        Preço: <span class="packageProductTotalPriceCurrency"></span> <span class="packageProductPrice"></span> <?=lang("pdt_total")?>: <span class="packageProductTotalPriceCurrency"></span> <span class="packageProductTotalPrice"></span>
+                                        <?=lang("pdt_price")?>: <strong><span class="packageProductTotalPriceCurrency"></span> <span class="packageProductPrice"></span></strong> <span class="pull-right"><?=lang("pdt_price")?> <?=lang("pdt_total")?>: <strong><span class="packageProductTotalPriceCurrency"></span> <span class="packageProductTotalPrice"></span></strong></span>
                                       </div>
                                     </p>
                                   </small>

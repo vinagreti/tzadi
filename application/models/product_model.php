@@ -44,7 +44,7 @@ class Product_Model extends CI_Model {
   {
     $this->load->model("mongo_model");
     $newID = $this->mongo_model->newID();
-    $tzdCurrency = json_decode( get_cookie( 'tzdCurrency' ), true );
+
     $this->load->helper('date');
     $newProduct =  $this->mongo_db->insert(
       'product',array(
@@ -62,7 +62,7 @@ class Product_Model extends CI_Model {
         ,"vitrine" => "no"
         ,"price" => 0
         ,"purchase" => 0
-        ,"currency" => $tzdCurrency["base"]
+        ,"currency" => $this->session->userdata("currencyBase")
       )
     );
     return $this->mongo_db
@@ -237,21 +237,21 @@ class Product_Model extends CI_Model {
 
       $product = $product[0];
 
+      $currencyBase = $this->session->userdata("currencyBase");
+
       if(!isset($product["currency"])) $product["currency"] = "USD";
 
       if( isset($product["price"]) && $product["price"] > 0 ) {
 
         $product["humanPrice"] = $product["currency"] . " " . $product["price"];
 
-        $priceConverted = $this->convertCurrency( $product["price"], $product["currency"] );
+        $discountConverted = $this->convertCurrencyTo( $product["discount"], $product["discountCurrency"], $product["currency"] );
 
-        $discountConverted = $this->convertCurrency( $product["discount"], $product["discountCurrency"] );
+        $priceWithDiscount = $product["price"] - $discountConverted;
 
-        $tzdCurrency = json_decode( get_cookie( 'tzdCurrency' ), true );
+        $product["priceWithDiscount"] = $product["currency"] . " " . number_format( $priceWithDiscount, 2, '.', '');
 
-        $product["priceWithDiscount"] = $product["currency"] . " " . number_format( $this->convertCurrencyTo( $priceConverted - $discountConverted, $tzdCurrency["base"], $product["currency"] ), 2, '.', '');
-
-        $product["priceConverted"] = number_format($this->convertCurrency( $product["priceWithDiscount"], $product["currency"] ), 2, '.', '');
+        $product["priceConverted"] = $currencyBase . " " . number_format( $this->convertCurrency( $priceWithDiscount, $product["currency"] ), 2, '.', '');
 
       }
 
@@ -496,9 +496,7 @@ class Product_Model extends CI_Model {
 
     }
 
-    $tzdCurrency = json_decode( get_cookie( 'tzdCurrency' ), true );
-
-    $budget->price = $tzdCurrency["base"] . " " . number_format($budget->price, 2, '.', '');
+    $budget->price = $this->session->userdata("currencyBase") . " " . number_format($budget->price, 2, '.', '');
 
     return $budget;
 
@@ -516,8 +514,6 @@ class Product_Model extends CI_Model {
       $product = $product[0];
 
       if( isset($product["price"]) && $product["price"] > 0 ) {
-
-        $tzdCurrency = json_decode( get_cookie( 'tzdCurrency' ), true );
 
         $fullTotalPrice = $this->convertCurrency($product["price"], $product["currency"] );
 
@@ -549,7 +545,7 @@ class Product_Model extends CI_Model {
 
     $euros = $amount / $tzdCurrency[ $base ];
 
-    $total = $euros * $tzdCurrency[ $tzdCurrency["base"] ];
+    $total = $euros * $tzdCurrency[ $this->session->userdata("currencyBase") ];
 
     return $total;
 

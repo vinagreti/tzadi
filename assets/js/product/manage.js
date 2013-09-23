@@ -122,6 +122,7 @@ $(document).ready(function(){
 
       gainWithDiscount = priceWithDiscount - purchase;
       percentWithDiscount = gainWithDiscount / ( purchase / 100 );
+      percentWithDiscount = isNaN( percentWithDiscount ) ? 0 : percentWithDiscount;
 
       line.find(".gainWithDiscount").val( currency + " " + gainWithDiscount.toFixed(2) );
       line.find(".percentWithDiscount").val(percentWithDiscount.toFixed(2));
