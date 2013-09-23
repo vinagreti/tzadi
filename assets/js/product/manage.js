@@ -221,6 +221,12 @@ $(document).ready(function(){
             var contain = contain || product.status == "active";
             return contain;
           });
+          line.find(".price").prop("disabled", true);
+          line.find(".purchase").prop("disabled", true);
+          line.find(".gain").prop("disabled", true);
+          line.find(".percent").prop("disabled", true);
+          line.find(".currency").select2("enable", false);
+          line.find(".currency").select2("val", $(".currencyCode").html());
           line.find(".kindForm").html(packageForm);
           line.find('.addPackageProduct').typeahead({
             source: foundProducts
@@ -235,8 +241,12 @@ $(document).ready(function(){
             $.each(objProduct.itens, function( index, amount ){
               var packageItem = products.table.packageItem.clone();
               var product = $tzd.list.getBy(products.all, "_id", index)[0];
+              product.purchase = product.purchase ? product.purchase : 0;
+              product.price = product.price ? product.price : 0;
               packageItem.attr("id", index);
               packageItem.find(".packageProductPrice").html(product.price);
+              packageItem.find(".packageProductPurchase").html(product.purchase);
+              packageItem.find(".packageProductTotalPurchase").html(product.purchase*amount);
               packageItem.find(".packageProductTotalPrice").html(product.price*amount);
               packageItem.find(".packageProductTotalPriceCurrency").html(product.currency);
               packageItem.find(".packageProductQtd").val(amount);
@@ -425,8 +435,12 @@ $(document).ready(function(){
       var product = $tzd.list.getBy(products.all, "_id", item)[0];
       var packageItem = this.packageItem.clone();
       packageItem.attr("id", item);
-      packageItem.find(".packageProductPrice").html(product.price);
-      packageItem.find(".packageProductTotalPrice").html(product.price);
+      packageItem.find(".productKind").html($("#"+product.kind).html());
+      packageItem.find(".packageProductTotalPriceCurrency").html(product.currency);
+      packageItem.find(".packageProductPrice").html( product.price ? product.price : 0 );
+      packageItem.find(".packageProductTotalPrice").html( product.price ? product.price : 0 );
+      packageItem.find(".packageProductTotalPurchase").html( product.purchase ? product.purchase : 0 );
+      packageItem.find(".packageProductPurchase").html( product.purchase ? product.purchase : 0 );
       packageItem.find(".packageProductQtd").val(1);
       packageItem.find(".packageProductName").html(product.name).attr("href", product._id).attr("target", "_blank");
       line.find(".packageItens").prepend(packageItem);
@@ -435,12 +449,14 @@ $(document).ready(function(){
       var line = this.body.find("#"+productID);
       var product = $tzd.list.getBy(products.all, "_id", item)[0];
       line.find("#"+item).find(".packageProductQtd").val(amount);
-      line.find(".productKind").html($("#"+product.kind).html());
       line.find("#"+item).find(".packageProductTotalPrice").html(amount*product.price);
+      line.find("#"+item).find(".packageProductTotalPurchase").html(amount*product.purchase);
     };
-    this.setPackageTotal = function(productID, total){
+    this.setPackageTotal = function(productID, totalPrice, totalPurchase){
       var line = this.body.find("#"+productID);
-      line.find(".packageTotal").html(total);
+      line.find(".price").val(totalPrice.toFixed(2));
+      line.find(".purchase").val(totalPurchase.toFixed(2));
+      this.reCalcValues(productID, "price");
     };
     this.removePackageProduct = function( productID, item ){
       this.body.find("#"+productID).find(".packageItens").find("#"+item).remove();
@@ -730,13 +746,15 @@ $(document).ready(function(){
       this.reCalcPackageTotal(productID);
     }
     , reCalcPackageTotal : function(productID){
-      var total = 0;
+      var totalPrice = 0;
+      var totalPurchase = 0;
       var self = this;
       $.each(self.all[productID].itens, function(item, amount){
         var product = $tzd.list.getBy(self.all, "_id", item)[0];
-        total += $tzd.currency.convert(product.price, product.currency) * amount;
+        totalPrice += $tzd.currency.convert(product.price, product.currency) * amount;
+        totalPurchase += $tzd.currency.convert(product.purchase, product.currency) * amount;
       });
-      this.table.setPackageTotal(productID, total.toFixed(2));
+      this.table.setPackageTotal(productID, totalPrice, totalPurchase);
     }
     , removeImg : function( productID, imgID ) {
       if( this.all[productID].img.length > 1 ) {

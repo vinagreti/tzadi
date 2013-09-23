@@ -425,21 +425,26 @@
                               </div>
                             </label>
                             <label><?=lang('pdt_packageItens')?>
-                              <div class="packageItem alert alert-success">
-                                <span class="alert-heading">
-                                  <span class="span1 pull-right"><a class="dropPackageItem"><i class="icon-remove"></i></a></span>
-                                  <strong><a class="packageProductName"></a></strong> (<span class="productKind"> </span>)</span>
-                                <p>
-                                  <div class="control-group">
-                                    <span class="packageProductTotalPriceCurrency"></span> <span class="packageProductPrice"></span> x <input class="packageProductQtd span4" type="number" /> <?=lang("pdt_total")?>: <span class="packageProductTotalPriceCurrency"></span> <span class="packageProductTotalPrice"></span>
-                                  </div>
-                                </p>
-                              </div>
+                              
+                                <div class="packageItem alert alert-success">
+                                  <div class="text-right"><a class="dropPackageItem"><i class="icon-remove"></i></a></div>
+                                  <small>
+                                    <span class="alert-heading">
+                                      <strong><a class="packageProductName"></a></strong> (<span class="productKind"> </span>) <input class="packageProductQtd span4 pull-left" type="number" />
+                                    </span>
+                                    <p>
+                                      Custo: <span class="packageProductTotalPriceCurrency"></span> <span class="packageProductPurchase"></span> <?=lang("pdt_total")?>: <span class="packageProductTotalPriceCurrency"></span> <span class="packageProductTotalPurchase"></span>
+                                    </p>
+                                    <p>
+                                      <div class="control-group">
+                                        Preço: <span class="packageProductTotalPriceCurrency"></span> <span class="packageProductPrice"></span> <?=lang("pdt_total")?>: <span class="packageProductTotalPriceCurrency"></span> <span class="packageProductTotalPrice"></span>
+                                      </div>
+                                    </p>
+                                  </small>
+                                </div>
+                                
                             </label>
                             <div class="packageItens"></div>
-                            <div class="pull-right">
-                              <span><?=lang("pdt_totalValue")?>:</span>: <span class="currencyCode"></span> <span class="packageTotal"></span>
-                            </div>
                           </div> <!-- fim packageForm -->
 
                         </div>

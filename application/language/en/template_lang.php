@@ -73,3 +73,5 @@ $lang["tmpt_Currency"] = "Exchange Settings";
 $lang["tmpt_CurrencyTitle"] = "View and set the prices of currencies";
 $lang["tmpt_Customer"] = "Customer";
 $lang['tmpt_creationDate'] = 'creation date';
+$lang['tmpt_Collaborators'] = 'Collaborators';
+$lang['tmpt_CollaboratorsTitle'] = 'Manage the people who work at the agency';

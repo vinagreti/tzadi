@@ -83,6 +83,8 @@ $route['sobre'] = 'about';
 
 $route['contato'] = 'contact';
 
+$route['colaborador'] = 'collaborator';
+
 $route['signup'] = 'user/signup';
 $route['cadastro'] = 'user/signup';
 

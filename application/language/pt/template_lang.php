@@ -73,3 +73,5 @@ $lang["tmpt_Currency"] = "Definiçoes de câmbio";
 $lang["tmpt_CurrencyTitle"] = "Veja e configure as cotações das moedas";
 $lang['tmpt_Customer'] = 'Cliente';
 $lang['tmpt_creationDate'] = 'data de criação';
+$lang['tmpt_Collaborators'] = 'Colaboradores';
+$lang['tmpt_CollaboratorsTitle'] = 'Gerencie as pessoas que trabalham na agência';
