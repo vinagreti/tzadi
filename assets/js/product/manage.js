@@ -75,10 +75,17 @@ $(document).ready(function(){
       line.find(".price").mask('000000000000000.00', {reverse: true});
       line.find(".gain").mask('000000000000000.00', {reverse: true});
       line.find(".percent").mask('00000', {reverse: true});
-      this.reCalcValues(id, "price");
+      line.find(".discount").val(objProduct.discount);
+      line.find(".discount").mask('000000000000000.00', {reverse: true});
+      line.find(".discountCurrency").select2("enable", false);
+      line.find(".discountCurrency").select2("val", $(".currencyCode").html());
       line.find(".detail").val(objProduct.detail);
-      line.find(".currency").select2({ minimumResultsForSearch: '-1' });
-      line.find('.currency').select2("val", objProduct.currency);
+      line.find(".discountCurrency").select2();
+      var discountCurrencyVal = objProduct.discountCurrency ? objProduct.discountCurrency : $(".currencyCode").html();
+      line.find('.discountCurrency').select2("val", discountCurrencyVal);
+      line.find(".currency").select2();
+      var currencyVal = objProduct.currency ? objProduct.currency : $(".currencyCode").html();
+      line.find('.currency').select2("val", currencyVal);
       line.find(".vitrine").select2({ minimumResultsForSearch: '-1' });
       line.find('.vitrine').select2("val", objProduct.vitrine);
       line.find(".supplier").select2({
@@ -98,14 +105,31 @@ $(document).ready(function(){
         line.find(".imgNumber").html(1);
       }
       line.find(".name").val(objProduct.name);
+      this.reCalcValues(id, "price");
       this.showKindForm( id );
     };
     this.reCalcValues = function (id, calcBase){
       var line = this.body.find("#"+id);
       var objProduct = products.all[id];
-
       var purchase = Number(line.find(".purchase").val());
       var price = Number(line.find(".price").val());
+      var discount = Number(line.find(".discount").val());
+      discount = discount ? discount : 0;
+      var discountCurrency = line.find(".discountCurrency").select2('data').id;
+      var currency = line.find(".currency").select2('data').id;
+      var priceWithDiscount = price - $tzd.currency.convertTo( discount, discountCurrency, currency );
+      line.find(".priceWithDiscount").val( currency + " " + priceWithDiscount.toFixed(2) );
+
+      gainWithDiscount = price - purchase;
+      if(priceWithDiscount == 0 && purchase == 0 || priceWithDiscount == purchase){
+        percent = 0;
+        gain = 0;
+      } else {
+        gainWithDiscount = priceWithDiscount - purchase;
+        percentWithDiscount = gainWithDiscount / ( purchase / 100 );
+      }
+      line.find(".gainWithDiscount").val( currency + " " + gainWithDiscount.toFixed(2) );
+      line.find(".percentWithDiscount").val(percentWithDiscount.toFixed(2));
 
       if(line.find(".purchase").val() != "" || line.find(".price").val() != "") {
         var gain = Number(line.find(".gain").val());
@@ -367,6 +391,8 @@ $(document).ready(function(){
       if(objProduct.purchase != line.find(".purchase").val()) formData.purchase = line.find(".purchase").val();
       if(objProduct.price != line.find(".price").val()) formData.price = line.find(".price").val();
       if(objProduct.currency != line.find(".currency").select2('data').id) formData.currency = line.find(".currency").select2('data').id;
+      if(objProduct.discount != line.find(".discount").val()) formData.discount = line.find(".discount").val();
+      if(objProduct.discountCurrency != line.find(".discountCurrency").select2('data').id) formData.discountCurrency = line.find(".discountCurrency").select2('data').id;
       if(objProduct.vitrine != line.find(".vitrine").select2('data').id) formData.vitrine = line.find(".vitrine").select2('data').id;
       if(objProduct.supplier != line.find(".supplier").select2('data').id) formData.supplier = line.find(".supplier").select2('data').id;
       if(line.find(".supplier_campus").select2('data').id && objProduct.supplier_campus != line.find(".supplier_campus").select2('data').id) formData.supplier_campus = line.find(".supplier_campus").select2('data').id;
@@ -931,6 +957,14 @@ $(document).ready(function(){
       products.search( $('#search-query').val() );
     }
   });
+  $(".currency").live("change propertychange", function(){
+    var id = $(this).parents(".tzdTableLine").attr("id");
+    products.table.reCalcValues(id, "price");
+  });
+  $(".discountCurrency").live("change propertychange", function(){
+    var id = $(this).parents(".tzdTableLine").attr("id");
+    products.table.reCalcValues(id, "price");
+  });
   $('.price').live('blur', function(){
     var id = $(this).parents(".tzdTableLine").attr("id");
     products.table.reCalcValues(id, "price");
@@ -946,6 +980,10 @@ $(document).ready(function(){
   $('.purchase').live('blur', function(){
     var id = $(this).parents(".tzdTableLine").attr("id");
     products.table.reCalcValues(id, "purchase");
+  });
+  $('.discount').live('blur', function(){
+    var id = $(this).parents(".tzdTableLine").attr("id");
+    products.table.reCalcValues(id, "discount");
   });
   $('.dropPackageItem').live("click", function() {
     var productID = $(this).parents(".tzdTableLine").attr("id");

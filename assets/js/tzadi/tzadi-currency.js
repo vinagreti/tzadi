@@ -52,6 +52,26 @@ TzadiJS.prototype.currency = new function( ){
 
 	}
 
+	this.convertTo = function( amount, base, to ) {
+
+		console.log(amount);
+		console.log(base);
+		console.log(to);
+
+		$.cookie.json = true;
+
+		var currency = $.cookie("tzdCurrency");
+
+		var euros = amount / currency[base];
+
+		var total = euros * currency[to];
+
+		console.log(currency[to]);
+
+		return total;
+
+	}
+
 	$(".changeCurrency").live("click", function(){
 
 		self.change();

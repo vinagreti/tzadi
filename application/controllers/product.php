@@ -19,7 +19,7 @@ class Product extends My_Controller {
   {
 
     $this->MYensureOwnProfile();
-
+    $this->lang->load('currency', $this->session->userdata('language'));
     $data->dynJS = 'product/manage';
     $data->view = 'product/manage';
     $data->page_title = lang('pdt_listTitle');

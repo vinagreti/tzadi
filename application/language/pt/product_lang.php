@@ -202,3 +202,7 @@ $lang["pdt_sharedABudgetWithYou"] = "compartilhou um orçamento com você";
 $lang["pdt_fillQuestions"] = "informe suas perguntas";
 $lang["pdt_wnatsToKnowMoreInfoAboutABudget"] = "deseja mais informações sobre o orçamento";
 $lang["pdt_knowsMoreThisBudget"] = "Saiba mais sobre este orçamento";
+$lang["pdt_discount"] = "desconto";
+$lang["pdt_finalSellPrice"] = "preço final";
+$lang["pdt_finalGain"] = "ganho final";
+$lang["pdt_finalPercent"] = "% final";
