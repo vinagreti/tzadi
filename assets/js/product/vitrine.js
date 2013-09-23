@@ -12,10 +12,12 @@ $(document).ready(function(){
 
     this.product = function( objProduct ) {
       var product = productHtml.clone();
+      var productPrice = $tzd.currency.convert(objProduct.price, objProduct.currency).toFixed(2)
+      productPrice -= $tzd.currency.convert( objProduct.discount, objProduct.discountCurrency );
       product.attr("id", objProduct._id);
       if(objProduct.img) product.find(".img").attr("src", base_url+"file/open/"+objProduct.img[0]);
       product.find(".name").html(objProduct.name);
-      product.find(".price").html($(".currencyCode").html() + " " + $tzd.currency.convert(objProduct.price, objProduct.currency).toFixed(2) );
+      product.find(".price").html($(".currencyCode").html() + " " + productPrice.toFixed(2) );
       product.find(".likes").html(objProduct.like);
       product.find(".open").attr("href", base_url+objProduct._id+"/"+$tzd.string.makeURL( objProduct.name ));
       if(objProduct.detail) product.find(".detail").html(objProduct.detail.split('', 64));
