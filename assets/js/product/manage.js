@@ -774,7 +774,9 @@ $(document).ready(function(){
       var self = this;
       $.each(self.all[productID].itens, function(item, amount){
         var product = $tzd.list.getBy(self.all, "_id", item)[0];
-        totalPrice += $tzd.currency.convert(product.price, product.currency) * amount;
+        var price = $tzd.currency.convert(product.price, product.currency);
+        var discount = $tzd.currency.convert(product.discount, product.discountCurrency);
+        totalPrice += ( price - discount ) * amount;
         totalPurchase += $tzd.currency.convert(product.purchase, product.currency) * amount;
       });
       this.table.setPackageTotal(productID, totalPrice, totalPurchase);
