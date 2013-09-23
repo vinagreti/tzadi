@@ -239,24 +239,6 @@ class Product_Model extends CI_Model {
 
       $currencyBase = $this->session->userdata("currencyBase");
 
-      $product["currency"] = isset($product["currency"]) ? $product["currency"] : $currencyBase;
-
-      $product["price"] = isset($product["price"]) ? $product["price"] : 0;
-
-      $product["discount"] = isset($product["discount"]) ? $product["discount"] : 0;
-
-      $product["discountCurrency"] = isset($product["discountCurrency"]) ? $product["discountCurrency"] : $currencyBase;
-
-      $product["humanPrice"] = $product["currency"] . " " . $product["price"];
-
-      $discountConverted = $this->convertCurrencyTo( $product["discount"], $product["discountCurrency"], $product["currency"] );
-
-      $priceWithDiscount = $product["price"] - $discountConverted;
-
-      $product["priceWithDiscount"] = $product["currency"] . " " . number_format( $priceWithDiscount, 2, '.', '');
-
-      $product["priceConverted"] = $currencyBase . " " . number_format( $this->convertCurrency( $priceWithDiscount, $product["currency"] ), 2, '.', '');
-
       if(isset($product["courseEnrollmentFees"])) $product["courseEnrollmentFees"] = $product["currency"] . " " . $product["courseEnrollmentFees"];
 
       if(isset($product["courseAdministrativeFees"])) $product["courseAdministrativeFees"] = $product["currency"] . " " . $product["courseAdministrativeFees"];
@@ -297,6 +279,10 @@ class Product_Model extends CI_Model {
 
         $itens = array();
 
+        $product["price"] = 0;
+
+        $product["currency"] = $currencyBase;
+
         foreach($product["itens"] as $product_id => $amount){
 
           $productItem = $this->mongo_db
@@ -306,6 +292,10 @@ class Product_Model extends CI_Model {
 
           $productItem[0]["amount"] = $amount;
 
+          $product["price"] += $this->convertCurrencyTo( $productItem[0]["price"] * $amount, $productItem[0]["currency"], $currencyBase );
+
+          $product["price"] -= $this->convertCurrencyTo( $productItem[0]["discount"] * $amount, $productItem[0]["discountCurrency"], $currencyBase );
+
           array_push($itens, $productItem[0]);
 
         }
@@ -313,6 +303,24 @@ class Product_Model extends CI_Model {
         $product["itens"] = $itens;
 
       }
+
+      $product["price"] = number_format( $product["price"], 2, '.', '');
+
+      $product["currency"] = isset($product["currency"]) ? $product["currency"] : $currencyBase;
+
+      $product["discount"] = isset($product["discount"]) ? $product["discount"] : 0;
+
+      $product["discountCurrency"] = isset($product["discountCurrency"]) ? $product["discountCurrency"] : $currencyBase;
+
+      $product["humanPrice"] = $product["currency"] . " " . $product["price"];
+
+      $discountConverted = $this->convertCurrencyTo( $product["discount"], $product["discountCurrency"], $product["currency"] );
+
+      $priceWithDiscount = $product["price"] - $discountConverted;
+
+      $product["priceWithDiscount"] = $product["currency"] . " " . number_format( $priceWithDiscount, 2, '.', '');
+
+      $product["priceConverted"] = $currencyBase . " " . number_format( $this->convertCurrency( $priceWithDiscount, $product["currency"] ), 2, '.', '');
 
       return $product;
 

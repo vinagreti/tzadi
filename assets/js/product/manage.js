@@ -263,6 +263,7 @@ $(document).ready(function(){
               var product = $tzd.list.getBy(products.all, "_id", index)[0];
               product.purchase = product.purchase ? product.purchase : 0;
               product.price = product.price ? product.price : 0;
+              product.price -= $tzd.currency.convertTo( product.discount, product.discountCurrency, product.currency );
               packageItem.attr("id", index);
               packageItem.find(".packageProductPrice").html(product.price);
               packageItem.find(".packageProductPurchase").html(product.purchase);
