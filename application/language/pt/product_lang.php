@@ -204,5 +204,5 @@ $lang["pdt_wnatsToKnowMoreInfoAboutABudget"] = "deseja mais informações sobre 
 $lang["pdt_knowsMoreThisBudget"] = "Saiba mais sobre este orçamento";
 $lang["pdt_discount"] = "desconto";
 $lang["pdt_finalSellPrice"] = "preço final";
-$lang["pdt_finalGain"] = "ganho final";
+$lang["pdt_finalGain"] = "lucro final";
 $lang["pdt_finalPercent"] = "% final";

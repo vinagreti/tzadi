@@ -16,8 +16,6 @@ $(document).ready(function(){
     $tzd.product.knowMore.open( $(this).attr("id") );
   });
   
-  $(".priceConverted").html($(".currencyCode").html() + " " + $tzd.currency.convert( $(".price").html(), $(".productCurrency").html()).toFixed(2) );
-
   // Load the FACEBOOK SDK asynchronously - like
   (function(d, s, id) {
       var js, fjs = d.getElementsByTagName(s)[0];

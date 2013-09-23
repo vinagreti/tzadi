@@ -40,10 +40,9 @@
       <div class="span12">
         <dl class="dl-horizontal">
           <dt><?=lang("pdt_code")?></dt><dd><?=$product["_id"]?></dd>
-          <?php if(isset($product["price"])) {
-            echo "<dt>" . lang("pdt_price") . "</dt><dd><span class='productCurrency'>". $product["currency"]."</span> <span class='price'>" . $product["price"] . "</span></dd>"; 
-            echo "<dt>" . lang("pdt_priceConverted") . "</dt><dd class='priceConverted'></dd>";
-          }?>
+          <?php if( ( ! isset($product["priceWithDiscount"]) && isset($product["humanPrice"]) ) || ( $product["priceWithDiscount"] == $product["humanPrice"] ) ) echo "<dt>" . lang("pdt_price") . "</dt><dd><strong class='text-error'>". $product["humanPrice"]."</strong></dd>"; ?>
+          <?php if(isset($product["priceWithDiscount"]) && $product["priceWithDiscount"] != $product["humanPrice"] ) echo "<dt>" . lang("pdt_price") . "</dt><dd><small><strike>" . $product["humanPrice"] . "</strike></small> <strong class='text-error'> " . $product["priceWithDiscount"] ."</strong></dd>"; ?>
+          <?php if(isset($product["priceConverted"])) echo "<dt>" . lang("pdt_priceConverted") . "</dt><dd> <span class='text-error'><strong><span class='currencyCode'></span> " . $product["priceConverted"] . "</strong></span></dd>"; ?>
           <?php if(isset($product["courseDuration"])) echo "<dt>" . lang("pdt_courseDuration") . "</dt><dd>" . $product["courseDuration"] . "</dd>"; ?>
           <?php if(isset($product["courseKind"])) echo "<dt>" . lang("pdt_courseKind") . "</dt><dd>" . $product["courseKind"] . "</dd>"; ?>
           <?php if(isset($product["coursePeriod"])) echo "<dt>" . lang("pdt_period") . "</dt><dd>" . $product["coursePeriod"] . "</dd>"; ?>

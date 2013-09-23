@@ -120,14 +120,9 @@ $(document).ready(function(){
       var priceWithDiscount = price - $tzd.currency.convertTo( discount, discountCurrency, currency );
       line.find(".priceWithDiscount").val( currency + " " + priceWithDiscount.toFixed(2) );
 
-      gainWithDiscount = price - purchase;
-      if(priceWithDiscount == 0 && purchase == 0 || priceWithDiscount == purchase){
-        percent = 0;
-        gain = 0;
-      } else {
-        gainWithDiscount = priceWithDiscount - purchase;
-        percentWithDiscount = gainWithDiscount / ( purchase / 100 );
-      }
+      gainWithDiscount = priceWithDiscount - purchase;
+      percentWithDiscount = gainWithDiscount / ( purchase / 100 );
+
       line.find(".gainWithDiscount").val( currency + " " + gainWithDiscount.toFixed(2) );
       line.find(".percentWithDiscount").val(percentWithDiscount.toFixed(2));
 
