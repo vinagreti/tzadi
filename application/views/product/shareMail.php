@@ -19,4 +19,12 @@
 <?php if(isset($product["passFrom"])) echo "<p>" . lang("pdt_passFrom") . ": " . $product["passFrom"] . "</p>"; ?>
 <?php if(isset($product["passTo"])) echo "<p>" . lang("pdt_passTo") . ": " . $product["passTo"] . "</p>"; ?>
 <?php if(isset($product["workKind"]) && $product["workKind"] != "") echo "<p>" . lang("pdt_workKind") . ": " . $product["workKind"] . "</p>"; ?>
+<?php if(isset($product["itens"])) {
+    $i = 1;
+    echo "<dt>" . lang("pdt_itens") . "</dt>";
+    foreach($product["itens"] as $key => $productIten) {
+        echo "<dd>" . $productIten["amount"] . " x <a href='" . base_url() . $productIten["_id"] ."' target='_blank'>" .$productIten["name"] . "</a></dd>"; 
+        $i++;
+    }
+} ?>
 <?php if(isset($product["detail"]) && $product["detail"] != "") echo "<p>" . lang("pdt_detail") . ": " . $product["detail"] . "</p>"; ?>
