@@ -14,7 +14,7 @@ class Customer_Model extends CI_Model {
       ->get('customer');
   }
 
-  function getBy( $_id )
+  function getByID( $_id )
   {
     $customer = $this->mongo_db
       ->where('owner', $this->session->userdata("profileID"))
@@ -89,18 +89,39 @@ class Customer_Model extends CI_Model {
 
   function set($data)
   {
-    $_id = (int) $data['_id'];
-    unset($data['_id']);
-    $this->mongo_db
-      ->where('_id', $_id)
-      ->set($data)
-      ->update('customer');
 
-    $return = $this->mongo_db
-      ->where('_id', $_id)
-      ->get('customer');
+    if( isset( $data['email'] ) ) {
 
-    return $return[0];
+      $data['email'] = strtolower($data['email']);
+
+      $customer = $this->mongo_db
+        ->where('email', $data['email'])
+        ->get('customer');
+
+    }
+
+    if( $customer[0] ) {
+
+      return array("error" => lang("ctm_emailInUseBy") . " " . $customer[0]["name"]);
+    
+    } else {
+
+      $_id = (int) $data['_id'];
+      unset($data['_id']);
+
+      $this->mongo_db
+        ->where('_id', $_id)
+        ->set($data)
+        ->update('customer');
+
+      $return = $this->mongo_db
+        ->where('_id', $_id)
+        ->get('customer');
+
+      return $return[0];
+
+    }
+ 
   }
 
   function attach($_id)
@@ -180,6 +201,8 @@ class Customer_Model extends CI_Model {
 
   public function getOrCreate( $email )
   {
+
+    $email = strtolower( $email );
 
     $customer = $this->mongo_db
       ->where(array('email' => $email, "owner" => $this->session->userdata("profileID")))

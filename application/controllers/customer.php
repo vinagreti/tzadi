@@ -81,7 +81,7 @@ class Customer extends My_Controller {
 
   public function view( $_id ){
     $this->load->model("customer_model");
-    $data->customer = $this->customer_model->getBy( $_id );
+    $data->customer = $this->customer_model->getByID( $_id );
     $data->dynJS = array('customer/view', 'tzadi/tzadi-mail', 'bootstrap/bootstrap-datetimepicker.min');
     $data->view = 'customer/view';
     $data->page_title = $data->customer["name"] ;

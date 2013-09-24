@@ -67,3 +67,4 @@ $lang["ctm_fillDetail"] = "insert the detail";
 $lang["ctm_event"] = "event";
 $lang["ctm_doneByMe"] = "my event";
 $lang["ctm_doneByCustomer"] = "customer event";
+$lang["ctm_emailInUseBy"] = "this email belongs to the customer bruno";

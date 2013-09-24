@@ -202,9 +202,17 @@ $(document).ready(function(){
         var objCustomer = $tzd.list.getBy(customers.all, "_id", id)[0];
         formData._id = objCustomer._id;
         var callback = function( e ){
-          $tzd.alert.success($(".ctm_saved").html());
-          var index = customers.all.indexOf( objCustomer );
-          customers.all[index] = e;
+
+          if( e.error ) $tzd.alert.error( e.error );
+
+          else {
+
+            $tzd.alert.success($(".ctm_saved").html());
+            var index = customers.all.indexOf( objCustomer );
+            customers.all[index] = e;
+            
+          }
+
         };
         $tzd.ajax.post(url, formData, callback);
       } else {
