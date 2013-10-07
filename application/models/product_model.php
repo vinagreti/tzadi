@@ -17,13 +17,10 @@ class Product_Model extends CI_Model {
 
   function getByID( $_id )
   {
-    $products = $this->mongo_db
-      ->where('status', "active")
-      ->where('_id', (int) $_id)
-      ->get('product');
+    $products = $this->getHumanized( $_id );
 
-    if( isset($products[0]) )
-      return $products[0];
+    if( isset($products) )
+      return $products;
 
     else
       return false;
@@ -320,6 +317,8 @@ class Product_Model extends CI_Model {
 
       $product["priceWithDiscount"] = $product["currency"] . " " . number_format( $priceWithDiscount, 2, '.', '');
 
+      $product["priceFinal"] = $priceWithDiscount;
+
       $product["priceConverted"] = $currencyBase . " " . number_format( $this->convertCurrency( $priceWithDiscount, $product["currency"] ), 2, '.', '');
 
       return $product;
@@ -491,11 +490,11 @@ class Product_Model extends CI_Model {
 
     foreach( $tzdBudget as $product_id => $amount ) {
 
-      $product = $this->getBudgetItenHumanized( $product_id, $amount );
+      $product = $this->getHumanized( $product_id, $amount );
 
       if( $product ){
 
-        $budget->price += $product["totalPrice"];
+        $budget->price += $product["priceFinal"];
 
         $product["budgetAmount"] = $amount;
 
@@ -509,43 +508,6 @@ class Product_Model extends CI_Model {
     $budget->price = $this->session->userdata("currencyBase") . " " . number_format($budget->price, 2, '.', '');
 
     return $budget;
-
-  }
-
-  function getBudgetItenHumanized( $product_id, $amount ) {
-
-    $product = $this->mongo_db
-      ->where('_id', (int) $product_id)
-      ->select(array("name", "price", "currency", "_id"))
-      ->get('product');
-
-    if( $product ){
-
-      $product = $product[0];
-
-      if( isset($product["price"]) && $product["price"] > 0 ) {
-
-        $fullTotalPrice = $this->convertCurrency($product["price"], $product["currency"] );
-
-        $product["totalPrice"] = number_format($fullTotalPrice, 2, '.', '');
-
-        $product["humanPrice"] = $product["currency"] . " " . number_format( $amount * $product["price"], 2, '.', '');
-
-      } else {
-
-        $product["totalPrice"] = 0;
-
-        $product["humanPrice"] = 0;
-
-      }
-
-      return $product;
-
-    }
-      
-
-    else
-      return false;
 
   }
 

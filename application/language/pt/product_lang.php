@@ -206,3 +206,4 @@ $lang["pdt_discount"] = "desconto";
 $lang["pdt_finalSellPrice"] = "preço final";
 $lang["pdt_finalGain"] = "lucro final";
 $lang["pdt_finalPercent"] = "% final";
+$lang["pdt_addProduct"] = "adicionar produto";
