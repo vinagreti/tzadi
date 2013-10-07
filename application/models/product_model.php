@@ -494,7 +494,7 @@ class Product_Model extends CI_Model {
 
       if( $product ){
 
-        $budget->price += $product["priceFinal"];
+        $budget->price += $this->convertCurrency( $product["priceFinal"], $product["currency"] );
 
         $product["budgetAmount"] = $amount;
 
