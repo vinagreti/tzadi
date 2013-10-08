@@ -1,10 +1,3 @@
-<span class="pull-right">
-    <a class="btn btn-small" href="<?=base_url()?>vitrineIframe"><?=lang("tmpt_Products")?></a>
-    <a class="btn btn-small" href="<?=base_url()?>budgetIframe"><i class="icon-flag"></i> <?=lang('tmpt_Budget')?> <span class="label label-warning budgetTotal"></span></a>
-    <a class="changeCurrency btn btn-small" rel="tooltip" title="<?=lang("tmpt_select_currency")?>"><span class="currencyCode"></span> <i class="icon-caret-down"></i></a>
-    <a class="btn btn-small" href="<?=base_url()?>currencyIframe"><?=lang("tmpt_todayRates")?></a>
-</span>
-
 <h3><?=$product["name"]?></h3>
 
 <div class="row-fluid">
@@ -68,7 +61,7 @@
         $i = 1;
         echo "<dt>" . lang("pdt_itens") . "</dt>";
         foreach($product["itens"] as $key => $productIten) {
-          echo "<dd>" . $productIten["amount"] . " x <a href='" . base_url() . $productIten["_id"] ."' target='_blank'>" .$productIten["name"] . "</a></dd>"; 
+          echo "<dd>" . $productIten["amount"] . " x <a href='" . base_url() ."product/viewIframe/". $productIten["_id"] ."'>" .$productIten["name"] . "</a></dd>"; 
           $i++;
         }
       }

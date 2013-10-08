@@ -33,7 +33,7 @@
       <div class="span24">
         <?php foreach( $itens as $iten ) { ?>
 
-            <p><?=$iten["budgetAmount"]?>x <a href="<?=base_url().$iten["_id"]?>"><?=$iten["name"]?></a><span class="pull-right"><?=$iten["humanPrice"]?></span></p>
+            <p><?=$iten["budgetAmount"]?>x <a href="<?=base_url().$iten["_id"]?>" target="_blank"><?=$iten["name"]?></a><span class="pull-right"><?=$iten["humanPrice"]?></span></p>
 
         <?php } ?>
         <p class="pull-right"><strong class="text-warning"><?=lang("pdt_total")?>:</strong> <?=$price?></p>

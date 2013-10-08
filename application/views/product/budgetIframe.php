@@ -1,20 +1,13 @@
-<span class="pull-right">
-    <a class="btn btn-small" href="<?=base_url()?>vitrineIframe"><?=lang("tmpt_Products")?></a>
-    <a class="btn btn-small" href="<?=base_url()?>budgetIframe"><i class="icon-flag"></i> <?=lang('tmpt_Budget')?> <span class="label label-warning budgetTotal"></span></a>
-    <a class="changeCurrency btn btn-small" rel="tooltip" title="<?=lang("tmpt_select_currency")?>"><span class="currencyCode"></span> <i class="icon-caret-down"></i></a>
-    <a class="btn btn-small" href="<?=base_url()?>currencyIframe"><?=lang("tmpt_todayRates")?></a>
-</span>
-
 <h3><?=lang("pdt_Budget")?> <a class="reload btn btn-info"><i class="icon-refresh"></i></a></h3>
 
 <div class="row-fluid">
   <div class="span24 list">
     <div class="row-fluid item hide">
       <div class="span24  tzdTableRow">
-        <div class="span2 text-center"><a class="productImg" target="_blank"><img class="imgSmall"></img></a></div>
+        <div class="span2 text-center"><a class="productImg" href="<?=base_url()?>product/viewIframe/"><img class="imgSmall"></img></a></div>
         <div class="span6">
           <small>
-            <p><a class="productName" target="_blank"></a></p>
+            <p><a class="productName" href="<?=base_url()?>product/viewIframe/"></a></p>
             <p><?=lang("pdt_code")?>: <span class="code"></span></p>
           </small>
         </div>

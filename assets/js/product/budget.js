@@ -22,8 +22,8 @@ $(document).ready(function(){
 
             if( ! product.priceFinal || isNaN(product.priceFinal)) product.priceFinal = 0;
             line.find(".amount").val(amount);
-            line.find(".productName").html(product.name).attr("href", base_url+"product/view/"+product._id);
-            line.find(".productImg").attr("href", base_url+"product/view/"+product._id);
+            line.find(".productName").html(product.name).attr("href", line.find(".productName").attr("href")+product._id);
+            line.find(".productImg").attr("href", line.find(".productImg").attr("href")+product._id);
             line.find(".price").html(product.priceFinal);
             line.find(".code").html(product._id);
             var total = amount*product.priceFinal;
