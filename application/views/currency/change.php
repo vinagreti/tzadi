@@ -41,7 +41,6 @@
     <option value="THB"><?=lang("crc_THB")?></option>
     <option value="ZAR"><?=lang("crc_ZAR")?></option>
   </select>
-  <div class="pull-right"><a href="<?=base_url().lang("rt_currency")?>"><?=lang("crc_todayRate")?></a></div>
 </div>
 
 <div class="modal-footer">
