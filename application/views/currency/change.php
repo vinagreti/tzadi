@@ -3,8 +3,8 @@
   <h3><?=lang("crc_changeCurrency")?></h3>
 </div>
 
-<div class="modal-body" style="height:50px; width:90%;">
-  <select class="input-block-level selectCurrency" rel="tooltip" title="<?=lang('crc_changeCurrency')?>">
+<div class="modal-body" style="height:60px;">
+  <select class="selectCurrency" rel="tooltip" title="<?=lang('crc_changeCurrency')?>" style="width:98%;">
     <option><?=lang('crc_selectACurrency')?></option>
     <option value="USD"><?=lang("crc_USD")?></option>
     <option value="JPY"><?=lang("crc_JPY")?></option>
