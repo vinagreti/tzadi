@@ -46,5 +46,15 @@ class Page {
 
   }
 
+  public function loadIframe( $data ) {
+
+    $data->the_head = isset($data->the_head) ? $data->the_head : "";
+
+    $data->content = $this->CI->load->view($data->view, $data, true);
+
+    $this->CI->parser->parse("templates/templateIframe", $data);
+
+  }
+
 }
 /* End of file Permission.php */

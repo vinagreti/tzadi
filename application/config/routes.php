@@ -49,12 +49,14 @@ $route['(:num)/(:any)'] = 'product/view/$1';
 $route['product/(:num)'] = 'product/view/$1';
 $route['produto/(:num)'] = 'product/view/$1';
 $route['vitrine'] = 'product';
+$route['vitrineIframe'] = 'product/vitrineIframe';
 $route['products'] = 'product/manage';
 $route['produtos'] = 'product/manage';
 
 $route['mail/(:num)'] = 'mail/read/$1';
 
 $route['budget'] = 'product/budget';
+$route['budgetIframe'] = 'product/budgetIframe';
 $route['orcamento'] = 'product/budget';
 
 $route['resetPassword'] = 'user/resetPassword';
@@ -64,6 +66,7 @@ $route['changePassword'] = 'user/changePassword';
 $route['alterarSenha'] = 'user/changePassword';
 
 $route['cotacao'] = 'currency';
+$route['currencyIframe'] = 'currency/currencyIframe';
 
 $route['interests'] = 'user/interests';
 $route['interesses'] = 'user/interests';

@@ -15,6 +15,14 @@ class Product extends My_Controller {
     $this->page->load($data);
   }
 
+  public function vitrineIframe()
+  {
+    $data->dynJS = 'product/vitrine';
+    $data->view = 'product/vitrineIframe';
+    $data->page_title = "Vitrine";
+    $this->page->loadIframe($data);
+  }
+  
   public function manage()
   {
 
@@ -32,6 +40,14 @@ class Product extends My_Controller {
     $data->view = 'product/budget';
     $data->page_title = lang('pdt_budgetTitle');
     $this->page->load($data);
+  }
+
+  public function budgetIframe()
+  {
+    $data->dynJS = array('product/budget', "product/product");
+    $data->view = 'product/budgetIframe';
+    $data->page_title = lang('pdt_budgetTitle');
+    $this->page->loadIframe($data);
   }
 
   public function getAll(){
@@ -136,6 +152,34 @@ class Product extends My_Controller {
     if(isset($data->product["detail"])) $data->the_head .= "<meta property='og:description' content='" . $data->product["detail"] . "' />";
 
     $this->page->load($data);
+
+
+  }
+
+  public function viewIframe( $_id ){
+    $this->load->model("product_model");
+    $data->product = $this->product_model->getHumanized( $_id );
+
+    if( $data->product ){
+
+      $data->dynJS = array('product/view', "product/product");
+      $data->view = 'product/viewIframe';
+      $data->page_title = $data->product["name"];
+
+    } else {
+
+      $data->view = 'product/notFound';
+      $data->page_title = lang("pdt_NotFound");
+
+    }
+
+    $data->the_head = "<link rel='image_src' href=" . $data->product['coverImg'] . " />";
+    $data->the_head .= "<meta property='og:image' content='" . $data->product["coverImg"] . "' />";
+    $data->the_head .= "<meta property='og:url' content='" . str_replace("/index.php", "", current_url()) . "' />";
+    $data->the_head .= "<meta property='og:title' content='" . $data->product["name"] . "' />";
+    if(isset($data->product["detail"])) $data->the_head .= "<meta property='og:description' content='" . $data->product["detail"] . "' />";
+
+    $this->page->loadIframe($data);
 
 
   }

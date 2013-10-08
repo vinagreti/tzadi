@@ -1,4 +1,5 @@
 body {
+  background: none;
   margin : 0px;
   padding-top: 0px;
   padding-bottom: 40px;
@@ -182,7 +183,7 @@ a {
   border-radius: 3px;
   margin-bottom: 8px;
   padding: 0px 3px;
-  background-color: white
+  background-color: white;
 }
 
 .input-content-editable :focus{

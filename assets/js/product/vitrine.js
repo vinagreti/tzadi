@@ -19,7 +19,7 @@ $(document).ready(function(){
       product.find(".name").html(objProduct.name);
       product.find(".price").html($(".currencyCode").html() + " " + productPrice.toFixed(2) );
       product.find(".likes").html(objProduct.like);
-      product.find(".open").attr("href", base_url+objProduct._id+"/"+$tzd.string.makeURL( objProduct.name ));
+      product.find(".open").attr("href", product.find(".open").attr("href")+objProduct._id+"/"+$tzd.string.makeURL( objProduct.name ));
       if(objProduct.detail) product.find(".detail").html(objProduct.detail.split('', 64));
       return product;
     };

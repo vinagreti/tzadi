@@ -47,6 +47,21 @@ class Currency extends My_Controller {
 
 	}
 
+	public function currencyIframe()
+	{
+
+		$currency = $this->currency_model->getProfileCurrency( );
+
+	    $data->view = 'currency/todayIframe';
+
+	    $data->page_title = lang('crc_Rates');
+
+	    $data->currency = $currency;
+
+	    $this->page->loadIframe($data);
+
+	}
+
 	public function getAll()
 	{
 

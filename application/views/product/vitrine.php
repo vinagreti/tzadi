@@ -33,7 +33,7 @@
   <div class="span24 itensList">
     <div class="row-fluid line">
       <div class="span6 product hide item-vitrine">
-        <a class="open" href="#" target="_blank">
+        <a class="open" href="<?=base_url()?>">
           <p class="text-center"><img class="img imgMedium" alt="160x120" src="<?=base_url()?>assets/img/no_photo_160x120.png"><p>
         </a>
         <div class="">
