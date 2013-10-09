@@ -88,10 +88,10 @@ class User_Model extends CI_Model {
         }
             
         else if( isset( $user["org"] ) )
-            $url = "http://".$user["org"].".".ENVIRONMENT;
+            $url = myOrg_url();
 
         else
-            $url = "http://".ENVIRONMENT;
+            $url = tzd_url();
 
         return $url;
 
@@ -435,16 +435,16 @@ class User_Model extends CI_Model {
 
                     switch ($user["kind"]) {
                         case 'student':
-                            $res->url = "http://".$user["org"].".".ENVIRONMENT."/".lang("rt_interests");
+                            $res->url = myOrg_url() . lang("rt_interests");
                             break;
                         case 'agency ':
-                            $res->url = "http://".$user["org"].".".ENVIRONMENT."/".lang("rt_products");
+                            $res->url = myOrg_url() . lang("rt_products");
                             break;
                         case 'supplier':
-                            $res->url = "http://".$user["org"].".".ENVIRONMENT."/".lang("rt_products");
+                            $res->url = myOrg_url() . lang("rt_products");
                             break;
                         default:
-                            $res->url = "http://".$user["org"].".".ENVIRONMENT;
+                            $res->url = myOrg_url();
                             break;
                     }
 
@@ -547,7 +547,7 @@ class User_Model extends CI_Model {
 
     $this->load->model("file_model");
 
-    $newFile = "http://".ENVIRONMENT."/file/open/".$this->file_model->save( $_id );
+    $newFile = tzd_url() . "file/open/" . $this->file_model->save( $_id );
 
     $this->session->set_userdata('img', $newFile);
 
@@ -654,35 +654,43 @@ class User_Model extends CI_Model {
     function changePassword( $data )
     {
 
-        $user = $this->getByIdentity( $this->session->userdata("identity") );
+        $user = $this->getByID( $this->session->userdata("_id") );
 
-        if( $user["password"] == md5($data["passwdOld"]) ){
+        if( $data["passwdNew"] == $data["passwdNewConf"] ) {
 
-            $edited = $this->mongo_db
-                ->where( 'org', $this->session->userdata("identity") )
-                ->set("password" , md5($data["passwdNew"]))
-                ->update("user");
+            if( $user["password"] == md5($data["passwdOld"]) ){
 
-            $mailContent['subject'] = lang("usr_newPassword") . " - " . $user["name"];
+                $edited = $this->mongo_db
+                    ->where( '_id', $this->session->userdata("_id") )
+                    ->set("password" , md5($data["passwdNew"]))
+                    ->update("user");
 
-            $message = "<p> ". lang("usr_yourPasswordWasChanged") ."! </p>";
-            $message .= "<p> ". lang("usr_yourPasswordIs") .": " . $data["passwdNew"] . "</p>";
-            $message .= "<p> email: " . $user["email"] . "</p>";
-            $mailContent["message"] = '<html><head><meta charset="utf-8"></head><body>'.$message.'</body></html>';
+                $mailContent['subject'] = lang("usr_newPassword") . " - " . $user["name"];
 
-            $mailContent["to"] = $user["email"];
+                $message = "<p> ". lang("usr_yourPasswordWasChanged") ."! </p>";
+                $message .= "<p> ". lang("usr_yourPasswordIs") .": " . $data["passwdNew"] . "</p>";
+                $message .= "<p> email: " . $user["email"] . "</p>";
+                $mailContent["message"] = '<html><head><meta charset="utf-8"></head><body>'.$message.'</body></html>';
 
-            $mailContent["kind"] = "user/changePassword";
+                $mailContent["to"] = $user["email"];
 
-            $this->load->model('mail_model');
+                $mailContent["kind"] = "user/changePassword";
 
-            $this->mail_model->queue($mailContent);
+                $this->load->model('mail_model');
 
-            return array("success" => lang("usr_passwordChanged"));
+                $this->mail_model->queue($mailContent);
+
+                return array("success" => lang("usr_passwordChanged"));
+
+            } else {
+
+                return array("error" => lang("usr_incorrectOldPasswd"));
+
+            }
 
         } else {
 
-            return array("error" => lang("usr_incorrectOldPasswd"));
+            return array("error" => lang("usr_newPasswordsNotMatch"));
 
         }
     }

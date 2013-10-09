@@ -19,7 +19,7 @@
 
 		<p><span class="text-warning">e-mail: </span> <?=$user["email"]?></p>
 
-		<p><span class="text-warning"><?=lang("usr_password")?>: </span>***** <a href="https://<?=ENVIRONMENT?>/<?=lang('rt_changePassword')?>"><?=lang("usr_changePassword")?></a></p>
+		<p><span class="text-warning"><?=lang("usr_password")?>: </span>***** <a href="<?=tzd_url() . lang('rt_changePassword')?>"><?=lang("usr_changePassword")?></a></p>
 
 		<label class="text-warning"><span><?=lang('usr_chooseYourName')?></span>
 			<div class="control-group">

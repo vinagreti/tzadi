@@ -13,7 +13,7 @@
 
 		<div class="pull-right">
 			<a id="savePost"class="btn btn-success"><?=lang("blg_savePost")?></a>
-			<a id="cancel" class="btn" href="HTTP://<?=$this->session->userdata("identity").".".ENVIRONMENT?>/blog"><?=lang("blg_cancel")?></a>
+			<a id="cancel" class="btn" href="<?=myOrg_url()?>blog"><?=lang("blg_cancel")?></a>
 		</div>
 	</div>
 </div>

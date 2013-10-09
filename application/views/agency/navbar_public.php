@@ -25,7 +25,7 @@
       <li><a class="changeCurrency" rel="tooltip" title="<?=lang("tmpt_select_currency")?>"><span class="currencyCode"></span> <i class="icon-caret-down"></i></a></li>
       <li class="divider-vertical"></li>
       <li>
-        <button class="btn btn-info" style="color:white;" onclick="location.href='https://<?=ENVIRONMENT?>/<?=lang('rt_login')?>'"><i class="icon-signin icon-large"></i> <?=lang('tmpt_login')?></button>
+        <button class="btn btn-info" style="color:white;" onclick="location.href='<?=base_url() . lang('rt_login')?>'"><i class="icon-signin icon-large"></i> <?=lang('tmpt_login')?></button>
       </li>
     </ul>
   </div><!--/.nav-collapse -->

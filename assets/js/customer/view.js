@@ -1,8 +1,11 @@
 $(document).ready(function(){
 
-	var system = $(".system").clone();
-	system.removeClass("hide");
-	$("#system").remove();
+	var created = $(".created").clone();
+	created.removeClass("hide");
+	$("#created").remove();
+	var autoCreated = $(".autoCreated").clone();
+	autoCreated.removeClass("hide");
+	$("#autoCreated").remove();
 	var customerAdd = $(".customerAdd").clone();
 	customerAdd.removeClass("hide");
 	$(".customerAdd").remove();
@@ -71,130 +74,139 @@ $(document).ready(function(){
 					switch( event.kind ){
 
 						case "customer/add":
-							var customerAddNew = customerAdd.clone();
-							customerAddNew.find(".date").html( new $tzd.date(event.date).shortDateTime );
-							timeline.append( customerAddNew );
+							eventHTML = customerAdd.clone();
+							eventHTML.find(".date").html( new $tzd.date(event.date).shortDateTime );
 							break;
 
-						case "customer/getOrCreate":
-							var systemNew = system.clone();
-							systemNew.find(".date").html( new $tzd.date(event.date).shortDateTime );
-							timeline.append( systemNew );
+						case "customer/created":
+							eventHTML = created.clone();
+							eventHTML.find(".date").html( new $tzd.date(event.date).shortDateTime );
+							break;
+
+						case "customer/autoCreated":
+							eventHTML = autoCreated.clone();
+							eventHTML.find(".date").html( new $tzd.date(event.date).shortDateTime );
 							break;
 
 						case "contact":
-							var contactNew = contact.clone();
-							contactNew.find(".mail_subject").html( event.mail_subject );
-							contactNew.find(".date").html( new $tzd.date(event.date).shortDateTime );
-							contactNew.find(".mail_id").attr("href", base_url+"mail/"+event.mail_id );
-							timeline.append( contactNew );
+							eventHTML = contact.clone();
+							eventHTML.find(".mail_subject").html( event.mail_subject );
+							eventHTML.find(".date").html( new $tzd.date(event.date).shortDateTime );
+							eventHTML.find(".mail_id").attr("href", base_url+"mail/"+event.mail_id );
 							break;
 
 						case "replyReceived":
-							var newReplyReceived = replyReceived.clone();
-							newReplyReceived.find(".mail_subject").html( event.mail_subject );
-							newReplyReceived.find(".date").html( new $tzd.date(event.date).shortDateTime );
-							newReplyReceived.find(".mail_id").attr("href", base_url+"mail/"+event.mail_id );
-							timeline.append( newReplyReceived );
+							eventHTML = replyReceived.clone();
+							eventHTML.find(".mail_subject").html( event.mail_subject );
+							eventHTML.find(".date").html( new $tzd.date(event.date).shortDateTime );
+							eventHTML.find(".mail_id").attr("href", base_url+"mail/"+event.mail_id );
 							break;
 
 						case "repliedMessage":
-							var newrepliedMessage = repliedMessage.clone();
-							newrepliedMessage.find(".mail_subject").html( event.mail_subject );
-							newrepliedMessage.find(".date").html( new $tzd.date(event.date).shortDateTime );
-							newrepliedMessage.find(".mail_id").attr("href", base_url+"mail/"+event.mail_id );
-							timeline.append( newrepliedMessage );
+							eventHTML = repliedMessage.clone();
+							eventHTML.find(".mail_subject").html( event.mail_subject );
+							eventHTML.find(".date").html( new $tzd.date(event.date).shortDateTime );
+							eventHTML.find(".mail_id").attr("href", base_url+"mail/"+event.mail_id );
 							break;
 							
 						case "product/share":
 
-							var productShareNew;
 							if( event.staff_id )
-								productShareNew = productShareByStaff.clone();
+								eventHTML = productShareByStaff.clone();
 
 							else
-								productShareNew = productShare.clone();
+								eventHTML = productShare.clone();
 
-							productShareNew.find(".mail_subject").html( event.mail_subject );
-							productShareNew.find(".date").html( new $tzd.date(event.date).shortDateTime );
-							productShareNew.find(".mail_id").attr("href", base_url+"mail/"+event.mail_id );
-							timeline.append( productShareNew );
+							eventHTML.find(".mail_subject").html( event.mail_subject );
+							eventHTML.find(".date").html( new $tzd.date(event.date).shortDateTime );
+							eventHTML.find(".mail_id").attr("href", base_url+"mail/"+event.mail_id );
 							break;
 
 						case "product/knowMore":
 
-							var productKnowMoreNew;
-
 							if( event.staff_id )
-								productKnowMoreNew = productKnowMoreByStaff.clone();
+								eventHTML = productKnowMoreByStaff.clone();
 
 							else
-								productKnowMoreNew = productKnowMore.clone();
+								eventHTML = productKnowMore.clone();
 
-							productKnowMoreNew.find(".mail_subject").html( event.mail_subject );
-							productKnowMoreNew.find(".date").html( new $tzd.date(event.date).shortDateTime );
-							productKnowMoreNew.find(".mail_id").attr("href", base_url+"mail/"+event.mail_id );
-							timeline.append( productKnowMoreNew );
+							eventHTML.find(".mail_subject").html( event.mail_subject );
+							eventHTML.find(".date").html( new $tzd.date(event.date).shortDateTime );
+							eventHTML.find(".mail_id").attr("href", base_url+"mail/"+event.mail_id );
 							break;
 
 						case "product/shareBudget":
 
-							var budgetShareNew;
-
 							if( event.staff_id )
-								budgetShareNew = budgetShareByStaff.clone();
+								eventHTML = budgetShareByStaff.clone();
 
 							else
-								budgetShareNew = budgetShare.clone();
+								eventHTML = budgetShare.clone();
 
-							budgetShareNew.find(".mail_subject").html( event.mail_subject );
-							budgetShareNew.find(".date").html( new $tzd.date(event.date).shortDateTime );
-							budgetShareNew.find(".mail_id").attr("href", base_url+"mail/"+event.mail_id );
-							timeline.append( budgetShareNew );
+							eventHTML.find(".mail_subject").html( event.mail_subject );
+							eventHTML.find(".date").html( new $tzd.date(event.date).shortDateTime );
+							eventHTML.find(".mail_id").attr("href", base_url+"mail/"+event.mail_id );
 							break;
 
 						case "product/knowMoreBudget":
 
-							var budgetKnowMoreNew;
-
 							if( event.staff_id )
-								budgetKnowMoreNew = budgetKnowMoreByStaff.clone();
+								eventHTML = budgetKnowMoreByStaff.clone();
 
 							else
-								budgetKnowMoreNew = budgetKnowMore.clone();
+								eventHTML = budgetKnowMore.clone();
 
-							budgetKnowMoreNew.find(".mail_subject").html( event.mail_subject );
-							budgetKnowMoreNew.find(".date").html( new $tzd.date(event.date).shortDateTime );
-							budgetKnowMoreNew.find(".mail_id").attr("href", base_url+"mail/"+event.mail_id );
-							timeline.append( budgetKnowMoreNew );
+							eventHTML.find(".mail_subject").html( event.mail_subject );
+							eventHTML.find(".date").html( new $tzd.date(event.date).shortDateTime );
+							eventHTML.find(".mail_id").attr("href", base_url+"mail/"+event.mail_id );
 							break;
 
 						case "sentMessage":
-							var newsentMessage = sentMessage.clone();
-							newsentMessage.find(".mail_subject").html( event.mail_subject );
-							newsentMessage.find(".date").html( new $tzd.date(event.date).shortDateTime );
-							newsentMessage.find(".mail_id").attr("href", base_url+"mail/"+event.mail_id );
-							timeline.append( newsentMessage );
+							eventHTML = sentMessage.clone();
+							eventHTML.find(".mail_subject").html( event.mail_subject );
+							eventHTML.find(".date").html( new $tzd.date(event.date).shortDateTime );
+							eventHTML.find(".mail_id").attr("href", base_url+"mail/"+event.mail_id );
 							break;
 
 						case "ownEvent":
-							var ownEventNew = ownEvent.clone();
-							ownEventNew.find(".mail_subject").html( event.mail_subject );
-							ownEventNew.find(".date").html( new $tzd.date(event.date).shortDateTime );
-							ownEventNew.find(".eventTitle").html( event.title );
-							ownEventNew.find(".eventDetail").html( event.detail );
-							timeline.append( ownEventNew );
+							eventHTML = ownEvent.clone();
+							eventHTML.find(".mail_subject").html( event.mail_subject );
+							eventHTML.find(".date").html( new $tzd.date(event.date).shortDateTime );
+							eventHTML.find(".eventTitle").html( event.title );
+							eventHTML.find(".eventDetail").html( event.detail );
 							break;
 
 						case "customerEvent":
-							var customerEventNew = customerEvent.clone();
-							customerEventNew.find(".mail_subject").html( event.mail_subject );
-							customerEventNew.find(".date").html( new $tzd.date(event.date).shortDateTime );
-							customerEventNew.find(".eventTitle").html( event.title );
-							customerEventNew.find(".eventDetail").html( event.detail );
-							timeline.append( customerEventNew );
+							eventHTML = customerEvent.clone();
+							eventHTML.find(".mail_subject").html( event.mail_subject );
+							eventHTML.find(".date").html( new $tzd.date(event.date).shortDateTime );
+							eventHTML.find(".eventTitle").html( event.title );
+							eventHTML.find(".eventDetail").html( event.detail );
 							break;
+					};
+
+					if( event.creator_id == "customer" ){
+
+						eventHTML.find(".creatorImg").attr( "src", $(".customerImg").attr("src") );
+
+						eventHTML.find(".creatorName").html( $("h3").html() );
+
+						eventHTML.find(".creatorLink").attr( "href", base_url + "customer/" + $('#customer_id').html() );
+
 					}
+
+
+					else {
+
+						eventHTML.find(".creatorImg").attr( "src", event.creator_img );
+
+						eventHTML.find(".creatorName").html( event.creator_name );
+
+						eventHTML.find(".creatorLink").attr( "href", base_url + "collaborator/" + event.creator_id );
+
+					}
+
+					timeline.append( eventHTML );
 
 				});
 

@@ -394,6 +394,12 @@ class Product_Model extends CI_Model {
 
         $event->customer_id = $customer_id;
 
+        if( $this->session->userdata("myOrg") )
+          $event->creator_id = $this->session->userdata("_id");
+
+        else
+          $event->creator_id = "customer";
+
         $this->customer_model->addTimeline( $event );
 
       }
@@ -464,6 +470,12 @@ class Product_Model extends CI_Model {
       $event->mail_subject = $mailContent['subject'];
 
       $event->customer_id = $customer_id;
+
+      if( $this->session->userdata("myOrg") )
+        $event->creator_id = $this->session->userdata("_id");
+
+      else
+        $event->creator_id = "customer";
 
       $this->customer_model->addTimeline( $event );
 
@@ -588,6 +600,12 @@ class Product_Model extends CI_Model {
 
         $event->customer_id = $customer_id;
 
+        if( $this->session->userdata("myOrg") )
+          $event->creator_id = $this->session->userdata("_id");
+
+        else
+          $event->creator_id = "customer";
+
         $this->customer_model->addTimeline( $event );
 
       }
@@ -646,6 +664,12 @@ class Product_Model extends CI_Model {
       $event->mail_subject = $mailContent['subject'];
 
       $event->customer_id = $customer_id;
+
+      if( $this->session->userdata("myOrg") )
+        $event->creator_id = $this->session->userdata("_id");
+
+      else
+        $event->creator_id = "customer";
 
       $this->customer_model->addTimeline( $event );
 

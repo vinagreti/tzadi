@@ -30,6 +30,7 @@ class Blog_Model extends CI_Model {
           , "date" => now()
           , "url" => $url
           , "author" => $this->session->userdata("_id")
+          , "org_id" => $this->session->userdata("org")
         )
       );
 
@@ -50,7 +51,7 @@ class Blog_Model extends CI_Model {
 
     $news = $this->mongo_db
       ->select(array("title", "date", "subtitle", "url"))
-      ->where("author", $this->session->userdata("_id"))
+      ->where("org_id", $this->session->userdata("org"))
       ->order_by(array('date'=>'desc'))
       ->get('blog');
 
@@ -66,7 +67,7 @@ class Blog_Model extends CI_Model {
   {
 
     $post = $this->mongo_db
-      ->where("author", $this->session->userdata("_id"))
+      ->where("org_id", $this->session->userdata("org"))
       ->limit(1)
       ->order_by(array('date'=>'desc'))
       ->get('blog');
@@ -95,7 +96,7 @@ class Blog_Model extends CI_Model {
         ->where(
           array(
             "url" => $url
-            , "author" => $this->session->userdata("_id")
+            , "org_id" => $this->session->userdata("org")
           )
         )
         ->get('blog');
@@ -132,7 +133,7 @@ class Blog_Model extends CI_Model {
       $post = $this->mongo_db
         ->where( array( 
           "url" => $oldUrl
-          , "author" => $this->session->userdata("_id") ) )
+          , "org_id" => $this->session->userdata("org") ) )
         ->set($data)
         ->update("blog");
 
@@ -158,7 +159,7 @@ class Blog_Model extends CI_Model {
     $own = $post = $this->mongo_db
       ->where( array( 
           "url" => $data["url"]
-          , "author" => $this->session->userdata("_id") ) )
+          , "org_id" => $this->session->userdata("org") ) )
       ->get('blog');
 
     if( $own ) {
@@ -166,7 +167,7 @@ class Blog_Model extends CI_Model {
       $this->mongo_db
         ->where( array( 
           "url" => $data["url"]
-          , "author" => $this->session->userdata("_id") ) )
+          , "org_id" => $this->session->userdata("org") ) )
         ->delete('blog');
         
       return array("url" => base_url()."blog/".lang("rt_posts"));

@@ -4,9 +4,9 @@
     <span class="icon-bar"></span>
     <span class="icon-bar"></span>
   </button>
-  <a class="brand" href="<?=base_url()?>" style="background: url(<?=base_url()?>assets/img/144x144.png) no-repeat left center; background-size: 100%; height:20px; width: 20px; margin:0px 5px;"></a>
+  <a class="brand" href="<?=tzd_url()?>" style="background: url(<?=assets_url("img/144x144.png")?>) no-repeat left center; background-size: 100%; height:20px; width: 20px; margin:0px 5px;"></a>
   <span class="brand">
-    <a href="<?=base_url()?>">TZADI</a>
+    <a href="<?=tzd_url()?>">TZADI</a>
   </span>
   <div class="nav-collapse collapse">
     <ul class="nav">
@@ -21,11 +21,11 @@
         </ul>
       </li>
       <li>
-        <button class="btn btn-success" style="color:white;" id="signUp" onclick="location.href='<?=base_url()?><?=lang('rt_signup')?>'"><i class="icon-arrow-right"></i> <?=lang('tmpt_signup')?></button>
+        <button class="btn btn-success" style="color:white;" id="signUp" onclick="location.href='<?=tzd_url()?><?=lang('rt_signup')?>'"><i class="icon-arrow-right"></i> <?=lang('tmpt_signup')?></button>
       </li>
       <li class="divider-vertical"></li>
       <li>
-        <button class="btn btn-info" style="color:white;" onclick="location.href='<?=base_url()?><?=lang('rt_login')?>'"><i class="icon-signin icon-large"></i> <?=lang('tmpt_login')?></button>
+        <button class="btn btn-info" style="color:white;" onclick="location.href='<?=tzd_url()?><?=lang('rt_login')?>'"><i class="icon-signin icon-large"></i> <?=lang('tmpt_login')?></button>
       </li>
     </ul>
   </div><!--/.nav-collapse -->

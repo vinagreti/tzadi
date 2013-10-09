@@ -35,8 +35,10 @@ class Customer_Model extends CI_Model {
   {
 
     $customer = $this->mongo_db
-      ->where('_id', (int) $customer_id )
-      ->where('org_id', (int) $this->session->userdata("myOrgID") )
+      ->where(array(
+        '_id' => (int) $customer_id
+        , 'org_id' => $this->session->userdata("myOrgID")
+        ))
       ->get('customer');
 
     if( ! $customer ){
@@ -45,10 +47,33 @@ class Customer_Model extends CI_Model {
 
     } else {
 
-      return $this->mongo_db
+      $events = $this->mongo_db
         ->order_by( array("date" => "desc") )
         ->where('customer_id', (int) $customer_id )
         ->get('timeline');
+
+      $this->load->model("user_model");
+
+      $collaborators = array();
+
+      foreach ($events as $key => $event) {
+
+        if( $event["creator_id"] != "customer" ){
+
+          $collaborator_id = $event["creator_id"];
+
+          if( ! isset( $collaborators[ $collaborator_id ] ) )
+            $collaborators[ $collaborator_id ] = $this->user_model->getByID(  $collaborator_id  );
+
+          $events[$key]["creator_name"] = $collaborators[ $collaborator_id ]["name"];
+
+          $events[$key]["creator_img"] = $collaborators[ $collaborator_id ]["img"];
+
+        }
+
+      }
+
+      return $events;
 
     }
 
@@ -86,15 +111,15 @@ class Customer_Model extends CI_Model {
   function set($data)
   {
 
-    if( isset( $data['email'] ) ) {
-
+    if( isset( $data['email'] ) )
       $data['email'] = strtolower($data['email']);
 
-      $customer = $this->mongo_db
-        ->where('email', $data['email'])
-        ->get('customer');
+    $customer = $this->mongo_db
+      ->where('email', $data['email'])
+      ->get('customer');
 
-    if( $customer[0] )
+    if( isset($customer[0]) ){
+      
       return array("error" => lang("ctm_emailInUseBy") . " " . $customer[0]["name"]);
     
     } else {
@@ -198,7 +223,10 @@ class Customer_Model extends CI_Model {
     $email = strtolower( $email );
 
     $customer = $this->mongo_db
-      ->where(array('email' => $email, "owner" => $this->session->userdata("org")))
+      ->where(array(
+        'email' => $email
+        , "org_id" => $this->session->userdata("org")
+        ))
       ->get('customer');
 
     if( $customer ) {
@@ -218,7 +246,7 @@ class Customer_Model extends CI_Model {
           "_id" => $newID
           ,"name" => $email
           ,"email" => $email
-          ,"org_id" => $this->session->userdata("myOrgID")
+          ,"org_id" => $this->session->userdata("org")
           ,"creation" => now()
           ,"creator" => "system"
           ,"status" => "active"
@@ -226,7 +254,21 @@ class Customer_Model extends CI_Model {
         )
       );
 
-      $action->kind = "customer/getOrCreate";
+      if($this->session->userdata("myOrg")){
+
+        $action->creator_id = $this->session->userdata("_id");
+
+        $action->kind = "customer/created";
+
+      }
+
+      else{
+
+        $action->creator_id = "customer";
+
+        $action->kind = "customer/autoCreated";
+
+      }
 
       $action->customer_id = $newID;
 
@@ -244,6 +286,16 @@ class Customer_Model extends CI_Model {
     $this->load->model("mongo_model");
 
     $action->_id = $this->mongo_model->newID();
+
+    if( ! isset($action->creator_id) ){
+
+      if( $this->session->userdata("_id") )
+        $action->creator_id = $this->session->userdata("_id");
+
+      else
+        $action->creator_id = "nao foi possivel definir no model customer";
+
+    }
 
     if( ! isset($action->date) ){
 

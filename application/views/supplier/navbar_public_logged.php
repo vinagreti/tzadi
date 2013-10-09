@@ -4,9 +4,9 @@
     <span class="icon-bar"></span>
     <span class="icon-bar"></span>
   </button>
-  <a class="brand" href="<?=base_url()?>" style="background: url(<?=$this->session->userdata("orgImg")?>) no-repeat left center; background-size: 100%; height:20px; width: 20px; margin:0px 5px;"></a>
+  <a class="brand" href="<?=myOrg_url()?>" style="background: url(<?=$this->session->userdata("orgImg")?>) no-repeat left center; background-size: 100%; height:20px; width: 20px; margin:0px 5px;"></a>
   <span class="brand">
-    <a href="<?=base_url()?>"><?= $this->session->userdata("orgName")?></a>
+    <a href="<?=myOrg_url()?>"><?= $this->session->userdata("orgName")?></a>
   </span>
   <div class="nav-collapse collapse">
     <ul class="nav">
@@ -28,7 +28,7 @@
         <ul class="dropdown-menu">
           <li><a tabindex="-1"  href="http://<?=$this->session->userdata("identity")?>.<?=ENVIRONMENT?>/<?=lang("rt_profile")?>"><?=lang('tmpt_Profile')?></a></li>
           <li class="divider"></li>
-          <li><a tabindex="-1"  href="<?=base_url()?><?=lang('rt_logout')?>"><?=lang('tmpt_Logout')?></a></li>
+          <li><a tabindex="-1"  href="<?=myOrg_url()?><?=lang('rt_logout')?>"><?=lang('tmpt_Logout')?></a></li>
         </ul>
       </li>
     </ul>

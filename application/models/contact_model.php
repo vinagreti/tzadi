@@ -83,6 +83,8 @@ class Contact_Model extends CI_Model {
 
         $event->customer_id = $customer_id;
 
+        $event->creator_id = "customer";
+
         $this->customer_model->addTimeline( $event );
 
         return array( "success" => lang("ct_sent") );
