@@ -80,7 +80,7 @@ class Currency_Model extends CI_Model {
 
     $currency = $this->getToday();
 
-    $exchangeRate = $this->session->userdata("profileExchangeRate");
+    $exchangeRate = $this->session->userdata("orgExchangeRate");
 
     if( $exchangeRate ) {
 
@@ -104,5 +104,5 @@ class Currency_Model extends CI_Model {
     return $currency;
 
   }
-
+  
 }

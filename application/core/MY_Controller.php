@@ -5,7 +5,7 @@ class My_Controller extends CI_Controller{
   public function __construct() {
     parent::__construct();
 
-    $this->defineIdentity();
+    $this->defineOrganization();
 
     $this->handleSSL();
 
@@ -23,7 +23,7 @@ class My_Controller extends CI_Controller{
 
   }
 
-  private function defineIdentity(){
+  private function defineOrganization(){
 
     $subdomain = rtrim(strstr($_SERVER["HTTP_HOST"], ENVIRONMENT, true), '.');
 
@@ -34,45 +34,43 @@ class My_Controller extends CI_Controller{
 
       define('IDENTITY', $subdomain);
 
-      $this->load->model("user_model");
+      $this->load->model("org_model");
       
-      $user = $this->user_model->getByIdentity(IDENTITY);
+      $org = $this->org_model->getByIdentity(IDENTITY);
 
-      if($user){
+      if($org){
 
-        if( $user["_id"] == $this->session->userdata("_id") )
-          $this->session->set_userdata("ownProfile", true);
-
-        else
-          $this->session->set_userdata("ownProfile", false);
-
-        $this->session->set_userdata("profileIdentity", IDENTITY);
-
-        $this->session->set_userdata("profileID", $user["_id"]);
-
-        $this->session->set_userdata("profileName", $user["name"]);
-
-        $this->session->set_userdata("profileImg", $user["img"]);
-
-        $this->session->set_userdata("profileKind", $user["kind"] );
-
-        $this->session->set_userdata("profileEmail", $user["email"] );
-
-        if( isset( $user["exchangeRate"] ) )
-          $this->session->set_userdata("profileExchangeRate", $user["exchangeRate"]);
+        if( $org["_id"] == $this->session->userdata("myOrgID") )
+          $this->session->set_userdata("myOrg", true);
 
         else
-          $this->session->set_userdata("profileExchangeRate", false);
+          $this->session->set_userdata("myOrg", false);
+
+        $this->session->set_userdata("org", $org["_id"]);
+
+        $this->session->set_userdata("orgName", $org["name"]);
+
+        $this->session->set_userdata("orgImg", $org["img"]);
+
+        $this->session->set_userdata("orgKind", $org["kind"] );
+
+        $this->session->set_userdata("orgEmail", $org["email"] );
+
+        if( isset( $org["exchangeRate"] ) )
+          $this->session->set_userdata("orgExchangeRate", $org["exchangeRate"]);
+
+        else
+          $this->session->set_userdata("orgExchangeRate", false);
 
       } else if( $this->router->method != "identityNotFound" ) {
         
-        redirect('https://'.ENVIRONMENT.'/error/identityNotFound/?identity='.IDENTITY, 'refresh');
+        //redirect('https://'.ENVIRONMENT.'/error/identityNotFound/?identity='.IDENTITY, 'refresh');
 
       }
 
     } else {
 
-      $this->session->set_userdata("ownProfile", false);
+      $this->session->set_userdata("myOrg", false);
       
     }
 
@@ -211,7 +209,7 @@ class My_Controller extends CI_Controller{
 
   public function MYensureOwnProfile(){
 
-    if( ! $this->session->userdata("ownProfile") ){
+    if( ! $this->session->userdata("myOrg") ){
 
       $reffer  = str_replace("/index.php", "", current_url());
 

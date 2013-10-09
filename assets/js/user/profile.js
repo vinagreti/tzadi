@@ -8,8 +8,6 @@ $(document).ready(function(){
 
     if ( valid ) {
 
-      $(".brand").find("a").html( $("#name").val() );
-
       var url = base_url+'user/profile';
 
       var data = {
@@ -28,9 +26,9 @@ $(document).ready(function(){
 
           $tzd.alert.success( res.success );
 
-          $('.profileName').html( $("#name").val() );
-
           $('.loggedMenuName').html( $("#name").val() );
+
+          //$(".brand").find("a").html( $("#name").val() );
 
         }
         
@@ -66,7 +64,7 @@ $(document).ready(function(){
 
           $("img").attr("src", res.img )
 
-          $('a.brand').css("background-image", "url("+res.img+")");
+          //$('a.brand').css("background-image", "url("+res.img+")");
 
           $('.userImg').css("background-image", "url("+res.img+")");
 

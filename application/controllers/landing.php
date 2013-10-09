@@ -23,8 +23,8 @@ class Landing extends My_Controller {
     if( ! defined('IDENTITY') )
       $data->view = 'tzadi/landing';
     
-    else if( $this->session->userdata("identity") == $this->session->userdata("profileIdentity") )
-      $data->view = $this->session->userdata("profileKind").'/index_private';
+    else if( $this->session->userdata("myOrg") )
+      $data->view = $this->session->userdata("orgKind").'/index_private';
 
     else
       redirect(base_url().lang("rt_vitrine"));

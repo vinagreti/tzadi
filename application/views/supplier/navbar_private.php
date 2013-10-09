@@ -4,9 +4,9 @@
     <span class="icon-bar"></span>
     <span class="icon-bar"></span>
   </button>
-  <a class="profileImg brand" href="<?=base_url()?>" style="background: url(<?=$this->session->userdata("profileImg")?>) no-repeat left center; background-size: 100%; height:20px; width: 20px; margin:0px 5px;"></a>
+  <a class="orgImg brand" href="<?=base_url()?>" style="background: url(<?=$this->session->userdata("orgImg")?>) no-repeat left center; background-size: 100%; height:20px; width: 20px; margin:0px 5px;"></a>
   <span class="brand">
-    <a class="profileName" href="<?=base_url()?>"><?= $this->session->userdata("profileName")?></a>
+    <a class="profileName" href="<?=base_url()?>"><?= $this->session->userdata("orgName")?></a>
   </span>
   <div class="nav-collapse collapse">
     <ul class="nav">

@@ -55,9 +55,6 @@ class User_Model extends CI_Model {
 
         else
             $data["password"] = md5($password);
-
-
-        
         
         $user = $this->mongo_db
             ->where($data)
@@ -90,8 +87,8 @@ class User_Model extends CI_Model {
 
         }
             
-        else if( isset( $user["identity"] ) )
-            $url = "http://".$user["identity"].".".ENVIRONMENT;
+        else if( isset( $user["org"] ) )
+            $url = "http://".$user["org"].".".ENVIRONMENT;
 
         else
             $url = "http://".ENVIRONMENT;
@@ -148,7 +145,7 @@ class User_Model extends CI_Model {
                 , "facebook_id" => $data["id"]
                 , "password" => md5($passwd)
                 , "kind" => "new"
-                , "img" => "http://".ENVIRONMENT."/assets/img/no_photo_640x480.png"
+                , "img" => assets_url("img/no_photo_640x480.png")
                 , "register" => now()
                 )
               );
@@ -219,7 +216,7 @@ class User_Model extends CI_Model {
                 , "linkedin_id" => $data["id"]
                 , "password" => md5($passwd)
                 , "kind" => "new"
-                , "img" => "http://".ENVIRONMENT."/assets/img/no_photo_640x480.png"
+                , "img" => assets_url("img/no_photo_640x480.png")
                 , "register" => now()
                 )
               );
@@ -292,7 +289,7 @@ class User_Model extends CI_Model {
                 , "google_id" => $data["id"]
                 , "password" => md5($passwd)
                 , "kind" => "new"
-                , "img" => "http://".ENVIRONMENT."/assets/img/no_photo_640x480.png"
+                , "img" => assets_url("img/no_photo_640x480.png")
                 , "register" => now()
                 )
               );
@@ -334,7 +331,7 @@ class User_Model extends CI_Model {
                     , "email" => strtolower($data["email"])
                     , "password" => md5($data["password"])
                     , "kind" => "new"
-                    , "img" => "http://".ENVIRONMENT."/assets/img/no_photo_640x480.png"
+                    , "img" => assets_url("img/no_photo_640x480.png")
                     , "register" => now()
                 )
             );
@@ -375,15 +372,17 @@ class User_Model extends CI_Model {
 
     public function finishSignup( $user ){
 
-        $user["kind"] = "agency";
+        $user["kind"] = "admin";
 
-        if( ! isset( $user["kind"] ) || ! isset( $user["name"] ) || ! isset( $user["identity"] ) ) {
+        $user["org"] = strtolower($user["identity"]);
+
+        if( ! isset( $user["kind"] ) || ! isset( $user["name"] ) || ! isset( $user["org"] ) ) {
 
             $res->error = lang("usr_fillAllData");
 
         } else {
 
-            if( ! preg_match('/^[a-zA-Z0-9]{1,32}$/', $user["identity"]) ) {
+            if( ! preg_match('/^[a-zA-Z0-9]{1,32}$/', $user["org"]) ) {
 
                 $res->error = lang("usr_fillValidIdentity");
 
@@ -403,7 +402,7 @@ class User_Model extends CI_Model {
                     , "inicio"
                     );
 
-                if( $this->getByIdentity( $user["identity"] ) || in_array( $user["identity"], $reservedIdentities ) )
+                if( $this->getByIdentity( $user["org"] ) || in_array( $user["org"], $reservedIdentities ) )
                     $res->error = lang("usr_identityAlreadyUse");
 
                 else {
@@ -414,34 +413,40 @@ class User_Model extends CI_Model {
                             array(
                                 "kind" => $user["kind"]
                                 , "name" => $user["name"]
-                                , "identity" => strtolower($user["identity"])
+                                , "org" => $user["org"]
+                                , "about" => ""
                             )
                         )
                         ->update("user");
 
+                    $this->load->model("org_model");
 
-                    $this->session->set_userdata('identity', $user["identity"]);
+                    $user["email"] = $this->session->userdata('email');
+
+                    $this->org_model->add( $user );
+
+                    $this->session->set_userdata('myOrgID', $user["org"]);
+
                     $this->session->set_userdata('name', $user["name"]);
+
                     $this->session->set_userdata("kind", $user["kind"]);
 
-                    $this->sendSigupMail( $this->getByIdentity( $user["identity"]), "finishSignupMail" );
+                    $this->sendSigupMail( $this->getByIdentity( $user["org"]), "finishSignupMail" );
 
                     switch ($user["kind"]) {
                         case 'student':
-                            $res->url = "http://".$user["identity"].".".ENVIRONMENT."/".lang("rt_interests");
+                            $res->url = "http://".$user["org"].".".ENVIRONMENT."/".lang("rt_interests");
                             break;
                         case 'agency ':
-                            $res->url = "http://".$user["identity"].".".ENVIRONMENT."/".lang("rt_products");
+                            $res->url = "http://".$user["org"].".".ENVIRONMENT."/".lang("rt_products");
                             break;
                         case 'supplier':
-                            $res->url = "http://".$user["identity"].".".ENVIRONMENT."/".lang("rt_products");
+                            $res->url = "http://".$user["org"].".".ENVIRONMENT."/".lang("rt_products");
                             break;
                         default:
-                            $res->url = "http://".$user["identity"].".".ENVIRONMENT;
+                            $res->url = "http://".$user["org"].".".ENVIRONMENT;
                             break;
                     }
-
-                    
 
                 }
 
@@ -475,23 +480,30 @@ class User_Model extends CI_Model {
     private function setUserSession( $user ){
 
         $this->session->set_userdata('_id', $user["_id"]);
+        
         $this->session->set_userdata('name', $user["name"]);
+        
         $this->session->set_userdata('email', $user["email"]);
+        
         $this->session->set_userdata('kind', $user["kind"]);
-        $this->session->set_userdata('agency_id', $user["_id"]);
+        
+        if( isset( $user["org"] ) ) $this->session->set_userdata('myOrgID', $user["org"]);
+        
         if( isset($user["currencyBase"] ) ) $this->session->set_userdata("currencyBase", $user["currencyBase"]);
+        
         if( isset( $user["img"] ) ) $this->session->set_userdata('img', $user["img"]);
-        if( isset( $user["identity"] ) ) $this->session->set_userdata('identity', $user["identity"]);
 
+        if( isset($user["exchangeRate"] ) ) $this->session->set_userdata("exchangeRate", $user["exchangeRate"]);
+        
     }
 
-      function getByIdentity($identity)
+      function getByIdentity($org)
       {
 
-        $identity = strtolower($identity);
+        $org = strtolower($org);
 
         $res = $this->mongo_db
-          ->where('identity', $identity)
+          ->where('org', $org)
           ->get('user');
 
         if($res){
@@ -522,6 +534,7 @@ class User_Model extends CI_Model {
         $this->mongo_db->delete_all("session");
         $this->mongo_db->delete_all("counter");
         $this->mongo_db->delete_all("blog");
+        $this->mongo_db->delete_all("org");
         $this->mongo_db->set("id", 0)->update('counter');
         $this->mongo_db->insert('counter', array("id" => 0));
 
@@ -582,7 +595,7 @@ class User_Model extends CI_Model {
 
             $this->session->set_userdata('name', $userData["name"]);
 
-            $this->session->set_userdata('profileName', $userData["name"]);
+            $this->session->set_userdata('orgName', $userData["name"]);
 
         }
 
@@ -646,7 +659,7 @@ class User_Model extends CI_Model {
         if( $user["password"] == md5($data["passwdOld"]) ){
 
             $edited = $this->mongo_db
-                ->where( 'identity', $this->session->userdata("identity") )
+                ->where( 'org', $this->session->userdata("identity") )
                 ->set("password" , md5($data["passwdNew"]))
                 ->update("user");
 
@@ -672,33 +685,6 @@ class User_Model extends CI_Model {
             return array("error" => lang("usr_incorrectOldPasswd"));
 
         }
-    }
-
-    function changeExchangeRate( $data )
-    {
-
-        $this->mongo_db
-            ->where( 'identity', $this->session->userdata("identity") )
-            ->set("exchangeRate" , $data )
-            ->update("user");
-
-        return array("url" => base_url().lang("rt_currency"));
-
-    }
-
-    function getExchangeRate( )
-    {
-
-        $users = $this->mongo_db
-            ->where( 'identity', $this->session->userdata("identity") )
-            ->get("user");
-
-        if( isset( $users[0]["exchangeRate"] ) )
-            return $users[0]["exchangeRate"];
-
-        else
-            return false;
-
     }
 
 }

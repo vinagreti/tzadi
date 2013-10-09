@@ -10,7 +10,7 @@ class Product_Model extends CI_Model {
   function getAll()
   {
     return $this->mongo_db
-      ->where('owner', $this->session->userdata("_id"))
+      ->where('org_id', $this->session->userdata("myOrgID"))
       ->order_by(array('name' => 'asc'))
       ->get('product');
   }
@@ -29,7 +29,7 @@ class Product_Model extends CI_Model {
   function getPublic()
   {
     return $this->mongo_db
-      ->where('owner', $this->session->userdata("profileID"))
+      ->where('org_id', $this->session->userdata("org"))
       ->where('vitrine', "yes")
       ->where('status', "active")
       ->order_by(array('name' => 'asc'))
@@ -48,7 +48,7 @@ class Product_Model extends CI_Model {
         "_id" => $newID
         ,"name" => $data->name
         ,"kind" => $data->kind
-        ,"owner" => $this->session->userdata("_id")
+        ,"org_id" => $this->session->userdata("myOrgID")
         ,"creation" => now()
         ,"creator" => $this->session->userdata("_id")
         ,"supplier" => "0"
@@ -372,7 +372,7 @@ class Product_Model extends CI_Model {
 
         }
 
-        $mailContent["bcc"] = $this->session->userdata("profileEmail");
+        $mailContent["bcc"] = $this->session->userdata("orgEmail");
 
         $mailContent["kind"] = "product/share";
 
@@ -382,7 +382,7 @@ class Product_Model extends CI_Model {
 
         $event->kind = "product/share";
 
-        if( $this->session->userdata("ownProfile") )
+        if( $this->session->userdata("myOrg") )
           $event->staff_id = $this->session->userdata("_id");
 
         else if( $this->session->userdata("_id") )
@@ -443,7 +443,7 @@ class Product_Model extends CI_Model {
 
       }
 
-      $mailContent["bcc"] = $this->session->userdata("profileEmail");
+      $mailContent["bcc"] = $this->session->userdata("orgEmail");
 
       $mailContent["kind"] = "product/knowMore";
 
@@ -453,7 +453,7 @@ class Product_Model extends CI_Model {
 
       $event->kind = "product/knowMore";
 
-      if( $this->session->userdata("ownProfile") )
+      if( $this->session->userdata("myOrg") )
         $event->staff_id = $this->session->userdata("_id");
 
       else if( $this->session->userdata("_id") )
@@ -482,7 +482,7 @@ class Product_Model extends CI_Model {
 
     $this->load->helper('cookie');
 
-    $tzdBudget = json_decode( get_cookie( 'tzdBudget'.$this->session->userdata('profileID') ), true );
+    $tzdBudget = json_decode( get_cookie( 'tzdBudget'.$this->session->userdata('org') ), true );
 
     $budget->itens = array();
 
@@ -566,7 +566,7 @@ class Product_Model extends CI_Model {
 
         $mailContent["to"] = $email;
 
-        $mailContent["bcc"] = $this->session->userdata("profileEmail");
+        $mailContent["bcc"] = $this->session->userdata("orgEmail");
 
         $mailContent["kind"] = "product/shareBudget";
 
@@ -576,7 +576,7 @@ class Product_Model extends CI_Model {
 
         $event->kind = "product/shareBudget";
 
-        if( $this->session->userdata("ownProfile") )
+        if( $this->session->userdata("myOrg") )
           $event->staff_id = $this->session->userdata("_id");
 
         else if( $this->session->userdata("_id") )
@@ -625,7 +625,7 @@ class Product_Model extends CI_Model {
 
       $mailContent["to"] = $email;
 
-      $mailContent["bcc"] = $this->session->userdata("profileEmail");
+      $mailContent["bcc"] = $this->session->userdata("orgEmail");
 
       $mailContent["kind"] = "product/knowMoreBudget";
 
@@ -635,7 +635,7 @@ class Product_Model extends CI_Model {
 
       $event->kind = "product/knowMoreBudget";
 
-      if( $this->session->userdata("ownProfile") )
+      if( $this->session->userdata("myOrg") )
         $event->staff_id = $this->session->userdata("_id");
 
       else if( $this->session->userdata("_id") )

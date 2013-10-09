@@ -12,7 +12,15 @@ class Collaborator extends My_Controller {
     $data->dynJS = 'collaborator/manage';
     $data->view = 'collaborator/manage';
     $data->page_title = lang('clb_listTitle');
+    $this->load->model("collaborator_model");
+    $data->collaborators = $this->collaborator_model->getAll();
     $this->page->load($data);
+  }
+
+  public function getAll()
+  {
+    $this->load->model("collaborator_model");
+    echo json_encode( $this->collaborator_model->getAll() );
   }
 
 }

@@ -1,1 +1,1 @@
-<h3><?=lang("idx_WelcomeTo")?> <span class="text-success"><strong><?=$this->session->userdata("profileName")?></strong></span></h3>
+<h3><?=lang("idx_WelcomeTo")?> <span class="text-success"><strong><?=$this->session->userdata("orgName")?></strong></span></h3>

@@ -67,7 +67,7 @@ class Contact_Model extends CI_Model {
 
         $mail["to"] =  $email;
 
-        $mail["bcc"] =  array($this->session->userdata("profileEmail"));
+        $mail["bcc"] =  array($this->session->userdata("orgEmail"));
 
         $mail["kind"] = "contact";
 

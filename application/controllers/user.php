@@ -168,10 +168,10 @@ class User extends My_Controller {
   public function profile()
   {
 
-    $this->MYensureOwnProfile();
+    $this->MYensureLogged();
 
-    if( IDENTITY != $this->session->userdata("identity") )
-      redirect("http://".$this->session->userdata("identity").".".ENVIRONMENT."/".lang("rt_profile"));
+    if( ! $this->session->userdata("myOrg") )
+      redirect( myOrg_url() . lang("rt_profile") );
 
     $this->load->model("user_model");
 
@@ -184,9 +184,9 @@ class User extends My_Controller {
 
       $data->view = 'user/profile';
 
-      $data->user = $this->user_model->getByIdentity(IDENTITY);
+      $data->user = $this->user_model->getByID( $this->session->userdata("_id") );
 
-      $data->page_title = lang('usr_Profile')." ".$this->session->userdata("profileName");
+      $data->page_title = lang('usr_Profile')." ".$this->session->userdata("orgName");
 
       $this->page->load($data); 
 
@@ -201,8 +201,8 @@ class User extends My_Controller {
 
     $this->lang->load('product', $this->session->userdata('language'));
 
-    if( IDENTITY != $this->session->userdata("identity") )
-      redirect("http://".$this->session->userdata("identity").".".ENVIRONMENT."/".lang("rt_interests"));
+    if( IDENTITY != $this->session->userdata("myOrg") )
+      redirect("http://".$this->session->userdata("org").".".ENVIRONMENT."/".lang("rt_interests"));
 
     $this->load->model("user_model");
 
@@ -230,8 +230,8 @@ class User extends My_Controller {
 
     $this->MYensureOwnProfile();
 
-    if( IDENTITY != $this->session->userdata("identity") )
-      redirect("http://".$this->session->userdata("identity").".".ENVIRONMENT."/".lang("rt_proposals"));
+    if( IDENTITY != $this->session->userdata("myOrg") )
+      redirect("http://".$this->session->userdata("org").".".ENVIRONMENT."/".lang("rt_proposals"));
 
     $this->load->model("user_model");
 

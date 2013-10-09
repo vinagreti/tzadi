@@ -8,7 +8,7 @@ class Blog extends My_Controller {
 
 		$this->lang->load('blog', $this->session->userdata('language'));
 
-    if( ! $this->session->userdata("profileIdentity") )
+    if( ! $this->session->userdata("org") )
       redirect("http://blog.tzadi.com");
 
   }
@@ -21,7 +21,7 @@ class Blog extends My_Controller {
 
     if( $data->post ) {
 
-      if( $this->session->userdata("ownProfile") ) {
+      if( $this->session->userdata("myOrg") ) {
 
         $data->dynJS = 'blog/blog';
 
@@ -37,19 +37,19 @@ class Blog extends My_Controller {
 
       }
 
-      $data->page_title = lang('blg_Blog')." ".$this->session->userdata("profileName");
+      $data->page_title = lang('blg_Blog')." ".$this->session->userdata("orgName");
 
       $this->page->load($data);
 
     } else {
 
-      if( $this->session->userdata("ownProfile") )
+      if( $this->session->userdata("myOrg") )
         $data->view = 'blog/owner_empty';
 
       else
         $data->view = 'blog/public_empty';
 
-      $data->page_title = lang('blg_Blog')." ".$this->session->userdata("profileName");
+      $data->page_title = lang('blg_Blog')." ".$this->session->userdata("orgName");
 
       $this->page->load($data);
 
@@ -68,25 +68,25 @@ class Blog extends My_Controller {
 
       $data->dynJS = array('blog/list', 'blog/blog');
 
-      if( $this->session->userdata("ownProfile") )
+      if( $this->session->userdata("myOrg") )
         $data->view = 'blog/owner_list';
 
       else
         $data->view = 'blog/public_list';
 
-      $data->page_title = lang('blg_Blog')." ".$this->session->userdata("profileName");
+      $data->page_title = lang('blg_Blog')." ".$this->session->userdata("orgName");
 
       $this->page->load($data);
 
     } else {
 
-      if( $this->session->userdata("ownProfile") )
+      if( $this->session->userdata("myOrg") )
         $data->view = 'blog/owner_empty';
 
       else
         $data->view = 'blog/public_empty';
 
-      $data->page_title = lang('blg_Blog')." ".$this->session->userdata("profileName");
+      $data->page_title = lang('blg_Blog')." ".$this->session->userdata("orgName");
 
       $this->page->load($data);
 
@@ -99,7 +99,7 @@ class Blog extends My_Controller {
 
     $this->MYensureOwnProfile();
 
-    if( $this->session->userdata("ownProfile") ) {
+    if( $this->session->userdata("myOrg") ) {
 
       if( $this->input->post() ) {
 
@@ -113,7 +113,7 @@ class Blog extends My_Controller {
 
         $data->view = 'blog/write';
 
-        $data->page_title = lang('blg_Blog')." ".$this->session->userdata("profileName");
+        $data->page_title = lang('blg_Blog')." ".$this->session->userdata("orgName");
 
         $this->page->load($data);
 
@@ -121,7 +121,7 @@ class Blog extends My_Controller {
 
     } else {
 
-      redirect("http://".$this->session->userdata("identity").".".ENVIRONMENT."/blog/".lang("rt_write"));
+      redirect("http://".$this->session->userdata("org").".".ENVIRONMENT."/blog/".lang("rt_write"));
 
     }
 
@@ -150,19 +150,19 @@ class Blog extends My_Controller {
 
         $data->view = 'blog/edit';
 
-        $data->page_title = lang('blg_Blog')." ".$this->session->userdata("profileName");
+        $data->page_title = lang('blg_Blog')." ".$this->session->userdata("orgName");
 
         $this->page->load($data);
 
       } else {
 
-        if( $this->session->userdata("ownProfile") )
+        if( $this->session->userdata("myOrg") )
           $data->view = 'blog/owner_empty';
 
         else
           $data->view = 'blog/public_empty';
 
-        $data->page_title = lang('blg_Blog')." ".$this->session->userdata("profileName");
+        $data->page_title = lang('blg_Blog')." ".$this->session->userdata("orgName");
 
         $this->page->load($data);
 
@@ -181,7 +181,7 @@ class Blog extends My_Controller {
 
     if( $data->post ) {
 
-      if( $this->session->userdata("ownProfile") )
+      if( $this->session->userdata("myOrg") )
         $data->view = 'blog/owner_view';
 
       else
@@ -189,19 +189,19 @@ class Blog extends My_Controller {
 
       $data->dynJS = array("blog/blog");
 
-      $data->page_title = lang('blg_Blog')." ".$this->session->userdata("profileName");
+      $data->page_title = lang('blg_Blog')." ".$this->session->userdata("orgName");
 
       $this->page->load($data);
 
     } else {
 
-      if( $this->session->userdata("ownProfile") )
+      if( $this->session->userdata("myOrg") )
         $data->view = 'blog/owner_empty';
 
       else
         $data->view = 'blog/public_empty';
 
-      $data->page_title = lang('blg_Blog')." ".$this->session->userdata("profileName");
+      $data->page_title = lang('blg_Blog')." ".$this->session->userdata("orgName");
 
       $this->page->load($data);
 

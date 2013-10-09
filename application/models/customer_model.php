@@ -10,14 +10,14 @@ class Customer_Model extends CI_Model {
   function getAll()
   {
     return $this->mongo_db
-      ->where('owner', $this->session->userdata("profileID"))
+      ->where('org_id', $this->session->userdata("myOrgID"))
       ->get('customer');
   }
 
   function getByID( $_id )
   {
     $customer = $this->mongo_db
-      ->where('owner', $this->session->userdata("profileID"))
+      ->where('org_id', $this->session->userdata("myOrgID"))
       ->where('_id', (int) $_id )
       ->get('customer');
 
@@ -35,17 +35,13 @@ class Customer_Model extends CI_Model {
   {
 
     $customer = $this->mongo_db
-      ->order_by( array("_id" => "desc") )
       ->where('_id', (int) $customer_id )
+      ->where('org_id', (int) $this->session->userdata("myOrgID") )
       ->get('customer');
 
     if( ! $customer ){
 
       return array("error" => lang("ctm_customerNotFound") );
-
-    } else if ( $customer[0]['owner'] != $this->session->userdata("profileID") ) {
-
-      return array("error" => lang("ctm_thisCustomerISNotYours") );
 
     } else {
 
@@ -68,9 +64,9 @@ class Customer_Model extends CI_Model {
       'customer',array(
         "_id" => $newID
         ,"name" => $name
-        ,"owner" => $this->session->userdata("profileID")
+        ,"org_id" => $this->session->userdata("myOrgID")
         ,"creation" => now()
-        ,"creator" => $this->session->userdata("_id")
+        ,"creator_id" => $this->session->userdata("_id")
         ,"status" => "active"
         ,"attachment" => array()
       )
@@ -98,10 +94,7 @@ class Customer_Model extends CI_Model {
         ->where('email', $data['email'])
         ->get('customer');
 
-    }
-
-    if( $customer[0] ) {
-
+    if( $customer[0] )
       return array("error" => lang("ctm_emailInUseBy") . " " . $customer[0]["name"]);
     
     } else {
@@ -205,7 +198,7 @@ class Customer_Model extends CI_Model {
     $email = strtolower( $email );
 
     $customer = $this->mongo_db
-      ->where(array('email' => $email, "owner" => $this->session->userdata("profileID")))
+      ->where(array('email' => $email, "owner" => $this->session->userdata("org")))
       ->get('customer');
 
     if( $customer ) {
@@ -225,7 +218,7 @@ class Customer_Model extends CI_Model {
           "_id" => $newID
           ,"name" => $email
           ,"email" => $email
-          ,"owner" => $this->session->userdata("profileID")
+          ,"org_id" => $this->session->userdata("myOrgID")
           ,"creation" => now()
           ,"creator" => "system"
           ,"status" => "active"
@@ -233,11 +226,11 @@ class Customer_Model extends CI_Model {
         )
       );
 
-        $action->kind = "customer/getOrCreate";
+      $action->kind = "customer/getOrCreate";
 
-        $action->customer_id = $newID;
+      $action->customer_id = $newID;
 
-        $this->customer_model->addTimeline( $action );
+      $this->customer_model->addTimeline( $action );
 
       return $newID;
 

@@ -6,17 +6,23 @@
 
 <div class="row-fluid">
 	<div class="span4 offset1">
-    <div class="thumbnail">
-      <img src="<?=$this->session->userdata("img")?>" class="changeImg" alt="160x120">
-      <div class="control-group">
-        <input type="file" class="userImg hide" />
-      </div>
-    </div>
+		<label class="text-warning"><span><?=lang('usr_profileImg')?></span></label>
+	    <div class="thumbnail">
+	      <img src="<?=$this->session->userdata("img")?>" class="changeImg" alt="160x120">
+	      <div class="control-group">
+	        <input type="file" class="userImg hide" />
+	      </div>
+	    </div>
+	    <small>Clique para na imagem acima para adicionar uma foto</small>
 	</div>
 	<div class="span17 offset1">
-		<label class="text-warning"><span><?=lang('usr_chooseYourAgencyName')?></span></label>
+		<label class="text-warning"><span><?=lang('usr_chooseYourName')?></span></label>
 		<div class="control-group">
 		  <input id="name" type="text" class="input-block-level" name="name" value="<?=$this->session->userdata("name")?>">
+		</div>
+		<label class="text-warning"><span><?=lang('usr_chooseYourAgencyName')?></span></label>
+		<div class="control-group">
+		  <input id="orgName" type="text" class="input-block-level" name="orgName" value="<?=$this->session->userdata("orgName")?>">
 		</div>
 		<label class="text-warning"><span><?=lang('usr_chooseYourSubdomain')?></span> <span class="text-success"><strong><?=lang('usr_identitySample')?></strong></span></label>
 		<div class="control-group">

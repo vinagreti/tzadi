@@ -13,7 +13,7 @@ class Currency extends My_Controller {
 	public function index()
 	{
 
-		if( $this->session->userdata("ownProfile") ){
+		if( $this->session->userdata("myOrg") ){
 
 			$this->changeExchangeRate();
 
@@ -97,9 +97,9 @@ class Currency extends My_Controller {
 
 		if( $data["kind"] && $data["value"] !== false ) {
 
-			$this->load->model("user_model");
+			$this->load->model("org_model");
 
-			echo json_encode( $this->user_model->changeExchangeRate( $data ) );
+			echo json_encode( $this->org_model->setExchangeRate( $data ) );
 
 		}
 
@@ -107,9 +107,9 @@ class Currency extends My_Controller {
 
 			$this->load->model("currency_model");
 
-			$this->load->model("user_model");
+			$this->load->model("org_model");
 
-			$data->exchangeRate = $this->user_model->getExchangeRate( );
+			$data->exchangeRate = $this->org_model->getExchangeRate( );
 
 			$data->currency = $this->currency_model->getToday( );
 

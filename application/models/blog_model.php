@@ -50,7 +50,7 @@ class Blog_Model extends CI_Model {
 
     $news = $this->mongo_db
       ->select(array("title", "date", "subtitle", "url"))
-      ->where("author", $this->session->userdata("profileID"))
+      ->where("author", $this->session->userdata("_id"))
       ->order_by(array('date'=>'desc'))
       ->get('blog');
 
@@ -66,7 +66,7 @@ class Blog_Model extends CI_Model {
   {
 
     $post = $this->mongo_db
-      ->where("author", $this->session->userdata("profileID"))
+      ->where("author", $this->session->userdata("_id"))
       ->limit(1)
       ->order_by(array('date'=>'desc'))
       ->get('blog');
@@ -95,7 +95,7 @@ class Blog_Model extends CI_Model {
         ->where(
           array(
             "url" => $url
-            , "author" => $this->session->userdata("profileID")
+            , "author" => $this->session->userdata("_id")
           )
         )
         ->get('blog');

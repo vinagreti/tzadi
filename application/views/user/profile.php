@@ -1,6 +1,6 @@
 <div class="row-fluid">
 	<div class="span24">
-		<h3><?=lang('usr_Profile')." ".$this->session->userdata("profileName")?></h3>
+		<h3><?=lang('usr_Profile')." ".$this->session->userdata("orgName")?></h3>
 	</div>
 </div>
 
@@ -21,7 +21,7 @@
 
 		<p><span class="text-warning"><?=lang("usr_password")?>: </span>***** <a href="https://<?=ENVIRONMENT?>/<?=lang('rt_changePassword')?>"><?=lang("usr_changePassword")?></a></p>
 
-		<label class="text-warning"><span><?=lang('usr_chooseYourAgencyName')?></span>
+		<label class="text-warning"><span><?=lang('usr_chooseYourName')?></span>
 			<div class="control-group">
 			  <input id="name" type="text" class="input-block-level" name="name" value="<?=$user["name"]?>">
 			</div>

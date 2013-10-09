@@ -30,6 +30,7 @@ $(document).ready(function(){
 
         tzadiToken : tzadiToken
         , name : $("#name").val()
+        , orgName : $("#orgName").val()
         , identity : $("#identity").val()
         //, kind : $(".accountKind:checked").val()
 
