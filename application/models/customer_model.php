@@ -361,7 +361,7 @@ class Customer_Model extends CI_Model {
 
     $event->customer_id = (int) $data["_id"];
 
-    $event->resp_id = (int) $data["resp_id"];
+    $event->resp_id = $data["resp_id"];
 
     $event->creator_id = (int) $this->session->userdata("_id");
 
