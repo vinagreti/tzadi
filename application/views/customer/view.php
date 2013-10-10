@@ -60,7 +60,7 @@
 					<div class="span20">
 						<strong><a class="respLink"><span class="respName"></span></a></strong>
 						<small><span class="text-warning"><?=lang("ctm_createdTheCustomer")?></span></small>
-						<p class="pull-right"><small><span class="text-warning"><?=lang("ctm_createdBy")?>:</span> <a class="creatorLink"><span class="creatorName"></span></a></small></p>
+						<p class="pull-right"><small><span class="muted"><?=lang("ctm_createdBy")?>:</span> <a class="creatorLink"><span class="creatorName"></span></a></small></p>
 					</div>
 				</div>
 			</div>
@@ -78,7 +78,7 @@
 					<div class="span20">
 						<strong><a class="respLink"><span class="respName"></span></a></strong>
 						<small><span class="text-warning"><?=lang("ctm_autoCreated")?></span></small>
-						<p class="pull-right"><small><span class="text-warning"><?=lang("ctm_createdBy")?>:</span> <a class="creatorLink"><span class="creatorName"></span></a></small></p>
+						<p class="pull-right"><small><span class="muted"><?=lang("ctm_createdBy")?>:</span> <a class="creatorLink"><span class="creatorName"></span></a></small></p>
 					</div>
 				</div>
 			</div>
@@ -99,7 +99,7 @@
 						<strong><a class="respLink"><span class="respName"></span></a></strong>
 						<small><span class="text-warning"><?=lang("ctm_autoCreated")?></span></small>
 						<p><small><?=lang("ctm_autoCreatedTip")?></small></p>
-						<p class="pull-right"><small><span class="text-warning"><?=lang("ctm_createdBy")?>:</span> <a class="creatorLink"><span class="creatorName"></span></a></small></p>
+						<p class="pull-right"><small><span class="muted"><?=lang("ctm_createdBy")?>:</span> <a class="creatorLink"><span class="creatorName"></span></a></small></p>
 					</div>
 				</div>
 			</div>
@@ -119,7 +119,7 @@
 						<strong><a class="respLink"><span class="respName"></span></a></strong>
 						<small><span class="text-warning"><?=lang("ctm_contact")?></span></small>
 						<p><small><a class="mail_id mail_subject" target="_blank"></a></small></p>
-						<p class="pull-right"><small><span class="text-warning"><?=lang("ctm_createdBy")?>:</span> <a class="creatorLink"><span class="creatorName"></span></a></small></p>
+						<p class="pull-right"><small><span class="muted"><?=lang("ctm_createdBy")?>:</span> <a class="creatorLink"><span class="creatorName"></span></a></small></p>
 					</div>
 				</div>
 			</div>
@@ -139,7 +139,7 @@
 						<strong><a class="respLink"><span class="respName"></span></a></strong>
 						<small><span class="text-warning"><?=lang("ctm_shareProduct")?></span></small>
 						<p><small><a class="mail_id mail_subject" target="_blank"></a></small></p>
-						<p class="pull-right"><small><span class="text-warning"><?=lang("ctm_createdBy")?>:</span> <a class="creatorLink"><span class="creatorName"></span></a></small></p>
+						<p class="pull-right"><small><span class="muted"><?=lang("ctm_createdBy")?>:</span> <a class="creatorLink"><span class="creatorName"></span></a></small></p>
 					</div>
 				</div>
 			</div>
@@ -157,7 +157,7 @@
 						<strong><a class="respLink"><span class="respName"></span></a></strong>
 						<small><span class="text-warning"><?=lang("ctm_shareProductByStaff")?></span></small>
 						<p><small><a class="mail_id mail_subject" target="_blank"></a></small></p>
-					<p class="pull-right"><small><span class="text-warning"><?=lang("ctm_createdBy")?>:</span> <a class="creatorLink"><span class="creatorName"></span></a></small></p>
+					<p class="pull-right"><small><span class="muted"><?=lang("ctm_createdBy")?>:</span> <a class="creatorLink"><span class="creatorName"></span></a></small></p>
 					</div>
 				</div>
 			</div>
@@ -178,7 +178,7 @@
 						<strong><a class="respLink"><span class="respName"></span></a></strong>
 						<small><span class="text-warning"><?=lang("ctm_knowMoreProduct")?></span></small>
 						<p><small><a class="mail_id mail_subject" target="_blank"></a></small>
-						<p class="pull-right"><small><span class="text-warning"><?=lang("ctm_createdBy")?>:</span> <a class="creatorLink"><span class="creatorName"></span></a></small></p>
+						<p class="pull-right"><small><span class="muted"><?=lang("ctm_createdBy")?>:</span> <a class="creatorLink"><span class="creatorName"></span></a></small></p>
 					</div>
 				</div>
 			</div>
@@ -198,7 +198,7 @@
 						<strong><a class="respLink"><span class="respName"></span></a></strong>
 						<small><span class="text-warning"><?=lang("ctm_shareBudget")?></span></small>
 						<p><small><a class="mail_id mail_subject" target="_blank"></a></small>
-						<p class="pull-right"><small><span class="text-warning"><?=lang("ctm_createdBy")?>:</span> <a class="creatorLink"><span class="creatorName"></span></a></small></p>
+						<p class="pull-right"><small><span class="muted"><?=lang("ctm_createdBy")?>:</span> <a class="creatorLink"><span class="creatorName"></span></a></small></p>
 					</div>
 				</div>
 			</div>
@@ -216,7 +216,7 @@
 						<strong><a class="respLink"><span class="respName"></span></a></strong>
 						<small><span class="text-warning"><?=lang("ctm_shareBudgetByStaff")?></span></small>
 						<p><small><a class="mail_id mail_subject" target="_blank"></a></small>
-						<p class="pull-right"><small><span class="text-warning"><?=lang("ctm_createdBy")?>:</span> <a class="creatorLink"><span class="creatorName"></span></a></small></p>
+						<p class="pull-right"><small><span class="muted"><?=lang("ctm_createdBy")?>:</span> <a class="creatorLink"><span class="creatorName"></span></a></small></p>
 					</div>
 				</div>
 			</div>
@@ -237,7 +237,7 @@
 						<strong><a class="respLink"><span class="respName"></span></a></strong>
 						<small><span class="text-warning"><?=lang("ctm_knowMoreBudget")?></span></small>
 						<p><small><a class="mail_id mail_subject" target="_blank"></a></small>
-						<p class="pull-right"><small><span class="text-warning"><?=lang("ctm_createdBy")?>:</span> <a class="creatorLink"><span class="creatorName"></span></a></small></p>
+						<p class="pull-right"><small><span class="muted"><?=lang("ctm_createdBy")?>:</span> <a class="creatorLink"><span class="creatorName"></span></a></small></p>
 					</div>
 				</div>
 			</div>
@@ -257,7 +257,7 @@
 						<strong><a class="respLink"><span class="respName"></span></a></strong>
 						<small><span class="text-warning"><?=lang("ctm_replyReceived")?></span></small>
 						<p><small><a class="mail_id mail_subject" target="_blank"></a></small>
-						<p class="pull-right"><small><span class="text-warning"><?=lang("ctm_createdBy")?>:</span> <a class="creatorLink"><span class="creatorName"></span></a></small></p>
+						<p class="pull-right"><small><span class="muted"><?=lang("ctm_createdBy")?>:</span> <a class="creatorLink"><span class="creatorName"></span></a></small></p>
 					</div>
 				</div>
 			</div>
@@ -275,7 +275,7 @@
 						<strong><a class="respLink"><span class="respName"></span></a></strong>
 						<small><span class="text-warning"><?=lang("ctm_sentMessage")?></span></small>
 						<p><small><a class="mail_id mail_subject" target="_blank"></a></small>
-						<p class="pull-right"><small><span class="text-warning"><?=lang("ctm_createdBy")?>:</span> <a class="creatorLink"><span class="creatorName"></span></a></small></p>
+						<p class="pull-right"><small><span class="muted"><?=lang("ctm_createdBy")?>:</span> <a class="creatorLink"><span class="creatorName"></span></a></small></p>
 					</div>
 				</div>
 			</div>
@@ -294,7 +294,7 @@
 						<strong><a class="respLink"><span class="respName"></span></a></strong>
 						<small><span class="text-warning"><?=lang("ctm_repliedMessage")?></span></small>
 						<p><small><a class="mail_id mail_subject" target="_blank"></a></small>
-						<p class="pull-right"><small><span class="text-warning"><?=lang("ctm_createdBy")?>:</span> <a class="creatorLink"><span class="creatorName"></span></a></small></p>
+						<p class="pull-right"><small><span class="muted"><?=lang("ctm_createdBy")?>:</span> <a class="creatorLink"><span class="creatorName"></span></a></small></p>
 					</div>
 				</div>
 			</div>
@@ -313,7 +313,7 @@
 						<strong><a class="respLink"><span class="respName"></span></a></strong>
 						<small><span class="text-warning eventTitle"></span></small>
 						<p><small><span class="eventDetail"></span></small></p>
-						<p class="pull-right"><small><span class="text-warning"><?=lang("ctm_createdBy")?>:</span> <a class="creatorLink"><span class="creatorName"></span></a></small></p>
+						<p class="pull-right"><small><span class="muted"><?=lang("ctm_createdBy")?>:</span> <a class="creatorLink"><span class="creatorName"></span></a></small></p>
 					</div>
 				</div>
 			</div>
@@ -334,7 +334,7 @@
 						<strong><a class="respLink"><span class="respName"></span></a></strong>
 						<small><span class="text-warning eventTitle"></span></small>
 						<p><small><span class="eventDetail"></span></small></p>
-						<p class="pull-right"><small><span class="text-warning"><?=lang("ctm_createdBy")?>:</span> <a class="creatorLink"><span class="creatorName"></span></a></small></p>
+						<p class="pull-right"><small><span class="muted"><?=lang("ctm_createdBy")?>:</span> <a class="creatorLink"><span class="creatorName"></span></a></small></p>
 					</div>
 				</div>
 			</div>

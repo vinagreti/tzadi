@@ -10,6 +10,7 @@ class Collaborator_Model extends CI_Model {
   function getAll( $company = "" ) {
 
     $res = $this->mongo_db
+      ->order_by( array("name" => "asc") )
       ->where('org', $this->session->userdata("org"))
       ->get('user');
 

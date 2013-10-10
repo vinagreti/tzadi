@@ -68,6 +68,8 @@ TzadiJS.prototype.timeline = new function(){
 					$(this).parent().find(".add-on").click();
 				});
 
+				$("#resp_id").select2();
+
 			}
 
 			$('#tzadiDialogs').find('#deadLine').datetimepicker({

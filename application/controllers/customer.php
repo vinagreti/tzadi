@@ -112,6 +112,10 @@ class Customer extends My_Controller {
 
     if( ! $data ){
 
+      $this->load->model("collaborator_model");
+
+      $data->collaborators = $this->collaborator_model->getAll();
+
       echo json_encode($this->load->view('customer/addEventForm', $data, TRUE));
 
     } else {

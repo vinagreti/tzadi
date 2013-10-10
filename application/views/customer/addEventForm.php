@@ -10,10 +10,9 @@
         <select id="resp_id" class="input-block-level">
           <option value="<?=$this->session->userdata("_id")?>">eu</option>
           <option value="customer">o próprio cliente</option>
-          <option value="5">Denise</option>
-          <option value="3">usuario 3</option>
-          <option value="4">usuario 4</option>
-          <option value="5">usuario 5</option>
+          <?php foreach ($collaborators as $key => $collaborator) { if( $collaborator["_id"] != $this->session->userdata("_id") ) { ?>
+            <option value="<?=$collaborator["_id"]?>"><?=$collaborator["name"]?></option>
+          <?php } } ?>
         </select>
       </div>
 

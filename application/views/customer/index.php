@@ -64,7 +64,7 @@
           <div class="span9 customerEmail" title="<?=lang('ctm_email')?>">
             <!-- o valor EMAIL de cada class do span é jogado aqui -->
           </div>
-          <div class="span1" rel="tooltip" title="<?=lang('tmpt_open')?>"><a class="openView" target="_blank"><i class="icon-external-link icon-2x"></i></a></div>
+          <div class="span1" rel="tooltip" title="<?=lang('tmpt_open')?>"><a class="openView"><i class="icon-external-link icon-2x"></i></a></div>
         </div> <!-- \\\\ é o fim do conteúdo de cada linha da tabela -->
       </div>
     </div> <!-- \\\\ é o fim do conteúdo de cada linha da tabela -->
