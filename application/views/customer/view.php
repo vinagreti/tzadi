@@ -34,7 +34,7 @@
 	<?php if( isset( $customer["email"] ) && $customer["email"] != "" ) { ?>
 		<a id="<?=$customer['email']?>" class="sendMessage btn btn-primary"><i class="icon-envelope"></i> <?=lang("ctm_email")?></a>
 	<?php } ?>
-	<a id="<?=$customer['email']?>" class="addEvent btn btn-success"><i class="icon-plus"></i> <?=lang("ctm_event")?></a>
+	<a id="<?=$customer['email']?>" class="addEvent btn btn-success"><i class="icon-plus"></i> <?=lang("ctm_addEvent")?></a>
 </div>
 
 <div class="row-fluid hideFromResponsive">
