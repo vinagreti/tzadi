@@ -27,16 +27,10 @@ $(document).ready(function(){
 	var productKnowMore = $(".productKnowMore").clone();
 	productKnowMore.removeClass("hide");
 	$(".productKnowMore").remove();
-	var productKnowMoreByStaff = $(".productKnowMoreByStaff").clone();
-	productKnowMoreByStaff.removeClass("hide");
-	$(".productKnowMoreByStaff").remove();
 	var timeline = $(".timeline");
 	var budgetKnowMore = $(".budgetKnowMore").clone();
 	budgetKnowMore.removeClass("hide");
 	$(".budgetKnowMore").remove();
-	var budgetKnowMoreByStaff = $(".budgetKnowMoreByStaff").clone();
-	budgetKnowMoreByStaff.removeClass("hide");
-	$(".budgetKnowMoreByStaff").remove();
 	var replyReceived = $(".replyReceived").clone();
 	replyReceived.removeClass("hide");
 	$(".replyReceived").remove();
@@ -124,12 +118,7 @@ $(document).ready(function(){
 
 						case "product/knowMore":
 
-							if( event.staff_id )
-								eventHTML = productKnowMoreByStaff.clone();
-
-							else
-								eventHTML = productKnowMore.clone();
-
+							eventHTML = productKnowMore.clone();
 							eventHTML.find(".mail_subject").html( event.mail_subject );
 							eventHTML.find(".date").html( new $tzd.date(event.date).shortDateTime );
 							eventHTML.find(".mail_id").attr("href", base_url+"mail/"+event.mail_id );
@@ -150,12 +139,7 @@ $(document).ready(function(){
 
 						case "product/knowMoreBudget":
 
-							if( event.staff_id )
-								eventHTML = budgetKnowMoreByStaff.clone();
-
-							else
-								eventHTML = budgetKnowMore.clone();
-
+							eventHTML = budgetKnowMore.clone();
 							eventHTML.find(".mail_subject").html( event.mail_subject );
 							eventHTML.find(".date").html( new $tzd.date(event.date).shortDateTime );
 							eventHTML.find(".mail_id").attr("href", base_url+"mail/"+event.mail_id );

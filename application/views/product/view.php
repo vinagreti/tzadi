@@ -76,7 +76,7 @@
 
     <div class="row-fluid">
       <div class="span24">
-        <a class="knowMore btn btn-success" id="<?=$product["_id"]?>" ><?=lang("pdt_knowMore")?></a>
+        <?php if( ! $this->session->userdata("myOrg") ){ ?><a class="knowMore btn btn-success" id="<?=$product["_id"]?>" ><?=lang("pdt_knowMore")?></a><?php } ?>
         <a class="addToBudget btn btn-warning" id="<?=$product["_id"]?>" rel="tooltip" title="<?=lang('pdt_addToBudget')?>"><?=lang('pdt_addToBudget')?></a>
         <a class="shareProductByMail btn btn-primary" href="#" id="<?=$product["_id"]?>" rel="tooltip" title="<?=lang('pdt_shareProductByMail')?>"><?=lang('pdt_shareProductByMail')?></a>
       </div>
