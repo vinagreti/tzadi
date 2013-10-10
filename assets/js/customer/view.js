@@ -59,6 +59,8 @@ $(document).ready(function(){
 		};
 		var callback = function( e ){
 
+			var eventHTML;
+
 			if( e.error ) $tzd.alert.error( e.error );
 
 			if( e ){
@@ -152,16 +154,14 @@ $(document).ready(function(){
 							eventHTML.find(".mail_id").attr("href", base_url+"mail/"+event.mail_id );
 							break;
 
-						case "ownEvent":
-							eventHTML = ownEvent.clone();
-							eventHTML.find(".mail_subject").html( event.mail_subject );
-							eventHTML.find(".date").html( new $tzd.date(event.date).shortDateTime );
-							eventHTML.find(".eventTitle").html( event.title );
-							eventHTML.find(".eventDetail").html( event.detail );
-							break;
+						case "eventCreated":
 
-						case "customerEvent":
-							eventHTML = customerEvent.clone();
+							if( event.resp_id == "customer" )
+								eventHTML = customerEvent.clone();
+
+							else
+								eventHTML = ownEvent.clone();
+
 							eventHTML.find(".mail_subject").html( event.mail_subject );
 							eventHTML.find(".date").html( new $tzd.date(event.date).shortDateTime );
 							eventHTML.find(".eventTitle").html( event.title );
@@ -169,20 +169,31 @@ $(document).ready(function(){
 							break;
 					};
 
-					if( event.creator_id == "customer" ){
+					if( event.resp_id == "customer" ){
 
-						eventHTML.find(".creatorImg").attr( "src", $(".customerImg").attr("src") );
+						eventHTML.find(".respImg").attr( "src", $(".customerImg").attr("src") );
+
+						eventHTML.find(".respName").html( $("h3").html() );
+
+						eventHTML.find(".respLink").attr( "href", base_url + "customer/" + $('#customer_id').html() );
+
+					} else {
+
+						eventHTML.find(".respImg").attr( "src", event.resp_img );
+
+						eventHTML.find(".respName").html( event.resp_name );
+
+						eventHTML.find(".respLink").attr( "href", base_url + "collaborator/" + event.resp_id );
+
+					}
+
+					if( event.creator_id == "customer" ){
 
 						eventHTML.find(".creatorName").html( $("h3").html() );
 
 						eventHTML.find(".creatorLink").attr( "href", base_url + "customer/" + $('#customer_id').html() );
 
-					}
-
-
-					else {
-
-						eventHTML.find(".creatorImg").attr( "src", event.creator_img );
+					} else {
 
 						eventHTML.find(".creatorName").html( event.creator_name );
 
@@ -204,129 +215,12 @@ $(document).ready(function(){
 
 	refreshTimeline();
 
-	var addEvent = new function(){
-
-		this.messageModal = false;
-
-		this.eventsApplied = false;
-
-		this.open = function( mail ) {
-
-			if( this.messageModal ) {
-
-				this.showModal( mail );
-
-			} else {
-
-				var self = this;
-
-				var url = base_url+'customer/addEvent';
-
-				var data = {
-
-					tzadiToken : tzadiToken
-
-				};
-
-				var callback = function( modal ){
-
-					self.messageModal = modal;
-
-					self.showModal( mail );
-
-				};
-
-				$tzd.ajax.post(url, data, callback);        
-			}
-
-		};
-
-		this.showModal = function ( mail ){
-
-			$('#tzadiDialogs').html( this.messageModal );
-
-			$('#tzadiDialogs').modal('show');
-
-			if( ! this.eventsApplied ) {
-
-				this.eventsApplied = true;
-
-				var self = this;
-
-				$('#tzadiDialogs').find(".send").live("click", function(){
-
-					self.send(mail);
-
-				});
-
-			}
-
-			$('#tzadiDialogs').find('#deadLine').datetimepicker({
-
-				language: 'pt-BR'
-
-			}).data('datetimepicker').setLocalDate(new Date());
-
-		}
-
-		this.send = function( mail ){
-
-			var valid = true;
-
-			valid = valid && $tzd.form.checkMask.range($('#tzadiDialogs').find("#eventTitle"), 1, 255, $("#ctm_fillTitle").html());
-
-			valid = valid && $tzd.form.checkMask.range($('#tzadiDialogs').find("#eventDetail"), 1, 1024, $("#ctm_fillDetail").html());
-
-			if( valid ){
-
-				var url = base_url+'customer/addEvent';
-
-				var data = {
-
-					tzadiToken : tzadiToken
-
-					, title : $('#tzadiDialogs').find("#eventTitle").val()
-
-					, detail : $('#tzadiDialogs').find("#eventDetail").val()
-
-					, mail : mail
-
-					, kind : $('#tzadiDialogs').find("#eventKind:checked").val()
-
-					, date : $('#tzadiDialogs').find("#deadLineDate").val()
-
-				};
-
-				var callback = function( e ){
-
-					if(e.error) $tzd.alert.error( e.error );
-
-					if(e.success){
-
-						$('#tzadiDialogs').find(".closeModal").click();
-
-						$tzd.alert.success( e.success );
-
-						$("#refreshTimeline").click();
-
-					}
-
-				};
-
-				$tzd.ajax.post(url, data, callback);
-
-			}
-
-		};
-
-	}
-
 	$(".sendMessage").live("click", function() {
 		$tzd.mail.write.open( $(this).attr("id") );
 	});
 
 	$(".addEvent").live("click", function() {
-		addEvent.open( $(this).attr("id") );
+		$tzd.timeline.addEvent.open( $(this).attr("id") );
 	});
 
 	$("#refreshTimeline").live("click", function() {

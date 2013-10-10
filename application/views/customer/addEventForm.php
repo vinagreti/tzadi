@@ -1,38 +1,45 @@
 <div class="modal-header">
   <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-  <h3><?=lang("ctm_addEvent")?></h3>
+  <span class="lead"><?=lang("ctm_addEventTitle")?></span>
 </div>
 
 <div class="modal-body">
 
-    <div id="deadLine" class="input-append date">
-      <input data-format="dd/MM/yyyy hh:mm:ss" type="text" id="deadLineDate"></input>
-      <span class="add-on">
-        <i data-time-icon="icon-time" data-date-icon="icon-calendar">
-        </i>
-      </span>
+    <div class="row-fluid">
+      <div class="span12">
+        <select id="resp_id" class="input-block-level">
+          <option value="<?=$this->session->userdata("_id")?>">eu</option>
+          <option value="customer">o próprio cliente</option>
+          <option value="5">Denise</option>
+          <option value="3">usuario 3</option>
+          <option value="4">usuario 4</option>
+          <option value="5">usuario 5</option>
+        </select>
+      </div>
+
+      <div class="span12">
+        <div id="deadLine" class="input-prepend date">
+          <span class="add-on">
+            em
+          </span>
+          <input data-format="dd/MM/yyyy hh:mm:ss" type="text" id="deadLineDate"></input>
+        </div>
+      </div>
+    </div>
+
+    <div class="row-fluid">
+      <div class="span24">
+        <input class="input-block-level" id="eventTitle" type="text" placeholder="<?=lang('ctm_eventTitle')?>" />
+      </div>
     </div>
 
     <div class="control-group">
-        <input id="eventTitle" type="text" class="input-block-level" placeholder="<?=lang('ctm_title')?>" />
+        
     </div>
-
-
 
     <div class="control-group">
-        <textarea id="eventDetail" rows="6" class="input-block-level" placeholder="<?=lang('ctm_details')?>"></textarea>
+        <textarea id="eventDetail" rows="4" class="input-block-level" placeholder="<?=lang('ctm_eventDetails')?>"></textarea>
     </div>
-
-    <label class="radio inline">
-      <input type="radio" name="eventKind" id="eventKind" value="ownEvent" checked>
-      <?=lang("ctm_doneByMe")?>
-    </label>
-
-    <label class="radio inline">
-      <input type="radio" name="eventKind" id="eventKind" value="customerEvent">
-      <?=lang("ctm_doneByCustomer")?>
-    </label>
-
 
 
 </div>

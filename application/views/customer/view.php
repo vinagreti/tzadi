@@ -34,7 +34,7 @@
 	<?php if( isset( $customer["email"] ) && $customer["email"] != "" ) { ?>
 		<a id="<?=$customer['email']?>" class="sendMessage btn btn-primary"><i class="icon-envelope"></i> <?=lang("ctm_email")?></a>
 	<?php } ?>
-	<a id="<?=$customer['email']?>" class="addEvent btn btn-success"><i class="icon-plus"></i> <?=lang("ctm_addEvent")?></a>
+	<a id="<?=$customer['_id']?>" class="addEvent btn btn-success"><i class="icon-plus"></i> <?=lang("ctm_addEvent")?></a>
 </div>
 
 <div class="row-fluid hideFromResponsive">
@@ -54,12 +54,13 @@
 				<div class="row-fluid">
 					<div class="span4">
 						<div class="thumbnail">
-							<img class="creatorImg" src="" style="max-height:50px;"/>
+							<img class="respImg" src="" style="max-height:50px;"/>
 						</div>
 					</div>
 					<div class="span20">
-						<strong><a class="creatorLink"><span class="creatorName"></span></a></strong>
+						<strong><a class="respLink"><span class="respName"></span></a></strong>
 						<small><span class="text-warning"><?=lang("ctm_createdTheCustomer")?></span></small>
+						<p class="pull-right"><small><span class="text-warning"><?=lang("ctm_createdBy")?>:</span> <a class="creatorLink"><span class="creatorName"></span></a></small></p>
 					</div>
 				</div>
 			</div>
@@ -71,12 +72,13 @@
 				<div class="row-fluid">
 					<div class="span4">
 						<div class="thumbnail">
-							<img class="creatorImg" src="" style="max-height:50px;"/>
+							<img class="respImg" src="" style="max-height:50px;"/>
 						</div>
 					</div>
 					<div class="span20">
-						<strong><a class="creatorLink"><span class="creatorName"></span></a></strong>
+						<strong><a class="respLink"><span class="respName"></span></a></strong>
 						<small><span class="text-warning"><?=lang("ctm_autoCreated")?></span></small>
+						<p class="pull-right"><small><span class="text-warning"><?=lang("ctm_createdBy")?>:</span> <a class="creatorLink"><span class="creatorName"></span></a></small></p>
 					</div>
 				</div>
 			</div>
@@ -90,13 +92,14 @@
 				<div class="row-fluid">
 					<div class="span4">
 						<div class="thumbnail">
-							<img class="creatorImg" src="" style="max-height:50px;"/>
+							<img class="respImg" src="" style="max-height:50px;"/>
 						</div>
 					</div>
 					<div class="span20">
-						<strong><a class="creatorLink"><span class="creatorName"></span></a></strong>
+						<strong><a class="respLink"><span class="respName"></span></a></strong>
 						<small><span class="text-warning"><?=lang("ctm_autoCreated")?></span></small>
 						<p><small><?=lang("ctm_autoCreatedTip")?></small></p>
+						<p class="pull-right"><small><span class="text-warning"><?=lang("ctm_createdBy")?>:</span> <a class="creatorLink"><span class="creatorName"></span></a></small></p>
 					</div>
 				</div>
 			</div>
@@ -109,13 +112,14 @@
 				<div class="row-fluid">
 					<div class="span4">
 						<div class="thumbnail">
-							<img class="creatorImg" src="" style="max-height:50px;"/>
+							<img class="respImg" src="" style="max-height:50px;"/>
 						</div>
 					</div>
 					<div class="span20">
-						<strong><a class="creatorLink"><span class="creatorName"></span></a></strong>
+						<strong><a class="respLink"><span class="respName"></span></a></strong>
 						<small><span class="text-warning"><?=lang("ctm_contact")?></span></small>
 						<p><small><a class="mail_id mail_subject" target="_blank"></a></small></p>
+						<p class="pull-right"><small><span class="text-warning"><?=lang("ctm_createdBy")?>:</span> <a class="creatorLink"><span class="creatorName"></span></a></small></p>
 					</div>
 				</div>
 			</div>
@@ -128,13 +132,14 @@
 				<div class="row-fluid">
 					<div class="span4">
 						<div class="thumbnail">
-							<img class="creatorImg" src="" style="max-height:50px;"/>
+							<img class="respImg" src="" style="max-height:50px;"/>
 						</div>
 					</div>
 					<div class="span20">
-						<strong><a class="creatorLink"><span class="creatorName"></span></a></strong>
+						<strong><a class="respLink"><span class="respName"></span></a></strong>
 						<small><span class="text-warning"><?=lang("ctm_shareProduct")?></span></small>
 						<p><small><a class="mail_id mail_subject" target="_blank"></a></small></p>
+						<p class="pull-right"><small><span class="text-warning"><?=lang("ctm_createdBy")?>:</span> <a class="creatorLink"><span class="creatorName"></span></a></small></p>
 					</div>
 				</div>
 			</div>
@@ -145,13 +150,14 @@
 				<div class="row-fluid">
 					<div class="span4">
 						<div class="thumbnail">
-							<img class="creatorImg" src="" style="max-height:50px;"/>
+							<img class="respImg" src="" style="max-height:50px;"/>
 						</div>
 					</div>
 					<div class="span20">
-						<strong><a class="creatorLink"><span class="creatorName"></span></a></strong>
+						<strong><a class="respLink"><span class="respName"></span></a></strong>
 						<small><span class="text-warning"><?=lang("ctm_shareProductByStaff")?></span></small>
 						<p><small><a class="mail_id mail_subject" target="_blank"></a></small></p>
+					<p class="pull-right"><small><span class="text-warning"><?=lang("ctm_createdBy")?>:</span> <a class="creatorLink"><span class="creatorName"></span></a></small></p>
 					</div>
 				</div>
 			</div>
@@ -165,13 +171,14 @@
 				<div class="row-fluid">
 					<div class="span4">
 						<div class="thumbnail">
-							<img class="creatorImg" src="" style="max-height:50px;"/>
+							<img class="respImg" src="" style="max-height:50px;"/>
 						</div>
 					</div>
 					<div class="span20">
-						<strong><a class="creatorLink"><span class="creatorName"></span></a></strong>
+						<strong><a class="respLink"><span class="respName"></span></a></strong>
 						<small><span class="text-warning"><?=lang("ctm_knowMoreProduct")?></span></small>
 						<p><small><a class="mail_id mail_subject" target="_blank"></a></small>
+						<p class="pull-right"><small><span class="text-warning"><?=lang("ctm_createdBy")?>:</span> <a class="creatorLink"><span class="creatorName"></span></a></small></p>
 					</div>
 				</div>
 			</div>
@@ -184,13 +191,14 @@
 				<div class="row-fluid">
 					<div class="span4">
 						<div class="thumbnail">
-							<img class="creatorImg" src="" style="max-height:50px;"/>
+							<img class="respImg" src="" style="max-height:50px;"/>
 						</div>
 					</div>
 					<div class="span20">
-						<strong><a class="creatorLink"><span class="creatorName"></span></a></strong>
+						<strong><a class="respLink"><span class="respName"></span></a></strong>
 						<small><span class="text-warning"><?=lang("ctm_shareBudget")?></span></small>
 						<p><small><a class="mail_id mail_subject" target="_blank"></a></small>
+						<p class="pull-right"><small><span class="text-warning"><?=lang("ctm_createdBy")?>:</span> <a class="creatorLink"><span class="creatorName"></span></a></small></p>
 					</div>
 				</div>
 			</div>
@@ -201,13 +209,14 @@
 				<div class="row-fluid">
 					<div class="span4">
 						<div class="thumbnail">
-							<img class="creatorImg" src="" style="max-height:50px;"/>
+							<img class="respImg" src="" style="max-height:50px;"/>
 						</div>
 					</div>
 					<div class="span20">
-						<strong><a class="creatorLink"><span class="creatorName"></span></a></strong>
+						<strong><a class="respLink"><span class="respName"></span></a></strong>
 						<small><span class="text-warning"><?=lang("ctm_shareBudgetByStaff")?></span></small>
 						<p><small><a class="mail_id mail_subject" target="_blank"></a></small>
+						<p class="pull-right"><small><span class="text-warning"><?=lang("ctm_createdBy")?>:</span> <a class="creatorLink"><span class="creatorName"></span></a></small></p>
 					</div>
 				</div>
 			</div>
@@ -221,13 +230,14 @@
 				<div class="row-fluid">
 					<div class="span4">
 						<div class="thumbnail">
-							<img class="creatorImg" src="" style="max-height:50px;"/>
+							<img class="respImg" src="" style="max-height:50px;"/>
 						</div>
 					</div>
 					<div class="span20">
-						<strong><a class="creatorLink"><span class="creatorName"></span></a></strong>
+						<strong><a class="respLink"><span class="respName"></span></a></strong>
 						<small><span class="text-warning"><?=lang("ctm_knowMoreBudget")?></span></small>
 						<p><small><a class="mail_id mail_subject" target="_blank"></a></small>
+						<p class="pull-right"><small><span class="text-warning"><?=lang("ctm_createdBy")?>:</span> <a class="creatorLink"><span class="creatorName"></span></a></small></p>
 					</div>
 				</div>
 			</div>
@@ -240,13 +250,14 @@
 				<div class="row-fluid">
 					<div class="span4">
 						<div class="thumbnail">
-							<img class="creatorImg" src="" style="max-height:50px;"/>
+							<img class="respImg" src="" style="max-height:50px;"/>
 						</div>
 					</div>
 					<div class="span20">
-						<strong><a class="creatorLink"><span class="creatorName"></span></a></strong>
+						<strong><a class="respLink"><span class="respName"></span></a></strong>
 						<small><span class="text-warning"><?=lang("ctm_replyReceived")?></span></small>
 						<p><small><a class="mail_id mail_subject" target="_blank"></a></small>
+						<p class="pull-right"><small><span class="text-warning"><?=lang("ctm_createdBy")?>:</span> <a class="creatorLink"><span class="creatorName"></span></a></small></p>
 					</div>
 				</div>
 			</div>
@@ -257,13 +268,14 @@
 				<div class="row-fluid">
 					<div class="span4">
 						<div class="thumbnail">
-							<img class="creatorImg" src="" style="max-height:50px;"/>
+							<img class="respImg" src="" style="max-height:50px;"/>
 						</div>
 					</div>
 					<div class="span20">
-						<strong><a class="creatorLink"><span class="creatorName"></span></a></strong>
+						<strong><a class="respLink"><span class="respName"></span></a></strong>
 						<small><span class="text-warning"><?=lang("ctm_sentMessage")?></span></small>
 						<p><small><a class="mail_id mail_subject" target="_blank"></a></small>
+						<p class="pull-right"><small><span class="text-warning"><?=lang("ctm_createdBy")?>:</span> <a class="creatorLink"><span class="creatorName"></span></a></small></p>
 					</div>
 				</div>
 			</div>
@@ -275,13 +287,14 @@
 				<div class="row-fluid">
 					<div class="span4">
 						<div class="thumbnail">
-							<img class="creatorImg" src="" style="max-height:50px;"/>
+							<img class="respImg" src="" style="max-height:50px;"/>
 						</div>
 					</div>
 					<div class="span20">
-						<strong><a class="creatorLink"><span class="creatorName"></span></a></strong>
+						<strong><a class="respLink"><span class="respName"></span></a></strong>
 						<small><span class="text-warning"><?=lang("ctm_repliedMessage")?></span></small>
 						<p><small><a class="mail_id mail_subject" target="_blank"></a></small>
+						<p class="pull-right"><small><span class="text-warning"><?=lang("ctm_createdBy")?>:</span> <a class="creatorLink"><span class="creatorName"></span></a></small></p>
 					</div>
 				</div>
 			</div>
@@ -293,13 +306,14 @@
 				<div class="row-fluid">
 					<div class="span4">
 						<div class="thumbnail">
-							<img class="creatorImg" src="" style="max-height:50px;"/>
+							<img class="respImg" src="" style="max-height:50px;"/>
 						</div>
 					</div>
 					<div class="span20">
-						<strong><a class="creatorLink"><span class="creatorName"></span></a></strong>
+						<strong><a class="respLink"><span class="respName"></span></a></strong>
 						<small><span class="text-warning eventTitle"></span></small>
 						<p><small><span class="eventDetail"></span></small></p>
+						<p class="pull-right"><small><span class="text-warning"><?=lang("ctm_createdBy")?>:</span> <a class="creatorLink"><span class="creatorName"></span></a></small></p>
 					</div>
 				</div>
 			</div>
@@ -313,13 +327,14 @@
 				<div class="row-fluid">
 					<div class="span4">
 						<div class="thumbnail">
-							<img class="creatorImg" src="" style="max-height:50px;"/>
+							<img class="respImg" src="" style="max-height:50px;"/>
 						</div>
 					</div>
 					<div class="span20">
-						<strong><a class="creatorLink"><span class="creatorName"></span></a></strong>
+						<strong><a class="respLink"><span class="respName"></span></a></strong>
 						<small><span class="text-warning eventTitle"></span></small>
 						<p><small><span class="eventDetail"></span></small></p>
+						<p class="pull-right"><small><span class="text-warning"><?=lang("ctm_createdBy")?>:</span> <a class="creatorLink"><span class="creatorName"></span></a></small></p>
 					</div>
 				</div>
 			</div>

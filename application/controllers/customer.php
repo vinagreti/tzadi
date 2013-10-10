@@ -116,7 +116,7 @@ class Customer extends My_Controller {
 
     } else {
 
-      if( isset($data["mail"]) && isset($data["title"]) && isset($data["detail"]) && isset($data["kind"]) && isset($data["date"]) ) {
+      if( isset($data["_id"]) && isset($data["title"]) && isset($data["detail"]) && isset($data["resp_id"]) && isset($data["date"]) ) {
 
         $this->load->model("customer_model");
 

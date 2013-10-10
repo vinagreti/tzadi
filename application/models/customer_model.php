@@ -60,14 +60,27 @@ class Customer_Model extends CI_Model {
 
         if( $event["creator_id"] != "customer" ){
 
-          $collaborator_id = $event["creator_id"];
+          $creator_id = $event["creator_id"];
 
-          if( ! isset( $collaborators[ $collaborator_id ] ) )
-            $collaborators[ $collaborator_id ] = $this->user_model->getByID(  $collaborator_id  );
+          if( ! isset( $collaborators[ $creator_id ] ) )
+            $collaborators[ $creator_id ] = $this->user_model->getByID(  $creator_id  );
 
-          $events[$key]["creator_name"] = $collaborators[ $collaborator_id ]["name"];
+          $events[$key]["creator_name"] = $collaborators[ $creator_id ]["name"];
 
-          $events[$key]["creator_img"] = $collaborators[ $collaborator_id ]["img"];
+          $events[$key]["creator_img"] = $collaborators[ $creator_id ]["img"];
+
+        }
+
+        if( $event["resp_id"] != "customer" ){
+
+          $resp_id = $event["resp_id"];
+
+          if( ! isset( $collaborators[ $resp_id ] ) )
+            $collaborators[ $resp_id ] = $this->user_model->getByID(  $resp_id  );
+
+          $events[$key]["resp_name"] = $collaborators[ $resp_id ]["name"];
+
+          $events[$key]["resp_img"] = $collaborators[ $resp_id ]["img"];
 
         }
 
@@ -293,7 +306,17 @@ class Customer_Model extends CI_Model {
         $action->creator_id = $this->session->userdata("_id");
 
       else
-        $action->creator_id = "nao foi possivel definir no model customer";
+        $action->creator_id = "customer";
+
+    }
+
+    if( ! isset($action->resp_id) ){
+
+      if( $this->session->userdata("_id") )
+        $action->resp_id = $this->session->userdata("_id");
+
+      else
+        $action->resp_id = "customer";
 
     }
 
@@ -328,15 +351,19 @@ class Customer_Model extends CI_Model {
 
     $this->load->model("customer_model");
 
-    $event->kind = $data["kind"];
-
     $event->title = $data["title"];
 
     $event->detail = $data["detail"];
 
+    $event->kind = "eventCreated";
+
     $event->date = strtotime( str_replace("/", "-", $data["date"]) );
 
-    $event->customer_id = $this->customer_model->getOrCreate( $data["mail"] );
+    $event->customer_id = (int) $data["_id"];
+
+    $event->resp_id = (int) $data["resp_id"];
+
+    $event->creator_id = (int) $this->session->userdata("_id");
 
     $this->customer_model->addTimeline( $event );
 
