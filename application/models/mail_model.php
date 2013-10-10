@@ -96,9 +96,7 @@ class Mail_Model extends CI_Model {
 
       $this->email->to($data["to"]);
 
-      if( $data["kind"] != "sentMessage" ) $tag = "";
-
-      else $tag = " <id>".$data['_id']."</m>";
+      $tag = " <id>".$data['_id']."</m>";
 
       $this->email->subject(utf8_decode($data["subject"]) . $tag);
 
@@ -118,8 +116,7 @@ class Mail_Model extends CI_Model {
 
       }
 
-
-      $message = '<html><head><meta charset="utf-8"></head><body>'.nl2br($data["message"]).'</body></html>';
+      $message = $this->load->view( 'mail/template', $data, true );
 
       $this->email->message(utf8_decode($message));
 

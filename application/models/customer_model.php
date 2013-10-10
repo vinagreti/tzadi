@@ -328,6 +328,10 @@ class Customer_Model extends CI_Model {
 
     }
 
+    $action->org_id = $this->session->userdata("org");
+
+    $action->branch_id = $this->session->userdata("org");
+
     $this->mongo_db->insert('timeline', (array) $action);
 
   }
