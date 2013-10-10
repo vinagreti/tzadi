@@ -1,6 +1,6 @@
 <div class="modal-header">
   <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-  <h3><?=lang("mail_replyMessage")?></h3>
+  <span class="lead"><?=lang("mail_replyMessage")?></span>
 </div>
 
 <div class="modal-body">

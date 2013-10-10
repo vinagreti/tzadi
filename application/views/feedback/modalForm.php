@@ -1,6 +1,6 @@
 <div class="modal-header">
   <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-  <h3><?=lang("fdb_mayWeHelp")?></h3>
+  <span class="lead"><?=lang("fdb_mayWeHelp")?></span>
 </div>
 
 <div class="modal-body">
