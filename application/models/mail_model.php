@@ -30,7 +30,7 @@ class Mail_Model extends CI_Model {
 
   }
 
-  public function read( $mail_id ){
+  public function load( $mail_id ){
 
     $mail = $this->mongo_db
       ->where( "_id", (int) $mail_id )
@@ -52,7 +52,7 @@ class Mail_Model extends CI_Model {
 
     $data["from"] = $this->from;
 
-    $data["staff_id"] = $this->session->userdata("_id");
+    $data["collaborator_id"] = $this->session->userdata("_id");
 
     $this->mongo_db->insert('mail', $data);
 
@@ -90,7 +90,7 @@ class Mail_Model extends CI_Model {
 
       $this->email->set_newline("\r\n");
 
-      $staff = $this->user_model->getByID( $data["staff_id"] );
+      $staff = $this->user_model->getByID( $data["collaborator_id"] );
 
       $this->email->from($this->from, iconv("UTF-8", 'iso-8859-1', $staff["name"]) );
 
@@ -299,7 +299,13 @@ class Mail_Model extends CI_Model {
 
     $event->mail_referer_id = $mail["mail_referer_id"];
 
-    $event->customer_id = $this->customer_model->getCustomerIdByMailId( $mail["mail_referer_id"] );
+    $customer = $this->customer_model->getCustomerByMailId( $mail["mail_referer_id"] );
+
+    $event->customer_id = $customer["customer_id"];
+
+    $event->org_id = $customer["org_id"];
+
+    $event->branch_id = $customer["org_id"];
 
     $this->customer_model->addTimeline( $event );
 
@@ -313,11 +319,11 @@ class Mail_Model extends CI_Model {
 
     $this->load->model('mail_model');
 
-    $referer_data = $this->read(  $mail["mail_referer_id"] );
+    $referer_data = $this->load(  $mail["mail_referer_id"] );
 
     $this->load->model("user_model");
 
-    $staff = $this->user_model->getByID( $referer_data["staff_id"] );
+    $staff = $this->user_model->getByID( $referer_data["collaborator_id"] );
 
     $mailToSend["message"] = $mail["message"];
 
@@ -365,7 +371,7 @@ class Mail_Model extends CI_Model {
 
   public function reply( $data ) {
 
-    $mail = $this->read( $data["mail_id"] );
+    $mail = $this->load( $data["mail_id"] );
 
     $this->load->model("mongo_model");
 

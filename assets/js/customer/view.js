@@ -107,7 +107,7 @@ $(document).ready(function(){
 							
 						case "product/share":
 
-							if( event.staff_id )
+							if( event.collaborator_id )
 								eventHTML = productShareByStaff.clone();
 
 							else
@@ -128,7 +128,7 @@ $(document).ready(function(){
 
 						case "product/shareBudget":
 
-							if( event.staff_id )
+							if( event.collaborator_id )
 								eventHTML = budgetShareByStaff.clone();
 
 							else

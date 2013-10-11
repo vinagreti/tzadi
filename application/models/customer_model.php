@@ -328,15 +328,17 @@ class Customer_Model extends CI_Model {
 
     }
 
-    $action->org_id = $this->session->userdata("org");
+    if(!isset($action->org_id))
+      $action->org_id = $this->session->userdata("org");
 
-    $action->branch_id = $this->session->userdata("org");
+    if(!isset($action->branch_id))
+      $action->branch_id = $this->session->userdata("org");
 
     $this->mongo_db->insert('timeline', (array) $action);
 
   }
 
-  public function getCustomerIdByMailId( $mail_id )
+  public function getCustomerByMailId( $mail_id )
   {
 
     $customer = $this->mongo_db
@@ -344,7 +346,7 @@ class Customer_Model extends CI_Model {
       ->where('mail_id', (int) $mail_id )
       ->get('timeline');
 
-    return $customer[0]["customer_id"];
+    return $customer[0];
 
   }
 

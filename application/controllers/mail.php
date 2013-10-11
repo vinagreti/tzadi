@@ -13,7 +13,7 @@ class Mail extends My_Controller {
 
 		$this->load->model("mail_model");
 
-		$data->mail = $this->mail_model->read( $mail_id );
+		$data->mail = $this->mail_model->load( $mail_id );
 
         $data->dynJS = array( 'mail/read', 'tzadi/tzadi-mail');
 
@@ -137,7 +137,7 @@ class Mail extends My_Controller {
 
 			$this->load->model("mail_model");
 
-			$data["mail"] = $this->mail_model->read( $data["mail_id"] );
+			$data["mail"] = $this->mail_model->load( $data["mail_id"] );
 
 			echo json_encode($this->load->view('mail/modalReplyForm', $data, TRUE));
 

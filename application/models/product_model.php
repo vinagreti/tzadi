@@ -383,7 +383,7 @@ class Product_Model extends CI_Model {
         $event->kind = "product/share";
 
         if( $this->session->userdata("myOrg") )
-          $event->staff_id = $this->session->userdata("_id");
+          $event->collaborator_id = $this->session->userdata("_id");
 
         else if( $this->session->userdata("_id") )
           $event->user_id = $this->session->userdata("_id");
@@ -460,7 +460,7 @@ class Product_Model extends CI_Model {
       $event->kind = "product/knowMore";
 
       if( $this->session->userdata("myOrg") )
-        $event->staff_id = $this->session->userdata("_id");
+        $event->collaborator_id = $this->session->userdata("_id");
 
       else if( $this->session->userdata("_id") )
         $event->user_id = $this->session->userdata("_id");
@@ -589,7 +589,7 @@ class Product_Model extends CI_Model {
         $event->kind = "product/shareBudget";
 
         if( $this->session->userdata("myOrg") )
-          $event->staff_id = $this->session->userdata("_id");
+          $event->collaborator_id = $this->session->userdata("_id");
 
         else if( $this->session->userdata("_id") )
           $event->user_id = $this->session->userdata("_id");
@@ -654,7 +654,7 @@ class Product_Model extends CI_Model {
       $event->kind = "product/knowMoreBudget";
 
       if( $this->session->userdata("myOrg") )
-        $event->staff_id = $this->session->userdata("_id");
+        $event->collaborator_id = $this->session->userdata("_id");
 
       else if( $this->session->userdata("_id") )
         $event->user_id = $this->session->userdata("_id");
