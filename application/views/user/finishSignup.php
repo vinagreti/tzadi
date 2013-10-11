@@ -22,11 +22,11 @@
 		</div>
 		<label class="text-warning"><span><?=lang('usr_chooseYourAgencyName')?></span></label>
 		<div class="control-group">
-		  <input id="orgName" type="text" class="input-block-level" name="orgName" value="<?=$this->session->userdata("orgName")?>">
+		  <input id="org_name" type="text" class="input-block-level" name="org_name" value="<?=$this->session->userdata("org_name")?>">
 		</div>
 		<label class="text-warning"><span><?=lang('usr_chooseYourSubdomain')?></span> <span class="text-success"><strong><?=lang('usr_identitySample')?></strong></span></label>
 		<div class="control-group">
-		  <input id="identity" type="text" class="input-block-level" name="identity">
+		  <input id="org_id" type="text" class="input-block-level" name="org_id">
 		  <h4><?=lang("usr_addressLabel")?>: <span id="address" class="text-success"><span ></span></h4>
 		</div>
 		<p><button id="finishSignup" class="btn btn-primary"><?=lang('usr_finishSignupButton')?></button><p>

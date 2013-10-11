@@ -1,8 +1,8 @@
 $(document).ready(function(){
 
-  $("#identity").mask("A{0,9}A{0,9}A{0,9}A{1,2}");
+  $("#org_id").mask("A{0,9}A{0,9}A{0,9}A{1,2}");
 
-	$("#identity").live("change keyup propertychange", function(){
+	$("#org_id").live("change keyup propertychange", function(){
 
 		if($(this).val() == "")
 			$("#address").html("");
@@ -18,9 +18,9 @@ $(document).ready(function(){
 
     valid = valid && $tzd.form.checkMask.range($('#name'), 1, 65535, $(".usr_pleaseFillEverithing").html());
 
-    valid = valid && $tzd.form.checkMask.range($('#identity'), 1, 32, $(".usr_pleaseFillEverithing").html());
+    valid = valid && $tzd.form.checkMask.range($('#org_name'), 1, 32, $(".usr_pleaseFillEverithing").html());
 
-    valid = valid && $tzd.form.checkMask.identity($('#identity'), $(".usr_pleaseFillEverithing").html());
+    valid = valid && $tzd.form.checkMask.org_id($('#org_id'), $(".usr_pleaseFillEverithing").html());
    
     if ( valid ) {
 
@@ -30,9 +30,9 @@ $(document).ready(function(){
 
         tzadiToken : tzadiToken
         , name : $("#name").val()
-        , orgName : $("#orgName").val()
-        , identity : $("#identity").val()
-        //, kind : $(".accountKind:checked").val()
+        , org_name : $("#org_name").val()
+        , org_id : $("#org_id").val()
+        //, org_kind : $(".accountKind:checked").val()
 
       };
 

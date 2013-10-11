@@ -10,14 +10,14 @@ class Customer_Model extends CI_Model {
   function getAll()
   {
     return $this->mongo_db
-      ->where('org_id', $this->session->userdata("myOrgID"))
+      ->where('org_id', $this->session->userdata("org_id"))
       ->get('customer');
   }
 
   function getByID( $_id )
   {
     $customer = $this->mongo_db
-      ->where('org_id', $this->session->userdata("myOrgID"))
+      ->where('org_id', $this->session->userdata("org_id"))
       ->where('_id', (int) $_id )
       ->get('customer');
 
@@ -37,7 +37,7 @@ class Customer_Model extends CI_Model {
     $customer = $this->mongo_db
       ->where(array(
         '_id' => (int) $customer_id
-        , 'org_id' => $this->session->userdata("myOrgID")
+        , 'org_id' => $this->session->userdata("org_id")
         ))
       ->get('customer');
 
@@ -102,7 +102,8 @@ class Customer_Model extends CI_Model {
       'customer',array(
         "_id" => $newID
         ,"name" => $name
-        ,"org_id" => $this->session->userdata("myOrgID")
+        ,"org_id" => $this->session->userdata("org_id")
+        ,"org_branch" => $this->session->userdata("org_branch")
         ,"creation" => now()
         ,"creator_id" => $this->session->userdata("_id")
         ,"status" => "active"

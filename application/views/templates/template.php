@@ -105,7 +105,7 @@
 
     <?=form_open("",array("class" => "tzadiToken"))?><?=form_close()?>
     <script type="text/javascript">var base_url = "<?=base_url()?>";</script>
-    <script type="text/javascript">var IDENTITY = "<?=$this->session->userdata('org')?>";</script>
+    <script type="text/javascript">var ORG_ID = "<?=$this->session->userdata('org')?>";</script>
     <!-- Cusom JS -->
     <script src="<?=base_url()?>assets/js/tzadi/tzadi.js"></script>
     <script src="<?=base_url()?>assets/js/tzadi/tzadi-lang.js"></script>

@@ -13,9 +13,11 @@ class Contact_Model extends CI_Model {
 
     $data["_id"] = $this->mongo_model->newID();
 
+    $data["org_id"] = $this->session->userdata("org");
+
     $this->mongo_db->insert('contact', $data);
 
-    if(!defined('IDENTITY')) {
+    if(!defined('ORG_ID')) {
 
       $message = "<p> ".lang('ct_contactSentBy').": " . $email . "</p>";
 
@@ -37,6 +39,8 @@ class Contact_Model extends CI_Model {
 
       $this->load->model('mail_model');
 
+      $mail["org_id"] = 0;
+
       $this->mail_model->queue($mail);
 
     } else {
@@ -55,7 +59,7 @@ class Contact_Model extends CI_Model {
 
         $message = "<p>".lang('ct_contactSentBy').": <a href=".base_url().lang("rt_customer")."/".$customer_id.">" . $name . "</a></p>";
 
-        $message .= "<p>".lang('ct_contactSentFor')." <a href='" . IDENTITY . ".tzadi.com'>".IDENTITY . ".tzadi.com</a></p>";
+        $message .= "<p>".lang('ct_contactSentFor')." <a href='" . ORG_ID . ".tzadi.com'>".ORG_ID . ".tzadi.com</a></p>";
 
         $message .= "<p>".lang('ct_Subject').": " . $data["subject"] . "</p>";
 
@@ -72,6 +76,8 @@ class Contact_Model extends CI_Model {
         $mail["kind"] = "contact";
 
         $this->load->model('mail_model');
+
+        $mail["org_id"] = $this->session->userdata("org");
 
         $mail_id = $this->mail_model->queue($mail);
 

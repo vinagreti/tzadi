@@ -99,7 +99,7 @@ TzadiJS.prototype.string = new function(){
 
     }
 
-    this.identity = function( string ){
+    this.org_id = function( string ){
 
       var maskRE = /^[a-zA-Z0-9]*$/;
 

@@ -7,13 +7,31 @@ class Org_Model extends CI_Model {
         $this->load->library("mongo_db");
     }
 
-    function getByIdentity($identity)
+    function getByID($org_id)
     {
 
-        $identity = strtolower($identity);
+        $reservedIdentities = array("www"
+            , "staging"
+            , "intranet"
+            , "blog"
+            , "database"
+            , "driver"
+            , "task"
+            , "developer"
+            , "official"
+            , "oficial"
+            , "home"
+            , "inicio"
+            , "tzadi"
+            );
+
+        if( in_array( strtolower($org_id), $reservedIdentities ) )
+            return "reserved identity";
+
+        $org_id = strtolower($org_id);
 
         $res = $this->mongo_db
-        ->where('_id', $identity)
+        ->where('_id', $org_id)
         ->get('org');
 
         if($res){
@@ -28,17 +46,25 @@ class Org_Model extends CI_Model {
 
     }
 
-    public function add( $user ){
+    public function add( $org ){
 
-        $user["orgKind"] = "agency";
+        $this->load->model("mongo_model");
 
-        return $this->mongo_db->insert('org', array(
-            "_id" => $user["identity"]
-            , "name" => $user["orgName"]
-            , "img" => "http://".ENVIRONMENT."/assets/img/no_photo_640x480.png"
-            , "kind" => $user["orgKind"]
-            , "email" => $user["email"]
+        $branch = array( array( "_id" => $this->mongo_model->newID(), "name" => "Matriz - traduzir no model org") );
+
+        $this->mongo_db->insert('org', array(
+            "_id" => strtolower($org["_id"])
+            , "name" => $org["name"]
+            , "img" => assets_url("img/no_photo_640x480.png")
+            , "kind" => "agency"
+            , "email" => $org["email"]
+            , "branch" => $branch
             ));
+
+        
+        $org = $this->mongo_db->where('_id', strtolower($org["_id"]))->get('org');
+
+        return $org[0];
 
     }
 
@@ -46,7 +72,7 @@ class Org_Model extends CI_Model {
     {
 
         $users = $this->mongo_db
-            ->where( '_id', $this->session->userdata("myOrgID") )
+            ->where( '_id', $this->session->userdata("org_id") )
             ->get("org");
 
         if( isset( $users[0]["exchangeRate"] ) )
@@ -61,7 +87,7 @@ class Org_Model extends CI_Model {
     {
 
         $this->mongo_db
-            ->where( '_id', $this->session->userdata("myOrgID") )
+            ->where( '_id', $this->session->userdata("org_id") )
             ->set("exchangeRate" , $data )
             ->update("org");
 

@@ -39,7 +39,7 @@
 */
 
 
-if(defined('IDENTITY')) $route['default_controller'] = "product";
+if(defined('ORG_ID')) $route['default_controller'] = "product";
 else $route['default_controller'] = "landing";
 $route['404_override'] = '';
 

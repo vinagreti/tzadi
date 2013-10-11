@@ -23,7 +23,7 @@ if (!function_exists('myOrg_url')) {
             $http = "http://";
 
 
-        return $http . $CI->session->userdata("myOrgID") . "." . ENVIRONMENT . "/";
+        return $http . $CI->session->userdata("org_id") . "." . ENVIRONMENT . "/";
 
 
     }

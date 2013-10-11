@@ -20,7 +20,7 @@ class Page {
 
     else if( $this->CI->session->userdata("_id") ) {
 
-      if( defined("IDENTITY") )
+      if( defined("ORG_ID") )
         $data->navbar = $this->CI->load->view($this->CI->session->userdata("orgKind")."/navbar_public_logged", $data, true);
 
       else
@@ -30,7 +30,7 @@ class Page {
 
     else {
 
-      if( defined("IDENTITY") )
+      if( defined("ORG_ID") )
         $data->navbar = $this->CI->load->view($this->CI->session->userdata("orgKind")."/navbar_public", $data, true);
 
       else

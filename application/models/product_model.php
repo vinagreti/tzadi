@@ -10,7 +10,7 @@ class Product_Model extends CI_Model {
   function getAll()
   {
     return $this->mongo_db
-      ->where('org_id', $this->session->userdata("myOrgID"))
+      ->where('org_id', $this->session->userdata("org_id"))
       ->order_by(array('name' => 'asc'))
       ->get('product');
   }
@@ -48,7 +48,8 @@ class Product_Model extends CI_Model {
         "_id" => $newID
         ,"name" => $data->name
         ,"kind" => $data->kind
-        ,"org_id" => $this->session->userdata("myOrgID")
+        ,"org_id" => $this->session->userdata("org_id")
+        ,"org_branch" => $this->session->userdata("org_branch")
         ,"creation" => now()
         ,"creator" => $this->session->userdata("_id")
         ,"supplier" => "0"

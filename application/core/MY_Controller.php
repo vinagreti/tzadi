@@ -32,15 +32,15 @@ class My_Controller extends CI_Controller{
 
     if( $subdomain ) {
 
-      define('IDENTITY', $subdomain);
+      define('ORG_ID', $subdomain);
 
       $this->load->model("org_model");
       
-      $org = $this->org_model->getByIdentity(IDENTITY);
+      $org = $this->org_model->getByID(ORG_ID);
 
       if($org){
 
-        if( $org["_id"] == $this->session->userdata("myOrgID") )
+        if( $org["_id"] == $this->session->userdata("org_id") )
           $this->session->set_userdata("myOrg", true);
 
         else
@@ -64,7 +64,7 @@ class My_Controller extends CI_Controller{
 
       } else if( $this->router->method != "identityNotFound" ) {
         
-        //redirect('https://'.ENVIRONMENT.'/error/identityNotFound/?identity='.IDENTITY, 'refresh');
+        //redirect('https://'.ENVIRONMENT.'/error/identityNotFound/?identity='.ORG_ID, 'refresh');
 
       }
 
@@ -80,7 +80,7 @@ class My_Controller extends CI_Controller{
 
     if( ENVIRONMENT == "tzadi.com" ){
 
-      if( defined('IDENTITY') && strpos(current_url(),'https') !== false ) {
+      if( defined('ORG_ID') && strpos(current_url(),'https') !== false ) {
 
         $section  = str_replace("/index.php", "", $_SERVER['REQUEST_URI']);
 
@@ -88,7 +88,7 @@ class My_Controller extends CI_Controller{
 
       }
 
-      if ( ! defined('IDENTITY') && strpos(current_url(),'https') === false ) {
+      if ( ! defined('ORG_ID') && strpos(current_url(),'https') === false ) {
 
         $section  = str_replace("/index.php", "", $_SERVER['REQUEST_URI']);
 

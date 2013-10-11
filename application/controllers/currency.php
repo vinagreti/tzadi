@@ -21,7 +21,7 @@ class Currency extends My_Controller {
 
 			$this->load->model("currency_model");
 
-			if( defined("IDENTITY") )
+			if( defined("ORG_ID") )
 				$currency = $this->currency_model->getProfileCurrency( );
 
 			else

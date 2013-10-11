@@ -201,7 +201,7 @@ class User extends My_Controller {
 
     $this->lang->load('product', $this->session->userdata('language'));
 
-    if( IDENTITY != $this->session->userdata("myOrg") )
+    if( ORG_ID != $this->session->userdata("myOrg") )
       redirect("http://".$this->session->userdata("org").".".ENVIRONMENT."/".lang("rt_interests"));
 
     $this->load->model("user_model");
@@ -215,7 +215,7 @@ class User extends My_Controller {
 
       $data->view = 'user/interests';
 
-      $data->user = $this->user_model->getByIdentity(IDENTITY);
+      $data->user = $this->user_model->getByID(ORG_ID);
 
       $data->page_title = lang('usr_interests');
 
@@ -230,7 +230,7 @@ class User extends My_Controller {
 
     $this->MYensureOwnProfile();
 
-    if( IDENTITY != $this->session->userdata("myOrg") )
+    if( ORG_ID != $this->session->userdata("myOrg") )
       redirect("http://".$this->session->userdata("org").".".ENVIRONMENT."/".lang("rt_proposals"));
 
     $this->load->model("user_model");
@@ -244,7 +244,7 @@ class User extends My_Controller {
 
       $data->view = 'user/proposals';
 
-      $data->user = $this->user_model->getByIdentity(IDENTITY);
+      $data->user = $this->user_model->getByID(ORG_ID);
 
       $data->page_title = lang('usr_proposals');
 

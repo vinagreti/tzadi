@@ -54,6 +54,8 @@ class Mail_Model extends CI_Model {
 
     $data["collaborator_id"] = $this->session->userdata("_id");
 
+    if( ! isset( $data["org_id"] ) ) $data["org_id"] = $this->session->userdata("org_id");
+
     $this->mongo_db->insert('mail', $data);
 
     return $data["_id"];
@@ -317,21 +319,21 @@ class Mail_Model extends CI_Model {
 
   public function messageWatchers( $mail ) {
 
-    $this->load->model('mail_model');
-
-    $referer_data = $this->load(  $mail["mail_referer_id"] );
+    $referer_mail = $this->load(  $mail["mail_referer_id"] );
 
     $this->load->model("user_model");
 
-    $staff = $this->user_model->getByID( $referer_data["collaborator_id"] );
+    $collaborator = $this->user_model->getByID( $referer_mail["collaborator_id"] );
 
     $mailToSend["message"] = $mail["message"];
 
     $mailToSend["subject"] = $mail["subject"];
 
-    $mailToSend["to"] =  $staff["email"];
+    $mailToSend["to"] =  $collaborator["email"];
 
     $mailToSend["kind"] = "mail/messageWatchers";
+
+    $mailToSend["org_id"] = $referer_mail["org_id"];
 
     $mail_id = $this->queue($mailToSend);
 

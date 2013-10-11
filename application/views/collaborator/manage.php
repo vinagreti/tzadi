@@ -1,6 +1,24 @@
 <h3>Colaboradores</h3>
 
 <div class="row-fluid">
+	<div class="span6">
+		<input class="newName input-block-level" type="text" placeholder="* nome" />
+	</div>
+	<div class="span6">
+		<input class="newEmail input-block-level" type="text" placeholder="* e-mail" />
+	</div>
+	<div class="span6">
+		<select class="newKind input-block-level">
+			<option value="admin">Gerente - pode alterar produtos</option>
+			<option value="staff">Colaborador - não pode alterar produtos</option>
+		</select>
+	</div>
+	<div class="span6">
+		<a class="btn btn-success">Adicionar</a>
+	</div>
+</div>
+
+<div class="row-fluid">
 	<div class="span24 collaborators">
 		<div class="row-fluid collaborator">
 			<div class="span24 tzdTableRow">

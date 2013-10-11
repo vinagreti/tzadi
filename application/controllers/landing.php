@@ -20,7 +20,7 @@ class Landing extends My_Controller {
   public function landing()
   {
 
-    if( ! defined('IDENTITY') )
+    if( ! defined('ORG_ID') )
       $data->view = 'tzadi/landing';
     
     else if( $this->session->userdata("myOrg") )

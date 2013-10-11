@@ -87,7 +87,7 @@ class User_Model extends CI_Model {
 
         }
             
-        else if( isset( $user["org"] ) )
+        else if( isset( $user["org_id"] ) )
             $url = myOrg_url();
 
         else
@@ -372,68 +372,65 @@ class User_Model extends CI_Model {
 
     public function finishSignup( $user ){
 
-        $user["kind"] = "admin";
-
-        $user["org"] = strtolower($user["identity"]);
-
-        if( ! isset( $user["kind"] ) || ! isset( $user["name"] ) || ! isset( $user["org"] ) ) {
+        if( ! isset( $user["org_name"] ) || ! isset( $user["name"] ) || ! isset( $user["org_id"] ) ) {
 
             $res->error = lang("usr_fillAllData");
 
         } else {
 
-            if( ! preg_match('/^[a-zA-Z0-9]{1,32}$/', $user["org"]) ) {
+            if( ! preg_match('/^[a-zA-Z0-9]{1,32}$/', $user["org_id"]) ) {
 
                 $res->error = lang("usr_fillValidIdentity");
 
             } else {
 
-                $reservedIdentities = array("www"
-                    , "staging"
-                    , "intranet"
-                    , "blog"
-                    , "database"
-                    , "driver"
-                    , "task"
-                    , "developer"
-                    , "official"
-                    , "oficial"
-                    , "home"
-                    , "inicio"
-                    );
+                $this->load->model("org_model");
 
-                if( $this->getByIdentity( $user["org"] ) || in_array( $user["org"], $reservedIdentities ) )
+                if( $this->org_model->getByID( $user["org_id"] ) )
                     $res->error = lang("usr_identityAlreadyUse");
 
                 else {
+
+                    $org["_id"] = strtolower( $user["org_id"] );
+
+                    $org["name"] = $user["org_name"];
+
+                    $org["email"] = $this->session->userdata('email');
+
+                    $newOrg = $this->org_model->add( $org );
 
                     $this->mongo_db
                         ->where( '_id', $this->session->userdata("_id") )
                         ->set(
                             array(
-                                "kind" => $user["kind"]
-                                , "name" => $user["name"]
-                                , "org" => $user["org"]
+                                "name" => $user["name"]
+                                , "kind" => "active"
+                                , "org_id" => $newOrg["_id"]
+                                , "org_branch" => $newOrg["branch"][0]["_id"]
+                                , "org_kind" => $newOrg["kind"]
+                                , "org_resp" => "owner"
                                 , "about" => ""
                             )
                         )
                         ->update("user");
 
-                    $this->load->model("org_model");
+                    $this->session->set_userdata('org_id', $newOrg["_id"]);
 
-                    $user["email"] = $this->session->userdata('email');
+                    $this->session->set_userdata('org_branch', $newOrg["branch"][0]["_id"]);
 
-                    $this->org_model->add( $user );
+                    $this->session->set_userdata('org_kind', $newOrg["kind"]);
 
-                    $this->session->set_userdata('myOrgID', $user["org"]);
+                    $this->session->set_userdata('org_resp', "owner");
 
                     $this->session->set_userdata('name', $user["name"]);
 
-                    $this->session->set_userdata("kind", $user["kind"]);
+                    $this->session->set_userdata("kind", "active");
 
-                    $this->sendSigupMail( $this->getByIdentity( $user["org"]), "finishSignupMail" );
+                    $this->load->model("org_model");
 
-                    switch ($user["kind"]) {
+                    $this->sendSigupMail( $newOrg, "finishSignupMail" );
+
+                    switch ($newOrg["kind"]) {
                         case 'student':
                             $res->url = myOrg_url() . lang("rt_interests");
                             break;
@@ -473,6 +470,8 @@ class User_Model extends CI_Model {
 
         $this->load->model('mail_model');
 
+        $mailContent["org_id"] = 0;
+
         $this->mail_model->queue($mailContent);
 
     }
@@ -487,7 +486,13 @@ class User_Model extends CI_Model {
         
         $this->session->set_userdata('kind', $user["kind"]);
         
-        if( isset( $user["org"] ) ) $this->session->set_userdata('myOrgID', $user["org"]);
+        if( isset( $user["org_id"] ) ) $this->session->set_userdata('org_id', $user["org_id"]);
+
+        if( isset( $user["org_branch"] ) ) $this->session->set_userdata('org_branch', $user["org_branch"]);
+
+        if( isset( $user["org_kind"] ) ) $this->session->set_userdata('org_kind', $user["org_kind"]);
+
+        if( isset( $user["org_resp"] ) ) $this->session->set_userdata('org_resp', $user["org_resp"]);
         
         if( isset($user["currencyBase"] ) ) $this->session->set_userdata("currencyBase", $user["currencyBase"]);
         
@@ -496,27 +501,6 @@ class User_Model extends CI_Model {
         if( isset($user["exchangeRate"] ) ) $this->session->set_userdata("exchangeRate", $user["exchangeRate"]);
         
     }
-
-      function getByIdentity($org)
-      {
-
-        $org = strtolower($org);
-
-        $res = $this->mongo_db
-          ->where('org', $org)
-          ->get('user');
-
-        if($res){
-
-            if( ! isset($res[0]["about"]) ) $res[0]["about"] = "";
-
-            return $res[0];
-
-        }
-
-        else return false;
-
-      }
 
     function resetDatabase(){
 

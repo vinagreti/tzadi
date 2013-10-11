@@ -12,9 +12,11 @@ class About extends My_Controller {
 
     $data->page_title = lang('abt_page_title');
 
-    if( defined("IDENTITY") ) {
+    if( defined("ORG_ID") ) {
 
-      $data->user = $this->user_model->getByIdentity(IDENTITY);
+      $this->load->model("org_model");
+
+      $data->user = $this->org_model->getByID(ORG_ID);
 
       $data->view = 'user/about';
 

@@ -131,7 +131,7 @@ TzadiJS.prototype.form = new function(){
 
     }
 
-    this.identity = function( input, message ) {
+    this.org_id = function( input, message ) {
 
       var string = input.val();
 
@@ -143,7 +143,7 @@ TzadiJS.prototype.form = new function(){
 
       }
 
-      if( $tzd.string.checkMask.identity( string ) )  {
+      if( $tzd.string.checkMask.org_id( string ) )  {
 
         input.parent().removeClass("error");
 
