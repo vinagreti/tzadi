@@ -98,7 +98,9 @@ class Mail_Model extends CI_Model {
 
       $this->email->to($data["to"]);
 
-      $tag = " <id>".$data['_id']."</m>";
+      if( $data["kind"] == "repliedMessage" ) $tag = "";
+
+      else $tag = " <id>".$data['_id']."</m>";
 
       $this->email->subject(utf8_decode($data["subject"]) . $tag);
 

@@ -104,6 +104,7 @@ class Customer_Model extends CI_Model {
         ,"name" => $name
         ,"org_id" => $this->session->userdata("org_id")
         ,"org_branch" => $this->session->userdata("org_branch")
+        ,"stage" => "lead"
         ,"creation" => now()
         ,"creator_id" => $this->session->userdata("_id")
         ,"status" => "active"
@@ -261,6 +262,7 @@ class Customer_Model extends CI_Model {
           ,"name" => $email
           ,"email" => $email
           ,"org_id" => $this->session->userdata("org")
+          ,"stage" => "autoCreated"
           ,"creation" => now()
           ,"creator" => "system"
           ,"status" => "active"

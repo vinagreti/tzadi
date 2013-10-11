@@ -9,9 +9,7 @@ class Supplier_Model extends CI_Model {
 
   function getAll() {
     return $this->mongo_db
-      ->where(array(
-          'ord_id' => $this->session->userdata("org_id")
-        ))
+      ->where('org_id', $this->session->userdata("org_id"))
       ->get('supplier');
   }
 
