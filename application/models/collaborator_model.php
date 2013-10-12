@@ -27,22 +27,25 @@ class Collaborator_Model extends CI_Model {
 
     $this->load->model("mongo_model");
 
-    $data["_id"] = $this->mongo_model->newID();
-    $data["about"] = "";
-    $data["img"] = assets_url("img/no_photo_640x480.png");
-    $data["org_branch"] = 6;
-    $data["org_id"] = $this->session->userdata("org_id");
-    $data["org_kind"] = $this->session->userdata("org_kind");
-    $data["org_resp"] = "seller";
-    $data["register"] = time();
-    $data["password"] = md5( $data["password"] );
+    $data["email"] = strtolower( $data["email"] );
 
-    $res = $this->mongo_db
-      ->where(array(
-        'org_id' => $data["org_id"]
-        , 'email' => $data["email"]
-        ))
-      ->get('user');
+    $data["_id"] = $this->mongo_model->newID();
+
+    $data["about"] = "";
+
+    $data["img"] = assets_url("img/no_photo_640x480.png");
+
+    $data["org_id"] = $this->session->userdata("org_id");
+
+    $data["org_kind"] = $this->session->userdata("org_kind");
+
+    $data["register"] = time();
+
+    $data["kind"] = "active";
+
+    $data["password"] = md5( time() );
+
+    $res = $this->mongo_db->where('email', $data["email"])->get('user');
 
     if( ! $res ) {
 
@@ -55,7 +58,7 @@ class Collaborator_Model extends CI_Model {
 
     } else {
 
-      return array("error", $data["email"] . " ja está em uso - traduzir");
+      return array("error" => $data["email"] . " ja está em uso - traduzir");
 
     }
 

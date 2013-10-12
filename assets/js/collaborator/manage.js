@@ -1,6 +1,7 @@
 $(document).ready(function(){
 
-  $(".newKind").select2();
+  $("#addModal").find(".org_resp").select2();
+
   var addModalHTML = $("#addModal");
 
 	var collaboratorHTML = $(".collaborator").clone();
@@ -54,7 +55,7 @@ $(document).ready(function(){
 
     };
 
-    this.getCollaborators = function( callback ) {
+    this.getCollaborators = function() {
 
       var url = base_url+'collaborator/getAll';
 
@@ -89,64 +90,133 @@ $(document).ready(function(){
 
       $.each( self.collaborators, function(index, collaborator){
 
-        var newCollaboratorHTML = collaboratorHTML.clone();
+        self.appendToList( collaborator );
 
-        newCollaboratorHTML.find("._id").html(collaborator._id);
+      });
 
-        newCollaboratorHTML.find(".org_resp").html(collaborator.org_resp);
+    }
 
-        newCollaboratorHTML.find(".org_branch").html(collaborator.org_branch);
+    this.appendToList = function( collaborator ){
 
-        newCollaboratorHTML.find(".email").html(collaborator.email);
+      var newCollaboratorHTML = createCollaboratorObj( collaborator );
 
-        if(collaborator.facebook_id) newCollaboratorHTML.find(".facebook_id").removeClass("hide").attr("href", newCollaboratorHTML.find(".facebook_id").attr("href")+collaborator.facebook_id);
-        
-        if(collaborator.google_id) newCollaboratorHTML.find(".google_id").removeClass("hide").attr("href", newCollaboratorHTML.find(".google_id").attr("href")+collaborator.google_id);
-        
-        if(collaborator.linkedin_id) newCollaboratorHTML.find(".linkedin_id").removeClass("hide").attr("href", newCollaboratorHTML.find(".linkedin_id").attr("href")+collaborator.linkedin_id);
-       
-        newCollaboratorHTML.find(".identity").html(collaborator.identity);
-       
-        newCollaboratorHTML.find("img").attr("src", collaborator.img);
-        
-        newCollaboratorHTML.find(".kind").html(collaborator.kind);
-        
-        newCollaboratorHTML.find(".name").html(collaborator.name);
-       
-        newCollaboratorHTML.find(".password").html(collaborator.password);
-        
-        newCollaboratorHTML.find(".register").html(new $tzd.date(collaborator.register).shortDateTime);
+      var newBranchHTML = self.selectBranchHTML( collaborator );
 
-        var branch = $( "#" + collaborator.org_branch );
+      newBranchHTML.find(".collaborators").append( newCollaboratorHTML );
 
-        if( branch[0] )
-          branch.find(".collaborators").append( newCollaboratorHTML );
+    };
 
-        else{
+    this.prependToList = function( collaborator ){
 
-          newBranchHTML = branchHTML.clone();
+      var newCollaboratorHTML = createCollaboratorObj( collaborator );
 
-          var branch = $tzd.list.getBy( self.branches, "_id", collaborator.org_branch );
+      var newBranchHTML = self.selectBranchHTML( collaborator );
 
-          branch = branch[0];
+      newBranchHTML.find(".collaborators").prepend( newCollaboratorHTML );
 
-          console.log('branch');
+    };
 
-          console.log(branch);
+    this.createCollaboratorObj = function( collaborator ){
 
-          newBranchHTML.find(".add_collaborator").attr("id", branch._id);
+      var branch = $tzd.list.getBy( self.branches, "_id", collaborator.org_branch );
 
-          newBranchHTML.find(".branch_id").html( branch._id );
+      branch = branch[0];
 
-          newBranchHTML.find(".branch_name").html( branch.name );
+      var newCollaboratorHTML = collaboratorHTML.clone();
 
-          newBranchHTML.find(".collaborators").append( newCollaboratorHTML );
+      newCollaboratorHTML.find("._id").html(collaborator._id);
 
-          $(".branchs").append( newBranchHTML );
+      newCollaboratorHTML.find(".org_resp").html(collaborator.org_resp);
+
+      newCollaboratorHTML.find(".org_branch").html( "("+branch._id+") "+branch.name );
+
+      newCollaboratorHTML.find(".email").html(collaborator.email);
+
+      if(collaborator.facebook_id) newCollaboratorHTML.find(".facebook_id").removeClass("hide").attr("href", newCollaboratorHTML.find(".facebook_id").attr("href")+collaborator.facebook_id);
+      
+      if(collaborator.google_id) newCollaboratorHTML.find(".google_id").removeClass("hide").attr("href", newCollaboratorHTML.find(".google_id").attr("href")+collaborator.google_id);
+      
+      if(collaborator.linkedin_id) newCollaboratorHTML.find(".linkedin_id").removeClass("hide").attr("href", newCollaboratorHTML.find(".linkedin_id").attr("href")+collaborator.linkedin_id);
+     
+      newCollaboratorHTML.find(".identity").html(collaborator.identity);
+     
+      newCollaboratorHTML.find("img").attr("src", collaborator.img);
+      
+      newCollaboratorHTML.find(".kind").html(collaborator.kind);
+      
+      newCollaboratorHTML.find(".name").html(collaborator.name);
+     
+      newCollaboratorHTML.find(".password").html(collaborator.password);
+      
+      newCollaboratorHTML.find(".register").html(new $tzd.date(collaborator.register).shortDateTime);
+
+      return newCollaboratorHTML;
+
+    }
+
+    this.selectBranchHTML = function( collaborator ){
+
+      var newBranchHTML = $( "#" + collaborator.org_branch );
+
+      if( ! newBranchHTML[0] ){
+
+        newBranchHTML = branchHTML.clone();
+
+        newBranchHTML.find(".openAddModal").attr("id", branch._id);
+
+        newBranchHTML.find(".branch_id").html( branch._id );
+
+        newBranchHTML.find(".branch_name").html( branch.name );
+
+        $(".branchs").append( newBranchHTML );
+
+      }
+
+      return newBranchHTML;
+
+    }
+
+    this.sendNewCollaboratorData = function(){
+
+      var url = base_url+'collaborator/add';
+
+      var data = {
+
+        tzadiToken : tzadiToken
+
+        , "org_branch" : addModalHTML.find(".org_branch").html()
+ 
+        , "name" : addModalHTML.find(".name").val()
+ 
+        , "email" : addModalHTML.find(".email").val()
+ 
+        , "org_resp" : addModalHTML.find(".org_resp").select2('data').id
+
+      };
+
+      var callback = function( e ){
+
+        if( e.error )
+          $tzd.alert.error( e.error );
+
+        else {
+
+          $tzd.alert.success( e.success );
+
+          self.prependToList( e.collaborator[0] );
+
+          addModalHTML.find(".name").html("");
+
+          addModalHTML.find(".email").html("");
+
+          addModalHTML.modal("hide");
 
         }
+          
+        
+      };
 
-      })
+      $tzd.ajax.post(url, data, callback);
 
     }
 
@@ -154,17 +224,33 @@ $(document).ready(function(){
 
   branchList.refresh();
 
-  $(".add_collaborator").live("click", function(){
+  $(".openAddModal").live("click", function(){
 
     var branch_id = $(this).attr("id");
 
     var branch = $tzd.list.getBy( branchList.branches, "_id", branch_id )[0];
 
-    addModalHTML.find(".branch_id").html( branch._id );
+    addModalHTML.find(".org_branch").html( branch._id );
 
     addModalHTML.find(".branch_name").html( branch.name );
 
     addModalHTML.modal("show");
+
+  });
+
+  $(".addCollaborator").live("click", function(){
+
+    var valid = true;
+
+    valid = valid && $tzd.form.checkMask.range(addModalHTML.find(".name"), 1, 255, "informe um nome valido");
+
+    valid = valid && $tzd.form.checkMask.email(addModalHTML.find(".email"), "informe um e-mail válido");
+
+    if( valid ){
+
+      branchList.sendNewCollaboratorData();
+
+    }
 
   });
 

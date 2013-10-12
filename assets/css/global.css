@@ -227,6 +227,10 @@ a {
   height:300px;
 }
 
+.img3Rows{
+  height:80px;
+}
+
 .flex-video {
 position: relative;
 padding-top: 25px;

@@ -24,16 +24,21 @@ class Collaborator extends My_Controller {
   public function add()
   {
 
-    $data = array(
-      "email" => "brunodasdj@gmail.com"
-      , "kind" => "active"
-      , "name" => "Bruno Da Silva João"
-      , "password" => "bradesco"
-    );
+    $data = $this->input->post();
 
-    $this->load->model("collaborator_model");
+    if( isset( $data["org_branch"] ) && isset( $data["org_resp"] ) && isset( $data["name"] ) && isset( $data["email"] ) ){
 
-    echo json_encode( $this->collaborator_model->add( $data ) );
+      $this->load->model("collaborator_model");
+
+      echo json_encode( $this->collaborator_model->add( $data ) );
+
+    } else {
+
+      echo json_encode( array("error" => "preencha todos os campos" ) );
+
+    }
+
+
   }
 
 }

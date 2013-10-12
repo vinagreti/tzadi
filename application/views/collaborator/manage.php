@@ -10,7 +10,7 @@
 						<span class="branch_id"></span>
 						<span class="branch_name"></span>
 						<span class="pull-right text-right">
-							<a class="add_collaborator btn btn-success btn-small"> inserir colaborador </a>
+							<a class="openAddModal btn btn-success btn-small"> inserir colaborador </a>
 						</span>
 					</span>
 				</div>
@@ -22,7 +22,7 @@
 						<div class="span24 tzdTableRow">
 							<div class="row-fluid">
 								<div class="span2 text-center">
-									<img src="" />
+									<img class="img3Rows" src="" />
 								</div>
 								<div class="span7">
 									<p>código: <span class="_id"></span></p>
@@ -54,19 +54,19 @@
 <div id="addModal" class="modal hide">
 	<div class="modal-header">
 	  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-	  <span class="lead">adicionar colaborador à filial <span class="branch_id"></span> - <span class="branch_name"></span></span>
+	  <span class="lead">adicionar colaborador à filial <span class="branch_name text-warning"></span></span>
 	</div>
 
 	<div class="modal-body">
 		<div class="control-group">
-			<input class="newName input-block-level" type="text" placeholder="* nome" />
+			<input class="name input-block-level" type="text" placeholder="* nome" />
 		</div>
 		<div class="control-group">
-			<input class="newEmail input-block-level" type="text" placeholder="* e-mail" />
+			<input class="email input-block-level" type="text" placeholder="* e-mail" />
 		</div>
 		<div class="control-group">
-			<select class="newKind input-block-level">
-				<option value="seller">Vendedor - pode gerar orçamentos e interagir com clientes.</option>
+			<select class="org_resp input-block-level">
+				<option value="seller" selected>Vendedor - pode gerar orçamentos e interagir com clientes.</option>
 				<option value="manager">Gerente - pode gerenciar todas as informações de sua filial (produtos, clientes, colaboradores)</option>
 				<option value="admin">Administrador - pode gerenciar qualquer parte do sistema com exeção da gestão de Administradores que cabe apenas ao dono da organização.</option>
 			</select>
@@ -74,10 +74,11 @@
 	</div>
 
 	<div class="modal-footer">
-	  <a class="knowMoreProduct btn btn-success">criar</a>
+	  <a class="addCollaborator btn btn-success">criar</a>
 	  <a class="closeModal btn" data-dismiss="modal">cancelar</a>
 	</div>
 
+	<div class="org_branch"></div>
 	<div id="pdt_fillValidEmail" class="hide">insira um e-mail válido</div>
 	<div id="pdt_fillName" class="hide">insira o nome do novo colaborador</div>
 </div>
