@@ -118,9 +118,7 @@ $(document).ready(function(){
 
     this.createCollaboratorObj = function( collaborator ){
 
-      var branch = $tzd.list.getBy( self.branches, "_id", collaborator.org_branch );
-
-      branch = branch[0];
+      var branch = $tzd.list.getBy( self.branches, "_id", collaborator.org_branch )[0];
 
       var newCollaboratorHTML = collaboratorHTML.clone();
 
@@ -142,7 +140,11 @@ $(document).ready(function(){
      
       newCollaboratorHTML.find("img").attr("src", collaborator.img);
       
-      newCollaboratorHTML.find(".kind").html(collaborator.kind);
+      newCollaboratorHTML.find(".status").html(collaborator.status);
+
+      var creator_name = collaborator.creator_id ? $tzd.list.getBy( self.collaborators, "_id", collaborator.creator_id )[0].name : "sys";
+
+      newCollaboratorHTML.find(".creator_name").html( creator_name );
       
       newCollaboratorHTML.find(".name").html(collaborator.name);
      
@@ -159,7 +161,7 @@ $(document).ready(function(){
       var branch = $tzd.list.getBy( self.branches, "_id", collaborator.org_branch );
 
       branch = branch[0];
-      
+
       var newBranchHTML = $( "#" + collaborator.org_branch );
 
       if( ! newBranchHTML[0] ){

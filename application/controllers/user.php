@@ -141,7 +141,7 @@ class User extends My_Controller {
   public function finishSignup()
   {
 
-    if($this->session->userdata("kind") == "new") {
+    if($this->session->userdata("status") == "new") {
 
       if($this->input->post()) {
         $this->load->model("user_model");

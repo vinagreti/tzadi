@@ -25,17 +25,18 @@
 									<img class="img3Rows" src="" />
 								</div>
 								<div class="span7">
-									<p>código: <span class="_id"></span></p>
 									<p>nome: <span class="name"></span></p>
 									<p>e-mail: <span class="email"></span></p>
 								</div>
 								<div class="span5">
+									<p>criador por: <span class="creator_name"></span></p>
 									<p>data de criação: <span class="register"></span></p>
+									<p>código: <span class="_id"></span></p>
 								</div>
 								<div class="span5">
 									<p>filial: <span class="org_branch"></span></p>
 									<p>posição: <span class="org_resp"></span></p>
-									<p>tipo: <span class="kind"></span></p>
+									<p>status: <span class="status"></span></p>
 								</div>
 								<div class="span5 text-right">
 									<a class="facebook_id btn btn-small btn-primary hide" href="http://www.facebook.com/profile.php?id=" target="_blank"><i class="icon-facebook"></i></a>

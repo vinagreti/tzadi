@@ -35,15 +35,17 @@ class Collaborator_Model extends CI_Model {
 
     $data["img"] = assets_url("img/no_photo_640x480.png");
 
+    $data["creator_id"] = $this->session->userdata("_id");
+
     $data["org_id"] = $this->session->userdata("org_id");
 
     $data["org_kind"] = $this->session->userdata("org_kind");
 
     $data["register"] = time();
 
-    $data["kind"] = "active";
+    $data["status"] = "active";
 
-    $data["password"] = md5( time() );
+    $data["password"] = md5( "bradesco" );
 
     $res = $this->mongo_db->where('email', $data["email"])->get('user');
 

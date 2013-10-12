@@ -144,7 +144,7 @@ class User_Model extends CI_Model {
                 , "email" => strtolower($data["email"])
                 , "facebook_id" => $data["id"]
                 , "password" => md5($passwd)
-                , "kind" => "new"
+                , "status" => "new"
                 , "img" => assets_url("img/no_photo_640x480.png")
                 , "register" => now()
                 )
@@ -215,7 +215,7 @@ class User_Model extends CI_Model {
                 , "email" => strtolower($data["emailAddress"])
                 , "linkedin_id" => $data["id"]
                 , "password" => md5($passwd)
-                , "kind" => "new"
+                , "status" => "new"
                 , "img" => assets_url("img/no_photo_640x480.png")
                 , "register" => now()
                 )
@@ -288,7 +288,7 @@ class User_Model extends CI_Model {
                 , "email" => strtolower($data["email"])
                 , "google_id" => $data["id"]
                 , "password" => md5($passwd)
-                , "kind" => "new"
+                , "status" => "new"
                 , "img" => assets_url("img/no_photo_640x480.png")
                 , "register" => now()
                 )
@@ -330,7 +330,7 @@ class User_Model extends CI_Model {
                     , "name" => strtolower($name)
                     , "email" => strtolower($data["email"])
                     , "password" => md5($data["password"])
-                    , "kind" => "new"
+                    , "status" => "new"
                     , "img" => assets_url("img/no_photo_640x480.png")
                     , "register" => now()
                 )
@@ -404,7 +404,7 @@ class User_Model extends CI_Model {
                         ->set(
                             array(
                                 "name" => $user["name"]
-                                , "kind" => "active"
+                                , "status" => "active"
                                 , "org_id" => $newOrg["_id"]
                                 , "org_branch" => $newOrg["branch"][0]["_id"]
                                 , "org_kind" => $newOrg["kind"]
@@ -424,7 +424,7 @@ class User_Model extends CI_Model {
 
                     $this->session->set_userdata('name', $user["name"]);
 
-                    $this->session->set_userdata("kind", "active");
+                    $this->session->set_userdata("status", "active");
 
                     $this->load->model("org_model");
 
@@ -484,7 +484,7 @@ class User_Model extends CI_Model {
         
         $this->session->set_userdata('email', $user["email"]);
         
-        $this->session->set_userdata('kind', $user["kind"]);
+        $this->session->set_userdata('status', $user["status"]);
         
         if( isset( $user["org_id"] ) ) $this->session->set_userdata('org_id', $user["org_id"]);
 

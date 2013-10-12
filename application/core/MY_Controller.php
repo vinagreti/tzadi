@@ -124,7 +124,7 @@ class My_Controller extends CI_Controller{
 
   private function detectUnfinishedSignup(){
 
-    if( $this->session->userdata('kind') == "new") {
+    if( $this->session->userdata('status') == "new") {
 
       $publicMethods = array("finishSignup"
           , "logout"
