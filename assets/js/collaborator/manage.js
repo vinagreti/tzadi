@@ -98,7 +98,7 @@ $(document).ready(function(){
 
     this.appendToList = function( collaborator ){
 
-      var newCollaboratorHTML = createCollaboratorObj( collaborator );
+      var newCollaboratorHTML = self.createCollaboratorObj( collaborator );
 
       var newBranchHTML = self.selectBranchHTML( collaborator );
 
@@ -108,7 +108,7 @@ $(document).ready(function(){
 
     this.prependToList = function( collaborator ){
 
-      var newCollaboratorHTML = createCollaboratorObj( collaborator );
+      var newCollaboratorHTML = self.createCollaboratorObj( collaborator );
 
       var newBranchHTML = self.selectBranchHTML( collaborator );
 
