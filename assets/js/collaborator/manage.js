@@ -156,6 +156,10 @@ $(document).ready(function(){
 
     this.selectBranchHTML = function( collaborator ){
 
+      var branch = $tzd.list.getBy( self.branches, "_id", collaborator.org_branch );
+
+      branch = branch[0];
+      
       var newBranchHTML = $( "#" + collaborator.org_branch );
 
       if( ! newBranchHTML[0] ){
