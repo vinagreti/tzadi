@@ -165,8 +165,12 @@ a {
   background-color: #ECF0F1;
   border-radius: 4px;
   border: solid 1px #CCCCCC;
-  padding: 4px 4px 0px 4px;
+  padding: 4px 4px 4px 4px;
   margin-bottom: 3px;
+}
+
+.tzdTable .tzdTableRow {
+  padding: 4px 4px 0px 4px;
 }
 
 .tzdTableBrief :hover{
@@ -248,4 +252,11 @@ height: 100%;
 }
 @media only screen and (max-device-width: 800px), only screen and (device-width: 1024px) and (device-height: 600px), only screen and (width: 1280px) and (orientation: landscape), only screen and (device-width: 800px), only screen and (max-width: 767px) {
 .flex-video { padding-top: 0; }
+}
+
+.tzdListHeader{
+  background-color: black;
+  color:white;
+  padding: 5px;
+  border-radius: 5px 5px 0px 0px;
 }

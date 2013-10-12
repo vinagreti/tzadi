@@ -7,6 +7,20 @@ class Org_Model extends CI_Model {
         $this->load->library("mongo_db");
     }
 
+    function getBranches( ) {
+
+        $org = $this->mongo_db
+            ->where('_id', $this->session->userdata("org_id"))
+            ->get('org');
+
+        if($org)
+            return array("success" => true, "branches" => $org[0]["branch"]);
+
+        else
+            return array("error" => "org_id da sessão do usuário nao corresponde a nenhuma organização");
+
+    }
+
     function getByID($org_id)
     {
 

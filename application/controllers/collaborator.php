@@ -12,8 +12,6 @@ class Collaborator extends My_Controller {
     $data->dynJS = 'collaborator/manage';
     $data->view = 'collaborator/manage';
     $data->page_title = lang('clb_listTitle');
-    $this->load->model("collaborator_model");
-    $data->collaborators = $this->collaborator_model->getAll();
     $this->page->load($data);
   }
 
@@ -21,6 +19,21 @@ class Collaborator extends My_Controller {
   {
     $this->load->model("collaborator_model");
     echo json_encode( $this->collaborator_model->getAll() );
+  }
+
+  public function add()
+  {
+
+    $data = array(
+      "email" => "brunodasdj@gmail.com"
+      , "kind" => "active"
+      , "name" => "Bruno Da Silva João"
+      , "password" => "bradesco"
+    );
+
+    $this->load->model("collaborator_model");
+
+    echo json_encode( $this->collaborator_model->add( $data ) );
   }
 
 }
