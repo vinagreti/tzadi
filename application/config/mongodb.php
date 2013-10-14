@@ -1,6 +1,11 @@
 <?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 include('../config/tzadi.conf.php');
+# The file included Set these vars
+//$config['mongo_host'] = "";
+//$config['mongo_db'] = "";
+//$config['mongo_user'] = "";
+//$config['mongo_pass'] = "";
 
 // Generally will be 27017 unless you've configured Mongo otherwise
 $config['mongo_port'] = 27017;
