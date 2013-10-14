@@ -64,7 +64,7 @@ class My_Controller extends CI_Controller{
 
       } else if( $this->router->method != "identityNotFound" ) {
         
-        redirect('https://'.ENVIRONMENT.'/error/identityNotFound/?identity='.ORG_ID, 'refresh');
+        redirect(tzd_url().'error/identityNotFound/?identity='.ORG_ID, 'refresh');
 
       }
 

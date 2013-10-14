@@ -180,8 +180,6 @@ $(document).ready(function(){
 
       }
 
-      console.log( newBranchHTML[0] );
-
       return newBranchHTML;
 
     }
