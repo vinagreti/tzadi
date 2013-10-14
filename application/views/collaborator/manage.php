@@ -1,7 +1,7 @@
 <h3>Colaboradores</h3>
 
 <div class="branchs">
-	<div class="row-fluid branch hide" id="5">
+	<div class="row-fluid branch hide">
 		<div class="span24 branchContent">
 
 			<div class="row-fluid">

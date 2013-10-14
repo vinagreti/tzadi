@@ -162,11 +162,13 @@ $(document).ready(function(){
 
       branch = branch[0];
 
-      var newBranchHTML = $( "#" + collaborator.org_branch );
+      var newBranchHTML = $(".branch#" + collaborator.org_branch );
 
-      if( ! newBranchHTML[0] ){
+      if( ! newBranchHTML.length > 0 ){
 
         newBranchHTML = branchHTML.clone();
+
+        newBranchHTML.attr("id", branch._id);
 
         newBranchHTML.find(".openAddModal").attr("id", branch._id);
 
@@ -177,6 +179,8 @@ $(document).ready(function(){
         $(".branchs").append( newBranchHTML );
 
       }
+
+      console.log( newBranchHTML[0] );
 
       return newBranchHTML;
 

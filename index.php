@@ -19,6 +19,9 @@
  *
  */
 
+// Its being set in the php.ini, auto_prepend_file = "/home/..."
+# define( 'ENVIRONMENT', 'staging.tzadi.com' );
+
 /*
  *---------------------------------------------------------------
  * ERROR REPORTING

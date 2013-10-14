@@ -504,22 +504,21 @@ class User_Model extends CI_Model {
 
     function resetDatabase(){
 
-        $this->load->model("mongo_model");
-        $this->mongo_db->delete_all("user");
-        $this->mongo_db->delete_all("file");
-        $this->mongo_db->delete_all("product");
-        $this->mongo_db->delete_all("supplier");
-        $this->mongo_db->delete_all("mail");
-        $this->mongo_db->delete_all("timeline");
-        $this->mongo_db->delete_all("agency");
+        $this->mongo_db->delete_all("blog");
+        $this->mongo_db->delete_all("company");
         $this->mongo_db->delete_all("contact");
+        $this->mongo_db->delete_all("counter");
         $this->mongo_db->delete_all("currency");
         $this->mongo_db->delete_all("customer");
-        $this->mongo_db->delete_all("session");
-        $this->mongo_db->delete_all("counter");
-        $this->mongo_db->delete_all("blog");
+        $this->mongo_db->delete_all("file");
+        $this->mongo_db->delete_all("mail");
         $this->mongo_db->delete_all("org");
-        $this->mongo_db->set("id", 0)->update('counter');
+        $this->mongo_db->delete_all("organization");
+        $this->mongo_db->delete_all("product");
+        $this->mongo_db->delete_all("session");
+        $this->mongo_db->delete_all("supplier");
+        $this->mongo_db->delete_all("timeline");
+        $this->mongo_db->delete_all("user");
         $this->mongo_db->insert('counter', array("id" => 0));
 
     }

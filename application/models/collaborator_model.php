@@ -47,6 +47,8 @@ class Collaborator_Model extends CI_Model {
 
     $data["password"] = md5( "bradesco" );
 
+    $data["org_branch"] = (int) $data["org_branch"];
+
     $res = $this->mongo_db->where('email', $data["email"])->get('user');
 
     if( ! $res ) {

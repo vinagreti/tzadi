@@ -2,11 +2,10 @@
 
 // Generally will be 27017 unless you've configured Mongo otherwise
 $config['mongo_port'] = 27017;
-$config['mongo_host'] = "54.207.6.239";
+$config['mongo_host'] = "ec2-54-207-6-239.sa-east-1.compute.amazonaws.com";
 $config['mongo_db'] = "tzadistaging";
 $config['mongo_user'] = "tzadistaguser";
 $config['mongo_pass'] = "stag2010";
-
 
 // Persistant connections
 $config['mongo_persist'] = TRUE;
