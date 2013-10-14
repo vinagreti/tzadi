@@ -40,8 +40,6 @@ class My_Controller extends CI_Controller{
 
       if($org){
 
-        print_r($org);
-
         if( $org["_id"] == $this->session->userdata("org_id") )
           $this->session->set_userdata("myOrg", true);
 
