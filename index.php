@@ -19,18 +19,7 @@
  *
  */
 
-if(preg_match("/(?P<domain>[a-z0-9][a-z0-9\-]{1,63}\.[a-z\.]{2,6})$/i", $_SERVER["HTTP_HOST"], $matches)){
-
-	$subdomain = rtrim(strstr($_SERVER["HTTP_HOST"], $matches['domain'], true), '.');
-
-	if( strpos($subdomain,"staging") !== false )
-		define( 'ENVIRONMENT', "staging.tzadi.com" );
-
-	else
-		define( 'ENVIRONMENT', $matches['domain'] );
-
-} else
-	define( 'ENVIRONMENT', $_SERVER["HTTP_HOST"] );
+define( 'ENVIRONMENT', 'tzadi.local' );
 
 /*
  *---------------------------------------------------------------

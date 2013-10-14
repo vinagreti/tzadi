@@ -45,49 +45,15 @@
 | the active record class
 */
 
-switch (ENVIRONMENT) {
-
-	case 'tzadi.com':
-
-		$dyn_database = 'production';
-		$dyn_username = 'tzadiproduser';
-		$dyn_password = 'prod2010';
-
-	break;
-
-	case 'staging.tzadi.com':
-
-		$dyn_database = 'staging';
-		$dyn_username = 'tzadistaguser';
-		$dyn_password = 'stag2010';
-
-	break;
-
-	default:
-
-		$dyn_database = 'tzadi';
-		$dyn_username = 'tzadi';
-		$dyn_password = 'tzadi';
-
-	break;
-
-}
-
-
-
+$dyn_database = '';
+$dyn_username = '';
+$dyn_password = '';
 $active_group = 'default';
-
 $active_record = TRUE;
-
-
 $db['default']['hostname'] = 'localhost';
-
 $db['default']['username'] = $dyn_username;
-
 $db['default']['password'] = $dyn_password;
-
 $db['default']['database'] = $dyn_database;
-
 $db['default']['dbdriver'] = 'mysql';
 $db['default']['dbprefix'] = '';
 $db['default']['pconnect'] = TRUE;

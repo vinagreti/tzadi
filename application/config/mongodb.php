@@ -1,32 +1,12 @@
 <?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-// Generally will be localhost if you're querying from the machine that Mongo is installed on
-$config['mongo_host'] = "127.0.0.1";
-
 // Generally will be 27017 unless you've configured Mongo otherwise
 $config['mongo_port'] = 27017;
+$config['mongo_host'] = "54.207.6.239";
+$config['mongo_db'] = "tzadistaging";
+$config['mongo_user'] = "tzadistaguser";
+$config['mongo_pass'] = "stag2010";
 
-// The database you want to work from (required)
-
-switch(ENVIRONMENT){
-	case "tzadi.local":
-		$config['mongo_db'] = "tzadi";
-		$config['mongo_user'] = "";
-		$config['mongo_pass'] = "";
-		break;
-
-	case "staging.tzadi.com":
-		$config['mongo_db'] = "tzadistaging";
-		$config['mongo_user'] = "tzadistaguser";
-		$config['mongo_pass'] = "stag2010";
-		break;
-
-	case "tzadi.com":
-		$config['mongo_db'] = "tzadi";
-		$config['mongo_user'] = "tzadiproduser";
-		$config['mongo_pass'] = "prod2010";
-		break;
-}
 
 // Persistant connections
 $config['mongo_persist'] = TRUE;
