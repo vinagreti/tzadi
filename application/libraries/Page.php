@@ -16,12 +16,12 @@ class Page {
   public function load( $data ) {
 
     if( $this->CI->session->userdata("myOrg") )
-      $data->navbar = $this->CI->load->view($this->CI->session->userdata("ogr_kind")."/navbar_private", $data, true);
+      $data->navbar = $this->CI->load->view($this->CI->session->userdata("orgKind")."/navbar_private", $data, true);
 
     else if( $this->CI->session->userdata("_id") ) {
 
       if( defined("ORG_ID") )
-        $data->navbar = $this->CI->load->view($this->CI->session->userdata("ogr_kind")."/navbar_public_logged", $data, true);
+        $data->navbar = $this->CI->load->view($this->CI->session->userdata("orgKind")."/navbar_public_logged", $data, true);
 
       else
         $data->navbar = $this->CI->load->view("tzadi/navbar_public_logged", $data, true);
@@ -31,7 +31,7 @@ class Page {
     else {
 
       if( defined("ORG_ID") )
-        $data->navbar = $this->CI->load->view($this->CI->session->userdata("ogr_kind")."/navbar_public", $data, true);
+        $data->navbar = $this->CI->load->view($this->CI->session->userdata("orgKind")."/navbar_public", $data, true);
 
       else
         $data->navbar = $this->CI->load->view("tzadi/navbar_public", $data, true);
