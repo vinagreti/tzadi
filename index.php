@@ -19,7 +19,7 @@
  *
  */
 
-define( 'ENVIRONMENT', '54.207.4.126' );
+define( 'ENVIRONMENT', 'staging.tzadi.com' );
 
 /*
  *---------------------------------------------------------------
@@ -36,7 +36,7 @@ switch (ENVIRONMENT)
 		error_reporting(E_ALL);
 	break;
 
-	case '54.207.4.126':
+	case 'staging.tzadi.com':
 		error_reporting(E_ALL);
 	break;
 	
