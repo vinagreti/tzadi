@@ -470,7 +470,7 @@ class User_Model extends CI_Model {
 
         $this->load->model('mail_model');
 
-        $mailContent["org_id"] = 0;
+        $mailContent["org_id"] = $user["org_id"];
 
         $this->mail_model->queue($mailContent);
 

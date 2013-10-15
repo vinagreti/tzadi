@@ -1,6 +1,6 @@
 <?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-include('../config/tzadi.conf.php');
+include('../config/mongo.conf.php');
 # The file included Set these vars
 //$config['mongo_host'] = "";
 //$config['mongo_db'] = "";

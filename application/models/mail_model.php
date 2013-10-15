@@ -6,28 +6,6 @@ class Mail_Model extends CI_Model {
 
     $this->load->library("mongo_db");
 
-    $this->smtp_host = 'ssl://smtp.googlemail.com';
-
-    $this->imap_host = '{imap.gmail.com:993/imap/ssl}MESSAGE_NEW';
-
-    if (ENVIRONMENT ==  'tzadi.com') {
-
-      $this->smtp_user = 'contact@tzadi.com';
-
-      $this->smtp_pass = 'Contact2010ireland';
-
-      $this->from = 'contact@tzadi.com';
-
-    } else {
-
-      $this->smtp_user = 'contactstaging@tzadi.com';
-
-      $this->smtp_pass = 'contactstaging';
-
-      $this->from = 'contactstaging@tzadi.com';
-
-    }
-
   }
 
   public function load( $mail_id ){
@@ -50,7 +28,7 @@ class Mail_Model extends CI_Model {
 
     $data["queue_date"] = time();
 
-    $data["from"] = $this->from;
+    $data["from"] = $mail_conf["from"];
 
     $data["collaborator_id"] = $this->session->userdata("_id");
 
@@ -65,6 +43,8 @@ class Mail_Model extends CI_Model {
 
   public function send( ) {
 
+    include('../config/mail.conf.php');
+
     $queued = $this->mongo_db
       ->where('status', "waiting")
       ->get('mail');
@@ -73,10 +53,10 @@ class Mail_Model extends CI_Model {
 
     $config = Array(
       'protocol' => 'smtp',
-      'smtp_host' => $this->smtp_host,
+      'smtp_host' => $mail_conf["smtp_host"],
       'smtp_port' => 465,
-      'smtp_user' => $this->smtp_user,
-      'smtp_pass' => $this->smtp_pass,
+      'smtp_user' => $mail_conf["smtp_user"],
+      'smtp_pass' => $mail_conf["smtp_pass"],
       'mailtype' => 'html',
       'charset' => 'iso-8859-1',
       'wordwrap' => TRUE
@@ -94,7 +74,7 @@ class Mail_Model extends CI_Model {
 
       $staff = $this->user_model->getByID( $data["collaborator_id"] );
 
-      $this->email->from($this->from, iconv("UTF-8", 'iso-8859-1', $staff["name"]) );
+      $this->email->from($mail_conf["from"], iconv("UTF-8", 'iso-8859-1', $staff["name"]) );
 
       $this->email->to($data["to"]);
 
@@ -208,8 +188,10 @@ class Mail_Model extends CI_Model {
 
   public function getNew(){
 
+    include('../config/mail.conf.php');
+
     /* try to connect */
-    $inbox = imap_open($this->imap_host,$this->smtp_user,$this->smtp_pass) or die('Cannot connect to Gmail: ' . imap_last_error());
+    $inbox = imap_open($mail_conf["imap_host"],$mail_conf["smtp_user"],$mail_conf["smtp_pass"]) or die('Cannot connect to Gmail: ' . imap_last_error());
 
     /* grab emails */
     $emails = imap_search($inbox,'ALL');
