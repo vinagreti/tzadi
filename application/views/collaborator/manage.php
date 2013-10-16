@@ -7,8 +7,8 @@
 			<div class="row-fluid">
 				<div class="span24 tzdListHeader">
 					<span class="lead">
-						<span class="branch_id"></span>
-						<span class="branch_name"></span>
+						<?=lang("clb_branch")?>:
+						<span class="branch_id"></span> - <span class="branch_name"></span>
 						<span class="pull-right text-right">
 							<a class="openAddModal btn btn-success btn-small"> <?=lang("clb_insertCollaborator")?> </a>
 						</span>

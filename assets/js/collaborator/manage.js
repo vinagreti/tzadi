@@ -126,7 +126,7 @@ $(document).ready(function(){
 
       newCollaboratorHTML.find(".org_resp").html(collaborator.org_resp);
 
-      newCollaboratorHTML.find(".org_branch").html( "("+branch._id+") "+branch.name );
+      newCollaboratorHTML.find(".org_branch").html( branch._id+ " - " +branch.name );
 
       newCollaboratorHTML.find(".email").html(collaborator.email);
 
