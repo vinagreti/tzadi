@@ -31,7 +31,7 @@
         <ul class="dropdown-menu">
           <li><a tabindex="-1"  href="<?=myOrg_url() . lang("rt_profile")?>"><?=lang('tmpt_Profile')?></a></li>
           <li class="divider"></li>
-          <li><a tabindex="-1"  href="<?=myOrg_url() . lang('rt_logout')?>"><?=lang('tmpt_Logout')?></a></li>
+          <li><a tabindex="-1"  href="<?=tzd_url() . lang('rt_logout')?>"><?=lang('tmpt_Logout')?></a></li>
         </ul>
       </li>
     </ul>

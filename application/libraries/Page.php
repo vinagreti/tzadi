@@ -26,9 +26,7 @@ class Page {
       else
         $data->navbar = $this->CI->load->view("tzadi/navbar_public_logged", $data, true);
 
-    }
-
-    else {
+    } else {
 
       if( defined("ORG_ID") )
         $data->navbar = $this->CI->load->view($this->CI->session->userdata("orgKind")."/navbar_public", $data, true);
