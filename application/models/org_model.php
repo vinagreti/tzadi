@@ -64,7 +64,7 @@ class Org_Model extends CI_Model {
 
         $this->load->model("mongo_model");
 
-        $branch = array( array( "_id" => $this->mongo_model->newID(), "name" => "Matriz - traduzir no model org") );
+        $branch = array( array( "_id" => $this->mongo_model->newID(), "name" => $org["name"]) );
 
         $this->mongo_db->insert('org', array(
             "_id" => strtolower($org["_id"])

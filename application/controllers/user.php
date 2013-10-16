@@ -17,7 +17,7 @@ class User extends My_Controller {
 
     if( $this->session->userdata("_id") ) {
 
-      redirect(base_url());
+      redirect(myOrg_url());
 
     } else {
 

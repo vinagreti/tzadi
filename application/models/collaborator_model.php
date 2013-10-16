@@ -57,17 +57,9 @@ class Collaborator_Model extends CI_Model {
 
       $this->mongo_db->insert('user', $data);
 
-      $message = "Olá ". $data["name"] .",";
+      $data["password"] = $password;
 
-      $message .= "<p>Você foi cadastrado na empresa <strong>".$this->session->userdata("org_name")."</strong> como <strong>".$data["org_resp"]."</strong></p>";
-
-      $message .= "<p>Para entrar na área privada, acesse ". tzd_url().lang("rt_login") ." e informe as seguintes credenciais:</p>";
-
-      $message .= "<p>E-mail = ". $data["email"] ."</p>";
-
-      $message .= "<p>Password = $password </p>";
-
-      $message .= "<p>Você poderá alterar sua senha  qualquer momento. Basta fazer seu login e acessar o menú perfil, clicando em seu nome, no canto superior direito.</p>";
+      $message = $this->load->view( 'collaborator/newCollaboratorMail', $data, true );
 
       $mail["message"] = $message;
       
@@ -75,7 +67,7 @@ class Collaborator_Model extends CI_Model {
       
       $mail["to"] =  $data["email"];
             
-      $mail["kind"] = "collaboratorCreation";
+      $mail["kind"] = "newCollaborator";
       
       $this->load->model('mail_model');
       
