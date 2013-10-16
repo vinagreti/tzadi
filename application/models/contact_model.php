@@ -27,7 +27,7 @@ class Contact_Model extends CI_Model {
 
       $message .= "<p> ".lang('ct_Message').": " . $data["message"] . "</p>";
 
-      $mail["message"] = '<html><head><meta charset="utf-8"></head><body>'.$message.'</body></html>';
+      $mail["message"] = $message;
 
       $mail["subject"] = "".lang('ct_contactReceived')." - " . $email;
 
@@ -65,7 +65,7 @@ class Contact_Model extends CI_Model {
 
         $message .= "<p>".lang('ct_Message').": " . $data["message"] . "</p>";
 
-        $mail["message"] = '<html><head><meta charset="utf-8"></head><body>'.$message.'</body></html>';
+        $mail["message"] = $message;
 
         $mail["subject"] = "".lang('ct_contactReceived')." - " . $name;
 

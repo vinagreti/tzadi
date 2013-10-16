@@ -45,7 +45,9 @@ class Collaborator_Model extends CI_Model {
 
     $data["status"] = "active";
 
-    $data["password"] = md5( "bradesco" );
+    $password = time();
+
+    $data["password"] = md5( $password );
 
     $data["org_branch"] = (int) $data["org_branch"];
 
@@ -54,6 +56,32 @@ class Collaborator_Model extends CI_Model {
     if( ! $res ) {
 
       $this->mongo_db->insert('user', $data);
+
+      $message = "Olá ". $data["name"] .",";
+
+      $message .= "<p>Você foi cadastrado na empresa <strong>".$this->session->userdata("org_name")."</strong> como <strong>".$data["org_resp"]."</strong></p>";
+
+      $message .= "<p>Para entrar na área privada, acesse ". tzd_url().lang("rt_login") ." e informe as seguintes credenciais:</p>";
+
+      $message .= "<p>E-mail = ". $data["email"] ."</p>";
+
+      $message .= "<p>Password = $password </p>";
+
+      $message .= "<p>Você poderá alterar sua senha  qualquer momento. Basta fazer seu login e acessar o menú perfil, clicando em seu nome, no canto superior direito.</p>";
+
+      $mail["message"] = $message;
+      
+      $mail["subject"] = "Cadastro ". $this->session->userdata("org_name");
+      
+      $mail["to"] =  $data["email"];
+            
+      $mail["kind"] = "collaboratorCreation";
+      
+      $this->load->model('mail_model');
+      
+      $mail["org_id"] = $this->session->userdata("org_id");
+      
+      $this->mail_model->queue($mail);
 
       return array(
         "success" => "Criado com sucesso"

@@ -407,7 +407,6 @@ class User_Model extends CI_Model {
                                 , "status" => "active"
                                 , "org_id" => $newOrg["_id"]
                                 , "org_branch" => $newOrg["branch"][0]["_id"]
-                                , "org_kind" => $newOrg["kind"]
                                 , "org_resp" => "owner"
                                 , "about" => ""
                             )
@@ -421,6 +420,10 @@ class User_Model extends CI_Model {
                     $this->session->set_userdata('org_kind', $newOrg["kind"]);
 
                     $this->session->set_userdata('org_resp', "owner");
+
+                    $this->session->set_userdata('org_name', $newOrg["name"]);
+
+                    $this->session->set_userdata('org_mail', $newOrg["email"]);
 
                     $this->session->set_userdata('name', $user["name"]);
 
@@ -455,13 +458,13 @@ class User_Model extends CI_Model {
 
     }
 
-    private function sendSigupMail($user, $template){
+    private function sendSigupMail($data, $template){
 
-        $mailContent['subject'] = lang("usr_Welcome") . " - " . $user["name"];
+        $mailContent['subject'] = lang("usr_Welcome") . " - " . $data["name"];
 
-        $mailContent["message"] = $this->load->view("user/".$template, $user, true);
+        $mailContent["message"] = $this->load->view("user/".$template, $data, true);
 
-        $mailContent["to"] = $user["email"];
+        $mailContent["to"] = $data["email"];
 
         if($template != "signupThirdAddedMail" && ENVIRONMENT == "tzadi.com")
             $mailContent["bcc"] = "bruno@tzadi.com, lucas@tzadi.com";
@@ -469,8 +472,6 @@ class User_Model extends CI_Model {
         $mailContent["kind"] = "user/signup";
 
         $this->load->model('mail_model');
-
-        $mailContent["org_id"] = $user["org_id"];
 
         $this->mail_model->queue($mailContent);
 
@@ -486,14 +487,26 @@ class User_Model extends CI_Model {
         
         $this->session->set_userdata('status', $user["status"]);
         
-        if( isset( $user["org_id"] ) ) $this->session->set_userdata('org_id', $user["org_id"]);
+        if( isset( $user["org_id"] ) ) {
 
-        if( isset( $user["org_branch"] ) ) $this->session->set_userdata('org_branch', $user["org_branch"]);
+            $this->session->set_userdata('org_branch', $user["org_branch"]);
 
-        if( isset( $user["org_kind"] ) ) $this->session->set_userdata('org_kind', $user["org_kind"]);
+            $this->session->set_userdata('org_resp', $user["org_resp"]);
 
-        if( isset( $user["org_resp"] ) ) $this->session->set_userdata('org_resp', $user["org_resp"]);
-        
+            $this->load->model("org_model");
+
+            $org = $this->org_model->getByID( $user["org_id"] );
+
+            $this->session->set_userdata('org_id', $org["_id"]);
+
+            $this->session->set_userdata('org_kind', $org["kind"]);
+
+            $this->session->set_userdata('org_name', $org["name"]);
+
+            $this->session->set_userdata('org_mail', $org["email"]);
+
+        }
+
         if( isset($user["currencyBase"] ) ) $this->session->set_userdata("currencyBase", $user["currencyBase"]);
         
         if( isset( $user["img"] ) ) $this->session->set_userdata('img', $user["img"]);
@@ -615,7 +628,7 @@ class User_Model extends CI_Model {
             $message .= "<p> ".lang("usr_doMake")." <a href='http://tzadi.com/".lang("rt_login")."'>login</a> ". lang("usr_usingTheDataBelow") .":</p>";
             $message .= "<p> e-mail: " . $email . "</p>";
             $message .= "<p> senha: " . $passwd . "</p>";
-            $mailContent["message"] = '<html><head><meta charset="utf-8"></head><body>'.$message.'</body></html>';
+            $mailContent["message"] = $message;
 
             $mailContent["to"] = $user["email"];
 
@@ -653,7 +666,7 @@ class User_Model extends CI_Model {
                 $message = "<p> ". lang("usr_yourPasswordWasChanged") ."! </p>";
                 $message .= "<p> ". lang("usr_yourPasswordIs") .": " . $data["passwdNew"] . "</p>";
                 $message .= "<p> email: " . $user["email"] . "</p>";
-                $mailContent["message"] = '<html><head><meta charset="utf-8"></head><body>'.$message.'</body></html>';
+                $mailContent["message"] = $message;
 
                 $mailContent["to"] = $user["email"];
 

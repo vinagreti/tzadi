@@ -79,7 +79,7 @@
 	  <a class="closeModal btn" data-dismiss="modal">cancelar</a>
 	</div>
 
-	<div class="org_branch"></div>
+	<div class="org_branch hide"></div>
 	<div id="pdt_fillValidEmail" class="hide">insira um e-mail válido</div>
 	<div id="pdt_fillName" class="hide">insira o nome do novo colaborador</div>
 </div>

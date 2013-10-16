@@ -21,7 +21,7 @@ class Feedback_Model extends CI_Model {
     
     $message .= "<p> Mensagem: " . $data["message"] . "</p>";
     
-    $mail["message"] = '<html><head><meta charset="utf-8"></head><body>'.$message.'</body></html>';
+    $mail["message"] = $message;
     
     $mail["subject"] = "Feedback recebido - " . $data["email"];
     
