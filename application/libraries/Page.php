@@ -23,8 +23,19 @@ class Page {
       if( defined("ORG_ID") )
         $data->navbar = $this->CI->load->view($this->CI->session->userdata("orgKind")."/navbar_public_logged", $data, true);
 
-      else
-        $data->navbar = $this->CI->load->view("tzadi/navbar_public_logged", $data, true);
+      else {
+
+        switch ( $this->CI->session->userdata("status") ) {
+          case 'active':
+           $data->navbar = $this->CI->load->view("tzadi/navbar_user_active", $data, true);
+            break;
+          
+          default:
+            $data->navbar = $this->CI->load->view("tzadi/navbar_user_new", $data, true);
+            break;
+        }
+
+      }
 
     } else {
 
