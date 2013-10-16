@@ -495,7 +495,7 @@ class Product_Model extends CI_Model {
 
     $this->load->helper('cookie');
 
-    $tzdBudget = json_decode( get_cookie( 'tzdBudget'.$this->session->userdata('org') ), true );
+    $tzdBudget = json_decode( get_cookie( 'tzd_budget_'.$this->session->userdata('org') ), true );
 
     $budget->itens = array();
 
@@ -526,11 +526,11 @@ class Product_Model extends CI_Model {
 
   function convertCurrency( $amount, $base ) {
 
-    $tzdCurrency = json_decode( get_cookie( 'tzdCurrency' ), true );
+    $tzd_currency = json_decode( get_cookie( 'tzd_currency' ), true );
 
-    $euros = $amount / $tzdCurrency[ $base ];
+    $euros = $amount / $tzd_currency[ $base ];
 
-    $total = $euros * $tzdCurrency[ $this->session->userdata("currencyBase") ];
+    $total = $euros * $tzd_currency[ $this->session->userdata("currencyBase") ];
 
     return $total;
 
@@ -538,11 +538,11 @@ class Product_Model extends CI_Model {
 
   function convertCurrencyTo( $amount, $base, $to ) {
 
-    $tzdCurrency = json_decode( get_cookie( 'tzdCurrency' ), true );
+    $tzd_currency = json_decode( get_cookie( 'tzd_currency' ), true );
 
-    $euros = $amount / $tzdCurrency[ $base ];
+    $euros = $amount / $tzd_currency[ $base ];
 
-    $total = $euros * $tzdCurrency[ $to ];
+    $total = $euros * $tzd_currency[ $to ];
 
     return $total;
 

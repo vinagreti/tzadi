@@ -154,7 +154,7 @@ class My_Controller extends CI_Controller{
     $currency["base"] = $this->session->userdata("currencyBase");
 
     $cookie = array(
-      'name'   => 'tzdCurrency'
+      'name'   => 'tzd_currency'
       , 'value'  => json_encode( $currency )
       , 'expire' => $expire
     );

@@ -10,6 +10,8 @@ TzadiJS.prototype.currency = new function( ){
 
 	var self = this;
 
+	var cookieName = "tzd_currency";
+
 	this.change = function( ) {
 
 		var self = this;
@@ -42,7 +44,7 @@ TzadiJS.prototype.currency = new function( ){
 
 		$.cookie.json = true;
 
-		var currency = $.cookie("tzdCurrency");
+		var currency = $.cookie( cookieName );
 
 		var euros = amount / currency[base];
 
@@ -56,7 +58,7 @@ TzadiJS.prototype.currency = new function( ){
 
 		$.cookie.json = true;
 
-		var currency = $.cookie("tzdCurrency");
+		var currency = $.cookie( cookieName );
 
 		var euros = amount / currency[base];
 
@@ -80,7 +82,7 @@ TzadiJS.prototype.currency = new function( ){
 
 		$.cookie.json = true;
 
-		var currency = $.cookie("tzdCurrency");
+		var currency = $.cookie( cookieName );
 
 		var url = base_url+'currency/change';
 
@@ -108,7 +110,7 @@ TzadiJS.prototype.currency = new function( ){
 
 		$.cookie.json = true;
 
-		var currency = $.cookie("tzdCurrency");
+		var currency = $.cookie( cookieName );
 
 		currency["base"] = base;
 
@@ -126,7 +128,7 @@ TzadiJS.prototype.currency = new function( ){
 
 		$.cookie.json = true;
 
-		var currency = $.cookie("tzdCurrency");
+		var currency = $.cookie( cookieName );
 
 		$(".currencyCode").html( currency["base"] );
 

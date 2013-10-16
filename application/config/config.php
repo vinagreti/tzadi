@@ -245,7 +245,7 @@ $config['encryption_key'] = 'Dublin';
 | 'sess_time_to_update'		= how many seconds between CI refreshing Session Information
 |
 */
-$config['sess_cookie_name']		= 'tzadi';
+$config['sess_cookie_name']		= 'tzd_session';
 $config['sess_expiration']		= 7200;
 $config['sess_expire_on_close']	= TRUE;
 $config['sess_encrypt_cookie']	= TRUE;
@@ -296,7 +296,7 @@ $config['global_xss_filtering'] = TRUE;
 */
 $config['csrf_protection'] = TRUE;
 $config['csrf_token_name'] = 'tzadiToken';
-$config['csrf_cookie_name'] = 'tzdsecurity';
+$config['csrf_cookie_name'] = 'tzd_security';
 $config['csrf_expire'] = 7200;
 
 /*
