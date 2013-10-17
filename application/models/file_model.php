@@ -12,11 +12,8 @@ class File_Model extends CI_Model {
     $this->load->model("mongo_model");
     $newImgId = $this->mongo_model->newID();
 
-    print_r($_FILES);
-
     $_FILES["file"]["_id"] = $newImgId;
     $_FILES["file"]["object_id"] = $_id;
-
 
     $image_lib_config['image_library'] = 'gd2';
     $image_lib_config['source_image'] = $_FILES["file"]["tmp_name"];
@@ -35,6 +32,9 @@ class File_Model extends CI_Model {
     }
 
     unset($_FILES["file"]["tmp_name"]);
+
+    print_r($_FILES["file"]);
+
     $this->mongo_db->insert('file',$_FILES["file"]);
     return $newImgId;
   }
