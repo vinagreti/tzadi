@@ -11,16 +11,21 @@ class File_Model extends CI_Model {
   {
     $this->load->model("mongo_model");
     $newImgId = $this->mongo_model->newID();
+
+    print_r($_FILES);
+
     $_FILES["file"]["_id"] = $newImgId;
     $_FILES["file"]["object_id"] = $_id;
-    $config['image_library'] = 'gd2';
-    $config['source_image'] = $_FILES["file"]["tmp_name"];
-    $config['create_thumb'] = TRUE;
-    $config['maintain_ratio'] = TRUE;
-    $config['width']   = 480;
-    $config['height'] = 360;
 
-    $this->load->library('image_lib', $config); 
+
+    $image_lib_config['image_library'] = 'gd2';
+    $image_lib_config['source_image'] = $_FILES["file"]["tmp_name"];
+    $image_lib_config['create_thumb'] = TRUE;
+    $image_lib_config['maintain_ratio'] = TRUE;
+    $image_lib_config['width']   = 480;
+    $image_lib_config['height'] = 360;
+
+    $this->load->library('image_lib', $image_lib_config); 
 
     if ( $this->image_lib->resize())
     {

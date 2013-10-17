@@ -147,22 +147,31 @@ class Product_Model extends CI_Model {
   function attachImg($_id)
   {
     $this->load->model("file_model");
+
     $newFile = $this->file_model->save($_id);
+
     $product = $this->mongo_db
       ->where('_id', $_id)
       ->get('product');
+
     if(isset($product[0]["img"])) {
+
       array_push($product[0]["img"], $newFile);
+
       $this->mongo_db
         ->where('_id', $_id)
         ->set("img", $product[0]["img"])
         ->update("product");
+
     } else {
+
       $this->mongo_db
         ->where('_id', $_id)
         ->set("img", array($newFile))
         ->update("product");
+
     }
+
     return $newFile;
   }
 
