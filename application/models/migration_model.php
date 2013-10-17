@@ -1,3 +1,10 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+</head>
+
+
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 class Migration_Model extends CI_Model {
@@ -4867,14 +4874,27 @@ class Migration_Model extends CI_Model {
 
 		$this->load->model("mongo_model");
 
+		$i = 0;
+
 		foreach ($produtos as $key => $value) {
+
 			$value =  (array) $value;
+
+			if(isset($value["courseLanguage"])) $value["courseLanguage"] = utf8_decode($value["courseLanguage"]);
+			if(isset($value["courseRequirements"])) $value["courseRequirements"] = utf8_decode($value["courseRequirements"]);
+			if(isset($value["name"])) $value["name"] = utf8_decode($value["name"]);
+
 			$value["_id"] = $this->mongo_model->newID();
+
 			$newProduct =  $this->mongo_db->insert(
 			  'product',$value
 			);
+
+			$i++;
 		}
 
 	}
 
 }
+?>
+</html>
