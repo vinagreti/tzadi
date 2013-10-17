@@ -9,6 +9,7 @@ class File_Model extends CI_Model {
 
   function save($_id)
   {
+    
     $this->load->model("mongo_model");
     $newImgId = $this->mongo_model->newID();
     $_FILES["file"]["_id"] = $newImgId;
@@ -24,10 +25,12 @@ class File_Model extends CI_Model {
 
     if ( $this->image_lib->resize())
     {
-      $_FILES["file"]["binary"] = new MongoBinData(file_get_contents($_FILES["file"]["tmp_name"] . "_thumb"), 2);
+      $_FILES["file"]["binary"] = new MongoBinData(file_get_contents($_FILES["file"]["tmp_name"] . "_thumb"));
     } else {
-      $_FILES["file"]["binary"] = new MongoBinData(file_get_contents($_FILES["file"]["tmp_name"]), 2);
+      $_FILES["file"]["binary"] = new MongoBinData(file_get_contents($_FILES["file"]["tmp_name"]));
     }
+
+    print_r($_FILES["file"]["binary"]);
 
     unset($_FILES["file"]["tmp_name"]);
     $this->mongo_db->insert('file',$_FILES["file"]);
