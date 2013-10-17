@@ -22,7 +22,7 @@ class File extends My_Controller {
     $file = $this->file_model->get((int) $_id);
 
 
-    echo $file["binary"];
+    echo($file["binary"]->bin);
     echo "<br>".$file["type"];
 
 
