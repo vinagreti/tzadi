@@ -15,21 +15,7 @@ class File_Model extends CI_Model {
     $_FILES["file"]["_id"] = $newImgId;
     $_FILES["file"]["object_id"] = $_id;
 
-    $image_lib_config['image_library'] = 'gd2';
-    $image_lib_config['source_image'] = $_FILES["file"]["tmp_name"];
-    $image_lib_config['create_thumb'] = TRUE;
-    $image_lib_config['maintain_ratio'] = TRUE;
-    $image_lib_config['width']   = 480;
-    $image_lib_config['height'] = 360;
-
-    $this->load->library('image_lib', $image_lib_config); 
-
-    if ( $this->image_lib->resize())
-    {
-      $_FILES["file"]["binary"] = new MongoBinData(file_get_contents($_FILES["file"]["tmp_name"] . "_thumb"), 2);
-    } else {
-      $_FILES["file"]["binary"] = new MongoBinData(file_get_contents($_FILES["file"]["tmp_name"]), 2);
-    }
+    $_FILES["file"]["binary"] = new MongoBinData(file_get_contents($_FILES["file"]["tmp_name"]), 2);
 
     unset($_FILES["file"]["tmp_name"]);
 

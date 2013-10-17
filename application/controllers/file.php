@@ -20,12 +20,6 @@ class File extends My_Controller {
   public function open($_id){
     $this->load->model("file_model");
     $file = $this->file_model->get((int) $_id);
-
-
-    print_r($file);
-
-
-
     $this->load->helper('file');
     $this->output
       ->set_content_type($file["type"])
