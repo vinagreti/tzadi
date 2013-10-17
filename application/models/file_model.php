@@ -25,12 +25,10 @@ class File_Model extends CI_Model {
 
     if ( $this->image_lib->resize())
     {
-      $_FILES["file"]["binary"] = new MongoBinData(file_get_contents($_FILES["file"]["tmp_name"] . "_thumb"));
+      $_FILES["file"]["binary"] = new MongoBinData(file_get_contents($_FILES["file"]["tmp_name"] . "_thumb"), 2);
     } else {
-      $_FILES["file"]["binary"] = new MongoBinData(file_get_contents($_FILES["file"]["tmp_name"]));
+      $_FILES["file"]["binary"] = new MongoBinData(file_get_contents($_FILES["file"]["tmp_name"]), 2);
     }
-
-    print_r($_FILES["file"]["binary"]);
 
     unset($_FILES["file"]["tmp_name"]);
     $this->mongo_db->insert('file',$_FILES["file"]);
