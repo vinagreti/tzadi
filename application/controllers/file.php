@@ -21,15 +21,9 @@ class File extends My_Controller {
     $this->load->model("file_model");
     $file = $this->file_model->get((int) $_id);
 
-
-    echo($file["binary"]->bin);
-    echo "<br>".$file["type"];
-
-
-    $this->load->helper('file');
-    //$this->output
-      //->set_content_type($file["type"])
-      //->set_output($file["binary"]->bin);
+    $this->output
+      ->set_content_type($file["type"])
+      ->set_output($file["binary"]->bin);
   }
 }
 
