@@ -27,9 +27,9 @@ class File extends My_Controller {
 
 
     $this->load->helper('file');
-    $this->output
-      ->set_content_type($file["type"])
-      ->set_output($file["binary"]->bin);
+    //$this->output
+      //->set_content_type($file["type"])
+      //->set_output($file["binary"]->bin);
   }
 }
 
