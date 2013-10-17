@@ -18,13 +18,15 @@ class File extends My_Controller {
   }
 
   public function open($_id){
-    $this->load->model("file_model");
-    $file = $this->file_model->get((int) $_id);
 
     while (@ob_end_clean());
-    header("Content-type:". $file['type']);
-    echo  $file["binary"]->bin;
-
+    
+    $this->load->model("file_model");
+    $file = $this->file_model->get((int) $_id);
+    $this->load->helper('file');
+    $this->output
+      ->set_content_type($file["type"])
+      ->set_output($file["binary"]->bin);
   }
 }
 
