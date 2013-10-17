@@ -33,17 +33,18 @@ class File_Model extends CI_Model {
 
     unset($_FILES["file"]["tmp_name"]);
 
-    print_r($_FILES["file"]);
-
     $this->mongo_db->insert('file',$_FILES["file"]);
+
     return $newImgId;
   }
 
   function get($_id)
   {
-    return $this->mongo_db
+    $file = $this->mongo_db
       ->where('_id', $_id)
       ->get('file');
+
+    return $file[0];
   }
 
   function drop($_id){
