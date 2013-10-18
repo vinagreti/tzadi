@@ -16,7 +16,7 @@ class Supplier_Model extends CI_Model {
   function getAllActive() {
     return $this->mongo_db
       ->where(array(
-          'ord_id' => $this->session->userdata("org_id")
+          'org_id' => $this->session->userdata("org_id")
           ,'status' => "active"
         ))
       ->get('supplier');
