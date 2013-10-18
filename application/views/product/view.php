@@ -14,9 +14,8 @@
     <br>
 
     <div class="row-fluid">
-      <div class="span12">
+      <div class="span10">
         <div class="row-fluid">
-         
           <div class="span24">
             <div id="myCarousel" class="carousel slide">
               <div class="carousel-inner">
@@ -37,7 +36,18 @@
         </div>
       </div>
 
-      <div class="span12">
+      <div class="span14">
+
+        <div class="row-fluid">
+          <div class="span24">
+            <div class="pull-right">
+              <?php if( ! $this->session->userdata("myOrg") ){ ?><a class="knowMore btn btn-success" id="<?=$product["_id"]?>" ><?=lang("pdt_knowMore")?></a><?php } ?>
+              <a class="shareProductByMail btn btn-primary" href="#" id="<?=$product["_id"]?>" rel="tooltip" title="<?=lang('pdt_shareProductByMail')?>"><?=lang('pdt_shareProductByMail')?></a>
+              <a class="addToBudget btn btn-warning" id="<?=$product["_id"]?>" rel="tooltip" title="<?=lang('pdt_addToBudget')?>"><?=lang('pdt_addToBudget')?></a>
+            </div>
+          </div>
+        </div>
+
         <dl class="dl-horizontal">
           <dt><?=lang("pdt_code")?></dt><dd><?=$product["_id"]?></dd>
           <?php if( ( ! isset($product["priceWithDiscount"]) && isset($product["humanPrice"]) ) || ( $product["priceWithDiscount"] == $product["humanPrice"] ) ) echo "<dt>" . lang("pdt_price") . "</dt><dd><strong class='text-error'>". $product["humanPrice"]."</strong></dd>"; ?>
@@ -71,14 +81,7 @@
           }
           ?>
         </dl>
-      </div>
-    </div>
 
-    <div class="row-fluid">
-      <div class="span24">
-        <?php if( ! $this->session->userdata("myOrg") ){ ?><a class="knowMore btn btn-success" id="<?=$product["_id"]?>" ><?=lang("pdt_knowMore")?></a><?php } ?>
-        <a class="addToBudget btn btn-warning" id="<?=$product["_id"]?>" rel="tooltip" title="<?=lang('pdt_addToBudget')?>"><?=lang('pdt_addToBudget')?></a>
-        <a class="shareProductByMail btn btn-primary" href="#" id="<?=$product["_id"]?>" rel="tooltip" title="<?=lang('pdt_shareProductByMail')?>"><?=lang('pdt_shareProductByMail')?></a>
       </div>
     </div>
 
