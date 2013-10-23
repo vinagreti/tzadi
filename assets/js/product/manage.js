@@ -238,9 +238,23 @@ $(document).ready(function(){
         case "package":
           var packageForm = this.packageForm.clone();
           var foundProducts = products.all.filter(function ( product ) {
-            var contain = contain || product.status == "active";
+            var contain = contain || ( product.status == "active" && product.kind != "package" );
             return contain;
           });
+$.each(foundProducts, function(key, value){
+
+      var supplier = products.suppliers.filter(function ( supplier ) {
+        return supplier._id == value.supplier;
+      });
+
+	var supplierName;
+      if(supplier[0] && supplier[0] != "0") supplierName = supplier[0].name;
+	else supplierName = $(".pdt_ownProduct").html();
+
+	foundProducts[key].name = value.name + " - "  + supplierName;
+});
+	
+
           line.find(".price").prop("disabled", true);
           line.find(".purchase").prop("disabled", true);
           line.find(".gain").prop("disabled", true);
