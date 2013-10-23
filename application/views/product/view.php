@@ -58,9 +58,9 @@
           <?php if(isset($product["coursePeriod"])) echo "<dt>" . lang("pdt_period") . "</dt><dd>" . $product["coursePeriod"] . "</dd>"; ?>
           <?php if(isset($product["courseModality"])) echo "<dt>" . lang("pdt_modality") . "</dt><dd>" . $product["courseModality"] . "</dd>"; ?>
           <?php if(isset($product["courseLanguage"])) echo "<dt>" . lang("pdt_courseLanguage") . "</dt><dd>" . $product["courseLanguage"] . "</dd>"; ?>
-          <?php if(isset($product["courseEnrollmentFees"])) echo "<dt>" . lang("pdt_courseEnrollmentFees") . "</dt><dd>" . $product["courseEnrollmentFees"] . "</dd>"; ?>
-          <?php if(isset($product["courseAdministrativeFees"])) echo "<dt>" . lang("pdt_courseAdministrativeFees") . "</dt><dd>" . $product["courseAdministrativeFees"] . "</dd>"; ?>
-          <?php if(isset($product["courseBook"])) echo "<dt>" . lang("pdt_courseBook") . "</dt><dd>" . $product["courseBook"] . "</dd>"; ?>
+          <?php if(isset($product["courseEnrollmentFees"]) && $product["courseEnrollmentFees"] > 0) echo "<dt>" . lang("pdt_courseEnrollmentFees") . "</dt><dd>" . $product["courseEnrollmentFees"] . "</dd>"; ?>
+          <?php if(isset($product["courseAdministrativeFees"]) && $product["courseAdministrativeFees"] > 0) echo "<dt>" . lang("pdt_courseAdministrativeFees") . "</dt><dd>" . $product["courseAdministrativeFees"] . "</dd>"; ?>
+          <?php if(isset($product["courseBook"]) && $product["courseBook"] > 0) echo "<dt>" . lang("pdt_courseBook") . "</dt><dd>" . $product["courseBook"] . "</dd>"; ?>
           <?php if(isset($product["courseRequirements"])) echo "<dt>" . lang("pdt_courseRequirements") . "</dt><dd>" . $product["courseRequirements"] . "</dd>"; ?>
           <?php if(isset($product["ensuranceDuration"])) echo "<dt>" . lang("pdt_ensuranceDuration") . "</dt><dd>" . $product["ensuranceDuration"] . "</dd>"; ?>
           <?php if(isset($product["accommodationKind"])) echo "<dt>" . lang("pdt_accommodationKind") . "</dt><dd>" . $product["accommodationKind"] . "</dd>"; ?>
