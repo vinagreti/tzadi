@@ -96,3 +96,4 @@ $lang["usr_Signup"] = "Signup";
 $lang["usr_profileImg"] = "Profile picture";
 $lang["usr_chooseYourName"] = "insert your name";
 $lang["usr_newPasswordsNotMatch"] = "the confirmation password must be the same as the new password";
+$lang["usr_ProfileOf"] = "Profile of";

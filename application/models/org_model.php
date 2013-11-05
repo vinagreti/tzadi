@@ -109,4 +109,32 @@ class Org_Model extends CI_Model {
 
     }
 
+    public function set( $data ){
+
+        if( isset( $data["name"] ) )
+        $orgData["name"] = $data["name"];
+
+        if( isset( $data["about"] ) )
+        $orgData["about"] = $data["about"];
+
+        $edited = $this->mongo_db
+            ->where( '_id', $this->session->userdata("org") )
+            ->set($orgData)
+            ->update("org");
+
+        if( $orgData["name"] ) {
+
+            $res->success = lang("agc_saved");
+
+            $this->session->set_userdata('orgName', $orgData["name"]);
+
+        }
+
+        else
+            $res->success = lang("agc_errorWhenSaving");
+
+        return $res;
+
+    }
+
 }

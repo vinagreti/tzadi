@@ -1,6 +1,6 @@
 <div class="row-fluid">
 	<div class="span24">
-		<h3><?=lang('usr_Profile')." ".$this->session->userdata("orgName")?></h3>
+		<h3><?=lang('usr_ProfileOf')?> <span class="loggedMenuName text-success"><?=$this->session->userdata("name")?></span></h3>
 	</div>
 </div>
 

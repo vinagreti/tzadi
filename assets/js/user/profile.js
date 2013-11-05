@@ -28,8 +28,6 @@ $(document).ready(function(){
 
           $('.loggedMenuName').html( $("#name").val() );
 
-          //$(".brand").find("a").html( $("#name").val() );
-
         }
         
       }
@@ -42,7 +40,9 @@ $(document).ready(function(){
 
 
   $('.changeImg').live("click", function() {
+
     $('.userPhoto').click();
+    
   });
 
   $(".userPhoto").live("change propertychange", function(){
@@ -63,8 +63,6 @@ $(document).ready(function(){
         else {
 
           $("img").attr("src", res.img )
-
-          //$('a.brand').css("background-image", "url("+res.img+")");
 
           $('.userImg').css("background-image", "url("+res.img+")");
 

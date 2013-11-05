@@ -10,7 +10,7 @@ class Agency extends My_Controller {
 
 	}
 
-    public function configuration(){
+    public function settings(){
 
 	    $this->MYensureOwnProfile();
 
@@ -21,13 +21,13 @@ class Agency extends My_Controller {
 
 	    else {
 
-	      $data->dynJS = 'agency/config';
+	      $data->dynJS = 'agency/settings';
 
-	      $data->view = 'agency/config';
+	      $data->view = 'agency/settings';
 
 	      $data->agency = $this->org_model->getByID( $this->session->userdata("org") );
 
-	      $data->page_title = $this->session->userdata("orgName");
+	      $data->page_title = lang('agc_SettingsOf') . " " . $this->session->userdata("orgName");
 
 	      $this->page->load($data);
 

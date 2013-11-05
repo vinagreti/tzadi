@@ -183,7 +183,7 @@ class User extends My_Controller {
 
       $data->user = $this->user_model->getByID( $this->session->userdata("_id") );
 
-      $data->page_title = lang('usr_Profile')." ".$this->session->userdata("orgName");
+      $data->page_title = lang('usr_Profile')." de ".$this->session->userdata("name");
 
       $this->page->load($data); 
 

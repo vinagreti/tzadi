@@ -591,8 +591,6 @@ class User_Model extends CI_Model {
 
             $this->session->set_userdata('name', $userData["name"]);
 
-            $this->session->set_userdata('orgName', $userData["name"]);
-
         }
 
         else

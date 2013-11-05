@@ -97,3 +97,4 @@ $lang["usr_Login"] = "Login";
 $lang["usr_profileImg"] = "foto do perfil";
 $lang["usr_chooseYourName"] = "informe o seu nome";
 $lang["usr_newPasswordsNotMatch"] = "a senha de confirmação deve ser igual a nova senha";
+$lang["usr_ProfileOf"] = "Perfil de";
