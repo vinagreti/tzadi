@@ -75,3 +75,5 @@ $lang['tmpt_Customer'] = 'Cliente';
 $lang['tmpt_creationDate'] = 'data de criação';
 $lang['tmpt_Collaborators'] = 'Colaboradores';
 $lang['tmpt_CollaboratorsTitle'] = 'Gerencie as pessoas que trabalham na agência';
+$lang['tmpt_Config'] = 'Configurações';
+$lang['tmpt_ConfigTitle'] = 'Gerencie as informações básicas de sua agência';

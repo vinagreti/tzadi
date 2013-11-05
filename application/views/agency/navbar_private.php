@@ -16,6 +16,7 @@
         <ul class="dropdown-menu">
           <li><a href="<?=myOrg_url()?><?=lang('rt_customer')?>" rel="tooltip" title="<?=lang('tmpt_CustomersTitle')?>"><?=lang('tmpt_Customers')?></a></li>
           <li><a href="<?=myOrg_url()?><?=lang('rt_collaborator')?>" rel="tooltip" title="<?=lang('tmpt_CollaboratorsTitle')?>"><?=lang('tmpt_Collaborators')?></a></li>
+          <li><a href="<?=myOrg_url()?>agency/<?=lang('rt_config')?>" rel="tooltip" title="<?=lang('tmpt_ConfigTitle')?>"><?=lang('tmpt_Config')?></a></li>
           <li><a href="<?=myOrg_url()?><?=lang('rt_currency')?>" rel="tooltip" title="<?=lang('tmpt_CurrencyTitle')?>"><?=lang('tmpt_Currency')?></a></li>
           <li><a href="<?=myOrg_url()?><?=lang('rt_supplier')?>" rel="tooltip" title="<?=lang('tmpt_InstitutionsTitle')?>"><?=lang('tmpt_Institutions')?></a></li>
           <li><a href="<?=myOrg_url()?><?=lang('rt_products')?>" rel="tooltip" title="<?=lang('tmpt_ProductsTitle')?>"><?=lang('tmpt_Products')?></a></li>

@@ -116,5 +116,7 @@ $route['blog/drop'] = 'blog/drop';
 $route['blog/(:any)'] = 'blog/view/$1';
 
 
+$route['agency/configuracoes'] = 'agency/configuration';
+
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */

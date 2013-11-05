@@ -22,3 +22,4 @@ $lang['rt_resetPassword'] = 'resetPassword';
 $lang['rt_changePassword'] = 'changePassword';
 $lang['rt_currency'] = 'currency';
 $lang['rt_collaborator'] = 'collaborator';
+$lang['rt_config'] = 'configuration';

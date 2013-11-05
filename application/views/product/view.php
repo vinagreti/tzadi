@@ -75,13 +75,10 @@
             $i = 1;
             echo "<dt>" . lang("pdt_itens") . "</dt>";
             foreach($product["itens"] as $key => $productIten) {
-
               $description = "<dd>" . $productIten["amount"] . " x <a href='" . base_url() . $productIten["_id"] ."' target='_blank'>" .$productIten["name"];
-
               if( isset( $productIten["courseDurationValue"] ) && $productIten["courseDurationValue"] ) $description .= " - " . $productIten["courseDurationValue"] . " " . lang("pdt_".$productIten["courseDurationScale"]);
               if( isset( $productIten["accommodationDurationValue"] ) && $productIten["accommodationDurationValue"] ) $description .= " - " . $productIten["accommodationDurationValue"] . " " . lang("pdt_".$productIten["accommodationDurationScale"]);
               if( isset( $productIten["ensuranceDurationValue"] ) && $productIten["ensuranceDurationValue"] ) $description .= " - " . $productIten["ensuranceDurationValue"] . " " . lang("pdt_".$productIten["ensuranceDurationScale"]);
-
               $description .= " </a></dd>";
               echo $description;
               $i++;

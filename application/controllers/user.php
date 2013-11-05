@@ -168,10 +168,7 @@ class User extends My_Controller {
   public function profile()
   {
 
-    $this->MYensureLogged();
-
-    if( ! $this->session->userdata("myOrg") )
-      redirect( myOrg_url() . lang("rt_profile") );
+    $this->MYensureOwnProfile();
 
     $this->load->model("user_model");
 
