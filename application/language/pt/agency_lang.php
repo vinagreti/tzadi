@@ -7,3 +7,5 @@ $lang['agc_tellUsAboutYou'] = "descrição da agência";
 $lang['agc_save'] = "salvar alterações";
 $lang['agc_saved'] = "alterações salvas";
 $lang['agc_errorWhenSaving'] = "erro ao salvar alterações";
+$lang['agc_Theme'] = 'Tema';
+$lang['agc_ThemeDesc'] = 'Altere o tema de seu site.';

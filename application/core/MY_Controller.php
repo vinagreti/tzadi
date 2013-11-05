@@ -50,6 +50,8 @@ class My_Controller extends CI_Controller{
 
         $this->session->set_userdata("orgName", $org["name"]);
 
+        $this->session->set_userdata("orgTheme", $org["theme"]);
+
         $this->session->set_userdata("orgImg", $org["img"]);
 
         $this->session->set_userdata("orgKind", $org["kind"] );

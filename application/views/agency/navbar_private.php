@@ -14,13 +14,21 @@
       <li class="dropdown">
         <a class="dropdown-toggle" data-toggle="dropdown" rel="tooltip" title="<?=lang('tmpt_Agency')?>"><i class="icon-plane icon-large"></i> <?=lang('tmpt_Agency')?> <i class="icon-caret-down"></i></a>
         <ul class="dropdown-menu">
+          <li>
+            <a href="#" rel="tooltip" title="<?=lang('tmpt_ConfigTitle')?>"><?=lang('tmpt_Config')?> <i class="pull-right icon-caret-right"></i></a>
+            <ul class="dropdown-menu sub-menu">
+              <li><a href="<?=myOrg_url()?>agency/<?=lang('rt_settings')?>" rel="tooltip" title="<?=lang('tmpt_BasicsTitle')?>"><?=lang('tmpt_Basics')?></a></li>
+              <li><a href="<?=myOrg_url()?><?=lang('rt_currency')?>/<?=lang('rt_configuration')?>" rel="tooltip" title="<?=lang('tmpt_CurrencyTitle')?>"><?=lang('tmpt_Currency')?></a></li>
+              <li><a href="<?=myOrg_url()?>agency/<?=lang('rt_budget')?>" rel="tooltip" title="<?=lang('tmpt_ConfigBudgetTitle')?>"><?=lang('tmpt_ConfigBudget')?></a></li>
+              <li><a href="<?=myOrg_url()?>agency/<?=lang('rt_payment')?>" rel="tooltip" title="<?=lang('tmpt_ConfigPaymentTitle')?>"><?=lang('tmpt_ConfigPayment')?></a></li>
+            </ul>
+            <li><a href="<?=myOrg_url()?><?=lang('rt_vitrine')?>" rel="tooltip" title="<?=lang('tmpt_VitrineTitle')?>"><?=lang('tmpt_Vitrine')?></a></li>
+          </li>
+          <li class="divider"></li>
           <li><a href="<?=myOrg_url()?><?=lang('rt_customer')?>" rel="tooltip" title="<?=lang('tmpt_CustomersTitle')?>"><?=lang('tmpt_Customers')?></a></li>
           <li><a href="<?=myOrg_url()?><?=lang('rt_collaborator')?>" rel="tooltip" title="<?=lang('tmpt_CollaboratorsTitle')?>"><?=lang('tmpt_Collaborators')?></a></li>
-          <li><a href="<?=myOrg_url()?>agency/<?=lang('rt_settings')?>" rel="tooltip" title="<?=lang('tmpt_ConfigTitle')?>"><?=lang('tmpt_Config')?></a></li>
-          <li><a href="<?=myOrg_url()?><?=lang('rt_currency')?>" rel="tooltip" title="<?=lang('tmpt_CurrencyTitle')?>"><?=lang('tmpt_Currency')?></a></li>
           <li><a href="<?=myOrg_url()?><?=lang('rt_supplier')?>" rel="tooltip" title="<?=lang('tmpt_InstitutionsTitle')?>"><?=lang('tmpt_Institutions')?></a></li>
           <li><a href="<?=myOrg_url()?><?=lang('rt_products')?>" rel="tooltip" title="<?=lang('tmpt_ProductsTitle')?>"><?=lang('tmpt_Products')?></a></li>
-          <li><a href="<?=myOrg_url()?><?=lang('rt_vitrine')?>" rel="tooltip" title="<?=lang('tmpt_VitrineTitle')?>"><?=lang('tmpt_Vitrine')?></a></li>
         </ul>
       </li>
       <li><a href="<?=myOrg_url()?><?=lang('rt_budget')?>"><i class="icon-flag"></i> <?=lang('tmpt_Budget')?> <span class="label label-warning budgetTotal"></span></a></li>

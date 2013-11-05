@@ -6,4 +6,6 @@ $lang['agc_chooseYourName'] = "agency name";
 $lang['agc_tellUsAboutYou'] = "agency description";
 $lang['agc_save'] = "save changes";
 $lang['agc_saved'] = "changes saved";
-$lang['agc_errorWhenSaving'] = "error when saving the changes";
+$lang['agc_errorWhenSaving'] = "error while saving the changes";
+$lang['agc_Theme'] = 'Theme';
+$lang['agc_ThemeDesc'] = 'Change your website theme.';

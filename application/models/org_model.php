@@ -52,6 +52,8 @@ class Org_Model extends CI_Model {
 
             if( ! isset($res[0]["about"]) ) $res[0]["about"] = "";
 
+            if( ! isset($res[0]["theme"]) ) $res[0]["theme"] = "aqua";
+
             return $res[0];
 
         }
@@ -170,6 +172,19 @@ class Org_Model extends CI_Model {
     $res->img = $newFile;
 
     return $res;
+
+  }
+
+  function changeTheme( $data ){
+
+    $this->session->set_userdata('orgTheme', $data["theme"]);
+
+    $this->mongo_db
+      ->where('_id', $this->session->userdata('org'))
+      ->set("theme", $data["theme"])
+      ->update("org");
+
+    return array("success" => true);
 
   }
 

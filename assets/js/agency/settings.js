@@ -1,5 +1,7 @@
 $(document).ready(function(){
 
+	$(".changeTheme").select2();
+
 	$("#save").live("click", function(){
 
 		var valid = true;
@@ -76,6 +78,30 @@ $(document).ready(function(){
 		};
 
 		$tzd.ajax.upload(url, data, callback);
+
+	});
+
+	$(".changeTheme").live("change propertychange", function(){
+
+		var url = base_url+'agency/changeTheme';
+
+		var theme = $(this).select2('data').id;
+
+		var data = {
+
+			tzadiToken : tzadiToken,
+
+			theme : theme
+
+		};
+
+		var callback = function( res ){
+
+			location.reload();
+
+		};
+
+		$tzd.ajax.post(url, data, callback);
 
 	});
 
