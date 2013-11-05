@@ -35,6 +35,16 @@ class Agency extends My_Controller {
 
     }
 
+  public function changeImg( ) {
+
+    $this->MYensureOwnProfile();
+
+    $this->load->model('org_model');
+
+    echo json_encode( $this->org_model->changeImg() );
+
+  }
+
 }
 
 /* End of file Contact.php */

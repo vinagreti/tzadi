@@ -51,7 +51,7 @@ $(document).ready(function(){
 
 		var files = this.files;
 
-		var url = base_url+'user/changeImg';
+		var url = base_url+'agency/changeImg';
 
 		var data = {
 

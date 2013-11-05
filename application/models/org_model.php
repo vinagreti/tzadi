@@ -10,7 +10,7 @@ class Org_Model extends CI_Model {
     function getBranches( ) {
 
         $org = $this->mongo_db
-            ->where('_id', $this->session->userdata("org_id"))
+            ->where('_id', $this->session->orgdata("org_id"))
             ->get('org');
 
         if($org)
@@ -136,5 +136,41 @@ class Org_Model extends CI_Model {
         return $res;
 
     }
+
+  function changeImg(){
+
+    $_id = $this->session->userdata("org");
+
+    $this->load->model("file_model");
+
+    $newFile = tzd_url() . "file/open/" . $this->file_model->save( $_id );
+
+    $this->session->set_userdata('orgImg', $newFile);
+
+    $org = $this->mongo_db
+      ->where('_id', $_id)
+      ->get('org');
+
+    if( isset( $org[0]["img"] ) ) {
+
+        $imgIdPos = strrpos($org[0]["img"], "file/open/");
+
+        $img = substr( $org[0]["img"], $imgIdPos+10,  strlen($org[0]["img"]) );
+
+        if( is_numeric( $img ) )
+            $this->file_model->drop( (int) $img );
+
+    }
+
+    $this->mongo_db
+      ->where('_id', $_id)
+      ->set("img", $newFile)
+      ->update("org");
+
+    $res->img = $newFile;
+
+    return $res;
+
+  }
 
 }
