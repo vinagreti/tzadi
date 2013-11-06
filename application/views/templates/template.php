@@ -8,7 +8,7 @@
     <meta name="author" content="">
     <!-- bootstrap styles -->
     <?=$this->session->userdata('orgTheme')?>
-    <link rel="stylesheet" href="<?=base_url()?>assets/third_party/bootstrap/css/theme/<?=$this->session->userdata('orgTheme')?>/bootstrap.min.css">
+    <link rel="stylesheet" href="<?=base_url()?>assets/third_party/bootstrap/css/theme/<?=$this->session->userdata('theme')?>/bootstrap.min.css">
     <link rel="stylesheet" href="<?=base_url()?>assets/third_party/bootstrap/css/bootstrap-datetimepicker.min.css">
     <link rel="stylesheet" href="<?=base_url()?>assets/third_party/bootstrap/css/font-awesome.min.css">
     <link rel="stylesheet" href="<?=base_url()?>assets/third_party/select2/select2.css"/>

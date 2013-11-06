@@ -50,7 +50,7 @@ class My_Controller extends CI_Controller{
 
         $this->session->set_userdata("orgName", $org["name"]);
 
-        $this->session->set_userdata("orgTheme", $org["theme"]);
+        $this->session->set_userdata("theme", $org["theme"]);
 
         $this->session->set_userdata("orgImg", $org["img"]);
 
@@ -73,6 +73,8 @@ class My_Controller extends CI_Controller{
     } else {
 
       $this->session->set_userdata("myOrg", false);
+
+      $this->session->set_userdata("theme", 'aqua');
       
     }
 

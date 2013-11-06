@@ -177,8 +177,6 @@ class Org_Model extends CI_Model {
 
   function changeTheme( $data ){
 
-    $this->session->set_userdata('orgTheme', $data["theme"]);
-
     $this->mongo_db
       ->where('_id', $this->session->userdata('org'))
       ->set("theme", $data["theme"])

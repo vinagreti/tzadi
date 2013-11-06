@@ -21,9 +21,84 @@ class Agency extends My_Controller {
 
 	    else {
 
-	      $data->dynJS = 'agency/settings';
+	      $data->dynJS = 'agency/settings/basics';
 
-	      $data->view = 'agency/settings';
+	      $data->view = 'agency/settings/basics';
+
+	      $data->agency = $this->org_model->getByID( $this->session->userdata("org") );
+
+	      $data->page_title = lang('agc_SettingsOf') . " " . $this->session->userdata("orgName");
+
+	      $this->page->load($data);
+
+	    }
+
+    }
+
+    public function budget(){
+
+	    $this->MYensureOwnProfile();
+
+	    $this->load->model("org_model");
+
+	    if( $this->input->post() )
+	      echo json_encode( $this->org_model->set( $this->input->post() ) );
+
+	    else {
+
+	      $data->dynJS = 'agency/settings/budget';
+
+	      $data->view = 'agency/settings/budget';
+
+	      $data->agency = $this->org_model->getByID( $this->session->userdata("org") );
+
+	      $data->page_title = lang('agc_SettingsOf') . " " . $this->session->userdata("orgName");
+
+	      $this->page->load($data);
+
+	    }
+
+    }
+
+    public function payment(){
+
+	    $this->MYensureOwnProfile();
+
+	    $this->load->model("org_model");
+
+	    if( $this->input->post() )
+	      echo json_encode( $this->org_model->set( $this->input->post() ) );
+
+	    else {
+
+	      $data->dynJS = 'agency/settings/payment';
+
+	      $data->view = 'agency/settings/payment';
+
+	      $data->agency = $this->org_model->getByID( $this->session->userdata("org") );
+
+	      $data->page_title = lang('agc_SettingsOf') . " " . $this->session->userdata("orgName");
+
+	      $this->page->load($data);
+
+	    }
+
+    }
+
+    public function theme(){
+
+	    $this->MYensureOwnProfile();
+
+	    $this->load->model("org_model");
+
+	    if( $this->input->post() )
+	      echo json_encode( $this->org_model->set( $this->input->post() ) );
+
+	    else {
+
+	      $data->dynJS = 'agency/settings/theme';
+
+	      $data->view = 'agency/settings/theme';
 
 	      $data->agency = $this->org_model->getByID( $this->session->userdata("org") );
 
