@@ -1,6 +1,8 @@
 <div class="row-fluid">
 	<div class="span24 well well-mini">
 		<h4><?=lang("org_paymentMethods")?></h4>
+
+		<?php if( $boleto || $giftcard || $creditcard || $debitcard || $deposit || $cash || $pagseguro || $paypal ) { ?>
 		<div class="row-fluid">
 			<div class="span24">
 				<h5><?=lang("org_InCash")?></h5>
@@ -16,6 +18,9 @@
 				</div>
 			</div>
 		</div>
+		<?php } ?>
+
+		<?php if( $installmentsCreditcard || $installmentsBoleto || $booklet ) { ?>
 		<hr>
 		<div class="row-fluid">
 			<div class="span24">
@@ -31,6 +36,9 @@
 				</div>
 			</div>
 		</div>
+		<?php } ?>
+
+		<?php if( $installmentsCreditcard && ( $ccAmericanExpress || $ccAura || $ccBNDES || $ccDinersClub || $ccElo || $ccHipercard || $ccMastercard || $ccSorocred || $ccVisa )  ) { ?>
 		<hr>
 		<div class="row-fluid">
 			<div class="span24">
@@ -48,5 +56,6 @@
 				</div>
 			</div>
 		</div>
+		<?php } ?>
 	</div>
 </div>

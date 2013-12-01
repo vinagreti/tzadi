@@ -2,6 +2,16 @@ var getFormData = function(){
 
 	var paymentMethods = {};
 
+	if( ! ($("#installmentsWithNoInterests").val() >= 1) ){
+		$("#installmentsWithNoInterests").val(1);
+	}
+	if( ! ($("#installmentsWithInterests").val() >= 1) ){
+		$("#installmentsWithInterests").val(1);
+	}
+	if( ! ($("#interests").val() >= 0) ){
+		$("#interests").val(1);
+	}
+
 	paymentMethods["boleto"] = $("#boleto").is(':checked') ? 1 : 0;
 	paymentMethods["creditcard"] = $("#creditcard").is(':checked') ? 1 : 0;
 	paymentMethods["giftcard"] = $("#giftcard").is(':checked') ? 1 : 0;
