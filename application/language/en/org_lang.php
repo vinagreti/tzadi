@@ -2,7 +2,7 @@
 
 $lang["org_saved"] = "saved";
 $lang["org_notSaved"] = "error saving";
-$lang["org_paymentMethods"] = "Forms of payment";
+$lang["org_paymentMethods"] = "Payment Methods";
 $lang["org_paymentFlag"] = "Flags";
 $lang["org_InCash"] = "In cash";
 $lang["org_ByInstallments"] = "By installments";
