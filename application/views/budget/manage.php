@@ -1,1 +1,0 @@
-gerenciar orçamento

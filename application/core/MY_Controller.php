@@ -54,6 +54,8 @@ class My_Controller extends CI_Controller{
 
         $this->session->set_userdata("orgImg", $org["img"]);
 
+        $this->session->set_userdata("orgPayment", $org["payment"]);
+
         $this->session->set_userdata("orgKind", $org["kind"] );
 
         $this->session->set_userdata("orgEmail", $org["email"] );

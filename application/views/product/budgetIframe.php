@@ -20,19 +20,26 @@
   </div>
 </div>
 
-<div class="pull-right">
 
-  <dl class="dl-horizontal">
-    <dt><?=lang("pdt_totalValue")?></dt><dd><span class="currencyCode"></span> <span class="totalPrice">0</span></dd>
-  </dl>
-  <span><a class="btn" href="<?=base_url()?>vitrineIframe"><?=lang("pdt_addProduct")?></a></span>
-  <span><a class="openKnowMoreBudget btn btn-success"><?=lang("pdt_knowMore")?></a></span>
-  <span><a class="openShareBudget btn btn-primary"><?=lang("pdt_shareProductByMail")?></a></span>
-  <span><a class="empty btn btn-danger"><?=lang("pdt_emptyBudget")?></a></span>
+<div class="row-fluid">
+  <div class="span24">
+    <div class="pull-right">
 
+      <dl class="dl-horizontal">
+        <dt><?=lang("pdt_totalValue")?></dt><dd><span class="currencyCode"></span> <span class="totalPrice">0</span></dd>
+      </dl>
+      <span><a class="btn" href="<?=base_url()?>vitrineIframe"><?=lang("pdt_addProduct")?></a></span>
+      <span><a class="openKnowMoreBudget btn btn-success"><?=lang("pdt_knowMore")?></a></span>
+      <span><a class="openShareBudget btn btn-primary"><?=lang("pdt_shareProductByMail")?></a></span>
+      <span><a class="empty btn btn-danger"><?=lang("pdt_emptyBudget")?></a></span>
+
+    </div>
+  </div>
 </div>
 
 <div class="hide" id="pdt_wantToEmpty"><?=lang("pdt_wantToEmptyBudget")?></div>
 
 <div id="pdt_TheProduct" class="hide"><?=lang("pdt_TheProduct")?></div>
 <div id="pdt_wasNotFound" class="hide"><?=lang("pdt_wasNotFound")?></div>
+
+<hr><?=$paymentResumeHTML?>

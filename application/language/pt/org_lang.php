@@ -1,0 +1,32 @@
+<?php
+
+$lang["org_saved"] = "salvo";
+$lang["org_notSaved"] = "erro ao salvar";
+$lang["org_paymentMethods"] = "Formas de pagamento";
+$lang["org_paymentFlag"] = "Bandeiras";
+$lang["org_InCash"] = "À vista";
+$lang["org_ByInstallments"] = "A prazo";
+$lang["org_boleto"] = "Boleto Bancário";
+$lang["org_creditcard"] = "Cartão de Crédito";
+$lang["org_giftcard"] = "Cartão pré-pago";
+$lang["org_debitcard"] = "Cartão de Débito";
+$lang["org_deposit"] = "Depósito em conta";
+$lang["org_cash"] = "Dinheiro";
+$lang["org_pagseguro"] = "PagSeguro";
+$lang["org_paypal"] = "PayPal";
+$lang["org_ccAmericanExpress"] = "American Express";
+$lang["org_ccAura"] = "Aura";
+$lang["org_ccBNDES"] = "BNDES";
+$lang["org_ccDinersClub"] = "Diners Club";
+$lang["org_ccElo"] = "Elo";
+$lang["org_ccHipercard"] = "Hipercard";
+$lang["org_ccMastercard"] = "Mastercard";
+$lang["org_ccSorocred"] = "Sorocred";
+$lang["org_ccVisa"] = "Visa";
+$lang["org_until"] = "Até";
+$lang["org_timesWithNoInterestRate"] = "vezes sem juros";
+$lang["org_timesWithInterestRate"] = "vezes com juros de";
+$lang["org_perMonth"] = "mês";
+$lang["org_installmentsBoleto"] = "Boleto Bancário";
+$lang["org_installmentsCreditcard"] = "Cartão de Crédito";
+$lang["org_booklet"] = "Carnê";

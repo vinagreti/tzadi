@@ -139,6 +139,53 @@ class Org_Model extends CI_Model {
 
     }
 
+    public function setPayment( $data ){
+
+        $newData = json_decode($data["paymentMethods"]);
+
+        if( isset( $newData->boleto ) ) $payment["boleto"] = $newData->boleto;
+        if( isset( $newData->cash ) ) $payment["cash"] = $newData->cash;
+        if( isset( $newData->ccAmericanExpress ) ) $payment["ccAmericanExpress"] = $newData->ccAmericanExpress;
+        if( isset( $newData->ccAura ) ) $payment["ccAura"] = $newData->ccAura;
+        if( isset( $newData->ccBNDES ) ) $payment["ccBNDES"] = $newData->ccBNDES;
+        if( isset( $newData->ccDinersClub ) ) $payment["ccDinersClub"] = $newData->ccDinersClub;
+        if( isset( $newData->ccElo ) ) $payment["ccElo"] = $newData->ccElo;
+        if( isset( $newData->ccHipercard ) ) $payment["ccHipercard"] = $newData->ccHipercard;
+        if( isset( $newData->ccMastercard ) ) $payment["ccMastercard"] = $newData->ccMastercard;
+        if( isset( $newData->ccSorocred ) ) $payment["ccSorocred"] = $newData->ccSorocred;
+        if( isset( $newData->ccVisa ) ) $payment["ccVisa"] = $newData->ccVisa;
+        if( isset( $newData->installmentsBoleto ) ) $payment["installmentsBoleto"] = $newData->installmentsBoleto;
+        if( isset( $newData->booklet ) ) $payment["booklet"] = $newData->booklet;
+        if( isset( $newData->installmentsCreditcard ) ) $payment["installmentsCreditcard"] = $newData->installmentsCreditcard;
+        if( isset( $newData->creditcard ) ) $payment["creditcard"] = $newData->creditcard;
+        if( isset( $newData->debitcard ) ) $payment["debitcard"] = $newData->debitcard;
+        if( isset( $newData->deposit ) ) $payment["deposit"] = $newData->deposit;
+        if( isset( $newData->giftcard ) ) $payment["giftcard"] = $newData->giftcard;
+        if( isset( $newData->installmentsWithInterests ) ) $payment["installmentsWithInterests"] = $newData->installmentsWithInterests;
+        if( isset( $newData->installmentsWithNoInterests ) ) $payment["installmentsWithNoInterests"] = $newData->installmentsWithNoInterests;
+        if( isset( $newData->interests ) ) $payment["interests"] = $newData->interests;
+        if( isset( $newData->length ) ) $payment["length"] = $newData->length;
+        if( isset( $newData->pagseguro ) ) $payment["pagseguro"] = $newData->pagseguro;
+        if( isset( $newData->paypal ) ) $payment["paypal"] = $newData->paypal;
+
+        $edited = $this->mongo_db
+            ->where( '_id', $this->session->userdata("org") )
+            ->set("payment", $payment)
+            ->update("org");
+
+        if( $edited ){
+
+            $this->session->set_userdata("orgPayment", $payment);
+
+            return array("status" => "success", "message" => lang("org_saved"));
+
+        }
+
+        else
+            return array("status" => "error", "message" => lang("org_notSaved"));
+
+    }
+
   function changeImg(){
 
     $_id = $this->session->userdata("org");

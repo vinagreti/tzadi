@@ -92,3 +92,5 @@
     <?php if(isset($product["detail"])) echo nl2br($product["detail"]); ?>
   </div>
 </div>
+
+<hr><?=$paymentResumeHTML?>

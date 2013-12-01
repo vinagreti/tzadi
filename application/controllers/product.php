@@ -9,6 +9,10 @@ class Product extends My_Controller {
 
   public function index()
   {
+    $this->load->model("org_model");
+    $this->lang->load('org', $this->session->userdata('language'));
+    $data->agency = $this->org_model->getByID( $this->session->userdata("org") );
+    $data->paymentResumeHTML = $this->load->view("org/paymentResume", $data->agency["payment"], true);
     $data->dynJS = 'product/vitrine';
     $data->view = 'product/vitrine';
     $data->page_title = "Vitrine";
@@ -17,6 +21,10 @@ class Product extends My_Controller {
 
   public function vitrineIframe()
   {
+    $this->load->model("org_model");
+    $this->lang->load('org', $this->session->userdata('language'));
+    $data->agency = $this->org_model->getByID( $this->session->userdata("org") );
+    $data->paymentResumeHTML = $this->load->view("org/paymentResume", $data->agency["payment"], true);
     $data->dynJS = 'product/vitrine';
     $data->view = 'product/vitrineIframe';
     $data->page_title = "Vitrine";
@@ -36,6 +44,10 @@ class Product extends My_Controller {
 
   public function budget()
   {
+    $this->load->model("org_model");
+    $this->lang->load('org', $this->session->userdata('language'));
+    $data->agency = $this->org_model->getByID( $this->session->userdata("org") );
+    $data->paymentResumeHTML = $this->load->view("org/paymentResume", $data->agency["payment"], true);
     $data->dynJS = array('product/budget', "product/product");
     $data->view = 'product/budget';
     $data->page_title = lang('pdt_budgetTitle');
@@ -44,6 +56,10 @@ class Product extends My_Controller {
 
   public function budgetIframe()
   {
+    $this->load->model("org_model");
+    $this->lang->load('org', $this->session->userdata('language'));
+    $data->agency = $this->org_model->getByID( $this->session->userdata("org") );
+    $data->paymentResumeHTML = $this->load->view("org/paymentResume", $data->agency["payment"], true);
     $data->dynJS = array('product/budget', "product/product");
     $data->view = 'product/budgetIframe';
     $data->page_title = lang('pdt_budgetTitle');
@@ -55,22 +71,40 @@ class Product extends My_Controller {
     $this->MYensureOwnProfile();
 
     $this->load->model("product_model");
-    echo json_encode($this->product_model->getAll());
+
+    $data = json_encode($this->product_model->getAll());
+
+    $this->output->set_content_type('application/json');
+
+    $this->output->set_output($data);
+
   }
 
   public function getPublic()
   {
-    $this->load->model('product_model');
-    $data = $this->product_model->getPublic();
-    echo json_encode($data);
+
+    $this->load->model('product_model'); 
+
+    $data = json_encode($this->product_model->getPublic());
+
+    $this->output->set_content_type('application/json');
+
+    $this->output->set_output($data);
+
   }
 
   public function getByID(){
 
     $productID = $this->input->post("productID");
+
     $this->load->model("product_model");
-    $data = $this->product_model->getByID( $productID );
-    echo json_encode($data);
+
+    $data = json_encode($this->product_model->getByID( $productID ) );
+    
+    $this->output->set_content_type('application/json');
+
+    $this->output->set_output($data);
+
   }
 
   public function drop()
@@ -145,6 +179,11 @@ class Product extends My_Controller {
 
     }
 
+    $this->load->model("org_model");
+    $this->lang->load('org', $this->session->userdata('language'));
+    $data->agency = $this->org_model->getByID( $this->session->userdata("org") );
+    $data->paymentResumeHTML = $this->load->view("org/paymentResume", $data->agency["payment"], true);
+
     $data->the_head = "<link rel='image_src' href=" . $data->product['coverImg'] . " />";
     $data->the_head .= "<meta property='og:image' content='" . $data->product["coverImg"] . "' />";
     $data->the_head .= "<meta property='og:url' content='" . str_replace("/index.php", "", current_url()) . "' />";
@@ -172,6 +211,11 @@ class Product extends My_Controller {
       $data->page_title = lang("pdt_NotFound");
 
     }
+
+    $this->load->model("org_model");
+    $this->lang->load('org', $this->session->userdata('language'));
+    $data->agency = $this->org_model->getByID( $this->session->userdata("org") );
+    $data->paymentResumeHTML = $this->load->view("org/paymentResume", $data->agency["payment"], true);
 
     $data->the_head = "<link rel='image_src' href=" . $data->product['coverImg'] . " />";
     $data->the_head .= "<meta property='og:image' content='" . $data->product["coverImg"] . "' />";
