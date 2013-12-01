@@ -1,0 +1,33 @@
+db.org.update({},
+{
+	$set:{
+		"payment":{
+			boleto:0,
+			cash:1,
+			ccAmericanExpress:0,
+			ccAura:0,
+			ccBNDES:0,
+			ccDinersClub:0,
+			ccElo:0,
+			ccHipercard:0,
+			ccMastercard:0,
+			ccSorocred:0,
+			ccVisa:0,
+			installmentsBoleto:0,
+			booklet:0,
+			installmentsCreditcard:0,
+			creditcard:0,
+			debitcard:0,
+			deposit:0,
+			giftcard:0,
+			installmentsWithInterests:0,
+			installmentsWithNoInterests:0,
+			interests:0,
+			pagseguro:0,
+			paypal:0
+		}
+	}
+},
+{
+	multi:1
+});
