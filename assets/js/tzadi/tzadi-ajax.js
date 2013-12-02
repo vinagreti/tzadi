@@ -8,7 +8,33 @@
  */
 TzadiJS.prototype.ajax = new function(){
 
+  this.get = function(url, data, callback){
+
+    this.call( url, data, callback, "GET" )
+
+  };
+
   this.post = function(url, data, callback){
+
+    this.call( url, data, callback, "POST" )
+
+  };
+
+  this.put = function(url, data, callback){
+
+    this.call( url, data, callback, "PUT" )
+
+  };
+
+  this.delete = function(url, data, callback){
+
+    this.call( url, data, callback, "DELETE" )
+
+  };
+
+  this.call = function(url, data, callback, type){
+
+    var type = type ? type : "GET"
 
     $.ajax({
 
@@ -20,7 +46,7 @@ TzadiJS.prototype.ajax = new function(){
 
       },
 
-      type: "POST",
+      type: type,
 
       data : data,
 

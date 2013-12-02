@@ -22,11 +22,13 @@ class Org extends My_Controller {
 
     	$this->MYensureOwnProfile();
 
-    	if( $this->input->post() ){
+    	if( $this->input->put("paymentMethods") ){
 
 		    $this->load->model("org_model");
 
-	    	$data = json_encode( $this->org_model->setPayment( $this->input->post() ) );
+            $paymentMethods = json_decode($this->input->put("paymentMethods"));
+
+	    	$data = json_encode( $this->org_model->setPayment( $paymentMethods ) );
 
 		    $this->output->set_content_type('application/json');
 
@@ -40,9 +42,9 @@ class Org extends My_Controller {
 
 			$data->view = 'org/paymentManage';
 
-			$data->agency = $this->org_model->getByID( $this->session->userdata("org") );
+            $agency = $this->org_model->getByID( $this->session->userdata("org") );
 
-			$data->paymentResumeHTML = $this->load->view("org/paymentResume", $data->agency["payment"], true);
+            $data->payment = $agency["payment"];
 
 			$data->page_title = lang('agc_SettingsOf') . " " . $this->session->userdata("orgName");
 
@@ -52,17 +54,41 @@ class Org extends My_Controller {
 
     }
 
-  public function budget()
-  {
-    $this->load->model("org_model");
-    $this->lang->load('org', $this->session->userdata('language'));
-    $data->agency = $this->org_model->getByID( $this->session->userdata("org") );
-    $data->paymentResumeHTML = $this->load->view("org/paymentResume", $data->agency["payment"], true);
-    $data->dynJS = "org/budget";
-    $data->view = 'org/budgetManage';
-    $data->page_title = lang('org_budgetTitle');
-    $this->page->load($data);
-  }
+    public function budget(){
+
+        $this->MYensureOwnProfile();
+
+        if( $this->input->put("budgetConf") ){
+
+            $this->load->model("org_model");
+
+            $budgetConf = json_decode($this->input->put("budgetConf"));
+
+            $data = json_encode( $this->org_model->setBudget( $budgetConf ) );
+
+            $this->output->set_content_type('application/json');
+
+            $this->output->set_output($data);
+            
+        } else {
+
+            $this->load->model("org_model");
+
+            $agency = $this->org_model->getByID( $this->session->userdata("org") );
+
+            $data->budget = $agency["budget"];
+
+            $data->dynJS = 'org/budgetManage';
+
+            $data->view = 'org/budgetManage';
+
+            $data->page_title = lang('org_budgetTitle');
+
+            $this->page->load($data);
+
+        }
+
+    }
 
 }
 

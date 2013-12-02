@@ -166,9 +166,7 @@ class Org_Model extends CI_Model {
 
     }
 
-    public function setPayment( $data ){
-
-        $newData = json_decode($data["paymentMethods"]);
+    public function setPayment( $newData ){
 
         if( isset( $newData->boleto ) ) $payment["boleto"] = ( $newData->boleto <= 1 ) ? $newData->boleto : false;
         if( isset( $newData->creditcard ) ) $payment["creditcard"] = ( $newData->creditcard <= 1 ) ? $newData->creditcard : false;
@@ -197,6 +195,26 @@ class Org_Model extends CI_Model {
         $edited = $this->mongo_db
             ->where( '_id', $this->session->userdata("org") )
             ->set("payment", $payment)
+            ->update("org");
+
+        if( $edited ){
+
+            return array("status" => "success", "message" => lang("org_saved"));
+
+        }
+
+        else
+            return array("status" => "error", "message" => lang("org_notSaved"));
+
+    }
+
+    public function setBudget( $newData ){
+
+        if( isset( $newData->timelife ) ) $budget["timelife"] = ( $newData->timelife > 0 ) ? $newData->timelife : 1;
+
+        $edited = $this->mongo_db
+            ->where( '_id', $this->session->userdata("org") )
+            ->set("budget", $budget)
             ->update("org");
 
         if( $edited ){

@@ -42,8 +42,6 @@ var getFormData = function(){
 
 var put = function(paymentMethods){
 
-	console.log(paymentMethods);
-
 	var url = base_url+'org/payment';
 
 	var data = {
@@ -57,7 +55,7 @@ var put = function(paymentMethods){
 
 	};
 
-	$tzd.ajax.post(url, data, callback);
+	$tzd.ajax.put(url, data, callback);
 
 }
 
