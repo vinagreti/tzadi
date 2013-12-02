@@ -529,6 +529,12 @@ class Product_Model extends CI_Model {
 
     $budget->price = $this->session->userdata("currencyBase") . " " . number_format($budget->price, 2, '.', '');
 
+    $this->load->helper('date');
+    $this->lang->load('org', $this->session->userdata('language'));
+    $genertionTime = time();
+    $budget->genertionTime = time_date($genertionTime);
+    $budget->timelife = time_date( ($this->session->userdata("orgBudgetTimelife") * 86400) + $genertionTime);
+
     return $budget;
 
   }

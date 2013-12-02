@@ -10,5 +10,6 @@
         <p class="pull-right"><strong class="text-warning"><?=lang("pdt_total")?>:</strong> <?=$budget->price?></p>
       </div>
     </div>
+    <p class="text-right"><small><?=lang("org_validFrom")?> <?=$budget->genertionTime?> <?=lang("org_until")?> <?=$budget->timelife?></small></p>
   </div>
 </div>
