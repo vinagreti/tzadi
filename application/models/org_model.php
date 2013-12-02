@@ -68,6 +68,32 @@ class Org_Model extends CI_Model {
 
         $branch = array( array( "_id" => $this->mongo_model->newID(), "name" => $org["name"]) );
 
+        $payment = array(
+            "boleto" => 0
+            , "cash" => 1
+            , "ccAmericanExpress" => 0
+            , "ccAura" => 0
+            , "ccBNDES" => 0
+            , "ccDinersClub" => 0
+            , "ccElo" => 0
+            , "ccHipercard" => 0
+            , "ccMastercard" => 0
+            , "ccSorocred" => 0
+            , "ccVisa" => 0
+            , "installmentsBoleto" => 0
+            , "booklet" => 0
+            , "installmentsCreditcard" => 0
+            , "creditcard" => 0
+            , "debitcard" => 0
+            , "deposit" => 0
+            , "giftcard" => 0
+            , "installmentsWithInterests" => 1
+            , "installmentsWithNoInterests" => 1
+            , "interests" => 0
+            , "pagseguro" => 0
+            , "paypal" => 0
+        );
+
         $this->mongo_db->insert('org', array(
             "_id" => strtolower($org["_id"])
             , "name" => $org["name"]
@@ -75,6 +101,7 @@ class Org_Model extends CI_Model {
             , "kind" => "agency"
             , "email" => $org["email"]
             , "branch" => $branch
+            , "payment" => $payment
             ));
 
         
@@ -173,8 +200,6 @@ class Org_Model extends CI_Model {
             ->update("org");
 
         if( $edited ){
-
-            $this->session->set_userdata("orgPayment", $payment);
 
             return array("status" => "success", "message" => lang("org_saved"));
 
