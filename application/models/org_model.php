@@ -10,7 +10,7 @@ class Org_Model extends CI_Model {
     function getBranches( ) {
 
         $org = $this->mongo_db
-            ->where('_id', $this->session->orgdata("org_id"))
+            ->where('_id', $this->session->userdata("org_id"))
             ->get('org');
 
         if($org)

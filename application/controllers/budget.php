@@ -12,26 +12,15 @@ class Budget extends My_Controller {
 
     public function index(){
 
-	    $this->MYensureOwnProfile();
+		$data->dynJS = 'budget/manage';
 
-	    $this->load->model("org_model");
+		$data->view = 'budget/manage';
 
-	    if( $this->input->post() )
-	      echo json_encode( $this->org_model->set( $this->input->post() ) );
+		$data->agency = $this->org_model->getByID( $this->session->userdata("org") );
 
-	    else {
+		$data->page_title = lang('agc_SettingsOf') . " " . $this->session->userdata("orgName");
 
-	      $data->dynJS = 'budget/manage';
-
-	      $data->view = 'budget/manage';
-
-	      $data->agency = $this->org_model->getByID( $this->session->userdata("org") );
-
-	      $data->page_title = lang('agc_SettingsOf') . " " . $this->session->userdata("orgName");
-
-	      $this->page->load($data);
-
-	    }
+		$this->page->load($data);
 
     }
 

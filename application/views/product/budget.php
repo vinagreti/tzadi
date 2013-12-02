@@ -29,6 +29,9 @@
       <dl class="dl-horizontal">
         <dt><?=lang("pdt_totalValue")?></dt><dd><span class="currencyCode"></span> <span class="totalPrice">0</span></dd>
       </dl>
+
+      <p class="text-right"><small><?=lang("org_validFrom")?> <?=$genertionTime?> <?=lang("org_until")?> <?=$timelife?></small></p>
+
       <span><a class="btn" href="<?=base_url()?><?=lang("rt_vitrine")?>"><?=lang("pdt_addProduct")?></a></span>
       <?php if( ! $this->session->userdata("myOrg") ){ ?><span><a class="openKnowMoreBudget btn btn-success"><?=lang("pdt_knowMore")?></a></span><?php } ?>
       <span><a class="openShareBudget btn btn-primary"><?=lang("pdt_shareProductByMail")?></a></span>
@@ -39,7 +42,6 @@
 </div>
 
 <div class="hide" id="pdt_wantToEmpty"><?=lang("pdt_wantToEmptyBudget")?></div>
-
 <div id="pdt_TheProduct" class="hide"><?=lang("pdt_TheProduct")?></div>
 <div id="pdt_wasNotFound" class="hide"><?=lang("pdt_wasNotFound")?></div>
 

@@ -28,6 +28,9 @@
       <dl class="dl-horizontal">
         <dt><?=lang("pdt_totalValue")?></dt><dd><span class="currencyCode"></span> <span class="totalPrice">0</span></dd>
       </dl>
+
+      <p class="text-right"><small><?=lang("org_validFrom")?> <?=$genertionTime?> <?=lang("org_until")?> <?=$timelife?></small></p>
+      
       <span><a class="btn" href="<?=base_url()?>vitrineIframe"><?=lang("pdt_addProduct")?></a></span>
       <span><a class="openKnowMoreBudget btn btn-success"><?=lang("pdt_knowMore")?></a></span>
       <span><a class="openShareBudget btn btn-primary"><?=lang("pdt_shareProductByMail")?></a></span>

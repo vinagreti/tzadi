@@ -50,6 +50,10 @@ class Product extends My_Controller {
     $data->paymentResumeHTML = $this->load->view("org/paymentResume", $data->agency["payment"], true);
     $data->dynJS = array('product/budget', "product/product");
     $data->view = 'product/budget';
+    $this->load->helper('date');
+    $genertionTime = time();
+    $data->genertionTime = time_date($genertionTime);
+    $data->timelife = time_date( ($data->agency["budget"]["timelife"] * 86400) + $genertionTime);
     $data->page_title = lang('pdt_budgetTitle');
     $this->page->load($data);
   }
@@ -62,6 +66,10 @@ class Product extends My_Controller {
     $data->paymentResumeHTML = $this->load->view("org/paymentResume", $data->agency["payment"], true);
     $data->dynJS = array('product/budget', "product/product");
     $data->view = 'product/budgetIframe';
+    $this->load->helper('date');
+    $genertionTime = time();
+    $data->genertionTime = time_date($genertionTime);
+    $data->timelife = time_date( ($data->agency["budget"]["timelife"] * 86400) + $genertionTime);
     $data->page_title = lang('pdt_budgetTitle');
     $this->page->loadIframe($data);
   }

@@ -34,4 +34,4 @@
 	</div>
 </div>
 
-<a class="put btn btn-primary">Save</a>
+<a class="put btn btn-primary"><?=lang("tmpt_Save")?></a>

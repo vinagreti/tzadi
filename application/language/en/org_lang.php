@@ -30,3 +30,7 @@ $lang["org_perMonth"] = "month";
 $lang["org_installmentsBoleto"] = "Bank Slip";
 $lang["org_installmentsCreditcard"] = "Credit Card";
 $lang["org_booklet"] = "Booklet";
+$lang["org_validFrom"] = "Valid from";
+$lang["org_budgetManageTitle"] = "Budget Settings";
+$lang["org_theBudgetTimelifeIs"] = "The budget timelife is";
+$lang["org_days"] = "day(s)";
