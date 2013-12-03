@@ -98,4 +98,4 @@ $lang['tmpt_purple_compact'] = 'lilas compacto';
 $lang['tmpt_red'] = 'vermelho';
 $lang['tmpt_red_compact'] = 'vermelho compacto';
 $lang['tmpt_yellow'] = 'amarelo';
-$lang['tmpt_yellow_compact'] = 'amarelo compacto';
+$lang['tmpt_PrivateArea'] = 'Área privada';

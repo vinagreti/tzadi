@@ -70,8 +70,9 @@
 
     <div class="footer">
         <ul>
-          <small><li><a href="<?=base_url()?><?=lang('rt_about')?>"><?=lang('tmpt_AboutUs')?></a></li></small>
-          <small><li><a href="<?=base_url()?><?=lang('rt_contact')?>"><?=lang('tmpt_ContactUs')?></a></li></small>
+            <small><li><a href="<?=base_url() . lang('rt_login')?>"><?=lang('tmpt_PrivateArea')?></a></li></small>
+            <small><li><a href="<?=base_url() . lang('rt_about')?>"><?=lang('tmpt_AboutUs')?></a></li></small>
+            <small><li><a href="<?=base_url() . lang('rt_contact')?>"><?=lang('tmpt_ContactUs')?></a></li></small>
         </ul>
         <p class="text-center">
             &copy; <a target="_blank" href="http://<?=ENVIRONMENT?>">Tzadi</a> 2013
