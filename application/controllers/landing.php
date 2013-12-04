@@ -37,6 +37,7 @@ class Landing extends My_Controller {
     $data->the_head .= '<meta property="og:url" content="' . base_url() . '" />';
     $data->the_head .= '<meta property="og:title" content="TZADI" />';
     $data->the_head .= '<meta property="og:description" content="'. lang('idx_phrase') .'" />';
+    $data->shareButtons = $this->load->view("tzadi/shareButtons", "", true);
     $this->page->load($data);
   }
 }

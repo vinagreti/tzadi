@@ -55,6 +55,7 @@ class Product extends My_Controller {
     $data->genertionTime = time_date($genertionTime);
     $data->timelife = time_date( ($data->agency["budget"]["timelife"] * 86400) + $genertionTime);
     $data->page_title = lang('pdt_budgetTitle');
+    $data->shareButtons = $this->load->view("tzadi/shareButtons", "", true);
     $this->page->load($data);
   }
 
@@ -71,6 +72,7 @@ class Product extends My_Controller {
     $data->genertionTime = time_date($genertionTime);
     $data->timelife = time_date( ($data->agency["budget"]["timelife"] * 86400) + $genertionTime);
     $data->page_title = lang('pdt_budgetTitle');
+    $data->shareButtons = $this->load->view("tzadi/shareButtons", "", true);
     $this->page->loadIframe($data);
   }
 
@@ -197,6 +199,8 @@ class Product extends My_Controller {
     $data->the_head .= "<meta property='og:url' content='" . str_replace("/index.php", "", current_url()) . "' />";
     $data->the_head .= "<meta property='og:title' content='" . $data->product["name"] . "' />";
     if(isset($data->product["detail"])) $data->the_head .= "<meta property='og:description' content='" . $data->product["detail"] . "' />";
+
+    $data->shareButtons = $this->load->view("tzadi/shareButtons", "", true);
 
     $this->page->load($data);
 

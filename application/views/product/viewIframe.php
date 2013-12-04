@@ -2,8 +2,8 @@
 
 <div class="row-fluid">
   <div class="span24">
-    <span class="g-plus" data-action="share" data-annotation="bubble"></span>
-    <span class="fb-like" data-href="<?=base_url().uri_string()?>" data-width="450" data-layout="button_count" data-show-faces="true" data-send="true"></span>
+    <?=$shareButtons?>
+    <div class="pull-right"><a href="<?=base_url().lang("rt_currency")?>"><?=lang("tmpt_todayRates")?></a></div>
   </div>
 </div>
 
@@ -93,4 +93,6 @@
   </div>
 </div>
 
-<hr><?=$paymentResumeHTML?>
+<hr>
+
+<?=$paymentResumeHTML?>

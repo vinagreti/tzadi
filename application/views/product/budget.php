@@ -1,15 +1,16 @@
 <h3><?=lang("pdt_Budget")?> <a class="reload btn btn-info"><i class="icon-refresh"></i></a></h3>
 
+<?=$shareButtons?>
 <div class="pull-right"><a href="<?=base_url().lang("rt_currency")?>"><?=lang("tmpt_todayRates")?></a></div>
 
 <div class="row-fluid">
   <div class="span24 list">
     <div class="row-fluid item hide">
       <div class="span24  tzdTableRow">
-        <div class="span2 text-center"><a class="productImg" target="_blank"><img class="imgSmall"></img></a></div>
+        <div class="span2 text-center"><a class="productImg" href="<?=base_url()?>product/viewIframe/" target="_blank"><img class="imgSmall"></img></a></div>
         <div class="span6">
           <small>
-            <p><a class="productName" target="_blank"></a></p>
+            <p><a class="productName" href="<?=base_url()?>product/viewIframe/" target="_blank"></a></p>
             <p><?=lang("pdt_code")?>: <span class="code"></span></p>
           </small>
         </div>

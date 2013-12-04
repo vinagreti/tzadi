@@ -1,13 +1,16 @@
 <h3><?=lang("pdt_Budget")?> <a class="reload btn btn-info"><i class="icon-refresh"></i></a></h3>
 
+<?=$shareButtons?>
+<div class="pull-right"><a href="<?=base_url().lang("rt_currency")?>"><?=lang("tmpt_todayRates")?></a></div>
+
 <div class="row-fluid">
   <div class="span24 list">
     <div class="row-fluid item hide">
       <div class="span24  tzdTableRow">
-        <div class="span2 text-center"><a class="productImg" href="<?=base_url()?>product/viewIframe/"><img class="imgSmall"></img></a></div>
+        <div class="span2 text-center"><a class="productImg" href="<?=base_url()?>product/viewIframe/" target="_blank"><img class="imgSmall"></img></a></div>
         <div class="span6">
           <small>
-            <p><a class="productName" href="<?=base_url()?>product/viewIframe/"></a></p>
+            <p><a class="productName" href="<?=base_url()?>product/viewIframe/" target="_blank"></a></p>
             <p><?=lang("pdt_code")?>: <span class="code"></span></p>
           </small>
         </div>
@@ -20,7 +23,6 @@
   </div>
 </div>
 
-
 <div class="row-fluid">
   <div class="span24">
     <div class="pull-right">
@@ -32,7 +34,7 @@
       <p class="text-right"><small><?=lang("org_validFrom")?> <?=$genertionTime?> <?=lang("org_until")?> <?=$timelife?></small></p>
       
       <span><a class="btn" href="<?=base_url()?>vitrineIframe"><?=lang("pdt_addProduct")?></a></span>
-      <span><a class="openKnowMoreBudget btn btn-success"><?=lang("pdt_knowMore")?></a></span>
+      <?php if( ! $this->session->userdata("myOrg") ){ ?><span><a class="openKnowMoreBudget btn btn-success"><?=lang("pdt_knowMore")?></a></span><?php } ?>
       <span><a class="openShareBudget btn btn-primary"><?=lang("pdt_shareProductByMail")?></a></span>
       <span><a class="empty btn btn-danger"><?=lang("pdt_emptyBudget")?></a></span>
 
@@ -41,7 +43,6 @@
 </div>
 
 <div class="hide" id="pdt_wantToEmpty"><?=lang("pdt_wantToEmptyBudget")?></div>
-
 <div id="pdt_TheProduct" class="hide"><?=lang("pdt_TheProduct")?></div>
 <div id="pdt_wasNotFound" class="hide"><?=lang("pdt_wasNotFound")?></div>
 

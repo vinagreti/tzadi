@@ -1,5 +1,4 @@
-<div class="g-plus" data-action="share" data-annotation="bubble"></div>
-<div class="fb-like" data-href="http://facebook.com/tzadiinc" data-width="450" data-layout="button_count" data-show-faces="true" data-send="true"></div>
+<?=$shareButtons?>
 
 <div class="row-fluid">
   <div class="span24 home-phrase-bg">
@@ -44,13 +43,3 @@
     </div>
   </div>
 </div>
-
-
-<script type="text/javascript">
-  // Load the GOOGLE plusone asynchronously
-  (function() {
-    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
-    po.src = 'https://apis.google.com/js/plusone.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
-  })();
-</script>

@@ -85,8 +85,6 @@
     <script src="<?=base_url()?>assets/third_party/JQuery/jquery.js"></script>
     <script src="<?=base_url()?>assets/third_party/JQuery/jquery.cookie.js"></script>
     <script src="<?=base_url()?>assets/third_party/JQuery/jquery.mask.min.js"></script>
-    <script src="https://maps.google.com/maps/api/js?libraries=places&region=uk&language=en&sensor=false"></script>
-    <script src="<?=base_url()?>assets/third_party/JQuery/jquery.geocomplete.min.js"></script>
 
     <!-- Loading the bootstrap js scripts -->
     <script type="text/javascript" src="<?=base_url()?>assets/third_party/bootstrap/js/bootstrap-transition.js"></script>
@@ -102,8 +100,6 @@
     <script type="text/javascript" src="<?=base_url()?>assets/third_party/bootstrap/js/bootstrap-carousel.js"></script>
     <script type="text/javascript" src="<?=base_url()?>assets/third_party/bootstrap/js/bootstrap-typeahead.js"></script>
     <script type="text/javascript" src="<?=base_url()?>assets/third_party/select2/select2.js"></script>
-    <script src="<?=base_url()?>assets/third_party/bootstrap-wysihtml5-master/lib/js/wysihtml5-0.3.0.js"></script>
-    <script src="<?=base_url()?>assets/third_party/bootstrap-wysihtml5-master/src/bootstrap-wysihtml5.js"></script>
 
     <?=form_open("",array("class" => "tzadiToken"))?><?=form_close()?>
     <script type="text/javascript">var base_url = "<?=base_url()?>";</script>
@@ -123,7 +119,6 @@
     <script src="<?=base_url()?>assets/js/tzadi/tzadi-confirm.js"></script>
     <script src="<?=base_url()?>assets/js/tzadi/tzadi-list.js"></script>
     <script src="<?=base_url()?>assets/js/tzadi/tzadi-loading.js"></script>
-    <script src="<?=base_url()?>assets/js/tzadi/tzadi-geocomplete.js"></script>
     <script src="<?=base_url()?>assets/js/tzadi/tzadi-feedback.js"></script>
     <script src="<?=base_url()?>assets/js/tzadi/tzadi-timeline.js"></script>
     <?php if (isset($dynJS) && is_string($dynJS)){?><script src="<?=base_url()?>assets/js/{dynJS}.js"></script><?php } ?>
