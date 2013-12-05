@@ -7,14 +7,14 @@
 			<div class="span24">
 				<h5><?=lang("org_InCash")?></h5>
 				<div class="row-fluid">
-					<?php if($boleto) echo '<div class="span3 text-center"><strong class="font8">' . lang("org_boleto") . '</strong><p><img class="imgSmallMini" src="' . assets_url() . '/img/payment/boleto.jpg"></p></div>';?>
-					<?php if($giftcard) echo '<div class="span3 text-center"><strong class="font8">' . lang("org_giftcard") . '</strong><p><img class="imgSmallMini" src="' . assets_url() . '/img/payment/prepayd.jpg"></p></div>';?>
-					<?php if($creditcard) echo '<div class="span3 text-center"><strong class="font8">' . lang("org_creditcard") . '</strong><p><img class="imgSmallMini" src="' . assets_url() . '/img/payment/credit.jpg"></p></div>';?>
-					<?php if($debitcard) echo '<div class="span3 text-center"><strong class="font8">' . lang("org_debitcard") . '</strong><p><img class="imgSmallMini" src="' . assets_url() . '/img/payment/debit.jpg"></p></div>';?>
-					<?php if($deposit) echo '<div class="span3 text-center"><strong class="font8">' . lang("org_deposit") . '</strong><p><img class="imgSmallMini" src="' . assets_url() . '/img/payment/deposito.jpg"></p></div>';?>
-					<?php if($cash) echo '<div class="span3 text-center"><strong class="font8">' . lang("org_cash") . '</strong><p><img class="imgSmallMini" src="' . assets_url() . '/img/payment/dinheiro.jpg"></p></div>';?>
-					<?php if($pagseguro) echo '<div class="span3 text-center"><strong class="font8">' . lang("org_pagseguro") . '</strong><p><img class="imgSmallMini" src="' . assets_url() . '/img/payment/pagseguro.jpg"></p></div>';?>
-					<?php if($paypal) echo '<div class="span3 text-center"><strong class="font8">' . lang("org_paypal") . '</strong><p><img class="imgSmallMini" src="' . assets_url() . '/img/payment/paypal.jpg"></p></div>';?>
+					<?php if($boleto) { ?> <div class="span3 text-center"><strong class="font8"><?=lang("org_boleto")?></strong><p><img class="imgSmallMini" src="<?=assets_url()?>/img/payment/boleto.jpg"></p></div> <?php } ?>
+					<?php if($giftcard) { ?> <div class="span3 text-center"><strong class="font8"><?=lang("org_giftcard")?></strong><p><img class="imgSmallMini" src="<?=assets_url()?>/img/payment/prepayd.jpg"></p></div> <?php } ?>
+					<?php if($creditcard) { ?> <div class="span3 text-center"><strong class="font8"><?=lang("org_creditcard")?></strong><p><img class="imgSmallMini" src="<?=assets_url()?>/img/payment/credit.jpg"></p></div> <?php } ?>
+					<?php if($debitcard) { ?> <div class="span3 text-center"><strong class="font8"><?=lang("org_debitcard")?></strong><p><img class="imgSmallMini" src="<?=assets_url()?>/img/payment/debit.jpg"></p></div> <?php } ?>
+					<?php if($deposit) { ?> <div class="span3 text-center"><strong class="font8"><?=lang("org_deposit")?></strong><p><img class="imgSmallMini" src="<?=assets_url()?>/img/payment/deposito.jpg"></p></div> <?php } ?>
+					<?php if($cash) { ?> <div class="span3 text-center"><strong class="font8"><?=lang("org_cash")?></strong><p><img class="imgSmallMini" src="<?=assets_url()?>/img/payment/dinheiro.jpg"></p></div> <?php } ?>
+					<?php if($pagseguro) { ?> <div class="span3 text-center"><strong class="font8"><?=lang("org_pagseguro")?></strong><p><img class="imgSmallMini" src="<?=assets_url()?>/img/payment/pagseguro.jpg"></p></div> <?php } ?>
+					<?php if($paypal) { ?> <div class="span3 text-center"><strong class="font8"><?=lang("org_paypal")?></strong><p><img class="imgSmallMini" src="<?=assets_url()?>/img/payment/paypal.jpg"></p></div> <?php } ?>
 				</div>
 			</div>
 		</div>
