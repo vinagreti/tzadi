@@ -40,8 +40,6 @@ $(document).ready(function(){
 
           self.items[product._id] = product;
 
-          console.log(self.items);
-
           if( product ){
 
             if( ! product.priceFinal || isNaN(product.priceFinal)) product.priceFinal = 0;
@@ -76,8 +74,6 @@ $(document).ready(function(){
 
       var line = $( "#"+ productID );
 
-      console.log( product );
-
       var total = amount*product.priceFinal;
 
       line.find(".total").html( total.toFixed(2) );
@@ -100,7 +96,7 @@ $(document).ready(function(){
 
       var amount = parseInt(amountField.html());
 
-      if( ! amount >= 1) {
+      if( ! amount >= 1 ) {
 
         amountField.html(1);
 
@@ -113,8 +109,6 @@ $(document).ready(function(){
         $tzd.budget.getCookie()
 
         var oldAmount = $tzd.budget.getAmount( productID );
-
-        console.log(oldAmount);
 
         $tzd.budget.setAmount( productID, amount );
 
@@ -167,5 +161,23 @@ $(document).ready(function(){
     var amount = Number( $(this).parent().find(".amount").html() ) + 1;
     $(this).parent().find(".amount").html( amount );
     budget.changeAmount( $(this).parent().find(".amount") );
+  });
+
+  $(".removeItem").live("click", function(){
+
+    var line = $(this).parents(".item");
+
+    var productID = line.attr("id");
+
+    $("#"+productID).remove();
+
+    var amount = $tzd.budget.getAmount( productID );
+
+    var product = budget.items[productID];
+
+    budget.totalPrice -= $tzd.currency.convert(amount*product.priceFinal, product.currency);
+
+    $(".totalPrice").html( Math.abs(budget.totalPrice).toFixed(2) );
+
   });
 });
