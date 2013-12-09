@@ -107,19 +107,18 @@ TzadiJS.prototype.budget = new function(){
     $(this.totalElement).css("font-size", "50px").css("font-weight","bold");
 
     var callback = function(){
+
       $(self.totalElement).css("font-size", oldSize).css("font-weight","normal");
+
     }
 
-      var counter = new $tzd.counter();
+    $tzd.counter.program(seconds, callback);
 
-      counter.program(seconds, callback);
   };
 
   this.empty = function(){
 
     this.setCookie({});
-
-    this.refreshTotal();
 
   };
 

@@ -94,7 +94,13 @@ $(document).ready(function(){
 
     this.changeAmount = function( amountField ){
 
-      var amount = parseInt(amountField.html());
+      var amount = amountField.html();
+
+      amount.replace(/[^0-9\.]+/g, '');
+
+      amount = parseInt(amount)
+
+      amountField.html( amount );
 
       if( ! amount >= 1 ) {
 
@@ -178,6 +184,8 @@ $(document).ready(function(){
     budget.totalPrice -= $tzd.currency.convert(amount*product.priceFinal, product.currency);
 
     $(".totalPrice").html( Math.abs(budget.totalPrice).toFixed(2) );
+
+    $tzd.budget.drop( productID );
 
   });
 });

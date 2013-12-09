@@ -7,7 +7,7 @@
  * Copyright 2013 Bruno da Silva Joao
  * Released under the MIT license
  */
-TzadiJS.prototype.counter = function(){
+TzadiJS.prototype.counter = new function(){
 
   this.timer;
 

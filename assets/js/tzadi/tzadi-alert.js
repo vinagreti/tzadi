@@ -62,15 +62,8 @@ TzadiJS.prototype.alert = new function(){
 
     var callback = function() { $(alertDiv).find(".alertItem").fadeOut('slow'); };
 
-    if(this.counter) this.counter.set(5);
+    $tzd.counter.program(5, callback);
 
-    else {
-
-      this.counter = new $tzd.counter();
-
-      this.counter.program(5, callback);
-
-    }
   }
 
 };
