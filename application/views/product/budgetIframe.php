@@ -1,6 +1,7 @@
 <h3><?=lang("pdt_Budget")?> <a class="no-print reload btn btn-info"><i class="icon-refresh"></i></a></h3>
 
-<?=$shareButtons?>
+<div class="no-print"><?=$shareButtons?></div>
+
 <div class="no-print pull-right"><a href="<?=base_url().lang("rt_currency")?>"><?=lang("tmpt_todayRates")?></a></div>
 
 <table class="table table-bordered table-hover table-striped table-condensed">
@@ -19,7 +20,7 @@
     <tr class="item hide">
       <td class="code span2"></td>
       <td><a class="productName" href="<?=base_url()?>product/viewIframe/" target="_blank"></a></td>
-      <td class="span3 "><div class="text-center"><a class="amountMinus btn btn-mini pull-left no-print"><i class="icon-minus"></i></a> <span class="amount" contentEditable>1</span> <a class="amountPlus btn btn-mini pull-right no-print"><i class="icon-plus"></i></a></div></td>
+      <td class="span3 "><div class="text-center"><a class="amountMinus btn btn-mini pull-left no-print"><i class="icon-minus"></i></a> <span class="amount">1</span> <a class="amountPlus btn btn-mini pull-right no-print"><i class="icon-plus"></i></a></div></td>
       <td class="span4"><span class="productCurrency"></span> <span class="price"></span></td>
       <td class="span4"><span class="productCurrency"></span> <span class="total"></span></td>
       <td class="span4"><span class="currencyCode"></span> <span class="totalValueConverted"></span></td>

@@ -96,31 +96,25 @@ $(document).ready(function(){
 
       var amount = amountField.html();
 
-      amount.replace(/[^0-9\.]+/g, '');
+      amount = parseInt( amount );
+      
+      if( ! amount >= 1 ){
 
-      amount = parseInt(amount)
+        amount = 1;
 
-      amountField.html( amount );
-
-      if( ! amount >= 1 ) {
-
-        amountField.html(1);
-
-      } else {
-
-        var line = amountField.parents(".item");
-
-        var productID = line.attr("id");
-
-        $tzd.budget.getCookie()
-
-        var oldAmount = $tzd.budget.getAmount( productID );
-
-        $tzd.budget.setAmount( productID, amount );
-
-        budget.refreshValues( productID, amount, oldAmount );
+        amountField.html( amount );
 
       }
+
+      var line = amountField.parents(".item");
+
+      var productID = line.attr("id");
+
+      var oldAmount = $tzd.budget.getAmount( productID );
+
+      $tzd.budget.setAmount( productID, amount );
+
+      budget.refreshValues( productID, amount, oldAmount );
 
     }
 
@@ -149,12 +143,6 @@ $(document).ready(function(){
 
   $(".openKnowMoreBudget").live("click", function(){
     $tzd.product.knowMoreBudget.open( $(this).attr("id") );
-  });
-
-  $(".amount").live("keyup paste input", function(){
-
-    budget.changeAmount( $(this) );
-
   });
 
   $(".amountMinus").live("click", function(){

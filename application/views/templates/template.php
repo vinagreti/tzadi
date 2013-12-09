@@ -56,7 +56,7 @@
     </div>
 
     <!-- Dialogs -->
-    <span class="tzdFeedbackOpen"><i class="icon-question icon"></i></span>
+    <span class="tzdFeedbackOpen no-print"><i class="icon-question icon"></i></span>
     <div class="modal hide" id="tzadiDialogs" tabindex="-1"></div>
     <div class="loading"></div>
 
@@ -68,7 +68,7 @@
 
     <br>
 
-    <div class="footer">
+    <div class="footer no-print">
         <ul>
             <small><li><a href="<?=base_url() . lang('rt_login')?>"><?=lang('tmpt_PrivateArea')?></a></li></small>
             <small><li><a href="<?=base_url() . lang('rt_about')?>"><?=lang('tmpt_AboutUs')?></a></li></small>
