@@ -9,7 +9,7 @@ $(document).ready(function(){
       $.each($tzd.budget.getCookie(), function( productID, amount  ){
         var line = itemHtml.clone();
         line.attr("id", productID);
-        $(".list").append(line);
+        $(".list").prepend(line);
 
         var url = base_url+'product/getByID';
         var data = {

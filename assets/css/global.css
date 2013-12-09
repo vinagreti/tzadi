@@ -294,3 +294,17 @@ height: 100%;
 .font26{font-size:26px;}
 .font28{font-size:28px;}
 .font30{font-size:30px;}
+
+/* print style - START */
+a:link:after, a:visited:after {
+    content: "";
+}
+
+@media print
+{    
+    .no-print, .no-print *
+    {
+        display: none !important;
+    }
+}
+/* print style - END */
