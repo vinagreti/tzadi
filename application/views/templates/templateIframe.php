@@ -52,7 +52,7 @@
     <div class="loading"></div>
 
 
-    <div class="container-fluid">
+    <div class="container-fluid no-print">
         <div class="globalAlert"></div>
         <div class="pull-right">
             <a class="btn btn-small" href="<?=base_url()?>vitrineIframe"><?=lang("tmpt_Products")?></a>
