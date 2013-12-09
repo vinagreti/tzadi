@@ -12,25 +12,26 @@
       <th><?=lang("pdt_price")?></th>
       <th><?=lang("pdt_total")?></th>
       <th><a class="changeCurrency" rel="tooltip" title="<?=lang("tmpt_select_currency")?>"><span class="currencyCode"></span> <i class="icon-caret-down"></i></a></th>
+      <th class="no-print"></th>
     </tr>
   </thead>
   <tbody class="list">
     <tr class="item hide">
       <td class="code span2"></td>
       <td><a class="productName" href="<?=base_url()?>product/viewIframe/" target="_blank"></a></td>
-      <td class="amount span2"><input class="amount span2" type="number" /></td>
-      <td class="span3"><span class="productCurrency"></span> <span class="price"></span></td>
-      <td class="span3"><span class="productCurrency"></span> <span class="total"></span></td>
-      <td class="span3"><span class="currencyCode"></span> <span class="totalValueConverted"></span></td>
+      <td class="span3 "><div class="text-center"><a class="amountMinus btn btn-mini pull-left no-print"><i class="icon-minus"></i></a> <span class="amount" contentEditable>1</span> <a class="amountPlus btn btn-mini pull-right no-print"><i class="icon-plus"></i></a></div></td>
+      <td class="span4"><span class="productCurrency"></span> <span class="price"></span></td>
+      <td class="span4"><span class="productCurrency"></span> <span class="total"></span></td>
+      <td class="span4"><span class="currencyCode"></span> <span class="totalValueConverted"></span></td>
+      <td class="span1 no-print"><a class="removeItem btn btn-danger btn-mini pull-right no-print"><i class="icon-remove"></i></a></td>
     </tr>
     <tr>
-      <td colspan="4"><small>* <?=lang("org_validFrom")?> <?=$genertionTime?> <?=lang("org_until")?> <?=$timelife?><small></td>
+      <td class="info" colspan="4"><small>* <?=lang("org_validFrom")?> <?=$genertionTime?> <?=lang("org_until")?> <?=$timelife?><small></td>
       <td><strong><?=lang("pdt_totalValue")?></string></td>
-      <td><span class="currencyCode"></span> <span class="totalPrice">0</span></td>
+      <td colspan="2"><span class="currencyCode"></span> <span class="totalPrice">0</span></td>
     </tr>
   </tbody>
 </table>
-
 
 <div class="no-print row-fluid">
   <div class="span24">

@@ -80,6 +80,18 @@ TzadiJS.prototype.budget = new function(){
 
   }
 
+  this.getAmount = function( item ){
+
+    $.cookie.json = true;
+
+    if(!$.cookie(this.cookieElement)) this.setCookie({});
+
+    var cookie = $.cookie(this.cookieElement);
+
+    return cookie[item];
+
+  };
+
   this.refreshTotal = function(){
 
     var seconds = 1.03;

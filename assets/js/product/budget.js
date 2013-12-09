@@ -1,38 +1,60 @@
 $(document).ready(function(){
+
   var Budget = function(){
+
     var itemHtml = $(".item").clone();
+
     itemHtml.removeClass("hide");
+
     $(".item").remove();
 
+    this.totalPrice = 0;
+
+    this.items = {};
+
     this.reload = function(){
-      var totalPrice = 0;
-      $.each($tzd.budget.getCookie(), function( productID, amount  ){
+
+      var self = this;
+
+      $.each( $tzd.budget.getCookie() , function( productID, amount  ){
+
+        this
+
         var line = itemHtml.clone();
+
         line.attr("id", productID);
+
         $(".list").prepend(line);
 
         var url = base_url+'product/getByID';
+
         var data = {
+
           tzadiToken : tzadiToken
+
           , productID : productID
+
         };
+
         var callback = function( product ){
+
+          self.items[product._id] = product;
+
+          console.log(self.items);
 
           if( product ){
 
             if( ! product.priceFinal || isNaN(product.priceFinal)) product.priceFinal = 0;
-            line.find(".amount").val(amount);
+
+            line.find(".amount").html(amount);
+
             line.find(".productName").html(product.name).attr("href", line.find(".productName").attr("href")+product._id);
-            line.find(".productImg").attr("href", line.find(".productImg").attr("href")+product._id);
-            line.find(".price").html(product.priceFinal);
+
+            line.find(".price").html(product.priceFinal.toFixed(2));
+
             line.find(".code").html(product._id);
-            var total = amount*product.priceFinal;
-            line.find(".total").html( total );
-            if(product.img) line.find("img").attr("src", base_url+"file/open/"+product.img[0]);
-            line.find(".totalValueConverted").html( $tzd.currency.convert(total, product.currency).toFixed(2) );
-            totalPrice += $tzd.currency.convert(total, product.currency);
-            $(".totalPrice").html(totalPrice.toFixed(2));
-            line.find(".productCurrency").html(product.currency);
+
+            self.refreshValues( productID, amount );
 
           } else {
 
@@ -43,8 +65,65 @@ $(document).ready(function(){
         };
 
         $tzd.ajax.post(url, data, callback);
+
       });
+
     };
+
+    this.refreshValues = function( productID, amount, oldAmount ){
+
+      var product = this.items[productID];
+
+      var line = $( "#"+ productID );
+
+      console.log( product );
+
+      var total = amount*product.priceFinal;
+
+      line.find(".total").html( total.toFixed(2) );
+
+      if(product.img) line.find("img").attr("src", base_url+"file/open/"+product.img[0]);
+
+      line.find(".totalValueConverted").html( $tzd.currency.convert(total, product.currency).toFixed(2) );
+
+      this.totalPrice += $tzd.currency.convert( total, product.currency);
+
+      if( oldAmount ) this.totalPrice -= $tzd.currency.convert(oldAmount*product.priceFinal, product.currency);
+
+      $(".totalPrice").html(this.totalPrice.toFixed(2));
+
+      line.find(".productCurrency").html(product.currency);
+
+    };
+
+    this.changeAmount = function( amountField ){
+
+      var amount = parseInt(amountField.html());
+
+      if( ! amount >= 1) {
+
+        amountField.html(1);
+
+      } else {
+
+        var line = amountField.parents(".item");
+
+        var productID = line.attr("id");
+
+        $tzd.budget.getCookie()
+
+        var oldAmount = $tzd.budget.getAmount( productID );
+
+        console.log(oldAmount);
+
+        $tzd.budget.setAmount( productID, amount );
+
+        budget.refreshValues( productID, amount, oldAmount );
+
+      }
+
+    }
+
   };
 
   budget = new Budget();
@@ -64,19 +143,6 @@ $(document).ready(function(){
     budget.reload();
   });
 
-  $(".amount").live("change propertychange", function(){
-    var amount = parseInt($(this).val());
-
-    if(amount < 0) {
-      $(this).val("0");
-    } else {
-      var line = $(this).parents(".item");
-      var itemID = line.attr("id");
-      $tzd.budget.setAmount(itemID, amount);
-      location.reload();
-    }
-  });
-
   $(".openShareBudget").live("click", function(){
     $tzd.product.shareBudget.open( $(this).attr("id") );
   });
@@ -84,5 +150,22 @@ $(document).ready(function(){
   $(".openKnowMoreBudget").live("click", function(){
     $tzd.product.knowMoreBudget.open( $(this).attr("id") );
   });
-  
+
+  $(".amount").live("keyup paste input", function(){
+
+    budget.changeAmount( $(this) );
+
+  });
+
+  $(".amountMinus").live("click", function(){
+    var amount = Number( $(this).parent().find(".amount").html() ) - 1;
+    $(this).parent().find(".amount").html( amount );
+    budget.changeAmount( $(this).parent().find(".amount") );
+  });
+
+  $(".amountPlus").live("click", function(){
+    var amount = Number( $(this).parent().find(".amount").html() ) + 1;
+    $(this).parent().find(".amount").html( amount );
+    budget.changeAmount( $(this).parent().find(".amount") );
+  });
 });
