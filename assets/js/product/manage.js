@@ -191,6 +191,7 @@ $(document).ready(function(){
           line.find(".courseKind").select2();
           line.find(".courseKind").select2("val", objProduct.courseKind);
           line.find(".courseLanguage").val(objProduct.courseLanguage);
+          line.find(".courseWorkload").val(objProduct.courseWorkload);
           line.find(".courseModality").select2();
           line.find(".courseModality").select2("val", objProduct.courseModality);
           line.find(".coursePeriod").select2();
@@ -201,6 +202,7 @@ $(document).ready(function(){
           line.find(".courseAdministrativeFees").mask('000000000000000.00', {reverse: true});
           line.find(".courseBook").val(objProduct.courseBook);
           line.find(".courseBook").mask('000000000000000.00', {reverse: true});
+          line.find(".courseWorkload").mask("00000");
           line.find(".courseRequirements").val(objProduct.courseRequirements);
         break;
         case "ensurance":
@@ -414,6 +416,7 @@ $.each(foundProducts, function(key, value){
       if(line.find(".coursePeriod").select2('data').id && objProduct.coursePeriod != line.find(".coursePeriod").select2('data').id) formData.coursePeriod = line.find(".coursePeriod").select2('data').id;
       if(line.find(".courseModality").select2('data').id && objProduct.courseModality != line.find(".courseModality").select2('data').id) formData.courseModality = line.find(".courseModality").select2('data').id;
       if(line.find(".courseLanguage") && objProduct.courseLanguage != line.find(".courseLanguage").val()) formData.courseLanguage = line.find(".courseLanguage").val();
+      if(line.find(".courseWorkload") && objProduct.courseWorkload != line.find(".courseWorkload").val()) formData.courseWorkload = line.find(".courseWorkload").val();
       if(line.find(".courseEnrollmentFees") && objProduct.courseEnrollmentFees != line.find(".courseEnrollmentFees").val()) formData.courseEnrollmentFees = line.find(".courseEnrollmentFees").val();
       if(line.find(".courseAdministrativeFees") && objProduct.courseAdministrativeFees != line.find(".courseAdministrativeFees").val()) formData.courseAdministrativeFees = line.find(".courseAdministrativeFees").val();
       if(line.find(".courseBook") && objProduct.courseBook != line.find(".courseBook").val()) formData.courseBook = line.find(".courseBook").val();

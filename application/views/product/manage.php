@@ -315,7 +315,7 @@
                         <div class="kindForm">
                           <div class="courseForm"> <!-- inicio courseForm -->
                             <div class="row-fluid">
-                              <div class="span8">
+                              <div class="span16">
                                 <label><?=lang('pdt_courseKind')?>
                                   <select class="input-block-level courseKind">
                                     <option value="language"><?=lang('pdt_language')?></option>
@@ -340,6 +340,8 @@
                                   </select>
                                 </label>
                               </div>
+                            </div>
+                            <div class="row-fluid">
                               <div class="span8">
                                 <label><?=lang('pdt_period')?>
                                   <select class="input-block-level coursePeriod">
@@ -351,6 +353,13 @@
                                     <option value="me"><?=lang('pdt_mePeriod')?></option>
                                     <option value="mae"><?=lang('pdt_maePeriod')?></option>
                                   </select>
+                                </label>
+                              </div>
+                              <div class="span16">
+                                <label><?=lang('pdt_courseLanguage')?>
+                                  <div class="control-group">
+                                    <input type="text" class="input-block-level courseLanguage" />
+                                  </div>
                                 </label>
                               </div>
                             </div>
@@ -396,9 +405,9 @@
                                 </label>
                               </div>
                               <div class="span8">
-                                <label><?=lang('pdt_courseLanguage')?>
+                                <label><?=lang('pdt_workload')?>
                                   <div class="control-group">
-                                    <input type="text" class="input-block-level courseLanguage" />
+                                    <input type="text" class="input-block-level courseWorkload" />
                                   </div>
                                 </label>
                               </div>

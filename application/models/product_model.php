@@ -262,6 +262,8 @@ class Product_Model extends CI_Model {
 
       if(isset($product["courseModality"])) $product["courseModality"] = lang("pdt_".$product["courseModality"]);
 
+      if(isset($product["courseWorkload"])) $product["courseWorkload"] = $product["courseWorkload"] . " " . lang("tmpt_hours");
+
       if(!isset($product["ensuranceDurationScale"])) $product["ensuranceDurationScale"] = "days";
 
       if(isset($product["ensuranceDurationValue"])) $product["ensuranceDuration"] = $product["ensuranceDurationValue"] . " " . lang("pdt_" .$product["ensuranceDurationScale"]);

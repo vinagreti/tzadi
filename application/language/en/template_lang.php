@@ -100,3 +100,4 @@ $lang['tmpt_red_compact'] = 'red compact';
 $lang['tmpt_yellow'] = 'yellow';
 $lang['tmpt_yellow_compact'] = 'yellow compact';
 $lang['tmpt_PrivateArea'] = 'Private area';
+$lang['tmpt_hours'] = 'hour(s)';
