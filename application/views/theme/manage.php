@@ -1,4 +1,4 @@
-<h3>Alterar tema</h3>
+<h3><?=lang("tmpt_ConfigThemeTitle")?></h3>
 
 <label class="text-warning"><span><?=lang('agc_Theme')?></span>
 

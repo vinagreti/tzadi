@@ -117,9 +117,9 @@ $route['blog/(:any)'] = 'blog/view/$1';
 
 
 $route['agency/configuracoes'] = 'agency/settings';
-$route['agency/orcamento'] = 'agency/budget';
-$route['agency/pagamento'] = 'agency/payment';
-$route['agency/tema'] = 'agency/theme';
+$route['orcamento'] = 'budget';
+$route['pagamento'] = 'payment';
+$route['tema'] = 'theme';
 
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */

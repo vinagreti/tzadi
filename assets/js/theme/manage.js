@@ -4,7 +4,7 @@ $(document).ready(function(){
 
 	$(".changeTheme").live("change propertychange", function(){
 
-		var url = base_url+'agency/changeTheme';
+		var url = base_url+'theme/changeTheme';
 
 		var theme = $(this).select2('data').id;
 

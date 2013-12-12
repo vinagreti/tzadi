@@ -19,9 +19,9 @@
             <ul class="dropdown-menu sub-menu">
               <li><a href="<?=myOrg_url()?>agency/<?=lang('rt_settings')?>" rel="tooltip" title="<?=lang('tmpt_BasicsTitle')?>"><?=lang('tmpt_Basics')?></a></li>
               <li><a href="<?=myOrg_url()?><?=lang('rt_currency')?>/<?=lang('rt_configuration')?>" rel="tooltip" title="<?=lang('tmpt_CurrencyTitle')?>"><?=lang('tmpt_Currency')?></a></li>
-              <li><a href="<?=myOrg_url()?>agency/<?=lang('rt_budget')?>" rel="tooltip" title="<?=lang('tmpt_ConfigBudgetTitle')?>"><?=lang('tmpt_ConfigBudget')?></a></li>
-              <li><a href="<?=myOrg_url()?>agency/<?=lang('rt_payment')?>" rel="tooltip" title="<?=lang('tmpt_ConfigPaymentTitle')?>"><?=lang('tmpt_ConfigPayment')?></a></li>
-              <li><a href="<?=myOrg_url()?>agency/<?=lang('rt_theme')?>" rel="tooltip" title="<?=lang('tmpt_ConfigThemeTitle')?>"><?=lang('tmpt_ConfigTheme')?></a></li>
+              <li><a href="<?=myOrg_url()?><?=lang('rt_budget')?>" rel="tooltip" title="<?=lang('tmpt_ConfigBudgetTitle')?>"><?=lang('tmpt_ConfigBudget')?></a></li>
+              <li><a href="<?=myOrg_url()?><?=lang('rt_payment')?>" rel="tooltip" title="<?=lang('tmpt_ConfigPaymentTitle')?>"><?=lang('tmpt_ConfigPayment')?></a></li>
+              <li><a href="<?=myOrg_url()?><?=lang('rt_theme')?>" rel="tooltip" title="<?=lang('tmpt_ConfigThemeTitle')?>"><?=lang('tmpt_ConfigTheme')?></a></li>
             </ul>
             <li><a href="<?=myOrg_url()?><?=lang('rt_vitrine')?>" rel="tooltip" title="<?=lang('tmpt_VitrineTitle')?>"><?=lang('tmpt_Vitrine')?></a></li>
           </li>

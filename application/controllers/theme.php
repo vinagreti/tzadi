@@ -1,16 +1,16 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Agency extends My_Controller {
+class Theme extends My_Controller {
 
 	public function __construct() {
 
 		parent::__construct();
 
-		$this->lang->load('agency', $this->session->userdata('language'));
+		$this->lang->load('theme', $this->session->userdata('language'));
 
 	}
 
-    public function settings(){
+    public function index(){
 
 	    $this->MYensureOwnProfile();
 
@@ -21,9 +21,9 @@ class Agency extends My_Controller {
 
 	    else {
 
-	      $data->dynJS = 'agency/settings/basics';
+	      $data->dynJS = 'theme/manage';
 
-	      $data->view = 'agency/settings/basics';
+	      $data->view = 'theme/manage';
 
 	      $data->agency = $this->org_model->getByID( $this->session->userdata("org") );
 
@@ -35,13 +35,15 @@ class Agency extends My_Controller {
 
     }
 
-	public function changeImg( ) {
+	public function changeTheme( ) {
 
 		$this->MYensureOwnProfile();
 
 		$this->load->model('org_model');
 
-		echo json_encode( $this->org_model->changeImg() );
+		$data = $this->input->post();
+
+		echo json_encode( $this->org_model->changeTheme( $data ) );
 
 	}
 
