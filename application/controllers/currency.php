@@ -115,7 +115,12 @@ class Currency extends My_Controller {
 
 			$data->profileCurrency = $this->currency_model->getProfileCurrency( );
 
-			$data->dynJS = 'currency/exchange';
+			$data->dynJS = array(
+				'currency/exchange'
+				, "third-party/tablesorter/jquery.tablesorter.min"
+				, "third-party/tablesorter/jquery.tablesorter.widgets.min"
+				, "third-party/tablesorter/jquery.tablesorter.pager.min"
+				);
 
 			$data->view = 'currency/exchange';
 

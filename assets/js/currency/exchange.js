@@ -1,6 +1,3 @@
-//$tzd.loadScript("JQuery/jquery.tablesorter.min");
-//$tzd.loadScript("JQuery/jquery.tablesorter.widgets.min");
-
 $(document).ready(function(){
 
 	$(function() {
