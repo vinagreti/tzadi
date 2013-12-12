@@ -54,42 +54,6 @@ class Org extends My_Controller {
 
     }
 
-    public function budget(){
-
-        $this->MYensureOwnProfile();
-
-        if( $this->input->put("budgetConf") ){
-
-            $this->load->model("org_model");
-
-            $budgetConf = json_decode($this->input->put("budgetConf"));
-
-            $data = json_encode( $this->org_model->setBudget( $budgetConf ) );
-
-            $this->output->set_content_type('application/json');
-
-            $this->output->set_output($data);
-            
-        } else {
-
-            $this->load->model("org_model");
-
-            $agency = $this->org_model->getByID( $this->session->userdata("org") );
-
-            $data->budget = $agency["budget"];
-
-            $data->dynJS = 'org/budgetManage';
-
-            $data->view = 'org/budgetManage';
-
-            $data->page_title = lang('org_budgetTitle');
-
-            $this->page->load($data);
-
-        }
-
-    }
-
 }
 
 /* End of file Contact.php */

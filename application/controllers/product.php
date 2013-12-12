@@ -42,40 +42,6 @@ class Product extends My_Controller {
     $this->page->load($data);
   }
 
-  public function budget()
-  {
-    $this->load->model("org_model");
-    $this->lang->load('org', $this->session->userdata('language'));
-    $data->agency = $this->org_model->getByID( $this->session->userdata("org") );
-    $data->paymentResumeHTML = $this->load->view("org/paymentResume", $data->agency["payment"], true);
-    $data->dynJS = array('product/budget', "product/product");
-    $data->view = 'product/budget';
-    $this->load->helper('date');
-    $genertionTime = time();
-    $data->genertionTime = time_date($genertionTime);
-    $data->timelife = time_date( ($data->agency["budget"]["timelife"] * 86400) + $genertionTime);
-    $data->page_title = lang('pdt_budgetTitle');
-    $data->shareButtons = $this->load->view("tzadi/shareButtons", "", true);
-    $this->page->load($data);
-  }
-
-  public function budgetIframe()
-  {
-    $this->load->model("org_model");
-    $this->lang->load('org', $this->session->userdata('language'));
-    $data->agency = $this->org_model->getByID( $this->session->userdata("org") );
-    $data->paymentResumeHTML = $this->load->view("org/paymentResume", $data->agency["payment"], true);
-    $data->dynJS = array('product/budget', "product/product");
-    $data->view = 'product/budgetIframe';
-    $this->load->helper('date');
-    $genertionTime = time();
-    $data->genertionTime = time_date($genertionTime);
-    $data->timelife = time_date( ($data->agency["budget"]["timelife"] * 86400) + $genertionTime);
-    $data->page_title = lang('pdt_budgetTitle');
-    $data->shareButtons = $this->load->view("tzadi/shareButtons", "", true);
-    $this->page->loadIframe($data);
-  }
-
   public function getAll(){
 
     $this->MYensureOwnProfile();
@@ -285,53 +251,6 @@ class Product extends My_Controller {
       $shareForm = $this->load->view('product/knowMoreForm', $this->product_model->getHumanized( $data["product_id"] ), true);
 
       echo json_encode($shareForm);
-
-    }
-
-  }
-
-  public function shareBudget()
-  {
-    
-    $data = $this->input->post();
-
-    $this->load->model("product_model");
-
-    if( isset( $data["addresses"] ) ) {
-
-      echo json_encode($this->product_model->shareBudget($data));
-
-    } else {
-
-      $budget = $this->product_model->getBudgetResume();
-
-      $shareBudgetForm = $this->load->view('product/shareBudgetForm', $budget, true);
-
-      echo json_encode($shareBudgetForm);
-
-    }
-
-    
-  }
-
-  public function knowMoreBudget()
-  {
-
-    $data = $this->input->post();
-
-    $this->load->model("product_model");
-
-    if( isset( $data["address"] ) ) {
-
-      echo json_encode($this->product_model->knowMoreBudget($data));
-
-    } else {
-
-      $budget = $this->product_model->getBudgetResume();
-
-      $knowMoreBudgetForm = $this->load->view('product/knowMoreBudgetForm', $budget, true);
-
-      echo json_encode($knowMoreBudgetForm);
 
     }
 

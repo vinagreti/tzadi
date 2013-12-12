@@ -3,9 +3,9 @@
 <div class="row-fluid">
 	<div class="span24 form-inline">
 
-		<?=lang("crc_exchangeFeesByEURO")?> <input id="value" type="text" value="<?=$exchangeRate['value']?>" class="span2"/>
+		<?=lang("crc_exchangeFeesByEURO")?> <input id="value" name="value" type="number" class="input-mini" maxlength="3" value="<?=$exchangeRate['value']?>" />
 
-		<select id="kind" class="span5" rel="tooltip" title="<?=lang('crc_changeCurrency')?>">
+		<select id="kind" name="kind" class="input-medium" rel="tooltip" title="<?=lang('crc_changeCurrency')?>">
 			<option value="<?=$exchangeRate['kind']?>"><?=lang("crc_".$exchangeRate['kind'])?></option>
 			<option value="percent"><?=lang("crc_percent")?></option>
 			<option value="AUD"><?=lang("crc_AUD")?></option>
@@ -44,7 +44,7 @@
 			<option value="ZAR"><?=lang("crc_ZAR")?></option>
 		</select>
 
-		<a id="exchange" class="btn">definir</a>
+		<a id="exchange" class="btn btn-primary">definir</a>
 
 	</div>
 
@@ -52,10 +52,43 @@
 
 <br>
 
-<div class="row-fluid">
-
-	<div class="span10">
-
+<div id="demo">
+	<table class="tablesorter">
+		<thead>
+			<tr>
+				<th class="text-success"><?=lang("crc_currency")?></th>
+				<th class="text-success"><?=lang("crc_buyPrice")?></th>
+				<th class="text-success"><?=lang("crc_sellPrice")?></th>
+				<th class="text-success"><?=lang("crc_difference")?></th>
+			</tr>
+		</thead>
+		<tfoot>
+			<tr>
+				<th class="text-success"><?=lang("crc_currency")?></th>
+				<th class="text-success"><?=lang("crc_buyPrice")?></th>
+				<th class="text-success"><?=lang("crc_sellPrice")?></th>
+				<th class="text-success"><?=lang("crc_difference")?></th>
+			</tr>
+			<tr>
+				<th colspan="7" class="ts-pager form-horizontal">
+					<div class="text-center">
+						<button type="button" class="btn first"><i class="icon-step-backward glyphicon glyphicon-step-backward"></i></button>
+						<button type="button" class="btn prev"><i class="icon-arrow-left glyphicon glyphicon-backward"></i></button>
+						<span class="pagedisplay"></span> <!-- this can be any element, including an input -->
+						<button type="button" class="btn next"><i class="icon-arrow-right glyphicon glyphicon-forward"></i></button>
+						<button type="button" class="btn last"><i class="icon-step-forward glyphicon glyphicon-step-forward"></i></button>
+						<select class="pagesize input-mini" title="Select page size">
+							<option selected="selected" value="10">10</option>
+							<option value="20">20</option>
+							<option value="30">30</option>
+							<option value="40">40</option>
+						</select>
+						<select class="pagenum input-mini" title="Select page number"></select>
+					</div>
+				</th>
+			</tr>
+		</tfoot>
+		<tbody>
 		<?php foreach($currency as $key => $val) {
 			if($key != "day" && $key != "_id") {
 
@@ -63,19 +96,22 @@
 
 				$val = number_format($val,4); ?>
 
-				<p style="border-bottom: 1px solid;">
+				<tr>
 
-					<strong class='text-warning'><?=$key?></strong>
+					<td class="text-warning"><b><?=lang("crc_".$key)?></b></td>
 
-					<b class="text-success">&nbsp;&nbsp;&nbsp;<?=lang("crc_todayRateBuy")?>:</b> <?=$val?>
+					<td><?=$val?></td>
 
-					<b class="text-success">&nbsp;&nbsp;&nbsp;<?=lang("crc_todayRateSell")?>:</b> <?=$exchanged?>
+					<td><?=$exchanged?></td>
 
-				</p>
+					<td><?=($exchanged - $val)?></td>
+
+				</tr>
 				
 			<?php }
 		}?>
-	</div>
+		</tbody>
+	</table>
 </div>
 
 <div id="crc_pleaseFillKinAndValue" class="hide"><?=lang("crc_pleaseFillKinAndValue")?></div>

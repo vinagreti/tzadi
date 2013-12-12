@@ -1,8 +1,9 @@
 <?php
 $lang["crc_Rates"] = "Quotations";
 $lang["crc_currency"] = "currency";
-$lang["crc_todayRateBuy"] = "purchase";
-$lang["crc_todayRateSell"] = "sale";
+$lang["crc_buyPrice"] = "purchase price";
+$lang["crc_sellPrice"] = "sell price";
+$lang["crc_difference"] = "difference";
 $lang["crc_changeExchangeRate"] = "Exchange Settings";
 $lang["crc_exchangeRateChanged"] = "Exchange defined";
 $lang["crc_todayRate"] = "daily currency rates";

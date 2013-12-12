@@ -81,9 +81,12 @@
     </div>
 
     <!-- Loading the JQuery -->
-    <script src="<?=base_url()?>assets/third_party/JQuery/jquery.js"></script>
-    <script src="<?=base_url()?>assets/third_party/JQuery/jquery.cookie.js"></script>
-    <script src="<?=base_url()?>assets/third_party/JQuery/jquery.mask.min.js"></script>
+    <script src="<?=base_url()?>assets/js/third-party/JQuery/jquery.js"></script>
+    <script src="<?=base_url()?>assets/js/third-party/JQuery/jquery.cookie.js"></script>
+    <script src="<?=base_url()?>assets/js/third-party/JQuery/jquery.mask.min.js"></script>
+    <script src="<?=base_url()?>assets/js/third-party/tablesorter/jquery.tablesorter.min.js"></script>
+    <script src="<?=base_url()?>assets/js/third-party/tablesorter/jquery.tablesorter.widgets.min.js"></script>
+    <script src="<?=base_url()?>assets/js/third-party/tablesorter/jquery.tablesorter.pager.min.js"></script>
 
     <!-- Loading the bootstrap js scripts -->
     <script type="text/javascript" src="<?=base_url()?>assets/third_party/bootstrap/js/bootstrap-transition.js"></script>
@@ -120,6 +123,8 @@
     <script src="<?=base_url()?>assets/js/tzadi/tzadi-loading.js"></script>
     <script src="<?=base_url()?>assets/js/tzadi/tzadi-feedback.js"></script>
     <script src="<?=base_url()?>assets/js/tzadi/tzadi-timeline.js"></script>
+    <script src="<?=base_url()?>assets/js/tzadi/tzadi-url.js"></script>
+    <script src="<?=base_url()?>assets/js/tzadi/tzadi-loadScript.js"></script>
     <?php if (isset($dynJS) && is_string($dynJS)){?><script src="<?=base_url()?>assets/js/{dynJS}.js"></script><?php } ?>
     <?php if (isset($dynJS) && is_array($dynJS)){ foreach($dynJS as $js) { ?><script src="<?=base_url()?>assets/js/<?=$js?>.js"></script><?php } } ?>
 

@@ -25,4 +25,4 @@ $lang['rt_collaborator'] = 'collaborator';
 $lang['rt_settings'] = 'settings';
 $lang['rt_theme'] = 'theme';
 $lang['rt_payment'] = 'org/payment';
-$lang["rt_budgetSettings"] = "org/budget";
+$lang["rt_budgetSettings"] = "budget/conf";

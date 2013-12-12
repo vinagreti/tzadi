@@ -123,6 +123,11 @@ $(document).ready(function(){
   budget = new Budget();
   budget.reload();
 
+  var print = $tzd.url.get("print");
+
+  if( print == "true" )
+    window.print();
+
   $(".empty").live("click", function(){
     $tzd.confirm($("#pdt_wantToEmpty").html(), function(){
       $tzd.budget.empty();
@@ -176,4 +181,5 @@ $(document).ready(function(){
     $tzd.budget.drop( productID );
 
   });
+  
 });

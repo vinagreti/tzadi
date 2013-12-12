@@ -55,9 +55,8 @@ $route['produtos'] = 'product/manage';
 
 $route['mail/(:num)'] = 'mail/read/$1';
 
-$route['budget'] = 'product/budget';
-$route['budgetIframe'] = 'product/budgetIframe';
-$route['orcamento'] = 'product/budget';
+$route['orcamento/(:any)'] = 'budget/$1';
+$route['budgetIframe'] = 'budget/budgetIframe';
 
 $route['resetPassword'] = 'user/resetPassword';
 $route['resetarSenha'] = 'user/resetPassword';
@@ -117,7 +116,6 @@ $route['blog/(:any)'] = 'blog/view/$1';
 
 
 $route['agency/configuracoes'] = 'agency/settings';
-$route['org/orcamento'] = 'org/budget';
 $route['org/pagamento'] = 'org/payment';
 $route['tema'] = 'theme';
 

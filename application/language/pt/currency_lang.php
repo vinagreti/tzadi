@@ -1,8 +1,9 @@
 <?php
 $lang["crc_Rates"] = "Cotações";
 $lang["crc_currency"] = "moeda";
-$lang["crc_todayRateBuy"] = "compra";
-$lang["crc_todayRateSell"] = "venda";
+$lang["crc_buyPrice"] = "preço de compra";
+$lang["crc_sellPrice"] = "preço de venda";
+$lang["crc_difference"] = "diferença";
 $lang["crc_changeExchangeRate"] = "Definiçoes de câmbio";
 $lang["crc_exchangeRateChanged"] = "Câmbio definido";
 $lang["crc_todayRate"] = "Cotações de hoje";
