@@ -14,7 +14,7 @@ getFormData = function(){
 
 var put = function(budgetConf){
 
-	var url = base_url+'budget/manage';
+	var url = base_url+'budget/conf';
 
 	var data = {
 		tzadiToken : tzadiToken,

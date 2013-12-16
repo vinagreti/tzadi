@@ -55,6 +55,7 @@ $route['produtos'] = 'product/manage';
 
 $route['mail/(:num)'] = 'mail/read/$1';
 
+$route['orcamento'] = 'budget';
 $route['orcamento/(:any)'] = 'budget/$1';
 $route['budgetIframe'] = 'budget/budgetIframe';
 
@@ -116,7 +117,7 @@ $route['blog/(:any)'] = 'blog/view/$1';
 
 
 $route['agency/configuracoes'] = 'agency/settings';
-$route['org/pagamento'] = 'org/payment';
+$route['pagamento/conf'] = 'payment/conf';
 $route['tema'] = 'theme';
 
 /* End of file routes.php */

@@ -24,5 +24,5 @@ $lang['rt_currency'] = 'cotacao';
 $lang['rt_collaborator'] = 'colaborador';
 $lang['rt_settings'] = 'configuracoes';
 $lang['rt_theme'] = 'tema';
-$lang['rt_payment'] = 'org/pagamento';
+$lang['rt_payment'] = 'pagamento/conf';
 $lang["rt_budgetSettings"] = "orcamento/conf";

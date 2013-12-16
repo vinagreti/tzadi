@@ -9,10 +9,8 @@ class Product extends My_Controller {
 
   public function index()
   {
-    $this->load->model("org_model");
-    $this->lang->load('org', $this->session->userdata('language'));
-    $data->agency = $this->org_model->getByID( $this->session->userdata("org") );
-    $data->paymentResumeHTML = $this->load->view("org/paymentResume", $data->agency["payment"], true);
+    $this->load->model("payment_model");
+    $data->paymentResumeHTML = $this->payment_model->getResumeHTML();
     $data->dynJS = 'product/vitrine';
     $data->view = 'product/vitrine';
     $data->page_title = "Vitrine";
@@ -21,10 +19,8 @@ class Product extends My_Controller {
 
   public function vitrineIframe()
   {
-    $this->load->model("org_model");
-    $this->lang->load('org', $this->session->userdata('language'));
-    $data->agency = $this->org_model->getByID( $this->session->userdata("org") );
-    $data->paymentResumeHTML = $this->load->view("org/paymentResume", $data->agency["payment"], true);
+    $this->load->model("payment_model");
+    $data->paymentResumeHTML = $this->payment_model->getResumeHTML();
     $data->dynJS = 'product/vitrine';
     $data->view = 'product/vitrineIframe';
     $data->page_title = "Vitrine";
@@ -155,11 +151,8 @@ class Product extends My_Controller {
 
     }
 
-    $this->load->model("org_model");
-    $this->lang->load('org', $this->session->userdata('language'));
-    $data->agency = $this->org_model->getByID( $this->session->userdata("org") );
-    $data->paymentResumeHTML = $this->load->view("org/paymentResume", $data->agency["payment"], true);
-
+    $this->load->model("payment_model");
+    $data->paymentResumeHTML = $this->payment_model->getResumeHTML();
     $data->the_head = "<link rel='image_src' href=" . $data->product['coverImg'] . " />";
     $data->the_head .= "<meta property='og:image' content='" . $data->product["coverImg"] . "' />";
     $data->the_head .= "<meta property='og:url' content='" . str_replace("/index.php", "", current_url()) . "' />";
@@ -190,11 +183,8 @@ class Product extends My_Controller {
 
     }
 
-    $this->load->model("org_model");
-    $this->lang->load('org', $this->session->userdata('language'));
-    $data->agency = $this->org_model->getByID( $this->session->userdata("org") );
-    $data->paymentResumeHTML = $this->load->view("org/paymentResume", $data->agency["payment"], true);
-
+    $this->load->model("payment_model");
+    $data->paymentResumeHTML = $this->payment_model->getResumeHTML();
     $data->the_head = "<link rel='image_src' href=" . $data->product['coverImg'] . " />";
     $data->the_head .= "<meta property='og:image' content='" . $data->product["coverImg"] . "' />";
     $data->the_head .= "<meta property='og:url' content='" . str_replace("/index.php", "", current_url()) . "' />";

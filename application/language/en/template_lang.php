@@ -61,6 +61,7 @@ $lang["tmpt_budgetURL"] = "budget";
 $lang["tmpt_signup"] = "Try it FREE for 15 days";
 $lang["tmpt_open"] = "open";
 $lang["tmpt_changesSaved"] = "changes saved";
+$lang["tmpt_changesNotSaved"] = "changes not saved";
 $lang["tmpt_Clone"] = "copy";
 $lang["tmpt_PrivacyPolicy"] = "Privacy Policy";
 $lang["tmpt_TermsOfUse"] = "Terms and Conditions";

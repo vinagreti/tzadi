@@ -5,7 +5,7 @@ $(document).ready(function(){
 	  $.extend($.tablesorter.themes.bootstrap, {
 	    // these classes are added to the table. To see other table classes available,
 	    // look here: http://twitter.github.com/bootstrap/base-css.html#tables
-	    table      : 'table table-bordered',
+	    table      : 'table table-bordered table-striped table-condensed table-hover',
 	    caption    : 'caption',
 	    header     : 'bootstrap-header', // give the header a gradient background
 	    footerRow  : '',
@@ -27,7 +27,7 @@ $(document).ready(function(){
 	    // the widgetOptions.uitheme is no longer required to be set
 	    theme : "bootstrap",
 
-	    widthFixed: true,
+	    widthFixed: false,
 
 	    headerTemplate : '{content} {icon}', // new in v2.7. Needed to add the bootstrap icon!
 

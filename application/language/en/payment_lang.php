@@ -1,0 +1,32 @@
+<?php
+
+$lang["pay_saved"] = "saved";
+$lang["pay_notSaved"] = "error saving";
+$lang["pay_paymentMethods"] = "Payment Methods";
+$lang["pay_paymentFlag"] = "Flags";
+$lang["pay_InCash"] = "In cash";
+$lang["pay_ByInstallments"] = "By installments";
+$lang["pay_boleto"] = "Bank Slip";
+$lang["pay_creditcard"] = "Credit Card";
+$lang["pay_giftcard"] = "Gift Card";
+$lang["pay_debitcard"] = "Debit Card";
+$lang["pay_deposit"] = "Deposit Slip";
+$lang["pay_cash"] = "Cash";
+$lang["pay_pagseguro"] = "PagSeguro";
+$lang["pay_paypal"] = "PayPal";
+$lang["pay_ccAmericanExpress"] = "American Express";
+$lang["pay_ccAura"] = "Aura";
+$lang["pay_ccBNDES"] = "BNDES";
+$lang["pay_ccDinersClub"] = "Diners Club";
+$lang["pay_ccElo"] = "Elo";
+$lang["pay_ccHipercard"] = "Hipercard";
+$lang["pay_ccMastercard"] = "MasterCard";
+$lang["pay_ccSorocred"] = "Sorocred";
+$lang["pay_ccVisa"] = "Visa";
+$lang["pay_until"] = "until";
+$lang["pay_timesWithNoInterestRate"] = "x without interest";
+$lang["pay_timesWithInterestRate"] = "x with interest";
+$lang["pay_perMonth"] = "month";
+$lang["pay_installmentsBoleto"] = "Bank Slip";
+$lang["pay_installmentsCreditcard"] = "Credit Card";
+$lang["pay_booklet"] = "Booklet";
