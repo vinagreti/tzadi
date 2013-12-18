@@ -56,7 +56,7 @@ $(document).ready(function(){
 
           } else {
 
-            line.find(".tzdTableRow").html( $("#pdt_TheProduct").html() + " " + productID + " " + $("#pdt_wasNotFound").html() );
+            line.find(".tzdTableRow").html( $("#bdg_TheProduct").html() + " " + productID + " " + $("#bdg_wasNotFound").html() );
 
           }
 
@@ -129,7 +129,7 @@ $(document).ready(function(){
     window.print();
 
   $(".empty").live("click", function(){
-    $tzd.confirm($("#pdt_wantToEmpty").html(), function(){
+    $tzd.confirm($("#bdg_wantToEmpty").html(), function(){
       $tzd.budget.empty();
       $(".list").empty();
       $(".totalPrice").html(0);
@@ -143,11 +143,11 @@ $(document).ready(function(){
   });
 
   $(".openShareBudget").live("click", function(){
-    $tzd.product.shareBudget.open( $(this).attr("id") );
+    $tzd.budget.share.open( $(this).attr("id") );
   });
 
   $(".openKnowMoreBudget").live("click", function(){
-    $tzd.product.knowMoreBudget.open( $(this).attr("id") );
+    $tzd.budget.knowMore.open( $(this).attr("id") );
   });
 
   $(".amountMinus").live("click", function(){
@@ -181,5 +181,11 @@ $(document).ready(function(){
     $tzd.budget.drop( productID );
 
   });
-  
+
+  $(".printBudget").live("click", function(){
+
+    $tzd.budget.print();
+    
+  });
+
 });

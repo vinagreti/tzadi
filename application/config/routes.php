@@ -56,7 +56,6 @@ $route['produtos'] = 'product/manage';
 $route['mail/(:num)'] = 'mail/read/$1';
 
 $route['orcamento'] = 'budget';
-$route['orcamento/(:any)'] = 'budget/$1';
 $route['budgetIframe'] = 'budget/budgetIframe';
 
 $route['resetPassword'] = 'user/resetPassword';

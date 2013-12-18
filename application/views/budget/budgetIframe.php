@@ -37,10 +37,11 @@
 <div class="no-print row-fluid">
   <div class="span24">
     <div class="pull-right">
-      <span><a class="btn" href="<?=base_url()?><?=lang("rt_vitrine")?>"><?=lang("pdt_addProduct")?></a></span>
+      <span><a class="btn btn-warning" href="<?=base_url()?><?=lang("rt_vitrine")?>"><?=lang("pdt_addProduct")?></a></span>
       <?php if( ! $this->session->userdata("myOrg") ){ ?><span><a class="openKnowMoreBudget btn btn-success"><?=lang("pdt_knowMore")?></a></span><?php } ?>
       <span><a class="openShareBudget btn btn-primary"><?=lang("pdt_shareProductByMail")?></a></span>
       <span><a class="empty btn btn-danger"><?=lang("pdt_emptyBudget")?></a></span>
+      <span><a class="printBudget btn"><?=lang("bdg_printBudget")?></a></span>
     </div>
   </div>
 </div>

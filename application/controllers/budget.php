@@ -10,8 +10,13 @@ class Budget extends My_Controller {
 
     }
 
-    public function index()
-    {
+    public function index(){
+
+        $this->view();
+
+    }
+
+    public function view( ) {
 
         $this->load->model("payment_model");
 
@@ -41,8 +46,37 @@ class Budget extends My_Controller {
 
     }
 
-    public function budgetIframe()
-    {
+    public function printing( ) {
+
+        $this->load->model("payment_model");
+
+        $data->paymentResumeHTML = $this->payment_model->getResumeHTML();
+
+        $data->dynJS = array('budget/printing', "product/product");
+
+        $data->view = 'budget/printing';
+
+        $this->load->helper('date');
+
+        $genertionTime = time();
+
+        $data->genertionTime = time_date($genertionTime);
+
+        $this->load->model("budget_model");
+
+        $budget = $this->budget_model->getBudget();
+
+        $data->timelife = time_date( ($budget["timelife"] * 86400) + $genertionTime);
+
+        $data->page_title = lang('bdg_Title');
+
+        $data->shareButtons = $this->load->view("tzadi/shareButtons", "", true);
+
+        $this->page->load($data);
+
+    }
+
+    public function budgetIframe(){
 
         $this->load->model("payment_model");
 
@@ -106,32 +140,30 @@ class Budget extends My_Controller {
 
     }
 
-      public function share()
-      {
-        
+    public function share(){
+
         $data = $this->input->post();
 
         $this->load->model("product_model");
 
         if( isset( $data["addresses"] ) ) {
 
-          echo json_encode($this->product_model->shareBudget($data));
+            echo json_encode($this->product_model->shareBudget($data));
 
         } else {
 
-          $budget = $this->product_model->getBudgetResume();
+            $budget = $this->product_model->getBudgetResume();
 
-          $shareBudgetForm = $this->load->view('product/shareForm', $budget, true);
+            $shareBudgetForm = $this->load->view('product/shareForm', $budget, true);
 
-          echo json_encode($shareBudgetForm);
+            echo json_encode($shareBudgetForm);
 
         }
 
-        
-      }
 
-      public function knowMore()
-      {
+    }
+
+    public function knowMore(){
 
         $data = $this->input->post();
 
@@ -139,19 +171,19 @@ class Budget extends My_Controller {
 
         if( isset( $data["address"] ) ) {
 
-          echo json_encode($this->product_model->knowMoreBudget($data));
+            echo json_encode($this->product_model->knowMoreBudget($data));
 
         } else {
 
-          $budget = $this->product_model->getBudgetResume();
+            $budget = $this->product_model->getBudgetResume();
 
-          $knowMoreBudgetForm = $this->load->view('budget/knowMoreForm', $budget, true);
+            $knowMoreBudgetForm = $this->load->view('budget/knowMoreForm', $budget, true);
 
-          echo json_encode($knowMoreBudgetForm);
+            echo json_encode($knowMoreBudgetForm);
 
         }
 
-      }
+    }
 
 }
 

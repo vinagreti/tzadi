@@ -1,14 +1,21 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
 <h3><?=lang("crc_todayRate")?> <?=$currency["day"]?></h3>
 
-<div class="row-fluid">
-	<div class="span4">
+<table class="table table-bordered table-hover table-striped table-condensed">
+	<thead>
+		<tr>
+			<th>Moeda</th>
+			<th>Valor</th>
+		</tr>
+	</thead>
+	<tbody>
 		<?php $i = 0; foreach($currency as $key => $val) {
 			if($key != "day" && $key != "_id") {
 				$val = number_format($val,4);
-				if($i %6 == 0 && $i != 0) echo '</div><div class="span4">';
-				echo "<p><strong class='text-warning'>$key</strong>: $val</p>";
+				echo "<tr><td><strong class='text-warning'>$key</strong></td><td>$val</td></tr>";
 				$i++;
 			}
 		}?>
-	</div>
-</div>
+	</tbody>
+</table>

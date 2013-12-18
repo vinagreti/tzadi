@@ -246,8 +246,8 @@ $config['encryption_key'] = 'Dublin';
 |
 */
 $config['sess_cookie_name']		= 'tzd_session';
-$config['sess_expiration']		= 7200;
-$config['sess_expire_on_close']	= TRUE;
+$config['sess_expiration']		= FALSE;
+$config['sess_expire_on_close']	= FALSE;
 $config['sess_encrypt_cookie']	= TRUE;
 $config['sess_use_database']	= TRUE;
 $config['sess_table_name']		= 'session';
