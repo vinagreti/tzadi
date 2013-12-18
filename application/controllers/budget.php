@@ -12,17 +12,11 @@ class Budget extends My_Controller {
 
     public function index(){
 
-        $this->view( 'budget/index' );
+        $this->view();
 
     }
 
-    public function budgetIframe(){
-
-        $this->view( 'budget/budgetIframe' );
-
-    }
-    
-    public function view( $view ) {
+    public function view( ) {
 
         $this->load->model("payment_model");
 
@@ -30,7 +24,7 @@ class Budget extends My_Controller {
 
         $data->dynJS = array('budget/index', "product/product");
 
-        $data->view = $view;
+        $data->view = 'budget/index';
 
         $this->load->helper('date');
 
@@ -79,6 +73,36 @@ class Budget extends My_Controller {
         $data->shareButtons = $this->load->view("tzadi/shareButtons", "", true);
 
         $this->page->load($data);
+
+    }
+
+    public function budgetIframe(){
+
+        $this->load->model("payment_model");
+
+        $data->paymentResumeHTML = $this->payment_model->getResumeHTML();
+
+        $data->dynJS = array('budget/index', "product/product");
+
+        $data->view = 'budget/budgetIframe';
+
+        $this->load->helper('date');
+
+        $genertionTime = time();
+
+        $data->genertionTime = time_date($genertionTime);
+
+        $this->load->model("budget_model");
+
+        $budget = $this->budget_model->getBudget();
+
+        $data->timelife = time_date( ($budget["timelife"] * 86400) + $genertionTime);
+
+        $data->page_title = lang('bdg_Title');
+
+        $data->shareButtons = $this->load->view("tzadi/shareButtons", "", true);
+
+        $this->page->loadIframe($data);
 
     }
 
