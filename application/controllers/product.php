@@ -191,6 +191,8 @@ class Product extends My_Controller {
     $data->the_head .= "<meta property='og:title' content='" . $data->product["name"] . "' />";
     if(isset($data->product["detail"])) $data->the_head .= "<meta property='og:description' content='" . $data->product["detail"] . "' />";
 
+    $data->shareButtons = $this->load->view("tzadi/shareButtons", "", true);
+
     $this->page->loadIframe($data);
 
 
