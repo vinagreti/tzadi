@@ -1,4 +1,4 @@
-<h3><?=lang("pdt_Budget")?> <a class="no-print reload btn btn-info"><i class="icon-refresh"></i></a></h3>
+<h3><?=lang("bdg_Title")?> <a class="no-print reload btn btn-info"><i class="icon-refresh"></i></a></h3>
 
 <div class="no-print"><?=$shareButtons?></div>
 
@@ -7,11 +7,11 @@
 <table class="table table-bordered table-hover table-striped table-condensed">
   <thead>
     <tr>
-      <th><?=lang("pdt_code")?></th>
-      <th><?=lang("pdt_name")?></th>
-      <th><?=lang("pdt_amount")?></th>
-      <th><?=lang("pdt_price")?></th>
-      <th><?=lang("pdt_total")?></th>
+      <th><?=lang("bdg_code")?></th>
+      <th><?=lang("bdg_name")?></th>
+      <th><?=lang("bdg_amount")?></th>
+      <th><?=lang("bdg_price")?></th>
+      <th><?=lang("bdg_total")?></th>
       <th><a class="changeCurrency" rel="tooltip" title="<?=lang("tmpt_select_currency")?>"><span class="currencyCode"></span> <i class="icon-caret-down"></i></a></th>
       <th class="no-print"></th>
     </tr>
@@ -27,8 +27,8 @@
       <td class="span1 no-print"><a class="removeItem btn btn-danger btn-mini pull-right no-print"><i class="icon-remove"></i></a></td>
     </tr>
     <tr>
-      <td class="info" colspan="4"><small>* <?=lang("org_validFrom")?> <?=$genertionTime?> <?=lang("org_until")?> <?=$timelife?><small></td>
-      <td><strong><?=lang("pdt_totalValue")?></string></td>
+      <td class="info" colspan="4"><small>* <?=lang("bdg_validFrom")?> <?=$genertionTime?> <?=lang("bdg_until")?> <?=$timelife?><small></td>
+      <td><strong><?=lang("bdg_totalValue")?></string></td>
       <td colspan="2"><span class="currencyCode"></span> <span class="totalPrice">0</span></td>
     </tr>
   </tbody>
@@ -37,17 +37,17 @@
 <div class="no-print row-fluid">
   <div class="span24">
     <div class="pull-right">
-      <span><a class="btn btn-warning" href="<?=base_url()?><?=lang("rt_vitrine")?>"><?=lang("pdt_addProduct")?></a></span>
-      <?php if( ! $this->session->userdata("myOrg") ){ ?><span><a class="openKnowMoreBudget btn btn-success"><?=lang("pdt_knowMore")?></a></span><?php } ?>
-      <span><a class="openShareBudget btn btn-primary"><?=lang("pdt_shareProductByMail")?></a></span>
-      <span><a class="empty btn btn-danger"><?=lang("pdt_emptyBudget")?></a></span>
+      <span><a class="btn btn-warning" href="<?=base_url()?><?=lang("rt_vitrine")?>"><?=lang("bdg_addProduct")?></a></span>
+      <?php if( ! $this->session->userdata("myOrg") ){ ?><span><a class="openKnowMoreBudget btn btn-success"><?=lang("bdg_knowMore")?></a></span><?php } ?>
+      <span><a class="openShareBudget btn btn-primary"><?=lang("bdg_shareProductByMail")?></a></span>
+      <span><a class="empty btn btn-danger"><?=lang("bdg_emptyBudget")?></a></span>
       <span><a class="printBudget btn"><?=lang("bdg_printBudget")?></a></span>
     </div>
   </div>
 </div>
 
-<div class="hide" id="pdt_wantToEmpty"><?=lang("pdt_wantToEmptyBudget")?></div>
-<div id="pdt_TheProduct" class="hide"><?=lang("pdt_TheProduct")?></div>
-<div id="pdt_wasNotFound" class="hide"><?=lang("pdt_wasNotFound")?></div>
+<div class="hide" id="pdt_wantToEmpty"><?=lang("bdg_wantToEmptyBudget")?></div>
+<div id="pdt_TheProduct" class="hide"><?=lang("bdg_TheProduct")?></div>
+<div id="pdt_wasNotFound" class="hide"><?=lang("bdg_wasNotFound")?></div>
 
 <hr><?=$paymentResumeHTML?>
