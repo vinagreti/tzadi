@@ -28,6 +28,8 @@ class Payment extends My_Controller {
             
         } else {
 
+            $data = new StdClass();
+
             $data->dynJS = 'payment/conf';
 
             $data->view = 'payment/conf';

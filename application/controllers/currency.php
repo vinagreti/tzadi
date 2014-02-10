@@ -109,6 +109,8 @@ class Currency extends My_Controller {
 
 			$this->load->model("org_model");
 
+			$data = new StdClass();
+
 			$data->exchangeRate = $this->org_model->getExchangeRate( );
 
 			$data->currency = $this->currency_model->getToday( );

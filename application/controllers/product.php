@@ -10,6 +10,7 @@ class Product extends My_Controller {
   public function index()
   {
     $this->load->model("payment_model");
+    $data = new StdClass();
     $data->paymentResumeHTML = $this->payment_model->getResumeHTML();
     $data->dynJS = 'product/vitrine';
     $data->view = 'product/vitrine';
@@ -20,6 +21,7 @@ class Product extends My_Controller {
   public function vitrineIframe()
   {
     $this->load->model("payment_model");
+    $data = new StdClass();
     $data->paymentResumeHTML = $this->payment_model->getResumeHTML();
     $data->dynJS = 'product/vitrine';
     $data->view = 'product/vitrineIframe';
@@ -31,6 +33,7 @@ class Product extends My_Controller {
   {
 
     $this->MYensureOwnProfile();
+    $data = new StdClass();
     $this->lang->load('currency', $this->session->userdata('language'));
     $data->dynJS = 'product/manage';
     $data->view = 'product/manage';
@@ -97,6 +100,7 @@ class Product extends My_Controller {
     $this->MYensureOwnProfile();
 
     $this->load->model("product_model");
+    $data = new StdClass();
     $data->name = $this->input->post("name");
     $data->kind = $this->input->post("kind");
     if(!$data->name) $data->name = lang('pdt_newProduct');
@@ -136,6 +140,7 @@ class Product extends My_Controller {
 
   public function view( $_id ){
     $this->load->model("product_model");
+    $data = new StdClass();
     $data->product = $this->product_model->getHumanized( $_id );
 
     if( $data->product ){
@@ -168,6 +173,7 @@ class Product extends My_Controller {
 
   public function viewIframe( $_id ){
     $this->load->model("product_model");
+    $data = new StdClass();
     $data->product = $this->product_model->getHumanized( $_id );
 
     if( $data->product ){

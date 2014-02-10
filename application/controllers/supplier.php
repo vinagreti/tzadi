@@ -11,6 +11,7 @@ class Supplier extends My_Controller {
 
   public function index()
   {
+    $data = new StdClass();
     $data->dynJS = 'supplier/supplier';
     $data->view = 'supplier/manage';
     $data->page_title = lang('splr_listTitle');
@@ -33,6 +34,7 @@ class Supplier extends My_Controller {
 
   public function add()
   {
+    $data = new StdClass();
     if($this->input->post("name")){
       $data->name = $this->input->post("name");
     }
@@ -60,6 +62,7 @@ class Supplier extends My_Controller {
   }
 
   public function addCampus(){
+    $data = new StdClass();
     if($this->input->post("name")){
       $data->name = $this->input->post("name");
     }

@@ -9,6 +9,7 @@ class Collaborator extends My_Controller {
 
   public function index()
   {
+    $data = new StdClass();
     $data->dynJS = 'collaborator/manage';
     $data->view = 'collaborator/manage';
     $data->page_title = lang('clb_listTitle');

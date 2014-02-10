@@ -20,6 +20,8 @@ class Budget extends My_Controller {
 
         $this->load->model("payment_model");
 
+        $data = new StdClass();
+
         $data->paymentResumeHTML = $this->payment_model->getResumeHTML();
 
         $data->dynJS = array('budget/index', "product/product");
@@ -50,6 +52,8 @@ class Budget extends My_Controller {
 
         $this->load->model("payment_model");
 
+        $data = new StdClass();
+
         $data->paymentResumeHTML = $this->payment_model->getResumeHTML();
 
         $data->dynJS = array('budget/printing', "product/product");
@@ -79,6 +83,8 @@ class Budget extends My_Controller {
     public function budgetIframe(){
 
         $this->load->model("payment_model");
+
+        $data = new StdClass();
 
         $data->paymentResumeHTML = $this->payment_model->getResumeHTML();
 
@@ -123,6 +129,8 @@ class Budget extends My_Controller {
             $this->output->set_output($data);
 
         } else {
+
+            $data = new StdClass();
 
             $data->budget = $this->budget_model->getBudget();
 

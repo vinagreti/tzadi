@@ -17,6 +17,8 @@ class Blog extends My_Controller {
 
     $this->load->model("blog_model");
 
+    $data = new StdClass();
+
     $data->post = $this->blog_model->getLast();
 
     if( $data->post ) {

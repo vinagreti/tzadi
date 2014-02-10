@@ -16,6 +16,8 @@ class Agency extends My_Controller {
 
 	    $this->load->model("org_model");
 
+	    $data = new StdClass();
+
 	    if( $this->input->post() )
 	      echo json_encode( $this->org_model->set( $this->input->post() ) );
 

@@ -21,15 +21,17 @@ class Theme extends My_Controller {
 
 	    else {
 
-	      $data->dynJS = 'theme/manage';
+			$data = new StdClass();
 
-	      $data->view = 'theme/manage';
+			$data->dynJS = 'theme/manage';
 
-	      $data->agency = $this->org_model->getByID( $this->session->userdata("org") );
+			$data->view = 'theme/manage';
 
-	      $data->page_title = lang('agc_SettingsOf') . " " . $this->session->userdata("orgName");
+			$data->agency = $this->org_model->getByID( $this->session->userdata("org") );
 
-	      $this->page->load($data);
+			$data->page_title = lang('agc_SettingsOf') . " " . $this->session->userdata("orgName");
+
+			$this->page->load($data);
 
 	    }
 

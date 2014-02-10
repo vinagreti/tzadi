@@ -18,6 +18,7 @@ class Customer extends My_Controller {
 
   public function index() 
   {
+    $data = new StdClass();
     $data->dynJS = 'customer/manage';
     $data->view = 'customer/index';
     $data->page_title = lang('ctm_listTitle');
@@ -80,6 +81,7 @@ class Customer extends My_Controller {
   }
 
   public function view( $_id ){
+    $data = new StdClass();
     $this->load->model("customer_model");
     $data->customer = $this->customer_model->getByID( $_id );
     $data->dynJS = array('customer/view', 'tzadi/tzadi-mail', 'bootstrap/bootstrap-datetimepicker.min');
@@ -113,6 +115,8 @@ class Customer extends My_Controller {
     if( ! $data ){
 
       $this->load->model("collaborator_model");
+
+      $data = new StdClass();
 
       $data->collaborators = $this->collaborator_model->getAll();
 

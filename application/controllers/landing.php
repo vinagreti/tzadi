@@ -20,6 +20,8 @@ class Landing extends My_Controller {
   public function landing()
   {
 
+    $data = new StdClass();
+
     if( ! defined('ORG_ID') )
       $data->view = 'tzadi/landing';
     

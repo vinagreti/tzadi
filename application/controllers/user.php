@@ -33,6 +33,8 @@ class User extends My_Controller {
 
       } else {
 
+        $data = new stdClass();
+
         $data->dynJS = "user/login";
 
         $data->page_title = lang('usr_Login');
