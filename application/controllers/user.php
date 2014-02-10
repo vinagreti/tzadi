@@ -130,6 +130,7 @@ class User extends My_Controller {
         $this->load->model("user_model");
         echo json_encode( $this->user_model->signup($this->input->post()) );
       } else {
+        $data = new stdClass();
         $data->dynJS = 'user/signup';
         $data->view = 'user/signup';
         $data->page_title = lang('usr_Signup');
@@ -149,6 +150,7 @@ class User extends My_Controller {
         $this->load->model("user_model");
         echo json_encode( $this->user_model->finishSignup( $this->input->post() ) );
       } else {
+        $data = new stdClass();
         $data->dynJS = 'user/finishSignup';
         $data->view = 'user/finishSignup';
         $data->page_title = lang('usr_finishSignup');
@@ -178,6 +180,8 @@ class User extends My_Controller {
       echo json_encode( $this->user_model->set( $this->input->post() ) );
 
     else {
+
+      $data = new stdClass();
 
       $data->dynJS = 'user/profile';
 
@@ -210,6 +214,8 @@ class User extends My_Controller {
 
     else {
 
+      $data = new stdClass();
+
       $data->dynJS = 'user/interests';
 
       $data->view = 'user/interests';
@@ -239,6 +245,8 @@ class User extends My_Controller {
 
     else {
 
+      $data = new stdClass();
+
       $data->dynJS = 'user/proposals';
 
       $data->view = 'user/proposals';
@@ -265,6 +273,8 @@ class User extends My_Controller {
     }
 
     else {
+
+      $data = new stdClass();
 
       $data->dynJS = 'user/resetPassword';
 
